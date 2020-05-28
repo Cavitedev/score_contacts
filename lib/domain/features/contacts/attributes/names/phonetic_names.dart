@@ -7,6 +7,12 @@ class PhoneticNames{
   PhoneticNames({this.phoneticFirstName, this.phoneticMiddleName,
       this.phoneticFirstSurname, this.phoneticSecondSurname});
 
+
+  @override
+  String toString() {
+    return 'PhoneticNames{phoneticFirstName: $phoneticFirstName, phoneticMiddleName: $phoneticMiddleName, phoneticFirstSurname: $phoneticFirstSurname, phoneticSecondSurname: $phoneticSecondSurname}';
+  }
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||

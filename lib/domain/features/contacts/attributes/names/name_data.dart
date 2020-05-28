@@ -1,4 +1,5 @@
-import 'package:scorecontacts/domain/conctacts/names/phonetic_names.dart';
+
+import 'package:scorecontacts/domain/features/contacts/attributes/names/phonetic_names.dart';
 
 class NameData {
   String firstName;
@@ -12,6 +13,12 @@ class NameData {
 
   NameData({this.phoneticNames, this.firstName, this.nickname, this.namePrefix, this.middleName,
       this.firstSurname, this.secondSurname, this.nameSuffix});
+
+
+  @override
+  String toString() {
+    return 'NameData{firstName: $firstName, nickname: $nickname, namePrefix: $namePrefix, middleName: $middleName, firstSurname: $firstSurname, secondSurname: $secondSurname, nameSuffix: $nameSuffix, phoneticNames: $phoneticNames}';
+  }
 
   @override
   bool operator ==(Object other) =>
