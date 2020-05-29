@@ -9,12 +9,17 @@ class SignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Sign in"),
+        title: Text("Sign IN"),
+
       ),
-        body: BlocProvider(
-       create: (context) => getIt<SignInBloc>(),
-    child: SignInForm(),
-    ),
+      body: BlocProvider(
+        create: (context) {
+          SignInBloc bloc = getIt<SignInBloc>();
+          print(bloc);
+          return bloc;
+        },
+        child: SignInForm(),
+      ),
     );
   }
 }

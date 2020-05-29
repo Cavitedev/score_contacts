@@ -9,7 +9,8 @@ import 'package:scorecontacts/domain/features/auth/i_auth_dao.dart';
 
 
 @lazySingleton
-@Injectable(as: IAuthDao)
+// ignore: deprecated_member_use
+@RegisterAs(IAuthDao)
 class FirebaseAuthDao implements IAuthDao {
   final GoogleSignIn googleSignIn;
   final FirebaseAuth firebaseAuth;

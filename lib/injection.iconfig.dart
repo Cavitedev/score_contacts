@@ -7,8 +7,9 @@
 import 'package:scorecontacts/infrastructure/core/firebase_injectable_module.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:scorecontacts/application/sign_in/sign_in_bloc.dart';
 import 'package:scorecontacts/infrastructure/features/auth/firebase_auth_dao.dart';
+import 'package:scorecontacts/domain/features/auth/i_auth_dao.dart';
+import 'package:scorecontacts/application/sign_in/sign_in_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 void $initGetIt(GetIt g, {String environment}) {
@@ -17,9 +18,9 @@ void $initGetIt(GetIt g, {String environment}) {
       () => firebaseInjectableModule.firebaseAuth);
   g.registerLazySingleton<GoogleSignIn>(
       () => firebaseInjectableModule.googleSignIn);
-  g.registerFactory<SignInBloc>(() => SignInBloc());
-  g.registerLazySingleton<FirebaseAuthDao>(() => FirebaseAuthDao(
+  g.registerLazySingleton<IAuthDao>(() => FirebaseAuthDao(
       googleSignIn: g<GoogleSignIn>(), firebaseAuth: g<FirebaseAuth>()));
+  g.registerFactory<SignInBloc>(() => SignInBloc(authDao: g<IAuthDao>()));
 }
 
 class _$FirebaseInjectableModule extends FirebaseInjectableModule {}
