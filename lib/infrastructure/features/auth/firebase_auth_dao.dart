@@ -3,9 +3,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:injectable/injectable.dart';
 import 'package:scorecontacts/domain/features/auth/auth_failures.dart';
 import 'package:scorecontacts/domain/features/auth/i_auth_dao.dart';
 
+
+@lazySingleton
+@Injectable(as: IAuthDao)
 class FirebaseAuthDao implements IAuthDao {
   final GoogleSignIn googleSignIn;
   final FirebaseAuth firebaseAuth;

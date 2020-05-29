@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
+import 'package:scorecontacts/injection.dart';
 import 'package:scorecontacts/presentation/login_page.dart';
 
 void main() {
+  configureInjection(Environment.prod);
   runApp(MyApp());
 }
 
