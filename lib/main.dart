@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:scorecontacts/injection.dart';
-import 'package:scorecontacts/presentation/login_page.dart';
+import 'file:///E:/Personal/Android/Projects/page_transition_animation/score_contacts/lib/presentation/sign_in/sign_in_page.dart';
 
 void main() {
   configureInjection(Environment.prod);
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
 
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: LoginPage(),
+      home: SignInPage(),
     );
   }
 }
