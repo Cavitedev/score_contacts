@@ -3,7 +3,7 @@ import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/sign_in/bloc.dart';
-import 'package:scorecontacts/presentation/contacts/contact_list.dart';
+import 'file:///E:/Personal/Android/Projects/page_transition_animation/score_contacts/lib/presentation/contacts/list/contact_list.dart';
 
 class SignInForm extends StatelessWidget {
   @override

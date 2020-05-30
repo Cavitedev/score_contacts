@@ -1,0 +1,45 @@
+import 'package:flutter/material.dart';
+import 'package:scorecontacts/domain/features/contacts/attributes/names/name_data.dart';
+import 'package:scorecontacts/domain/features/contacts/contact.dart';
+
+class ContactRow extends StatelessWidget {
+  final Contact contact;
+
+  const ContactRow({
+    Key key,
+    @required this.contact,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    NameData name = contact.nameData;
+
+    return InkWell(
+
+      onTap: () {},
+      child: Container(
+        padding: const EdgeInsets.fromLTRB(20, 8, 4, 8),
+        child: Row(
+
+          children: <Widget>[
+            CircleAvatar(
+              child: Text(contact.nameData.firstName.substring(0, 1)),
+            ),
+            const SizedBox(
+              width: 20,
+            ),
+            Flexible(
+              child: RichText(
+                overflow: TextOverflow.ellipsis,
+                text: TextSpan(
+                    text:
+                    "${name.namePrefix} ${name.firstName} ${name.nameSuffix} ${name.middleName} ${name.firstName} ${name.secondSurname} ",
+                    style: Theme.of(context).textTheme.headline5),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
