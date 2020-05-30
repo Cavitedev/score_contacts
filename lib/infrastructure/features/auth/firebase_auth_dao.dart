@@ -19,7 +19,6 @@ class FirebaseAuthDao implements IAuthDao {
     @required this.googleSignIn,
     @required this.firebaseAuth,
   });
-
   @override
   Future<Either<AuthFailure, Unit>> signInWithGoogle() async {
     try {

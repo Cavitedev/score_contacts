@@ -17,7 +17,19 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith (
 
 
+        accentColor: Colors.grey[400],
 
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: Colors.blue[900],
+
+        ),
+        iconTheme: IconThemeData(color: Colors.grey),
+
+        textTheme: TextTheme(
+          headline5: TextStyle(
+            fontSize: 24,
+          )
+        ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: SignInPage(),
