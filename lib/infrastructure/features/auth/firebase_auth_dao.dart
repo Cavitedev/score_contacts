@@ -6,7 +6,9 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 import 'package:scorecontacts/domain/features/auth/auth_failures.dart';
 import 'package:scorecontacts/domain/features/auth/i_auth_dao.dart';
+import 'package:scorecontacts/domain/features/user/user_Data.dart';
 
+import 'firebase_user_extension.dart';
 
 @lazySingleton
 // ignore: deprecated_member_use
@@ -19,6 +21,11 @@ class FirebaseAuthDao implements IAuthDao {
     @required this.googleSignIn,
     @required this.firebaseAuth,
   });
+
+  @override
+  Future<Option<User>> getSignedUser() =>
+      firebaseAuth.currentUser().then((user) => optionOf(user?.toDomain()));
+
   @override
   Future<Either<AuthFailure, Unit>> signInWithGoogle() async {
     try {

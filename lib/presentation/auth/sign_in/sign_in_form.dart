@@ -1,9 +1,8 @@
-
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:scorecontacts/application/sign_in/bloc.dart';
-import 'file:///E:/Personal/Android/Projects/page_transition_animation/score_contacts/lib/presentation/contacts/list/contact_list.dart';
+import 'package:scorecontacts/application/auth/sign_in/bloc.dart';
+import 'package:scorecontacts/presentation/routes/router.gr.dart';
 
 class SignInForm extends StatelessWidget {
   @override
@@ -11,11 +10,11 @@ class SignInForm extends StatelessWidget {
     return BlocConsumer<SignInBloc, SignInState>(
       listener: (context, state) {
         if (state is LoadedSignInState) {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => ContactList()));
+          Navigator.pushReplacementNamed(context, Routes.contactList);
         } else if (state is ErrorSignInState) {
-          FlushbarHelper.createError(message: state.authFailure.message,
-          duration: Duration(seconds: 5))
+          FlushbarHelper.createError(
+                  message: state.authFailure.message,
+                  duration: Duration(seconds: 5))
               .show(context);
         }
       },

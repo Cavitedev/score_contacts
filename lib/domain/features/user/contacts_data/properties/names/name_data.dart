@@ -1,5 +1,5 @@
 
-import 'package:scorecontacts/domain/features/contacts/attributes/names/phonetic_names.dart';
+import 'package:scorecontacts/domain/features/user/contacts_data/properties/names/phonetic_names.dart';
 
 class NameData {
   String firstName;

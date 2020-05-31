@@ -1,15 +1,13 @@
-import 'package:scorecontacts/domain/features/contacts/attributes/address.dart';
-import 'package:scorecontacts/domain/features/contacts/attributes/company.dart';
-import 'package:scorecontacts/domain/features/contacts/attributes/email.dart';
-import 'package:scorecontacts/domain/features/contacts/attributes/important_date.dart';
-import 'package:scorecontacts/domain/features/contacts/attributes/instant_message.dart';
-import 'package:scorecontacts/domain/features/contacts/attributes/names/name_data.dart';
-import 'package:scorecontacts/domain/features/contacts/attributes/phone.dart';
-import 'package:scorecontacts/domain/features/contacts/attributes/website.dart';
+import 'package:scorecontacts/domain/features/user/contacts_data/properties/address.dart';
+import 'package:scorecontacts/domain/features/user/contacts_data/properties/company.dart';
+import 'package:scorecontacts/domain/features/user/contacts_data/properties/email.dart';
+import 'package:scorecontacts/domain/features/user/contacts_data/properties/important_date.dart';
+import 'package:scorecontacts/domain/features/user/contacts_data/properties/instant_message.dart';
+import 'package:scorecontacts/domain/features/user/contacts_data/properties/names/name_data.dart';
+import 'package:scorecontacts/domain/features/user/contacts_data/properties/phone.dart';
+import 'package:scorecontacts/domain/features/user/contacts_data/properties/website.dart';
 
-class Contact{
-
-
+class Contact {
   NameData nameData;
   List<Company> companies;
   List<Phone> phones;
