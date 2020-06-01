@@ -32,12 +32,18 @@ class MyApp extends StatelessWidget {
           floatingActionButtonTheme: FloatingActionButtonThemeData(
             backgroundColor: Colors.blue[900],
           ),
+          highlightColor: Colors.blueAccent[700],
+          cursorColor: Colors.blue[700],
+          textSelectionColor: Colors.grey[800],
+          inputDecorationTheme: InputDecorationTheme(
+            border: InputBorder.none,
+          ),
           iconTheme: IconThemeData(color: Colors.grey, size: 32),
           textTheme: TextTheme(
-            headline5: TextStyle(
-              fontSize: 24,
-            ),
-          ),
+              headline5: TextStyle(
+                fontSize: 24,
+              ),
+              subtitle1: TextStyle(fontSize: 20, letterSpacing: .5)),
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
       ),
