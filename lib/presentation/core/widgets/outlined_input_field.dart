@@ -5,6 +5,8 @@ class OutlinedInputField extends StatefulWidget {
   final bool autoFocus;
   final bool autoCorrect;
   final TextInputType keyboardType;
+  final TextCapitalization textCapitalization;
+  final Icon prefixIcon;
   final String Function(String) onChangedValidator;
 
   OutlinedInputField({
@@ -13,7 +15,9 @@ class OutlinedInputField extends StatefulWidget {
     this.autoCorrect = false,
     this.autoFocus = false,
     this.keyboardType = TextInputType.text,
+    this.textCapitalization = TextCapitalization.none,
     this.onChangedValidator,
+    this.prefixIcon,
   }) : super(key: key);
 
   @override
@@ -51,12 +55,14 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
       enableSuggestions: widget.autoCorrect,
       autofocus: widget.autoFocus,
       keyboardType: widget.keyboardType,
+      textCapitalization: widget.textCapitalization,
       showCursor: true,
       decoration: InputDecoration(
-          hintText: widget.hintText,
+          labelText: widget.hintText,
           filled: true,
           fillColor: Theme.of(context).textSelectionColor,
           helperText: (showHelperText) ? helpText : null,
+          prefixIcon: widget.prefixIcon,
           suffixIcon: hasText
               ? InkWell(
                   onTap: () {

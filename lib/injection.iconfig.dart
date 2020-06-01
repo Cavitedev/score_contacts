@@ -4,14 +4,14 @@
 // InjectableConfigGenerator
 // **************************************************************************
 
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:get_it/get_it.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:scorecontacts/application/auth/auth_bloc.dart';
-import 'package:scorecontacts/application/auth/sign_in/sign_in_bloc.dart';
-import 'package:scorecontacts/domain/features/auth/i_auth_dao.dart';
 import 'package:scorecontacts/infrastructure/core/firebase_injectable_module.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:scorecontacts/infrastructure/features/auth/firebase_auth_dao.dart';
+import 'package:scorecontacts/domain/features/auth/i_auth_dao.dart';
+import 'package:scorecontacts/application/auth/sign_in/sign_in_bloc.dart';
+import 'package:scorecontacts/application/auth/auth_bloc.dart';
+import 'package:get_it/get_it.dart';
 
 void $initGetIt(GetIt g, {String environment}) {
   final firebaseInjectableModule = _$FirebaseInjectableModule();
