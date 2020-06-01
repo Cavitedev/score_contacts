@@ -35,12 +35,14 @@ class AddContact extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Column(
             children: <Widget>[
-              OutlinedFormInputField(
+              OutlinedInputField(
                 hintText: "Name",
                 autoFocus: true,
-                onChanged: (_) {},
+                onChangedValidator: (_) {
+                  return null;
+                },
               ),
-              OutlinedFormInputField(
+              OutlinedInputField(
                 hintText: "Surname",
               ),
             ],
