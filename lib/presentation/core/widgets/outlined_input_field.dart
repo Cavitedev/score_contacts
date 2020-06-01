@@ -7,6 +7,7 @@ class OutlinedInputField extends StatefulWidget {
   final TextInputType keyboardType;
   final TextCapitalization textCapitalization;
   final Icon prefixIcon;
+  /// return null to not show any helper
   final String Function(String) onChangedValidator;
 
   OutlinedInputField({
@@ -87,6 +88,7 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
   void _clearText() {
     textEditingController.clear();
     setState(() {
+      helpText = widget.onChangedValidator("");
       hasText = false;
     });
   }
