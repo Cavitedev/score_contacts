@@ -38,6 +38,7 @@ class MyApp extends StatelessWidget {
           inputDecorationTheme: InputDecorationTheme(
             border: InputBorder.none,
           ),
+          textSelectionHandleColor: Colors.blue[600],
           iconTheme: IconThemeData(color: Colors.grey, size: 32),
           textTheme: TextTheme(
               headline5: TextStyle(

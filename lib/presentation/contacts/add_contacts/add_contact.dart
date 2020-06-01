@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scorecontacts/presentation/core/widgets/outlined_form_input_field.dart';
 
 class AddContact extends StatelessWidget {
   @override
@@ -34,28 +35,13 @@ class AddContact extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Column(
             children: <Widget>[
-              TextField(
-                style: TextStyle(fontSize: 20),
-                decoration: InputDecoration(
-                    hintText: "Name",
-                    filled: true,
-                    fillColor: Theme.of(context).textSelectionColor,
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(16)),
-                        borderSide: BorderSide(
-                            color: Theme.of(context).highlightColor, width: 2)),
-                    border: OutlineInputBorder(borderSide: BorderSide.none)),
+              OutlinedFormInputField(
+                hintText: "Name",
+                autoFocus: true,
+                onChanged: (_) {},
               ),
-              TextField(
-                style: TextStyle(fontSize: 20),
-                decoration: InputDecoration(
-                    hintText: "Name",
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        borderSide: BorderSide(
-                            color: Theme.of(context).highlightColor, width: 2)),
-                    border: OutlineInputBorder(borderSide: BorderSide.none)),
+              OutlinedFormInputField(
+                hintText: "Surname",
               ),
             ],
           ),
@@ -64,3 +50,5 @@ class AddContact extends StatelessWidget {
     );
   }
 }
+
+
