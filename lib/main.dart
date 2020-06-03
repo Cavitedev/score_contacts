@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
           highlightColor: Colors.blueAccent[700],
           focusColor: Colors.blueAccent[100],
           cursorColor: Colors.blue[700],
-          textSelectionColor: Colors.grey[800].withOpacity(.35),
+          textSelectionColor: Color.fromRGBO(40, 40, 40, 1),
           textSelectionHandleColor: Colors.blue[600],
           disabledColor: Colors.grey[800],
           inputDecorationTheme: InputDecorationTheme(

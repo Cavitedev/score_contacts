@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class OutlinedInputField extends StatefulWidget {
   final String hintText;
   final bool autoFocus;
   final bool autoCorrect;
+
+  /// With Radius.circular(12) by default
+  final BorderRadius borderRadius;
   final TextInputType keyboardType;
   final TextCapitalization textCapitalization;
   final Icon prefixIcon;
+  final FocusNode focusNode;
+  final List<TextInputFormatter> inputFormatters;
+
   /// return null to not show any helper
   final String Function(String) onChangedValidator;
 
@@ -19,6 +26,9 @@ class OutlinedInputField extends StatefulWidget {
     this.textCapitalization = TextCapitalization.none,
     this.onChangedValidator,
     this.prefixIcon,
+    this.focusNode,
+    this.borderRadius = const BorderRadius.all(Radius.circular(12)),
+    this.inputFormatters,
   }) : super(key: key);
 
   @override
@@ -52,34 +62,40 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
           showHelperText = true;
         });
       },
+      focusNode: widget.focusNode,
       autocorrect: widget.autoCorrect,
       enableSuggestions: widget.autoCorrect,
       autofocus: widget.autoFocus,
       keyboardType: widget.keyboardType,
+      inputFormatters: widget.inputFormatters,
       textCapitalization: widget.textCapitalization,
       showCursor: true,
       decoration: InputDecoration(
           labelText: widget.hintText,
           filled: true,
-          fillColor: Theme.of(context).textSelectionColor,
+          fillColor: Theme
+              .of(context)
+              .textSelectionColor,
           helperText: (showHelperText) ? helpText : null,
           prefixIcon: widget.prefixIcon,
           suffixIcon: hasText
               ? InkWell(
-                  onTap: () {
-                    _clearText();
-                  },
-                  child: Icon(Icons.delete),
-                )
+            onTap: () {
+              _clearText();
+            },
+            child: Icon(Icons.delete),
+          )
               : null,
           contentPadding:
-              const EdgeInsets.symmetric(vertical: 8, horizontal: 14),
+          const EdgeInsets.symmetric(vertical: 8, horizontal: 14),
           focusedBorder: OutlineInputBorder(
-              borderRadius: const BorderRadius.all(Radius.circular(12)),
+              borderRadius: widget.borderRadius,
               borderSide: BorderSide(
-                  color: Theme.of(context).highlightColor, width: 2)),
+                  color: Theme
+                      .of(context)
+                      .highlightColor, width: 2)),
           border: OutlineInputBorder(
-            borderRadius: const BorderRadius.all(Radius.circular(12)),
+            borderRadius: widget.borderRadius,
             borderSide: BorderSide.none,
           )),
     );

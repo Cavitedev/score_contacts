@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:scorecontacts/presentation/core/widgets/outlined_dropdown_button.dart';
+import 'package:flutter/services.dart';
+import 'package:scorecontacts/presentation/core/formatters/number_text_input_formatter.dart';
 import 'package:scorecontacts/presentation/core/widgets/outlined_input_field.dart';
+import 'package:scorecontacts/presentation/core/widgets/text_field_with_dropdown.dart';
 
 class AddContact extends StatelessWidget {
   @override
@@ -51,13 +53,14 @@ class AddContact extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              OutlinedInputField(
+              TextfieldWithDropdown(
+                items: ["Mobile", "Home", "Work"],
                 hintText: "Phone",
                 prefixIcon: const Icon(Icons.phone),
-              ),
-              const OutlinedDropdownButton(
-                items: ["uno", "dos", "tres"],
-
+                keyboardType: TextInputType.phone,
+                inputFormatters: <TextInputFormatter>[
+                  NumberTextInputFormatter(),
+                ],
               ),
               const SizedBox(
                 height: 20,
