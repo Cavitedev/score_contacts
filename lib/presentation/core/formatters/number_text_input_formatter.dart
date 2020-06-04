@@ -5,6 +5,15 @@ class NumberTextInputFormatter extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(
       TextEditingValue oldValue, TextEditingValue newValue) {
+    final bool isErasing = newValue.text.length < oldValue.text.length;
+    if (isErasing) {
+      if (newValue.text.isEmpty) {
+        _clearCountry();
+      }
+      return newValue;
+    }
+//    String onlyNumberstext = toNumericString(newValue.text);
+
     StringBuffer newText = new StringBuffer();
 
     // TODO check phone region or prefix code
@@ -20,6 +29,8 @@ class NumberTextInputFormatter extends TextInputFormatter {
       selection: new TextSelection.collapsed(offset: newText.toString().length),
     );
   }
+
+  void _clearCountry() {}
 
 //  void _spanishCode(TextEditingValue newValue, StringBuffer newText, TextEditingValue oldValue) {
 //    if(newValue.text.length > 16){
