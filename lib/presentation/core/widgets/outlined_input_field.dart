@@ -53,7 +53,10 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
       controller: textEditingController,
       onChanged: (str) {
         setState(() {
-          helpText = widget.onChangedValidator(str);
+          helpText = widget.onChangedValidator == null
+              ? null
+              : widget.onChangedValidator(str);
+          print(str);
           hasText = str.length > 0;
         });
       },

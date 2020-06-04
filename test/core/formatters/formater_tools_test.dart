@@ -65,11 +65,23 @@ void main() {
       expect(toNumericString("2-42-/14p"), '24214');
       expect(toNumericString("2/(&#@💩1"), "21");
       expect(toNumericString("/ (12134  b"), "12134");
+      expect(toNumericString("+0 (000) 000 0000"), '00000000000');
     });
 
     test('Negative numbers become positive', () {
       expect(toNumericString('-1'), '1');
       expect(toNumericString('-0'), '0');
+    });
+  });
+  group('positionOfUmpteenthNumber', () {
+    test("Returns -1 when not number is found", () {
+      expect(positionOfUmpteenthNumber("wedewf", 0), -1);
+      expect(positionOfUmpteenthNumber("wed23", 3), -1);
+    });
+
+    test("Returns position when number is found", () {
+      expect(positionOfUmpteenthNumber("123", 1), 0);
+      expect(positionOfUmpteenthNumber("wed23", 1), 3);
     });
   });
 
@@ -82,6 +94,7 @@ void main() {
     test("Should format string as mask says", () {
       expect(formatByMask("12345", "00-000"), "12-345");
       expect(formatByMask("12345", "000(000)00-#0"), "123(45");
+      expect(formatByMask("+688", "+000 00000"), "+688");
     });
   });
 }

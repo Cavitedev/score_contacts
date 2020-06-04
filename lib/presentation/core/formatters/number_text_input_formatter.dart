@@ -1,59 +1,80 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:scorecontacts/presentation/core/formatters/formatter_tools.dart';
+import 'package:scorecontacts/presentation/core/formatters/phone_codes.dart';
 
 class NumberTextInputFormatter extends TextInputFormatter {
+  final BuildContext context;
+  PhoneCountryData _countryData;
+  bool _localRegion = false;
+
+  NumberTextInputFormatter({@required this.context});
+
   @override
   TextEditingValue formatEditUpdate(
       TextEditingValue oldValue, TextEditingValue newValue) {
-    final bool isErasing = newValue.text.length < oldValue.text.length;
-    if (isErasing) {
-      if (newValue.text.isEmpty) {
-        _clearCountry();
-      }
+    if (newValue.text.isEmpty) {
+      _clearCountryData();
       return newValue;
     }
-//    String onlyNumberstext = toNumericString(newValue.text);
 
-    StringBuffer newText = new StringBuffer();
-
-    // TODO check phone region or prefix code
-    if (newValue.text.length >= 3 && newValue.text.substring(0, 3) == "+34") {
-      _spanishCode(newValue, newText, oldValue, 3);
+    if (newValue.text[0] == "+" && newValue.text.length > 1) {
+      _trySetCountryDataFromPhone(newValue);
     } else {
-      print("else");
-      newText.write(newValue.text);
+      bool isStartingToType =
+          newValue.text.length == 1 && oldValue.text.length == 0;
+      if (isStartingToType && isDigit(newValue.text[0])) {
+        _setCountryDataToLocaleRegion();
+      }
+    }
+    if (_countryData == null) return newValue;
+
+    String mask = _localRegion
+        ? _countryData.phoneMaskWithoutPrefix()
+        : _countryData.phoneMask;
+    bool overflowPhoneMask =
+        toNumericString(newValue.text).length > toNumericString(mask).length;
+
+    final bool isErasing = newValue.text.length < oldValue.text.length;
+
+    if (isErasing) {
+      if (overflowPhoneMask) {
+        return newValue;
+      }
     }
 
+    String newText;
+    if (overflowPhoneMask) {
+      newText = (_localRegion ? '' : '+') + toNumericString(newValue.text);
+    } else {
+      newText = formatByMask(newValue.text, mask);
+    }
+    if (newText.isEmpty) {
+      _clearCountryData();
+    }
     return new TextEditingValue(
-      text: newText.toString(),
-      selection: new TextSelection.collapsed(offset: newText.toString().length),
+      text: newText,
+      selection: new TextSelection.collapsed(offset: newText.length),
     );
   }
 
-  void _clearCountry() {}
-
-//  void _spanishCode(TextEditingValue newValue, StringBuffer newText, TextEditingValue oldValue) {
-//    if(newValue.text.length > 16){
-//      newText.write(newValue.text.replaceAll(" ", ""));
-//    }else{
-//      newText.write(newValue.text);
-//      if (
-//          newValue.text.length > oldValue.text.length &&
-//          [3, 7, 10,13].contains(newValue.text.length)) {
-//        newText.write(" ");
-//      }
-//    }
-
-  void _spanishCode(TextEditingValue newValue, StringBuffer newText,
-      TextEditingValue oldValue, int startFrom) {
-    if (newValue.text.length > 16) {
-      newText.write(newValue.text.replaceAll(" ", ""));
-    } else {
-      newText.write(newValue.text);
-      if (newValue.text.length > oldValue.text.length &&
-          [0, 4, 7, 10].contains(newValue.text.length - startFrom)) {
-        newText.write(" ");
-      }
+  void _trySetCountryDataFromPhone(TextEditingValue newValue) {
+    PhoneCountryData phoneCountryData =
+        PhoneCodes.getCountryDataByPhone(newValue.text);
+    if (phoneCountryData != null) {
+      _countryData = phoneCountryData;
+      _localRegion = false;
     }
+  }
+
+  void _setCountryDataToLocaleRegion() {
+    _countryData = PhoneCountryData.fromCountryCode(
+        countryCode: Localizations.localeOf(context).countryCode);
+    _localRegion = true;
+  }
+
+  void _clearCountryData() {
+    _countryData = null;
+    _localRegion = false;
   }
 }

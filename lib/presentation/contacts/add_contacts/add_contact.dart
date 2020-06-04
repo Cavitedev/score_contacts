@@ -59,7 +59,7 @@ class AddContact extends StatelessWidget {
                 prefixIcon: const Icon(Icons.phone),
                 keyboardType: TextInputType.phone,
                 inputFormatters: <TextInputFormatter>[
-                  NumberTextInputFormatter()
+                  NumberTextInputFormatter(context: context)
                 ],
               ),
               const SizedBox(
