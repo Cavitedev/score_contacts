@@ -30,7 +30,7 @@ class NumberTextInputFormatter extends TextInputFormatter {
     if (_countryData == null) return newValue;
 
     final String mask = _localRegion
-        ? _countryData.phoneMaskWithoutPrefix()
+        ? _getLocalPhoneMask(newValue.text)
         : _countryData.phoneMask;
     final bool overflowPhoneMask =
         toNumericString(newValue.text).length > toNumericString(mask).length;
@@ -58,9 +58,22 @@ class NumberTextInputFormatter extends TextInputFormatter {
     );
   }
 
+  String _getLocalPhoneMask(String newText) {
+    for (final String mask in _countryData.localMasks) {
+      if (mask == null) {
+        break;
+      }
+      if (toNumericString(mask).length > toNumericString(newText).length) {
+        return mask;
+      }
+    }
+
+    return _countryData.phoneMaskWithoutPrefix();
+  }
+
   void _trySetCountryDataFromPhone(TextEditingValue newValue) {
     final PhoneCountryData phoneCountryData =
-        PhoneCodes.getCountryDataByPhone(newValue.text);
+    PhoneCodes.getCountryDataByPhone(newValue.text);
     if (phoneCountryData != null) {
       _countryData = phoneCountryData;
       _localRegion = false;

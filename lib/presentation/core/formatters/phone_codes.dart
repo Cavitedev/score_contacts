@@ -11,9 +11,14 @@ class PhoneCountryData {
   final String phoneCode;
   final String countryCode;
   final String phoneMask;
+  final List<String> localMasks;
 
   PhoneCountryData._init(
-      {this.country, this.countryCode, this.phoneCode, this.phoneMask});
+      {this.country,
+      this.countryCode,
+      this.phoneCode,
+      this.phoneMask,
+      this.localMasks});
 
   factory PhoneCountryData.fromCountryCode({@required String countryCode}) {
     final Map countryData = countryPhoneCodes.firstWhere(
@@ -24,11 +29,21 @@ class PhoneCountryData {
   }
 
   factory PhoneCountryData.fromMap(Map value) {
+    final List<String> localMasks = <String>[];
+    const maxLocalMasks = 2;
+    for (int i = 1; i <= maxLocalMasks; i++) {
+      final String localMask = value['localMask$i'] as String;
+      if (localMask == null) {
+        break;
+      }
+      localMasks.add(localMask);
+    }
     return PhoneCountryData._init(
       country: value['country'] as String,
       phoneCode: value['phoneCode'] as String,
       countryCode: value['countryCode'] as String,
       phoneMask: value['phoneMask'] as String,
+      localMasks: localMasks,
     );
   }
 
@@ -283,6 +298,8 @@ const List<Map<String, String>> countryPhoneCodes = <Map<String, String>>[
     'phoneCode': '1',
     'countryCode': 'US',
     'phoneMask': '+0 000-000-0000',
+    'localMask1': '000-0000',
+    'localMask2': '(000) 000-0000',
   },
   {
     'country': 'Canada',
