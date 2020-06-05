@@ -306,6 +306,8 @@ const List<Map<String, String>> countryPhoneCodes = <Map<String, String>>[
     'phoneCode': '1',
     'countryCode': 'CA',
     'phoneMask': '+0 000-000-0000',
+    'localMask1': '000-0000',
+    'localMask2': '(000) 000-0000',
   },
   {
     'country': 'Cape Verde',
