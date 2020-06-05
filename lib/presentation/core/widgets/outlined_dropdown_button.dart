@@ -8,7 +8,7 @@ class OutlinedDropdownButton extends StatefulWidget {
   /// With Radius.circular(12) by default
   final BorderRadius borderRadius;
 
-  OutlinedDropdownButton({
+  const OutlinedDropdownButton({
     Key key,
     @required this.items,
     @required this.focusNode,
@@ -16,9 +16,7 @@ class OutlinedDropdownButton extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _OutlinedDropdownButtonState createState() => _OutlinedDropdownButtonState(
-        selected: items[0],
-      );
+  _OutlinedDropdownButtonState createState() => _OutlinedDropdownButtonState();
 }
 
 class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
@@ -30,27 +28,27 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
   Animation<double> opacityAnimation;
   AnimationController opacityAnimationController;
 
-  _OutlinedDropdownButtonState({@required this.selected});
+  _OutlinedDropdownButtonState();
 
   @override
   void initState() {
-    _items = widget.items
-        .map((String item) =>
-        DropdownMenuItem(
-          value: item,
-          child: Text(item),
-        ))
-        .toList();
-    _items.add(
-      DropdownMenuItem(
+    selected = widget.items[0];
+    _items = [
+      ...widget.items
+          .map((String item) => DropdownMenuItem(
+                value: item,
+                child: Text(item),
+              ))
+          .toList(),
+      const DropdownMenuItem(
         value: "Custom",
         child: Text("Custom"),
       ),
-    );
+    ];
 
-    opacityAnimationController =
-        AnimationController(duration: Duration(milliseconds: 200), vsync: this);
-    final Tween opacityTween = Tween<double>(begin: 0, end: 1);
+    opacityAnimationController = AnimationController(
+        duration: const Duration(milliseconds: 200), vsync: this);
+    final Tween<double> opacityTween = Tween<double>(begin: 0, end: 1);
     opacityAnimation = opacityTween.animate(opacityAnimationController);
 
     widget.focusNode.addListener(() {

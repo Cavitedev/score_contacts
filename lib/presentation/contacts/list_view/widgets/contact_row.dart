@@ -12,15 +12,13 @@ class ContactRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    NameData name = contact.nameData;
+    final NameData name = contact.nameData;
 
     return InkWell(
-
       onTap: () {},
       child: Container(
         padding: const EdgeInsets.fromLTRB(20, 8, 4, 8),
         child: Row(
-
           children: <Widget>[
             CircleAvatar(
               child: Text(contact.nameData.firstName.substring(0, 1)),

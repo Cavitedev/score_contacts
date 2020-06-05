@@ -6,7 +6,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 import 'package:scorecontacts/domain/features/auth/auth_failures.dart';
 import 'package:scorecontacts/domain/features/auth/i_auth_dao.dart';
-import 'package:scorecontacts/domain/features/user/user_Data.dart';
+import 'package:scorecontacts/domain/features/user/user_data.dart';
 
 import 'firebase_user_extension.dart';
 
@@ -29,14 +29,14 @@ class FirebaseAuthDao implements IAuthDao {
   @override
   Future<Either<AuthFailure, Unit>> signInWithGoogle() async {
     try {
-      GoogleSignInAccount googleAccount = await googleSignIn.signIn();
+      final GoogleSignInAccount googleAccount = await googleSignIn.signIn();
       if (googleAccount == null) {
         return left(const CancelledByUserAuthFailure(
             "Google sign in has been cancelled"));
       }
-      GoogleSignInAuthentication authentication =
+      final GoogleSignInAuthentication authentication =
           await googleAccount.authentication;
-      AuthCredential credential = GoogleAuthProvider.getCredential(
+      final AuthCredential credential = GoogleAuthProvider.getCredential(
           idToken: authentication.idToken,
           accessToken: authentication.accessToken);
       await firebaseAuth.signInWithCredential(credential);

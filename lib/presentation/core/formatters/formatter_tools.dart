@@ -1,3 +1,4 @@
+// ignore: unnecessary_raw_strings
 final _digitRegex = RegExp(r'[0-9]+');
 
 /// Check is String of length 1 containst a digit [0-9]
@@ -35,10 +36,10 @@ int positionOfUmpteenthNumber(String str, int pos) {
 
 /// format a String , the 0 of the mask means any number
 /// For example number "12345" with mask "00-000" returns "12-345"
-String formatByMask(String numberText, String mask) {
-  numberText = toNumericString(numberText);
+String formatByMask(String text, String mask) {
+  final String numberText = toNumericString(text);
   if (numberText.isEmpty) return "";
-  StringBuffer stringBuffer = new StringBuffer();
+  final StringBuffer stringBuffer = StringBuffer();
   int numIndex = 0;
   for (int i = 0; i < mask.length; i++) {
     if (numIndex >= numberText.length) break;

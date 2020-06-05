@@ -16,17 +16,18 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   SignInBloc({this.authDao});
 
   @override
-  SignInState get initialState => InitialSignInState();
+  SignInState get initialState => const InitialSignInState();
 
   @override
   Stream<SignInState> mapEventToState(
     SignInEvent event,
   ) async* {
     if(event is SignInWithGoogle){
-      Either<AuthFailure,Unit> signInResult = await authDao.signInWithGoogle();
-      yield signInResult.fold((authFailure) =>
-       ErrorSignInState(authFailure: authFailure)
-          , (_) => LoadedSignInState());
+      final Either<AuthFailure, Unit> signInResult =
+          await authDao.signInWithGoogle();
+      yield signInResult.fold(
+          (authFailure) => ErrorSignInState(authFailure: authFailure),
+          (_) => const LoadedSignInState());
     }
   }
 }

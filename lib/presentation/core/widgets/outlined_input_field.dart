@@ -17,7 +17,7 @@ class OutlinedInputField extends StatefulWidget {
   /// return null to not show any helper
   final String Function(String) onChangedValidator;
 
-  OutlinedInputField({
+  const OutlinedInputField({
     Key key,
     @required this.hintText,
     this.autoCorrect = false,
@@ -56,8 +56,7 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
           helpText = widget.onChangedValidator == null
               ? null
               : widget.onChangedValidator(str);
-          print(str);
-          hasText = str.length > 0;
+          hasText = str.isNotEmpty;
         });
       },
       onEditingComplete: () {
@@ -76,27 +75,22 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
       decoration: InputDecoration(
           labelText: widget.hintText,
           filled: true,
-          fillColor: Theme
-              .of(context)
-              .textSelectionColor,
-          helperText: (showHelperText) ? helpText : null,
+          fillColor: Theme.of(context).textSelectionColor,
+          helperText: showHelperText ? helpText : null,
           prefixIcon: widget.prefixIcon,
           suffixIcon: hasText
               ? InkWell(
-            onTap: () {
-              _clearText();
-            },
-            child: Icon(Icons.delete),
-          )
+                  onTap: () {
+                    _clearText();
+                  },
+                  child: Icon(Icons.delete),
+                )
               : null,
-          contentPadding:
-          const EdgeInsets.symmetric(vertical: 8, horizontal: 14),
+          contentPadding: const EdgeInsets.only(top: 8, bottom: 8, left: 9),
           focusedBorder: OutlineInputBorder(
               borderRadius: widget.borderRadius,
               borderSide: BorderSide(
-                  color: Theme
-                      .of(context)
-                      .highlightColor, width: 2)),
+                  color: Theme.of(context).highlightColor, width: 2)),
           border: OutlineInputBorder(
             borderRadius: widget.borderRadius,
             borderSide: BorderSide.none,

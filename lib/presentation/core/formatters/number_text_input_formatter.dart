@@ -21,18 +21,18 @@ class NumberTextInputFormatter extends TextInputFormatter {
     if (newValue.text[0] == "+" && newValue.text.length > 1) {
       _trySetCountryDataFromPhone(newValue);
     } else {
-      bool isStartingToType =
-          newValue.text.length == 1 && oldValue.text.length == 0;
+      final bool isStartingToType =
+          newValue.text.length == 1 && oldValue.text.isEmpty;
       if (isStartingToType && isDigit(newValue.text[0])) {
         _setCountryDataToLocaleRegion();
       }
     }
     if (_countryData == null) return newValue;
 
-    String mask = _localRegion
+    final String mask = _localRegion
         ? _countryData.phoneMaskWithoutPrefix()
         : _countryData.phoneMask;
-    bool overflowPhoneMask =
+    final bool overflowPhoneMask =
         toNumericString(newValue.text).length > toNumericString(mask).length;
 
     final bool isErasing = newValue.text.length < oldValue.text.length;
@@ -52,14 +52,14 @@ class NumberTextInputFormatter extends TextInputFormatter {
     if (newText.isEmpty) {
       _clearCountryData();
     }
-    return new TextEditingValue(
+    return TextEditingValue(
       text: newText,
-      selection: new TextSelection.collapsed(offset: newText.length),
+      selection: TextSelection.collapsed(offset: newText.length),
     );
   }
 
   void _trySetCountryDataFromPhone(TextEditingValue newValue) {
-    PhoneCountryData phoneCountryData =
+    final PhoneCountryData phoneCountryData =
         PhoneCodes.getCountryDataByPhone(newValue.text);
     if (phoneCountryData != null) {
       _countryData = phoneCountryData;

@@ -7,7 +7,7 @@ class AlertDialogueCancelOK extends StatefulWidget {
   final String hintText;
   final Function onCancel;
 
-  AlertDialogueCancelOK({
+  const AlertDialogueCancelOK({
     Key key,
     @required this.onCancel,
     @required this.title,
@@ -30,14 +30,14 @@ class _AlertDialogueCancelOKState extends State<AlertDialogueCancelOK> {
         hintText: widget.hintText,
         onChangedValidator: (value) {
           setState(() {
-            hasText = value.length > 0;
+            hasText = value.isNotEmpty;
           });
           return null;
         },
       ),
       contentPadding: const EdgeInsets.only(left: 24, right: 24, top: 24),
-      shape: RoundedRectangleBorder(
-        borderRadius: const BorderRadius.all(Radius.circular(16)),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(16)),
       ),
       actions: <Widget>[
         FlatButton(
@@ -45,24 +45,28 @@ class _AlertDialogueCancelOKState extends State<AlertDialogueCancelOK> {
             widget.onCancel();
             Navigator.of(context).pop();
           },
-          child: Text(
+          textColor: Theme.of(context).focusColor,
+          child: const Text(
             "Cancel",
             style: TextStyle(
 //              color: ,
 //              fontSize: 20,
                 ),
           ),
-          textColor: Theme.of(context).focusColor,
         ),
         FlatButton(
           onPressed: hasText
               ? () {
-                  Navigator.of(context).pop();
-                }
+            Navigator.of(context).pop();
+          }
               : null,
-          child: Text("OK"),
-          disabledTextColor: Theme.of(context).disabledColor,
-          textColor: Theme.of(context).focusColor,
+          disabledTextColor: Theme
+              .of(context)
+              .disabledColor,
+          textColor: Theme
+              .of(context)
+              .focusColor,
+          child: const Text("OK"),
         )
       ],
     );

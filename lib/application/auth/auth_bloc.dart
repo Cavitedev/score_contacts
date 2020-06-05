@@ -4,7 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:scorecontacts/domain/features/auth/i_auth_dao.dart';
-import 'package:scorecontacts/domain/features/user/user_Data.dart';
+import 'package:scorecontacts/domain/features/user/user_data.dart';
 
 import './bloc.dart';
 
@@ -15,14 +15,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc(this.authDao);
 
   @override
-  AuthState get initialState => InitialAuthState();
+  AuthState get initialState => const InitialAuthState();
 
   @override
   Stream<AuthState> mapEventToState(
     AuthEvent event,
   ) async* {
     if (event is GetUser) {
-      Option<User> user = await authDao.getSignedUser();
+      final Option<User> user = await authDao.getSignedUser();
       yield user.fold(
         () => const UnauthenticatedAuthState(),
         (_) => const AuthenticatedAuthState(),

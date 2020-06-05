@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/auth/auth_bloc.dart';
@@ -10,9 +11,10 @@ class SplashPage extends StatelessWidget {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is UnauthenticatedAuthState) {
-          Navigator.pushReplacementNamed(context, Routes.signInPage);
+          ExtendedNavigator.of(context).pushReplacementNamed(Routes.signInPage);
         } else if (state is AuthenticatedAuthState) {
-          Navigator.pushReplacementNamed(context, Routes.contactList);
+          ExtendedNavigator.of(context)
+              .pushReplacementNamed(Routes.contactList);
         }
       },
       child: const Scaffold(

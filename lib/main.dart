@@ -28,8 +28,8 @@ class MyApp extends StatelessWidget {
           router: Router(),
         ),
         theme: ThemeData.dark().copyWith(
-          scaffoldBackgroundColor: Color.fromRGBO(30, 30, 30, 1),
-          dialogBackgroundColor: Color.fromRGBO(35, 35, 35, 1),
+          scaffoldBackgroundColor: const Color.fromRGBO(30, 30, 30, 1),
+          dialogBackgroundColor: const Color.fromRGBO(35, 35, 35, 1),
           accentColor: Colors.grey[400],
           floatingActionButtonTheme: FloatingActionButtonThemeData(
             backgroundColor: Colors.blue[900],
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
           highlightColor: Colors.blueAccent[700],
           focusColor: Colors.blueAccent[100],
           cursorColor: Colors.blue[700],
-          textSelectionColor: Color.fromRGBO(40, 40, 40, 1),
+          textSelectionColor: const Color.fromRGBO(40, 40, 40, 1),
           textSelectionHandleColor: Colors.blue[600],
           disabledColor: Colors.grey[800],
           inputDecorationTheme: InputDecorationTheme(
@@ -45,11 +45,11 @@ class MyApp extends StatelessWidget {
           ),
           iconTheme: IconThemeData(color: Colors.grey, size: 32),
           textTheme: TextTheme(
-              headline5: TextStyle(
+              headline5: const TextStyle(
                 fontSize: 24,
               ),
-              headline6: TextStyle(fontSize: 20, letterSpacing: .5),
-              subtitle1: TextStyle(fontSize: 20, letterSpacing: .5),
+              headline6: const TextStyle(fontSize: 20, letterSpacing: .5),
+              subtitle1: const TextStyle(fontSize: 20, letterSpacing: .5),
               button: TextStyle(fontSize: 20, color: Colors.blueAccent[100])),
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),

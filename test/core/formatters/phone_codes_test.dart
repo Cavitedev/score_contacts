@@ -8,7 +8,7 @@ import 'package:scorecontacts/presentation/core/formatters/phone_codes.dart';
 void main() {
   group('Phone Country Data', () {
     test('Map factory', () {
-      PhoneCountryData phoneCountryData = PhoneCountryData.fromMap({
+      final PhoneCountryData phoneCountryData = PhoneCountryData.fromMap({
         'country': 'Bhutan',
         'phoneCode': '975',
         'countryCode': 'BT',
@@ -21,7 +21,7 @@ void main() {
     });
     group('Country code factory', () {
       test('Country code factory when valid', () {
-        PhoneCountryData phoneCountryData =
+        final PhoneCountryData phoneCountryData =
             PhoneCountryData.fromCountryCode(countryCode: 'BT');
         expect(phoneCountryData.country, 'Bhutan');
         expect(phoneCountryData.phoneCode, '975');
@@ -39,7 +39,7 @@ void main() {
     });
     group('Get mask without prefix', () {
       test('Works fine some samples', () {
-        PhoneCountryData phoneCountryData = PhoneCountryData.fromMap({
+        final PhoneCountryData phoneCountryData = PhoneCountryData.fromMap({
           'country': 'Bhutan',
           'phoneCode': '975',
           'countryCode': 'BT',
@@ -49,7 +49,7 @@ void main() {
       });
 
       test('Works fine with American derivative country', () {
-        PhoneCountryData phoneCountryData = PhoneCountryData.fromMap({
+        final PhoneCountryData phoneCountryData = PhoneCountryData.fromMap({
           'country': 'American Samoa',
           'phoneCode': '1684',
           'countryCode': 'AS',
@@ -58,7 +58,7 @@ void main() {
         expect(phoneCountryData.phoneMaskWithoutPrefix(), '000 0000');
       });
       test('Works fine with United States ', () {
-        PhoneCountryData phoneCountryData = PhoneCountryData.fromMap({
+        final PhoneCountryData phoneCountryData = PhoneCountryData.fromMap({
           'country': 'United States',
           'phoneCode': '1',
           'countryCode': 'US',
@@ -71,14 +71,14 @@ void main() {
 
   group('Phone Codes', () {
     test("All Country Phone codes are valid", () {
-      for (Map phoneCodeMap in countryPhoneCodes) {
-        expect(toNumericString(phoneCodeMap['phoneCode']),
+      for (final Map phoneCodeMap in countryPhoneCodes) {
+        expect(toNumericString(phoneCodeMap['phoneCode'] as String),
             phoneCodeMap['phoneCode']);
       }
     });
     test("Longest prefix length is the constant [longestPrefix]", () {
       int longestPrefix = 0;
-      for (Map phoneCodeMap in countryPhoneCodes) {
+      for (final Map phoneCodeMap in countryPhoneCodes) {
         longestPrefix =
             max(longestPrefix, phoneCodeMap['phoneCode']
                 .toString()

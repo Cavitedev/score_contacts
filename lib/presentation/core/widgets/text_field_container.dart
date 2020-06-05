@@ -11,20 +11,16 @@ class TextFieldContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         decoration: BoxDecoration(
-          color: Theme
-              .of(context)
-              .textSelectionColor,
+          color: Theme.of(context).textSelectionColor,
           borderRadius: BorderRadius.circular(36),
-          boxShadow: [BoxShadow(
-            color: Theme
-                .of(context)
-                .primaryColorDark
-                .withOpacity(0.5),
-            blurRadius: 20,
-            offset: Offset(0, 3),
-          )
+          boxShadow: [
+            BoxShadow(
+              color: Theme.of(context).primaryColorDark.withOpacity(0.5),
+              blurRadius: 20,
+              offset: const Offset(0, 3),
+            )
           ],
 
         ),

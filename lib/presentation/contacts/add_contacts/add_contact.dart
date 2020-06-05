@@ -41,20 +41,20 @@ class AddContact extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              OutlinedInputField(
+              const OutlinedInputField(
                 hintText: "Name",
                 autoFocus: true,
                 textCapitalization: TextCapitalization.words,
-                prefixIcon: const Icon(Icons.person_outline),
+                prefixIcon: Icon(Icons.person_outline),
               ),
-              OutlinedInputField(
+              const OutlinedInputField(
                   hintText: "Surname",
                   textCapitalization: TextCapitalization.words),
               const SizedBox(
                 height: 20,
               ),
               TextfieldWithDropdown(
-                items: ["Mobile", "Home", "Work"],
+                items: const ["Mobile", "Home", "Work"],
                 hintText: "Phone",
                 prefixIcon: const Icon(Icons.phone),
                 keyboardType: TextInputType.phone,
@@ -65,11 +65,11 @@ class AddContact extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              OutlinedInputField(
+              const OutlinedInputField(
                 hintText: "Company",
-                prefixIcon: const Icon(Icons.business),
+                prefixIcon: Icon(Icons.business),
               ),
-              OutlinedInputField(
+              const OutlinedInputField(
                 hintText: "Title",
               ),
             ],

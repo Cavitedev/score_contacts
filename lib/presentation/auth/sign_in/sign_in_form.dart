@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,11 +11,12 @@ class SignInForm extends StatelessWidget {
     return BlocConsumer<SignInBloc, SignInState>(
       listener: (context, state) {
         if (state is LoadedSignInState) {
-          Navigator.pushReplacementNamed(context, Routes.contactList);
+          ExtendedNavigator.of(context)
+              .pushReplacementNamed(Routes.contactList);
         } else if (state is ErrorSignInState) {
           FlushbarHelper.createError(
                   message: state.authFailure.message,
-                  duration: Duration(seconds: 5))
+                  duration: const Duration(seconds: 5))
               .show(context);
         }
       },
@@ -23,27 +25,27 @@ class SignInForm extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Center(child: Text("Sign IN")),
-            Text(
+            const Center(child: Text("Sign IN")),
+            const Text(
               "📝",
               style: TextStyle(fontSize: 140),
             ),
             const SizedBox(
               height: 20,
             ),
-            state is ErrorSignInState?
-            Text(state.authFailure.message)
-                : const SizedBox(),
-            Spacer(),
+            if (state is ErrorSignInState)
+              ...[Text(state.authFailure.message)],
+            if (state is SubmittingSignInState)
+              ...[const LinearProgressIndicator(value: null,)],
 
+            const Spacer(),
             FlatButton.icon(
               onPressed: () {
                 context.bloc<SignInBloc>().add(SignInWithGoogle());
               },
               icon: Icon(Icons.email),
-              label: Text("Sign In with Google"),
+              label: const Text("Sign In with Google"),
             ),
-
             const SizedBox(
               height: 60,
             ),

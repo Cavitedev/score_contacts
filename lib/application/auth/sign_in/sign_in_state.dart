@@ -2,16 +2,26 @@ import 'package:meta/meta.dart';
 import 'package:scorecontacts/domain/features/auth/auth_failures.dart';
 
 @immutable
-abstract class SignInState {}
+abstract class SignInState {
+  const SignInState();
+}
 
-class InitialSignInState extends SignInState {}
+class InitialSignInState extends SignInState {
+  const InitialSignInState();
+}
 
-class LoadedSignInState extends SignInState {}
+class LoadedSignInState extends SignInState {
+  const LoadedSignInState();
+}
 
-class ErrorSignInState extends SignInState{
+class SubmittingSignInState extends SignInState {
+  const SubmittingSignInState();
+}
+
+class ErrorSignInState extends SignInState {
   final AuthFailure authFailure;
 
-  ErrorSignInState({@required this.authFailure});
+  const ErrorSignInState({@required this.authFailure});
 
   @override
   bool operator ==(Object other) =>

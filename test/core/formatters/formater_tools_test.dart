@@ -4,7 +4,7 @@ import 'package:scorecontacts/presentation/core/formatters/formatter_tools.dart'
 void main() {
   group('is Digit method', () {
     test('Works with digits', () {
-      List<String> testDigits = [
+      final List<String> testDigits = [
         '0',
         '1',
         '2',
@@ -16,12 +16,12 @@ void main() {
         '8',
         '9'
       ];
-      for (String digit in testDigits) {
+      for (final String digit in testDigits) {
         expect(isDigit(digit), true);
       }
     });
     test('Fails with not digits', () {
-      List<String> testDigits = [
+      final List<String> testDigits = [
         'a',
         'f',
         'ñ',
@@ -33,14 +33,14 @@ void main() {
         '👨‍',
         '💩'
       ];
-      for (String digit in testDigits) {
+      for (final String digit in testDigits) {
         expect(isDigit(digit), false);
       }
     });
 
     test('Fails with long string ', () {
-      List<String> testDigitis = ['as', 'ad', '99913', '10', '-1'];
-      for (String digit in testDigitis) {
+      final List<String> testDigitis = ['as', 'ad', '99913', '10', '-1'];
+      for (final String digit in testDigitis) {
         expect(isDigit(digit), false);
       }
     });
@@ -48,7 +48,7 @@ void main() {
 
   group('toNumericString method', () {
     test("On numeric string don't do anything", () {
-      List<String> testStrings = [
+      final List<String> testStrings = [
         '24252',
         '00000',
         '234242',
@@ -56,7 +56,7 @@ void main() {
         '121341',
         '1234'
       ];
-      for (String numericString in testStrings) {
+      for (final String numericString in testStrings) {
         expect(toNumericString(numericString), numericString);
       }
     });
