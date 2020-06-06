@@ -36,43 +36,45 @@ class AddContact extends StatelessWidget {
       body: Form(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
-          child: Column(
-            children: <Widget>[
-              const SizedBox(
-                height: 15,
-              ),
-              const OutlinedInputField(
-                hintText: "Name",
-                autoFocus: true,
-                textCapitalization: TextCapitalization.words,
-                prefixIcon: Icon(Icons.person_outline),
-              ),
-              const OutlinedInputField(
-                  hintText: "Surname",
-                  textCapitalization: TextCapitalization.words),
-              const SizedBox(
-                height: 20,
-              ),
-              TextFieldsWithDropdowns(
-                items: const ["Mobile", "Home", "Work"],
-                hintText: "Phone",
-                prefixIcon: const Icon(Icons.phone),
-                keyboardType: TextInputType.phone,
-                inputFormatters: <TextInputFormatter>[
-                  PhoneTextFormatter(context: context)
-                ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const OutlinedInputField(
-                hintText: "Company",
-                prefixIcon: Icon(Icons.business),
-              ),
-              const OutlinedInputField(
-                hintText: "Title",
-              ),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                const SizedBox(
+                  height: 15,
+                ),
+                const OutlinedInputField(
+                  hintText: "Name",
+                  autoFocus: true,
+                  textCapitalization: TextCapitalization.words,
+                  prefixIcon: Icon(Icons.person_outline),
+                ),
+                const OutlinedInputField(
+                    hintText: "Surname",
+                    textCapitalization: TextCapitalization.words),
+                const SizedBox(
+                  height: 20,
+                ),
+                TextFieldsWithDropdowns(
+                  items: const ["Mobile", "Home", "Work"],
+                  hintText: "Phone",
+                  prefixIcon: const Icon(Icons.phone),
+                  keyboardType: TextInputType.phone,
+                  inputFormatters: <TextInputFormatter>[
+                    PhoneTextFormatter(context: context)
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const OutlinedInputField(
+                  hintText: "Company",
+                  prefixIcon: Icon(Icons.business),
+                ),
+                const OutlinedInputField(
+                  hintText: "Title",
+                ),
+              ],
+            ),
           ),
         ),
       ),
