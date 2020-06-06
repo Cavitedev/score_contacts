@@ -23,11 +23,12 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     SignInEvent event,
   ) async* {
     if(event is SignInWithGoogle){
+      yield const SubmittingSignInState();
       final Either<AuthFailure, Unit> signInResult =
-          await authDao.signInWithGoogle();
+      await authDao.signInWithGoogle();
       yield signInResult.fold(
-          (authFailure) => ErrorSignInState(authFailure: authFailure),
-          (_) => const LoadedSignInState());
+              (authFailure) => ErrorSignInState(authFailure: authFailure),
+              (_) => const LoadedSignInState());
     }
   }
 }
