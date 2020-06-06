@@ -4,6 +4,7 @@ import 'package:scorecontacts/presentation/core/widgets/alert_dialogue_cancel_ok
 class OutlinedDropdownButton extends StatefulWidget {
   final List<String> items;
   final FocusNode focusNode;
+  final bool isActive;
 
   /// With Radius.circular(12) by default
   final BorderRadius borderRadius;
@@ -13,6 +14,7 @@ class OutlinedDropdownButton extends StatefulWidget {
     @required this.items,
     @required this.focusNode,
     this.borderRadius = const BorderRadius.all(Radius.circular(12)),
+    this.isActive = false,
   }) : super(key: key);
 
   @override
@@ -23,6 +25,7 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
     with TickerProviderStateMixin {
   String selected;
   String lastSelected;
+  String customSelected;
   List<DropdownMenuItem<String>> _items;
 
   Animation<double> opacityAnimation;
@@ -70,14 +73,18 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
   void _showDialogue(BuildContext context) {
     showDialog(
       context: context,
-      builder: (context) =>
-          AlertDialogueCancelOK(
-            title: "Custom label name",
-            hintText: "Label name",
-            onCancel: () {
-              setState(() {
-                selected = lastSelected;
+      builder: (context) => AlertDialogueCancelOK(
+        title: "Custom label name",
+        hintText: "Label name",
+        onCancel: () {
+          setState(() {
+            selected = lastSelected;
+            customSelected = null;
           });
+        },
+        onSubmit: (String text) {
+          customSelected = text;
+          selected = customSelected;
         },
       ),
     );
@@ -85,6 +92,15 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
 
   @override
   Widget build(BuildContext context) {
+    final List<DropdownMenuItem<String>> itemsRendered = customSelected == null
+        ? _items
+        : [
+      DropdownMenuItem(
+        value: customSelected,
+        child: Text(customSelected),
+      ),
+      ..._items
+    ];
     return AnimatedBuilder(
       animation: opacityAnimationController,
       builder: (context, child) =>
@@ -119,19 +135,29 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
                   setState(() {
                     lastSelected = selected;
                     selected = value;
+                    customSelected = null;
                   });
                 },
                 selectedItemBuilder: (context) =>
-                    widget.items
+                    itemsRendered
                         .map((item) =>
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            item,
-                            style: Theme
+                            item.value,
+                            style: widget.focusNode.hasFocus || widget.isActive
+                                ? Theme
                                 .of(context)
                                 .textTheme
-                                .subtitle1,
+                                .subtitle1
+                                : Theme
+                                .of(context)
+                                .textTheme
+                                .subtitle1
+                                .copyWith(
+                                color: Theme
+                                    .of(context)
+                                    .disabledColor),
                             overflow: TextOverflow.ellipsis,
                           ),
                         ))
@@ -146,7 +172,7 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
                 icon: const Icon(Icons.arrow_drop_down),
                 iconSize: 24,
                 hint: const Text("label"),
-                items: _items),
+                items: itemsRendered),
           ),
     );
   }

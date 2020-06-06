@@ -6,12 +6,14 @@ class AlertDialogueCancelOK extends StatefulWidget {
   final String title;
   final String hintText;
   final Function onCancel;
+  final Function(String) onSubmit;
 
   const AlertDialogueCancelOK({
     Key key,
     @required this.onCancel,
     @required this.title,
     @required this.hintText,
+    @required this.onSubmit,
   }) : super(key: key);
 
   @override
@@ -19,7 +21,7 @@ class AlertDialogueCancelOK extends StatefulWidget {
 }
 
 class _AlertDialogueCancelOKState extends State<AlertDialogueCancelOK> {
-  bool hasText = false;
+  String text;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,7 @@ class _AlertDialogueCancelOKState extends State<AlertDialogueCancelOK> {
         hintText: widget.hintText,
         onChangedValidator: (value) {
           setState(() {
-            hasText = value.isNotEmpty;
+            text = value;
           });
           return null;
         },
@@ -55,17 +57,14 @@ class _AlertDialogueCancelOKState extends State<AlertDialogueCancelOK> {
           ),
         ),
         FlatButton(
-          onPressed: hasText
+          onPressed: text != null && text.isNotEmpty
               ? () {
-            Navigator.of(context).pop();
-          }
+                  widget.onSubmit(text);
+                  Navigator.of(context).pop();
+                }
               : null,
-          disabledTextColor: Theme
-              .of(context)
-              .disabledColor,
-          textColor: Theme
-              .of(context)
-              .focusColor,
+          disabledTextColor: Theme.of(context).disabledColor,
+          textColor: Theme.of(context).focusColor,
           child: const Text("OK"),
         )
       ],

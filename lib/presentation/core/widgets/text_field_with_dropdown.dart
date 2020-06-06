@@ -13,6 +13,7 @@ class TextfieldWithDropdown extends StatefulWidget {
   final Icon prefixIcon;
   final String Function(String) onChangedValidator;
   final List<TextInputFormatter> inputFormatters;
+  final Function(bool) onIsActiveChanged;
 
   const TextfieldWithDropdown(
       {Key key,
@@ -23,7 +24,8 @@ class TextfieldWithDropdown extends StatefulWidget {
       this.textCapitalization = TextCapitalization.none,
       this.prefixIcon,
       this.onChangedValidator,
-      this.inputFormatters})
+      this.inputFormatters,
+      this.onIsActiveChanged})
       : super(key: key);
 
   @override
@@ -32,10 +34,19 @@ class TextfieldWithDropdown extends StatefulWidget {
 
 class _TextfieldWithDropdownState extends State<TextfieldWithDropdown> {
   FocusNode focusNode;
+  String Function(String) changeValidatorWithCheckEmpty;
+  bool isActive = false;
 
   @override
   void initState() {
     focusNode = FocusNode();
+    changeValidatorWithCheckEmpty = (str) {
+      setState(() {
+        isActive = str.isNotEmpty;
+        widget?.onIsActiveChanged(isActive);
+      });
+      return widget.onChangedValidator(str);
+    };
     super.initState();
   }
 
@@ -53,6 +64,7 @@ class _TextfieldWithDropdownState extends State<TextfieldWithDropdown> {
           child: OutlinedDropdownButton(
             items: widget.items,
             focusNode: focusNode,
+            isActive: isActive,
             borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(12), bottomLeft: Radius.circular(12)),
           ),
@@ -65,7 +77,7 @@ class _TextfieldWithDropdownState extends State<TextfieldWithDropdown> {
             autoCorrect: widget?.autoCorrect,
             keyboardType: widget.keyboardType,
             textCapitalization: widget.textCapitalization,
-            onChangedValidator: widget.onChangedValidator,
+            onChangedValidator: changeValidatorWithCheckEmpty,
             focusNode: focusNode,
             inputFormatters: widget.inputFormatters,
             borderRadius: const BorderRadius.only(
