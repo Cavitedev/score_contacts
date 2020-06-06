@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:scorecontacts/domain/features/user/contacts_data/properties/i_label_object.dart';
 import 'package:scorecontacts/presentation/core/widgets/text_field_with_dropdown.dart';
 
-class TextFieldsWithDropdowns extends StatefulWidget {
+class TextFieldsWithDropdowns extends StatelessWidget {
   final List<ILabelObject<String>> labelObjects;
   final String hintText;
   final bool autoCorrect;
@@ -15,7 +15,6 @@ class TextFieldsWithDropdowns extends StatefulWidget {
   final List<TextInputFormatter> inputFormatters;
   final Function onAddWidget;
   final Function(int) onRemoveWidget;
-  final List<ILabelObject> objects;
 
   const TextFieldsWithDropdowns({
     Key key,
@@ -30,115 +29,70 @@ class TextFieldsWithDropdowns extends StatefulWidget {
     this.onAddWidget,
     this.onRemoveWidget,
     this.onLabelChanged,
-    this.objects,
   }) : super(key: key);
 
   @override
-  _TextFieldsWithDropdownsState createState() =>
-      _TextFieldsWithDropdownsState();
-}
-
-class _TextFieldsWithDropdownsState extends State<TextFieldsWithDropdowns> {
-  List<bool> areActive = <bool>[false];
-
-  List<Function(bool)> onIsActiveChangedList;
-
-  Function(String) onChangeValidator;
-
-  @override
-  void initState() {
-    onIsActiveChangedList = <Function(bool)>[
-      (isActive) {
-        areActive[0] = isActive;
-        _onActiveChange();
-      }
-    ];
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Column(
-      children: onIsActiveChangedList
-          .asMap()
-          .map((i, activeChange) => MapEntry(
-              i,
-              _buildField(
-                widget: widget,
-                pos: i,
-              )))
-          .values
-          .cast<Widget>()
-          .toList(),
-    );
+    _onActiveChange();
+    return Column(children: _buildFields());
   }
 
   void _onActiveChange() {
-    final int activeFields =
-        areActive.where((element) => element == true).length;
-    if (activeFields >= onIsActiveChangedList.length) {
-      setState(() {
-        _addWidget();
-      });
-    } else if (activeFields < onIsActiveChangedList.length - 1) {
-      final int posInactiveWidget =
-      areActive.indexWhere((isActive) => isActive == false);
-      setState(() {
-        _removeWidget(pos: posInactiveWidget);
-      });
+    final int activeFields = labelObjects
+        .where((labelObject) =>
+            labelObject.value != null && labelObject.value.isNotEmpty)
+        .length;
+    if (activeFields >= labelObjects.length) {
+      _addWidget();
+    } else if (activeFields < labelObjects.length - 1) {
+      final int posInactiveWidget = labelObjects.indexWhere((labelObject) =>
+          labelObject.value != null && labelObject.value.isEmpty);
+
+      _removeWidget(pos: posInactiveWidget);
     }
   }
 
   void _addWidget() {
-    if (widget.onAddWidget != null) {
-      widget.onAddWidget();
+    if (onAddWidget != null) {
+      onAddWidget();
     }
-    areActive.add(false);
-    final int pos = areActive.length - 1;
-    onIsActiveChangedList.add((isActive) {
-      areActive[pos] = isActive;
-      _onActiveChange();
-    });
   }
 
   void _removeWidget({@required int pos}) {
-    if (widget.onRemoveWidget != null) {
-      widget.onRemoveWidget(pos);
-    }
-    areActive.removeAt(pos);
-    onIsActiveChangedList.removeAt(pos);
-    for (int i = pos; i < onIsActiveChangedList.length; i++) {
-      onIsActiveChangedList[i] = (isActive) {
-        areActive[i] = isActive;
-        _onActiveChange();
-      };
+    if (onRemoveWidget != null) {
+      onRemoveWidget(pos);
     }
   }
 
+  List<TextFieldWithDropdown> _buildFields() {
+    final List<TextFieldWithDropdown> output = [];
+    for (int i = 0; i < labelObjects.length; i++) {
+      output.add(_buildField(pos: i));
+    }
+    return output;
+  }
+
   TextFieldWithDropdown _buildField({
-    @required TextFieldsWithDropdowns widget,
     @required int pos,
   }) {
     return TextFieldWithDropdown(
-      labelObject: widget.labelObjects[pos],
-      hintText: widget.hintText,
-      inputFormatters: widget.inputFormatters,
-      keyboardType: widget.keyboardType,
+      labelObject: labelObjects[pos],
+      hintText: hintText,
+      inputFormatters: inputFormatters,
+      keyboardType: keyboardType,
       onChangedValidator: (str) {
-        if (widget.onChangedValidator != null) {
-          widget.onChangedValidator(pos, str);
+        if (onChangedValidator != null) {
+          onChangedValidator(pos, str);
         }
       },
       onLabelChanged: (str) {
-        if (widget.onLabelChanged != null) {
-          widget.onLabelChanged(pos, str);
+        if (onLabelChanged != null) {
+          onLabelChanged(pos, str);
         }
       },
-      textCapitalization: widget.textCapitalization,
-      autoCorrect: widget.autoCorrect,
-      prefixIcon: widget.prefixIcon,
-      key: widget.key,
-      onIsActiveChanged: onIsActiveChangedList[pos],
+      textCapitalization: textCapitalization,
+      autoCorrect: autoCorrect,
+      prefixIcon: prefixIcon,
     );
   }
 }

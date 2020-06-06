@@ -13,8 +13,7 @@ class OutlinedInputField extends StatefulWidget {
   final Icon prefixIcon;
   final FocusNode focusNode;
   final List<TextInputFormatter> inputFormatters;
-  final String defaultText;
-  final bool updateWithDefaultText;
+  final String writtenText;
 
   /// return null to not show any helper
   final String Function(String) onChangedValidator;
@@ -31,8 +30,7 @@ class OutlinedInputField extends StatefulWidget {
     this.focusNode,
     this.borderRadius = const BorderRadius.all(Radius.circular(12)),
     this.inputFormatters,
-    this.defaultText,
-    this.updateWithDefaultText = false,
+    this.writtenText,
   }) : super(key: key);
 
   @override
@@ -48,7 +46,7 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
 
   @override
   void initState() {
-    textEditingController = TextEditingController(text: widget.defaultText);
+    textEditingController = TextEditingController();
     super.initState();
   }
 
@@ -61,9 +59,10 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
 
   @override
   Widget build(BuildContext context) {
-//    if (widget.updateWithDefaultText) {
-//      textEditingController.text = widget.defaultText;
-//    }
+    if (widget.writtenText != null) {
+      textEditingController.text = widget.writtenText;
+      hasText = widget.writtenText.isNotEmpty;
+    }
     return TextField(
       controller: textEditingController,
       onChanged: (str) {

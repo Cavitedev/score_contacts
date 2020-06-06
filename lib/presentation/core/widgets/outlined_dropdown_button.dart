@@ -39,11 +39,6 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
 
   @override
   void initState() {
-    if (widget.selected != null) {
-      selected = widget.selected;
-    } else {
-      selected = widget.items[0];
-    }
     _items = [
       ...widget.items
           .map((String item) =>
@@ -107,6 +102,11 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
 
   @override
   Widget build(BuildContext context) {
+    if (widget.selected != null) {
+      selected = widget.selected;
+    } else {
+      selected = widget.items[0];
+    }
     final List<DropdownMenuItem<String>> itemsRendered = customSelected == null
         ? _items
         : [

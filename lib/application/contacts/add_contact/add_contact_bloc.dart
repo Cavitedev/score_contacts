@@ -16,9 +16,6 @@ class AddContactBloc extends Bloc<AddContactEvent, AddContactState> {
     AddContactEvent event,
   ) async* {
     if (event is MailChangedEvent) {
-      if (event.email.value.isEmpty) {
-        return;
-      }
       final List<Email> emails = List<Email>.from(state.emails);
       emails[event.pos] = event.email;
       yield state.copyWith(emails: emails);

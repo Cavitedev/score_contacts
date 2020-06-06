@@ -15,7 +15,6 @@ class TextFieldWithDropdown extends StatefulWidget {
   final Function(String) onChangedValidator;
   final Function(String) onLabelChanged;
   final List<TextInputFormatter> inputFormatters;
-  final Function(bool) onIsActiveChanged;
 
   const TextFieldWithDropdown(
       {Key key,
@@ -27,7 +26,6 @@ class TextFieldWithDropdown extends StatefulWidget {
       this.prefixIcon,
       this.onChangedValidator,
       this.inputFormatters,
-      @required this.onIsActiveChanged,
       this.onLabelChanged})
       : super(key: key);
 
@@ -46,7 +44,6 @@ class _TextFieldWithDropdownState extends State<TextFieldWithDropdown> {
     changeValidatorWithCheckEmpty = (str) {
       setState(() {
         isActive = str.isNotEmpty;
-        widget.onIsActiveChanged(isActive);
       });
       if (widget.onChangedValidator != null) {
         widget.onChangedValidator(str);
@@ -64,6 +61,9 @@ class _TextFieldWithDropdownState extends State<TextFieldWithDropdown> {
 
   @override
   Widget build(BuildContext context) {
+    if (widget.labelObject.value != null) {
+      isActive = widget.labelObject.value.isNotEmpty;
+    }
     return Row(
       children: <Widget>[
         Expanded(
@@ -80,8 +80,7 @@ class _TextFieldWithDropdownState extends State<TextFieldWithDropdown> {
         Expanded(
           flex: 2,
           child: OutlinedInputField(
-            defaultText: widget.labelObject.value,
-            updateWithDefaultText: true,
+            writtenText: widget.labelObject.value ?? "",
             hintText: widget.hintText,
             prefixIcon: widget.prefixIcon,
             autoCorrect: widget?.autoCorrect,
