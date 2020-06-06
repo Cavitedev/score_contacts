@@ -4,6 +4,7 @@
 // InjectableConfigGenerator
 // **************************************************************************
 
+import 'package:scorecontacts/application/contacts/add_contact/add_contact_bloc.dart';
 import 'package:scorecontacts/infrastructure/core/firebase_injectable_module.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -15,6 +16,7 @@ import 'package:get_it/get_it.dart';
 
 void $initGetIt(GetIt g, {String environment}) {
   final firebaseInjectableModule = _$FirebaseInjectableModule();
+  g.registerFactory<AddContactBloc>(() => AddContactBloc());
   g.registerLazySingleton<FirebaseAuth>(
       () => firebaseInjectableModule.firebaseAuth);
   g.registerLazySingleton<GoogleSignIn>(

@@ -23,7 +23,7 @@ class OutlinedInputField extends StatefulWidget {
     this.autoCorrect = false,
     this.autoFocus = false,
     this.keyboardType = TextInputType.text,
-    this.textCapitalization = TextCapitalization.none,
+    this.textCapitalization = TextCapitalization.sentences,
     this.onChangedValidator,
     this.prefixIcon,
     this.focusNode,

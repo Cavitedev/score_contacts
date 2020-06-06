@@ -9,7 +9,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:scorecontacts/presentation/auth/splash_page.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/contact_list.dart';
-import 'package:scorecontacts/presentation/contacts/add_contacts/add_contact.dart';
+import 'package:scorecontacts/presentation/contacts/add_contacts/add_contact_page.dart';
 import 'package:scorecontacts/presentation/auth/sign_in/sign_in_page.dart';
 
 abstract class Routes {
@@ -48,7 +48,7 @@ class Router extends RouterBase {
         );
       case Routes.addContact:
         return MaterialPageRoute<dynamic>(
-          builder: (context) => AddContact(),
+          builder: (context) => AddContactPage(),
           settings: settings,
         );
       case Routes.signInPage:

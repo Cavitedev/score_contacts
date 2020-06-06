@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:scorecontacts/domain/features/user/contacts_data/properties/i_label_object.dart';
 import 'package:scorecontacts/presentation/core/widgets/text_field_with_dropdown.dart';
 
 class TextFieldsWithDropdowns extends StatefulWidget {
-  final List<String> items;
+  final List<ILabelObject> labelObjects;
   final String hintText;
   final bool autoCorrect;
   final TextInputType keyboardType;
   final TextCapitalization textCapitalization;
   final Icon prefixIcon;
-  final String Function(String) onChangedValidator;
+  final Function(String) onChangedValidator;
   final List<TextInputFormatter> inputFormatters;
+  final Function onAddWidget;
+  final Function(int) onRemoveWidget;
 
   const TextFieldsWithDropdowns({
     Key key,
-    @required this.items,
+    @required this.labelObjects,
     @required this.hintText,
     this.autoCorrect = false,
     this.keyboardType = TextInputType.text,
@@ -22,6 +25,8 @@ class TextFieldsWithDropdowns extends StatefulWidget {
     this.prefixIcon,
     this.onChangedValidator,
     this.inputFormatters,
+    this.onAddWidget,
+    this.onRemoveWidget,
   }) : super(key: key);
 
   @override
@@ -48,9 +53,19 @@ class _TextFieldsWithDropdownsState extends State<TextFieldsWithDropdowns> {
   @override
   Widget build(BuildContext context) {
     return Column(
-        children: onIsActiveChangedList
-            .map((onIsActiveChanged) => _buildField(widget, onIsActiveChanged))
-            .toList());
+      children: onIsActiveChangedList
+          .asMap()
+          .map((i, activeChange) => MapEntry(
+              i,
+              _buildField(
+                widget: widget,
+                onIsActiveChanged: activeChange,
+                pos: i,
+              )))
+          .values
+          .cast<Widget>()
+          .toList(),
+    );
   }
 
   void _onActiveChange() {
@@ -61,13 +76,16 @@ class _TextFieldsWithDropdownsState extends State<TextFieldsWithDropdowns> {
         _addWidget();
       });
     } else if (activeFields < onIsActiveChangedList.length - 1) {
+      final int posInactiveWidget = areActive.indexWhere((
+          isActive) => isActive == false);
       setState(() {
-        _removeLastWidget();
+        _removeWidget(pos: posInactiveWidget);
       });
     }
   }
 
   void _addWidget() {
+    widget?.onAddWidget();
     areActive.add(false);
     final int pos = onIsActiveChangedList.length;
     onIsActiveChangedList.add((isActive) {
@@ -76,15 +94,19 @@ class _TextFieldsWithDropdownsState extends State<TextFieldsWithDropdowns> {
     });
   }
 
-  void _removeLastWidget() {
-    areActive.removeLast();
-    onIsActiveChangedList.removeLast();
+  void _removeWidget({@required int pos}) {
+    widget?.onRemoveWidget(pos);
+    areActive.removeAt(pos);
+    onIsActiveChangedList.removeAt(pos);
   }
 
-  TextfieldWithDropdown _buildField(
-      TextFieldsWithDropdowns widget, Function(bool) onIsActiveChanged) {
+  TextfieldWithDropdown _buildField({
+    @required TextFieldsWithDropdowns widget,
+    @required Function(bool) onIsActiveChanged,
+    @required int pos,
+  }) {
     return TextfieldWithDropdown(
-      items: widget.items,
+      labelObject: widget.labelObjects[pos],
       hintText: widget.hintText,
       inputFormatters: widget.inputFormatters,
       keyboardType: widget.keyboardType,
