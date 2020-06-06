@@ -5,18 +5,19 @@ import 'package:scorecontacts/domain/features/user/contacts_data/properties/i_la
 import 'outlined_dropdown_button.dart';
 import 'outlined_input_field.dart';
 
-class TextfieldWithDropdown extends StatefulWidget {
-  final ILabelObject labelObject;
+class TextFieldWithDropdown extends StatefulWidget {
+  final ILabelObject<String> labelObject;
   final String hintText;
   final bool autoCorrect;
   final TextInputType keyboardType;
   final TextCapitalization textCapitalization;
   final Icon prefixIcon;
   final Function(String) onChangedValidator;
+  final Function(String) onLabelChanged;
   final List<TextInputFormatter> inputFormatters;
   final Function(bool) onIsActiveChanged;
 
-  const TextfieldWithDropdown(
+  const TextFieldWithDropdown(
       {Key key,
       @required this.labelObject,
       @required this.hintText,
@@ -26,14 +27,15 @@ class TextfieldWithDropdown extends StatefulWidget {
       this.prefixIcon,
       this.onChangedValidator,
       this.inputFormatters,
-      @required this.onIsActiveChanged})
+      @required this.onIsActiveChanged,
+      this.onLabelChanged})
       : super(key: key);
 
   @override
-  _TextfieldWithDropdownState createState() => _TextfieldWithDropdownState();
+  _TextFieldWithDropdownState createState() => _TextFieldWithDropdownState();
 }
 
-class _TextfieldWithDropdownState extends State<TextfieldWithDropdown> {
+class _TextFieldWithDropdownState extends State<TextFieldWithDropdown> {
   FocusNode focusNode;
   String Function(String) changeValidatorWithCheckEmpty;
   bool isActive = false;
@@ -46,8 +48,10 @@ class _TextfieldWithDropdownState extends State<TextfieldWithDropdown> {
         isActive = str.isNotEmpty;
         widget.onIsActiveChanged(isActive);
       });
-      widget.onChangedValidator(str);
-      return;
+      if (widget.onChangedValidator != null) {
+        widget.onChangedValidator(str);
+      }
+      return "";
     };
     super.initState();
   }
@@ -67,6 +71,8 @@ class _TextfieldWithDropdownState extends State<TextfieldWithDropdown> {
             items: widget.labelObject.otherLabels,
             focusNode: focusNode,
             isActive: isActive,
+            onLabelChanged: widget.onLabelChanged,
+            selected: widget.labelObject.label,
             borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(12), bottomLeft: Radius.circular(12)),
           ),
@@ -74,6 +80,8 @@ class _TextfieldWithDropdownState extends State<TextfieldWithDropdown> {
         Expanded(
           flex: 2,
           child: OutlinedInputField(
+            defaultText: widget.labelObject.value,
+            updateWithDefaultText: true,
             hintText: widget.hintText,
             prefixIcon: widget.prefixIcon,
             autoCorrect: widget?.autoCorrect,

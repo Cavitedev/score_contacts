@@ -10,6 +10,10 @@ class AddContactState {
   AddContactState copyWith({
     List<Email> emails,
   }) {
+    if (emails == null || identical(emails, this.emails)) {
+      return this;
+    }
+
     return AddContactState(
       emails: emails ?? this.emails,
     );

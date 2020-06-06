@@ -5,9 +5,11 @@ class OutlinedDropdownButton extends StatefulWidget {
   final List<String> items;
   final FocusNode focusNode;
   final bool isActive;
+  final Function(String) onLabelChanged;
 
   /// With Radius.circular(12) by default
   final BorderRadius borderRadius;
+  final String selected;
 
   const OutlinedDropdownButton({
     Key key,
@@ -15,6 +17,8 @@ class OutlinedDropdownButton extends StatefulWidget {
     @required this.focusNode,
     this.borderRadius = const BorderRadius.all(Radius.circular(12)),
     this.isActive = false,
+    this.onLabelChanged,
+    this.selected,
   }) : super(key: key);
 
   @override
@@ -35,13 +39,18 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
 
   @override
   void initState() {
-    selected = widget.items[0];
+    if (widget.selected != null) {
+      selected = widget.selected;
+    } else {
+      selected = widget.items[0];
+    }
     _items = [
       ...widget.items
-          .map((String item) => DropdownMenuItem(
-                value: item,
-                child: Text(item),
-              ))
+          .map((String item) =>
+          DropdownMenuItem(
+            value: item,
+            child: Text(item),
+          ))
           .toList(),
       const DropdownMenuItem(
         value: "Custom",
@@ -81,10 +90,16 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
             selected = lastSelected;
             customSelected = null;
           });
+          if (widget.onLabelChanged != null) {
+            widget.onLabelChanged(lastSelected);
+          }
         },
         onSubmit: (String text) {
           customSelected = text;
           selected = customSelected;
+          if (widget.onLabelChanged != null) {
+            widget.onLabelChanged(selected);
+          }
         },
       ),
     );
@@ -137,6 +152,9 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
                     selected = value;
                     customSelected = null;
                   });
+                  if (widget.onLabelChanged != null) {
+                    widget.onLabelChanged(value);
+                  }
                 },
                 selectedItemBuilder: (context) =>
                     itemsRendered

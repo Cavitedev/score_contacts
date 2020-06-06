@@ -28,8 +28,8 @@ List<Contact> contacts = [
         ImportantDate(date: DateTime(2017, 5, 25), label: "wedding")
       ],
       emails: [
-        Email(value: "lala@la.com", label: "personal"),
-        Email(value: "jobjob@job.com", label: "work")
+        const Email(value: "lala@la.com", label: "personal"),
+        const Email(value: "jobjob@job.com", label: "work")
       ],
       phones: [Phone(number: "+356666666", phoneLabel: "personal")],
       instantMessages: [
@@ -55,8 +55,8 @@ List<Contact> contacts = [
         ImportantDate(date: DateTime(2017, 5, 25), label: "wedding")
       ],
       emails: [
-        Email(value: "lala@la.com", label: "personal"),
-        Email(value: "jobjob@job.com", label: "work")
+        const Email(value: "lala@la.com", label: "personal"),
+        const Email(value: "jobjob@job.com", label: "work")
       ],
       phones: [Phone(number: "+356666666", phoneLabel: "personal")],
       instantMessages: [

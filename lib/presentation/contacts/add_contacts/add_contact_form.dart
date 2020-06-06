@@ -84,6 +84,16 @@ class AddContactForm extends StatelessWidget {
                     onRemoveWidget: (pos) => context
                         .bloc<AddContactBloc>()
                         .add(RemoveLabelElement<Email>(pos: pos)),
+                    onChangedValidator: (i, str) => context
+                        .bloc<AddContactBloc>()
+                        .add(MailChangedEvent(
+                            email: state.emails[i].copyWith(value: str),
+                            pos: i)),
+                    onLabelChanged: (i, value) => context
+                        .bloc<AddContactBloc>()
+                        .add(MailChangedEvent(
+                            email: state.emails[i].copyWith(label: value),
+                            pos: i)),
                   ),
                   const SizedBox(
                     height: 20,

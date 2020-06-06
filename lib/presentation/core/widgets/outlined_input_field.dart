@@ -13,6 +13,8 @@ class OutlinedInputField extends StatefulWidget {
   final Icon prefixIcon;
   final FocusNode focusNode;
   final List<TextInputFormatter> inputFormatters;
+  final String defaultText;
+  final bool updateWithDefaultText;
 
   /// return null to not show any helper
   final String Function(String) onChangedValidator;
@@ -29,6 +31,8 @@ class OutlinedInputField extends StatefulWidget {
     this.focusNode,
     this.borderRadius = const BorderRadius.all(Radius.circular(12)),
     this.inputFormatters,
+    this.defaultText,
+    this.updateWithDefaultText = false,
   }) : super(key: key);
 
   @override
@@ -37,9 +41,16 @@ class OutlinedInputField extends StatefulWidget {
 
 class _OutlinedInputFieldState extends State<OutlinedInputField> {
   bool hasText = false;
-  TextEditingController textEditingController = TextEditingController();
+  TextEditingController textEditingController;
   bool showHelperText = false;
   String helpText;
+
+
+  @override
+  void initState() {
+    textEditingController = TextEditingController(text: widget.defaultText);
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -47,8 +58,12 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
     super.dispose();
   }
 
+
   @override
   Widget build(BuildContext context) {
+//    if (widget.updateWithDefaultText) {
+//      textEditingController.text = widget.defaultText;
+//    }
     return TextField(
       controller: textEditingController,
       onChanged: (str) {
@@ -101,8 +116,10 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
   void _clearText() {
     textEditingController.clear();
     setState(() {
-      helpText = widget.onChangedValidator("");
       hasText = false;
+      if (widget.onChangedValidator != null) {
+        helpText = widget.onChangedValidator("");
+      }
     });
   }
 }

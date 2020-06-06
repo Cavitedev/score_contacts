@@ -15,7 +15,15 @@ class AddContactBloc extends Bloc<AddContactEvent, AddContactState> {
   Stream<AddContactState> mapEventToState(
     AddContactEvent event,
   ) async* {
-    print(event);
+    if (event is MailChangedEvent) {
+      if (event.email.value.isEmpty) {
+        return;
+      }
+      final List<Email> emails = List<Email>.from(state.emails);
+      emails[event.pos] = event.email;
+      yield state.copyWith(emails: emails);
+    }
+
     if (event is AddLabelElement) {
       if (event is AddLabelElement<Email>) {
         final List<Email> emails = List<Email>.from(state.emails);
@@ -24,9 +32,8 @@ class AddContactBloc extends Bloc<AddContactEvent, AddContactState> {
       }
     } else if (event is RemoveLabelElement) {
       if (event is RemoveLabelElement<Email>) {
-        print(event.pos);
         final List<Email> emails = List<Email>.from(state.emails);
-        emails.removeAt(event?.pos);
+        emails.removeAt(event.pos);
         yield state.copyWith(emails: emails);
       }
     }
