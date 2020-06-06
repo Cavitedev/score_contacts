@@ -25,7 +25,7 @@ class TextfieldWithDropdown extends StatefulWidget {
       this.prefixIcon,
       this.onChangedValidator,
       this.inputFormatters,
-      this.onIsActiveChanged})
+      @required this.onIsActiveChanged})
       : super(key: key);
 
   @override
@@ -43,7 +43,7 @@ class _TextfieldWithDropdownState extends State<TextfieldWithDropdown> {
     changeValidatorWithCheckEmpty = (str) {
       setState(() {
         isActive = str.isNotEmpty;
-        widget?.onIsActiveChanged(isActive);
+        widget.onIsActiveChanged(isActive);
       });
       return widget.onChangedValidator(str);
     };
