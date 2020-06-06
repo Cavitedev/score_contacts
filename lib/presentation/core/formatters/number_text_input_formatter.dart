@@ -3,12 +3,12 @@ import 'package:flutter/services.dart';
 import 'package:scorecontacts/presentation/core/formatters/formatter_tools.dart';
 import 'package:scorecontacts/presentation/core/formatters/phone_codes.dart';
 
-class NumberTextInputFormatter extends TextInputFormatter {
+class PhoneTextFormatter extends TextInputFormatter {
   final BuildContext context;
   PhoneCountryData _countryData;
   bool _localRegion = false;
 
-  NumberTextInputFormatter({@required this.context});
+  PhoneTextFormatter({@required this.context});
 
   @override
   TextEditingValue formatEditUpdate(
