@@ -6,7 +6,9 @@ import 'outlined_dropdown_button.dart';
 import 'outlined_input_field.dart';
 
 class TextFieldWithDropdown extends StatefulWidget {
-  final ILabelObject<String> labelObject;
+  /// space for label text
+  static const double topMargin = 3;
+  final ILabelObject labelObject;
   final String hintText;
   final bool autoCorrect;
   final TextInputType keyboardType;
@@ -72,6 +74,7 @@ class _TextFieldWithDropdownState extends State<TextFieldWithDropdown> {
             focusNode: focusNode,
             isActive: isActive,
             onLabelChanged: widget.onLabelChanged,
+            topMargin: TextFieldWithDropdown.topMargin,
             selected: widget.labelObject.label,
             borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(12), bottomLeft: Radius.circular(12)),
@@ -80,6 +83,7 @@ class _TextFieldWithDropdownState extends State<TextFieldWithDropdown> {
         Expanded(
           flex: 2,
           child: OutlinedInputField(
+            topPadding: TextFieldWithDropdown.topMargin,
             writtenText: widget.labelObject.value ?? "",
             hintText: widget.hintText,
             prefixIcon: widget.prefixIcon,

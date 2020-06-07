@@ -22,7 +22,8 @@ class PhoneTextFormatter extends TextInputFormatter {
       _trySetCountryDataFromPhone(newValue);
     } else {
       if (_countryData == null &&
-          (isDigit(newValue.text[0]) || isDigit(newValue.text[1]))) {
+          (isDigit(newValue.text[0]) ||
+              (newValue.text.length > 1 && isDigit(newValue.text[1])))) {
         _setCountryDataToLocaleRegion();
       }
     }

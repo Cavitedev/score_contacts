@@ -1,27 +1,27 @@
 import 'package:scorecontacts/domain/features/user/contacts_data/properties/email.dart';
+import 'package:scorecontacts/domain/features/user/contacts_data/properties/i_label_object.dart';
 import 'package:scorecontacts/domain/features/user/contacts_data/properties/phone.dart';
 
 class AddContactState {
-  final List<Email> emails;
-  final List<Phone> phones;
+  Map<Type, List<ILabelObject>> labelObjects;
 
-  const AddContactState({
-    this.emails = const [Email()],
-    this.phones = const [Phone()],
+  AddContactState({
+    this.labelObjects = const {
+      Phone: <Phone>[Phone()],
+      Email: <Email>[Email()]
+    }
   });
 
   AddContactState copyWith({
-    List<Email> emails,
-    List<Phone> phones,
+    Map<Type, List<ILabelObject>> labelObjects,
   }) {
-    if ((emails == null || identical(emails, this.emails)) &&
-        (phones == null || identical(phones, this.phones))) {
+    if (labelObjects == null || identical(labelObjects, this.labelObjects)) {
       return this;
     }
 
     return AddContactState(
-      emails: emails ?? this.emails,
-      phones: phones ?? this.phones,
+      labelObjects: labelObjects ?? this.labelObjects,
     );
   }
 }
+

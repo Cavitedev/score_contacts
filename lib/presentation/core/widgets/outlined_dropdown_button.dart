@@ -6,6 +6,7 @@ class OutlinedDropdownButton extends StatefulWidget {
   final FocusNode focusNode;
   final bool isActive;
   final Function(String) onLabelChanged;
+  final double topMargin;
 
   /// With Radius.circular(12) by default
   final BorderRadius borderRadius;
@@ -19,6 +20,7 @@ class OutlinedDropdownButton extends StatefulWidget {
     this.isActive = false,
     this.onLabelChanged,
     this.selected,
+    this.topMargin = 0,
   }) : super(key: key);
 
   @override
@@ -120,6 +122,7 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
       animation: opacityAnimationController,
       builder: (context, child) =>
           Container(
+            margin: EdgeInsets.only(top: widget.topMargin),
             padding: const EdgeInsets.only(left: 6),
             height: 48,
             decoration: BoxDecoration(

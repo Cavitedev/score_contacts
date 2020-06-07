@@ -5,6 +5,7 @@ class OutlinedInputField extends StatefulWidget {
   final String hintText;
   final bool autoFocus;
   final bool autoCorrect;
+  final double topPadding;
 
   /// With Radius.circular(12) by default
   final BorderRadius borderRadius;
@@ -31,6 +32,7 @@ class OutlinedInputField extends StatefulWidget {
     this.borderRadius = const BorderRadius.all(Radius.circular(12)),
     this.inputFormatters,
     this.writtenText,
+    this.topPadding = 0,
   }) : super(key: key);
 
   @override
@@ -61,61 +63,71 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
       textEditingController.value = TextEditingValue(
           text: widget.writtenText,
           selection:
-              TextSelection.collapsed(offset: widget.writtenText.length));
+          TextSelection.collapsed(offset: widget.writtenText.length));
 
       hasText = widget.writtenText.isNotEmpty;
     }
-    return TextField(
-      controller: textEditingController,
-      onChanged: (str) {
-        setState(() {
-          hasText = str.isNotEmpty;
-          helpText = widget.onChangedValidator == null
-              ? null
-              : widget.onChangedValidator(str);
-        });
-      },
-      onEditingComplete: () {
-        setState(() {
-          showHelperText = true;
-        });
-      },
-      focusNode: widget.focusNode,
-      autocorrect: widget.autoCorrect,
-      enableSuggestions: widget.autoCorrect,
-      autofocus: widget.autoFocus,
-      keyboardType: widget.keyboardType,
-      inputFormatters: widget.inputFormatters,
-      textCapitalization: widget.textCapitalization,
-      showCursor: true,
-      decoration: InputDecoration(
-          labelText: widget.hintText,
-          filled: true,
-          fillColor: Theme.of(context).textSelectionColor,
-          helperText: showHelperText ? helpText : null,
-          prefixIcon: widget.prefixIcon,
-          suffixIcon: hasText
-              ? InkWell(
-                  onTap: () {
-                    _clearText();
-                  },
-                  child: Icon(Icons.delete),
-                )
-              : null,
-          contentPadding: const EdgeInsets.only(top: 8, bottom: 8, left: 9),
-          focusedBorder: OutlineInputBorder(
+    return Container(
+      padding: EdgeInsets.only(top: widget.topPadding),
+      child: TextField(
+        controller: textEditingController,
+        onChanged: (str) {
+          setState(() {
+            hasText = str.isNotEmpty;
+            helpText = widget.onChangedValidator == null
+                ? null
+                : widget.onChangedValidator(str);
+          });
+        },
+        onEditingComplete: () {
+          setState(() {
+            showHelperText = true;
+          });
+        },
+        focusNode: widget.focusNode,
+        autocorrect: widget.autoCorrect,
+        enableSuggestions: widget.autoCorrect,
+        autofocus: widget.autoFocus,
+        keyboardType: widget.keyboardType,
+        inputFormatters: widget.inputFormatters,
+        textCapitalization: widget.textCapitalization,
+        showCursor: true,
+        decoration: InputDecoration(
+            labelText: widget.hintText,
+            filled: true,
+            fillColor: Theme
+                .of(context)
+                .textSelectionColor,
+            helperText: showHelperText ? helpText : null,
+            prefixIcon: widget.prefixIcon,
+            suffixIcon: hasText
+                ? InkWell(
+              onTap: () {
+                _clearText();
+              },
+              child: Icon(Icons.delete),
+            )
+                : null,
+            contentPadding: const EdgeInsets.only(top: 8, bottom: 8, left: 9),
+            focusedBorder: OutlineInputBorder(
+                borderRadius: widget.borderRadius,
+                borderSide: BorderSide(
+                    color: Theme
+                        .of(context)
+                        .highlightColor, width: 2)),
+            border: OutlineInputBorder(
               borderRadius: widget.borderRadius,
-              borderSide: BorderSide(
-                  color: Theme.of(context).highlightColor, width: 2)),
-          border: OutlineInputBorder(
-            borderRadius: widget.borderRadius,
-            borderSide: BorderSide.none,
-          )),
+              borderSide: BorderSide.none,
+            )),
+      ),
     );
   }
 
   void _clearText() {
     textEditingController.clear();
+    if (widget.focusNode != null) {
+      widget.focusNode.unfocus();
+    }
     setState(() {
       hasText = false;
       if (widget.onChangedValidator != null) {

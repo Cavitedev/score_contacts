@@ -1,6 +1,6 @@
 import 'package:scorecontacts/domain/features/user/contacts_data/properties/i_label_object.dart';
 
-class Phone implements ILabelObject<String> {
+class Phone implements ILabelObject {
   final String value;
   final String label;
   @override
@@ -27,6 +27,7 @@ class Phone implements ILabelObject<String> {
   @override
   int get hashCode => value.hashCode ^ label.hashCode;
 
+  @override
   Phone copyWith({
     String value,
     String label,

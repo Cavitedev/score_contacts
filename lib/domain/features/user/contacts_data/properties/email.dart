@@ -3,7 +3,7 @@ import 'package:scorecontacts/domain/core/validators/i_hint.dart';
 import 'package:scorecontacts/domain/core/validators/i_hint_validator.dart';
 import 'package:scorecontacts/domain/features/user/contacts_data/properties/i_label_object.dart';
 
-class Email implements ILabelObject<String>, IHintValidator<String> {
+class Email implements ILabelObject, IHintValidator<String> {
   @override
   final String label;
   @override
@@ -23,6 +23,7 @@ class Email implements ILabelObject<String>, IHintValidator<String> {
     return emailValidate(value);
   }
 
+  @override
   Email copyWith({
     String label,
     String value,
@@ -56,4 +57,6 @@ class Email implements ILabelObject<String>, IHintValidator<String> {
 
   @override
   int get hashCode => label.hashCode ^ value.hashCode;
+
+
 }

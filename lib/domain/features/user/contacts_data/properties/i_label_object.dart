@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 
-abstract class ILabelObject<T> {
-  final T value;
+abstract class ILabelObject {
+  final String value;
   final String label;
   final List<String> otherLabels;
 
@@ -10,4 +10,10 @@ abstract class ILabelObject<T> {
     @required this.label,
     @required this.otherLabels,
   });
+
+  ILabelObject copyWith({
+    String value,
+    String label,
+  });
 }
+

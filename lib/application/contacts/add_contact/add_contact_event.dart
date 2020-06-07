@@ -1,41 +1,31 @@
 import 'package:meta/meta.dart';
-import 'package:scorecontacts/domain/features/user/contacts_data/properties/email.dart';
 import 'package:scorecontacts/domain/features/user/contacts_data/properties/i_label_object.dart';
-import 'package:scorecontacts/domain/features/user/contacts_data/properties/phone.dart';
-import 'package:scorecontacts/domain/features/user/contacts_data/properties/website.dart';
 
 @immutable
 abstract class AddContactEvent {
   const AddContactEvent();
 }
 
-class MailChangedEvent extends AddContactEvent {
-  final Email email;
+class LabelObjectChangedEvent extends AddContactEvent {
+  final ILabelObject labelObject;
   final int pos;
 
-  const MailChangedEvent({@required this.email, this.pos = 0});
+  const LabelObjectChangedEvent({
+    @required this.labelObject,
+    this.pos = 0,
+  });
 }
 
-class PhoneChangedEvent extends AddContactEvent {
-  final Phone phone;
+class AddLabelElement extends AddContactEvent {
+  final ILabelObject labelObject;
+
+  const AddLabelElement({@required this.labelObject});
+}
+
+class RemoveLabelElement extends AddContactEvent {
   final int pos;
+  final Type labelObjectType;
 
-  const PhoneChangedEvent({@required this.phone, this.pos = 0});
-}
-
-class AddLabelElement<T extends ILabelObject> extends AddContactEvent {
-  const AddLabelElement();
-}
-
-class RemoveLabelElement<T extends ILabelObject> extends AddContactEvent {
-  final int pos;
-
-  const RemoveLabelElement({@required this.pos}) : assert(pos >= 0);
-}
-
-class WebsiteChangedEvent extends AddContactEvent {
-  final Website website;
-  final int pos;
-
-  const WebsiteChangedEvent({@required this.website, this.pos = 0});
+  const RemoveLabelElement({@required this.pos, @required this.labelObjectType})
+      : assert(pos >= 0);
 }

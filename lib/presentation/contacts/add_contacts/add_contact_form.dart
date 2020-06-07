@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/contacts/add_contact/add_contact_bloc.dart';
 import 'package:scorecontacts/application/contacts/add_contact/add_contact_state.dart';
 import 'package:scorecontacts/application/contacts/add_contact/bloc.dart';
-import 'package:scorecontacts/domain/features/user/contacts_data/properties/email.dart';
 import 'package:scorecontacts/domain/features/user/contacts_data/properties/phone.dart';
 import 'package:scorecontacts/presentation/core/formatters/number_text_input_formatter.dart';
 import 'package:scorecontacts/presentation/core/widgets/outlined_input_field.dart';
@@ -63,61 +62,58 @@ class AddContactForm extends StatelessWidget {
                     height: 20,
                   ),
                   TextFieldsWithDropdowns(
-                    labelObjects: state.phones,
+                    labelObjects: state.labelObjects[Phone],
                     hintText: "Phone",
                     prefixIcon: const Icon(Icons.phone),
                     keyboardType: TextInputType.phone,
                     inputFormatters: <TextInputFormatter>[
                       PhoneTextFormatter(context: context)
                     ],
-                    onAddWidget: () =>
-                        context
-                            .bloc<AddContactBloc>()
-                            .add(const AddLabelElement<Phone>()),
-                    onRemoveWidget: (pos) =>
-                        context
-                            .bloc<AddContactBloc>()
-                            .add(RemoveLabelElement<Phone>(pos: pos)),
-                    onChangedValidator: (i, str) =>
-                        context
-                            .bloc<AddContactBloc>()
-                            .add(PhoneChangedEvent(
-                            phone: state.phones[i].copyWith(value: str),
+                    onAddWidget: () => context
+                        .bloc<AddContactBloc>()
+                        .add(const AddLabelElement(labelObject: Phone())),
+                    onRemoveWidget: (pos) => context.bloc<AddContactBloc>().add(
+                        RemoveLabelElement(pos: pos, labelObjectType: Phone)),
+                    onTextChanged: (i, str) => context
+                        .bloc<AddContactBloc>()
+                        .add(LabelObjectChangedEvent(
+                            labelObject: state.labelObjects[Phone][i]
+                                .copyWith(value: str),
                             pos: i)),
-                    onLabelChanged: (i, value) =>
-                        context
-                            .bloc<AddContactBloc>()
-                            .add(PhoneChangedEvent(
-                            phone: state.phones[i].copyWith(label: value),
+                    onLabelChanged: (i, value) => context
+                        .bloc<AddContactBloc>()
+                        .add(LabelObjectChangedEvent(
+                            labelObject: state.labelObjects[Phone][i]
+                                .copyWith(label: value),
                             pos: i)),
                   ),
                   const SizedBox(
                     height: 20,
                   ),
-                  TextFieldsWithDropdowns(
-                    labelObjects: state.emails,
-                    hintText: "Email",
-                    prefixIcon: const Icon(Icons.mail),
-                    keyboardType: TextInputType.emailAddress,
-                    onAddWidget: () =>
-                        context
-                            .bloc<AddContactBloc>()
-                            .add(const AddLabelElement<Email>()),
-                    onRemoveWidget: (pos) =>
-                        context
-                            .bloc<AddContactBloc>()
-                        .add(RemoveLabelElement<Email>(pos: pos)),
-                    onChangedValidator: (i, str) => context
-                        .bloc<AddContactBloc>()
-                        .add(MailChangedEvent(
-                            email: state.emails[i].copyWith(value: str),
-                            pos: i)),
-                    onLabelChanged: (i, value) => context
-                        .bloc<AddContactBloc>()
-                        .add(MailChangedEvent(
-                            email: state.emails[i].copyWith(label: value),
-                            pos: i)),
-                  ),
+//                  TextFieldsWithDropdowns(
+//                    labelObjects: state.email,
+//                    hintText: "Email",
+//                    prefixIcon: const Icon(Icons.mail),
+//                    keyboardType: TextInputType.emailAddress,
+//                    onAddWidget: () =>
+//                        context
+//                            .bloc<AddContactBloc>()
+//                            .add(const AddLabelElement<Email>()),
+//                    onRemoveWidget: (pos) =>
+//                        context
+//                            .bloc<AddContactBloc>()
+//                        .add(RemoveLabelElement<Email>(pos: pos)),
+//                    onTextChanged: (i, str) => context
+//                        .bloc<AddContactBloc>()
+//                        .add(LabelObjectChangedEvent(
+//                            email: state.email[i].copyWith(value: str),
+//                            pos: i)),
+//                    onLabelChanged: (i, value) => context
+//                        .bloc<AddContactBloc>()
+//                        .add(LabelObjectChangedEvent(
+//                            email: state.email[i].copyWith(label: value),
+//                            pos: i)),
+//                  ),
                   const SizedBox(
                     height: 20,
                   ),
