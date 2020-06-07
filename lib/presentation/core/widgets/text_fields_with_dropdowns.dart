@@ -34,7 +34,11 @@ class TextFieldsWithDropdowns extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _onActiveChange();
-    return Column(children: _buildFields());
+    return ListView.builder(
+      shrinkWrap: true,
+      itemCount: labelObjects.length,
+      itemBuilder: (context, index) => _buildField(pos: index),
+    );
   }
 
   void _onActiveChange() {
@@ -62,14 +66,6 @@ class TextFieldsWithDropdowns extends StatelessWidget {
     if (onRemoveWidget != null) {
       onRemoveWidget(pos);
     }
-  }
-
-  List<TextFieldWithDropdown> _buildFields() {
-    final List<TextFieldWithDropdown> output = [];
-    for (int i = 0; i < labelObjects.length; i++) {
-      output.add(_buildField(pos: i));
-    }
-    return output;
   }
 
   TextFieldWithDropdown _buildField({

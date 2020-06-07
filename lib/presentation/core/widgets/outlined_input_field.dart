@@ -43,7 +43,6 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
   bool showHelperText = false;
   String helpText;
 
-
   @override
   void initState() {
     textEditingController = TextEditingController();
@@ -56,11 +55,14 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
     super.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
     if (widget.writtenText != null) {
-      textEditingController.text = widget.writtenText;
+      textEditingController.value = TextEditingValue(
+          text: widget.writtenText,
+          selection:
+              TextSelection.collapsed(offset: widget.writtenText.length));
+
       hasText = widget.writtenText.isNotEmpty;
     }
     return TextField(

@@ -1,6 +1,7 @@
 import 'package:meta/meta.dart';
 import 'package:scorecontacts/domain/features/user/contacts_data/properties/email.dart';
 import 'package:scorecontacts/domain/features/user/contacts_data/properties/i_label_object.dart';
+import 'package:scorecontacts/domain/features/user/contacts_data/properties/phone.dart';
 import 'package:scorecontacts/domain/features/user/contacts_data/properties/website.dart';
 
 @immutable
@@ -13,6 +14,13 @@ class MailChangedEvent extends AddContactEvent {
   final int pos;
 
   const MailChangedEvent({@required this.email, this.pos = 0});
+}
+
+class PhoneChangedEvent extends AddContactEvent {
+  final Phone phone;
+  final int pos;
+
+  const PhoneChangedEvent({@required this.phone, this.pos = 0});
 }
 
 class AddLabelElement<T extends ILabelObject> extends AddContactEvent {
