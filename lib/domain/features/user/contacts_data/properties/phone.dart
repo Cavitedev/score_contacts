@@ -1,15 +1,16 @@
 import 'package:scorecontacts/domain/features/user/contacts_data/properties/i_label_object.dart';
 
 class Phone implements ILabelObject {
+  @override
   final String value;
+  @override
   final String label;
   @override
   final List<String> otherLabels;
 
-  const Phone(
-      {this.value,
-      this.label,
-      this.otherLabels = const ["Mobile", "Work", "Other"]});
+  const Phone({this.value,
+    this.label,
+    this.otherLabels = const ["Mobile", "Work", "Other"]});
 
   @override
   String toString() {
@@ -19,10 +20,10 @@ class Phone implements ILabelObject {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is Phone &&
-          runtimeType == other.runtimeType &&
-          value == other.value &&
-          label == other.label;
+          other is Phone &&
+              runtimeType == other.runtimeType &&
+              value == other.value &&
+              label == other.label;
 
   @override
   int get hashCode => value.hashCode ^ label.hashCode;

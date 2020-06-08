@@ -37,14 +37,26 @@ class TextFieldsWithDropdowns extends StatefulWidget {
 }
 
 class _TextFieldsWithDropdownsState extends State<TextFieldsWithDropdowns> {
-  static const double itemHeight = 51;
+  List<TextFieldWithDropdown> itemsBuilt;
   GlobalKey<AnimatedListState> animatedList = GlobalKey<AnimatedListState>();
   int listCount = 1;
   int posInactiveWidget = 0;
+  ILabelObject objectToRemove;
+
+  List<FocusNode> focusNodes;
 
   @override
   void initState() {
+    focusNodes = <FocusNode>[FocusNode()];
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    for (final node in focusNodes) {
+      node.dispose();
+    }
+    super.dispose();
   }
 
   @override
@@ -65,7 +77,7 @@ class _TextFieldsWithDropdownsState extends State<TextFieldsWithDropdowns> {
   void _onActiveChange() {
     final int activeFields = widget.labelObjects
         .where((labelObject) =>
-    labelObject.value != null && labelObject.value.isNotEmpty)
+            labelObject.value != null && labelObject.value.isNotEmpty)
         .length;
     if (activeFields >= widget.labelObjects.length) {
       _addWidget();
@@ -84,22 +96,31 @@ class _TextFieldsWithDropdownsState extends State<TextFieldsWithDropdowns> {
   }
 
   void _removeWidget({@required int pos}) {
+    objectToRemove = widget.labelObjects[pos];
+
     if (widget.onRemoveWidget != null) {
       widget.onRemoveWidget(pos);
     }
   }
 
   void _updateAnimatedList() {
+    for (int i = 0; i < focusNodes.length; i++) {
+
+    }
     if (widget.labelObjects.length > listCount) {
-      animatedList.currentState.insertItem(widget.labelObjects.length - 1);
+      focusNodes.add(FocusNode());
+      animatedList.currentState.insertItem(listCount);
       listCount++;
     } else if (widget.labelObjects.length < listCount) {
       animatedList.currentState.removeItem(posInactiveWidget,
               (context, animation) {
             return _listTransitionBuild(
-                animation, const SizedBox(height: itemHeight,));
+                animation,
+                _buildField(
+                    pos: posInactiveWidget, labelObject: objectToRemove));
           }, duration: const Duration(milliseconds: 300));
       listCount--;
+      focusNodes.removeAt(posInactiveWidget);
     }
   }
 
@@ -113,10 +134,12 @@ class _TextFieldsWithDropdownsState extends State<TextFieldsWithDropdowns> {
   }
 
   TextFieldWithDropdown _buildField({
+    ILabelObject labelObject,
     @required int pos,
   }) {
     return TextFieldWithDropdown(
-      labelObject: widget.labelObjects[pos],
+      labelObject: labelObject ?? widget.labelObjects[pos],
+      focusNode: focusNodes[pos],
       hintText: widget.hintText,
       inputFormatters: widget.inputFormatters,
       keyboardType: widget.keyboardType,

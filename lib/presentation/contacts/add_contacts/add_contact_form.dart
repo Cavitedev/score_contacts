@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/contacts/add_contact/add_contact_bloc.dart';
 import 'package:scorecontacts/application/contacts/add_contact/add_contact_state.dart';
 import 'package:scorecontacts/application/contacts/add_contact/bloc.dart';
+import 'package:scorecontacts/domain/features/user/contacts_data/properties/email.dart';
+import 'package:scorecontacts/domain/features/user/contacts_data/properties/i_label_object.dart';
 import 'package:scorecontacts/domain/features/user/contacts_data/properties/phone.dart';
 import 'package:scorecontacts/presentation/core/formatters/number_text_input_formatter.dart';
 import 'package:scorecontacts/presentation/core/widgets/outlined_input_field.dart';
@@ -49,7 +51,7 @@ class AddContactForm extends StatelessWidget {
                   const SizedBox(
                     height: 15,
                   ),
-                  const OutlinedInputField(
+                  OutlinedInputField(
                     hintText: "Name",
                     autoFocus: true,
                     textCapitalization: TextCapitalization.words,
@@ -61,63 +63,32 @@ class AddContactForm extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  TextFieldsWithDropdowns(
-                    labelObjects: state.labelObjects[Phone],
+                  _buildLabelList(
+                    context: context,
+                    state: state,
+                    defaultLabelObject: const Phone(),
                     hintText: "Phone",
-                    prefixIcon: const Icon(Icons.phone),
+                    icon: const Icon(Icons.phone),
                     keyboardType: TextInputType.phone,
                     inputFormatters: <TextInputFormatter>[
                       PhoneTextFormatter(context: context)
                     ],
-                    onAddWidget: () => context
-                        .bloc<AddContactBloc>()
-                        .add(const AddLabelElement(labelObject: Phone())),
-                    onRemoveWidget: (pos) => context.bloc<AddContactBloc>().add(
-                        RemoveLabelElement(pos: pos, labelObjectType: Phone)),
-                    onTextChanged: (i, str) => context
-                        .bloc<AddContactBloc>()
-                        .add(LabelObjectChangedEvent(
-                            labelObject: state.labelObjects[Phone][i]
-                                .copyWith(value: str),
-                            pos: i)),
-                    onLabelChanged: (i, value) => context
-                        .bloc<AddContactBloc>()
-                        .add(LabelObjectChangedEvent(
-                            labelObject: state.labelObjects[Phone][i]
-                                .copyWith(label: value),
-                            pos: i)),
                   ),
                   const SizedBox(
                     height: 20,
                   ),
-//                  TextFieldsWithDropdowns(
-//                    labelObjects: state.email,
-//                    hintText: "Email",
-//                    prefixIcon: const Icon(Icons.mail),
-//                    keyboardType: TextInputType.emailAddress,
-//                    onAddWidget: () =>
-//                        context
-//                            .bloc<AddContactBloc>()
-//                            .add(const AddLabelElement<Email>()),
-//                    onRemoveWidget: (pos) =>
-//                        context
-//                            .bloc<AddContactBloc>()
-//                        .add(RemoveLabelElement<Email>(pos: pos)),
-//                    onTextChanged: (i, str) => context
-//                        .bloc<AddContactBloc>()
-//                        .add(LabelObjectChangedEvent(
-//                            email: state.email[i].copyWith(value: str),
-//                            pos: i)),
-//                    onLabelChanged: (i, value) => context
-//                        .bloc<AddContactBloc>()
-//                        .add(LabelObjectChangedEvent(
-//                            email: state.email[i].copyWith(label: value),
-//                            pos: i)),
-//                  ),
+                  _buildLabelList(
+                    context: context,
+                    state: state,
+                    defaultLabelObject: const Email(),
+                    hintText: "Email",
+                    icon: const Icon(Icons.mail),
+                    keyboardType: TextInputType.emailAddress,
+                  ),
                   const SizedBox(
                     height: 20,
                   ),
-                  const OutlinedInputField(
+                  OutlinedInputField(
                     hintText: "Company",
                     prefixIcon: Icon(Icons.business),
                     textCapitalization: TextCapitalization.words,
@@ -132,6 +103,44 @@ class AddContactForm extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  TextFieldsWithDropdowns _buildLabelList({
+    @required BuildContext context,
+    @required AddContactState state,
+    @required ILabelObject defaultLabelObject,
+    String hintText,
+    bool autoCorrect = false,
+    TextInputType keyboardType,
+    TextCapitalization textCapitalization = TextCapitalization.none,
+    Icon icon,
+    List<TextInputFormatter> inputFormatters,
+  }) {
+    return TextFieldsWithDropdowns(
+      labelObjects: state.labelObjects[defaultLabelObject.runtimeType],
+      hintText: hintText,
+      prefixIcon: icon,
+      keyboardType: keyboardType,
+      textCapitalization: textCapitalization,
+      autoCorrect: autoCorrect,
+      inputFormatters: inputFormatters,
+      onAddWidget: () => context
+          .bloc<AddContactBloc>()
+          .add(AddLabelElement(labelObject: defaultLabelObject)),
+      onRemoveWidget: (pos) => context.bloc<AddContactBloc>().add(
+          RemoveLabelElement(
+              pos: pos, labelObjectType: defaultLabelObject.runtimeType)),
+      onTextChanged: (i, str) => context.bloc<AddContactBloc>().add(
+          LabelObjectChangedEvent(
+              labelObject: state.labelObjects[defaultLabelObject.runtimeType][i]
+                  .copyWith(value: str),
+              pos: i)),
+      onLabelChanged: (i, value) => context.bloc<AddContactBloc>().add(
+          LabelObjectChangedEvent(
+              labelObject: state.labelObjects[defaultLabelObject.runtimeType][i]
+                  .copyWith(label: value),
+              pos: i)),
     );
   }
 }

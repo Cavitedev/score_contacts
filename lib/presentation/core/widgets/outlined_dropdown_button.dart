@@ -60,18 +60,21 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
     final Tween<double> opacityTween = Tween<double>(begin: 0, end: 1);
     opacityAnimation = opacityTween.animate(opacityAnimationController);
 
-    widget.focusNode.addListener(() {
-      setState(() {
-        widget.focusNode.hasFocus
-            ? opacityAnimationController.forward()
-            : opacityAnimationController.reverse();
-      });
-    });
+    widget.focusNode.addListener(outlineFocusListener);
     super.initState();
+  }
+
+  void outlineFocusListener() {
+    setState(() {
+      widget.focusNode.hasFocus
+          ? opacityAnimationController.forward()
+          : opacityAnimationController.reverse();
+    });
   }
 
   @override
   void dispose() {
+    widget.focusNode.removeListener(outlineFocusListener);
     opacityAnimationController.dispose();
     super.dispose();
   }

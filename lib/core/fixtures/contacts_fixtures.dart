@@ -31,7 +31,7 @@ List<Contact> contacts = [
         const Email(value: "lala@la.com", label: "personal"),
         const Email(value: "jobjob@job.com", label: "work")
       ],
-      phones: [Phone(value: "+356666666", label: "personal")],
+      phones: [const Phone(value: "+356666666", label: "personal")],
       instantMessages: [
         InstantMessage(instantMessage: "32425224", label: "Skype")
       ],
@@ -58,7 +58,7 @@ List<Contact> contacts = [
         const Email(value: "lala@la.com", label: "personal"),
         const Email(value: "jobjob@job.com", label: "work")
       ],
-      phones: [Phone(value: "+356666666", label: "personal")],
+      phones: [const Phone(value: "+356666666", label: "personal")],
       instantMessages: [
         InstantMessage(instantMessage: "32425224", label: "Skype")
       ],

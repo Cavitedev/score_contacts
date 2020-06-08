@@ -17,6 +17,7 @@ class TextFieldWithDropdown extends StatefulWidget {
   final Function(String) onChangedValidator;
   final Function(String) onLabelChanged;
   final List<TextInputFormatter> inputFormatters;
+  final FocusNode focusNode;
 
   const TextFieldWithDropdown(
       {Key key,
@@ -28,7 +29,8 @@ class TextFieldWithDropdown extends StatefulWidget {
       this.prefixIcon,
       this.onChangedValidator,
       this.inputFormatters,
-      this.onLabelChanged})
+      this.onLabelChanged,
+      this.focusNode})
       : super(key: key);
 
   @override
@@ -42,7 +44,11 @@ class _TextFieldWithDropdownState extends State<TextFieldWithDropdown> {
 
   @override
   void initState() {
-    focusNode = FocusNode();
+    if (widget.focusNode == null) {
+      focusNode = FocusNode();
+    } else {
+      focusNode = widget.focusNode;
+    }
     changeValidatorWithCheckEmpty = (str) {
       setState(() {
         isActive = str.isNotEmpty;
@@ -57,7 +63,10 @@ class _TextFieldWithDropdownState extends State<TextFieldWithDropdown> {
 
   @override
   void dispose() {
-    focusNode.dispose();
+    if (widget.focusNode == null) {
+      focusNode.dispose();
+    }
+
     super.dispose();
   }
 
