@@ -21,7 +21,7 @@ void $initGetIt(GetIt g, {String environment}) {
       () => firebaseInjectableModule.firebaseAuth);
   g.registerLazySingleton<GoogleSignIn>(
       () => firebaseInjectableModule.googleSignIn);
-  g.registerLazySingleton<IAuthDao>(() => FirebaseAuthDao(
+  g.registerFactory<IAuthDao>(() => FirebaseAuthDao(
       googleSignIn: g<GoogleSignIn>(), firebaseAuth: g<FirebaseAuth>()));
   g.registerFactory<SignInBloc>(() => SignInBloc(authDao: g<IAuthDao>()));
   g.registerFactory<AuthBloc>(() => AuthBloc(g<IAuthDao>()));

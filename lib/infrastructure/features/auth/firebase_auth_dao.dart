@@ -10,9 +10,8 @@ import 'package:scorecontacts/domain/features/user/user_data.dart';
 
 import 'firebase_user_extension.dart';
 
+@Injectable(as: IAuthDao)
 @lazySingleton
-// ignore: deprecated_member_use
-@RegisterAs(IAuthDao)
 class FirebaseAuthDao implements IAuthDao {
   final GoogleSignIn googleSignIn;
   final FirebaseAuth firebaseAuth;
@@ -35,7 +34,7 @@ class FirebaseAuthDao implements IAuthDao {
             "Google sign in has been cancelled"));
       }
       final GoogleSignInAuthentication authentication =
-          await googleAccount.authentication;
+      await googleAccount.authentication;
       final AuthCredential credential = GoogleAuthProvider.getCredential(
           idToken: authentication.idToken,
           accessToken: authentication.accessToken);
