@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:scorecontacts/presentation/core/widgets/alert_dialogue_cancel_ok.dart';
 
+const double helperTextSep = 22;
+
 class OutlinedDropdownButton extends StatefulWidget {
   final List<String> items;
   final FocusNode focusNode;
@@ -12,6 +14,8 @@ class OutlinedDropdownButton extends StatefulWidget {
   final BorderRadius borderRadius;
   final String selected;
 
+  final bool expandBottomMargin;
+
   const OutlinedDropdownButton({
     Key key,
     @required this.items,
@@ -21,6 +25,7 @@ class OutlinedDropdownButton extends StatefulWidget {
     this.onLabelChanged,
     this.selected,
     this.topMargin = 0,
+    this.expandBottomMargin = false,
   }) : super(key: key);
 
   @override
@@ -43,11 +48,10 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
   void initState() {
     _items = [
       ...widget.items
-          .map((String item) =>
-          DropdownMenuItem(
-            value: item,
-            child: Text(item),
-          ))
+          .map((String item) => DropdownMenuItem(
+                value: item,
+                child: Text(item),
+              ))
           .toList(),
       const DropdownMenuItem(
         value: "Custom",
@@ -125,7 +129,8 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
       animation: opacityAnimationController,
       builder: (context, child) =>
           Container(
-            margin: EdgeInsets.only(top: widget.topMargin),
+            margin: EdgeInsets.only(top: widget.topMargin,
+                bottom: widget.expandBottomMargin == true ? helperTextSep : 0),
             padding: const EdgeInsets.only(left: 6),
             height: 48,
             decoration: BoxDecoration(

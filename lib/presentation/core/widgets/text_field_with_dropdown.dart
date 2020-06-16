@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:scorecontacts/domain/core/validators/i_hint_validator.dart';
 import 'package:scorecontacts/domain/features/user/contacts_data/properties/i_label_object.dart';
 
 import 'outlined_dropdown_button.dart';
@@ -39,7 +40,7 @@ class TextFieldWithDropdown extends StatefulWidget {
 
 class _TextFieldWithDropdownState extends State<TextFieldWithDropdown> {
   FocusNode focusNode;
-  String Function(String) changeValidatorWithCheckEmpty;
+  String Function(String) changeValidatorWithCheck;
   bool isActive = false;
 
   @override
@@ -49,7 +50,7 @@ class _TextFieldWithDropdownState extends State<TextFieldWithDropdown> {
     } else {
       focusNode = widget.focusNode;
     }
-    changeValidatorWithCheckEmpty = (str) {
+    changeValidatorWithCheck = (str) {
       setState(() {
         isActive = str.isNotEmpty;
       });
@@ -75,6 +76,9 @@ class _TextFieldWithDropdownState extends State<TextFieldWithDropdown> {
     if (widget.labelObject.value != null) {
       isActive = widget.labelObject.value.isNotEmpty;
     }
+
+    final String hint = _getHint() ?? "";
+
     return Row(
       children: <Widget>[
         Expanded(
@@ -85,6 +89,7 @@ class _TextFieldWithDropdownState extends State<TextFieldWithDropdown> {
             onLabelChanged: widget.onLabelChanged,
             topMargin: TextFieldWithDropdown.topMargin,
             selected: widget.labelObject.label,
+            expandBottomMargin: hint != null && hint.isNotEmpty,
             borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(12), bottomLeft: Radius.circular(12)),
           ),
@@ -94,12 +99,13 @@ class _TextFieldWithDropdownState extends State<TextFieldWithDropdown> {
           child: OutlinedInputField(
             topPadding: TextFieldWithDropdown.topMargin,
             writtenText: widget.labelObject.value ?? "",
+            helperText: hint,
             hintText: widget.hintText,
             prefixIcon: widget.prefixIcon,
             autoCorrect: widget?.autoCorrect,
             keyboardType: widget.keyboardType,
             textCapitalization: widget.textCapitalization,
-            onChangedValidator: changeValidatorWithCheckEmpty,
+            onChangedValidator: changeValidatorWithCheck,
             focusNode: focusNode,
             inputFormatters: widget.inputFormatters,
             borderRadius: const BorderRadius.only(
@@ -110,5 +116,13 @@ class _TextFieldWithDropdownState extends State<TextFieldWithDropdown> {
       ],
     );
   }
-}
 
+  String _getHint() {
+    if (widget.labelObject is IHintValidator) {
+      return (widget.labelObject as IHintValidator)
+          .hintValidate(widget.labelObject.value)
+          .message;
+    }
+    return "";
+  }
+}

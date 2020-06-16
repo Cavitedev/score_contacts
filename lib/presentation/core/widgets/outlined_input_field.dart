@@ -15,6 +15,7 @@ class OutlinedInputField extends StatefulWidget {
   final FocusNode focusNode;
   final List<TextInputFormatter> inputFormatters;
   final String writtenText;
+  final String helperText;
 
   /// return null to not show any helper
   final String Function(String) onChangedValidator;
@@ -33,6 +34,7 @@ class OutlinedInputField extends StatefulWidget {
     this.inputFormatters,
     this.writtenText,
     this.topPadding = 0,
+    this.helperText = "",
   }) : super(key: key);
 
   @override
@@ -79,11 +81,6 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
                 : widget.onChangedValidator(str);
           });
         },
-        onEditingComplete: () {
-          setState(() {
-            showHelperText = true;
-          });
-        },
         focusNode: widget.focusNode,
         autocorrect: widget.autoCorrect,
         enableSuggestions: widget.autoCorrect,
@@ -98,7 +95,9 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
             fillColor: Theme
                 .of(context)
                 .textSelectionColor,
-            helperText: showHelperText ? helpText : null,
+            helperText: (widget.helperText.isNotEmpty)
+                ? widget.helperText
+                : (helpText != null && helpText.isNotEmpty) ? helpText : null,
             prefixIcon: widget.prefixIcon,
             suffixIcon: hasText
                 ? InkWell(

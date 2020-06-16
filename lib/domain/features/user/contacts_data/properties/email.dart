@@ -18,10 +18,10 @@ class Email implements ILabelObject, IHintValidator<String> {
   });
 
   @override
-  @override
   IHint hintValidate(String value) {
     return emailValidate(value);
   }
+
 
   @override
   Email copyWith({
