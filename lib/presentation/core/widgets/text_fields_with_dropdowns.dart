@@ -128,7 +128,8 @@ class _TextFieldsWithDropdownsState extends State<TextFieldsWithDropdowns> {
       Widget child) {
     return SizeTransition(
       sizeFactor: CurvedAnimation(
-          curve: Interval(0, 1, curve: Curves.decelerate), parent: animation),
+          curve: const Interval(0, 1, curve: Curves.decelerate),
+          parent: animation),
       child: child,
     );
   }

@@ -12,7 +12,7 @@ class ContactList extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: <Widget>[
-            TextFieldContainer(
+            const TextFieldContainer(
               child: TextField(
                 decoration: InputDecoration(
                     icon: Icon(
@@ -38,7 +38,7 @@ class ContactList extends StatelessWidget {
         onPressed: () {
           ExtendedNavigator.of(context).pushAddContactPage();
         },
-        child: Icon(
+        child: const Icon(
           Icons.add,
           color: Colors.white,
           size: 28,

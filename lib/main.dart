@@ -45,10 +45,10 @@ class MyApp extends StatelessWidget {
                 textSelectionColor: const Color.fromRGBO(40, 40, 40, 1),
                 textSelectionHandleColor: Colors.blue[600],
                 disabledColor: Colors.grey[500],
-                inputDecorationTheme: InputDecorationTheme(
+                inputDecorationTheme: const InputDecorationTheme(
                   border: InputBorder.none,
                 ),
-                iconTheme: IconThemeData(color: Colors.grey, size: 32),
+                iconTheme: const IconThemeData(color: Colors.grey, size: 32),
                 textTheme: TextTheme(
                     headline5: const TextStyle(
                       fontSize: 24,

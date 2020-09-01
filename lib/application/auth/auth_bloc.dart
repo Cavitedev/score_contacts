@@ -19,7 +19,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     AuthEvent event,
   ) async* {
     if (event is GetUser) {
-      final Option<User> user = await authDao.getSignedUser();
+      final Option<User> user = authDao.getSignedUser();
       yield user.fold(
         () => const UnauthenticatedAuthState(),
         (_) => const AuthenticatedAuthState(),

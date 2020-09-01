@@ -28,15 +28,15 @@ class AddContactForm extends StatelessWidget {
             onTap: () {
               Navigator.pop(context);
             },
-            child: Icon(Icons.close),
+            child: const Icon(Icons.close),
           ),
           actions: <Widget>[
             InkWell(
               onTap: () {
                 //TODO save contact to database
               },
-              child: Padding(
-                padding: const EdgeInsets.only(right: 10),
+              child: const Padding(
+                padding: EdgeInsets.only(right: 10),
                 child: Icon(Icons.check),
               ),
             )
@@ -51,7 +51,7 @@ class AddContactForm extends StatelessWidget {
                   const SizedBox(
                     height: 15,
                   ),
-                  OutlinedInputField(
+                  const OutlinedInputField(
                     hintText: "Name",
                     autoFocus: true,
                     textCapitalization: TextCapitalization.words,
@@ -88,7 +88,7 @@ class AddContactForm extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  OutlinedInputField(
+                  const OutlinedInputField(
                     hintText: "Company",
                     prefixIcon: Icon(Icons.business),
                     textCapitalization: TextCapitalization.words,
@@ -128,14 +128,17 @@ class AddContactForm extends StatelessWidget {
       onAddWidget: () => context
           .bloc<AddContactBloc>()
           .add(AddLabelElement(labelObject: defaultLabelObject)),
+
       onRemoveWidget: (pos) => context.bloc<AddContactBloc>().add(
           RemoveLabelElement(
               pos: pos, labelObjectType: defaultLabelObject.runtimeType)),
+
       onTextChanged: (i, str) => context.bloc<AddContactBloc>().add(
           LabelObjectChangedEvent(
               labelObject: state.labelObjects[defaultLabelObject.runtimeType][i]
                   .copyWith(value: str),
               pos: i)),
+
       onLabelChanged: (i, value) => context.bloc<AddContactBloc>().add(
           LabelObjectChangedEvent(
               labelObject: state.labelObjects[defaultLabelObject.runtimeType][i]

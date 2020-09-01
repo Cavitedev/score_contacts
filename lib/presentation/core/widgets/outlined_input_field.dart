@@ -102,10 +102,10 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
             suffixIcon: hasText
                 ? InkWell(
               onTap: () {
-                _clearText();
-              },
-              child: Icon(Icons.delete),
-            )
+                      _clearText();
+                    },
+                    child: const Icon(Icons.delete),
+                  )
                 : null,
             contentPadding: const EdgeInsets.only(top: 8, bottom: 8, left: 9),
             focusedBorder: OutlineInputBorder(
