@@ -1,6 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
-import 'package:scorecontacts/injection.iconfig.dart';
+import 'package:scorecontacts/injection.config.dart';
 
 final GetIt getIt = GetIt.instance;
 

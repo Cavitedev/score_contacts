@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' as fbAuth;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -12,18 +12,18 @@ import 'firebase_user_extension.dart';
 
 @Injectable(as: IAuthDao)
 @lazySingleton
-class FirebaseAuthDao implements IAuthDao {
+class FirebaseAuthFacade implements IAuthDao {
   final GoogleSignIn googleSignIn;
-  final FirebaseAuth firebaseAuth;
+  final fbAuth.FirebaseAuth firebaseAuth;
 
-  FirebaseAuthDao({
+  FirebaseAuthFacade({
     @required this.googleSignIn,
     @required this.firebaseAuth,
   });
 
   @override
-  Future<Option<User>> getSignedUser() =>
-      firebaseAuth.currentUser().then((user) => optionOf(user?.toDomain()));
+  Option<User> getSignedUser() =>
+      optionOf(firebaseAuth.currentUser?.toDomain());
 
   @override
   Future<Either<AuthFailure, Unit>> signInWithGoogle() async {
@@ -35,7 +35,8 @@ class FirebaseAuthDao implements IAuthDao {
       }
       final GoogleSignInAuthentication authentication =
       await googleAccount.authentication;
-      final AuthCredential credential = GoogleAuthProvider.getCredential(
+      final fbAuth.AuthCredential credential = fbAuth.GoogleAuthProvider
+          .credential(
           idToken: authentication.idToken,
           accessToken: authentication.accessToken);
       await firebaseAuth.signInWithCredential(credential);

@@ -8,8 +8,7 @@ import './bloc.dart';
 
 @injectable
 class AddContactBloc extends Bloc<AddContactEvent, AddContactState> {
-  @override
-  AddContactState get initialState => AddContactState();
+  AddContactBloc() : super(AddContactState());
 
   @override
   Stream<AddContactState> mapEventToState(

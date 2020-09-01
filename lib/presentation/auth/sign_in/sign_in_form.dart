@@ -11,8 +11,7 @@ class SignInForm extends StatelessWidget {
     return BlocConsumer<SignInBloc, SignInState>(
       listener: (context, state) {
         if (state is LoadedSignInState) {
-          ExtendedNavigator.of(context)
-              .pushReplacementNamed(Routes.contactList);
+          ExtendedNavigator.of(context).pushContactList();
         } else if (state is ErrorSignInState) {
           FlushbarHelper.createError(
                   message: state.authFailure.message,

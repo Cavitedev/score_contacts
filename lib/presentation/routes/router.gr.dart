@@ -4,74 +4,79 @@
 // AutoRouteGenerator
 // **************************************************************************
 
-import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:auto_route/auto_route.dart';
-import 'package:scorecontacts/presentation/auth/splash_page.dart';
-import 'package:scorecontacts/presentation/contacts/list_view/contact_list.dart';
-import 'package:scorecontacts/presentation/contacts/add_contacts/add_contact_page.dart';
-import 'package:scorecontacts/presentation/auth/sign_in/sign_in_page.dart';
+// ignore_for_file: public_member_api_docs
 
-abstract class Routes {
-  static const splashPage = '/';
-  static const contactList = '/contact-list';
-  static const addContact = '/add-contact';
-  static const signInPage = '/sign-in-page';
-  static const all = {
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
+
+import '../auth/sign_in/sign_in_page.dart';
+import '../auth/splash_page.dart';
+import '../contacts/add_contacts/add_contact_page.dart';
+import '../contacts/list_view/contact_list.dart';
+
+class Routes {
+  static const String splashPage = '/';
+  static const String contactList = '/contact-list';
+  static const String addContactPage = '/add-contact-page';
+  static const String signInPage = '/sign-in-page';
+  static const all = <String>{
     splashPage,
     contactList,
-    addContact,
+    addContactPage,
     signInPage,
   };
 }
 
 class Router extends RouterBase {
   @override
-  Set<String> get allRoutes => Routes.all;
-
-  @Deprecated('call ExtendedNavigator.ofRouter<Router>() directly')
-  static ExtendedNavigatorState get navigator =>
-      ExtendedNavigator.ofRouter<Router>();
+  List<RouteDef> get routes => _routes;
+  final _routes = <RouteDef>[
+    RouteDef(Routes.splashPage, page: SplashPage),
+    RouteDef(Routes.contactList, page: ContactList),
+    RouteDef(Routes.addContactPage, page: AddContactPage),
+    RouteDef(Routes.signInPage, page: SignInPage),
+  ];
 
   @override
-  Route<dynamic> onGenerateRoute(RouteSettings settings) {
-    switch (settings.name) {
-      case Routes.splashPage:
-        return MaterialPageRoute<dynamic>(
-          builder: (context) => SplashPage(),
-          settings: settings,
-        );
-      case Routes.contactList:
-        return MaterialPageRoute<dynamic>(
-          builder: (context) => ContactList(),
-          settings: settings,
-        );
-      case Routes.addContact:
-        return MaterialPageRoute<dynamic>(
-          builder: (context) => AddContactPage(),
-          settings: settings,
-        );
-      case Routes.signInPage:
-        return MaterialPageRoute<dynamic>(
-          builder: (context) => SignInPage(),
-          settings: settings,
-        );
-      default:
-        return unknownRoutePage(settings.name);
-    }
-  }
+  Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
+  final _pagesMap = <Type, AutoRouteFactory>{
+    SplashPage: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => SplashPage(),
+        settings: data,
+      );
+    },
+    ContactList: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => ContactList(),
+        settings: data,
+      );
+    },
+    AddContactPage: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => AddContactPage(),
+        settings: data,
+      );
+    },
+    SignInPage: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => SignInPage(),
+        settings: data,
+      );
+    },
+  };
 }
 
-// *************************************************************************
-// Navigation helper methods extension
-// **************************************************************************
+/// ************************************************************************
+/// Navigation helper methods extension
+/// *************************************************************************
 
-extension RouterNavigationHelperMethods on ExtendedNavigatorState {
-  Future pushSplashPage() => pushNamed(Routes.splashPage);
+extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
+  Future<dynamic> pushSplashPage() => push<dynamic>(Routes.splashPage);
 
-  Future pushContactList() => pushNamed(Routes.contactList);
+  Future<dynamic> pushContactList() => push<dynamic>(Routes.contactList);
 
-  Future pushAddContact() => pushNamed(Routes.addContact);
+  Future<dynamic> pushAddContactPage() => push<dynamic>(Routes.addContactPage);
 
-  Future pushSignInPage() => pushNamed(Routes.signInPage);
+  Future<dynamic> pushSignInPage() => push<dynamic>(Routes.signInPage);
 }

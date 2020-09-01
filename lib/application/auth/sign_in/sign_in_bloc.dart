@@ -13,10 +13,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
 
   final IAuthDao authDao;
 
-  SignInBloc({this.authDao});
-
-  @override
-  SignInState get initialState => const InitialSignInState();
+  SignInBloc({this.authDao}) : super(const InitialSignInState());
 
   @override
   Stream<SignInState> mapEventToState(

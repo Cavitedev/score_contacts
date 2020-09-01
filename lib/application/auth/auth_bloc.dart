@@ -12,10 +12,7 @@ import './bloc.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final IAuthDao authDao;
 
-  AuthBloc(this.authDao);
-
-  @override
-  AuthState get initialState => const InitialAuthState();
+  AuthBloc(this.authDao) : super(const InitialAuthState());
 
   @override
   Stream<AuthState> mapEventToState(

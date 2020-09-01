@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:scorecontacts/core/fixtures/contacts_fixtures.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/contact_row.dart';
@@ -23,11 +24,11 @@ class ContactList extends StatelessWidget {
             ),
             SingleChildScrollView(
               child: Column(
-                children:
-                contacts.map((contact) =>
-                ContactRow(
-                  contact: contact,
-                )).toList()
+                  children:
+                  contacts.map((contact) =>
+                      ContactRow(
+                        contact: contact,
+                      )).toList()
               ),
             )
           ],
@@ -35,7 +36,7 @@ class ContactList extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context, Routes.addContact);
+          ExtendedNavigator.of(context).pushAddContactPage();
         },
         child: Icon(
           Icons.add,

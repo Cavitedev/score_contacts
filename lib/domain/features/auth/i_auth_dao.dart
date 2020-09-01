@@ -7,5 +7,5 @@ abstract class IAuthDao{
 
   Future<void> signOut();
 
-  Future<Option<User>> getSignedUser();
+  Option<User> getSignedUser();
 }
