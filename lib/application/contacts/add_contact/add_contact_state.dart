@@ -1,27 +1,15 @@
-import 'package:scorecontacts/domain/features/user/contacts_data/properties/email.dart';
-import 'package:scorecontacts/domain/features/user/contacts_data/properties/i_label_object.dart';
-import 'package:scorecontacts/domain/features/user/contacts_data/properties/phone.dart';
+part of 'add_contact_bloc.dart';
 
-class AddContactState {
-  Map<Type, List<ILabelObject>> labelObjects;
+@freezed
+abstract class AddContactState implements _$AddContactState {
+  const AddContactState._();
 
-  AddContactState({
-    this.labelObjects = const {
-      Phone: <Phone>[Phone()],
-      Email: <Email>[Email()]
-    }
-  });
+  const factory AddContactState(
+          {@required Map<Type, List<ILabelObject>> labelObjects}) =
+      _AddContactState;
 
-  AddContactState copyWith({
-    Map<Type, List<ILabelObject>> labelObjects,
-  }) {
-    if (labelObjects == null || identical(labelObjects, this.labelObjects)) {
-      return this;
-    }
-
-    return AddContactState(
-      labelObjects: labelObjects ?? this.labelObjects,
-    );
-  }
+  factory AddContactState.initial() => const AddContactState(labelObjects: {
+        Phone: <Phone>[Phone()],
+        Email: <Email>[Email()]
+      });
 }
-

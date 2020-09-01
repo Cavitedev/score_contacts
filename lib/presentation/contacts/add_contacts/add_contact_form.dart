@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/contacts/add_contact/add_contact_bloc.dart';
-import 'package:scorecontacts/application/contacts/add_contact/add_contact_state.dart';
-import 'package:scorecontacts/application/contacts/add_contact/bloc.dart';
 import 'package:scorecontacts/domain/features/user/contacts_data/properties/email.dart';
 import 'package:scorecontacts/domain/features/user/contacts_data/properties/i_label_object.dart';
 import 'package:scorecontacts/domain/features/user/contacts_data/properties/phone.dart';
@@ -127,23 +125,20 @@ class AddContactForm extends StatelessWidget {
       inputFormatters: inputFormatters,
       onAddWidget: () => context
           .bloc<AddContactBloc>()
-          .add(AddLabelElement(labelObject: defaultLabelObject)),
-
+          .add(AddContactEvent.addLabelObject(defaultLabelObject)),
       onRemoveWidget: (pos) => context.bloc<AddContactBloc>().add(
-          RemoveLabelElement(
-              pos: pos, labelObjectType: defaultLabelObject.runtimeType)),
-
+          AddContactEvent.removeLabelObject(
+              defaultLabelObject.runtimeType, pos)),
       onTextChanged: (i, str) => context.bloc<AddContactBloc>().add(
-          LabelObjectChangedEvent(
-              labelObject: state.labelObjects[defaultLabelObject.runtimeType][i]
+          AddContactEvent.labelObjectChanged(
+              state.labelObjects[defaultLabelObject.runtimeType][i]
                   .copyWith(value: str),
-              pos: i)),
-
+              i)),
       onLabelChanged: (i, value) => context.bloc<AddContactBloc>().add(
-          LabelObjectChangedEvent(
-              labelObject: state.labelObjects[defaultLabelObject.runtimeType][i]
+          AddContactEvent.labelObjectChanged(
+              state.labelObjects[defaultLabelObject.runtimeType][i]
                   .copyWith(label: value),
-              pos: i)),
+              i)),
     );
   }
 }

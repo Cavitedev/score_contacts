@@ -36,7 +36,6 @@ class Router extends RouterBase {
     RouteDef(Routes.addContactPage, page: AddContactPage),
     RouteDef(Routes.signInPage, page: SignInPage),
   ];
-
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
   final _pagesMap = <Type, AutoRouteFactory>{
