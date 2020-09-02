@@ -26,7 +26,6 @@ const $Company = _$CompanyTearOff();
 
 mixin _$Company {
   String get name;
-
   String get title;
 
   $CompanyCopyWith<Company> get copyWith;
@@ -35,7 +34,6 @@ mixin _$Company {
 abstract class $CompanyCopyWith<$Res> {
   factory $CompanyCopyWith(Company value, $Res Function(Company) then) =
       _$CompanyCopyWithImpl<$Res>;
-
   $Res call({String name, String title});
 }
 
@@ -43,7 +41,6 @@ class _$CompanyCopyWithImpl<$Res> implements $CompanyCopyWith<$Res> {
   _$CompanyCopyWithImpl(this._value, this._then);
 
   final Company _value;
-
   // ignore: unused_field
   final $Res Function(Company) _then;
 
@@ -62,7 +59,6 @@ class _$CompanyCopyWithImpl<$Res> implements $CompanyCopyWith<$Res> {
 abstract class _$CompanyCopyWith<$Res> implements $CompanyCopyWith<$Res> {
   factory _$CompanyCopyWith(_Company value, $Res Function(_Company) then) =
       __$CompanyCopyWithImpl<$Res>;
-
   @override
   $Res call({String name, String title});
 }
@@ -123,15 +119,12 @@ class _$_Company extends _Company {
 
 abstract class _Company extends Company {
   const _Company._() : super._();
-
   const factory _Company({String name, String title}) = _$_Company;
 
   @override
   String get name;
-
   @override
   String get title;
-
   @override
   _$CompanyCopyWith<_Company> get copyWith;
 }

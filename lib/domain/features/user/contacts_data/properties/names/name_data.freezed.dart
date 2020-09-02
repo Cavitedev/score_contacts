@@ -38,17 +38,11 @@ const $NameData = _$NameDataTearOff();
 
 mixin _$NameData {
   PhoneticNames get phoneticNames;
-
   String get firstName;
-
   String get nickname;
-
   String get namePrefix;
-
   String get middleName;
-
   String get surnames;
-
   String get nameSuffix;
 
   $NameDataCopyWith<NameData> get copyWith;
@@ -57,7 +51,6 @@ mixin _$NameData {
 abstract class $NameDataCopyWith<$Res> {
   factory $NameDataCopyWith(NameData value, $Res Function(NameData) then) =
       _$NameDataCopyWithImpl<$Res>;
-
   $Res call(
       {PhoneticNames phoneticNames,
       String firstName,
@@ -72,7 +65,6 @@ class _$NameDataCopyWithImpl<$Res> implements $NameDataCopyWith<$Res> {
   _$NameDataCopyWithImpl(this._value, this._then);
 
   final NameData _value;
-
   // ignore: unused_field
   final $Res Function(NameData) _then;
 
@@ -106,7 +98,6 @@ class _$NameDataCopyWithImpl<$Res> implements $NameDataCopyWith<$Res> {
 abstract class _$NameDataCopyWith<$Res> implements $NameDataCopyWith<$Res> {
   factory _$NameDataCopyWith(_NameData value, $Res Function(_NameData) then) =
       __$NameDataCopyWithImpl<$Res>;
-
   @override
   $Res call(
       {PhoneticNames phoneticNames,
@@ -229,7 +220,6 @@ class _$_NameData extends _NameData {
 
 abstract class _NameData extends NameData {
   const _NameData._() : super._();
-
   const factory _NameData(
       {PhoneticNames phoneticNames,
       String firstName,
@@ -241,25 +231,18 @@ abstract class _NameData extends NameData {
 
   @override
   PhoneticNames get phoneticNames;
-
   @override
   String get firstName;
-
   @override
   String get nickname;
-
   @override
   String get namePrefix;
-
   @override
   String get middleName;
-
   @override
   String get surnames;
-
   @override
   String get nameSuffix;
-
   @override
   _$NameDataCopyWith<_NameData> get copyWith;
 }

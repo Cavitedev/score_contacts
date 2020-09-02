@@ -62,7 +62,6 @@ mixin _$AddContactEvent {
     @required Result updateNameData(NameData nameData),
     @required Result updateCompany(Company company),
   });
-
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result labelObjectChanged(ILabelObject labelObject, int pos),
@@ -72,7 +71,6 @@ mixin _$AddContactEvent {
     Result updateCompany(Company company),
     @required Result orElse(),
   });
-
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result labelObjectChanged(_LabelObjectChanged value),
@@ -81,7 +79,6 @@ mixin _$AddContactEvent {
     @required Result updateNameData(_UpdateNameData value),
     @required Result updateCompany(_UpdateCompanyNameData value),
   });
-
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result labelObjectChanged(_LabelObjectChanged value),
@@ -104,7 +101,6 @@ class _$AddContactEventCopyWithImpl<$Res>
   _$AddContactEventCopyWithImpl(this._value, this._then);
 
   final AddContactEvent _value;
-
   // ignore: unused_field
   final $Res Function(AddContactEvent) _then;
 }
@@ -113,7 +109,6 @@ abstract class _$LabelObjectChangedCopyWith<$Res> {
   factory _$LabelObjectChangedCopyWith(
           _LabelObjectChanged value, $Res Function(_LabelObjectChanged) then) =
       __$LabelObjectChangedCopyWithImpl<$Res>;
-
   $Res call({ILabelObject labelObject, int pos});
 }
 
@@ -260,9 +255,7 @@ abstract class _LabelObjectChanged implements AddContactEvent {
       _$_LabelObjectChanged;
 
   ILabelObject get labelObject;
-
   int get pos;
-
   _$LabelObjectChangedCopyWith<_LabelObjectChanged> get copyWith;
 }
 
@@ -270,7 +263,6 @@ abstract class _$AddLabelObjectCopyWith<$Res> {
   factory _$AddLabelObjectCopyWith(
           _AddLabelObject value, $Res Function(_AddLabelObject) then) =
       __$AddLabelObjectCopyWithImpl<$Res>;
-
   $Res call({ILabelObject labelObject});
 }
 
@@ -405,7 +397,6 @@ abstract class _AddLabelObject implements AddContactEvent {
   const factory _AddLabelObject(ILabelObject labelObject) = _$_AddLabelObject;
 
   ILabelObject get labelObject;
-
   _$AddLabelObjectCopyWith<_AddLabelObject> get copyWith;
 }
 
@@ -413,7 +404,6 @@ abstract class _$RemoveLabelObjectCopyWith<$Res> {
   factory _$RemoveLabelObjectCopyWith(
           _RemoveLabelObject value, $Res Function(_RemoveLabelObject) then) =
       __$RemoveLabelObjectCopyWithImpl<$Res>;
-
   $Res call({Type labelObjectType, int pos});
 }
 
@@ -562,9 +552,7 @@ abstract class _RemoveLabelObject implements AddContactEvent {
       _$_RemoveLabelObject;
 
   Type get labelObjectType;
-
   int get pos;
-
   _$RemoveLabelObjectCopyWith<_RemoveLabelObject> get copyWith;
 }
 
@@ -574,6 +562,8 @@ abstract class _$UpdateNameDataCopyWith<$Res> {
       __$UpdateNameDataCopyWithImpl<$Res>;
 
   $Res call({NameData nameData});
+
+  $NameDataCopyWith<$Res> get nameData;
 }
 
 class __$UpdateNameDataCopyWithImpl<$Res>
@@ -593,6 +583,16 @@ class __$UpdateNameDataCopyWithImpl<$Res>
     return _then(_UpdateNameData(
       nameData == freezed ? _value.nameData : nameData as NameData,
     ));
+  }
+
+  @override
+  $NameDataCopyWith<$Res> get nameData {
+    if (_value.nameData == null) {
+      return null;
+    }
+    return $NameDataCopyWith<$Res>(_value.nameData, (value) {
+      return _then(_value.copyWith(nameData: value));
+    });
   }
 }
 
@@ -707,7 +707,6 @@ abstract class _UpdateNameData implements AddContactEvent {
   const factory _UpdateNameData(NameData nameData) = _$_UpdateNameData;
 
   NameData get nameData;
-
   _$UpdateNameDataCopyWith<_UpdateNameData> get copyWith;
 }
 
@@ -715,7 +714,6 @@ abstract class _$UpdateCompanyNameDataCopyWith<$Res> {
   factory _$UpdateCompanyNameDataCopyWith(_UpdateCompanyNameData value,
           $Res Function(_UpdateCompanyNameData) then) =
       __$UpdateCompanyNameDataCopyWithImpl<$Res>;
-
   $Res call({Company company});
 
   $CompanyCopyWith<$Res> get company;
@@ -863,7 +861,6 @@ abstract class _UpdateCompanyNameData implements AddContactEvent {
       _$_UpdateCompanyNameData;
 
   Company get company;
-
   _$UpdateCompanyNameDataCopyWith<_UpdateCompanyNameData> get copyWith;
 }
 
@@ -888,23 +885,22 @@ const $AddContactState = _$AddContactStateTearOff();
 
 mixin _$AddContactState {
   Map<Type, List<ILabelObject>> get labelObjects;
-
   NameData get nameData;
-
   Company get company;
 
   $AddContactStateCopyWith<AddContactState> get copyWith;
 }
 
 abstract class $AddContactStateCopyWith<$Res> {
-  factory $AddContactStateCopyWith(
-          AddContactState value, $Res Function(AddContactState) then) =
-      _$AddContactStateCopyWithImpl<$Res>;
+  factory $AddContactStateCopyWith(AddContactState value,
+      $Res Function(AddContactState) then) =
+  _$AddContactStateCopyWithImpl<$Res>;
 
-  $Res call(
-      {Map<Type, List<ILabelObject>> labelObjects,
-      NameData nameData,
-      Company company});
+  $Res call({Map<Type, List<ILabelObject>> labelObjects,
+    NameData nameData,
+    Company company});
+
+  $NameDataCopyWith<$Res> get nameData;
 
   $CompanyCopyWith<$Res> get company;
 }
@@ -914,7 +910,6 @@ class _$AddContactStateCopyWithImpl<$Res>
   _$AddContactStateCopyWithImpl(this._value, this._then);
 
   final AddContactState _value;
-
   // ignore: unused_field
   final $Res Function(AddContactState) _then;
 
@@ -934,6 +929,16 @@ class _$AddContactStateCopyWithImpl<$Res>
   }
 
   @override
+  $NameDataCopyWith<$Res> get nameData {
+    if (_value.nameData == null) {
+      return null;
+    }
+    return $NameDataCopyWith<$Res>(_value.nameData, (value) {
+      return _then(_value.copyWith(nameData: value));
+    });
+  }
+
+  @override
   $CompanyCopyWith<$Res> get company {
     if (_value.company == null) {
       return null;
@@ -946,15 +951,17 @@ class _$AddContactStateCopyWithImpl<$Res>
 
 abstract class _$AddContactStateCopyWith<$Res>
     implements $AddContactStateCopyWith<$Res> {
-  factory _$AddContactStateCopyWith(
-          _AddContactState value, $Res Function(_AddContactState) then) =
-      __$AddContactStateCopyWithImpl<$Res>;
+  factory _$AddContactStateCopyWith(_AddContactState value,
+      $Res Function(_AddContactState) then) =
+  __$AddContactStateCopyWithImpl<$Res>;
 
   @override
-  $Res call(
-      {Map<Type, List<ILabelObject>> labelObjects,
-      NameData nameData,
-      Company company});
+  $Res call({Map<Type, List<ILabelObject>> labelObjects,
+    NameData nameData,
+    Company company});
+
+  @override
+  $NameDataCopyWith<$Res> get nameData;
 
   @override
   $CompanyCopyWith<$Res> get company;
@@ -1042,7 +1049,6 @@ class _$_AddContactState extends _AddContactState with DiagnosticableTreeMixin {
 
 abstract class _AddContactState extends AddContactState {
   const _AddContactState._() : super._();
-
   const factory _AddContactState(
       {@required Map<Type, List<ILabelObject>> labelObjects,
       NameData nameData,
@@ -1050,13 +1056,10 @@ abstract class _AddContactState extends AddContactState {
 
   @override
   Map<Type, List<ILabelObject>> get labelObjects;
-
   @override
   NameData get nameData;
-
   @override
   Company get company;
-
   @override
   _$AddContactStateCopyWith<_AddContactState> get copyWith;
 }
