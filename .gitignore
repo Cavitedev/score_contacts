@@ -32,7 +32,7 @@
 
 #Custom
 google-services.json
-
+.freezed.dart
 # Web related
 lib/generated_plugin_registrant.dart
 
@@ -44,3 +44,5 @@ app.*.map.json
 
 # Exceptions to above rules.
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+/lib/domain/features/user/contacts_data/properties/names/name_data.freezed.dart
+/lib/domain/features/user/contacts_data/properties/company.freezed.dart
