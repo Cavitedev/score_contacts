@@ -8,9 +8,10 @@ class Phone implements ILabelObject {
   @override
   final List<String> otherLabels;
 
-  const Phone({this.value,
-    this.label,
-    this.otherLabels = const ["Mobile", "Work", "Other"]});
+  const Phone(
+      {this.value,
+      this.label = "Mobile",
+      this.otherLabels = const ["Mobile", "Work", "Other"]});
 
   @override
   String toString() {
@@ -20,10 +21,10 @@ class Phone implements ILabelObject {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is Phone &&
-              runtimeType == other.runtimeType &&
-              value == other.value &&
-              label == other.label;
+      other is Phone &&
+          runtimeType == other.runtimeType &&
+          value == other.value &&
+          label == other.label;
 
   @override
   int get hashCode => value.hashCode ^ label.hashCode;

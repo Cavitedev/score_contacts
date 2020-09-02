@@ -10,10 +10,9 @@ import 'package:scorecontacts/domain/features/user/contacts_data/properties/webs
 
 List<Contact> contacts = [
   Contact(
-      nameData: NameData(
+      nameData: const NameData(
           firstName: "Name1",
-          firstSurname: "firstSurname1",
-          secondSurname: "secondSurname1",
+          surnames: "firstSurname1",
           middleName: "middle name 1",
           namePrefix: "Sr1",
           nameSuffix: "pal1"),
@@ -37,10 +36,9 @@ List<Contact> contacts = [
       ],
       websites: [Website(website: "example.com")]),
   Contact(
-      nameData: NameData(
+      nameData: const NameData(
           firstName: "Name2",
-          firstSurname: "firstSurname2",
-          secondSurname: "secondSurname2",
+          surnames: "firstSurname2",
           middleName: "middle name 2",
           namePrefix: "Sr2",
           nameSuffix: "pal2"),

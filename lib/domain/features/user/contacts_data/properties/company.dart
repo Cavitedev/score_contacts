@@ -1,23 +1,13 @@
-class Company{
-  String name;
-  String title;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  Company({this.name, this.title});
+part 'company.freezed.dart';
 
+@freezed
+abstract class Company implements _$Company {
+  const Company._();
 
-  @override
-  String toString() {
-    return 'Company{name: $name, title: $title}';
-  }
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Company &&
-          runtimeType == other.runtimeType &&
-          name == other.name &&
-          title == other.title;
-
-  @override
-  int get hashCode => name.hashCode ^ title.hashCode;
+  const factory Company({
+    String name,
+    String title,
+  }) = _Company;
 }

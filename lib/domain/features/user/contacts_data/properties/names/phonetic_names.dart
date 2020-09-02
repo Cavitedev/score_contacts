@@ -4,9 +4,11 @@ class PhoneticNames{
   final String phoneticFirstSurname;
   final String phoneticSecondSurname;
 
-  PhoneticNames({this.phoneticFirstName, this.phoneticMiddleName,
-      this.phoneticFirstSurname, this.phoneticSecondSurname});
-
+  const PhoneticNames(
+      {this.phoneticFirstName,
+      this.phoneticMiddleName,
+      this.phoneticFirstSurname,
+      this.phoneticSecondSurname});
 
   @override
   String toString() {
