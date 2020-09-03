@@ -32,11 +32,8 @@ const $Contact = _$ContactTearOff();
 
 mixin _$Contact {
   UniqueID get id;
-
   NameData get nameData;
-
   Map<Type, List<ILabelObject>> get labelObjects;
-
   List<Company> get companies;
 
   $ContactCopyWith<Contact> get copyWith;
@@ -45,7 +42,6 @@ mixin _$Contact {
 abstract class $ContactCopyWith<$Res> {
   factory $ContactCopyWith(Contact value, $Res Function(Contact) then) =
       _$ContactCopyWithImpl<$Res>;
-
   $Res call(
       {UniqueID id,
       NameData nameData,
@@ -59,7 +55,6 @@ class _$ContactCopyWithImpl<$Res> implements $ContactCopyWith<$Res> {
   _$ContactCopyWithImpl(this._value, this._then);
 
   final Contact _value;
-
   // ignore: unused_field
   final $Res Function(Contact) _then;
 
@@ -95,7 +90,6 @@ class _$ContactCopyWithImpl<$Res> implements $ContactCopyWith<$Res> {
 abstract class _$ContactCopyWith<$Res> implements $ContactCopyWith<$Res> {
   factory _$ContactCopyWith(_Contact value, $Res Function(_Contact) then) =
       __$ContactCopyWithImpl<$Res>;
-
   @override
   $Res call(
       {UniqueID id,
@@ -190,7 +184,6 @@ class _$_Contact extends _Contact {
 
 abstract class _Contact extends Contact {
   const _Contact._() : super._();
-
   const factory _Contact(
       {@required UniqueID id,
       @required NameData nameData,
@@ -199,16 +192,12 @@ abstract class _Contact extends Contact {
 
   @override
   UniqueID get id;
-
   @override
   NameData get nameData;
-
   @override
   Map<Type, List<ILabelObject>> get labelObjects;
-
   @override
   List<Company> get companies;
-
   @override
   _$ContactCopyWith<_Contact> get copyWith;
 }

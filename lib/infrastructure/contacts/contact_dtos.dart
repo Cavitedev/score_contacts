@@ -10,7 +10,6 @@ import 'package:scorecontacts/domain/user/contacts_data/properties/phone.dart';
 import 'package:scorecontacts/infrastructure/firebase_core/server_time_stamp_converter.dart';
 
 part 'contact_dtos.freezed.dart';
-
 part 'contact_dtos.g.dart';
 
 @freezed
@@ -19,7 +18,7 @@ abstract class ContactDTO implements _$ContactDTO {
 
   const factory ContactDTO({
     @JsonKey(ignore: true) String id,
-    @required NameDataDTO nameDataDTO,
+    NameDataDTO nameDataDTO,
     List<CompanyDTO> companiesDTO,
     List<LabelObjectDTO<ILabelObject>> emailsDTO,
     List<LabelObjectDTO<ILabelObject>> phonesDTO,
@@ -62,13 +61,12 @@ abstract class ContactDTO implements _$ContactDTO {
     return ContactDTO.fromJson(doc.data()).copyWith(id: doc.id);
   }
 }
-
 @freezed
 abstract class NameDataDTO implements _$NameDataDTO {
   const NameDataDTO._();
 
   const factory NameDataDTO({
-    @required String name,
+    String name,
     String surname,
   }) = _NameDataDTO;
 
@@ -93,7 +91,7 @@ abstract class LabelObjectDTO<T extends ILabelObject>
   const LabelObjectDTO._();
 
   const factory LabelObjectDTO({
-    @required String name,
+    String name,
     String label,
   }) = _LabelObjectDTO;
 
@@ -121,7 +119,7 @@ abstract class CompanyDTO implements _$CompanyDTO {
   const CompanyDTO._();
 
   const factory CompanyDTO({
-    @required String name,
+    String name,
     String title,
   }) = _CompanyDTO;
 

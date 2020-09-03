@@ -9,6 +9,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+import '../../domain/user/contacts_data/contact.dart';
 import '../auth/sign_in/sign_in_page.dart';
 import '../auth/splash_page.dart';
 import '../contacts/add_contacts/add_contact_page.dart';
@@ -52,8 +53,12 @@ class Router extends RouterBase {
       );
     },
     AddContactPage: (data) {
+      final args = data.getArgs<AddContactPageArguments>(nullOk: false);
       return MaterialPageRoute<dynamic>(
-        builder: (context) => AddContactPage(),
+        builder: (context) => AddContactPage(
+          key: args.key,
+          contact: args.contact,
+        ),
         settings: data,
       );
     },
@@ -75,7 +80,26 @@ extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
 
   Future<dynamic> pushContactList() => push<dynamic>(Routes.contactList);
 
-  Future<dynamic> pushAddContactPage() => push<dynamic>(Routes.addContactPage);
+  Future<dynamic> pushAddContactPage({
+    Key key,
+    @required Contact contact,
+  }) =>
+      push<dynamic>(
+        Routes.addContactPage,
+        arguments: AddContactPageArguments(key: key, contact: contact),
+      );
 
   Future<dynamic> pushSignInPage() => push<dynamic>(Routes.signInPage);
+}
+
+/// ************************************************************************
+/// Arguments holder classes
+/// *************************************************************************
+
+/// AddContactPage arguments holder class
+class AddContactPageArguments {
+  final Key key;
+  final Contact contact;
+
+  AddContactPageArguments({this.key, @required this.contact});
 }

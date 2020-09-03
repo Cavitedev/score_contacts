@@ -8,7 +8,6 @@ part of 'contact_dtos.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
-
 ContactDTO _$ContactDTOFromJson(Map<String, dynamic> json) {
   return _ContactDTO.fromJson(json);
 }
@@ -19,7 +18,7 @@ class _$ContactDTOTearOff {
 // ignore: unused_element
   _ContactDTO call(
       {@JsonKey(ignore: true) String id,
-      @required NameDataDTO nameDataDTO,
+      NameDataDTO nameDataDTO,
       List<CompanyDTO> companiesDTO,
       List<LabelObjectDTO<ILabelObject>> emailsDTO,
       List<LabelObjectDTO<ILabelObject>> phonesDTO,
@@ -41,20 +40,14 @@ const $ContactDTO = _$ContactDTOTearOff();
 mixin _$ContactDTO {
   @JsonKey(ignore: true)
   String get id;
-
   NameDataDTO get nameDataDTO;
-
   List<CompanyDTO> get companiesDTO;
-
   List<LabelObjectDTO<ILabelObject>> get emailsDTO;
-
   List<LabelObjectDTO<ILabelObject>> get phonesDTO;
-
   @ServerTimeStampConverter()
   FieldValue get serverTimeStamp;
 
   Map<String, dynamic> toJson();
-
   $ContactDTOCopyWith<ContactDTO> get copyWith;
 }
 
@@ -62,7 +55,6 @@ abstract class $ContactDTOCopyWith<$Res> {
   factory $ContactDTOCopyWith(
           ContactDTO value, $Res Function(ContactDTO) then) =
       _$ContactDTOCopyWithImpl<$Res>;
-
   $Res call(
       {@JsonKey(ignore: true) String id,
       NameDataDTO nameDataDTO,
@@ -78,7 +70,6 @@ class _$ContactDTOCopyWithImpl<$Res> implements $ContactDTOCopyWith<$Res> {
   _$ContactDTOCopyWithImpl(this._value, this._then);
 
   final ContactDTO _value;
-
   // ignore: unused_field
   final $Res Function(ContactDTO) _then;
 
@@ -126,7 +117,6 @@ abstract class _$ContactDTOCopyWith<$Res> implements $ContactDTOCopyWith<$Res> {
   factory _$ContactDTOCopyWith(
           _ContactDTO value, $Res Function(_ContactDTO) then) =
       __$ContactDTOCopyWithImpl<$Res>;
-
   @override
   $Res call(
       {@JsonKey(ignore: true) String id,
@@ -181,15 +171,13 @@ class __$ContactDTOCopyWithImpl<$Res> extends _$ContactDTOCopyWithImpl<$Res>
 
 @JsonSerializable()
 class _$_ContactDTO extends _ContactDTO {
-  const _$_ContactDTO(
-      {@JsonKey(ignore: true) this.id,
-      @required this.nameDataDTO,
-      this.companiesDTO,
-      this.emailsDTO,
-      this.phonesDTO,
-      @required @ServerTimeStampConverter() this.serverTimeStamp})
-      : assert(nameDataDTO != null),
-        assert(serverTimeStamp != null),
+  const _$_ContactDTO({@JsonKey(ignore: true) this.id,
+    this.nameDataDTO,
+    this.companiesDTO,
+    this.emailsDTO,
+    this.phonesDTO,
+    @required @ServerTimeStampConverter() this.serverTimeStamp})
+      : assert(serverTimeStamp != null),
         super._();
 
   factory _$_ContactDTO.fromJson(Map<String, dynamic> json) =>
@@ -260,14 +248,12 @@ class _$_ContactDTO extends _ContactDTO {
 
 abstract class _ContactDTO extends ContactDTO {
   const _ContactDTO._() : super._();
-
-  const factory _ContactDTO(
-          {@JsonKey(ignore: true) String id,
-          @required NameDataDTO nameDataDTO,
-          List<CompanyDTO> companiesDTO,
-          List<LabelObjectDTO<ILabelObject>> emailsDTO,
-          List<LabelObjectDTO<ILabelObject>> phonesDTO,
-          @required @ServerTimeStampConverter() FieldValue serverTimeStamp}) =
+  const factory _ContactDTO({@JsonKey(ignore: true) String id,
+    NameDataDTO nameDataDTO,
+    List<CompanyDTO> companiesDTO,
+    List<LabelObjectDTO<ILabelObject>> emailsDTO,
+    List<LabelObjectDTO<ILabelObject>> phonesDTO,
+    @required @ServerTimeStampConverter() FieldValue serverTimeStamp}) =
       _$_ContactDTO;
 
   factory _ContactDTO.fromJson(Map<String, dynamic> json) =
@@ -276,23 +262,17 @@ abstract class _ContactDTO extends ContactDTO {
   @override
   @JsonKey(ignore: true)
   String get id;
-
   @override
   NameDataDTO get nameDataDTO;
-
   @override
   List<CompanyDTO> get companiesDTO;
-
   @override
   List<LabelObjectDTO<ILabelObject>> get emailsDTO;
-
   @override
   List<LabelObjectDTO<ILabelObject>> get phonesDTO;
-
   @override
   @ServerTimeStampConverter()
   FieldValue get serverTimeStamp;
-
   @override
   _$ContactDTOCopyWith<_ContactDTO> get copyWith;
 }
@@ -305,7 +285,7 @@ class _$NameDataDTOTearOff {
   const _$NameDataDTOTearOff();
 
 // ignore: unused_element
-  _NameDataDTO call({@required String name, String surname}) {
+  _NameDataDTO call({String name, String surname}) {
     return _NameDataDTO(
       name: name,
       surname: surname,
@@ -318,11 +298,9 @@ const $NameDataDTO = _$NameDataDTOTearOff();
 
 mixin _$NameDataDTO {
   String get name;
-
   String get surname;
 
   Map<String, dynamic> toJson();
-
   $NameDataDTOCopyWith<NameDataDTO> get copyWith;
 }
 
@@ -330,7 +308,6 @@ abstract class $NameDataDTOCopyWith<$Res> {
   factory $NameDataDTOCopyWith(
           NameDataDTO value, $Res Function(NameDataDTO) then) =
       _$NameDataDTOCopyWithImpl<$Res>;
-
   $Res call({String name, String surname});
 }
 
@@ -338,7 +315,6 @@ class _$NameDataDTOCopyWithImpl<$Res> implements $NameDataDTOCopyWith<$Res> {
   _$NameDataDTOCopyWithImpl(this._value, this._then);
 
   final NameDataDTO _value;
-
   // ignore: unused_field
   final $Res Function(NameDataDTO) _then;
 
@@ -359,7 +335,6 @@ abstract class _$NameDataDTOCopyWith<$Res>
   factory _$NameDataDTOCopyWith(
           _NameDataDTO value, $Res Function(_NameDataDTO) then) =
       __$NameDataDTOCopyWithImpl<$Res>;
-
   @override
   $Res call({String name, String surname});
 }
@@ -387,9 +362,7 @@ class __$NameDataDTOCopyWithImpl<$Res> extends _$NameDataDTOCopyWithImpl<$Res>
 
 @JsonSerializable()
 class _$_NameDataDTO extends _NameDataDTO {
-  const _$_NameDataDTO({@required this.name, this.surname})
-      : assert(name != null),
-        super._();
+  const _$_NameDataDTO({this.name, this.surname}) : super._();
 
   factory _$_NameDataDTO.fromJson(Map<String, dynamic> json) =>
       _$_$_NameDataDTOFromJson(json);
@@ -433,18 +406,15 @@ class _$_NameDataDTO extends _NameDataDTO {
 abstract class _NameDataDTO extends NameDataDTO {
   const _NameDataDTO._() : super._();
 
-  const factory _NameDataDTO({@required String name, String surname}) =
-      _$_NameDataDTO;
+  const factory _NameDataDTO({String name, String surname}) = _$_NameDataDTO;
 
   factory _NameDataDTO.fromJson(Map<String, dynamic> json) =
       _$_NameDataDTO.fromJson;
 
   @override
   String get name;
-
   @override
   String get surname;
-
   @override
   _$NameDataDTOCopyWith<_NameDataDTO> get copyWith;
 }
@@ -458,8 +428,7 @@ class _$LabelObjectDTOTearOff {
   const _$LabelObjectDTOTearOff();
 
 // ignore: unused_element
-  _LabelObjectDTO<T> call<T extends ILabelObject>(
-      {@required String name, String label}) {
+  _LabelObjectDTO<T> call<T extends ILabelObject>({String name, String label}) {
     return _LabelObjectDTO<T>(
       name: name,
       label: label,
@@ -472,11 +441,9 @@ const $LabelObjectDTO = _$LabelObjectDTOTearOff();
 
 mixin _$LabelObjectDTO<T extends ILabelObject> {
   String get name;
-
   String get label;
 
   Map<String, dynamic> toJson();
-
   $LabelObjectDTOCopyWith<T, LabelObjectDTO<T>> get copyWith;
 }
 
@@ -484,7 +451,6 @@ abstract class $LabelObjectDTOCopyWith<T extends ILabelObject, $Res> {
   factory $LabelObjectDTOCopyWith(
           LabelObjectDTO<T> value, $Res Function(LabelObjectDTO<T>) then) =
       _$LabelObjectDTOCopyWithImpl<T, $Res>;
-
   $Res call({String name, String label});
 }
 
@@ -493,7 +459,6 @@ class _$LabelObjectDTOCopyWithImpl<T extends ILabelObject, $Res>
   _$LabelObjectDTOCopyWithImpl(this._value, this._then);
 
   final LabelObjectDTO<T> _value;
-
   // ignore: unused_field
   final $Res Function(LabelObjectDTO<T>) _then;
 
@@ -514,7 +479,6 @@ abstract class _$LabelObjectDTOCopyWith<T extends ILabelObject, $Res>
   factory _$LabelObjectDTOCopyWith(
           _LabelObjectDTO<T> value, $Res Function(_LabelObjectDTO<T>) then) =
       __$LabelObjectDTOCopyWithImpl<T, $Res>;
-
   @override
   $Res call({String name, String label});
 }
@@ -543,9 +507,7 @@ class __$LabelObjectDTOCopyWithImpl<T extends ILabelObject, $Res>
 
 @JsonSerializable()
 class _$_LabelObjectDTO<T extends ILabelObject> extends _LabelObjectDTO<T> {
-  const _$_LabelObjectDTO({@required this.name, this.label})
-      : assert(name != null),
-        super._();
+  const _$_LabelObjectDTO({this.name, this.label}) : super._();
 
   factory _$_LabelObjectDTO.fromJson(Map<String, dynamic> json) =>
       _$_$_LabelObjectDTOFromJson(json);
@@ -590,18 +552,16 @@ abstract class _LabelObjectDTO<T extends ILabelObject>
     extends LabelObjectDTO<T> {
   const _LabelObjectDTO._() : super._();
 
-  const factory _LabelObjectDTO({@required String name, String label}) =
-      _$_LabelObjectDTO<T>;
+  const factory _LabelObjectDTO({String name, String label}) =
+  _$_LabelObjectDTO<T>;
 
   factory _LabelObjectDTO.fromJson(Map<String, dynamic> json) =
       _$_LabelObjectDTO<T>.fromJson;
 
   @override
   String get name;
-
   @override
   String get label;
-
   @override
   _$LabelObjectDTOCopyWith<T, _LabelObjectDTO<T>> get copyWith;
 }
@@ -614,7 +574,7 @@ class _$CompanyDTOTearOff {
   const _$CompanyDTOTearOff();
 
 // ignore: unused_element
-  _CompanyDTO call({@required String name, String title}) {
+  _CompanyDTO call({String name, String title}) {
     return _CompanyDTO(
       name: name,
       title: title,
@@ -627,11 +587,9 @@ const $CompanyDTO = _$CompanyDTOTearOff();
 
 mixin _$CompanyDTO {
   String get name;
-
   String get title;
 
   Map<String, dynamic> toJson();
-
   $CompanyDTOCopyWith<CompanyDTO> get copyWith;
 }
 
@@ -639,7 +597,6 @@ abstract class $CompanyDTOCopyWith<$Res> {
   factory $CompanyDTOCopyWith(
           CompanyDTO value, $Res Function(CompanyDTO) then) =
       _$CompanyDTOCopyWithImpl<$Res>;
-
   $Res call({String name, String title});
 }
 
@@ -647,7 +604,6 @@ class _$CompanyDTOCopyWithImpl<$Res> implements $CompanyDTOCopyWith<$Res> {
   _$CompanyDTOCopyWithImpl(this._value, this._then);
 
   final CompanyDTO _value;
-
   // ignore: unused_field
   final $Res Function(CompanyDTO) _then;
 
@@ -667,7 +623,6 @@ abstract class _$CompanyDTOCopyWith<$Res> implements $CompanyDTOCopyWith<$Res> {
   factory _$CompanyDTOCopyWith(
           _CompanyDTO value, $Res Function(_CompanyDTO) then) =
       __$CompanyDTOCopyWithImpl<$Res>;
-
   @override
   $Res call({String name, String title});
 }
@@ -695,9 +650,7 @@ class __$CompanyDTOCopyWithImpl<$Res> extends _$CompanyDTOCopyWithImpl<$Res>
 
 @JsonSerializable()
 class _$_CompanyDTO extends _CompanyDTO {
-  const _$_CompanyDTO({@required this.name, this.title})
-      : assert(name != null),
-        super._();
+  const _$_CompanyDTO({this.name, this.title}) : super._();
 
   factory _$_CompanyDTO.fromJson(Map<String, dynamic> json) =>
       _$_$_CompanyDTOFromJson(json);
@@ -741,18 +694,15 @@ class _$_CompanyDTO extends _CompanyDTO {
 abstract class _CompanyDTO extends CompanyDTO {
   const _CompanyDTO._() : super._();
 
-  const factory _CompanyDTO({@required String name, String title}) =
-      _$_CompanyDTO;
+  const factory _CompanyDTO({String name, String title}) = _$_CompanyDTO;
 
   factory _CompanyDTO.fromJson(Map<String, dynamic> json) =
       _$_CompanyDTO.fromJson;
 
   @override
   String get name;
-
   @override
   String get title;
-
   @override
   _$CompanyDTOCopyWith<_CompanyDTO> get copyWith;
 }

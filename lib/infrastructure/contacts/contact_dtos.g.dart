@@ -32,10 +32,10 @@ _$_ContactDTO _$_$_ContactDTOFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$_$_ContactDTOToJson(_$_ContactDTO instance) =>
     <String, dynamic>{
-      'nameDataDTO': instance.nameDataDTO,
-      'companiesDTO': instance.companiesDTO,
-      'emailsDTO': instance.emailsDTO,
-      'phonesDTO': instance.phonesDTO,
+      'nameDataDTO': instance.nameDataDTO?.toJson(),
+      'companiesDTO': instance.companiesDTO?.map((e) => e?.toJson())?.toList(),
+      'emailsDTO': instance.emailsDTO?.map((e) => e?.toJson())?.toList(),
+      'phonesDTO': instance.phonesDTO?.map((e) => e?.toJson())?.toList(),
       'serverTimeStamp':
           const ServerTimeStampConverter().toJson(instance.serverTimeStamp),
     };

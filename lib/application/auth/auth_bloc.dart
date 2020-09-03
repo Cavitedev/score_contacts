@@ -3,14 +3,14 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-import 'package:scorecontacts/domain/auth/i_auth_dao.dart';
+import 'package:scorecontacts/domain/auth/i_auth_facade.dart';
 import 'package:scorecontacts/domain/user/user_data.dart';
 
 import './bloc.dart';
 
 @injectable
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  final IAuthDao authDao;
+  final IAuthFacade authDao;
 
   AuthBloc(this.authDao) : super(const InitialAuthState());
 

@@ -31,7 +31,7 @@ class LabelObjectBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFieldsWithDropdowns(
-      labelObjects: state.labelObjects[defaultLabelObject.runtimeType],
+      labelObjects: state.contact.labelObjects[defaultLabelObject.runtimeType],
       hintText: hintText,
       prefixIcon: icon,
       keyboardType: keyboardType,
@@ -46,12 +46,12 @@ class LabelObjectBuilder extends StatelessWidget {
               defaultLabelObject.runtimeType, pos)),
       onTextChanged: (i, str) => context.bloc<AddContactBloc>().add(
           AddContactEvent.labelObjectChanged(
-              state.labelObjects[defaultLabelObject.runtimeType][i]
+              state.contact.labelObjects[defaultLabelObject.runtimeType][i]
                   .copyWith(value: str),
               i)),
       onLabelChanged: (i, value) => context.bloc<AddContactBloc>().add(
           AddContactEvent.labelObjectChanged(
-              state.labelObjects[defaultLabelObject.runtimeType][i]
+              state.contact.labelObjects[defaultLabelObject.runtimeType][i]
                   .copyWith(label: value),
               i)),
     );

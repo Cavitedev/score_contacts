@@ -38,7 +38,6 @@ mixin _$ContactsFailure {
     @required Result notFound(),
     @required Result unexpected(),
   });
-
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result insufficientPermissions(),
@@ -46,14 +45,12 @@ mixin _$ContactsFailure {
     Result unexpected(),
     @required Result orElse(),
   });
-
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result insufficientPermissions(_InsufficientPermissions value),
     @required Result notFound(_NotFound value),
     @required Result unexpected(_Unexpected value),
   });
-
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result insufficientPermissions(_InsufficientPermissions value),
@@ -74,7 +71,6 @@ class _$ContactsFailureCopyWithImpl<$Res>
   _$ContactsFailureCopyWithImpl(this._value, this._then);
 
   final ContactsFailure _value;
-
   // ignore: unused_field
   final $Res Function(ContactsFailure) _then;
 }

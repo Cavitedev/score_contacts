@@ -5,14 +5,14 @@ import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 import 'package:scorecontacts/domain/auth/auth_failures.dart';
-import 'package:scorecontacts/domain/auth/i_auth_dao.dart';
+import 'package:scorecontacts/domain/auth/i_auth_facade.dart';
 import 'package:scorecontacts/domain/user/user_data.dart';
 
 import '../core/firebase_user_helper.dart';
 
-@Injectable(as: IAuthDao)
+@Injectable(as: IAuthFacade)
 @lazySingleton
-class FirebaseAuthFacade implements IAuthDao {
+class FirebaseAuthFacade implements IAuthFacade {
   final GoogleSignIn googleSignIn;
   final _fbAuth.FirebaseAuth firebaseAuth;
 

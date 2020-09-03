@@ -13,6 +13,18 @@ class _$AddContactEventTearOff {
   const _$AddContactEventTearOff();
 
 // ignore: unused_element
+  _Initialize initialize(Option<Contact> contactOption) {
+    return _Initialize(
+      contactOption,
+    );
+  }
+
+// ignore: unused_element
+  _Saved saved() {
+    return const _Saved();
+  }
+
+// ignore: unused_element
   _LabelObjectChanged labelObjectChanged(ILabelObject labelObject, int pos) {
     return _LabelObjectChanged(
       labelObject,
@@ -56,6 +68,8 @@ const $AddContactEvent = _$AddContactEventTearOff();
 mixin _$AddContactEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result initialize(Option<Contact> contactOption),
+    @required Result saved(),
     @required Result labelObjectChanged(ILabelObject labelObject, int pos),
     @required Result addLabelObject(ILabelObject labelObject),
     @required Result removeLabelObject(Type labelObjectType, int pos),
@@ -64,6 +78,8 @@ mixin _$AddContactEvent {
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result initialize(Option<Contact> contactOption),
+    Result saved(),
     Result labelObjectChanged(ILabelObject labelObject, int pos),
     Result addLabelObject(ILabelObject labelObject),
     Result removeLabelObject(Type labelObjectType, int pos),
@@ -73,6 +89,8 @@ mixin _$AddContactEvent {
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result initialize(_Initialize value),
+    @required Result saved(_Saved value),
     @required Result labelObjectChanged(_LabelObjectChanged value),
     @required Result addLabelObject(_AddLabelObject value),
     @required Result removeLabelObject(_RemoveLabelObject value),
@@ -81,6 +99,8 @@ mixin _$AddContactEvent {
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result initialize(_Initialize value),
+    Result saved(_Saved value),
     Result labelObjectChanged(_LabelObjectChanged value),
     Result addLabelObject(_AddLabelObject value),
     Result removeLabelObject(_RemoveLabelObject value),
@@ -101,14 +121,292 @@ class _$AddContactEventCopyWithImpl<$Res>
   _$AddContactEventCopyWithImpl(this._value, this._then);
 
   final AddContactEvent _value;
+
   // ignore: unused_field
   final $Res Function(AddContactEvent) _then;
+}
+
+abstract class _$InitializeCopyWith<$Res> {
+  factory _$InitializeCopyWith(
+          _Initialize value, $Res Function(_Initialize) then) =
+      __$InitializeCopyWithImpl<$Res>;
+
+  $Res call({Option<Contact> contactOption});
+}
+
+class __$InitializeCopyWithImpl<$Res>
+    extends _$AddContactEventCopyWithImpl<$Res>
+    implements _$InitializeCopyWith<$Res> {
+  __$InitializeCopyWithImpl(
+      _Initialize _value, $Res Function(_Initialize) _then)
+      : super(_value, (v) => _then(v as _Initialize));
+
+  @override
+  _Initialize get _value => super._value as _Initialize;
+
+  @override
+  $Res call({
+    Object contactOption = freezed,
+  }) {
+    return _then(_Initialize(
+      contactOption == freezed
+          ? _value.contactOption
+          : contactOption as Option<Contact>,
+    ));
+  }
+}
+
+class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
+  const _$_Initialize(this.contactOption) : assert(contactOption != null);
+
+  @override
+  final Option<Contact> contactOption;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AddContactEvent.initialize(contactOption: $contactOption)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AddContactEvent.initialize'))
+      ..add(DiagnosticsProperty('contactOption', contactOption));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _Initialize &&
+            (identical(other.contactOption, contactOption) ||
+                const DeepCollectionEquality()
+                    .equals(other.contactOption, contactOption)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(contactOption);
+
+  @override
+  _$InitializeCopyWith<_Initialize> get copyWith =>
+      __$InitializeCopyWithImpl<_Initialize>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initialize(Option<Contact> contactOption),
+    @required Result saved(),
+    @required Result labelObjectChanged(ILabelObject labelObject, int pos),
+    @required Result addLabelObject(ILabelObject labelObject),
+    @required Result removeLabelObject(Type labelObjectType, int pos),
+    @required Result updateNameData(NameData nameData),
+    @required Result updateCompany(Company company),
+  }) {
+    assert(initialize != null);
+    assert(saved != null);
+    assert(labelObjectChanged != null);
+    assert(addLabelObject != null);
+    assert(removeLabelObject != null);
+    assert(updateNameData != null);
+    assert(updateCompany != null);
+    return initialize(contactOption);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initialize(Option<Contact> contactOption),
+    Result saved(),
+    Result labelObjectChanged(ILabelObject labelObject, int pos),
+    Result addLabelObject(ILabelObject labelObject),
+    Result removeLabelObject(Type labelObjectType, int pos),
+    Result updateNameData(NameData nameData),
+    Result updateCompany(Company company),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (initialize != null) {
+      return initialize(contactOption);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initialize(_Initialize value),
+    @required Result saved(_Saved value),
+    @required Result labelObjectChanged(_LabelObjectChanged value),
+    @required Result addLabelObject(_AddLabelObject value),
+    @required Result removeLabelObject(_RemoveLabelObject value),
+    @required Result updateNameData(_UpdateNameData value),
+    @required Result updateCompany(_UpdateCompanyNameData value),
+  }) {
+    assert(initialize != null);
+    assert(saved != null);
+    assert(labelObjectChanged != null);
+    assert(addLabelObject != null);
+    assert(removeLabelObject != null);
+    assert(updateNameData != null);
+    assert(updateCompany != null);
+    return initialize(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initialize(_Initialize value),
+    Result saved(_Saved value),
+    Result labelObjectChanged(_LabelObjectChanged value),
+    Result addLabelObject(_AddLabelObject value),
+    Result removeLabelObject(_RemoveLabelObject value),
+    Result updateNameData(_UpdateNameData value),
+    Result updateCompany(_UpdateCompanyNameData value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (initialize != null) {
+      return initialize(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Initialize implements AddContactEvent {
+  const factory _Initialize(Option<Contact> contactOption) = _$_Initialize;
+
+  Option<Contact> get contactOption;
+
+  _$InitializeCopyWith<_Initialize> get copyWith;
+}
+
+abstract class _$SavedCopyWith<$Res> {
+  factory _$SavedCopyWith(_Saved value, $Res Function(_Saved) then) =
+      __$SavedCopyWithImpl<$Res>;
+}
+
+class __$SavedCopyWithImpl<$Res> extends _$AddContactEventCopyWithImpl<$Res>
+    implements _$SavedCopyWith<$Res> {
+  __$SavedCopyWithImpl(_Saved _value, $Res Function(_Saved) _then)
+      : super(_value, (v) => _then(v as _Saved));
+
+  @override
+  _Saved get _value => super._value as _Saved;
+}
+
+class _$_Saved with DiagnosticableTreeMixin implements _Saved {
+  const _$_Saved();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AddContactEvent.saved()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'AddContactEvent.saved'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _Saved);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initialize(Option<Contact> contactOption),
+    @required Result saved(),
+    @required Result labelObjectChanged(ILabelObject labelObject, int pos),
+    @required Result addLabelObject(ILabelObject labelObject),
+    @required Result removeLabelObject(Type labelObjectType, int pos),
+    @required Result updateNameData(NameData nameData),
+    @required Result updateCompany(Company company),
+  }) {
+    assert(initialize != null);
+    assert(saved != null);
+    assert(labelObjectChanged != null);
+    assert(addLabelObject != null);
+    assert(removeLabelObject != null);
+    assert(updateNameData != null);
+    assert(updateCompany != null);
+    return saved();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initialize(Option<Contact> contactOption),
+    Result saved(),
+    Result labelObjectChanged(ILabelObject labelObject, int pos),
+    Result addLabelObject(ILabelObject labelObject),
+    Result removeLabelObject(Type labelObjectType, int pos),
+    Result updateNameData(NameData nameData),
+    Result updateCompany(Company company),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (saved != null) {
+      return saved();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initialize(_Initialize value),
+    @required Result saved(_Saved value),
+    @required Result labelObjectChanged(_LabelObjectChanged value),
+    @required Result addLabelObject(_AddLabelObject value),
+    @required Result removeLabelObject(_RemoveLabelObject value),
+    @required Result updateNameData(_UpdateNameData value),
+    @required Result updateCompany(_UpdateCompanyNameData value),
+  }) {
+    assert(initialize != null);
+    assert(saved != null);
+    assert(labelObjectChanged != null);
+    assert(addLabelObject != null);
+    assert(removeLabelObject != null);
+    assert(updateNameData != null);
+    assert(updateCompany != null);
+    return saved(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initialize(_Initialize value),
+    Result saved(_Saved value),
+    Result labelObjectChanged(_LabelObjectChanged value),
+    Result addLabelObject(_AddLabelObject value),
+    Result removeLabelObject(_RemoveLabelObject value),
+    Result updateNameData(_UpdateNameData value),
+    Result updateCompany(_UpdateCompanyNameData value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (saved != null) {
+      return saved(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Saved implements AddContactEvent {
+  const factory _Saved() = _$_Saved;
 }
 
 abstract class _$LabelObjectChangedCopyWith<$Res> {
   factory _$LabelObjectChangedCopyWith(
           _LabelObjectChanged value, $Res Function(_LabelObjectChanged) then) =
       __$LabelObjectChangedCopyWithImpl<$Res>;
+
   $Res call({ILabelObject labelObject, int pos});
 }
 
@@ -184,12 +482,16 @@ class _$_LabelObjectChanged
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result initialize(Option<Contact> contactOption),
+    @required Result saved(),
     @required Result labelObjectChanged(ILabelObject labelObject, int pos),
     @required Result addLabelObject(ILabelObject labelObject),
     @required Result removeLabelObject(Type labelObjectType, int pos),
     @required Result updateNameData(NameData nameData),
     @required Result updateCompany(Company company),
   }) {
+    assert(initialize != null);
+    assert(saved != null);
     assert(labelObjectChanged != null);
     assert(addLabelObject != null);
     assert(removeLabelObject != null);
@@ -201,6 +503,8 @@ class _$_LabelObjectChanged
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result initialize(Option<Contact> contactOption),
+    Result saved(),
     Result labelObjectChanged(ILabelObject labelObject, int pos),
     Result addLabelObject(ILabelObject labelObject),
     Result removeLabelObject(Type labelObjectType, int pos),
@@ -218,12 +522,16 @@ class _$_LabelObjectChanged
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result initialize(_Initialize value),
+    @required Result saved(_Saved value),
     @required Result labelObjectChanged(_LabelObjectChanged value),
     @required Result addLabelObject(_AddLabelObject value),
     @required Result removeLabelObject(_RemoveLabelObject value),
     @required Result updateNameData(_UpdateNameData value),
     @required Result updateCompany(_UpdateCompanyNameData value),
   }) {
+    assert(initialize != null);
+    assert(saved != null);
     assert(labelObjectChanged != null);
     assert(addLabelObject != null);
     assert(removeLabelObject != null);
@@ -235,6 +543,8 @@ class _$_LabelObjectChanged
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result initialize(_Initialize value),
+    Result saved(_Saved value),
     Result labelObjectChanged(_LabelObjectChanged value),
     Result addLabelObject(_AddLabelObject value),
     Result removeLabelObject(_RemoveLabelObject value),
@@ -327,12 +637,16 @@ class _$_AddLabelObject
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result initialize(Option<Contact> contactOption),
+    @required Result saved(),
     @required Result labelObjectChanged(ILabelObject labelObject, int pos),
     @required Result addLabelObject(ILabelObject labelObject),
     @required Result removeLabelObject(Type labelObjectType, int pos),
     @required Result updateNameData(NameData nameData),
     @required Result updateCompany(Company company),
   }) {
+    assert(initialize != null);
+    assert(saved != null);
     assert(labelObjectChanged != null);
     assert(addLabelObject != null);
     assert(removeLabelObject != null);
@@ -344,6 +658,8 @@ class _$_AddLabelObject
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result initialize(Option<Contact> contactOption),
+    Result saved(),
     Result labelObjectChanged(ILabelObject labelObject, int pos),
     Result addLabelObject(ILabelObject labelObject),
     Result removeLabelObject(Type labelObjectType, int pos),
@@ -361,12 +677,16 @@ class _$_AddLabelObject
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result initialize(_Initialize value),
+    @required Result saved(_Saved value),
     @required Result labelObjectChanged(_LabelObjectChanged value),
     @required Result addLabelObject(_AddLabelObject value),
     @required Result removeLabelObject(_RemoveLabelObject value),
     @required Result updateNameData(_UpdateNameData value),
     @required Result updateCompany(_UpdateCompanyNameData value),
   }) {
+    assert(initialize != null);
+    assert(saved != null);
     assert(labelObjectChanged != null);
     assert(addLabelObject != null);
     assert(removeLabelObject != null);
@@ -378,6 +698,8 @@ class _$_AddLabelObject
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result initialize(_Initialize value),
+    Result saved(_Saved value),
     Result labelObjectChanged(_LabelObjectChanged value),
     Result addLabelObject(_AddLabelObject value),
     Result removeLabelObject(_RemoveLabelObject value),
@@ -481,12 +803,16 @@ class _$_RemoveLabelObject
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result initialize(Option<Contact> contactOption),
+    @required Result saved(),
     @required Result labelObjectChanged(ILabelObject labelObject, int pos),
     @required Result addLabelObject(ILabelObject labelObject),
     @required Result removeLabelObject(Type labelObjectType, int pos),
     @required Result updateNameData(NameData nameData),
     @required Result updateCompany(Company company),
   }) {
+    assert(initialize != null);
+    assert(saved != null);
     assert(labelObjectChanged != null);
     assert(addLabelObject != null);
     assert(removeLabelObject != null);
@@ -498,6 +824,8 @@ class _$_RemoveLabelObject
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result initialize(Option<Contact> contactOption),
+    Result saved(),
     Result labelObjectChanged(ILabelObject labelObject, int pos),
     Result addLabelObject(ILabelObject labelObject),
     Result removeLabelObject(Type labelObjectType, int pos),
@@ -515,12 +843,16 @@ class _$_RemoveLabelObject
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result initialize(_Initialize value),
+    @required Result saved(_Saved value),
     @required Result labelObjectChanged(_LabelObjectChanged value),
     @required Result addLabelObject(_AddLabelObject value),
     @required Result removeLabelObject(_RemoveLabelObject value),
     @required Result updateNameData(_UpdateNameData value),
     @required Result updateCompany(_UpdateCompanyNameData value),
   }) {
+    assert(initialize != null);
+    assert(saved != null);
     assert(labelObjectChanged != null);
     assert(addLabelObject != null);
     assert(removeLabelObject != null);
@@ -532,6 +864,8 @@ class _$_RemoveLabelObject
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result initialize(_Initialize value),
+    Result saved(_Saved value),
     Result labelObjectChanged(_LabelObjectChanged value),
     Result addLabelObject(_AddLabelObject value),
     Result removeLabelObject(_RemoveLabelObject value),
@@ -560,7 +894,6 @@ abstract class _$UpdateNameDataCopyWith<$Res> {
   factory _$UpdateNameDataCopyWith(
           _UpdateNameData value, $Res Function(_UpdateNameData) then) =
       __$UpdateNameDataCopyWithImpl<$Res>;
-
   $Res call({NameData nameData});
 
   $NameDataCopyWith<$Res> get nameData;
@@ -637,12 +970,16 @@ class _$_UpdateNameData
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result initialize(Option<Contact> contactOption),
+    @required Result saved(),
     @required Result labelObjectChanged(ILabelObject labelObject, int pos),
     @required Result addLabelObject(ILabelObject labelObject),
     @required Result removeLabelObject(Type labelObjectType, int pos),
     @required Result updateNameData(NameData nameData),
     @required Result updateCompany(Company company),
   }) {
+    assert(initialize != null);
+    assert(saved != null);
     assert(labelObjectChanged != null);
     assert(addLabelObject != null);
     assert(removeLabelObject != null);
@@ -654,6 +991,8 @@ class _$_UpdateNameData
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result initialize(Option<Contact> contactOption),
+    Result saved(),
     Result labelObjectChanged(ILabelObject labelObject, int pos),
     Result addLabelObject(ILabelObject labelObject),
     Result removeLabelObject(Type labelObjectType, int pos),
@@ -671,12 +1010,16 @@ class _$_UpdateNameData
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result initialize(_Initialize value),
+    @required Result saved(_Saved value),
     @required Result labelObjectChanged(_LabelObjectChanged value),
     @required Result addLabelObject(_AddLabelObject value),
     @required Result removeLabelObject(_RemoveLabelObject value),
     @required Result updateNameData(_UpdateNameData value),
     @required Result updateCompany(_UpdateCompanyNameData value),
   }) {
+    assert(initialize != null);
+    assert(saved != null);
     assert(labelObjectChanged != null);
     assert(addLabelObject != null);
     assert(removeLabelObject != null);
@@ -688,6 +1031,8 @@ class _$_UpdateNameData
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result initialize(_Initialize value),
+    Result saved(_Saved value),
     Result labelObjectChanged(_LabelObjectChanged value),
     Result addLabelObject(_AddLabelObject value),
     Result removeLabelObject(_RemoveLabelObject value),
@@ -790,12 +1135,16 @@ class _$_UpdateCompanyNameData
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result initialize(Option<Contact> contactOption),
+    @required Result saved(),
     @required Result labelObjectChanged(ILabelObject labelObject, int pos),
     @required Result addLabelObject(ILabelObject labelObject),
     @required Result removeLabelObject(Type labelObjectType, int pos),
     @required Result updateNameData(NameData nameData),
     @required Result updateCompany(Company company),
   }) {
+    assert(initialize != null);
+    assert(saved != null);
     assert(labelObjectChanged != null);
     assert(addLabelObject != null);
     assert(removeLabelObject != null);
@@ -807,6 +1156,8 @@ class _$_UpdateCompanyNameData
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result initialize(Option<Contact> contactOption),
+    Result saved(),
     Result labelObjectChanged(ILabelObject labelObject, int pos),
     Result addLabelObject(ILabelObject labelObject),
     Result removeLabelObject(Type labelObjectType, int pos),
@@ -824,12 +1175,16 @@ class _$_UpdateCompanyNameData
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result initialize(_Initialize value),
+    @required Result saved(_Saved value),
     @required Result labelObjectChanged(_LabelObjectChanged value),
     @required Result addLabelObject(_AddLabelObject value),
     @required Result removeLabelObject(_RemoveLabelObject value),
     @required Result updateNameData(_UpdateNameData value),
     @required Result updateCompany(_UpdateCompanyNameData value),
   }) {
+    assert(initialize != null);
+    assert(saved != null);
     assert(labelObjectChanged != null);
     assert(addLabelObject != null);
     assert(removeLabelObject != null);
@@ -841,6 +1196,8 @@ class _$_UpdateCompanyNameData
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result initialize(_Initialize value),
+    Result saved(_Saved value),
     Result labelObjectChanged(_LabelObjectChanged value),
     Result addLabelObject(_AddLabelObject value),
     Result removeLabelObject(_RemoveLabelObject value),
@@ -868,14 +1225,15 @@ class _$AddContactStateTearOff {
   const _$AddContactStateTearOff();
 
 // ignore: unused_element
-  _AddContactState call(
-      {@required Map<Type, List<ILabelObject>> labelObjects,
-      NameData nameData,
-      Company company}) {
+  _AddContactState call({@required Contact contact,
+    @required bool isEditting,
+    @required bool isSaving,
+    @required Option<Either<ContactsFailure, Unit>> savingOrFailureOption}) {
     return _AddContactState(
-      labelObjects: labelObjects,
-      nameData: nameData,
-      company: company,
+      contact: contact,
+      isEditting: isEditting,
+      isSaving: isSaving,
+      savingOrFailureOption: savingOrFailureOption,
     );
   }
 }
@@ -884,9 +1242,13 @@ class _$AddContactStateTearOff {
 const $AddContactState = _$AddContactStateTearOff();
 
 mixin _$AddContactState {
-  Map<Type, List<ILabelObject>> get labelObjects;
-  NameData get nameData;
-  Company get company;
+  Contact get contact;
+
+  bool get isEditting;
+
+  bool get isSaving;
+
+  Option<Either<ContactsFailure, Unit>> get savingOrFailureOption;
 
   $AddContactStateCopyWith<AddContactState> get copyWith;
 }
@@ -896,13 +1258,12 @@ abstract class $AddContactStateCopyWith<$Res> {
       $Res Function(AddContactState) then) =
   _$AddContactStateCopyWithImpl<$Res>;
 
-  $Res call({Map<Type, List<ILabelObject>> labelObjects,
-    NameData nameData,
-    Company company});
+  $Res call({Contact contact,
+    bool isEditting,
+    bool isSaving,
+    Option<Either<ContactsFailure, Unit>> savingOrFailureOption});
 
-  $NameDataCopyWith<$Res> get nameData;
-
-  $CompanyCopyWith<$Res> get company;
+  $ContactCopyWith<$Res> get contact;
 }
 
 class _$AddContactStateCopyWithImpl<$Res>
@@ -915,36 +1276,29 @@ class _$AddContactStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object labelObjects = freezed,
-    Object nameData = freezed,
-    Object company = freezed,
+    Object contact = freezed,
+    Object isEditting = freezed,
+    Object isSaving = freezed,
+    Object savingOrFailureOption = freezed,
   }) {
     return _then(_value.copyWith(
-      labelObjects: labelObjects == freezed
-          ? _value.labelObjects
-          : labelObjects as Map<Type, List<ILabelObject>>,
-      nameData: nameData == freezed ? _value.nameData : nameData as NameData,
-      company: company == freezed ? _value.company : company as Company,
+      contact: contact == freezed ? _value.contact : contact as Contact,
+      isEditting:
+      isEditting == freezed ? _value.isEditting : isEditting as bool,
+      isSaving: isSaving == freezed ? _value.isSaving : isSaving as bool,
+      savingOrFailureOption: savingOrFailureOption == freezed
+          ? _value.savingOrFailureOption
+          : savingOrFailureOption as Option<Either<ContactsFailure, Unit>>,
     ));
   }
 
   @override
-  $NameDataCopyWith<$Res> get nameData {
-    if (_value.nameData == null) {
+  $ContactCopyWith<$Res> get contact {
+    if (_value.contact == null) {
       return null;
     }
-    return $NameDataCopyWith<$Res>(_value.nameData, (value) {
-      return _then(_value.copyWith(nameData: value));
-    });
-  }
-
-  @override
-  $CompanyCopyWith<$Res> get company {
-    if (_value.company == null) {
-      return null;
-    }
-    return $CompanyCopyWith<$Res>(_value.company, (value) {
-      return _then(_value.copyWith(company: value));
+    return $ContactCopyWith<$Res>(_value.contact, (value) {
+      return _then(_value.copyWith(contact: value));
     });
   }
 }
@@ -956,15 +1310,13 @@ abstract class _$AddContactStateCopyWith<$Res>
   __$AddContactStateCopyWithImpl<$Res>;
 
   @override
-  $Res call({Map<Type, List<ILabelObject>> labelObjects,
-    NameData nameData,
-    Company company});
+  $Res call({Contact contact,
+    bool isEditting,
+    bool isSaving,
+    Option<Either<ContactsFailure, Unit>> savingOrFailureOption});
 
   @override
-  $NameDataCopyWith<$Res> get nameData;
-
-  @override
-  $CompanyCopyWith<$Res> get company;
+  $ContactCopyWith<$Res> get contact;
 }
 
 class __$AddContactStateCopyWithImpl<$Res>
@@ -979,68 +1331,83 @@ class __$AddContactStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object labelObjects = freezed,
-    Object nameData = freezed,
-    Object company = freezed,
+    Object contact = freezed,
+    Object isEditting = freezed,
+    Object isSaving = freezed,
+    Object savingOrFailureOption = freezed,
   }) {
     return _then(_AddContactState(
-      labelObjects: labelObjects == freezed
-          ? _value.labelObjects
-          : labelObjects as Map<Type, List<ILabelObject>>,
-      nameData: nameData == freezed ? _value.nameData : nameData as NameData,
-      company: company == freezed ? _value.company : company as Company,
+      contact: contact == freezed ? _value.contact : contact as Contact,
+      isEditting:
+      isEditting == freezed ? _value.isEditting : isEditting as bool,
+      isSaving: isSaving == freezed ? _value.isSaving : isSaving as bool,
+      savingOrFailureOption: savingOrFailureOption == freezed
+          ? _value.savingOrFailureOption
+          : savingOrFailureOption as Option<Either<ContactsFailure, Unit>>,
     ));
   }
 }
 
 class _$_AddContactState extends _AddContactState with DiagnosticableTreeMixin {
-  const _$_AddContactState(
-      {@required this.labelObjects, this.nameData, this.company})
-      : assert(labelObjects != null),
+  const _$_AddContactState({@required this.contact,
+    @required this.isEditting,
+    @required this.isSaving,
+    @required this.savingOrFailureOption})
+      : assert(contact != null),
+        assert(isEditting != null),
+        assert(isSaving != null),
+        assert(savingOrFailureOption != null),
         super._();
 
   @override
-  final Map<Type, List<ILabelObject>> labelObjects;
+  final Contact contact;
   @override
-  final NameData nameData;
+  final bool isEditting;
   @override
-  final Company company;
+  final bool isSaving;
+  @override
+  final Option<Either<ContactsFailure, Unit>> savingOrFailureOption;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AddContactState(labelObjects: $labelObjects, nameData: $nameData, company: $company)';
+    return 'AddContactState(contact: $contact, isEditting: $isEditting, isSaving: $isSaving, savingOrFailureOption: $savingOrFailureOption)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AddContactState'))
-      ..add(DiagnosticsProperty('labelObjects', labelObjects))
-      ..add(DiagnosticsProperty('nameData', nameData))
-      ..add(DiagnosticsProperty('company', company));
+    properties..add(DiagnosticsProperty('type', 'AddContactState'))..add(
+        DiagnosticsProperty('contact', contact))..add(
+        DiagnosticsProperty('isEditting', isEditting))..add(
+        DiagnosticsProperty('isSaving', isSaving))..add(
+        DiagnosticsProperty('savingOrFailureOption', savingOrFailureOption));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _AddContactState &&
-            (identical(other.labelObjects, labelObjects) ||
+            (identical(other.contact, contact) ||
                 const DeepCollectionEquality()
-                    .equals(other.labelObjects, labelObjects)) &&
-            (identical(other.nameData, nameData) ||
+                    .equals(other.contact, contact)) &&
+            (identical(other.isEditting, isEditting) ||
                 const DeepCollectionEquality()
-                    .equals(other.nameData, nameData)) &&
-            (identical(other.company, company) ||
-                const DeepCollectionEquality().equals(other.company, company)));
+                    .equals(other.isEditting, isEditting)) &&
+            (identical(other.isSaving, isSaving) ||
+                const DeepCollectionEquality()
+                    .equals(other.isSaving, isSaving)) &&
+            (identical(other.savingOrFailureOption, savingOrFailureOption) ||
+                const DeepCollectionEquality().equals(
+                    other.savingOrFailureOption, savingOrFailureOption)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(labelObjects) ^
-      const DeepCollectionEquality().hash(nameData) ^
-      const DeepCollectionEquality().hash(company);
+      const DeepCollectionEquality().hash(contact) ^
+      const DeepCollectionEquality().hash(isEditting) ^
+      const DeepCollectionEquality().hash(isSaving) ^
+      const DeepCollectionEquality().hash(savingOrFailureOption);
 
   @override
   _$AddContactStateCopyWith<_AddContactState> get copyWith =>
@@ -1049,17 +1416,25 @@ class _$_AddContactState extends _AddContactState with DiagnosticableTreeMixin {
 
 abstract class _AddContactState extends AddContactState {
   const _AddContactState._() : super._();
-  const factory _AddContactState(
-      {@required Map<Type, List<ILabelObject>> labelObjects,
-      NameData nameData,
-      Company company}) = _$_AddContactState;
+
+  const factory _AddContactState({@required Contact contact,
+    @required bool isEditting,
+    @required bool isSaving,
+    @required Option<Either<ContactsFailure, Unit>> savingOrFailureOption}) =
+  _$_AddContactState;
 
   @override
-  Map<Type, List<ILabelObject>> get labelObjects;
+  Contact get contact;
+
   @override
-  NameData get nameData;
+  bool get isEditting;
+
   @override
-  Company get company;
+  bool get isSaving;
+
+  @override
+  Option<Either<ContactsFailure, Unit>> get savingOrFailureOption;
+
   @override
   _$AddContactStateCopyWith<_AddContactState> get copyWith;
 }
