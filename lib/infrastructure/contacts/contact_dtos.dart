@@ -1,12 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:scorecontacts/domain/core/unique_id.dart';
-import 'package:scorecontacts/domain/features/user/contacts_data/contact.dart';
-import 'package:scorecontacts/domain/features/user/contacts_data/properties/company.dart';
-import 'package:scorecontacts/domain/features/user/contacts_data/properties/email.dart';
-import 'package:scorecontacts/domain/features/user/contacts_data/properties/i_label_object.dart';
-import 'package:scorecontacts/domain/features/user/contacts_data/properties/names/name_data.dart';
-import 'package:scorecontacts/domain/features/user/contacts_data/properties/phone.dart';
+import 'package:scorecontacts/domain/user/contacts_data/contact.dart';
+import 'package:scorecontacts/domain/user/contacts_data/properties/company.dart';
+import 'package:scorecontacts/domain/user/contacts_data/properties/email.dart';
+import 'package:scorecontacts/domain/user/contacts_data/properties/i_label_object.dart';
+import 'package:scorecontacts/domain/user/contacts_data/properties/names/name_data.dart';
+import 'package:scorecontacts/domain/user/contacts_data/properties/phone.dart';
 import 'package:scorecontacts/infrastructure/firebase_core/server_time_stamp_converter.dart';
 
 part 'contact_dtos.freezed.dart';

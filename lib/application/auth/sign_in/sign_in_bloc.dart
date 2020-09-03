@@ -3,14 +3,13 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-import 'package:scorecontacts/domain/features/auth/auth_failures.dart';
-import 'package:scorecontacts/domain/features/auth/i_auth_dao.dart';
+import 'package:scorecontacts/domain/auth/auth_failures.dart';
+import 'package:scorecontacts/domain/auth/i_auth_dao.dart';
 
 import './bloc.dart';
 
 @injectable
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
-
   final IAuthDao authDao;
 
   SignInBloc({this.authDao}) : super(const InitialSignInState());

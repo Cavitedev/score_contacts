@@ -4,14 +4,16 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:scorecontacts/domain/features/user/contacts_data/properties/company.dart';
-import 'package:scorecontacts/domain/features/user/contacts_data/properties/email.dart';
-import 'package:scorecontacts/domain/features/user/contacts_data/properties/i_label_object.dart';
-import 'package:scorecontacts/domain/features/user/contacts_data/properties/names/name_data.dart';
-import 'package:scorecontacts/domain/features/user/contacts_data/properties/phone.dart';
+import 'package:scorecontacts/domain/user/contacts_data/properties/company.dart';
+import 'package:scorecontacts/domain/user/contacts_data/properties/email.dart';
+import 'package:scorecontacts/domain/user/contacts_data/properties/i_label_object.dart';
+import 'package:scorecontacts/domain/user/contacts_data/properties/names/name_data.dart';
+import 'package:scorecontacts/domain/user/contacts_data/properties/phone.dart';
 
 part 'add_contact_bloc.freezed.dart';
+
 part 'add_contact_event.dart';
+
 part 'add_contact_state.dart';
 
 @injectable

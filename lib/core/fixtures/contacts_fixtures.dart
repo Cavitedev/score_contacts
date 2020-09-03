@@ -1,9 +1,9 @@
 import 'package:scorecontacts/domain/core/unique_id.dart';
-import 'package:scorecontacts/domain/features/user/contacts_data/contact.dart';
-import 'package:scorecontacts/domain/features/user/contacts_data/properties/company.dart';
-import 'package:scorecontacts/domain/features/user/contacts_data/properties/email.dart';
-import 'package:scorecontacts/domain/features/user/contacts_data/properties/names/name_data.dart';
-import 'package:scorecontacts/domain/features/user/contacts_data/properties/phone.dart';
+import 'package:scorecontacts/domain/user/contacts_data/contact.dart';
+import 'package:scorecontacts/domain/user/contacts_data/properties/company.dart';
+import 'package:scorecontacts/domain/user/contacts_data/properties/email.dart';
+import 'package:scorecontacts/domain/user/contacts_data/properties/names/name_data.dart';
+import 'package:scorecontacts/domain/user/contacts_data/properties/phone.dart';
 
 List<Contact> contacts = [
   Contact(

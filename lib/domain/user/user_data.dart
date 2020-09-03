@@ -1,8 +1,9 @@
 import 'package:flutter/foundation.dart';
-import 'package:scorecontacts/domain/features/user/contacts_data/contact.dart';
+import 'package:scorecontacts/domain/core/unique_id.dart';
+import 'package:scorecontacts/domain/user/contacts_data/contact.dart';
 
 class User {
-  final String uid;
+  final UniqueID uid;
   List<Contact> contacts;
 
   User({

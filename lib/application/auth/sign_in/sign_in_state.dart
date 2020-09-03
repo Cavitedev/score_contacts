@@ -1,5 +1,5 @@
 import 'package:meta/meta.dart';
-import 'package:scorecontacts/domain/features/auth/auth_failures.dart';
+import 'package:scorecontacts/domain/auth/auth_failures.dart';
 
 @immutable
 abstract class SignInState {

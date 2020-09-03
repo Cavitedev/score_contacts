@@ -1,7 +1,7 @@
 import 'package:scorecontacts/domain/core/validators/email/email_validator.dart';
 import 'package:scorecontacts/domain/core/validators/i_hint.dart';
 import 'package:scorecontacts/domain/core/validators/i_hint_validator.dart';
-import 'package:scorecontacts/domain/features/user/contacts_data/properties/i_label_object.dart';
+import 'package:scorecontacts/domain/user/contacts_data/properties/i_label_object.dart';
 
 class Email implements ILabelObject, IHintValidator<String> {
   @override

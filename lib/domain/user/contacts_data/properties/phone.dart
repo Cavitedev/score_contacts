@@ -1,4 +1,4 @@
-import 'package:scorecontacts/domain/features/user/contacts_data/properties/i_label_object.dart';
+import 'package:scorecontacts/domain/user/contacts_data/properties/i_label_object.dart';
 
 class Phone implements ILabelObject {
   @override

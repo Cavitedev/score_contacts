@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:scorecontacts/domain/core/validators/i_hint_validator.dart';
-import 'package:scorecontacts/domain/features/user/contacts_data/properties/i_label_object.dart';
+import 'package:scorecontacts/domain/user/contacts_data/properties/i_label_object.dart';
 
 import 'outlined_dropdown_button.dart';
 import 'outlined_input_field.dart';

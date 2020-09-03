@@ -22,6 +22,7 @@ dependencies:
   freezed_annotation: ^0.11.0+1
   json_annotation: ^3.0.1
   uuid: ^2.2.2
+  rxdart: ^0.24.1
 dev_dependencies:
   flutter_test:
     sdk: flutter

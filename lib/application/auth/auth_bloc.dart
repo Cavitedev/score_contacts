@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-import 'package:scorecontacts/domain/features/auth/i_auth_dao.dart';
-import 'package:scorecontacts/domain/features/user/user_data.dart';
+import 'package:scorecontacts/domain/auth/i_auth_dao.dart';
+import 'package:scorecontacts/domain/user/user_data.dart';
 
 import './bloc.dart';
 

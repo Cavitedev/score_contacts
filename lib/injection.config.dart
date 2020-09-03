@@ -12,7 +12,7 @@ import 'package:injectable/injectable.dart';
 import 'application/auth/auth_bloc.dart';
 import 'application/auth/sign_in/sign_in_bloc.dart';
 import 'application/contacts/add_contact/add_contact_bloc.dart';
-import 'domain/features/auth/i_auth_dao.dart';
+import 'domain/auth/i_auth_dao.dart';
 import 'infrastructure/auth/firebase_auth_facade.dart';
 import 'infrastructure/core/firebase_injectable_module.dart';
 

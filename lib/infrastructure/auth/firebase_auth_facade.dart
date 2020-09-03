@@ -4,11 +4,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
-import 'package:scorecontacts/domain/features/auth/auth_failures.dart';
-import 'package:scorecontacts/domain/features/auth/i_auth_dao.dart';
-import 'package:scorecontacts/domain/features/user/user_data.dart';
+import 'package:scorecontacts/domain/auth/auth_failures.dart';
+import 'package:scorecontacts/domain/auth/i_auth_dao.dart';
+import 'package:scorecontacts/domain/user/user_data.dart';
 
-import 'firebase_user_extension.dart';
+import '../core/firebase_user_helper.dart';
 
 @Injectable(as: IAuthDao)
 @lazySingleton

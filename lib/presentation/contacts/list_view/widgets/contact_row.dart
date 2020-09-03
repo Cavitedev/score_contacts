@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:scorecontacts/domain/features/user/contacts_data/contact.dart';
-import 'package:scorecontacts/domain/features/user/contacts_data/properties/names/name_data.dart';
+import 'package:scorecontacts/domain/user/contacts_data/contact.dart';
+import 'package:scorecontacts/domain/user/contacts_data/properties/names/name_data.dart';
 
 class ContactRow extends StatelessWidget {
   final Contact contact;
