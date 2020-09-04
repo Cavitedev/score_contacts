@@ -1248,14 +1248,15 @@ mixin _$AddContactState {
 }
 
 abstract class $AddContactStateCopyWith<$Res> {
-  factory $AddContactStateCopyWith(AddContactState value,
-      $Res Function(AddContactState) then) =
-  _$AddContactStateCopyWithImpl<$Res>;
+  factory $AddContactStateCopyWith(
+          AddContactState value, $Res Function(AddContactState) then) =
+      _$AddContactStateCopyWithImpl<$Res>;
 
-  $Res call({Contact contact,
-    bool isEditting,
-    bool isSaving,
-    Option<Either<ContactsFailure, Unit>> savingOrFailureOption});
+  $Res call(
+      {Contact contact,
+      bool isEditting,
+      bool isSaving,
+      Option<Either<ContactsFailure, Unit>> savingOrFailureOption});
 
   $ContactCopyWith<$Res> get contact;
 }

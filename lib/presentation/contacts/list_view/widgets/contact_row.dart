@@ -30,8 +30,7 @@ class ContactRow extends StatelessWidget {
               child: RichText(
                 overflow: TextOverflow.ellipsis,
                 text: TextSpan(
-                    text:
-                        "${name.namePrefix} ${name.firstName} ${name.nameSuffix} ${name.middleName} ${name.firstName} ${name.surnames} ",
+                    text: "${name.firstName} ${name.surnames}",
                     style: Theme.of(context).textTheme.headline5),
               ),
             )

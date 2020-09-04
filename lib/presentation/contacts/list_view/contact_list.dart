@@ -1,51 +1,26 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:scorecontacts/core/fixtures/contacts_fixtures.dart';
-import 'package:scorecontacts/presentation/contacts/list_view/widgets/contact_row.dart';
-import 'package:scorecontacts/presentation/core/widgets/text_field_container.dart';
-import 'package:scorecontacts/presentation/routes/router.gr.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:scorecontacts/application/contacts/contact_watcher/contact_watcher_bloc.dart';
+import 'package:scorecontacts/injection.dart';
+import 'package:scorecontacts/presentation/contacts/list_view/widgets/contact_list_scaffold.dart';
+import 'package:scorecontacts/presentation/contacts/list_view/widgets/critical_failure_display.dart';
 
 class ContactList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: <Widget>[
-            const TextFieldContainer(
-              child: TextField(
-                decoration: InputDecoration(
-                    icon: Icon(
-                      Icons.menu,
-                    ),
-                    hintText: "🔎 Search 432 contacts",
-                    border: InputBorder.none),
-              ),
-            ),
-            SingleChildScrollView(
-              child: Column(
-                  children:
-                  contacts.map((contact) =>
-                      ContactRow(
-                        contact: contact,
-                      )).toList()
-              ),
-            )
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          ExtendedNavigator.of(context).pushAddContactPage(contact: null);
-        },
-        child: const Icon(
-          Icons.add,
-          color: Colors.white,
-          size: 28,
-        ),
-      ),
-    );
+    return BlocProvider<ContactWatcherBloc>(
+        create: (context) => getIt<ContactWatcherBloc>()
+          ..add(const ContactWatcherEvent.watchAllAlphabeticOrder()),
+        child: BlocBuilder<ContactWatcherBloc, ContactWatcherState>(
+            builder: (context, state) => state.map(
+                  initial: (_) => Container(),
+                  loadInProgress: (_) => const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                  loadSuccess: (state) =>
+                      ContactsListScaffold(contacts: state.contacts),
+                  loadFailure: (state) =>
+                      CriticalFailureDisplay(failure: state.failure),
+                )));
   }
 }
-
-

@@ -45,12 +45,18 @@ class AddContactPage extends StatelessWidget {
                         },
                       ));
             },
-            child: Stack(
-                children: [AddContactScaffold(), SavingProgressOverlay()])));
+            child: Stack(children: [
+              AddContactScaffold(),
+              const SavingProgressOverlay()
+            ])));
   }
 }
 
 class SavingProgressOverlay extends StatelessWidget {
+
+  const SavingProgressOverlay();
+
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AddContactBloc, AddContactState>(
@@ -67,23 +73,24 @@ class SavingProgressOverlay extends StatelessWidget {
             height: MediaQuery.of(context).size.height,
             child: state.isSaving
                 ? Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      const CircularProgressIndicator(),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      Text(
-                        "Saving",
-                        style: Theme.of(context).textTheme.headline5,
-                      )
-                    ],
-                  )
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const CircularProgressIndicator(),
+                const SizedBox(
+                  height: 8,
+                ),
+                Text(
+                  "Saving",
+                  style: Theme.of(context).textTheme.headline5,
+                )
+              ],
+            )
                 : null,
           ),
         );
       },
     );
   }
+
 }
