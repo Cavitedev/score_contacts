@@ -121,7 +121,6 @@ class _$AddContactEventCopyWithImpl<$Res>
   _$AddContactEventCopyWithImpl(this._value, this._then);
 
   final AddContactEvent _value;
-
   // ignore: unused_field
   final $Res Function(AddContactEvent) _then;
 }
@@ -130,7 +129,6 @@ abstract class _$InitializeCopyWith<$Res> {
   factory _$InitializeCopyWith(
           _Initialize value, $Res Function(_Initialize) then) =
       __$InitializeCopyWithImpl<$Res>;
-
   $Res call({Option<Contact> contactOption});
 }
 
@@ -277,7 +275,6 @@ abstract class _Initialize implements AddContactEvent {
   const factory _Initialize(Option<Contact> contactOption) = _$_Initialize;
 
   Option<Contact> get contactOption;
-
   _$InitializeCopyWith<_Initialize> get copyWith;
 }
 
@@ -406,7 +403,6 @@ abstract class _$LabelObjectChangedCopyWith<$Res> {
   factory _$LabelObjectChangedCopyWith(
           _LabelObjectChanged value, $Res Function(_LabelObjectChanged) then) =
       __$LabelObjectChangedCopyWithImpl<$Res>;
-
   $Res call({ILabelObject labelObject, int pos});
 }
 
@@ -1225,10 +1221,11 @@ class _$AddContactStateTearOff {
   const _$AddContactStateTearOff();
 
 // ignore: unused_element
-  _AddContactState call({@required Contact contact,
-    @required bool isEditting,
-    @required bool isSaving,
-    @required Option<Either<ContactsFailure, Unit>> savingOrFailureOption}) {
+  _AddContactState call(
+      {@required Contact contact,
+      @required bool isEditting,
+      @required bool isSaving,
+      @required Option<Either<ContactsFailure, Unit>> savingOrFailureOption}) {
     return _AddContactState(
       contact: contact,
       isEditting: isEditting,
@@ -1243,11 +1240,8 @@ const $AddContactState = _$AddContactStateTearOff();
 
 mixin _$AddContactState {
   Contact get contact;
-
   bool get isEditting;
-
   bool get isSaving;
-
   Option<Either<ContactsFailure, Unit>> get savingOrFailureOption;
 
   $AddContactStateCopyWith<AddContactState> get copyWith;

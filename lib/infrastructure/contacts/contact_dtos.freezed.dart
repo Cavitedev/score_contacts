@@ -18,10 +18,10 @@ class _$ContactDTOTearOff {
 // ignore: unused_element
   _ContactDTO call(
       {@JsonKey(ignore: true) String id,
-      NameDataDTO nameDataDTO,
-      List<CompanyDTO> companiesDTO,
-      List<LabelObjectDTO<ILabelObject>> emailsDTO,
-      List<LabelObjectDTO<ILabelObject>> phonesDTO,
+      @JsonKey(name: nameDataName) NameDataDTO nameDataDTO,
+      @JsonKey(name: companiesName) List<CompanyDTO> companiesDTO,
+      @JsonKey(name: emailsName) List<LabelObjectDTO<ILabelObject>> emailsDTO,
+      @JsonKey(name: phonesName) List<LabelObjectDTO<ILabelObject>> phonesDTO,
       @required @ServerTimeStampConverter() FieldValue serverTimeStamp}) {
     return _ContactDTO(
       id: id,
@@ -40,9 +40,17 @@ const $ContactDTO = _$ContactDTOTearOff();
 mixin _$ContactDTO {
   @JsonKey(ignore: true)
   String get id;
+
+  @JsonKey(name: nameDataName)
   NameDataDTO get nameDataDTO;
+
+  @JsonKey(name: companiesName)
   List<CompanyDTO> get companiesDTO;
+
+  @JsonKey(name: emailsName)
   List<LabelObjectDTO<ILabelObject>> get emailsDTO;
+
+  @JsonKey(name: phonesName)
   List<LabelObjectDTO<ILabelObject>> get phonesDTO;
   @ServerTimeStampConverter()
   FieldValue get serverTimeStamp;
@@ -55,13 +63,12 @@ abstract class $ContactDTOCopyWith<$Res> {
   factory $ContactDTOCopyWith(
           ContactDTO value, $Res Function(ContactDTO) then) =
       _$ContactDTOCopyWithImpl<$Res>;
-  $Res call(
-      {@JsonKey(ignore: true) String id,
-      NameDataDTO nameDataDTO,
-      List<CompanyDTO> companiesDTO,
-      List<LabelObjectDTO<ILabelObject>> emailsDTO,
-      List<LabelObjectDTO<ILabelObject>> phonesDTO,
-      @ServerTimeStampConverter() FieldValue serverTimeStamp});
+  $Res call({@JsonKey(ignore: true) String id,
+    @JsonKey(name: nameDataName) NameDataDTO nameDataDTO,
+    @JsonKey(name: companiesName) List<CompanyDTO> companiesDTO,
+    @JsonKey(name: emailsName) List<LabelObjectDTO<ILabelObject>> emailsDTO,
+    @JsonKey(name: phonesName) List<LabelObjectDTO<ILabelObject>> phonesDTO,
+    @ServerTimeStampConverter() FieldValue serverTimeStamp});
 
   $NameDataDTOCopyWith<$Res> get nameDataDTO;
 }
@@ -118,13 +125,12 @@ abstract class _$ContactDTOCopyWith<$Res> implements $ContactDTOCopyWith<$Res> {
           _ContactDTO value, $Res Function(_ContactDTO) then) =
       __$ContactDTOCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {@JsonKey(ignore: true) String id,
-      NameDataDTO nameDataDTO,
-      List<CompanyDTO> companiesDTO,
-      List<LabelObjectDTO<ILabelObject>> emailsDTO,
-      List<LabelObjectDTO<ILabelObject>> phonesDTO,
-      @ServerTimeStampConverter() FieldValue serverTimeStamp});
+  $Res call({@JsonKey(ignore: true) String id,
+    @JsonKey(name: nameDataName) NameDataDTO nameDataDTO,
+    @JsonKey(name: companiesName) List<CompanyDTO> companiesDTO,
+    @JsonKey(name: emailsName) List<LabelObjectDTO<ILabelObject>> emailsDTO,
+    @JsonKey(name: phonesName) List<LabelObjectDTO<ILabelObject>> phonesDTO,
+    @ServerTimeStampConverter() FieldValue serverTimeStamp});
 
   @override
   $NameDataDTOCopyWith<$Res> get nameDataDTO;
@@ -172,10 +178,10 @@ class __$ContactDTOCopyWithImpl<$Res> extends _$ContactDTOCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ContactDTO extends _ContactDTO {
   const _$_ContactDTO({@JsonKey(ignore: true) this.id,
-    this.nameDataDTO,
-    this.companiesDTO,
-    this.emailsDTO,
-    this.phonesDTO,
+    @JsonKey(name: nameDataName) this.nameDataDTO,
+    @JsonKey(name: companiesName) this.companiesDTO,
+    @JsonKey(name: emailsName) this.emailsDTO,
+    @JsonKey(name: phonesName) this.phonesDTO,
     @required @ServerTimeStampConverter() this.serverTimeStamp})
       : assert(serverTimeStamp != null),
         super._();
@@ -187,12 +193,16 @@ class _$_ContactDTO extends _ContactDTO {
   @JsonKey(ignore: true)
   final String id;
   @override
+  @JsonKey(name: nameDataName)
   final NameDataDTO nameDataDTO;
   @override
+  @JsonKey(name: companiesName)
   final List<CompanyDTO> companiesDTO;
   @override
+  @JsonKey(name: emailsName)
   final List<LabelObjectDTO<ILabelObject>> emailsDTO;
   @override
+  @JsonKey(name: phonesName)
   final List<LabelObjectDTO<ILabelObject>> phonesDTO;
   @override
   @ServerTimeStampConverter()
@@ -248,27 +258,35 @@ class _$_ContactDTO extends _ContactDTO {
 
 abstract class _ContactDTO extends ContactDTO {
   const _ContactDTO._() : super._();
+
   const factory _ContactDTO({@JsonKey(ignore: true) String id,
-    NameDataDTO nameDataDTO,
-    List<CompanyDTO> companiesDTO,
-    List<LabelObjectDTO<ILabelObject>> emailsDTO,
-    List<LabelObjectDTO<ILabelObject>> phonesDTO,
-    @required @ServerTimeStampConverter() FieldValue serverTimeStamp}) =
-      _$_ContactDTO;
+    @JsonKey(name: nameDataName) NameDataDTO nameDataDTO,
+    @JsonKey(name: companiesName) List<CompanyDTO> companiesDTO,
+    @JsonKey(name: emailsName) List<LabelObjectDTO<ILabelObject>> emailsDTO,
+    @JsonKey(name: phonesName) List<LabelObjectDTO<ILabelObject>> phonesDTO,
+    @required @ServerTimeStampConverter() FieldValue serverTimeStamp}) = _$_ContactDTO;
 
   factory _ContactDTO.fromJson(Map<String, dynamic> json) =
-      _$_ContactDTO.fromJson;
+  _$_ContactDTO.fromJson;
 
   @override
   @JsonKey(ignore: true)
   String get id;
+
   @override
+  @JsonKey(name: nameDataName)
   NameDataDTO get nameDataDTO;
+
   @override
+  @JsonKey(name: companiesName)
   List<CompanyDTO> get companiesDTO;
+
   @override
+  @JsonKey(name: emailsName)
   List<LabelObjectDTO<ILabelObject>> get emailsDTO;
+
   @override
+  @JsonKey(name: phonesName)
   List<LabelObjectDTO<ILabelObject>> get phonesDTO;
   @override
   @ServerTimeStampConverter()
@@ -405,7 +423,6 @@ class _$_NameDataDTO extends _NameDataDTO {
 
 abstract class _NameDataDTO extends NameDataDTO {
   const _NameDataDTO._() : super._();
-
   const factory _NameDataDTO({String name, String surname}) = _$_NameDataDTO;
 
   factory _NameDataDTO.fromJson(Map<String, dynamic> json) =
@@ -693,7 +710,6 @@ class _$_CompanyDTO extends _CompanyDTO {
 
 abstract class _CompanyDTO extends CompanyDTO {
   const _CompanyDTO._() : super._();
-
   const factory _CompanyDTO({String name, String title}) = _$_CompanyDTO;
 
   factory _CompanyDTO.fromJson(Map<String, dynamic> json) =

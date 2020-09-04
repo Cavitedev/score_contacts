@@ -13,14 +13,12 @@ import 'package:scorecontacts/domain/user/contacts_data/properties/i_label_objec
 import 'package:scorecontacts/domain/user/contacts_data/properties/names/name_data.dart';
 
 part 'add_contact_bloc.freezed.dart';
-
 part 'add_contact_event.dart';
-
 part 'add_contact_state.dart';
 
 @injectable
 class AddContactBloc extends Bloc<AddContactEvent, AddContactState> {
-  final IContactRepository repository;
+  final IContactsRepository repository;
 
   AddContactBloc(this.repository) : super(AddContactState.initial());
 

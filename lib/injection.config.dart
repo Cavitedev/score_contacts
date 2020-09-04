@@ -32,14 +32,12 @@ GetIt $initGetIt(
   gh.lazySingleton<FirebaseAuth>(() => firebaseInjectableModule.firebaseAuth);
   gh.lazySingleton<FirebaseFirestore>(() => firebaseInjectableModule.firestore);
   gh.lazySingleton<GoogleSignIn>(() => firebaseInjectableModule.googleSignIn);
-  gh.factory<IAuthFacade>(() =>
-      FirebaseAuthFacade(
-          googleSignIn: get<GoogleSignIn>(),
-          firebaseAuth: get<FirebaseAuth>()));
-  gh.lazySingleton<IContactRepository>(
-          () => ContactsRepository(get<FirebaseFirestore>()));
+  gh.factory<IAuthFacade>(() => FirebaseAuthFacade(
+      googleSignIn: get<GoogleSignIn>(), firebaseAuth: get<FirebaseAuth>()));
+  gh.lazySingleton<IContactsRepository>(
+      () => ContactsRepository(get<FirebaseFirestore>()));
   gh.factory<SignInBloc>(() => SignInBloc(authDao: get<IAuthFacade>()));
-  gh.factory<AddContactBloc>(() => AddContactBloc(get<IContactRepository>()));
+  gh.factory<AddContactBloc>(() => AddContactBloc(get<IContactsRepository>()));
   gh.factory<AuthBloc>(() => AuthBloc(get<IAuthFacade>()));
   return get;
 }

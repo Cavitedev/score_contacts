@@ -3,7 +3,7 @@ import 'package:scorecontacts/domain/user/contacts_data/contacts_failure.dart';
 
 import 'contact.dart';
 
-abstract class IContactRepository {
+abstract class IContactsRepository {
   //CRUD
   Future<Either<ContactsFailure, Unit>> createContact(Contact contact);
 

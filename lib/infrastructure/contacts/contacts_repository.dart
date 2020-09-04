@@ -10,8 +10,8 @@ import 'package:scorecontacts/infrastructure/contacts/contact_dtos.dart';
 import 'package:scorecontacts/infrastructure/core/firebase_user_helper.dart';
 import 'package:scorecontacts/infrastructure/firebase_core/codes.dart';
 
-@LazySingleton(as: IContactRepository)
-class ContactsRepository implements IContactRepository {
+@LazySingleton(as: IContactsRepository)
+class ContactsRepository implements IContactsRepository {
   final FirebaseFirestore firestore;
 
   ContactsRepository(this.firestore);

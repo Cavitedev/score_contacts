@@ -10,7 +10,13 @@ import 'package:scorecontacts/domain/user/contacts_data/properties/phone.dart';
 import 'package:scorecontacts/infrastructure/firebase_core/server_time_stamp_converter.dart';
 
 part 'contact_dtos.freezed.dart';
+
 part 'contact_dtos.g.dart';
+
+const String nameDataName = "nameData";
+const String companiesName = "companies";
+const String emailsName = "emails";
+const String phonesName = "phones";
 
 @freezed
 abstract class ContactDTO implements _$ContactDTO {
@@ -18,10 +24,10 @@ abstract class ContactDTO implements _$ContactDTO {
 
   const factory ContactDTO({
     @JsonKey(ignore: true) String id,
-    NameDataDTO nameDataDTO,
-    List<CompanyDTO> companiesDTO,
-    List<LabelObjectDTO<ILabelObject>> emailsDTO,
-    List<LabelObjectDTO<ILabelObject>> phonesDTO,
+    @JsonKey(name: nameDataName) NameDataDTO nameDataDTO,
+    @JsonKey(name: companiesName) List<CompanyDTO> companiesDTO,
+    @JsonKey(name: emailsName) List<LabelObjectDTO<ILabelObject>> emailsDTO,
+    @JsonKey(name: phonesName) List<LabelObjectDTO<ILabelObject>> phonesDTO,
     @required @ServerTimeStampConverter() FieldValue serverTimeStamp,
   }) = _ContactDTO;
 
@@ -29,13 +35,17 @@ abstract class ContactDTO implements _$ContactDTO {
     return ContactDTO(
       id: contact.id.value,
       nameDataDTO: NameDataDTO.fromDomain(contact.nameData),
-      companiesDTO:
-          contact.companies.map((comp) => CompanyDTO.fromDomain(comp)).toList(),
+      companiesDTO: contact.companies
+          .where((comp) => comp.title != null || comp.name != null)
+          .map((comp) => CompanyDTO.fromDomain(comp))
+          .toList(),
       emailsDTO: contact.labelObjects[Email]
+          .where((email) => email.value != null)
           .map((emailLabelObject) =>
               LabelObjectDTO<Email>.fromDomain(emailLabelObject))
           .toList(),
       phonesDTO: contact.labelObjects[Phone]
+          .where((phone) => phone.value != null)
           .map((labelObject) => LabelObjectDTO<Phone>.fromDomain(labelObject))
           .toList(),
       serverTimeStamp: FieldValue.serverTimestamp(),
@@ -61,6 +71,7 @@ abstract class ContactDTO implements _$ContactDTO {
     return ContactDTO.fromJson(doc.data()).copyWith(id: doc.id);
   }
 }
+
 @freezed
 abstract class NameDataDTO implements _$NameDataDTO {
   const NameDataDTO._();

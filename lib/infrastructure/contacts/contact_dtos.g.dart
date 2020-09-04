@@ -8,19 +8,19 @@ part of 'contact_dtos.dart';
 
 _$_ContactDTO _$_$_ContactDTOFromJson(Map<String, dynamic> json) {
   return _$_ContactDTO(
-    nameDataDTO: json['nameDataDTO'] == null
+    nameDataDTO: json['nameData'] == null
         ? null
-        : NameDataDTO.fromJson(json['nameDataDTO'] as Map<String, dynamic>),
-    companiesDTO: (json['companiesDTO'] as List)
+        : NameDataDTO.fromJson(json['nameData'] as Map<String, dynamic>),
+    companiesDTO: (json['companies'] as List)
         ?.map((e) =>
             e == null ? null : CompanyDTO.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    emailsDTO: (json['emailsDTO'] as List)
+    emailsDTO: (json['emails'] as List)
         ?.map((e) => e == null
             ? null
             : LabelObjectDTO.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    phonesDTO: (json['phonesDTO'] as List)
+    phonesDTO: (json['phones'] as List)
         ?.map((e) => e == null
             ? null
             : LabelObjectDTO.fromJson(e as Map<String, dynamic>))
@@ -30,15 +30,24 @@ _$_ContactDTO _$_$_ContactDTOFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$_$_ContactDTOToJson(_$_ContactDTO instance) =>
-    <String, dynamic>{
-      'nameDataDTO': instance.nameDataDTO?.toJson(),
-      'companiesDTO': instance.companiesDTO?.map((e) => e?.toJson())?.toList(),
-      'emailsDTO': instance.emailsDTO?.map((e) => e?.toJson())?.toList(),
-      'phonesDTO': instance.phonesDTO?.map((e) => e?.toJson())?.toList(),
-      'serverTimeStamp':
-          const ServerTimeStampConverter().toJson(instance.serverTimeStamp),
-    };
+Map<String, dynamic> _$_$_ContactDTOToJson(_$_ContactDTO instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('nameData', instance.nameDataDTO?.toJson());
+  writeNotNull(
+      'companies', instance.companiesDTO?.map((e) => e?.toJson())?.toList());
+  writeNotNull('emails', instance.emailsDTO?.map((e) => e?.toJson())?.toList());
+  writeNotNull('phones', instance.phonesDTO?.map((e) => e?.toJson())?.toList());
+  writeNotNull('serverTimeStamp',
+      const ServerTimeStampConverter().toJson(instance.serverTimeStamp));
+  return val;
+}
 
 _$_NameDataDTO _$_$_NameDataDTOFromJson(Map<String, dynamic> json) {
   return _$_NameDataDTO(
@@ -47,11 +56,19 @@ _$_NameDataDTO _$_$_NameDataDTOFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$_$_NameDataDTOToJson(_$_NameDataDTO instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'surname': instance.surname,
-    };
+Map<String, dynamic> _$_$_NameDataDTOToJson(_$_NameDataDTO instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('name', instance.name);
+  writeNotNull('surname', instance.surname);
+  return val;
+}
 
 _$_LabelObjectDTO<T> _$_$_LabelObjectDTOFromJson<T extends ILabelObject>(
     Map<String, dynamic> json) {
@@ -62,11 +79,19 @@ _$_LabelObjectDTO<T> _$_$_LabelObjectDTOFromJson<T extends ILabelObject>(
 }
 
 Map<String, dynamic> _$_$_LabelObjectDTOToJson<T extends ILabelObject>(
-        _$_LabelObjectDTO<T> instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'label': instance.label,
-    };
+    _$_LabelObjectDTO<T> instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('name', instance.name);
+  writeNotNull('label', instance.label);
+  return val;
+}
 
 _$_CompanyDTO _$_$_CompanyDTOFromJson(Map<String, dynamic> json) {
   return _$_CompanyDTO(
@@ -75,8 +100,16 @@ _$_CompanyDTO _$_$_CompanyDTOFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$_$_CompanyDTOToJson(_$_CompanyDTO instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'title': instance.title,
-    };
+Map<String, dynamic> _$_$_CompanyDTOToJson(_$_CompanyDTO instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('name', instance.name);
+  writeNotNull('title', instance.title);
+  return val;
+}

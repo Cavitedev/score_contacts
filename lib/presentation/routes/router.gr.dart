@@ -100,6 +100,5 @@ extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
 class AddContactPageArguments {
   final Key key;
   final Contact contact;
-
   AddContactPageArguments({this.key, @required this.contact});
 }

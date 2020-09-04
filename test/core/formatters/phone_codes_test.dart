@@ -26,7 +26,7 @@ void main() {
         expect(phoneCountryData.country, 'Bhutan');
         expect(phoneCountryData.phoneCode, '975');
         expect(phoneCountryData.countryCode, 'BT');
-        expect(phoneCountryData.phoneMask, '+000 00 000 0000');
+        expect(phoneCountryData.phoneMask, '+000 0 000 000');
       });
       test('Country code factory when invalid code', () {
         expect(
