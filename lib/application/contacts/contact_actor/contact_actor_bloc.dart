@@ -10,9 +10,7 @@ import 'package:scorecontacts/domain/user/contacts_data/contacts_failure.dart';
 import 'package:scorecontacts/domain/user/contacts_data/i_contact_repository.dart';
 
 part 'contact_actor_bloc.freezed.dart';
-
 part 'contact_actor_event.dart';
-
 part 'contact_actor_state.dart';
 
 @injectable
@@ -25,16 +23,14 @@ class ContactActorBloc extends Bloc<ContactActorEvent, ContactActorState> {
   Stream<ContactActorState> mapEventToState(
     ContactActorEvent event,
   ) async* {
-    event.map(delete: (e) async* {
       yield const ContactActorState.actionInProgress();
 
-      final Either<ContactsFailure, Unit> failureOrUnit =
-          await repository.deleteContact(e.contact);
+    final Either<ContactsFailure, Unit> failureOrUnit =
+        await repository.deleteContact(event.contact);
 
-      yield failureOrUnit.fold(
-        (f) => ContactActorState.deleteFailure(f),
-        (_) => const ContactActorState.deleteSuccessful(),
-      );
-    });
+    yield failureOrUnit.fold(
+      (f) => ContactActorState.deleteFailure(f),
+      (_) => const ContactActorState.deleteSuccessful(),
+    );
   }
 }

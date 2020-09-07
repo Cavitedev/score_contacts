@@ -46,7 +46,7 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
 
   @override
   void initState() {
-    _items = [
+    _items = <DropdownMenuItem<String>>[
       ...widget.items
           .map((String item) => DropdownMenuItem(
                 value: item,
@@ -86,17 +86,18 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
   void _showDialogue(BuildContext context) {
     showDialog(
       context: context,
-      builder: (context) => AlertDialogueCancelOK(
-        title: "Custom label name",
-        hintText: "Label name",
-        onCancel: () {
-          setState(() {
-            selected = lastSelected;
-            customSelected = null;
-          });
-          if (widget.onLabelChanged != null) {
-            widget.onLabelChanged(lastSelected);
-          }
+      builder: (context) =>
+          AlertDialogueWithFieldCancelOK(
+            title: "Custom label name",
+            hintText: "Label name",
+            onCancel: () {
+              setState(() {
+                selected = lastSelected;
+                customSelected = null;
+              });
+              if (widget.onLabelChanged != null) {
+                widget.onLabelChanged(lastSelected);
+              }
         },
         onSubmit: (String text) {
           customSelected = text;
@@ -150,9 +151,11 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
             ),
             child: DropdownButton<String>(
                 focusNode: widget.focusNode,
+
                 focusColor: Theme
                     .of(context)
                     .textSelectionColor,
+
                 onChanged: (value) {
                   widget.focusNode.requestFocus();
                   if (value == "Custom") {
@@ -167,6 +170,8 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
                     widget.onLabelChanged(value);
                   }
                 },
+
+
                 selectedItemBuilder: (context) =>
                     itemsRendered
                         .map((item) =>
@@ -192,6 +197,7 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
                         ))
                         .cast<Widget>()
                         .toList(),
+
                 value: selected,
                 elevation: 16,
                 isExpanded: true,

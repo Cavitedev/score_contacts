@@ -57,6 +57,13 @@ class _MyAppState extends State<MyApp> {
             floatingActionButtonTheme: FloatingActionButtonThemeData(
               backgroundColor: Colors.blue[900],
             ),
+            popupMenuTheme: const PopupMenuThemeData(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(8)),
+              ),
+              elevation: 4,
+            ),
+            dividerColor: const Color.fromRGBO(20, 20, 20, 1),
             highlightColor: Colors.blueAccent[700],
             focusColor: Colors.blueAccent[100],
             cursorColor: Colors.blue[700],
@@ -73,6 +80,11 @@ class _MyAppState extends State<MyApp> {
                 ),
                 headline6: const TextStyle(fontSize: 20, letterSpacing: .5),
                 subtitle1: const TextStyle(fontSize: 20, letterSpacing: .5),
+                subtitle2: const TextStyle(
+                  fontSize: 18,
+                  letterSpacing: .5,
+                  fontWeight: FontWeight.w400,
+                ),
                 button: TextStyle(fontSize: 20, color: Colors.blueAccent[100])),
             visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
