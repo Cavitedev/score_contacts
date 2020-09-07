@@ -1251,7 +1251,6 @@ abstract class $AddContactStateCopyWith<$Res> {
   factory $AddContactStateCopyWith(
           AddContactState value, $Res Function(AddContactState) then) =
       _$AddContactStateCopyWithImpl<$Res>;
-
   $Res call(
       {Contact contact,
       bool isEditting,
@@ -1279,7 +1278,7 @@ class _$AddContactStateCopyWithImpl<$Res>
     return _then(_value.copyWith(
       contact: contact == freezed ? _value.contact : contact as Contact,
       isEditting:
-      isEditting == freezed ? _value.isEditting : isEditting as bool,
+          isEditting == freezed ? _value.isEditting : isEditting as bool,
       isSaving: isSaving == freezed ? _value.isSaving : isSaving as bool,
       savingOrFailureOption: savingOrFailureOption == freezed
           ? _value.savingOrFailureOption

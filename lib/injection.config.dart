@@ -12,6 +12,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import 'application/contacts/add_contact/add_contact_bloc.dart';
 import 'application/auth/auth_bloc.dart';
+import 'application/contacts/contact_actor/contact_actor_bloc.dart';
 import 'application/contacts/contact_watcher/contact_watcher_bloc.dart';
 import 'infrastructure/contacts/contacts_repository.dart';
 import 'infrastructure/auth/firebase_auth_facade.dart';
@@ -40,6 +41,8 @@ GetIt $initGetIt(
   gh.factory<SignInBloc>(() => SignInBloc(authDao: get<IAuthFacade>()));
   gh.factory<AddContactBloc>(() => AddContactBloc(get<IContactsRepository>()));
   gh.factory<AuthBloc>(() => AuthBloc(get<IAuthFacade>()));
+  gh.factory<ContactActorBloc>(
+      () => ContactActorBloc(get<IContactsRepository>()));
   gh.factory<ContactWatcherBloc>(
       () => ContactWatcherBloc(get<IContactsRepository>()));
   return get;

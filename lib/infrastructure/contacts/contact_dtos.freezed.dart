@@ -40,16 +40,12 @@ const $ContactDTO = _$ContactDTOTearOff();
 mixin _$ContactDTO {
   @JsonKey(ignore: true)
   String get id;
-
   @JsonKey(name: nameDataName)
   NameDataDTO get nameDataDTO;
-
   @JsonKey(name: companiesName)
   List<CompanyDTO> get companiesDTO;
-
   @JsonKey(name: emailsName)
   List<LabelObjectDTO<ILabelObject>> get emailsDTO;
-
   @JsonKey(name: phonesName)
   List<LabelObjectDTO<ILabelObject>> get phonesDTO;
   @ServerTimeStampConverter()
@@ -63,12 +59,14 @@ abstract class $ContactDTOCopyWith<$Res> {
   factory $ContactDTOCopyWith(
           ContactDTO value, $Res Function(ContactDTO) then) =
       _$ContactDTOCopyWithImpl<$Res>;
-  $Res call({@JsonKey(ignore: true) String id,
-    @JsonKey(name: nameDataName) NameDataDTO nameDataDTO,
-    @JsonKey(name: companiesName) List<CompanyDTO> companiesDTO,
-    @JsonKey(name: emailsName) List<LabelObjectDTO<ILabelObject>> emailsDTO,
-    @JsonKey(name: phonesName) List<LabelObjectDTO<ILabelObject>> phonesDTO,
-    @ServerTimeStampConverter() FieldValue serverTimeStamp});
+
+  $Res call(
+      {@JsonKey(ignore: true) String id,
+      @JsonKey(name: nameDataName) NameDataDTO nameDataDTO,
+      @JsonKey(name: companiesName) List<CompanyDTO> companiesDTO,
+      @JsonKey(name: emailsName) List<LabelObjectDTO<ILabelObject>> emailsDTO,
+      @JsonKey(name: phonesName) List<LabelObjectDTO<ILabelObject>> phonesDTO,
+      @ServerTimeStampConverter() FieldValue serverTimeStamp});
 
   $NameDataDTOCopyWith<$Res> get nameDataDTO;
 }
@@ -124,6 +122,7 @@ abstract class _$ContactDTOCopyWith<$Res> implements $ContactDTOCopyWith<$Res> {
   factory _$ContactDTOCopyWith(
           _ContactDTO value, $Res Function(_ContactDTO) then) =
       __$ContactDTOCopyWithImpl<$Res>;
+
   @override
   $Res call({@JsonKey(ignore: true) String id,
     @JsonKey(name: nameDataName) NameDataDTO nameDataDTO,
@@ -276,15 +275,12 @@ abstract class _ContactDTO extends ContactDTO {
   @override
   @JsonKey(name: nameDataName)
   NameDataDTO get nameDataDTO;
-
   @override
   @JsonKey(name: companiesName)
   List<CompanyDTO> get companiesDTO;
-
   @override
   @JsonKey(name: emailsName)
   List<LabelObjectDTO<ILabelObject>> get emailsDTO;
-
   @override
   @JsonKey(name: phonesName)
   List<LabelObjectDTO<ILabelObject>> get phonesDTO;

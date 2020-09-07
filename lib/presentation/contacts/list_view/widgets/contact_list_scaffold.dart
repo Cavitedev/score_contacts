@@ -42,7 +42,7 @@ class ContactsListScaffold extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          ExtendedNavigator.of(context).pushAddContactPage(contact: null);
+          ExtendedNavigator.of(context).pushAddContactPage();
         },
         child: const Icon(
           Icons.add,

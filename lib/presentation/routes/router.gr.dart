@@ -53,7 +53,9 @@ class Router extends RouterBase {
       );
     },
     AddContactPage: (data) {
-      final args = data.getArgs<AddContactPageArguments>(nullOk: false);
+      final args = data.getArgs<AddContactPageArguments>(
+        orElse: () => AddContactPageArguments(),
+      );
       return MaterialPageRoute<dynamic>(
         builder: (context) => AddContactPage(
           key: args.key,
@@ -82,7 +84,7 @@ extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
 
   Future<dynamic> pushAddContactPage({
     Key key,
-    @required Contact contact,
+    Contact contact,
   }) =>
       push<dynamic>(
         Routes.addContactPage,
@@ -100,5 +102,5 @@ extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
 class AddContactPageArguments {
   final Key key;
   final Contact contact;
-  AddContactPageArguments({this.key, @required this.contact});
+  AddContactPageArguments({this.key, this.contact});
 }

@@ -12,7 +12,7 @@ import 'package:scorecontacts/presentation/routes/router.gr.dart';
 class AddContactPage extends StatelessWidget {
   final Contact contact;
 
-  const AddContactPage({Key key, @required this.contact}) : super(key: key);
+  const AddContactPage({Key key, this.contact}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
