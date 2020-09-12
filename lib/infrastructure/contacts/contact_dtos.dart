@@ -10,7 +10,6 @@ import 'package:scorecontacts/domain/user/contacts_data/properties/phone.dart';
 import 'package:scorecontacts/infrastructure/firebase_core/server_time_stamp_converter.dart';
 
 part 'contact_dtos.freezed.dart';
-
 part 'contact_dtos.g.dart';
 
 const String nameDataName = "nameData";
@@ -113,11 +112,12 @@ abstract class LabelObjectDTO<T extends ILabelObject>
       // type: labelObject.runtimeType,
     );
   }
-
+//TODO fix return type
   T toDomain() {
     return LabelObject(
       value: name,
       label: label,
+      otherLabels: ["Home", "Mobile"],
     ) as T;
   }
 

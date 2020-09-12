@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:scorecontacts/application/widgets/focus_cubit.dart';
 
 class OutlinedInputFieldsGrowableList extends StatefulWidget {
   final List<OutlinedInputField> fieldPrefabs;
@@ -33,22 +31,25 @@ class _OutlinedInputFieldsGrowableListState
   int posInactiveWidget;
   String objectToRemove;
   int listCount;
-  List<FocusNode> focusNodes;
+  List<List<FocusNode>> focusNodes;
 
   @override
   void initState() {
     super.initState();
-    listCount = widget.writtenTexts.length ?? 1;
-    focusNodes = <FocusNode>[FocusNode()];
-    for (int i = 1; i < listCount; i++) {
-      focusNodes.add(FocusNode());
-    }
+    listCount = widget.writtenTexts.length;
+    focusNodes = Iterable<List<FocusNode>>.generate(listCount, (i) {
+      return Iterable<FocusNode>.generate(widget.fieldPrefabs.length, (i) {
+        return FocusNode();
+      }).toList();
+    }).toList();
   }
 
   @override
   void dispose() {
-    for (final node in focusNodes) {
-      node.dispose();
+    for (final nodes in focusNodes) {
+      for (final node in nodes) {
+        node.dispose();
+      }
     }
     super.dispose();
   }
@@ -73,14 +74,14 @@ class _OutlinedInputFieldsGrowableListState
 
   void _onActiveChange() {
     final int activeFields = widget.writtenTexts.where((texts) {
-      return texts.any((str) => str != null && str.isNotEmpty);
+      return _isEmptyList(texts);
     }).length;
 
     if (activeFields >= widget.writtenTexts.length) {
       _addWidget();
     } else if (activeFields < widget.writtenTexts.length - 1) {
-      posInactiveWidget = widget.writtenTexts
-          .indexWhere((value) => value != null && value.isEmpty);
+      posInactiveWidget =
+          widget.writtenTexts.indexWhere((texts) => !_isEmptyList(texts));
 
       _removeWidget(pos: posInactiveWidget);
     }
@@ -102,51 +103,66 @@ class _OutlinedInputFieldsGrowableListState
 
   void _updateAnimatedList() {
     if (widget.writtenTexts.length > listCount) {
-      focusNodes.add(FocusNode());
+      focusNodes
+          .add(Iterable<FocusNode>.generate(widget.fieldPrefabs.length, (i) {
+        return FocusNode();
+      }).toList());
       animatedList.currentState.insertItem(listCount);
       listCount++;
-    } else if (widget.writtenTexts.length < listCount) {
+    } else if (widget.writtenTexts.isNotEmpty &&
+        widget.writtenTexts.length < listCount) {
+      final List<String> messagesLeft = widget.writtenTexts[posInactiveWidget];
       animatedList.currentState.removeItem(posInactiveWidget,
           (context, animation) {
         return _listTransitionBuild(
-            animation, _buildField(listIndex: posInactiveWidget));
+            animation,
+            _buildField(
+                listIndex: posInactiveWidget, writtenTexts: messagesLeft));
       }, duration: const Duration(milliseconds: 300));
       listCount--;
+
       focusNodes.removeAt(posInactiveWidget);
     }
   }
 
-  Widget _buildField({@required int listIndex}) {
+  Widget _buildField({@required int listIndex, List<String> writtenTexts}) {
     return Column(
         children: Iterable<int>.generate(widget.fieldPrefabs.length)
             .map((parameterIndex) {
-      return OutlinedInputField(
-        writtenText: widget.writtenTexts[listIndex][parameterIndex],
-        onChangedValidator: (String str) {
-          return widget.onChangesValidators[parameterIndex](str, listIndex);
-        },
-        focusNode: focusNodes[listIndex],
-        hintText: widget.fieldPrefabs[parameterIndex].hintText,
-        helperText: widget.fieldPrefabs[parameterIndex].helperText,
-        autoCorrect: widget.fieldPrefabs[parameterIndex].autoCorrect,
-        textCapitalization:
+          return OutlinedInputField(
+            writtenText: writtenTexts != null
+                ? writtenTexts[parameterIndex]
+                : widget.writtenTexts[listIndex][parameterIndex] ?? "",
+            onChangedValidator: (String str) {
+              return widget.onChangesValidators[parameterIndex](str, listIndex);
+            },
+            focusNode: focusNodes[listIndex][parameterIndex],
+            hintText: widget.fieldPrefabs[parameterIndex].hintText,
+            helperText: widget.fieldPrefabs[parameterIndex].helperText,
+            autoCorrect: widget.fieldPrefabs[parameterIndex].autoCorrect,
+            textCapitalization:
             widget.fieldPrefabs[parameterIndex].textCapitalization,
-        topPadding: widget.fieldPrefabs[parameterIndex].topPadding,
-        prefixIcon: widget.fieldPrefabs[parameterIndex].prefixIcon,
-        keyboardType: widget.fieldPrefabs[parameterIndex].keyboardType,
-        borderRadius: widget.fieldPrefabs[parameterIndex].borderRadius,
-        autoFocus: widget.fieldPrefabs[parameterIndex].autoFocus,
-        inputFormatters: widget.fieldPrefabs[parameterIndex].inputFormatters,
-      );
-      // widget.fieldPrefabs[parameterIndex].copyWith(
-      //   writtenText: widget.writtenTexts[listIndex][parameterIndex],
-      //   onChangedValidator: (String str) {
-      //     return widget.onChangesValidators[parameterIndex](str, listIndex);
-    }).toList());
+            topPadding: widget.fieldPrefabs[parameterIndex].topPadding,
+            prefixIcon: widget.fieldPrefabs[parameterIndex].prefixIcon,
+            keyboardType: widget.fieldPrefabs[parameterIndex].keyboardType,
+            borderRadius: widget.fieldPrefabs[parameterIndex].borderRadius,
+            autoFocus: widget.fieldPrefabs[parameterIndex].autoFocus,
+            inputFormatters: widget.fieldPrefabs[parameterIndex]
+                .inputFormatters,
+          );
+          // widget.fieldPrefabs[parameterIndex].copyWith(
+          //   writtenText: widget.writtenTexts[listIndex][parameterIndex],
+          //   onChangedValidator: (String str) {
+          //     return widget.onChangesValidators[parameterIndex](str, listIndex);
+        }).toList());
   }
 
-  SizeTransition _listTransitionBuild(
-      Animation<double> animation, Widget child) {
+  bool _isEmptyList(List<String> list) {
+    return list.any((str) => str != null && str.isNotEmpty);
+  }
+
+  SizeTransition _listTransitionBuild(Animation<double> animation,
+      Widget child) {
     return SizeTransition(
       sizeFactor: CurvedAnimation(
           curve: const Interval(0, 1, curve: Curves.decelerate),
@@ -179,8 +195,6 @@ class OutlinedInputField extends StatefulWidget {
   /// return null to not show any helper
   final String Function(String) onChangedValidator;
 
-  final bool useFocusCubit;
-
   const OutlinedInputField({
     Key key,
     @required this.hintText,
@@ -197,7 +211,6 @@ class OutlinedInputField extends StatefulWidget {
     this.topPadding = 0,
     this.helperText = "",
     this.outlineInputBorder,
-    this.useFocusCubit = false,
   }) : super(key: key);
 
   @override
@@ -219,7 +232,6 @@ class OutlinedInputField extends StatefulWidget {
     String writtenText,
     String helperText,
     String Function(String) onChangedValidator,
-    bool useFocusCubit,
   }) {
     if ((hintText == null || identical(hintText, this.hintText)) &&
         (autoFocus == null || identical(autoFocus, this.autoFocus)) &&
@@ -238,9 +250,7 @@ class OutlinedInputField extends StatefulWidget {
         (writtenText == null || identical(writtenText, this.writtenText)) &&
         (helperText == null || identical(helperText, this.helperText)) &&
         (onChangedValidator == null ||
-            identical(onChangedValidator, this.onChangedValidator)) &&
-        (useFocusCubit == null ||
-            identical(useFocusCubit, this.useFocusCubit))) {
+            identical(onChangedValidator, this.onChangedValidator))) {
       return this;
     }
 
@@ -259,7 +269,6 @@ class OutlinedInputField extends StatefulWidget {
       writtenText: writtenText ?? this.writtenText,
       helperText: helperText ?? this.helperText,
       onChangedValidator: onChangedValidator ?? this.onChangedValidator,
-      useFocusCubit: useFocusCubit ?? this.useFocusCubit,
     );
   }
 
@@ -275,11 +284,6 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
   @override
   void initState() {
     textEditingController = TextEditingController();
-    if (widget.useFocusCubit) {
-      widget.focusNode?.addListener(() {
-        context.bloc<FocusCubit>().switchFocus();
-      });
-    }
     super.initState();
   }
 

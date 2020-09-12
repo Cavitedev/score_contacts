@@ -59,7 +59,6 @@ abstract class $ContactDTOCopyWith<$Res> {
   factory $ContactDTOCopyWith(
           ContactDTO value, $Res Function(ContactDTO) then) =
       _$ContactDTOCopyWithImpl<$Res>;
-
   $Res call(
       {@JsonKey(ignore: true) String id,
       @JsonKey(name: nameDataName) NameDataDTO nameDataDTO,
@@ -122,14 +121,14 @@ abstract class _$ContactDTOCopyWith<$Res> implements $ContactDTOCopyWith<$Res> {
   factory _$ContactDTOCopyWith(
           _ContactDTO value, $Res Function(_ContactDTO) then) =
       __$ContactDTOCopyWithImpl<$Res>;
-
   @override
-  $Res call({@JsonKey(ignore: true) String id,
-    @JsonKey(name: nameDataName) NameDataDTO nameDataDTO,
-    @JsonKey(name: companiesName) List<CompanyDTO> companiesDTO,
-    @JsonKey(name: emailsName) List<LabelObjectDTO<ILabelObject>> emailsDTO,
-    @JsonKey(name: phonesName) List<LabelObjectDTO<ILabelObject>> phonesDTO,
-    @ServerTimeStampConverter() FieldValue serverTimeStamp});
+  $Res call(
+      {@JsonKey(ignore: true) String id,
+      @JsonKey(name: nameDataName) NameDataDTO nameDataDTO,
+      @JsonKey(name: companiesName) List<CompanyDTO> companiesDTO,
+      @JsonKey(name: emailsName) List<LabelObjectDTO<ILabelObject>> emailsDTO,
+      @JsonKey(name: phonesName) List<LabelObjectDTO<ILabelObject>> phonesDTO,
+      @ServerTimeStampConverter() FieldValue serverTimeStamp});
 
   @override
   $NameDataDTOCopyWith<$Res> get nameDataDTO;
@@ -176,12 +175,13 @@ class __$ContactDTOCopyWithImpl<$Res> extends _$ContactDTOCopyWithImpl<$Res>
 
 @JsonSerializable()
 class _$_ContactDTO extends _ContactDTO {
-  const _$_ContactDTO({@JsonKey(ignore: true) this.id,
-    @JsonKey(name: nameDataName) this.nameDataDTO,
-    @JsonKey(name: companiesName) this.companiesDTO,
-    @JsonKey(name: emailsName) this.emailsDTO,
-    @JsonKey(name: phonesName) this.phonesDTO,
-    @required @ServerTimeStampConverter() this.serverTimeStamp})
+  const _$_ContactDTO(
+      {@JsonKey(ignore: true) this.id,
+      @JsonKey(name: nameDataName) this.nameDataDTO,
+      @JsonKey(name: companiesName) this.companiesDTO,
+      @JsonKey(name: emailsName) this.emailsDTO,
+      @JsonKey(name: phonesName) this.phonesDTO,
+      @required @ServerTimeStampConverter() this.serverTimeStamp})
       : assert(serverTimeStamp != null),
         super._();
 
@@ -257,21 +257,27 @@ class _$_ContactDTO extends _ContactDTO {
 
 abstract class _ContactDTO extends ContactDTO {
   const _ContactDTO._() : super._();
-
-  const factory _ContactDTO({@JsonKey(ignore: true) String id,
-    @JsonKey(name: nameDataName) NameDataDTO nameDataDTO,
-    @JsonKey(name: companiesName) List<CompanyDTO> companiesDTO,
-    @JsonKey(name: emailsName) List<LabelObjectDTO<ILabelObject>> emailsDTO,
-    @JsonKey(name: phonesName) List<LabelObjectDTO<ILabelObject>> phonesDTO,
-    @required @ServerTimeStampConverter() FieldValue serverTimeStamp}) = _$_ContactDTO;
+  const factory _ContactDTO(
+      {@JsonKey(ignore: true)
+          String id,
+      @JsonKey(name: nameDataName)
+          NameDataDTO nameDataDTO,
+      @JsonKey(name: companiesName)
+          List<CompanyDTO> companiesDTO,
+      @JsonKey(name: emailsName)
+          List<LabelObjectDTO<ILabelObject>> emailsDTO,
+      @JsonKey(name: phonesName)
+          List<LabelObjectDTO<ILabelObject>> phonesDTO,
+      @required
+      @ServerTimeStampConverter()
+          FieldValue serverTimeStamp}) = _$_ContactDTO;
 
   factory _ContactDTO.fromJson(Map<String, dynamic> json) =
-  _$_ContactDTO.fromJson;
+      _$_ContactDTO.fromJson;
 
   @override
   @JsonKey(ignore: true)
   String get id;
-
   @override
   @JsonKey(name: nameDataName)
   NameDataDTO get nameDataDTO;
@@ -564,9 +570,8 @@ class _$_LabelObjectDTO<T extends ILabelObject> extends _LabelObjectDTO<T> {
 abstract class _LabelObjectDTO<T extends ILabelObject>
     extends LabelObjectDTO<T> {
   const _LabelObjectDTO._() : super._();
-
   const factory _LabelObjectDTO({String name, String label}) =
-  _$_LabelObjectDTO<T>;
+      _$_LabelObjectDTO<T>;
 
   factory _LabelObjectDTO.fromJson(Map<String, dynamic> json) =
       _$_LabelObjectDTO<T>.fromJson;

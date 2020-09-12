@@ -23,7 +23,7 @@ abstract class Contact implements _$Contact {
   factory Contact.empty() => Contact(
         id: UniqueID(),
         nameData: const NameData(),
-        companies: [const Company()],
+        companies: [Company.empty()],
         labelObjects: {
           Phone: <Phone>[const Phone()],
           Email: <Email>[const Email()],

@@ -30,7 +30,12 @@ class AddContactBloc extends Bloc<AddContactEvent, AddContactState> {
       initialize: (e) async* {
         yield e.contactOption.fold(
           () => state,
-          (contact) => state.copyWith(contact: contact),
+          (contact) {
+            if (contact.companies.isEmpty) {
+              contact = contact.copyWith(companies: [Company.empty()]);
+            }
+            return state.copyWith(contact: contact);
+          },
         );
       },
       saved: (e) async* {
@@ -91,13 +96,13 @@ class AddContactBloc extends Bloc<AddContactEvent, AddContactState> {
             contact: state.contact.copyWith(companies: companies));
       },
       addCompany: (e) async* {
-        final List<Company> companies = state.contact.companies;
-        companies.add(const Company());
+        final List<Company> companies = List.of(state.contact.companies);
+        companies.add(Company.empty());
         yield state.copyWith(
             contact: state.contact.copyWith(companies: companies));
       },
       deleteCompany: (e) async* {
-        final List<Company> companies = state.contact.companies;
+        final List<Company> companies = List.of(state.contact.companies);
         companies.removeAt(e.index);
         yield state.copyWith(
             contact: state.contact.copyWith(companies: companies));

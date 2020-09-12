@@ -1148,7 +1148,6 @@ abstract class _$UpdateCompanyCopyWith<$Res> {
   factory _$UpdateCompanyCopyWith(
           _UpdateCompany value, $Res Function(_UpdateCompany) then) =
       __$UpdateCompanyCopyWithImpl<$Res>;
-
   $Res call({Company company, int index});
 
   $CompanyCopyWith<$Res> get company;
@@ -1157,8 +1156,8 @@ abstract class _$UpdateCompanyCopyWith<$Res> {
 class __$UpdateCompanyCopyWithImpl<$Res>
     extends _$AddContactEventCopyWithImpl<$Res>
     implements _$UpdateCompanyCopyWith<$Res> {
-  __$UpdateCompanyCopyWithImpl(_UpdateCompany _value,
-      $Res Function(_UpdateCompany) _then)
+  __$UpdateCompanyCopyWithImpl(
+      _UpdateCompany _value, $Res Function(_UpdateCompany) _then)
       : super(_value, (v) => _then(v as _UpdateCompany));
 
   @override
@@ -1328,9 +1327,7 @@ abstract class _UpdateCompany implements AddContactEvent {
   const factory _UpdateCompany(Company company, int index) = _$_UpdateCompany;
 
   Company get company;
-
   int get index;
-
   _$UpdateCompanyCopyWith<_UpdateCompany> get copyWith;
 }
 
@@ -1630,7 +1627,6 @@ abstract class _DeleteCompany implements AddContactEvent {
   const factory _DeleteCompany(int index) = _$_DeleteCompany;
 
   int get index;
-
   _$DeleteCompanyCopyWith<_DeleteCompany> get copyWith;
 }
 

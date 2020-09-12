@@ -39,7 +39,7 @@ class TextFieldsWithDropdowns extends StatefulWidget {
 class _TextFieldsWithDropdownsState extends State<TextFieldsWithDropdowns> {
   List<TextFieldWithDropdown> itemsBuilt;
   GlobalKey<AnimatedListState> animatedList = GlobalKey<AnimatedListState>();
-  int listCount = 1;
+  int listCount;
   int posInactiveWidget = 0;
   ILabelObject objectToRemove;
 
@@ -47,6 +47,7 @@ class _TextFieldsWithDropdownsState extends State<TextFieldsWithDropdowns> {
 
   @override
   void initState() {
+    listCount = widget.labelObjects.length;
     focusNodes = <FocusNode>[FocusNode()];
     super.initState();
   }

@@ -10,4 +10,11 @@ abstract class Company implements _$Company {
     String name,
     String title,
   }) = _Company;
+
+  factory Company.empty() {
+    return const Company(
+      name: "",
+      title: "",
+    );
+  }
 }
