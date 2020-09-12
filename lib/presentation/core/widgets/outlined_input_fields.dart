@@ -1,5 +1,67 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:scorecontacts/application/widgets/focus_cubit.dart';
+import 'package:scorecontacts/injection.dart';
 import 'package:scorecontacts/presentation/core/widgets/outlined_input_field.dart';
+
+class OutlinedInputFieldsGroup2 extends StatelessWidget {
+  final List<OutlinedInputField> inputFieldPrefabs;
+
+  const OutlinedInputFieldsGroup2({Key key, this.inputFieldPrefabs})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final List<OutlinedInputField> inputFields =
+        Iterable<int>.generate(inputFieldPrefabs.length)
+            .map((i) => inputFieldPrefabs[i].copyWith(
+                useFocusCubit: true,
+                focusNode: FocusNode(),
+                outlineInputBorder: const OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  borderSide: BorderSide.none,
+                ),
+                //Big enough to not overlap with container
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(20),
+                )))
+            .toList();
+
+    return BlocProvider<FocusCubit>(
+      create: (context) => getIt<FocusCubit>(),
+      child: BlocBuilder<FocusCubit, FocusState>(
+        builder: (context, state) => Container(
+          decoration: BoxDecoration(
+            color: Theme.of(context).textSelectionColor,
+            border: state.map(focused: (_) => true, unfocused: (_) => false)
+                ? BorderDirectional(
+                    bottom: BorderSide(
+                        width: 2, color: Theme.of(context).highlightColor),
+                    top: BorderSide(
+                        width: 2, color: Theme.of(context).highlightColor),
+                    start: BorderSide(
+                        width: 2, color: Theme.of(context).highlightColor),
+                    end: BorderSide(
+                        width: 2, color: Theme.of(context).highlightColor),
+                  )
+                : null,
+            borderRadius: BorderRadius.circular(16),
+            boxShadow: [
+              BoxShadow(
+                color: Theme.of(context).primaryColorDark.withOpacity(0.5),
+                blurRadius: 20,
+                offset: const Offset(0, 3),
+              )
+            ],
+          ),
+          child: Column(
+            children: inputFields,
+          ),
+        ),
+      ),
+    );
+  }
+}
 
 class OutlinedInputFieldsGroup extends StatefulWidget {
   final double topPadding;

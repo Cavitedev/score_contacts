@@ -26,8 +26,8 @@ class AddContactForm extends StatelessWidget {
                 const SizedBox(
                   height: 15,
                 ),
-                OutlinedInputFieldsGroup(
-                  inputFields: [
+                OutlinedInputFieldsGroup2(
+                  inputFieldPrefabs: [
                     OutlinedInputField(
                       hintText: "Name",
                       writtenText: state.contact.nameData.firstName,

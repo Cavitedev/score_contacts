@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:scorecontacts/application/widgets/focus_cubit.dart';
 
 class OutlinedInputFieldsGrowableList extends StatefulWidget {
   final List<OutlinedInputField> fieldPrefabs;
@@ -177,6 +179,8 @@ class OutlinedInputField extends StatefulWidget {
   /// return null to not show any helper
   final String Function(String) onChangedValidator;
 
+  final bool useFocusCubit;
+
   const OutlinedInputField({
     Key key,
     @required this.hintText,
@@ -193,12 +197,13 @@ class OutlinedInputField extends StatefulWidget {
     this.topPadding = 0,
     this.helperText = "",
     this.outlineInputBorder,
+    this.useFocusCubit = false,
   }) : super(key: key);
 
   @override
   _OutlinedInputFieldState createState() => _OutlinedInputFieldState();
 
-  //#region copyWith
+//#region copyWith
   OutlinedInputField copyWith({
     String hintText,
     bool autoFocus,
@@ -214,6 +219,7 @@ class OutlinedInputField extends StatefulWidget {
     String writtenText,
     String helperText,
     String Function(String) onChangedValidator,
+    bool useFocusCubit,
   }) {
     if ((hintText == null || identical(hintText, this.hintText)) &&
         (autoFocus == null || identical(autoFocus, this.autoFocus)) &&
@@ -232,7 +238,9 @@ class OutlinedInputField extends StatefulWidget {
         (writtenText == null || identical(writtenText, this.writtenText)) &&
         (helperText == null || identical(helperText, this.helperText)) &&
         (onChangedValidator == null ||
-            identical(onChangedValidator, this.onChangedValidator))) {
+            identical(onChangedValidator, this.onChangedValidator)) &&
+        (useFocusCubit == null ||
+            identical(useFocusCubit, this.useFocusCubit))) {
       return this;
     }
 
@@ -251,6 +259,7 @@ class OutlinedInputField extends StatefulWidget {
       writtenText: writtenText ?? this.writtenText,
       helperText: helperText ?? this.helperText,
       onChangedValidator: onChangedValidator ?? this.onChangedValidator,
+      useFocusCubit: useFocusCubit ?? this.useFocusCubit,
     );
   }
 
@@ -266,6 +275,11 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
   @override
   void initState() {
     textEditingController = TextEditingController();
+    if (widget.useFocusCubit) {
+      widget.focusNode?.addListener(() {
+        context.bloc<FocusCubit>().switchFocus();
+      });
+    }
     super.initState();
   }
 
@@ -288,7 +302,6 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
     return Container(
       padding: EdgeInsets.only(top: widget.topPadding),
       child: TextField(
-
         controller: textEditingController,
         onChanged: (str) {
           setState(() {
@@ -299,7 +312,6 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
           });
         },
         focusNode: widget.focusNode,
-
         autocorrect: widget.autoCorrect,
         enableSuggestions: widget.autoCorrect,
         autofocus: widget.autoFocus,
@@ -307,7 +319,6 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
         inputFormatters: widget.inputFormatters,
         textCapitalization: widget.textCapitalization,
         showCursor: true,
-
         decoration: InputDecoration(
             labelText: widget.hintText,
             filled: true,
@@ -327,12 +338,13 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
             )
                 : null,
             contentPadding: const EdgeInsets.only(top: 8, bottom: 8, left: 9),
-            focusedBorder: widget.outlineInputBorder ?? OutlineInputBorder(
-                borderRadius: widget.borderRadius,
-                borderSide: BorderSide(
-                    color: Theme
-                        .of(context)
-                        .highlightColor, width: 2)),
+            focusedBorder: widget.outlineInputBorder ??
+                OutlineInputBorder(
+                    borderRadius: widget.borderRadius,
+                    borderSide: BorderSide(
+                        color: Theme
+                            .of(context)
+                            .highlightColor, width: 2)),
             border: OutlineInputBorder(
               borderRadius: widget.borderRadius,
               borderSide: BorderSide.none,
