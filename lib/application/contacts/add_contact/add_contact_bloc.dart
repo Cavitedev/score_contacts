@@ -84,8 +84,23 @@ class AddContactBloc extends Bloc<AddContactEvent, AddContactState> {
             contact: state.contact.copyWith(nameData: e.nameData));
       },
       updateCompany: (e) async* {
+        final List<Company> companies = List.of(state.contact.companies);
+        companies[e.index] = e.company;
+
         yield state.copyWith(
-            contact: state.contact.copyWith(companies: [e.company]));
+            contact: state.contact.copyWith(companies: companies));
+      },
+      addCompany: (e) async* {
+        final List<Company> companies = state.contact.companies;
+        companies.add(const Company());
+        yield state.copyWith(
+            contact: state.contact.copyWith(companies: companies));
+      },
+      deleteCompany: (e) async* {
+        final List<Company> companies = state.contact.companies;
+        companies.removeAt(e.index);
+        yield state.copyWith(
+            contact: state.contact.copyWith(companies: companies));
       },
     );
   }

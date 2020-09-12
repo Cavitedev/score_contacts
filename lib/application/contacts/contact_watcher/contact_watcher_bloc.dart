@@ -9,9 +9,7 @@ import 'package:scorecontacts/domain/user/contacts_data/contacts_failure.dart';
 import 'package:scorecontacts/domain/user/contacts_data/i_contact_repository.dart';
 
 part 'contact_watcher_bloc.freezed.dart';
-
 part 'contact_watcher_event.dart';
-
 part 'contact_watcher_state.dart';
 
 @injectable
@@ -51,7 +49,7 @@ class ContactWatcherBloc
   }
 
   String _getFullName(Contact contact) {
-    return (contact.nameData.firstName + contact.nameData.surnames)
+    return (contact.nameData.firstName + (contact.nameData.surnames ?? ""))
         .toLowerCase();
   }
 }

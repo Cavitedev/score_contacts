@@ -19,8 +19,12 @@ abstract class AddContactEvent with _$AddContactEvent {
   const factory AddContactEvent.updateNameData(NameData nameData) =
       _UpdateNameData;
 
-  const factory AddContactEvent.updateCompany(Company company) =
-  _UpdateCompanyNameData;
+  const factory AddContactEvent.updateCompany(Company company, int index) =
+      _UpdateCompany;
+
+  const factory AddContactEvent.addCompany() = _AddCompany;
+
+  const factory AddContactEvent.deleteCompany(int index) = _DeleteCompany;
 }
 
 

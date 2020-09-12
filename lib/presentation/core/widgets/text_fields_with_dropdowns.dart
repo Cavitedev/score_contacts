@@ -104,9 +104,6 @@ class _TextFieldsWithDropdownsState extends State<TextFieldsWithDropdowns> {
   }
 
   void _updateAnimatedList() {
-    for (int i = 0; i < focusNodes.length; i++) {
-
-    }
     if (widget.labelObjects.length > listCount) {
       focusNodes.add(FocusNode());
       animatedList.currentState.insertItem(listCount);

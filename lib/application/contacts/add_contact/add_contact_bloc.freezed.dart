@@ -55,9 +55,22 @@ class _$AddContactEventTearOff {
   }
 
 // ignore: unused_element
-  _UpdateCompanyNameData updateCompany(Company company) {
-    return _UpdateCompanyNameData(
+  _UpdateCompany updateCompany(Company company, int index) {
+    return _UpdateCompany(
       company,
+      index,
+    );
+  }
+
+// ignore: unused_element
+  _AddCompany addCompany() {
+    return const _AddCompany();
+  }
+
+// ignore: unused_element
+  _DeleteCompany deleteCompany(int index) {
+    return _DeleteCompany(
+      index,
     );
   }
 }
@@ -74,7 +87,9 @@ mixin _$AddContactEvent {
     @required Result addLabelObject(ILabelObject labelObject),
     @required Result removeLabelObject(Type labelObjectType, int pos),
     @required Result updateNameData(NameData nameData),
-    @required Result updateCompany(Company company),
+    @required Result updateCompany(Company company, int index),
+    @required Result addCompany(),
+    @required Result deleteCompany(int index),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -84,7 +99,9 @@ mixin _$AddContactEvent {
     Result addLabelObject(ILabelObject labelObject),
     Result removeLabelObject(Type labelObjectType, int pos),
     Result updateNameData(NameData nameData),
-    Result updateCompany(Company company),
+    Result updateCompany(Company company, int index),
+    Result addCompany(),
+    Result deleteCompany(int index),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -95,7 +112,9 @@ mixin _$AddContactEvent {
     @required Result addLabelObject(_AddLabelObject value),
     @required Result removeLabelObject(_RemoveLabelObject value),
     @required Result updateNameData(_UpdateNameData value),
-    @required Result updateCompany(_UpdateCompanyNameData value),
+    @required Result updateCompany(_UpdateCompany value),
+    @required Result addCompany(_AddCompany value),
+    @required Result deleteCompany(_DeleteCompany value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -105,7 +124,9 @@ mixin _$AddContactEvent {
     Result addLabelObject(_AddLabelObject value),
     Result removeLabelObject(_RemoveLabelObject value),
     Result updateNameData(_UpdateNameData value),
-    Result updateCompany(_UpdateCompanyNameData value),
+    Result updateCompany(_UpdateCompany value),
+    Result addCompany(_AddCompany value),
+    Result deleteCompany(_DeleteCompany value),
     @required Result orElse(),
   });
 }
@@ -199,7 +220,9 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
     @required Result addLabelObject(ILabelObject labelObject),
     @required Result removeLabelObject(Type labelObjectType, int pos),
     @required Result updateNameData(NameData nameData),
-    @required Result updateCompany(Company company),
+    @required Result updateCompany(Company company, int index),
+    @required Result addCompany(),
+    @required Result deleteCompany(int index),
   }) {
     assert(initialize != null);
     assert(saved != null);
@@ -208,6 +231,8 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
     assert(removeLabelObject != null);
     assert(updateNameData != null);
     assert(updateCompany != null);
+    assert(addCompany != null);
+    assert(deleteCompany != null);
     return initialize(contactOption);
   }
 
@@ -220,7 +245,9 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
     Result addLabelObject(ILabelObject labelObject),
     Result removeLabelObject(Type labelObjectType, int pos),
     Result updateNameData(NameData nameData),
-    Result updateCompany(Company company),
+    Result updateCompany(Company company, int index),
+    Result addCompany(),
+    Result deleteCompany(int index),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -239,7 +266,9 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
     @required Result addLabelObject(_AddLabelObject value),
     @required Result removeLabelObject(_RemoveLabelObject value),
     @required Result updateNameData(_UpdateNameData value),
-    @required Result updateCompany(_UpdateCompanyNameData value),
+    @required Result updateCompany(_UpdateCompany value),
+    @required Result addCompany(_AddCompany value),
+    @required Result deleteCompany(_DeleteCompany value),
   }) {
     assert(initialize != null);
     assert(saved != null);
@@ -248,6 +277,8 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
     assert(removeLabelObject != null);
     assert(updateNameData != null);
     assert(updateCompany != null);
+    assert(addCompany != null);
+    assert(deleteCompany != null);
     return initialize(this);
   }
 
@@ -260,7 +291,9 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
     Result addLabelObject(_AddLabelObject value),
     Result removeLabelObject(_RemoveLabelObject value),
     Result updateNameData(_UpdateNameData value),
-    Result updateCompany(_UpdateCompanyNameData value),
+    Result updateCompany(_UpdateCompany value),
+    Result addCompany(_AddCompany value),
+    Result deleteCompany(_DeleteCompany value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -323,7 +356,9 @@ class _$_Saved with DiagnosticableTreeMixin implements _Saved {
     @required Result addLabelObject(ILabelObject labelObject),
     @required Result removeLabelObject(Type labelObjectType, int pos),
     @required Result updateNameData(NameData nameData),
-    @required Result updateCompany(Company company),
+    @required Result updateCompany(Company company, int index),
+    @required Result addCompany(),
+    @required Result deleteCompany(int index),
   }) {
     assert(initialize != null);
     assert(saved != null);
@@ -332,6 +367,8 @@ class _$_Saved with DiagnosticableTreeMixin implements _Saved {
     assert(removeLabelObject != null);
     assert(updateNameData != null);
     assert(updateCompany != null);
+    assert(addCompany != null);
+    assert(deleteCompany != null);
     return saved();
   }
 
@@ -344,7 +381,9 @@ class _$_Saved with DiagnosticableTreeMixin implements _Saved {
     Result addLabelObject(ILabelObject labelObject),
     Result removeLabelObject(Type labelObjectType, int pos),
     Result updateNameData(NameData nameData),
-    Result updateCompany(Company company),
+    Result updateCompany(Company company, int index),
+    Result addCompany(),
+    Result deleteCompany(int index),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -363,7 +402,9 @@ class _$_Saved with DiagnosticableTreeMixin implements _Saved {
     @required Result addLabelObject(_AddLabelObject value),
     @required Result removeLabelObject(_RemoveLabelObject value),
     @required Result updateNameData(_UpdateNameData value),
-    @required Result updateCompany(_UpdateCompanyNameData value),
+    @required Result updateCompany(_UpdateCompany value),
+    @required Result addCompany(_AddCompany value),
+    @required Result deleteCompany(_DeleteCompany value),
   }) {
     assert(initialize != null);
     assert(saved != null);
@@ -372,6 +413,8 @@ class _$_Saved with DiagnosticableTreeMixin implements _Saved {
     assert(removeLabelObject != null);
     assert(updateNameData != null);
     assert(updateCompany != null);
+    assert(addCompany != null);
+    assert(deleteCompany != null);
     return saved(this);
   }
 
@@ -384,7 +427,9 @@ class _$_Saved with DiagnosticableTreeMixin implements _Saved {
     Result addLabelObject(_AddLabelObject value),
     Result removeLabelObject(_RemoveLabelObject value),
     Result updateNameData(_UpdateNameData value),
-    Result updateCompany(_UpdateCompanyNameData value),
+    Result updateCompany(_UpdateCompany value),
+    Result addCompany(_AddCompany value),
+    Result deleteCompany(_DeleteCompany value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -484,7 +529,9 @@ class _$_LabelObjectChanged
     @required Result addLabelObject(ILabelObject labelObject),
     @required Result removeLabelObject(Type labelObjectType, int pos),
     @required Result updateNameData(NameData nameData),
-    @required Result updateCompany(Company company),
+    @required Result updateCompany(Company company, int index),
+    @required Result addCompany(),
+    @required Result deleteCompany(int index),
   }) {
     assert(initialize != null);
     assert(saved != null);
@@ -493,6 +540,8 @@ class _$_LabelObjectChanged
     assert(removeLabelObject != null);
     assert(updateNameData != null);
     assert(updateCompany != null);
+    assert(addCompany != null);
+    assert(deleteCompany != null);
     return labelObjectChanged(labelObject, pos);
   }
 
@@ -505,7 +554,9 @@ class _$_LabelObjectChanged
     Result addLabelObject(ILabelObject labelObject),
     Result removeLabelObject(Type labelObjectType, int pos),
     Result updateNameData(NameData nameData),
-    Result updateCompany(Company company),
+    Result updateCompany(Company company, int index),
+    Result addCompany(),
+    Result deleteCompany(int index),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -524,7 +575,9 @@ class _$_LabelObjectChanged
     @required Result addLabelObject(_AddLabelObject value),
     @required Result removeLabelObject(_RemoveLabelObject value),
     @required Result updateNameData(_UpdateNameData value),
-    @required Result updateCompany(_UpdateCompanyNameData value),
+    @required Result updateCompany(_UpdateCompany value),
+    @required Result addCompany(_AddCompany value),
+    @required Result deleteCompany(_DeleteCompany value),
   }) {
     assert(initialize != null);
     assert(saved != null);
@@ -533,6 +586,8 @@ class _$_LabelObjectChanged
     assert(removeLabelObject != null);
     assert(updateNameData != null);
     assert(updateCompany != null);
+    assert(addCompany != null);
+    assert(deleteCompany != null);
     return labelObjectChanged(this);
   }
 
@@ -545,7 +600,9 @@ class _$_LabelObjectChanged
     Result addLabelObject(_AddLabelObject value),
     Result removeLabelObject(_RemoveLabelObject value),
     Result updateNameData(_UpdateNameData value),
-    Result updateCompany(_UpdateCompanyNameData value),
+    Result updateCompany(_UpdateCompany value),
+    Result addCompany(_AddCompany value),
+    Result deleteCompany(_DeleteCompany value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -639,7 +696,9 @@ class _$_AddLabelObject
     @required Result addLabelObject(ILabelObject labelObject),
     @required Result removeLabelObject(Type labelObjectType, int pos),
     @required Result updateNameData(NameData nameData),
-    @required Result updateCompany(Company company),
+    @required Result updateCompany(Company company, int index),
+    @required Result addCompany(),
+    @required Result deleteCompany(int index),
   }) {
     assert(initialize != null);
     assert(saved != null);
@@ -648,6 +707,8 @@ class _$_AddLabelObject
     assert(removeLabelObject != null);
     assert(updateNameData != null);
     assert(updateCompany != null);
+    assert(addCompany != null);
+    assert(deleteCompany != null);
     return addLabelObject(labelObject);
   }
 
@@ -660,7 +721,9 @@ class _$_AddLabelObject
     Result addLabelObject(ILabelObject labelObject),
     Result removeLabelObject(Type labelObjectType, int pos),
     Result updateNameData(NameData nameData),
-    Result updateCompany(Company company),
+    Result updateCompany(Company company, int index),
+    Result addCompany(),
+    Result deleteCompany(int index),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -679,7 +742,9 @@ class _$_AddLabelObject
     @required Result addLabelObject(_AddLabelObject value),
     @required Result removeLabelObject(_RemoveLabelObject value),
     @required Result updateNameData(_UpdateNameData value),
-    @required Result updateCompany(_UpdateCompanyNameData value),
+    @required Result updateCompany(_UpdateCompany value),
+    @required Result addCompany(_AddCompany value),
+    @required Result deleteCompany(_DeleteCompany value),
   }) {
     assert(initialize != null);
     assert(saved != null);
@@ -688,6 +753,8 @@ class _$_AddLabelObject
     assert(removeLabelObject != null);
     assert(updateNameData != null);
     assert(updateCompany != null);
+    assert(addCompany != null);
+    assert(deleteCompany != null);
     return addLabelObject(this);
   }
 
@@ -700,7 +767,9 @@ class _$_AddLabelObject
     Result addLabelObject(_AddLabelObject value),
     Result removeLabelObject(_RemoveLabelObject value),
     Result updateNameData(_UpdateNameData value),
-    Result updateCompany(_UpdateCompanyNameData value),
+    Result updateCompany(_UpdateCompany value),
+    Result addCompany(_AddCompany value),
+    Result deleteCompany(_DeleteCompany value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -805,7 +874,9 @@ class _$_RemoveLabelObject
     @required Result addLabelObject(ILabelObject labelObject),
     @required Result removeLabelObject(Type labelObjectType, int pos),
     @required Result updateNameData(NameData nameData),
-    @required Result updateCompany(Company company),
+    @required Result updateCompany(Company company, int index),
+    @required Result addCompany(),
+    @required Result deleteCompany(int index),
   }) {
     assert(initialize != null);
     assert(saved != null);
@@ -814,6 +885,8 @@ class _$_RemoveLabelObject
     assert(removeLabelObject != null);
     assert(updateNameData != null);
     assert(updateCompany != null);
+    assert(addCompany != null);
+    assert(deleteCompany != null);
     return removeLabelObject(labelObjectType, pos);
   }
 
@@ -826,7 +899,9 @@ class _$_RemoveLabelObject
     Result addLabelObject(ILabelObject labelObject),
     Result removeLabelObject(Type labelObjectType, int pos),
     Result updateNameData(NameData nameData),
-    Result updateCompany(Company company),
+    Result updateCompany(Company company, int index),
+    Result addCompany(),
+    Result deleteCompany(int index),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -845,7 +920,9 @@ class _$_RemoveLabelObject
     @required Result addLabelObject(_AddLabelObject value),
     @required Result removeLabelObject(_RemoveLabelObject value),
     @required Result updateNameData(_UpdateNameData value),
-    @required Result updateCompany(_UpdateCompanyNameData value),
+    @required Result updateCompany(_UpdateCompany value),
+    @required Result addCompany(_AddCompany value),
+    @required Result deleteCompany(_DeleteCompany value),
   }) {
     assert(initialize != null);
     assert(saved != null);
@@ -854,6 +931,8 @@ class _$_RemoveLabelObject
     assert(removeLabelObject != null);
     assert(updateNameData != null);
     assert(updateCompany != null);
+    assert(addCompany != null);
+    assert(deleteCompany != null);
     return removeLabelObject(this);
   }
 
@@ -866,7 +945,9 @@ class _$_RemoveLabelObject
     Result addLabelObject(_AddLabelObject value),
     Result removeLabelObject(_RemoveLabelObject value),
     Result updateNameData(_UpdateNameData value),
-    Result updateCompany(_UpdateCompanyNameData value),
+    Result updateCompany(_UpdateCompany value),
+    Result addCompany(_AddCompany value),
+    Result deleteCompany(_DeleteCompany value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -972,7 +1053,9 @@ class _$_UpdateNameData
     @required Result addLabelObject(ILabelObject labelObject),
     @required Result removeLabelObject(Type labelObjectType, int pos),
     @required Result updateNameData(NameData nameData),
-    @required Result updateCompany(Company company),
+    @required Result updateCompany(Company company, int index),
+    @required Result addCompany(),
+    @required Result deleteCompany(int index),
   }) {
     assert(initialize != null);
     assert(saved != null);
@@ -981,6 +1064,8 @@ class _$_UpdateNameData
     assert(removeLabelObject != null);
     assert(updateNameData != null);
     assert(updateCompany != null);
+    assert(addCompany != null);
+    assert(deleteCompany != null);
     return updateNameData(nameData);
   }
 
@@ -993,7 +1078,9 @@ class _$_UpdateNameData
     Result addLabelObject(ILabelObject labelObject),
     Result removeLabelObject(Type labelObjectType, int pos),
     Result updateNameData(NameData nameData),
-    Result updateCompany(Company company),
+    Result updateCompany(Company company, int index),
+    Result addCompany(),
+    Result deleteCompany(int index),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1012,7 +1099,9 @@ class _$_UpdateNameData
     @required Result addLabelObject(_AddLabelObject value),
     @required Result removeLabelObject(_RemoveLabelObject value),
     @required Result updateNameData(_UpdateNameData value),
-    @required Result updateCompany(_UpdateCompanyNameData value),
+    @required Result updateCompany(_UpdateCompany value),
+    @required Result addCompany(_AddCompany value),
+    @required Result deleteCompany(_DeleteCompany value),
   }) {
     assert(initialize != null);
     assert(saved != null);
@@ -1021,6 +1110,8 @@ class _$_UpdateNameData
     assert(removeLabelObject != null);
     assert(updateNameData != null);
     assert(updateCompany != null);
+    assert(addCompany != null);
+    assert(deleteCompany != null);
     return updateNameData(this);
   }
 
@@ -1033,7 +1124,9 @@ class _$_UpdateNameData
     Result addLabelObject(_AddLabelObject value),
     Result removeLabelObject(_RemoveLabelObject value),
     Result updateNameData(_UpdateNameData value),
-    Result updateCompany(_UpdateCompanyNameData value),
+    Result updateCompany(_UpdateCompany value),
+    Result addCompany(_AddCompany value),
+    Result deleteCompany(_DeleteCompany value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1051,31 +1144,34 @@ abstract class _UpdateNameData implements AddContactEvent {
   _$UpdateNameDataCopyWith<_UpdateNameData> get copyWith;
 }
 
-abstract class _$UpdateCompanyNameDataCopyWith<$Res> {
-  factory _$UpdateCompanyNameDataCopyWith(_UpdateCompanyNameData value,
-          $Res Function(_UpdateCompanyNameData) then) =
-      __$UpdateCompanyNameDataCopyWithImpl<$Res>;
-  $Res call({Company company});
+abstract class _$UpdateCompanyCopyWith<$Res> {
+  factory _$UpdateCompanyCopyWith(
+          _UpdateCompany value, $Res Function(_UpdateCompany) then) =
+      __$UpdateCompanyCopyWithImpl<$Res>;
+
+  $Res call({Company company, int index});
 
   $CompanyCopyWith<$Res> get company;
 }
 
-class __$UpdateCompanyNameDataCopyWithImpl<$Res>
+class __$UpdateCompanyCopyWithImpl<$Res>
     extends _$AddContactEventCopyWithImpl<$Res>
-    implements _$UpdateCompanyNameDataCopyWith<$Res> {
-  __$UpdateCompanyNameDataCopyWithImpl(_UpdateCompanyNameData _value,
-      $Res Function(_UpdateCompanyNameData) _then)
-      : super(_value, (v) => _then(v as _UpdateCompanyNameData));
+    implements _$UpdateCompanyCopyWith<$Res> {
+  __$UpdateCompanyCopyWithImpl(_UpdateCompany _value,
+      $Res Function(_UpdateCompany) _then)
+      : super(_value, (v) => _then(v as _UpdateCompany));
 
   @override
-  _UpdateCompanyNameData get _value => super._value as _UpdateCompanyNameData;
+  _UpdateCompany get _value => super._value as _UpdateCompany;
 
   @override
   $Res call({
     Object company = freezed,
+    Object index = freezed,
   }) {
-    return _then(_UpdateCompanyNameData(
+    return _then(_UpdateCompany(
       company == freezed ? _value.company : company as Company,
+      index == freezed ? _value.index : index as int,
     ));
   }
 
@@ -1090,43 +1186,50 @@ class __$UpdateCompanyNameDataCopyWithImpl<$Res>
   }
 }
 
-class _$_UpdateCompanyNameData
-    with DiagnosticableTreeMixin
-    implements _UpdateCompanyNameData {
-  const _$_UpdateCompanyNameData(this.company) : assert(company != null);
+class _$_UpdateCompany with DiagnosticableTreeMixin implements _UpdateCompany {
+  const _$_UpdateCompany(this.company, this.index)
+      : assert(company != null),
+        assert(index != null);
 
   @override
   final Company company;
+  @override
+  final int index;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AddContactEvent.updateCompany(company: $company)';
+    return 'AddContactEvent.updateCompany(company: $company, index: $index)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AddContactEvent.updateCompany'))
-      ..add(DiagnosticsProperty('company', company));
+    properties..add(
+        DiagnosticsProperty('type', 'AddContactEvent.updateCompany'))..add(
+        DiagnosticsProperty('company', company))..add(
+        DiagnosticsProperty('index', index));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _UpdateCompanyNameData &&
+        (other is _UpdateCompany &&
             (identical(other.company, company) ||
-                const DeepCollectionEquality().equals(other.company, company)));
+                const DeepCollectionEquality()
+                    .equals(other.company, company)) &&
+            (identical(other.index, index) ||
+                const DeepCollectionEquality().equals(other.index, index)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(company);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(company) ^
+      const DeepCollectionEquality().hash(index);
 
   @override
-  _$UpdateCompanyNameDataCopyWith<_UpdateCompanyNameData> get copyWith =>
-      __$UpdateCompanyNameDataCopyWithImpl<_UpdateCompanyNameData>(
-          this, _$identity);
+  _$UpdateCompanyCopyWith<_UpdateCompany> get copyWith =>
+      __$UpdateCompanyCopyWithImpl<_UpdateCompany>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1137,7 +1240,9 @@ class _$_UpdateCompanyNameData
     @required Result addLabelObject(ILabelObject labelObject),
     @required Result removeLabelObject(Type labelObjectType, int pos),
     @required Result updateNameData(NameData nameData),
-    @required Result updateCompany(Company company),
+    @required Result updateCompany(Company company, int index),
+    @required Result addCompany(),
+    @required Result deleteCompany(int index),
   }) {
     assert(initialize != null);
     assert(saved != null);
@@ -1146,7 +1251,9 @@ class _$_UpdateCompanyNameData
     assert(removeLabelObject != null);
     assert(updateNameData != null);
     assert(updateCompany != null);
-    return updateCompany(company);
+    assert(addCompany != null);
+    assert(deleteCompany != null);
+    return updateCompany(company, index);
   }
 
   @override
@@ -1158,12 +1265,14 @@ class _$_UpdateCompanyNameData
     Result addLabelObject(ILabelObject labelObject),
     Result removeLabelObject(Type labelObjectType, int pos),
     Result updateNameData(NameData nameData),
-    Result updateCompany(Company company),
+    Result updateCompany(Company company, int index),
+    Result addCompany(),
+    Result deleteCompany(int index),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (updateCompany != null) {
-      return updateCompany(company);
+      return updateCompany(company, index);
     }
     return orElse();
   }
@@ -1177,7 +1286,9 @@ class _$_UpdateCompanyNameData
     @required Result addLabelObject(_AddLabelObject value),
     @required Result removeLabelObject(_RemoveLabelObject value),
     @required Result updateNameData(_UpdateNameData value),
-    @required Result updateCompany(_UpdateCompanyNameData value),
+    @required Result updateCompany(_UpdateCompany value),
+    @required Result addCompany(_AddCompany value),
+    @required Result deleteCompany(_DeleteCompany value),
   }) {
     assert(initialize != null);
     assert(saved != null);
@@ -1186,6 +1297,8 @@ class _$_UpdateCompanyNameData
     assert(removeLabelObject != null);
     assert(updateNameData != null);
     assert(updateCompany != null);
+    assert(addCompany != null);
+    assert(deleteCompany != null);
     return updateCompany(this);
   }
 
@@ -1198,7 +1311,9 @@ class _$_UpdateCompanyNameData
     Result addLabelObject(_AddLabelObject value),
     Result removeLabelObject(_RemoveLabelObject value),
     Result updateNameData(_UpdateNameData value),
-    Result updateCompany(_UpdateCompanyNameData value),
+    Result updateCompany(_UpdateCompany value),
+    Result addCompany(_AddCompany value),
+    Result deleteCompany(_DeleteCompany value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1209,23 +1324,324 @@ class _$_UpdateCompanyNameData
   }
 }
 
-abstract class _UpdateCompanyNameData implements AddContactEvent {
-  const factory _UpdateCompanyNameData(Company company) =
-      _$_UpdateCompanyNameData;
+abstract class _UpdateCompany implements AddContactEvent {
+  const factory _UpdateCompany(Company company, int index) = _$_UpdateCompany;
 
   Company get company;
-  _$UpdateCompanyNameDataCopyWith<_UpdateCompanyNameData> get copyWith;
+
+  int get index;
+
+  _$UpdateCompanyCopyWith<_UpdateCompany> get copyWith;
+}
+
+abstract class _$AddCompanyCopyWith<$Res> {
+  factory _$AddCompanyCopyWith(_AddCompany value,
+      $Res Function(_AddCompany) then) =
+  __$AddCompanyCopyWithImpl<$Res>;
+}
+
+class __$AddCompanyCopyWithImpl<$Res>
+    extends _$AddContactEventCopyWithImpl<$Res>
+    implements _$AddCompanyCopyWith<$Res> {
+  __$AddCompanyCopyWithImpl(_AddCompany _value,
+      $Res Function(_AddCompany) _then)
+      : super(_value, (v) => _then(v as _AddCompany));
+
+  @override
+  _AddCompany get _value => super._value as _AddCompany;
+}
+
+class _$_AddCompany with DiagnosticableTreeMixin implements _AddCompany {
+  const _$_AddCompany();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AddContactEvent.addCompany()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'AddContactEvent.addCompany'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _AddCompany);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initialize(Option<Contact> contactOption),
+    @required Result saved(),
+    @required Result labelObjectChanged(ILabelObject labelObject, int pos),
+    @required Result addLabelObject(ILabelObject labelObject),
+    @required Result removeLabelObject(Type labelObjectType, int pos),
+    @required Result updateNameData(NameData nameData),
+    @required Result updateCompany(Company company, int index),
+    @required Result addCompany(),
+    @required Result deleteCompany(int index),
+  }) {
+    assert(initialize != null);
+    assert(saved != null);
+    assert(labelObjectChanged != null);
+    assert(addLabelObject != null);
+    assert(removeLabelObject != null);
+    assert(updateNameData != null);
+    assert(updateCompany != null);
+    assert(addCompany != null);
+    assert(deleteCompany != null);
+    return addCompany();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initialize(Option<Contact> contactOption),
+    Result saved(),
+    Result labelObjectChanged(ILabelObject labelObject, int pos),
+    Result addLabelObject(ILabelObject labelObject),
+    Result removeLabelObject(Type labelObjectType, int pos),
+    Result updateNameData(NameData nameData),
+    Result updateCompany(Company company, int index),
+    Result addCompany(),
+    Result deleteCompany(int index),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (addCompany != null) {
+      return addCompany();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initialize(_Initialize value),
+    @required Result saved(_Saved value),
+    @required Result labelObjectChanged(_LabelObjectChanged value),
+    @required Result addLabelObject(_AddLabelObject value),
+    @required Result removeLabelObject(_RemoveLabelObject value),
+    @required Result updateNameData(_UpdateNameData value),
+    @required Result updateCompany(_UpdateCompany value),
+    @required Result addCompany(_AddCompany value),
+    @required Result deleteCompany(_DeleteCompany value),
+  }) {
+    assert(initialize != null);
+    assert(saved != null);
+    assert(labelObjectChanged != null);
+    assert(addLabelObject != null);
+    assert(removeLabelObject != null);
+    assert(updateNameData != null);
+    assert(updateCompany != null);
+    assert(addCompany != null);
+    assert(deleteCompany != null);
+    return addCompany(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initialize(_Initialize value),
+    Result saved(_Saved value),
+    Result labelObjectChanged(_LabelObjectChanged value),
+    Result addLabelObject(_AddLabelObject value),
+    Result removeLabelObject(_RemoveLabelObject value),
+    Result updateNameData(_UpdateNameData value),
+    Result updateCompany(_UpdateCompany value),
+    Result addCompany(_AddCompany value),
+    Result deleteCompany(_DeleteCompany value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (addCompany != null) {
+      return addCompany(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddCompany implements AddContactEvent {
+  const factory _AddCompany() = _$_AddCompany;
+}
+
+abstract class _$DeleteCompanyCopyWith<$Res> {
+  factory _$DeleteCompanyCopyWith(_DeleteCompany value,
+      $Res Function(_DeleteCompany) then) =
+  __$DeleteCompanyCopyWithImpl<$Res>;
+
+  $Res call({int index});
+}
+
+class __$DeleteCompanyCopyWithImpl<$Res>
+    extends _$AddContactEventCopyWithImpl<$Res>
+    implements _$DeleteCompanyCopyWith<$Res> {
+  __$DeleteCompanyCopyWithImpl(_DeleteCompany _value,
+      $Res Function(_DeleteCompany) _then)
+      : super(_value, (v) => _then(v as _DeleteCompany));
+
+  @override
+  _DeleteCompany get _value => super._value as _DeleteCompany;
+
+  @override
+  $Res call({
+    Object index = freezed,
+  }) {
+    return _then(_DeleteCompany(
+      index == freezed ? _value.index : index as int,
+    ));
+  }
+}
+
+class _$_DeleteCompany with DiagnosticableTreeMixin implements _DeleteCompany {
+  const _$_DeleteCompany(this.index) : assert(index != null);
+
+  @override
+  final int index;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AddContactEvent.deleteCompany(index: $index)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(
+        DiagnosticsProperty('type', 'AddContactEvent.deleteCompany'))..add(
+        DiagnosticsProperty('index', index));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _DeleteCompany &&
+            (identical(other.index, index) ||
+                const DeepCollectionEquality().equals(other.index, index)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(index);
+
+  @override
+  _$DeleteCompanyCopyWith<_DeleteCompany> get copyWith =>
+      __$DeleteCompanyCopyWithImpl<_DeleteCompany>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initialize(Option<Contact> contactOption),
+    @required Result saved(),
+    @required Result labelObjectChanged(ILabelObject labelObject, int pos),
+    @required Result addLabelObject(ILabelObject labelObject),
+    @required Result removeLabelObject(Type labelObjectType, int pos),
+    @required Result updateNameData(NameData nameData),
+    @required Result updateCompany(Company company, int index),
+    @required Result addCompany(),
+    @required Result deleteCompany(int index),
+  }) {
+    assert(initialize != null);
+    assert(saved != null);
+    assert(labelObjectChanged != null);
+    assert(addLabelObject != null);
+    assert(removeLabelObject != null);
+    assert(updateNameData != null);
+    assert(updateCompany != null);
+    assert(addCompany != null);
+    assert(deleteCompany != null);
+    return deleteCompany(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initialize(Option<Contact> contactOption),
+    Result saved(),
+    Result labelObjectChanged(ILabelObject labelObject, int pos),
+    Result addLabelObject(ILabelObject labelObject),
+    Result removeLabelObject(Type labelObjectType, int pos),
+    Result updateNameData(NameData nameData),
+    Result updateCompany(Company company, int index),
+    Result addCompany(),
+    Result deleteCompany(int index),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (deleteCompany != null) {
+      return deleteCompany(index);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initialize(_Initialize value),
+    @required Result saved(_Saved value),
+    @required Result labelObjectChanged(_LabelObjectChanged value),
+    @required Result addLabelObject(_AddLabelObject value),
+    @required Result removeLabelObject(_RemoveLabelObject value),
+    @required Result updateNameData(_UpdateNameData value),
+    @required Result updateCompany(_UpdateCompany value),
+    @required Result addCompany(_AddCompany value),
+    @required Result deleteCompany(_DeleteCompany value),
+  }) {
+    assert(initialize != null);
+    assert(saved != null);
+    assert(labelObjectChanged != null);
+    assert(addLabelObject != null);
+    assert(removeLabelObject != null);
+    assert(updateNameData != null);
+    assert(updateCompany != null);
+    assert(addCompany != null);
+    assert(deleteCompany != null);
+    return deleteCompany(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initialize(_Initialize value),
+    Result saved(_Saved value),
+    Result labelObjectChanged(_LabelObjectChanged value),
+    Result addLabelObject(_AddLabelObject value),
+    Result removeLabelObject(_RemoveLabelObject value),
+    Result updateNameData(_UpdateNameData value),
+    Result updateCompany(_UpdateCompany value),
+    Result addCompany(_AddCompany value),
+    Result deleteCompany(_DeleteCompany value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (deleteCompany != null) {
+      return deleteCompany(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteCompany implements AddContactEvent {
+  const factory _DeleteCompany(int index) = _$_DeleteCompany;
+
+  int get index;
+
+  _$DeleteCompanyCopyWith<_DeleteCompany> get copyWith;
 }
 
 class _$AddContactStateTearOff {
   const _$AddContactStateTearOff();
 
 // ignore: unused_element
-  _AddContactState call(
-      {@required Contact contact,
-      @required bool isEditting,
-      @required bool isSaving,
-      @required Option<Either<ContactsFailure, Unit>> savingOrFailureOption}) {
+  _AddContactState call({@required Contact contact,
+    @required bool isEditting,
+    @required bool isSaving,
+    @required Option<Either<ContactsFailure, Unit>> savingOrFailureOption}) {
     return _AddContactState(
       contact: contact,
       isEditting: isEditting,
