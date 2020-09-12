@@ -31,9 +31,6 @@ class AddContactBloc extends Bloc<AddContactEvent, AddContactState> {
         yield e.contactOption.fold(
           () => state,
           (contact) {
-            if (contact.companies.isEmpty) {
-              contact = contact.copyWith(companies: [Company.empty()]);
-            }
             return state.copyWith(contact: contact);
           },
         );

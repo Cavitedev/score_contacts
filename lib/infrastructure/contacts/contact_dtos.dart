@@ -55,7 +55,9 @@ abstract class ContactDTO implements _$ContactDTO {
     return Contact(
       id: UniqueID.fromUniqueString(id),
       nameData: nameDataDTO.toDomain(),
-      companies: companiesDTO.map((comp) => comp.toDomain()).toList(),
+      companies: companiesDTO.isEmpty
+          ? [Company.empty()]
+          : companiesDTO.map((comp) => comp.toDomain()).toList(),
       labelObjects: {
         Email: emailsDTO.map((dto) => dto.toDomain()).toList(),
         Phone: phonesDTO.map((dto) => dto.toDomain()).toList(),
@@ -112,6 +114,7 @@ abstract class LabelObjectDTO<T extends ILabelObject>
       // type: labelObject.runtimeType,
     );
   }
+
 //TODO fix return type
   T toDomain() {
     return LabelObject(
