@@ -25,8 +25,8 @@ abstract class ContactDTO implements _$ContactDTO {
     @JsonKey(ignore: true) String id,
     @JsonKey(name: nameDataName) NameDataDTO nameDataDTO,
     @JsonKey(name: companiesName) List<CompanyDTO> companiesDTO,
-    @JsonKey(name: emailsName) List<LabelObjectDTO<ILabelObject>> emailsDTO,
-    @JsonKey(name: phonesName) List<LabelObjectDTO<ILabelObject>> phonesDTO,
+    @JsonKey(name: emailsName) List<LabelObjectDTO> emailsDTO,
+    @JsonKey(name: phonesName) List<LabelObjectDTO> phonesDTO,
     @required @ServerTimeStampConverter() FieldValue serverTimeStamp,
   }) = _ContactDTO;
 
@@ -40,12 +40,12 @@ abstract class ContactDTO implements _$ContactDTO {
           .toList(),
       emailsDTO: contact.labelObjects[Email]
           .where((email) => email.value != null)
-          .map((emailLabelObject) =>
-              LabelObjectDTO<Email>.fromDomain(emailLabelObject))
+          .map(
+              (emailLabelObject) => LabelObjectDTO.fromDomain(emailLabelObject))
           .toList(),
       phonesDTO: contact.labelObjects[Phone]
           .where((phone) => phone.value != null)
-          .map((labelObject) => LabelObjectDTO<Phone>.fromDomain(labelObject))
+          .map((labelObject) => LabelObjectDTO.fromDomain(labelObject))
           .toList(),
       serverTimeStamp: FieldValue.serverTimestamp(),
     );
@@ -59,8 +59,16 @@ abstract class ContactDTO implements _$ContactDTO {
           ? [Company.empty()]
           : companiesDTO.map((comp) => comp.toDomain()).toList(),
       labelObjects: {
-        Email: emailsDTO.map((dto) => dto.toDomain()).toList(),
-        Phone: phonesDTO.map((dto) => dto.toDomain()).toList(),
+        Email: emailsDTO.isEmpty
+            ? [const Email()]
+            : emailsDTO
+                .map((dto) => Email.fromLabelObject(dto.toDomain()))
+                .toList(),
+        Phone: phonesDTO.isEmpty
+            ? [const Phone()]
+            : phonesDTO
+                .map((dto) => Phone.fromLabelObject(dto.toDomain()))
+                .toList(),
       },
     );
   }
@@ -98,8 +106,7 @@ abstract class NameDataDTO implements _$NameDataDTO {
 }
 
 @freezed
-abstract class LabelObjectDTO<T extends ILabelObject>
-    implements _$LabelObjectDTO<T> {
+abstract class LabelObjectDTO implements _$LabelObjectDTO {
   const LabelObjectDTO._();
 
   const factory LabelObjectDTO({
@@ -111,17 +118,16 @@ abstract class LabelObjectDTO<T extends ILabelObject>
     return LabelObjectDTO(
       name: labelObject.value,
       label: labelObject.label,
-      // type: labelObject.runtimeType,
     );
   }
 
-//TODO fix return type
-  T toDomain() {
+
+  ILabelObject toDomain() {
     return LabelObject(
       value: name,
       label: label,
-      otherLabels: ["Home", "Mobile"],
-    ) as T;
+      otherLabels: ["TEST", "ERROR"],
+    );
   }
 
   factory LabelObjectDTO.fromJson(Map<String, dynamic> json) =>

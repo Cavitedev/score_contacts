@@ -20,8 +20,8 @@ class _$ContactDTOTearOff {
       {@JsonKey(ignore: true) String id,
       @JsonKey(name: nameDataName) NameDataDTO nameDataDTO,
       @JsonKey(name: companiesName) List<CompanyDTO> companiesDTO,
-      @JsonKey(name: emailsName) List<LabelObjectDTO<ILabelObject>> emailsDTO,
-      @JsonKey(name: phonesName) List<LabelObjectDTO<ILabelObject>> phonesDTO,
+      @JsonKey(name: emailsName) List<LabelObjectDTO> emailsDTO,
+      @JsonKey(name: phonesName) List<LabelObjectDTO> phonesDTO,
       @required @ServerTimeStampConverter() FieldValue serverTimeStamp}) {
     return _ContactDTO(
       id: id,
@@ -45,9 +45,9 @@ mixin _$ContactDTO {
   @JsonKey(name: companiesName)
   List<CompanyDTO> get companiesDTO;
   @JsonKey(name: emailsName)
-  List<LabelObjectDTO<ILabelObject>> get emailsDTO;
+  List<LabelObjectDTO> get emailsDTO;
   @JsonKey(name: phonesName)
-  List<LabelObjectDTO<ILabelObject>> get phonesDTO;
+  List<LabelObjectDTO> get phonesDTO;
   @ServerTimeStampConverter()
   FieldValue get serverTimeStamp;
 
@@ -63,8 +63,8 @@ abstract class $ContactDTOCopyWith<$Res> {
       {@JsonKey(ignore: true) String id,
       @JsonKey(name: nameDataName) NameDataDTO nameDataDTO,
       @JsonKey(name: companiesName) List<CompanyDTO> companiesDTO,
-      @JsonKey(name: emailsName) List<LabelObjectDTO<ILabelObject>> emailsDTO,
-      @JsonKey(name: phonesName) List<LabelObjectDTO<ILabelObject>> phonesDTO,
+      @JsonKey(name: emailsName) List<LabelObjectDTO> emailsDTO,
+      @JsonKey(name: phonesName) List<LabelObjectDTO> phonesDTO,
       @ServerTimeStampConverter() FieldValue serverTimeStamp});
 
   $NameDataDTOCopyWith<$Res> get nameDataDTO;
@@ -96,10 +96,10 @@ class _$ContactDTOCopyWithImpl<$Res> implements $ContactDTOCopyWith<$Res> {
           : companiesDTO as List<CompanyDTO>,
       emailsDTO: emailsDTO == freezed
           ? _value.emailsDTO
-          : emailsDTO as List<LabelObjectDTO<ILabelObject>>,
+          : emailsDTO as List<LabelObjectDTO>,
       phonesDTO: phonesDTO == freezed
           ? _value.phonesDTO
-          : phonesDTO as List<LabelObjectDTO<ILabelObject>>,
+          : phonesDTO as List<LabelObjectDTO>,
       serverTimeStamp: serverTimeStamp == freezed
           ? _value.serverTimeStamp
           : serverTimeStamp as FieldValue,
@@ -126,8 +126,8 @@ abstract class _$ContactDTOCopyWith<$Res> implements $ContactDTOCopyWith<$Res> {
       {@JsonKey(ignore: true) String id,
       @JsonKey(name: nameDataName) NameDataDTO nameDataDTO,
       @JsonKey(name: companiesName) List<CompanyDTO> companiesDTO,
-      @JsonKey(name: emailsName) List<LabelObjectDTO<ILabelObject>> emailsDTO,
-      @JsonKey(name: phonesName) List<LabelObjectDTO<ILabelObject>> phonesDTO,
+      @JsonKey(name: emailsName) List<LabelObjectDTO> emailsDTO,
+      @JsonKey(name: phonesName) List<LabelObjectDTO> phonesDTO,
       @ServerTimeStampConverter() FieldValue serverTimeStamp});
 
   @override
@@ -162,10 +162,10 @@ class __$ContactDTOCopyWithImpl<$Res> extends _$ContactDTOCopyWithImpl<$Res>
           : companiesDTO as List<CompanyDTO>,
       emailsDTO: emailsDTO == freezed
           ? _value.emailsDTO
-          : emailsDTO as List<LabelObjectDTO<ILabelObject>>,
+          : emailsDTO as List<LabelObjectDTO>,
       phonesDTO: phonesDTO == freezed
           ? _value.phonesDTO
-          : phonesDTO as List<LabelObjectDTO<ILabelObject>>,
+          : phonesDTO as List<LabelObjectDTO>,
       serverTimeStamp: serverTimeStamp == freezed
           ? _value.serverTimeStamp
           : serverTimeStamp as FieldValue,
@@ -199,10 +199,10 @@ class _$_ContactDTO extends _ContactDTO {
   final List<CompanyDTO> companiesDTO;
   @override
   @JsonKey(name: emailsName)
-  final List<LabelObjectDTO<ILabelObject>> emailsDTO;
+  final List<LabelObjectDTO> emailsDTO;
   @override
   @JsonKey(name: phonesName)
-  final List<LabelObjectDTO<ILabelObject>> phonesDTO;
+  final List<LabelObjectDTO> phonesDTO;
   @override
   @ServerTimeStampConverter()
   final FieldValue serverTimeStamp;
@@ -258,19 +258,13 @@ class _$_ContactDTO extends _ContactDTO {
 abstract class _ContactDTO extends ContactDTO {
   const _ContactDTO._() : super._();
   const factory _ContactDTO(
-      {@JsonKey(ignore: true)
-          String id,
-      @JsonKey(name: nameDataName)
-          NameDataDTO nameDataDTO,
-      @JsonKey(name: companiesName)
-          List<CompanyDTO> companiesDTO,
-      @JsonKey(name: emailsName)
-          List<LabelObjectDTO<ILabelObject>> emailsDTO,
-      @JsonKey(name: phonesName)
-          List<LabelObjectDTO<ILabelObject>> phonesDTO,
-      @required
-      @ServerTimeStampConverter()
-          FieldValue serverTimeStamp}) = _$_ContactDTO;
+          {@JsonKey(ignore: true) String id,
+          @JsonKey(name: nameDataName) NameDataDTO nameDataDTO,
+          @JsonKey(name: companiesName) List<CompanyDTO> companiesDTO,
+          @JsonKey(name: emailsName) List<LabelObjectDTO> emailsDTO,
+          @JsonKey(name: phonesName) List<LabelObjectDTO> phonesDTO,
+          @required @ServerTimeStampConverter() FieldValue serverTimeStamp}) =
+      _$_ContactDTO;
 
   factory _ContactDTO.fromJson(Map<String, dynamic> json) =
       _$_ContactDTO.fromJson;
@@ -286,10 +280,10 @@ abstract class _ContactDTO extends ContactDTO {
   List<CompanyDTO> get companiesDTO;
   @override
   @JsonKey(name: emailsName)
-  List<LabelObjectDTO<ILabelObject>> get emailsDTO;
+  List<LabelObjectDTO> get emailsDTO;
   @override
   @JsonKey(name: phonesName)
-  List<LabelObjectDTO<ILabelObject>> get phonesDTO;
+  List<LabelObjectDTO> get phonesDTO;
   @override
   @ServerTimeStampConverter()
   FieldValue get serverTimeStamp;
@@ -438,17 +432,16 @@ abstract class _NameDataDTO extends NameDataDTO {
   _$NameDataDTOCopyWith<_NameDataDTO> get copyWith;
 }
 
-LabelObjectDTO<T> _$LabelObjectDTOFromJson<T extends ILabelObject>(
-    Map<String, dynamic> json) {
-  return _LabelObjectDTO<T>.fromJson(json);
+LabelObjectDTO _$LabelObjectDTOFromJson(Map<String, dynamic> json) {
+  return _LabelObjectDTO.fromJson(json);
 }
 
 class _$LabelObjectDTOTearOff {
   const _$LabelObjectDTOTearOff();
 
 // ignore: unused_element
-  _LabelObjectDTO<T> call<T extends ILabelObject>({String name, String label}) {
-    return _LabelObjectDTO<T>(
+  _LabelObjectDTO call({String name, String label}) {
+    return _LabelObjectDTO(
       name: name,
       label: label,
     );
@@ -458,28 +451,28 @@ class _$LabelObjectDTOTearOff {
 // ignore: unused_element
 const $LabelObjectDTO = _$LabelObjectDTOTearOff();
 
-mixin _$LabelObjectDTO<T extends ILabelObject> {
+mixin _$LabelObjectDTO {
   String get name;
   String get label;
 
   Map<String, dynamic> toJson();
-  $LabelObjectDTOCopyWith<T, LabelObjectDTO<T>> get copyWith;
+  $LabelObjectDTOCopyWith<LabelObjectDTO> get copyWith;
 }
 
-abstract class $LabelObjectDTOCopyWith<T extends ILabelObject, $Res> {
+abstract class $LabelObjectDTOCopyWith<$Res> {
   factory $LabelObjectDTOCopyWith(
-          LabelObjectDTO<T> value, $Res Function(LabelObjectDTO<T>) then) =
-      _$LabelObjectDTOCopyWithImpl<T, $Res>;
+          LabelObjectDTO value, $Res Function(LabelObjectDTO) then) =
+      _$LabelObjectDTOCopyWithImpl<$Res>;
   $Res call({String name, String label});
 }
 
-class _$LabelObjectDTOCopyWithImpl<T extends ILabelObject, $Res>
-    implements $LabelObjectDTOCopyWith<T, $Res> {
+class _$LabelObjectDTOCopyWithImpl<$Res>
+    implements $LabelObjectDTOCopyWith<$Res> {
   _$LabelObjectDTOCopyWithImpl(this._value, this._then);
 
-  final LabelObjectDTO<T> _value;
+  final LabelObjectDTO _value;
   // ignore: unused_field
-  final $Res Function(LabelObjectDTO<T>) _then;
+  final $Res Function(LabelObjectDTO) _then;
 
   @override
   $Res call({
@@ -493,31 +486,31 @@ class _$LabelObjectDTOCopyWithImpl<T extends ILabelObject, $Res>
   }
 }
 
-abstract class _$LabelObjectDTOCopyWith<T extends ILabelObject, $Res>
-    implements $LabelObjectDTOCopyWith<T, $Res> {
+abstract class _$LabelObjectDTOCopyWith<$Res>
+    implements $LabelObjectDTOCopyWith<$Res> {
   factory _$LabelObjectDTOCopyWith(
-          _LabelObjectDTO<T> value, $Res Function(_LabelObjectDTO<T>) then) =
-      __$LabelObjectDTOCopyWithImpl<T, $Res>;
+          _LabelObjectDTO value, $Res Function(_LabelObjectDTO) then) =
+      __$LabelObjectDTOCopyWithImpl<$Res>;
   @override
   $Res call({String name, String label});
 }
 
-class __$LabelObjectDTOCopyWithImpl<T extends ILabelObject, $Res>
-    extends _$LabelObjectDTOCopyWithImpl<T, $Res>
-    implements _$LabelObjectDTOCopyWith<T, $Res> {
+class __$LabelObjectDTOCopyWithImpl<$Res>
+    extends _$LabelObjectDTOCopyWithImpl<$Res>
+    implements _$LabelObjectDTOCopyWith<$Res> {
   __$LabelObjectDTOCopyWithImpl(
-      _LabelObjectDTO<T> _value, $Res Function(_LabelObjectDTO<T>) _then)
-      : super(_value, (v) => _then(v as _LabelObjectDTO<T>));
+      _LabelObjectDTO _value, $Res Function(_LabelObjectDTO) _then)
+      : super(_value, (v) => _then(v as _LabelObjectDTO));
 
   @override
-  _LabelObjectDTO<T> get _value => super._value as _LabelObjectDTO<T>;
+  _LabelObjectDTO get _value => super._value as _LabelObjectDTO;
 
   @override
   $Res call({
     Object name = freezed,
     Object label = freezed,
   }) {
-    return _then(_LabelObjectDTO<T>(
+    return _then(_LabelObjectDTO(
       name: name == freezed ? _value.name : name as String,
       label: label == freezed ? _value.label : label as String,
     ));
@@ -525,7 +518,7 @@ class __$LabelObjectDTOCopyWithImpl<T extends ILabelObject, $Res>
 }
 
 @JsonSerializable()
-class _$_LabelObjectDTO<T extends ILabelObject> extends _LabelObjectDTO<T> {
+class _$_LabelObjectDTO extends _LabelObjectDTO {
   const _$_LabelObjectDTO({this.name, this.label}) : super._();
 
   factory _$_LabelObjectDTO.fromJson(Map<String, dynamic> json) =>
@@ -538,13 +531,13 @@ class _$_LabelObjectDTO<T extends ILabelObject> extends _LabelObjectDTO<T> {
 
   @override
   String toString() {
-    return 'LabelObjectDTO<$T>(name: $name, label: $label)';
+    return 'LabelObjectDTO(name: $name, label: $label)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _LabelObjectDTO<T> &&
+        (other is _LabelObjectDTO &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.label, label) ||
@@ -558,8 +551,8 @@ class _$_LabelObjectDTO<T extends ILabelObject> extends _LabelObjectDTO<T> {
       const DeepCollectionEquality().hash(label);
 
   @override
-  _$LabelObjectDTOCopyWith<T, _LabelObjectDTO<T>> get copyWith =>
-      __$LabelObjectDTOCopyWithImpl<T, _LabelObjectDTO<T>>(this, _$identity);
+  _$LabelObjectDTOCopyWith<_LabelObjectDTO> get copyWith =>
+      __$LabelObjectDTOCopyWithImpl<_LabelObjectDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -567,21 +560,20 @@ class _$_LabelObjectDTO<T extends ILabelObject> extends _LabelObjectDTO<T> {
   }
 }
 
-abstract class _LabelObjectDTO<T extends ILabelObject>
-    extends LabelObjectDTO<T> {
+abstract class _LabelObjectDTO extends LabelObjectDTO {
   const _LabelObjectDTO._() : super._();
   const factory _LabelObjectDTO({String name, String label}) =
-      _$_LabelObjectDTO<T>;
+      _$_LabelObjectDTO;
 
   factory _LabelObjectDTO.fromJson(Map<String, dynamic> json) =
-      _$_LabelObjectDTO<T>.fromJson;
+      _$_LabelObjectDTO.fromJson;
 
   @override
   String get name;
   @override
   String get label;
   @override
-  _$LabelObjectDTOCopyWith<T, _LabelObjectDTO<T>> get copyWith;
+  _$LabelObjectDTOCopyWith<_LabelObjectDTO> get copyWith;
 }
 
 CompanyDTO _$CompanyDTOFromJson(Map<String, dynamic> json) {

@@ -13,6 +13,13 @@ class Phone implements ILabelObject {
       this.label = "Mobile",
       this.otherLabels = const ["Mobile", "Work", "Other"]});
 
+  factory Phone.fromLabelObject(ILabelObject labelObject) {
+    return Phone(
+      value: labelObject.value,
+      label: labelObject.label,
+    );
+  }
+
   @override
   String toString() {
     return 'Phone{number: $value, phoneLabel: $label}';

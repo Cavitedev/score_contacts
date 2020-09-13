@@ -70,16 +70,14 @@ Map<String, dynamic> _$_$_NameDataDTOToJson(_$_NameDataDTO instance) {
   return val;
 }
 
-_$_LabelObjectDTO<T> _$_$_LabelObjectDTOFromJson<T extends ILabelObject>(
-    Map<String, dynamic> json) {
-  return _$_LabelObjectDTO<T>(
+_$_LabelObjectDTO _$_$_LabelObjectDTOFromJson(Map<String, dynamic> json) {
+  return _$_LabelObjectDTO(
     name: json['name'] as String,
     label: json['label'] as String,
   );
 }
 
-Map<String, dynamic> _$_$_LabelObjectDTOToJson<T extends ILabelObject>(
-    _$_LabelObjectDTO<T> instance) {
+Map<String, dynamic> _$_$_LabelObjectDTOToJson(_$_LabelObjectDTO instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

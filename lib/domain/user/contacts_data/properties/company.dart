@@ -13,8 +13,8 @@ abstract class Company implements _$Company {
 
   factory Company.empty() {
     return const Company(
-      name: "",
-      title: "",
+      name: null,
+      title: null,
     );
   }
 }

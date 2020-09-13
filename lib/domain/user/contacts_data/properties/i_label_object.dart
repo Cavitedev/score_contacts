@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 
+///Implement fromLabelObject on children
 abstract class ILabelObject {
   final String value;
   final String label;
@@ -19,12 +20,11 @@ abstract class ILabelObject {
 
 ///For DTOS transition
 class LabelObject implements ILabelObject {
-  final Type type;
   final String value;
   final String label;
   final List<String> otherLabels;
 
-  LabelObject({this.type, this.value, this.label, this.otherLabels});
+  LabelObject({this.value, this.label, this.otherLabels});
 
   LabelObject copyWith({
     String value,

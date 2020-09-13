@@ -1203,10 +1203,10 @@ class _$_UpdateCompany with DiagnosticableTreeMixin implements _UpdateCompany {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(
-        DiagnosticsProperty('type', 'AddContactEvent.updateCompany'))..add(
-        DiagnosticsProperty('company', company))..add(
-        DiagnosticsProperty('index', index));
+    properties
+      ..add(DiagnosticsProperty('type', 'AddContactEvent.updateCompany'))
+      ..add(DiagnosticsProperty('company', company))
+      ..add(DiagnosticsProperty('index', index));
   }
 
   @override

@@ -17,11 +17,17 @@ class Email implements ILabelObject, IHintValidator<String> {
     this.label = "Home",
   });
 
+  factory Email.fromLabelObject(ILabelObject labelObject) {
+    return Email(
+      value: labelObject.value,
+      label: labelObject.label,
+    );
+  }
+
   @override
   IHint hintValidate(String value) {
     return emailValidate(value);
   }
-
 
   @override
   Email copyWith({
