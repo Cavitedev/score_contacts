@@ -1,4 +1,7 @@
 // ignore: unnecessary_raw_strings
+import 'package:flutter/cupertino.dart';
+import 'package:scorecontacts/presentation/core/formatters/phone_codes.dart';
+
 final _digitRegex = RegExp(r'[0-9]+');
 
 /// Check is String of length 1 containst a digit [0-9]
@@ -55,4 +58,38 @@ String formatByMask(String text, String mask) {
     }
   }
   return stringBuffer.toString();
+}
+
+/// removes the prefix of a number
+/// when the country of the number is the same of the context
+String removePrefixOnNumberWhenSameCountry(
+    String phoneNumber, BuildContext context) {
+  if (phoneNumber == null || phoneNumber.isEmpty) return phoneNumber;
+
+  if (!PhoneCodes.isCountryDataExplicit(phoneNumber)) return phoneNumber;
+  final PhoneCountryData phoneCountryData =
+      PhoneCodes.getCountryDataByPhone(phoneNumber);
+
+  final PhoneCountryData countryData =
+      PhoneCountryData.fromContext(context: context);
+
+  if (countryData == phoneCountryData) {
+    String output = toNumericString(phoneNumber);
+    output = output.substring(phoneCountryData.countryCode.length);
+    return formatByMask(output, phoneCountryData.shortestLocalMask(output));
+  } else {
+    return phoneNumber;
+  }
+}
+
+/// add the prefix of a number
+/// when the country of the number should be the same of the context
+String addPrefixOnNumber(String phoneNumber, BuildContext context) {
+  if (phoneNumber == null || phoneNumber.isEmpty) return phoneNumber;
+  if (PhoneCodes.isCountryDataExplicit(phoneNumber)) return phoneNumber;
+  final PhoneCountryData countryData =
+      PhoneCountryData.fromContext(context: context);
+
+  final String output = toNumericString(phoneNumber);
+  return countryData.countryCodeToString() + output;
 }

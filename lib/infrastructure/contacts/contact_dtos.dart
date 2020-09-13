@@ -45,8 +45,9 @@ abstract class ContactDTO implements _$ContactDTO {
           .toList(),
       phonesDTO: contact.labelObjects[Phone]
           .where((phone) => phone.value != null)
-          .map((labelObject) => LabelObjectDTO.fromDomain(labelObject))
-          .toList(),
+          .map((phoneLabelObject) {
+        return LabelObjectDTO.fromDomain(phoneLabelObject);
+      }).toList(),
       serverTimeStamp: FieldValue.serverTimestamp(),
     );
   }

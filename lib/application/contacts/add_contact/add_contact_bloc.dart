@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:scorecontacts/domain/user/contacts_data/contact.dart';
@@ -11,6 +12,7 @@ import 'package:scorecontacts/domain/user/contacts_data/i_contact_repository.dar
 import 'package:scorecontacts/domain/user/contacts_data/properties/company.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/i_label_object.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/names/name_data.dart';
+import 'package:scorecontacts/domain/user/contacts_data/properties/phone.dart';
 
 part 'add_contact_bloc.freezed.dart';
 part 'add_contact_event.dart';
@@ -31,16 +33,39 @@ class AddContactBloc extends Bloc<AddContactEvent, AddContactState> {
         yield e.contactOption.fold(
           () => state,
           (contact) {
-            return state.copyWith(contact: contact);
+            final List<Phone> phonesList =
+                List<Phone>.from(contact.labelObjects[Phone]);
+            for (int i = 0; i < phonesList.length; i++) {
+              phonesList[i] = phonesList[i].fromDatabase(e.context);
+            }
+            final Map<Type, List<ILabelObject>> labelObjects =
+                Map.from(contact.labelObjects);
+            labelObjects[Phone] = phonesList;
+            final Contact sendedContact =
+                contact.copyWith(labelObjects: labelObjects);
+
+            return state.copyWith(contact: sendedContact);
           },
         );
       },
       saved: (e) async* {
         yield state.copyWith(isSaving: true, savingOrFailureOption: none());
 
+        final List<Phone> phonesList = List<Phone>.from(
+            state.contact.labelObjects[Phone]);
+        for (int i = 0; i < phonesList.length; i++) {
+          phonesList[i] = phonesList[i].toDatabaseString(e.context);
+        }
+        final Map<Type, List<ILabelObject>> labelObjects =
+        Map.from(state.contact.labelObjects);
+        labelObjects[Phone] = phonesList;
+        final Contact sendedContact = state.contact.copyWith(
+            labelObjects: labelObjects
+        );
+
         final savingOrFailureOption = await (state.isEditting
-            ? repository.updateContact(state.contact)
-            : repository.createContact(state.contact));
+            ? repository.updateContact(sendedContact)
+            : repository.createContact(sendedContact));
         yield state.copyWith(
             isSaving: false,
             savingOrFailureOption: optionOf(savingOrFailureOption));

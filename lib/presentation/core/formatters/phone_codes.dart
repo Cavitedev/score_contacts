@@ -20,12 +20,29 @@ class PhoneCountryData {
       this.phoneMask,
       this.localMasks});
 
+  String shortestLocalMask(String phoneToMask) {
+    for (final String mask in localMasks) {
+      if (mask == null) {
+        return phoneMask;
+      }
+      if (toNumericString(mask).length > toNumericString(phoneToMask).length) {
+        return mask;
+      }
+    }
+    return phoneMask;
+  }
+
   factory PhoneCountryData.fromCountryCode({@required String countryCode}) {
     final Map countryData = countryPhoneCodes.firstWhere(
         (phoneCode) => phoneCode['countryCode'] == countryCode,
         orElse: () =>
             throw ConstructorException("Country code does not exist"));
     return PhoneCountryData.fromMap(countryData);
+  }
+
+  factory PhoneCountryData.fromContext({@required BuildContext context}) {
+    return PhoneCountryData.fromCountryCode(
+        countryCode: Localizations.localeOf(context).countryCode);
   }
 
   factory PhoneCountryData.fromMap(Map value) {
@@ -47,6 +64,16 @@ class PhoneCountryData {
     );
   }
 
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+          other is PhoneCountryData &&
+              runtimeType == other.runtimeType &&
+              countryCode == other.countryCode;
+
+  @override
+  int get hashCode => countryCode.hashCode;
+
   String phoneMaskWithoutPrefix() {
     final int prefixLength = phoneCode.length;
     return phoneMask
@@ -66,16 +93,20 @@ class PhoneCountryData {
 }
 
 class PhoneCodes {
+
+  static bool isCountryDataExplicit(String phoneNumber) =>
+      phoneNumber[0] == '+';
+
   /// returns the country of the phone if exists
   static PhoneCountryData getCountryDataByPhone(String phone) {
     final String numericPhone = toNumericString(phone);
     if (numericPhone == null || numericPhone.isEmpty) return null;
     for (int prefixLength = min(longestPrefix, numericPhone.length);
-        prefixLength > 0;
-        prefixLength--) {
+    prefixLength > 0;
+    prefixLength--) {
       final String phonePrefix = numericPhone.substring(0, prefixLength);
       final Map rawData = countryPhoneCodes.firstWhere(
-          (data) => data['phoneCode'] == phonePrefix,
+              (data) => data['phoneCode'] == phonePrefix,
           orElse: () => null);
       if (rawData != null) return PhoneCountryData.fromMap(rawData);
     }
@@ -1025,7 +1056,7 @@ const List<Map<String, String>> countryPhoneCodes = <Map<String, String>>[
     'country': 'Rwanda',
     'phoneCode': '250',
     'countryCode': 'RW',
-    'phoneMask': '000 000 000',
+    'phoneMask': '+000 000 000',
   },
   {
     'country': 'Samoa',
@@ -1261,7 +1292,7 @@ const List<Map<String, String>> countryPhoneCodes = <Map<String, String>>[
     'country': 'Wallis and Futuna',
     'phoneCode': '681',
     'countryCode': 'WF',
-    'phoneMask': '‎+000 00 0000',
+    'phoneMask': '+000 00 0000',
   },
   {
     'country': 'Yemen',
@@ -1454,7 +1485,7 @@ const List<Map<String, String>> countryPhoneCodes = <Map<String, String>>[
     'country': 'Saint Pierre and Miquelon',
     'phoneCode': '508',
     'countryCode': 'PM',
-    'phoneMask': '(508) 00 00 00',
+    'phoneMask': '+(508) 00 00 00',
   },
   {
     'country': 'Saint Vincent and the Grenadines',

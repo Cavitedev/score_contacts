@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/i_label_object.dart';
+import 'package:scorecontacts/presentation/core/formatters/formatter_tools.dart';
 
 class Phone implements ILabelObject {
   @override
@@ -8,8 +10,7 @@ class Phone implements ILabelObject {
   @override
   final List<String> otherLabels;
 
-  const Phone(
-      {this.value,
+  const Phone({this.value,
       this.label = "Mobile",
       this.otherLabels = const ["Mobile", "Work", "Other"]});
 
@@ -17,6 +18,22 @@ class Phone implements ILabelObject {
     return Phone(
       value: labelObject.value,
       label: labelObject.label,
+    );
+  }
+
+  Phone toDatabaseString(BuildContext context) {
+    return Phone(
+      value: addPrefixOnNumber(value, context),
+      label: label,
+      otherLabels: otherLabels,
+    );
+  }
+
+  Phone fromDatabase(BuildContext context) {
+    return Phone(
+      value: removePrefixOnNumberWhenSameCountry(value, context),
+      label: label,
+      otherLabels: otherLabels,
     );
   }
 
@@ -30,8 +47,8 @@ class Phone implements ILabelObject {
       identical(this, other) ||
       other is Phone &&
           runtimeType == other.runtimeType &&
-          value == other.value &&
-          label == other.label;
+              value == other.value &&
+              label == other.label;
 
   @override
   int get hashCode => value.hashCode ^ label.hashCode;

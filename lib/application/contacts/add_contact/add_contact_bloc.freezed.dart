@@ -13,15 +13,18 @@ class _$AddContactEventTearOff {
   const _$AddContactEventTearOff();
 
 // ignore: unused_element
-  _Initialize initialize(Option<Contact> contactOption) {
+  _Initialize initialize(Option<Contact> contactOption, BuildContext context) {
     return _Initialize(
       contactOption,
+      context,
     );
   }
 
 // ignore: unused_element
-  _Saved saved() {
-    return const _Saved();
+  _Saved saved(BuildContext context) {
+    return _Saved(
+      context,
+    );
   }
 
 // ignore: unused_element
@@ -81,8 +84,9 @@ const $AddContactEvent = _$AddContactEventTearOff();
 mixin _$AddContactEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initialize(Option<Contact> contactOption),
-    @required Result saved(),
+    @required
+        Result initialize(Option<Contact> contactOption, BuildContext context),
+    @required Result saved(BuildContext context),
     @required Result labelObjectChanged(ILabelObject labelObject, int pos),
     @required Result addLabelObject(ILabelObject labelObject),
     @required Result removeLabelObject(Type labelObjectType, int pos),
@@ -93,8 +97,8 @@ mixin _$AddContactEvent {
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initialize(Option<Contact> contactOption),
-    Result saved(),
+    Result initialize(Option<Contact> contactOption, BuildContext context),
+    Result saved(BuildContext context),
     Result labelObjectChanged(ILabelObject labelObject, int pos),
     Result addLabelObject(ILabelObject labelObject),
     Result removeLabelObject(Type labelObjectType, int pos),
@@ -150,7 +154,7 @@ abstract class _$InitializeCopyWith<$Res> {
   factory _$InitializeCopyWith(
           _Initialize value, $Res Function(_Initialize) then) =
       __$InitializeCopyWithImpl<$Res>;
-  $Res call({Option<Contact> contactOption});
+  $Res call({Option<Contact> contactOption, BuildContext context});
 }
 
 class __$InitializeCopyWithImpl<$Res>
@@ -166,24 +170,30 @@ class __$InitializeCopyWithImpl<$Res>
   @override
   $Res call({
     Object contactOption = freezed,
+    Object context = freezed,
   }) {
     return _then(_Initialize(
       contactOption == freezed
           ? _value.contactOption
           : contactOption as Option<Contact>,
+      context == freezed ? _value.context : context as BuildContext,
     ));
   }
 }
 
 class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
-  const _$_Initialize(this.contactOption) : assert(contactOption != null);
+  const _$_Initialize(this.contactOption, this.context)
+      : assert(contactOption != null),
+        assert(context != null);
 
   @override
   final Option<Contact> contactOption;
+  @override
+  final BuildContext context;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AddContactEvent.initialize(contactOption: $contactOption)';
+    return 'AddContactEvent.initialize(contactOption: $contactOption, context: $context)';
   }
 
   @override
@@ -191,7 +201,8 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'AddContactEvent.initialize'))
-      ..add(DiagnosticsProperty('contactOption', contactOption));
+      ..add(DiagnosticsProperty('contactOption', contactOption))
+      ..add(DiagnosticsProperty('context', context));
   }
 
   @override
@@ -200,12 +211,16 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
         (other is _Initialize &&
             (identical(other.contactOption, contactOption) ||
                 const DeepCollectionEquality()
-                    .equals(other.contactOption, contactOption)));
+                    .equals(other.contactOption, contactOption)) &&
+            (identical(other.context, context) ||
+                const DeepCollectionEquality().equals(other.context, context)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(contactOption);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(contactOption) ^
+      const DeepCollectionEquality().hash(context);
 
   @override
   _$InitializeCopyWith<_Initialize> get copyWith =>
@@ -214,8 +229,9 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initialize(Option<Contact> contactOption),
-    @required Result saved(),
+    @required
+        Result initialize(Option<Contact> contactOption, BuildContext context),
+    @required Result saved(BuildContext context),
     @required Result labelObjectChanged(ILabelObject labelObject, int pos),
     @required Result addLabelObject(ILabelObject labelObject),
     @required Result removeLabelObject(Type labelObjectType, int pos),
@@ -233,14 +249,14 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
     assert(updateCompany != null);
     assert(addCompany != null);
     assert(deleteCompany != null);
-    return initialize(contactOption);
+    return initialize(contactOption, context);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initialize(Option<Contact> contactOption),
-    Result saved(),
+    Result initialize(Option<Contact> contactOption, BuildContext context),
+    Result saved(BuildContext context),
     Result labelObjectChanged(ILabelObject labelObject, int pos),
     Result addLabelObject(ILabelObject labelObject),
     Result removeLabelObject(Type labelObjectType, int pos),
@@ -252,7 +268,7 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
   }) {
     assert(orElse != null);
     if (initialize != null) {
-      return initialize(contactOption);
+      return initialize(contactOption, context);
     }
     return orElse();
   }
@@ -305,15 +321,18 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
 }
 
 abstract class _Initialize implements AddContactEvent {
-  const factory _Initialize(Option<Contact> contactOption) = _$_Initialize;
+  const factory _Initialize(
+      Option<Contact> contactOption, BuildContext context) = _$_Initialize;
 
   Option<Contact> get contactOption;
+  BuildContext get context;
   _$InitializeCopyWith<_Initialize> get copyWith;
 }
 
 abstract class _$SavedCopyWith<$Res> {
   factory _$SavedCopyWith(_Saved value, $Res Function(_Saved) then) =
       __$SavedCopyWithImpl<$Res>;
+  $Res call({BuildContext context});
 }
 
 class __$SavedCopyWithImpl<$Res> extends _$AddContactEventCopyWithImpl<$Res>
@@ -323,35 +342,58 @@ class __$SavedCopyWithImpl<$Res> extends _$AddContactEventCopyWithImpl<$Res>
 
   @override
   _Saved get _value => super._value as _Saved;
+
+  @override
+  $Res call({
+    Object context = freezed,
+  }) {
+    return _then(_Saved(
+      context == freezed ? _value.context : context as BuildContext,
+    ));
+  }
 }
 
 class _$_Saved with DiagnosticableTreeMixin implements _Saved {
-  const _$_Saved();
+  const _$_Saved(this.context) : assert(context != null);
+
+  @override
+  final BuildContext context;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AddContactEvent.saved()';
+    return 'AddContactEvent.saved(context: $context)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'AddContactEvent.saved'));
+    properties
+      ..add(DiagnosticsProperty('type', 'AddContactEvent.saved'))
+      ..add(DiagnosticsProperty('context', context));
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Saved);
+    return identical(this, other) ||
+        (other is _Saved &&
+            (identical(other.context, context) ||
+                const DeepCollectionEquality().equals(other.context, context)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(context);
+
+  @override
+  _$SavedCopyWith<_Saved> get copyWith =>
+      __$SavedCopyWithImpl<_Saved>(this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initialize(Option<Contact> contactOption),
-    @required Result saved(),
+    @required
+        Result initialize(Option<Contact> contactOption, BuildContext context),
+    @required Result saved(BuildContext context),
     @required Result labelObjectChanged(ILabelObject labelObject, int pos),
     @required Result addLabelObject(ILabelObject labelObject),
     @required Result removeLabelObject(Type labelObjectType, int pos),
@@ -369,14 +411,14 @@ class _$_Saved with DiagnosticableTreeMixin implements _Saved {
     assert(updateCompany != null);
     assert(addCompany != null);
     assert(deleteCompany != null);
-    return saved();
+    return saved(context);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initialize(Option<Contact> contactOption),
-    Result saved(),
+    Result initialize(Option<Contact> contactOption, BuildContext context),
+    Result saved(BuildContext context),
     Result labelObjectChanged(ILabelObject labelObject, int pos),
     Result addLabelObject(ILabelObject labelObject),
     Result removeLabelObject(Type labelObjectType, int pos),
@@ -388,7 +430,7 @@ class _$_Saved with DiagnosticableTreeMixin implements _Saved {
   }) {
     assert(orElse != null);
     if (saved != null) {
-      return saved();
+      return saved(context);
     }
     return orElse();
   }
@@ -441,7 +483,10 @@ class _$_Saved with DiagnosticableTreeMixin implements _Saved {
 }
 
 abstract class _Saved implements AddContactEvent {
-  const factory _Saved() = _$_Saved;
+  const factory _Saved(BuildContext context) = _$_Saved;
+
+  BuildContext get context;
+  _$SavedCopyWith<_Saved> get copyWith;
 }
 
 abstract class _$LabelObjectChangedCopyWith<$Res> {
@@ -523,8 +568,9 @@ class _$_LabelObjectChanged
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initialize(Option<Contact> contactOption),
-    @required Result saved(),
+    @required
+        Result initialize(Option<Contact> contactOption, BuildContext context),
+    @required Result saved(BuildContext context),
     @required Result labelObjectChanged(ILabelObject labelObject, int pos),
     @required Result addLabelObject(ILabelObject labelObject),
     @required Result removeLabelObject(Type labelObjectType, int pos),
@@ -548,8 +594,8 @@ class _$_LabelObjectChanged
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initialize(Option<Contact> contactOption),
-    Result saved(),
+    Result initialize(Option<Contact> contactOption, BuildContext context),
+    Result saved(BuildContext context),
     Result labelObjectChanged(ILabelObject labelObject, int pos),
     Result addLabelObject(ILabelObject labelObject),
     Result removeLabelObject(Type labelObjectType, int pos),
@@ -690,8 +736,9 @@ class _$_AddLabelObject
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initialize(Option<Contact> contactOption),
-    @required Result saved(),
+    @required
+        Result initialize(Option<Contact> contactOption, BuildContext context),
+    @required Result saved(BuildContext context),
     @required Result labelObjectChanged(ILabelObject labelObject, int pos),
     @required Result addLabelObject(ILabelObject labelObject),
     @required Result removeLabelObject(Type labelObjectType, int pos),
@@ -715,8 +762,8 @@ class _$_AddLabelObject
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initialize(Option<Contact> contactOption),
-    Result saved(),
+    Result initialize(Option<Contact> contactOption, BuildContext context),
+    Result saved(BuildContext context),
     Result labelObjectChanged(ILabelObject labelObject, int pos),
     Result addLabelObject(ILabelObject labelObject),
     Result removeLabelObject(Type labelObjectType, int pos),
@@ -868,8 +915,9 @@ class _$_RemoveLabelObject
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initialize(Option<Contact> contactOption),
-    @required Result saved(),
+    @required
+        Result initialize(Option<Contact> contactOption, BuildContext context),
+    @required Result saved(BuildContext context),
     @required Result labelObjectChanged(ILabelObject labelObject, int pos),
     @required Result addLabelObject(ILabelObject labelObject),
     @required Result removeLabelObject(Type labelObjectType, int pos),
@@ -893,8 +941,8 @@ class _$_RemoveLabelObject
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initialize(Option<Contact> contactOption),
-    Result saved(),
+    Result initialize(Option<Contact> contactOption, BuildContext context),
+    Result saved(BuildContext context),
     Result labelObjectChanged(ILabelObject labelObject, int pos),
     Result addLabelObject(ILabelObject labelObject),
     Result removeLabelObject(Type labelObjectType, int pos),
@@ -1047,8 +1095,9 @@ class _$_UpdateNameData
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initialize(Option<Contact> contactOption),
-    @required Result saved(),
+    @required
+        Result initialize(Option<Contact> contactOption, BuildContext context),
+    @required Result saved(BuildContext context),
     @required Result labelObjectChanged(ILabelObject labelObject, int pos),
     @required Result addLabelObject(ILabelObject labelObject),
     @required Result removeLabelObject(Type labelObjectType, int pos),
@@ -1072,8 +1121,8 @@ class _$_UpdateNameData
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initialize(Option<Contact> contactOption),
-    Result saved(),
+    Result initialize(Option<Contact> contactOption, BuildContext context),
+    Result saved(BuildContext context),
     Result labelObjectChanged(ILabelObject labelObject, int pos),
     Result addLabelObject(ILabelObject labelObject),
     Result removeLabelObject(Type labelObjectType, int pos),
@@ -1233,8 +1282,9 @@ class _$_UpdateCompany with DiagnosticableTreeMixin implements _UpdateCompany {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initialize(Option<Contact> contactOption),
-    @required Result saved(),
+    @required
+        Result initialize(Option<Contact> contactOption, BuildContext context),
+    @required Result saved(BuildContext context),
     @required Result labelObjectChanged(ILabelObject labelObject, int pos),
     @required Result addLabelObject(ILabelObject labelObject),
     @required Result removeLabelObject(Type labelObjectType, int pos),
@@ -1258,8 +1308,8 @@ class _$_UpdateCompany with DiagnosticableTreeMixin implements _UpdateCompany {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initialize(Option<Contact> contactOption),
-    Result saved(),
+    Result initialize(Option<Contact> contactOption, BuildContext context),
+    Result saved(BuildContext context),
     Result labelObjectChanged(ILabelObject labelObject, int pos),
     Result addLabelObject(ILabelObject labelObject),
     Result removeLabelObject(Type labelObjectType, int pos),
@@ -1332,16 +1382,16 @@ abstract class _UpdateCompany implements AddContactEvent {
 }
 
 abstract class _$AddCompanyCopyWith<$Res> {
-  factory _$AddCompanyCopyWith(_AddCompany value,
-      $Res Function(_AddCompany) then) =
-  __$AddCompanyCopyWithImpl<$Res>;
+  factory _$AddCompanyCopyWith(
+          _AddCompany value, $Res Function(_AddCompany) then) =
+      __$AddCompanyCopyWithImpl<$Res>;
 }
 
 class __$AddCompanyCopyWithImpl<$Res>
     extends _$AddContactEventCopyWithImpl<$Res>
     implements _$AddCompanyCopyWith<$Res> {
-  __$AddCompanyCopyWithImpl(_AddCompany _value,
-      $Res Function(_AddCompany) _then)
+  __$AddCompanyCopyWithImpl(
+      _AddCompany _value, $Res Function(_AddCompany) _then)
       : super(_value, (v) => _then(v as _AddCompany));
 
   @override
@@ -1373,8 +1423,9 @@ class _$_AddCompany with DiagnosticableTreeMixin implements _AddCompany {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initialize(Option<Contact> contactOption),
-    @required Result saved(),
+    @required
+        Result initialize(Option<Contact> contactOption, BuildContext context),
+    @required Result saved(BuildContext context),
     @required Result labelObjectChanged(ILabelObject labelObject, int pos),
     @required Result addLabelObject(ILabelObject labelObject),
     @required Result removeLabelObject(Type labelObjectType, int pos),
@@ -1398,8 +1449,8 @@ class _$_AddCompany with DiagnosticableTreeMixin implements _AddCompany {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initialize(Option<Contact> contactOption),
-    Result saved(),
+    Result initialize(Option<Contact> contactOption, BuildContext context),
+    Result saved(BuildContext context),
     Result labelObjectChanged(ILabelObject labelObject, int pos),
     Result addLabelObject(ILabelObject labelObject),
     Result removeLabelObject(Type labelObjectType, int pos),
@@ -1468,18 +1519,17 @@ abstract class _AddCompany implements AddContactEvent {
 }
 
 abstract class _$DeleteCompanyCopyWith<$Res> {
-  factory _$DeleteCompanyCopyWith(_DeleteCompany value,
-      $Res Function(_DeleteCompany) then) =
-  __$DeleteCompanyCopyWithImpl<$Res>;
-
+  factory _$DeleteCompanyCopyWith(
+          _DeleteCompany value, $Res Function(_DeleteCompany) then) =
+      __$DeleteCompanyCopyWithImpl<$Res>;
   $Res call({int index});
 }
 
 class __$DeleteCompanyCopyWithImpl<$Res>
     extends _$AddContactEventCopyWithImpl<$Res>
     implements _$DeleteCompanyCopyWith<$Res> {
-  __$DeleteCompanyCopyWithImpl(_DeleteCompany _value,
-      $Res Function(_DeleteCompany) _then)
+  __$DeleteCompanyCopyWithImpl(
+      _DeleteCompany _value, $Res Function(_DeleteCompany) _then)
       : super(_value, (v) => _then(v as _DeleteCompany));
 
   @override
@@ -1509,9 +1559,9 @@ class _$_DeleteCompany with DiagnosticableTreeMixin implements _DeleteCompany {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(
-        DiagnosticsProperty('type', 'AddContactEvent.deleteCompany'))..add(
-        DiagnosticsProperty('index', index));
+    properties
+      ..add(DiagnosticsProperty('type', 'AddContactEvent.deleteCompany'))
+      ..add(DiagnosticsProperty('index', index));
   }
 
   @override
@@ -1533,8 +1583,9 @@ class _$_DeleteCompany with DiagnosticableTreeMixin implements _DeleteCompany {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initialize(Option<Contact> contactOption),
-    @required Result saved(),
+    @required
+        Result initialize(Option<Contact> contactOption, BuildContext context),
+    @required Result saved(BuildContext context),
     @required Result labelObjectChanged(ILabelObject labelObject, int pos),
     @required Result addLabelObject(ILabelObject labelObject),
     @required Result removeLabelObject(Type labelObjectType, int pos),
@@ -1558,8 +1609,8 @@ class _$_DeleteCompany with DiagnosticableTreeMixin implements _DeleteCompany {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initialize(Option<Contact> contactOption),
-    Result saved(),
+    Result initialize(Option<Contact> contactOption, BuildContext context),
+    Result saved(BuildContext context),
     Result labelObjectChanged(ILabelObject labelObject, int pos),
     Result addLabelObject(ILabelObject labelObject),
     Result removeLabelObject(Type labelObjectType, int pos),
@@ -1634,10 +1685,11 @@ class _$AddContactStateTearOff {
   const _$AddContactStateTearOff();
 
 // ignore: unused_element
-  _AddContactState call({@required Contact contact,
-    @required bool isEditting,
-    @required bool isSaving,
-    @required Option<Either<ContactsFailure, Unit>> savingOrFailureOption}) {
+  _AddContactState call(
+      {@required Contact contact,
+      @required bool isEditting,
+      @required bool isSaving,
+      @required Option<Either<ContactsFailure, Unit>> savingOrFailureOption}) {
     return _AddContactState(
       contact: contact,
       isEditting: isEditting,
@@ -1711,15 +1763,15 @@ class _$AddContactStateCopyWithImpl<$Res>
 
 abstract class _$AddContactStateCopyWith<$Res>
     implements $AddContactStateCopyWith<$Res> {
-  factory _$AddContactStateCopyWith(_AddContactState value,
-      $Res Function(_AddContactState) then) =
-  __$AddContactStateCopyWithImpl<$Res>;
-
+  factory _$AddContactStateCopyWith(
+          _AddContactState value, $Res Function(_AddContactState) then) =
+      __$AddContactStateCopyWithImpl<$Res>;
   @override
-  $Res call({Contact contact,
-    bool isEditting,
-    bool isSaving,
-    Option<Either<ContactsFailure, Unit>> savingOrFailureOption});
+  $Res call(
+      {Contact contact,
+      bool isEditting,
+      bool isSaving,
+      Option<Either<ContactsFailure, Unit>> savingOrFailureOption});
 
   @override
   $ContactCopyWith<$Res> get contact;
@@ -1745,7 +1797,7 @@ class __$AddContactStateCopyWithImpl<$Res>
     return _then(_AddContactState(
       contact: contact == freezed ? _value.contact : contact as Contact,
       isEditting:
-      isEditting == freezed ? _value.isEditting : isEditting as bool,
+          isEditting == freezed ? _value.isEditting : isEditting as bool,
       isSaving: isSaving == freezed ? _value.isSaving : isSaving as bool,
       savingOrFailureOption: savingOrFailureOption == freezed
           ? _value.savingOrFailureOption
@@ -1755,10 +1807,11 @@ class __$AddContactStateCopyWithImpl<$Res>
 }
 
 class _$_AddContactState extends _AddContactState with DiagnosticableTreeMixin {
-  const _$_AddContactState({@required this.contact,
-    @required this.isEditting,
-    @required this.isSaving,
-    @required this.savingOrFailureOption})
+  const _$_AddContactState(
+      {@required this.contact,
+      @required this.isEditting,
+      @required this.isSaving,
+      @required this.savingOrFailureOption})
       : assert(contact != null),
         assert(isEditting != null),
         assert(isSaving != null),
@@ -1782,11 +1835,13 @@ class _$_AddContactState extends _AddContactState with DiagnosticableTreeMixin {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'AddContactState'))..add(
-        DiagnosticsProperty('contact', contact))..add(
-        DiagnosticsProperty('isEditting', isEditting))..add(
-        DiagnosticsProperty('isSaving', isSaving))..add(
-        DiagnosticsProperty('savingOrFailureOption', savingOrFailureOption));
+    properties
+      ..add(DiagnosticsProperty('type', 'AddContactState'))
+      ..add(DiagnosticsProperty('contact', contact))
+      ..add(DiagnosticsProperty('isEditting', isEditting))
+      ..add(DiagnosticsProperty('isSaving', isSaving))
+      ..add(
+          DiagnosticsProperty('savingOrFailureOption', savingOrFailureOption));
   }
 
   @override
@@ -1822,25 +1877,25 @@ class _$_AddContactState extends _AddContactState with DiagnosticableTreeMixin {
 
 abstract class _AddContactState extends AddContactState {
   const _AddContactState._() : super._();
-
-  const factory _AddContactState({@required Contact contact,
-    @required bool isEditting,
-    @required bool isSaving,
-    @required Option<Either<ContactsFailure, Unit>> savingOrFailureOption}) =
-  _$_AddContactState;
+  const factory _AddContactState(
+          {@required
+              Contact contact,
+          @required
+              bool isEditting,
+          @required
+              bool isSaving,
+          @required
+              Option<Either<ContactsFailure, Unit>> savingOrFailureOption}) =
+      _$_AddContactState;
 
   @override
   Contact get contact;
-
   @override
   bool get isEditting;
-
   @override
   bool get isSaving;
-
   @override
   Option<Either<ContactsFailure, Unit>> get savingOrFailureOption;
-
   @override
   _$AddContactStateCopyWith<_AddContactState> get copyWith;
 }

@@ -19,7 +19,7 @@ class AddContactPage extends StatelessWidget {
     return BlocProvider(
         create: (context) {
           final AddContactBloc bloc = getIt<AddContactBloc>()
-            ..add(AddContactEvent.initialize(optionOf(contact)));
+            ..add(AddContactEvent.initialize(optionOf(contact), context));
           return bloc;
         },
         child: BlocListener<AddContactBloc, AddContactState>(

@@ -81,8 +81,7 @@ class PhoneTextFormatter extends TextInputFormatter {
   }
 
   void _setCountryDataToLocaleRegion() {
-    _countryData = PhoneCountryData.fromCountryCode(
-        countryCode: Localizations.localeOf(context).countryCode);
+    _countryData = PhoneCountryData.fromContext(context: context);
     _localRegion = true;
   }
 

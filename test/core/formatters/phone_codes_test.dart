@@ -76,13 +76,17 @@ void main() {
             phoneCodeMap['phoneCode']);
       }
     });
+    test('All country formats start with +', () {
+      for (final Map phoneCodeMap in countryPhoneCodes) {
+        print(phoneCodeMap['phoneMask']);
+        expect(phoneCodeMap['phoneMask'][0], '+');
+      }
+    });
     test("Longest prefix length is the constant [longestPrefix]", () {
       int longestPrefix = 0;
       for (final Map phoneCodeMap in countryPhoneCodes) {
         longestPrefix =
-            max(longestPrefix, phoneCodeMap['phoneCode']
-                .toString()
-                .length);
+            max(longestPrefix, phoneCodeMap['phoneCode'].toString().length);
       }
       expect(longestPrefix, longestPrefix);
     });

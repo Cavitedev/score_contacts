@@ -2,10 +2,10 @@ part of 'add_contact_bloc.dart';
 
 @freezed
 abstract class AddContactEvent with _$AddContactEvent {
-  const factory AddContactEvent.initialize(Option<Contact> contactOption) =
-      _Initialize;
+  const factory AddContactEvent.initialize(
+      Option<Contact> contactOption, BuildContext context) = _Initialize;
 
-  const factory AddContactEvent.saved() = _Saved;
+  const factory AddContactEvent.saved(BuildContext context) = _Saved;
 
   const factory AddContactEvent.labelObjectChanged(
       ILabelObject labelObject, int pos) = _LabelObjectChanged;

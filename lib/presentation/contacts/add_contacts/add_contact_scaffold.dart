@@ -31,7 +31,9 @@ class AddContactScaffold extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.check),
             onPressed: () {
-              context.bloc<AddContactBloc>().add(const AddContactEvent.saved());
+              context
+                  .bloc<AddContactBloc>()
+                  .add(AddContactEvent.saved(context));
             },
           )
         ],
