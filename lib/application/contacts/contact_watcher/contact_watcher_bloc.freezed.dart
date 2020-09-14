@@ -154,9 +154,9 @@ class _$ContactWatcherStateTearOff {
   }
 
 // ignore: unused_element
-  _LoadSucces loadSuccess(List<Contact> contacts) {
-    return _LoadSucces(
-      contacts,
+  _LoadSuccess loadSuccess(List<SelectedContact> selectedContacts) {
+    return _LoadSuccess(
+      selectedContacts,
     );
   }
 
@@ -176,14 +176,14 @@ mixin _$ContactWatcherState {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loadInProgress(),
-    @required Result loadSuccess(List<Contact> contacts),
+    @required Result loadSuccess(List<SelectedContact> selectedContacts),
     @required Result loadFailure(ContactsFailure failure),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loadInProgress(),
-    Result loadSuccess(List<Contact> contacts),
+    Result loadSuccess(List<SelectedContact> selectedContacts),
     Result loadFailure(ContactsFailure failure),
     @required Result orElse(),
   });
@@ -191,14 +191,14 @@ mixin _$ContactWatcherState {
   Result map<Result extends Object>({
     @required Result initial(_Initial value),
     @required Result loadInProgress(_LoadInProgress value),
-    @required Result loadSuccess(_LoadSucces value),
+    @required Result loadSuccess(_LoadSuccess value),
     @required Result loadFailure(_LoadFailure value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(_Initial value),
     Result loadInProgress(_LoadInProgress value),
-    Result loadSuccess(_LoadSucces value),
+    Result loadSuccess(_LoadSuccess value),
     Result loadFailure(_LoadFailure value),
     @required Result orElse(),
   });
@@ -255,7 +255,7 @@ class _$_Initial implements _Initial {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loadInProgress(),
-    @required Result loadSuccess(List<Contact> contacts),
+    @required Result loadSuccess(List<SelectedContact> selectedContacts),
     @required Result loadFailure(ContactsFailure failure),
   }) {
     assert(initial != null);
@@ -270,7 +270,7 @@ class _$_Initial implements _Initial {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loadInProgress(),
-    Result loadSuccess(List<Contact> contacts),
+    Result loadSuccess(List<SelectedContact> selectedContacts),
     Result loadFailure(ContactsFailure failure),
     @required Result orElse(),
   }) {
@@ -286,7 +286,7 @@ class _$_Initial implements _Initial {
   Result map<Result extends Object>({
     @required Result initial(_Initial value),
     @required Result loadInProgress(_LoadInProgress value),
-    @required Result loadSuccess(_LoadSucces value),
+    @required Result loadSuccess(_LoadSuccess value),
     @required Result loadFailure(_LoadFailure value),
   }) {
     assert(initial != null);
@@ -301,7 +301,7 @@ class _$_Initial implements _Initial {
   Result maybeMap<Result extends Object>({
     Result initial(_Initial value),
     Result loadInProgress(_LoadInProgress value),
-    Result loadSuccess(_LoadSucces value),
+    Result loadSuccess(_LoadSuccess value),
     Result loadFailure(_LoadFailure value),
     @required Result orElse(),
   }) {
@@ -355,7 +355,7 @@ class _$_LoadInProgress implements _LoadInProgress {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loadInProgress(),
-    @required Result loadSuccess(List<Contact> contacts),
+    @required Result loadSuccess(List<SelectedContact> selectedContacts),
     @required Result loadFailure(ContactsFailure failure),
   }) {
     assert(initial != null);
@@ -370,7 +370,7 @@ class _$_LoadInProgress implements _LoadInProgress {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loadInProgress(),
-    Result loadSuccess(List<Contact> contacts),
+    Result loadSuccess(List<SelectedContact> selectedContacts),
     Result loadFailure(ContactsFailure failure),
     @required Result orElse(),
   }) {
@@ -386,7 +386,7 @@ class _$_LoadInProgress implements _LoadInProgress {
   Result map<Result extends Object>({
     @required Result initial(_Initial value),
     @required Result loadInProgress(_LoadInProgress value),
-    @required Result loadSuccess(_LoadSucces value),
+    @required Result loadSuccess(_LoadSuccess value),
     @required Result loadFailure(_LoadFailure value),
   }) {
     assert(initial != null);
@@ -401,7 +401,7 @@ class _$_LoadInProgress implements _LoadInProgress {
   Result maybeMap<Result extends Object>({
     Result initial(_Initial value),
     Result loadInProgress(_LoadInProgress value),
-    Result loadSuccess(_LoadSucces value),
+    Result loadSuccess(_LoadSuccess value),
     Result loadFailure(_LoadFailure value),
     @required Result orElse(),
   }) {
@@ -417,74 +417,79 @@ abstract class _LoadInProgress implements ContactWatcherState {
   const factory _LoadInProgress() = _$_LoadInProgress;
 }
 
-abstract class _$LoadSuccesCopyWith<$Res> {
-  factory _$LoadSuccesCopyWith(
-          _LoadSucces value, $Res Function(_LoadSucces) then) =
-      __$LoadSuccesCopyWithImpl<$Res>;
-  $Res call({List<Contact> contacts});
+abstract class _$LoadSuccessCopyWith<$Res> {
+  factory _$LoadSuccessCopyWith(
+          _LoadSuccess value, $Res Function(_LoadSuccess) then) =
+      __$LoadSuccessCopyWithImpl<$Res>;
+
+  $Res call({List<SelectedContact> selectedContacts});
 }
 
-class __$LoadSuccesCopyWithImpl<$Res>
+class __$LoadSuccessCopyWithImpl<$Res>
     extends _$ContactWatcherStateCopyWithImpl<$Res>
-    implements _$LoadSuccesCopyWith<$Res> {
-  __$LoadSuccesCopyWithImpl(
-      _LoadSucces _value, $Res Function(_LoadSucces) _then)
-      : super(_value, (v) => _then(v as _LoadSucces));
+    implements _$LoadSuccessCopyWith<$Res> {
+  __$LoadSuccessCopyWithImpl(_LoadSuccess _value,
+      $Res Function(_LoadSuccess) _then)
+      : super(_value, (v) => _then(v as _LoadSuccess));
 
   @override
-  _LoadSucces get _value => super._value as _LoadSucces;
+  _LoadSuccess get _value => super._value as _LoadSuccess;
 
   @override
   $Res call({
-    Object contacts = freezed,
+    Object selectedContacts = freezed,
   }) {
-    return _then(_LoadSucces(
-      contacts == freezed ? _value.contacts : contacts as List<Contact>,
+    return _then(_LoadSuccess(
+      selectedContacts == freezed
+          ? _value.selectedContacts
+          : selectedContacts as List<SelectedContact>,
     ));
   }
 }
 
-class _$_LoadSucces implements _LoadSucces {
-  const _$_LoadSucces(this.contacts) : assert(contacts != null);
+class _$_LoadSuccess implements _LoadSuccess {
+  const _$_LoadSuccess(this.selectedContacts)
+      : assert(selectedContacts != null);
 
   @override
-  final List<Contact> contacts;
+  final List<SelectedContact> selectedContacts;
 
   @override
   String toString() {
-    return 'ContactWatcherState.loadSuccess(contacts: $contacts)';
+    return 'ContactWatcherState.loadSuccess(selectedContacts: $selectedContacts)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _LoadSucces &&
-            (identical(other.contacts, contacts) ||
+        (other is _LoadSuccess &&
+            (identical(other.selectedContacts, selectedContacts) ||
                 const DeepCollectionEquality()
-                    .equals(other.contacts, contacts)));
+                    .equals(other.selectedContacts, selectedContacts)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(contacts);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(selectedContacts);
 
   @override
-  _$LoadSuccesCopyWith<_LoadSucces> get copyWith =>
-      __$LoadSuccesCopyWithImpl<_LoadSucces>(this, _$identity);
+  _$LoadSuccessCopyWith<_LoadSuccess> get copyWith =>
+      __$LoadSuccessCopyWithImpl<_LoadSuccess>(this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loadInProgress(),
-    @required Result loadSuccess(List<Contact> contacts),
+    @required Result loadSuccess(List<SelectedContact> selectedContacts),
     @required Result loadFailure(ContactsFailure failure),
   }) {
     assert(initial != null);
     assert(loadInProgress != null);
     assert(loadSuccess != null);
     assert(loadFailure != null);
-    return loadSuccess(contacts);
+    return loadSuccess(selectedContacts);
   }
 
   @override
@@ -492,13 +497,13 @@ class _$_LoadSucces implements _LoadSucces {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loadInProgress(),
-    Result loadSuccess(List<Contact> contacts),
+    Result loadSuccess(List<SelectedContact> selectedContacts),
     Result loadFailure(ContactsFailure failure),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (loadSuccess != null) {
-      return loadSuccess(contacts);
+      return loadSuccess(selectedContacts);
     }
     return orElse();
   }
@@ -508,7 +513,7 @@ class _$_LoadSucces implements _LoadSucces {
   Result map<Result extends Object>({
     @required Result initial(_Initial value),
     @required Result loadInProgress(_LoadInProgress value),
-    @required Result loadSuccess(_LoadSucces value),
+    @required Result loadSuccess(_LoadSuccess value),
     @required Result loadFailure(_LoadFailure value),
   }) {
     assert(initial != null);
@@ -523,7 +528,7 @@ class _$_LoadSucces implements _LoadSucces {
   Result maybeMap<Result extends Object>({
     Result initial(_Initial value),
     Result loadInProgress(_LoadInProgress value),
-    Result loadSuccess(_LoadSucces value),
+    Result loadSuccess(_LoadSuccess value),
     Result loadFailure(_LoadFailure value),
     @required Result orElse(),
   }) {
@@ -535,11 +540,13 @@ class _$_LoadSucces implements _LoadSucces {
   }
 }
 
-abstract class _LoadSucces implements ContactWatcherState {
-  const factory _LoadSucces(List<Contact> contacts) = _$_LoadSucces;
+abstract class _LoadSuccess implements ContactWatcherState {
+  const factory _LoadSuccess(List<SelectedContact> selectedContacts) =
+  _$_LoadSuccess;
 
-  List<Contact> get contacts;
-  _$LoadSuccesCopyWith<_LoadSucces> get copyWith;
+  List<SelectedContact> get selectedContacts;
+
+  _$LoadSuccessCopyWith<_LoadSuccess> get copyWith;
 }
 
 abstract class _$LoadFailureCopyWith<$Res> {
@@ -613,7 +620,7 @@ class _$_LoadFailure implements _LoadFailure {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loadInProgress(),
-    @required Result loadSuccess(List<Contact> contacts),
+    @required Result loadSuccess(List<SelectedContact> selectedContacts),
     @required Result loadFailure(ContactsFailure failure),
   }) {
     assert(initial != null);
@@ -628,7 +635,7 @@ class _$_LoadFailure implements _LoadFailure {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loadInProgress(),
-    Result loadSuccess(List<Contact> contacts),
+    Result loadSuccess(List<SelectedContact> selectedContacts),
     Result loadFailure(ContactsFailure failure),
     @required Result orElse(),
   }) {
@@ -644,7 +651,7 @@ class _$_LoadFailure implements _LoadFailure {
   Result map<Result extends Object>({
     @required Result initial(_Initial value),
     @required Result loadInProgress(_LoadInProgress value),
-    @required Result loadSuccess(_LoadSucces value),
+    @required Result loadSuccess(_LoadSuccess value),
     @required Result loadFailure(_LoadFailure value),
   }) {
     assert(initial != null);
@@ -659,7 +666,7 @@ class _$_LoadFailure implements _LoadFailure {
   Result maybeMap<Result extends Object>({
     Result initial(_Initial value),
     Result loadInProgress(_LoadInProgress value),
-    Result loadSuccess(_LoadSucces value),
+    Result loadSuccess(_LoadSuccess value),
     Result loadFailure(_LoadFailure value),
     @required Result orElse(),
   }) {

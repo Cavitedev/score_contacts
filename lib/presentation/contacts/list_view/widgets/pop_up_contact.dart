@@ -20,7 +20,10 @@ class ContactPopUp {
         PopUpDivider(),
         PopUpWidget(
             addedWidget: InkPopUpButton(
-          onTap: () {},
+          onTap: () {
+            actorBloc.add(ContactActorEvent.toggleSelectionContact(contact));
+            ExtendedNavigator.of(context).pop();
+          },
           text: "Select",
         )),
         PopUpDivider(),
@@ -41,16 +44,16 @@ class ContactPopUp {
         PopUpWidget(
             addedWidget: InkPopUpButton(
           onTap: () {
-            print(actorBloc);
             showDialog(
                 context: context,
                 builder: (context) => AlertDialogueCancelOK(
                       title:
                           'Do you want to delete "${contact.nameData.firstName} ${contact.nameData.surnames}" contact',
                       onSubmit: () {
-                        actorBloc.add(ContactActorEvent.delete(contact));
+                        actorBloc.add(
+                            ContactActorEvent.delete(contact: contact));
                         ExtendedNavigator.of(context).popUntil((route) =>
-                            route.settings.name == Routes.contactList);
+                        route.settings.name == Routes.contactList);
                       },
                       onCancel: () {
                         ExtendedNavigator.of(context).popUntil((route) =>

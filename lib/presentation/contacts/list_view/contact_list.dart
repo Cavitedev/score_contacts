@@ -49,19 +49,24 @@ class ContactList extends StatelessWidget {
                     },
                     orElse: () {});
               },
-            )
+            ),
           ],
           child: BlocBuilder<ContactWatcherBloc, ContactWatcherState>(
               builder: (context, state) => state.map(
-                    initial: (_) => Container(),
-                    loadInProgress: (_) => const Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                    loadSuccess: (state) =>
-                        ContactsListScaffold(contacts: state.contacts),
-                    loadFailure: (state) =>
-                        CriticalFailureDisplay(failure: state.failure),
-                  )),
+                initial: (_) => Container(),
+                loadInProgress: (_) =>
+                const Center(
+                  child: CircularProgressIndicator(),
+                ),
+                loadSuccess: (state) {
+                  return ContactsListScaffold(
+                      contacts: state.selectedContacts
+                          .map((selectedContact) => selectedContact.contact)
+                          .toList());
+                },
+                loadFailure: (state) =>
+                    CriticalFailureDisplay(failure: state.failure),
+              )),
         ));
   }
 }

@@ -91,6 +91,7 @@ class _MyAppState extends State<MyApp> {
         ),
       );
     } else {
+      // ignore: avoid_unnecessary_containers
       return Container(child: const CircularProgressIndicator());
     }
   }
