@@ -9,6 +9,7 @@ part of 'contacts_failure.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$ContactsFailureTearOff {
   const _$ContactsFailureTearOff();
 
@@ -28,44 +29,51 @@ class _$ContactsFailureTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ContactsFailure = _$ContactsFailureTearOff();
 
+/// @nodoc
 mixin _$ContactsFailure {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result insufficientPermissions(),
-    @required Result notFound(),
-    @required Result unexpected(),
+  TResult when<TResult extends Object>({
+    @required TResult insufficientPermissions(),
+    @required TResult notFound(),
+    @required TResult unexpected(),
   });
+
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result insufficientPermissions(),
-    Result notFound(),
-    Result unexpected(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult insufficientPermissions(),
+    TResult notFound(),
+    TResult unexpected(),
+    @required TResult orElse(),
   });
+
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result insufficientPermissions(_InsufficientPermissions value),
-    @required Result notFound(_NotFound value),
-    @required Result unexpected(_Unexpected value),
+  TResult map<TResult extends Object>({
+    @required TResult insufficientPermissions(_InsufficientPermissions value),
+    @required TResult notFound(_NotFound value),
+    @required TResult unexpected(_Unexpected value),
   });
+
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result insufficientPermissions(_InsufficientPermissions value),
-    Result notFound(_NotFound value),
-    Result unexpected(_Unexpected value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult insufficientPermissions(_InsufficientPermissions value),
+    TResult notFound(_NotFound value),
+    TResult unexpected(_Unexpected value),
+    @required TResult orElse(),
   });
 }
 
+/// @nodoc
 abstract class $ContactsFailureCopyWith<$Res> {
   factory $ContactsFailureCopyWith(
           ContactsFailure value, $Res Function(ContactsFailure) then) =
       _$ContactsFailureCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$ContactsFailureCopyWithImpl<$Res>
     implements $ContactsFailureCopyWith<$Res> {
   _$ContactsFailureCopyWithImpl(this._value, this._then);
@@ -75,12 +83,14 @@ class _$ContactsFailureCopyWithImpl<$Res>
   final $Res Function(ContactsFailure) _then;
 }
 
+/// @nodoc
 abstract class _$InsufficientPermissionsCopyWith<$Res> {
   factory _$InsufficientPermissionsCopyWith(_InsufficientPermissions value,
           $Res Function(_InsufficientPermissions) then) =
       __$InsufficientPermissionsCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$InsufficientPermissionsCopyWithImpl<$Res>
     extends _$ContactsFailureCopyWithImpl<$Res>
     implements _$InsufficientPermissionsCopyWith<$Res> {
@@ -93,6 +103,7 @@ class __$InsufficientPermissionsCopyWithImpl<$Res>
       super._value as _InsufficientPermissions;
 }
 
+/// @nodoc
 class _$_InsufficientPermissions implements _InsufficientPermissions {
   const _$_InsufficientPermissions();
 
@@ -111,10 +122,10 @@ class _$_InsufficientPermissions implements _InsufficientPermissions {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result insufficientPermissions(),
-    @required Result notFound(),
-    @required Result unexpected(),
+  TResult when<TResult extends Object>({
+    @required TResult insufficientPermissions(),
+    @required TResult notFound(),
+    @required TResult unexpected(),
   }) {
     assert(insufficientPermissions != null);
     assert(notFound != null);
@@ -124,11 +135,11 @@ class _$_InsufficientPermissions implements _InsufficientPermissions {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result insufficientPermissions(),
-    Result notFound(),
-    Result unexpected(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult insufficientPermissions(),
+    TResult notFound(),
+    TResult unexpected(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (insufficientPermissions != null) {
@@ -139,10 +150,10 @@ class _$_InsufficientPermissions implements _InsufficientPermissions {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result insufficientPermissions(_InsufficientPermissions value),
-    @required Result notFound(_NotFound value),
-    @required Result unexpected(_Unexpected value),
+  TResult map<TResult extends Object>({
+    @required TResult insufficientPermissions(_InsufficientPermissions value),
+    @required TResult notFound(_NotFound value),
+    @required TResult unexpected(_Unexpected value),
   }) {
     assert(insufficientPermissions != null);
     assert(notFound != null);
@@ -152,11 +163,11 @@ class _$_InsufficientPermissions implements _InsufficientPermissions {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result insufficientPermissions(_InsufficientPermissions value),
-    Result notFound(_NotFound value),
-    Result unexpected(_Unexpected value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult insufficientPermissions(_InsufficientPermissions value),
+    TResult notFound(_NotFound value),
+    TResult unexpected(_Unexpected value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (insufficientPermissions != null) {
@@ -170,11 +181,13 @@ abstract class _InsufficientPermissions implements ContactsFailure {
   const factory _InsufficientPermissions() = _$_InsufficientPermissions;
 }
 
+/// @nodoc
 abstract class _$NotFoundCopyWith<$Res> {
   factory _$NotFoundCopyWith(_NotFound value, $Res Function(_NotFound) then) =
       __$NotFoundCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$NotFoundCopyWithImpl<$Res> extends _$ContactsFailureCopyWithImpl<$Res>
     implements _$NotFoundCopyWith<$Res> {
   __$NotFoundCopyWithImpl(_NotFound _value, $Res Function(_NotFound) _then)
@@ -184,6 +197,7 @@ class __$NotFoundCopyWithImpl<$Res> extends _$ContactsFailureCopyWithImpl<$Res>
   _NotFound get _value => super._value as _NotFound;
 }
 
+/// @nodoc
 class _$_NotFound implements _NotFound {
   const _$_NotFound();
 
@@ -202,10 +216,10 @@ class _$_NotFound implements _NotFound {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result insufficientPermissions(),
-    @required Result notFound(),
-    @required Result unexpected(),
+  TResult when<TResult extends Object>({
+    @required TResult insufficientPermissions(),
+    @required TResult notFound(),
+    @required TResult unexpected(),
   }) {
     assert(insufficientPermissions != null);
     assert(notFound != null);
@@ -215,11 +229,11 @@ class _$_NotFound implements _NotFound {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result insufficientPermissions(),
-    Result notFound(),
-    Result unexpected(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult insufficientPermissions(),
+    TResult notFound(),
+    TResult unexpected(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (notFound != null) {
@@ -230,10 +244,10 @@ class _$_NotFound implements _NotFound {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result insufficientPermissions(_InsufficientPermissions value),
-    @required Result notFound(_NotFound value),
-    @required Result unexpected(_Unexpected value),
+  TResult map<TResult extends Object>({
+    @required TResult insufficientPermissions(_InsufficientPermissions value),
+    @required TResult notFound(_NotFound value),
+    @required TResult unexpected(_Unexpected value),
   }) {
     assert(insufficientPermissions != null);
     assert(notFound != null);
@@ -243,11 +257,11 @@ class _$_NotFound implements _NotFound {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result insufficientPermissions(_InsufficientPermissions value),
-    Result notFound(_NotFound value),
-    Result unexpected(_Unexpected value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult insufficientPermissions(_InsufficientPermissions value),
+    TResult notFound(_NotFound value),
+    TResult unexpected(_Unexpected value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (notFound != null) {
@@ -261,12 +275,14 @@ abstract class _NotFound implements ContactsFailure {
   const factory _NotFound() = _$_NotFound;
 }
 
+/// @nodoc
 abstract class _$UnexpectedCopyWith<$Res> {
   factory _$UnexpectedCopyWith(
           _Unexpected value, $Res Function(_Unexpected) then) =
       __$UnexpectedCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$UnexpectedCopyWithImpl<$Res>
     extends _$ContactsFailureCopyWithImpl<$Res>
     implements _$UnexpectedCopyWith<$Res> {
@@ -278,6 +294,7 @@ class __$UnexpectedCopyWithImpl<$Res>
   _Unexpected get _value => super._value as _Unexpected;
 }
 
+/// @nodoc
 class _$_Unexpected implements _Unexpected {
   const _$_Unexpected();
 
@@ -296,10 +313,10 @@ class _$_Unexpected implements _Unexpected {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result insufficientPermissions(),
-    @required Result notFound(),
-    @required Result unexpected(),
+  TResult when<TResult extends Object>({
+    @required TResult insufficientPermissions(),
+    @required TResult notFound(),
+    @required TResult unexpected(),
   }) {
     assert(insufficientPermissions != null);
     assert(notFound != null);
@@ -309,11 +326,11 @@ class _$_Unexpected implements _Unexpected {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result insufficientPermissions(),
-    Result notFound(),
-    Result unexpected(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult insufficientPermissions(),
+    TResult notFound(),
+    TResult unexpected(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (unexpected != null) {
@@ -324,10 +341,10 @@ class _$_Unexpected implements _Unexpected {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result insufficientPermissions(_InsufficientPermissions value),
-    @required Result notFound(_NotFound value),
-    @required Result unexpected(_Unexpected value),
+  TResult map<TResult extends Object>({
+    @required TResult insufficientPermissions(_InsufficientPermissions value),
+    @required TResult notFound(_NotFound value),
+    @required TResult unexpected(_Unexpected value),
   }) {
     assert(insufficientPermissions != null);
     assert(notFound != null);
@@ -337,11 +354,11 @@ class _$_Unexpected implements _Unexpected {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result insufficientPermissions(_InsufficientPermissions value),
-    Result notFound(_NotFound value),
-    Result unexpected(_Unexpected value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult insufficientPermissions(_InsufficientPermissions value),
+    TResult notFound(_NotFound value),
+    TResult unexpected(_Unexpected value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (unexpected != null) {

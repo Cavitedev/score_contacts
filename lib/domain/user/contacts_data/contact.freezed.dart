@@ -9,6 +9,7 @@ part of 'contact.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$ContactTearOff {
   const _$ContactTearOff();
 
@@ -27,9 +28,11 @@ class _$ContactTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $Contact = _$ContactTearOff();
 
+/// @nodoc
 mixin _$Contact {
   UniqueID get id;
   NameData get nameData;
@@ -39,6 +42,7 @@ mixin _$Contact {
   $ContactCopyWith<Contact> get copyWith;
 }
 
+/// @nodoc
 abstract class $ContactCopyWith<$Res> {
   factory $ContactCopyWith(Contact value, $Res Function(Contact) then) =
       _$ContactCopyWithImpl<$Res>;
@@ -51,6 +55,7 @@ abstract class $ContactCopyWith<$Res> {
   $NameDataCopyWith<$Res> get nameData;
 }
 
+/// @nodoc
 class _$ContactCopyWithImpl<$Res> implements $ContactCopyWith<$Res> {
   _$ContactCopyWithImpl(this._value, this._then);
 
@@ -87,6 +92,7 @@ class _$ContactCopyWithImpl<$Res> implements $ContactCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$ContactCopyWith<$Res> implements $ContactCopyWith<$Res> {
   factory _$ContactCopyWith(_Contact value, $Res Function(_Contact) then) =
       __$ContactCopyWithImpl<$Res>;
@@ -101,6 +107,7 @@ abstract class _$ContactCopyWith<$Res> implements $ContactCopyWith<$Res> {
   $NameDataCopyWith<$Res> get nameData;
 }
 
+/// @nodoc
 class __$ContactCopyWithImpl<$Res> extends _$ContactCopyWithImpl<$Res>
     implements _$ContactCopyWith<$Res> {
   __$ContactCopyWithImpl(_Contact _value, $Res Function(_Contact) _then)
@@ -128,6 +135,7 @@ class __$ContactCopyWithImpl<$Res> extends _$ContactCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_Contact extends _Contact {
   const _$_Contact(
       {@required this.id,

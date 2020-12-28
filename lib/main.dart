@@ -6,7 +6,7 @@ import 'package:injectable/injectable.dart';
 import 'package:scorecontacts/application/auth/auth_bloc.dart';
 import 'package:scorecontacts/application/auth/auth_event.dart';
 import 'package:scorecontacts/injection.dart';
-import 'package:scorecontacts/presentation/routes/router.gr.dart';
+import 'package:scorecontacts/presentation/routes/router.gr.dart' as r;
 
 void main() {
   configureInjection(Environment.prod);
@@ -47,8 +47,8 @@ class _MyAppState extends State<MyApp> {
         ],
         child: MaterialApp(
           title: 'Contacts App',
-          builder: ExtendedNavigator(
-            router: Router(),
+          builder: ExtendedNavigator.builder<r.Router>(
+            router: r.Router(),
           ),
           theme: ThemeData.dark().copyWith(
             scaffoldBackgroundColor: const Color.fromRGBO(30, 30, 30, 1),

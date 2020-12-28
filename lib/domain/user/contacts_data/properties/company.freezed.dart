@@ -9,6 +9,7 @@ part of 'company.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$CompanyTearOff {
   const _$CompanyTearOff();
 
@@ -21,9 +22,11 @@ class _$CompanyTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $Company = _$CompanyTearOff();
 
+/// @nodoc
 mixin _$Company {
   String get name;
   String get title;
@@ -31,12 +34,14 @@ mixin _$Company {
   $CompanyCopyWith<Company> get copyWith;
 }
 
+/// @nodoc
 abstract class $CompanyCopyWith<$Res> {
   factory $CompanyCopyWith(Company value, $Res Function(Company) then) =
       _$CompanyCopyWithImpl<$Res>;
   $Res call({String name, String title});
 }
 
+/// @nodoc
 class _$CompanyCopyWithImpl<$Res> implements $CompanyCopyWith<$Res> {
   _$CompanyCopyWithImpl(this._value, this._then);
 
@@ -56,6 +61,7 @@ class _$CompanyCopyWithImpl<$Res> implements $CompanyCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$CompanyCopyWith<$Res> implements $CompanyCopyWith<$Res> {
   factory _$CompanyCopyWith(_Company value, $Res Function(_Company) then) =
       __$CompanyCopyWithImpl<$Res>;
@@ -63,6 +69,7 @@ abstract class _$CompanyCopyWith<$Res> implements $CompanyCopyWith<$Res> {
   $Res call({String name, String title});
 }
 
+/// @nodoc
 class __$CompanyCopyWithImpl<$Res> extends _$CompanyCopyWithImpl<$Res>
     implements _$CompanyCopyWith<$Res> {
   __$CompanyCopyWithImpl(_Company _value, $Res Function(_Company) _then)
@@ -83,6 +90,7 @@ class __$CompanyCopyWithImpl<$Res> extends _$CompanyCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_Company extends _Company {
   const _$_Company({this.name, this.title}) : super._();
 

@@ -9,6 +9,7 @@ part of 'add_contact_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$AddContactEventTearOff {
   const _$AddContactEventTearOff();
 
@@ -78,69 +79,76 @@ class _$AddContactEventTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $AddContactEvent = _$AddContactEventTearOff();
 
+/// @nodoc
 mixin _$AddContactEvent {
   @optionalTypeArgs
-  Result when<Result extends Object>({
+  TResult when<TResult extends Object>({
     @required
-        Result initialize(Option<Contact> contactOption, BuildContext context),
-    @required Result saved(BuildContext context),
-    @required Result labelObjectChanged(ILabelObject labelObject, int pos),
-    @required Result addLabelObject(ILabelObject labelObject),
-    @required Result removeLabelObject(Type labelObjectType, int pos),
-    @required Result updateNameData(NameData nameData),
-    @required Result updateCompany(Company company, int index),
-    @required Result addCompany(),
-    @required Result deleteCompany(int index),
+        TResult initialize(Option<Contact> contactOption, BuildContext context),
+    @required TResult saved(BuildContext context),
+    @required TResult labelObjectChanged(ILabelObject labelObject, int pos),
+    @required TResult addLabelObject(ILabelObject labelObject),
+    @required TResult removeLabelObject(Type labelObjectType, int pos),
+    @required TResult updateNameData(NameData nameData),
+    @required TResult updateCompany(Company company, int index),
+    @required TResult addCompany(),
+    @required TResult deleteCompany(int index),
   });
+
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initialize(Option<Contact> contactOption, BuildContext context),
-    Result saved(BuildContext context),
-    Result labelObjectChanged(ILabelObject labelObject, int pos),
-    Result addLabelObject(ILabelObject labelObject),
-    Result removeLabelObject(Type labelObjectType, int pos),
-    Result updateNameData(NameData nameData),
-    Result updateCompany(Company company, int index),
-    Result addCompany(),
-    Result deleteCompany(int index),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialize(Option<Contact> contactOption, BuildContext context),
+    TResult saved(BuildContext context),
+    TResult labelObjectChanged(ILabelObject labelObject, int pos),
+    TResult addLabelObject(ILabelObject labelObject),
+    TResult removeLabelObject(Type labelObjectType, int pos),
+    TResult updateNameData(NameData nameData),
+    TResult updateCompany(Company company, int index),
+    TResult addCompany(),
+    TResult deleteCompany(int index),
+    @required TResult orElse(),
   });
+
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initialize(_Initialize value),
-    @required Result saved(_Saved value),
-    @required Result labelObjectChanged(_LabelObjectChanged value),
-    @required Result addLabelObject(_AddLabelObject value),
-    @required Result removeLabelObject(_RemoveLabelObject value),
-    @required Result updateNameData(_UpdateNameData value),
-    @required Result updateCompany(_UpdateCompany value),
-    @required Result addCompany(_AddCompany value),
-    @required Result deleteCompany(_DeleteCompany value),
+  TResult map<TResult extends Object>({
+    @required TResult initialize(_Initialize value),
+    @required TResult saved(_Saved value),
+    @required TResult labelObjectChanged(_LabelObjectChanged value),
+    @required TResult addLabelObject(_AddLabelObject value),
+    @required TResult removeLabelObject(_RemoveLabelObject value),
+    @required TResult updateNameData(_UpdateNameData value),
+    @required TResult updateCompany(_UpdateCompany value),
+    @required TResult addCompany(_AddCompany value),
+    @required TResult deleteCompany(_DeleteCompany value),
   });
+
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initialize(_Initialize value),
-    Result saved(_Saved value),
-    Result labelObjectChanged(_LabelObjectChanged value),
-    Result addLabelObject(_AddLabelObject value),
-    Result removeLabelObject(_RemoveLabelObject value),
-    Result updateNameData(_UpdateNameData value),
-    Result updateCompany(_UpdateCompany value),
-    Result addCompany(_AddCompany value),
-    Result deleteCompany(_DeleteCompany value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initialize(_Initialize value),
+    TResult saved(_Saved value),
+    TResult labelObjectChanged(_LabelObjectChanged value),
+    TResult addLabelObject(_AddLabelObject value),
+    TResult removeLabelObject(_RemoveLabelObject value),
+    TResult updateNameData(_UpdateNameData value),
+    TResult updateCompany(_UpdateCompany value),
+    TResult addCompany(_AddCompany value),
+    TResult deleteCompany(_DeleteCompany value),
+    @required TResult orElse(),
   });
 }
 
+/// @nodoc
 abstract class $AddContactEventCopyWith<$Res> {
   factory $AddContactEventCopyWith(
           AddContactEvent value, $Res Function(AddContactEvent) then) =
       _$AddContactEventCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$AddContactEventCopyWithImpl<$Res>
     implements $AddContactEventCopyWith<$Res> {
   _$AddContactEventCopyWithImpl(this._value, this._then);
@@ -150,6 +158,7 @@ class _$AddContactEventCopyWithImpl<$Res>
   final $Res Function(AddContactEvent) _then;
 }
 
+/// @nodoc
 abstract class _$InitializeCopyWith<$Res> {
   factory _$InitializeCopyWith(
           _Initialize value, $Res Function(_Initialize) then) =
@@ -157,6 +166,7 @@ abstract class _$InitializeCopyWith<$Res> {
   $Res call({Option<Contact> contactOption, BuildContext context});
 }
 
+/// @nodoc
 class __$InitializeCopyWithImpl<$Res>
     extends _$AddContactEventCopyWithImpl<$Res>
     implements _$InitializeCopyWith<$Res> {
@@ -181,6 +191,7 @@ class __$InitializeCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
   const _$_Initialize(this.contactOption, this.context)
       : assert(contactOption != null),
@@ -228,17 +239,17 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
+  TResult when<TResult extends Object>({
     @required
-        Result initialize(Option<Contact> contactOption, BuildContext context),
-    @required Result saved(BuildContext context),
-    @required Result labelObjectChanged(ILabelObject labelObject, int pos),
-    @required Result addLabelObject(ILabelObject labelObject),
-    @required Result removeLabelObject(Type labelObjectType, int pos),
-    @required Result updateNameData(NameData nameData),
-    @required Result updateCompany(Company company, int index),
-    @required Result addCompany(),
-    @required Result deleteCompany(int index),
+        TResult initialize(Option<Contact> contactOption, BuildContext context),
+    @required TResult saved(BuildContext context),
+    @required TResult labelObjectChanged(ILabelObject labelObject, int pos),
+    @required TResult addLabelObject(ILabelObject labelObject),
+    @required TResult removeLabelObject(Type labelObjectType, int pos),
+    @required TResult updateNameData(NameData nameData),
+    @required TResult updateCompany(Company company, int index),
+    @required TResult addCompany(),
+    @required TResult deleteCompany(int index),
   }) {
     assert(initialize != null);
     assert(saved != null);
@@ -254,17 +265,17 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initialize(Option<Contact> contactOption, BuildContext context),
-    Result saved(BuildContext context),
-    Result labelObjectChanged(ILabelObject labelObject, int pos),
-    Result addLabelObject(ILabelObject labelObject),
-    Result removeLabelObject(Type labelObjectType, int pos),
-    Result updateNameData(NameData nameData),
-    Result updateCompany(Company company, int index),
-    Result addCompany(),
-    Result deleteCompany(int index),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialize(Option<Contact> contactOption, BuildContext context),
+    TResult saved(BuildContext context),
+    TResult labelObjectChanged(ILabelObject labelObject, int pos),
+    TResult addLabelObject(ILabelObject labelObject),
+    TResult removeLabelObject(Type labelObjectType, int pos),
+    TResult updateNameData(NameData nameData),
+    TResult updateCompany(Company company, int index),
+    TResult addCompany(),
+    TResult deleteCompany(int index),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initialize != null) {
@@ -275,16 +286,16 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initialize(_Initialize value),
-    @required Result saved(_Saved value),
-    @required Result labelObjectChanged(_LabelObjectChanged value),
-    @required Result addLabelObject(_AddLabelObject value),
-    @required Result removeLabelObject(_RemoveLabelObject value),
-    @required Result updateNameData(_UpdateNameData value),
-    @required Result updateCompany(_UpdateCompany value),
-    @required Result addCompany(_AddCompany value),
-    @required Result deleteCompany(_DeleteCompany value),
+  TResult map<TResult extends Object>({
+    @required TResult initialize(_Initialize value),
+    @required TResult saved(_Saved value),
+    @required TResult labelObjectChanged(_LabelObjectChanged value),
+    @required TResult addLabelObject(_AddLabelObject value),
+    @required TResult removeLabelObject(_RemoveLabelObject value),
+    @required TResult updateNameData(_UpdateNameData value),
+    @required TResult updateCompany(_UpdateCompany value),
+    @required TResult addCompany(_AddCompany value),
+    @required TResult deleteCompany(_DeleteCompany value),
   }) {
     assert(initialize != null);
     assert(saved != null);
@@ -300,17 +311,17 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initialize(_Initialize value),
-    Result saved(_Saved value),
-    Result labelObjectChanged(_LabelObjectChanged value),
-    Result addLabelObject(_AddLabelObject value),
-    Result removeLabelObject(_RemoveLabelObject value),
-    Result updateNameData(_UpdateNameData value),
-    Result updateCompany(_UpdateCompany value),
-    Result addCompany(_AddCompany value),
-    Result deleteCompany(_DeleteCompany value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initialize(_Initialize value),
+    TResult saved(_Saved value),
+    TResult labelObjectChanged(_LabelObjectChanged value),
+    TResult addLabelObject(_AddLabelObject value),
+    TResult removeLabelObject(_RemoveLabelObject value),
+    TResult updateNameData(_UpdateNameData value),
+    TResult updateCompany(_UpdateCompany value),
+    TResult addCompany(_AddCompany value),
+    TResult deleteCompany(_DeleteCompany value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initialize != null) {
@@ -329,12 +340,14 @@ abstract class _Initialize implements AddContactEvent {
   _$InitializeCopyWith<_Initialize> get copyWith;
 }
 
+/// @nodoc
 abstract class _$SavedCopyWith<$Res> {
   factory _$SavedCopyWith(_Saved value, $Res Function(_Saved) then) =
       __$SavedCopyWithImpl<$Res>;
   $Res call({BuildContext context});
 }
 
+/// @nodoc
 class __$SavedCopyWithImpl<$Res> extends _$AddContactEventCopyWithImpl<$Res>
     implements _$SavedCopyWith<$Res> {
   __$SavedCopyWithImpl(_Saved _value, $Res Function(_Saved) _then)
@@ -353,6 +366,7 @@ class __$SavedCopyWithImpl<$Res> extends _$AddContactEventCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_Saved with DiagnosticableTreeMixin implements _Saved {
   const _$_Saved(this.context) : assert(context != null);
 
@@ -390,17 +404,17 @@ class _$_Saved with DiagnosticableTreeMixin implements _Saved {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
+  TResult when<TResult extends Object>({
     @required
-        Result initialize(Option<Contact> contactOption, BuildContext context),
-    @required Result saved(BuildContext context),
-    @required Result labelObjectChanged(ILabelObject labelObject, int pos),
-    @required Result addLabelObject(ILabelObject labelObject),
-    @required Result removeLabelObject(Type labelObjectType, int pos),
-    @required Result updateNameData(NameData nameData),
-    @required Result updateCompany(Company company, int index),
-    @required Result addCompany(),
-    @required Result deleteCompany(int index),
+        TResult initialize(Option<Contact> contactOption, BuildContext context),
+    @required TResult saved(BuildContext context),
+    @required TResult labelObjectChanged(ILabelObject labelObject, int pos),
+    @required TResult addLabelObject(ILabelObject labelObject),
+    @required TResult removeLabelObject(Type labelObjectType, int pos),
+    @required TResult updateNameData(NameData nameData),
+    @required TResult updateCompany(Company company, int index),
+    @required TResult addCompany(),
+    @required TResult deleteCompany(int index),
   }) {
     assert(initialize != null);
     assert(saved != null);
@@ -416,17 +430,17 @@ class _$_Saved with DiagnosticableTreeMixin implements _Saved {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initialize(Option<Contact> contactOption, BuildContext context),
-    Result saved(BuildContext context),
-    Result labelObjectChanged(ILabelObject labelObject, int pos),
-    Result addLabelObject(ILabelObject labelObject),
-    Result removeLabelObject(Type labelObjectType, int pos),
-    Result updateNameData(NameData nameData),
-    Result updateCompany(Company company, int index),
-    Result addCompany(),
-    Result deleteCompany(int index),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialize(Option<Contact> contactOption, BuildContext context),
+    TResult saved(BuildContext context),
+    TResult labelObjectChanged(ILabelObject labelObject, int pos),
+    TResult addLabelObject(ILabelObject labelObject),
+    TResult removeLabelObject(Type labelObjectType, int pos),
+    TResult updateNameData(NameData nameData),
+    TResult updateCompany(Company company, int index),
+    TResult addCompany(),
+    TResult deleteCompany(int index),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (saved != null) {
@@ -437,16 +451,16 @@ class _$_Saved with DiagnosticableTreeMixin implements _Saved {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initialize(_Initialize value),
-    @required Result saved(_Saved value),
-    @required Result labelObjectChanged(_LabelObjectChanged value),
-    @required Result addLabelObject(_AddLabelObject value),
-    @required Result removeLabelObject(_RemoveLabelObject value),
-    @required Result updateNameData(_UpdateNameData value),
-    @required Result updateCompany(_UpdateCompany value),
-    @required Result addCompany(_AddCompany value),
-    @required Result deleteCompany(_DeleteCompany value),
+  TResult map<TResult extends Object>({
+    @required TResult initialize(_Initialize value),
+    @required TResult saved(_Saved value),
+    @required TResult labelObjectChanged(_LabelObjectChanged value),
+    @required TResult addLabelObject(_AddLabelObject value),
+    @required TResult removeLabelObject(_RemoveLabelObject value),
+    @required TResult updateNameData(_UpdateNameData value),
+    @required TResult updateCompany(_UpdateCompany value),
+    @required TResult addCompany(_AddCompany value),
+    @required TResult deleteCompany(_DeleteCompany value),
   }) {
     assert(initialize != null);
     assert(saved != null);
@@ -462,17 +476,17 @@ class _$_Saved with DiagnosticableTreeMixin implements _Saved {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initialize(_Initialize value),
-    Result saved(_Saved value),
-    Result labelObjectChanged(_LabelObjectChanged value),
-    Result addLabelObject(_AddLabelObject value),
-    Result removeLabelObject(_RemoveLabelObject value),
-    Result updateNameData(_UpdateNameData value),
-    Result updateCompany(_UpdateCompany value),
-    Result addCompany(_AddCompany value),
-    Result deleteCompany(_DeleteCompany value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initialize(_Initialize value),
+    TResult saved(_Saved value),
+    TResult labelObjectChanged(_LabelObjectChanged value),
+    TResult addLabelObject(_AddLabelObject value),
+    TResult removeLabelObject(_RemoveLabelObject value),
+    TResult updateNameData(_UpdateNameData value),
+    TResult updateCompany(_UpdateCompany value),
+    TResult addCompany(_AddCompany value),
+    TResult deleteCompany(_DeleteCompany value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (saved != null) {
@@ -489,6 +503,7 @@ abstract class _Saved implements AddContactEvent {
   _$SavedCopyWith<_Saved> get copyWith;
 }
 
+/// @nodoc
 abstract class _$LabelObjectChangedCopyWith<$Res> {
   factory _$LabelObjectChangedCopyWith(
           _LabelObjectChanged value, $Res Function(_LabelObjectChanged) then) =
@@ -496,6 +511,7 @@ abstract class _$LabelObjectChangedCopyWith<$Res> {
   $Res call({ILabelObject labelObject, int pos});
 }
 
+/// @nodoc
 class __$LabelObjectChangedCopyWithImpl<$Res>
     extends _$AddContactEventCopyWithImpl<$Res>
     implements _$LabelObjectChangedCopyWith<$Res> {
@@ -518,6 +534,7 @@ class __$LabelObjectChangedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_LabelObjectChanged
     with DiagnosticableTreeMixin
     implements _LabelObjectChanged {
@@ -567,17 +584,17 @@ class _$_LabelObjectChanged
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
+  TResult when<TResult extends Object>({
     @required
-        Result initialize(Option<Contact> contactOption, BuildContext context),
-    @required Result saved(BuildContext context),
-    @required Result labelObjectChanged(ILabelObject labelObject, int pos),
-    @required Result addLabelObject(ILabelObject labelObject),
-    @required Result removeLabelObject(Type labelObjectType, int pos),
-    @required Result updateNameData(NameData nameData),
-    @required Result updateCompany(Company company, int index),
-    @required Result addCompany(),
-    @required Result deleteCompany(int index),
+        TResult initialize(Option<Contact> contactOption, BuildContext context),
+    @required TResult saved(BuildContext context),
+    @required TResult labelObjectChanged(ILabelObject labelObject, int pos),
+    @required TResult addLabelObject(ILabelObject labelObject),
+    @required TResult removeLabelObject(Type labelObjectType, int pos),
+    @required TResult updateNameData(NameData nameData),
+    @required TResult updateCompany(Company company, int index),
+    @required TResult addCompany(),
+    @required TResult deleteCompany(int index),
   }) {
     assert(initialize != null);
     assert(saved != null);
@@ -593,17 +610,17 @@ class _$_LabelObjectChanged
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initialize(Option<Contact> contactOption, BuildContext context),
-    Result saved(BuildContext context),
-    Result labelObjectChanged(ILabelObject labelObject, int pos),
-    Result addLabelObject(ILabelObject labelObject),
-    Result removeLabelObject(Type labelObjectType, int pos),
-    Result updateNameData(NameData nameData),
-    Result updateCompany(Company company, int index),
-    Result addCompany(),
-    Result deleteCompany(int index),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialize(Option<Contact> contactOption, BuildContext context),
+    TResult saved(BuildContext context),
+    TResult labelObjectChanged(ILabelObject labelObject, int pos),
+    TResult addLabelObject(ILabelObject labelObject),
+    TResult removeLabelObject(Type labelObjectType, int pos),
+    TResult updateNameData(NameData nameData),
+    TResult updateCompany(Company company, int index),
+    TResult addCompany(),
+    TResult deleteCompany(int index),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (labelObjectChanged != null) {
@@ -614,16 +631,16 @@ class _$_LabelObjectChanged
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initialize(_Initialize value),
-    @required Result saved(_Saved value),
-    @required Result labelObjectChanged(_LabelObjectChanged value),
-    @required Result addLabelObject(_AddLabelObject value),
-    @required Result removeLabelObject(_RemoveLabelObject value),
-    @required Result updateNameData(_UpdateNameData value),
-    @required Result updateCompany(_UpdateCompany value),
-    @required Result addCompany(_AddCompany value),
-    @required Result deleteCompany(_DeleteCompany value),
+  TResult map<TResult extends Object>({
+    @required TResult initialize(_Initialize value),
+    @required TResult saved(_Saved value),
+    @required TResult labelObjectChanged(_LabelObjectChanged value),
+    @required TResult addLabelObject(_AddLabelObject value),
+    @required TResult removeLabelObject(_RemoveLabelObject value),
+    @required TResult updateNameData(_UpdateNameData value),
+    @required TResult updateCompany(_UpdateCompany value),
+    @required TResult addCompany(_AddCompany value),
+    @required TResult deleteCompany(_DeleteCompany value),
   }) {
     assert(initialize != null);
     assert(saved != null);
@@ -639,17 +656,17 @@ class _$_LabelObjectChanged
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initialize(_Initialize value),
-    Result saved(_Saved value),
-    Result labelObjectChanged(_LabelObjectChanged value),
-    Result addLabelObject(_AddLabelObject value),
-    Result removeLabelObject(_RemoveLabelObject value),
-    Result updateNameData(_UpdateNameData value),
-    Result updateCompany(_UpdateCompany value),
-    Result addCompany(_AddCompany value),
-    Result deleteCompany(_DeleteCompany value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initialize(_Initialize value),
+    TResult saved(_Saved value),
+    TResult labelObjectChanged(_LabelObjectChanged value),
+    TResult addLabelObject(_AddLabelObject value),
+    TResult removeLabelObject(_RemoveLabelObject value),
+    TResult updateNameData(_UpdateNameData value),
+    TResult updateCompany(_UpdateCompany value),
+    TResult addCompany(_AddCompany value),
+    TResult deleteCompany(_DeleteCompany value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (labelObjectChanged != null) {
@@ -668,6 +685,7 @@ abstract class _LabelObjectChanged implements AddContactEvent {
   _$LabelObjectChangedCopyWith<_LabelObjectChanged> get copyWith;
 }
 
+/// @nodoc
 abstract class _$AddLabelObjectCopyWith<$Res> {
   factory _$AddLabelObjectCopyWith(
           _AddLabelObject value, $Res Function(_AddLabelObject) then) =
@@ -675,6 +693,7 @@ abstract class _$AddLabelObjectCopyWith<$Res> {
   $Res call({ILabelObject labelObject});
 }
 
+/// @nodoc
 class __$AddLabelObjectCopyWithImpl<$Res>
     extends _$AddContactEventCopyWithImpl<$Res>
     implements _$AddLabelObjectCopyWith<$Res> {
@@ -695,6 +714,7 @@ class __$AddLabelObjectCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_AddLabelObject
     with DiagnosticableTreeMixin
     implements _AddLabelObject {
@@ -735,17 +755,17 @@ class _$_AddLabelObject
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
+  TResult when<TResult extends Object>({
     @required
-        Result initialize(Option<Contact> contactOption, BuildContext context),
-    @required Result saved(BuildContext context),
-    @required Result labelObjectChanged(ILabelObject labelObject, int pos),
-    @required Result addLabelObject(ILabelObject labelObject),
-    @required Result removeLabelObject(Type labelObjectType, int pos),
-    @required Result updateNameData(NameData nameData),
-    @required Result updateCompany(Company company, int index),
-    @required Result addCompany(),
-    @required Result deleteCompany(int index),
+        TResult initialize(Option<Contact> contactOption, BuildContext context),
+    @required TResult saved(BuildContext context),
+    @required TResult labelObjectChanged(ILabelObject labelObject, int pos),
+    @required TResult addLabelObject(ILabelObject labelObject),
+    @required TResult removeLabelObject(Type labelObjectType, int pos),
+    @required TResult updateNameData(NameData nameData),
+    @required TResult updateCompany(Company company, int index),
+    @required TResult addCompany(),
+    @required TResult deleteCompany(int index),
   }) {
     assert(initialize != null);
     assert(saved != null);
@@ -761,17 +781,17 @@ class _$_AddLabelObject
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initialize(Option<Contact> contactOption, BuildContext context),
-    Result saved(BuildContext context),
-    Result labelObjectChanged(ILabelObject labelObject, int pos),
-    Result addLabelObject(ILabelObject labelObject),
-    Result removeLabelObject(Type labelObjectType, int pos),
-    Result updateNameData(NameData nameData),
-    Result updateCompany(Company company, int index),
-    Result addCompany(),
-    Result deleteCompany(int index),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialize(Option<Contact> contactOption, BuildContext context),
+    TResult saved(BuildContext context),
+    TResult labelObjectChanged(ILabelObject labelObject, int pos),
+    TResult addLabelObject(ILabelObject labelObject),
+    TResult removeLabelObject(Type labelObjectType, int pos),
+    TResult updateNameData(NameData nameData),
+    TResult updateCompany(Company company, int index),
+    TResult addCompany(),
+    TResult deleteCompany(int index),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (addLabelObject != null) {
@@ -782,16 +802,16 @@ class _$_AddLabelObject
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initialize(_Initialize value),
-    @required Result saved(_Saved value),
-    @required Result labelObjectChanged(_LabelObjectChanged value),
-    @required Result addLabelObject(_AddLabelObject value),
-    @required Result removeLabelObject(_RemoveLabelObject value),
-    @required Result updateNameData(_UpdateNameData value),
-    @required Result updateCompany(_UpdateCompany value),
-    @required Result addCompany(_AddCompany value),
-    @required Result deleteCompany(_DeleteCompany value),
+  TResult map<TResult extends Object>({
+    @required TResult initialize(_Initialize value),
+    @required TResult saved(_Saved value),
+    @required TResult labelObjectChanged(_LabelObjectChanged value),
+    @required TResult addLabelObject(_AddLabelObject value),
+    @required TResult removeLabelObject(_RemoveLabelObject value),
+    @required TResult updateNameData(_UpdateNameData value),
+    @required TResult updateCompany(_UpdateCompany value),
+    @required TResult addCompany(_AddCompany value),
+    @required TResult deleteCompany(_DeleteCompany value),
   }) {
     assert(initialize != null);
     assert(saved != null);
@@ -807,17 +827,17 @@ class _$_AddLabelObject
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initialize(_Initialize value),
-    Result saved(_Saved value),
-    Result labelObjectChanged(_LabelObjectChanged value),
-    Result addLabelObject(_AddLabelObject value),
-    Result removeLabelObject(_RemoveLabelObject value),
-    Result updateNameData(_UpdateNameData value),
-    Result updateCompany(_UpdateCompany value),
-    Result addCompany(_AddCompany value),
-    Result deleteCompany(_DeleteCompany value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initialize(_Initialize value),
+    TResult saved(_Saved value),
+    TResult labelObjectChanged(_LabelObjectChanged value),
+    TResult addLabelObject(_AddLabelObject value),
+    TResult removeLabelObject(_RemoveLabelObject value),
+    TResult updateNameData(_UpdateNameData value),
+    TResult updateCompany(_UpdateCompany value),
+    TResult addCompany(_AddCompany value),
+    TResult deleteCompany(_DeleteCompany value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (addLabelObject != null) {
@@ -834,6 +854,7 @@ abstract class _AddLabelObject implements AddContactEvent {
   _$AddLabelObjectCopyWith<_AddLabelObject> get copyWith;
 }
 
+/// @nodoc
 abstract class _$RemoveLabelObjectCopyWith<$Res> {
   factory _$RemoveLabelObjectCopyWith(
           _RemoveLabelObject value, $Res Function(_RemoveLabelObject) then) =
@@ -841,6 +862,7 @@ abstract class _$RemoveLabelObjectCopyWith<$Res> {
   $Res call({Type labelObjectType, int pos});
 }
 
+/// @nodoc
 class __$RemoveLabelObjectCopyWithImpl<$Res>
     extends _$AddContactEventCopyWithImpl<$Res>
     implements _$RemoveLabelObjectCopyWith<$Res> {
@@ -865,6 +887,7 @@ class __$RemoveLabelObjectCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_RemoveLabelObject
     with DiagnosticableTreeMixin
     implements _RemoveLabelObject {
@@ -914,17 +937,17 @@ class _$_RemoveLabelObject
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
+  TResult when<TResult extends Object>({
     @required
-        Result initialize(Option<Contact> contactOption, BuildContext context),
-    @required Result saved(BuildContext context),
-    @required Result labelObjectChanged(ILabelObject labelObject, int pos),
-    @required Result addLabelObject(ILabelObject labelObject),
-    @required Result removeLabelObject(Type labelObjectType, int pos),
-    @required Result updateNameData(NameData nameData),
-    @required Result updateCompany(Company company, int index),
-    @required Result addCompany(),
-    @required Result deleteCompany(int index),
+        TResult initialize(Option<Contact> contactOption, BuildContext context),
+    @required TResult saved(BuildContext context),
+    @required TResult labelObjectChanged(ILabelObject labelObject, int pos),
+    @required TResult addLabelObject(ILabelObject labelObject),
+    @required TResult removeLabelObject(Type labelObjectType, int pos),
+    @required TResult updateNameData(NameData nameData),
+    @required TResult updateCompany(Company company, int index),
+    @required TResult addCompany(),
+    @required TResult deleteCompany(int index),
   }) {
     assert(initialize != null);
     assert(saved != null);
@@ -940,17 +963,17 @@ class _$_RemoveLabelObject
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initialize(Option<Contact> contactOption, BuildContext context),
-    Result saved(BuildContext context),
-    Result labelObjectChanged(ILabelObject labelObject, int pos),
-    Result addLabelObject(ILabelObject labelObject),
-    Result removeLabelObject(Type labelObjectType, int pos),
-    Result updateNameData(NameData nameData),
-    Result updateCompany(Company company, int index),
-    Result addCompany(),
-    Result deleteCompany(int index),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialize(Option<Contact> contactOption, BuildContext context),
+    TResult saved(BuildContext context),
+    TResult labelObjectChanged(ILabelObject labelObject, int pos),
+    TResult addLabelObject(ILabelObject labelObject),
+    TResult removeLabelObject(Type labelObjectType, int pos),
+    TResult updateNameData(NameData nameData),
+    TResult updateCompany(Company company, int index),
+    TResult addCompany(),
+    TResult deleteCompany(int index),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (removeLabelObject != null) {
@@ -961,16 +984,16 @@ class _$_RemoveLabelObject
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initialize(_Initialize value),
-    @required Result saved(_Saved value),
-    @required Result labelObjectChanged(_LabelObjectChanged value),
-    @required Result addLabelObject(_AddLabelObject value),
-    @required Result removeLabelObject(_RemoveLabelObject value),
-    @required Result updateNameData(_UpdateNameData value),
-    @required Result updateCompany(_UpdateCompany value),
-    @required Result addCompany(_AddCompany value),
-    @required Result deleteCompany(_DeleteCompany value),
+  TResult map<TResult extends Object>({
+    @required TResult initialize(_Initialize value),
+    @required TResult saved(_Saved value),
+    @required TResult labelObjectChanged(_LabelObjectChanged value),
+    @required TResult addLabelObject(_AddLabelObject value),
+    @required TResult removeLabelObject(_RemoveLabelObject value),
+    @required TResult updateNameData(_UpdateNameData value),
+    @required TResult updateCompany(_UpdateCompany value),
+    @required TResult addCompany(_AddCompany value),
+    @required TResult deleteCompany(_DeleteCompany value),
   }) {
     assert(initialize != null);
     assert(saved != null);
@@ -986,17 +1009,17 @@ class _$_RemoveLabelObject
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initialize(_Initialize value),
-    Result saved(_Saved value),
-    Result labelObjectChanged(_LabelObjectChanged value),
-    Result addLabelObject(_AddLabelObject value),
-    Result removeLabelObject(_RemoveLabelObject value),
-    Result updateNameData(_UpdateNameData value),
-    Result updateCompany(_UpdateCompany value),
-    Result addCompany(_AddCompany value),
-    Result deleteCompany(_DeleteCompany value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initialize(_Initialize value),
+    TResult saved(_Saved value),
+    TResult labelObjectChanged(_LabelObjectChanged value),
+    TResult addLabelObject(_AddLabelObject value),
+    TResult removeLabelObject(_RemoveLabelObject value),
+    TResult updateNameData(_UpdateNameData value),
+    TResult updateCompany(_UpdateCompany value),
+    TResult addCompany(_AddCompany value),
+    TResult deleteCompany(_DeleteCompany value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (removeLabelObject != null) {
@@ -1015,6 +1038,7 @@ abstract class _RemoveLabelObject implements AddContactEvent {
   _$RemoveLabelObjectCopyWith<_RemoveLabelObject> get copyWith;
 }
 
+/// @nodoc
 abstract class _$UpdateNameDataCopyWith<$Res> {
   factory _$UpdateNameDataCopyWith(
           _UpdateNameData value, $Res Function(_UpdateNameData) then) =
@@ -1024,6 +1048,7 @@ abstract class _$UpdateNameDataCopyWith<$Res> {
   $NameDataCopyWith<$Res> get nameData;
 }
 
+/// @nodoc
 class __$UpdateNameDataCopyWithImpl<$Res>
     extends _$AddContactEventCopyWithImpl<$Res>
     implements _$UpdateNameDataCopyWith<$Res> {
@@ -1054,6 +1079,7 @@ class __$UpdateNameDataCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_UpdateNameData
     with DiagnosticableTreeMixin
     implements _UpdateNameData {
@@ -1094,17 +1120,17 @@ class _$_UpdateNameData
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
+  TResult when<TResult extends Object>({
     @required
-        Result initialize(Option<Contact> contactOption, BuildContext context),
-    @required Result saved(BuildContext context),
-    @required Result labelObjectChanged(ILabelObject labelObject, int pos),
-    @required Result addLabelObject(ILabelObject labelObject),
-    @required Result removeLabelObject(Type labelObjectType, int pos),
-    @required Result updateNameData(NameData nameData),
-    @required Result updateCompany(Company company, int index),
-    @required Result addCompany(),
-    @required Result deleteCompany(int index),
+        TResult initialize(Option<Contact> contactOption, BuildContext context),
+    @required TResult saved(BuildContext context),
+    @required TResult labelObjectChanged(ILabelObject labelObject, int pos),
+    @required TResult addLabelObject(ILabelObject labelObject),
+    @required TResult removeLabelObject(Type labelObjectType, int pos),
+    @required TResult updateNameData(NameData nameData),
+    @required TResult updateCompany(Company company, int index),
+    @required TResult addCompany(),
+    @required TResult deleteCompany(int index),
   }) {
     assert(initialize != null);
     assert(saved != null);
@@ -1120,17 +1146,17 @@ class _$_UpdateNameData
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initialize(Option<Contact> contactOption, BuildContext context),
-    Result saved(BuildContext context),
-    Result labelObjectChanged(ILabelObject labelObject, int pos),
-    Result addLabelObject(ILabelObject labelObject),
-    Result removeLabelObject(Type labelObjectType, int pos),
-    Result updateNameData(NameData nameData),
-    Result updateCompany(Company company, int index),
-    Result addCompany(),
-    Result deleteCompany(int index),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialize(Option<Contact> contactOption, BuildContext context),
+    TResult saved(BuildContext context),
+    TResult labelObjectChanged(ILabelObject labelObject, int pos),
+    TResult addLabelObject(ILabelObject labelObject),
+    TResult removeLabelObject(Type labelObjectType, int pos),
+    TResult updateNameData(NameData nameData),
+    TResult updateCompany(Company company, int index),
+    TResult addCompany(),
+    TResult deleteCompany(int index),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (updateNameData != null) {
@@ -1141,16 +1167,16 @@ class _$_UpdateNameData
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initialize(_Initialize value),
-    @required Result saved(_Saved value),
-    @required Result labelObjectChanged(_LabelObjectChanged value),
-    @required Result addLabelObject(_AddLabelObject value),
-    @required Result removeLabelObject(_RemoveLabelObject value),
-    @required Result updateNameData(_UpdateNameData value),
-    @required Result updateCompany(_UpdateCompany value),
-    @required Result addCompany(_AddCompany value),
-    @required Result deleteCompany(_DeleteCompany value),
+  TResult map<TResult extends Object>({
+    @required TResult initialize(_Initialize value),
+    @required TResult saved(_Saved value),
+    @required TResult labelObjectChanged(_LabelObjectChanged value),
+    @required TResult addLabelObject(_AddLabelObject value),
+    @required TResult removeLabelObject(_RemoveLabelObject value),
+    @required TResult updateNameData(_UpdateNameData value),
+    @required TResult updateCompany(_UpdateCompany value),
+    @required TResult addCompany(_AddCompany value),
+    @required TResult deleteCompany(_DeleteCompany value),
   }) {
     assert(initialize != null);
     assert(saved != null);
@@ -1166,17 +1192,17 @@ class _$_UpdateNameData
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initialize(_Initialize value),
-    Result saved(_Saved value),
-    Result labelObjectChanged(_LabelObjectChanged value),
-    Result addLabelObject(_AddLabelObject value),
-    Result removeLabelObject(_RemoveLabelObject value),
-    Result updateNameData(_UpdateNameData value),
-    Result updateCompany(_UpdateCompany value),
-    Result addCompany(_AddCompany value),
-    Result deleteCompany(_DeleteCompany value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initialize(_Initialize value),
+    TResult saved(_Saved value),
+    TResult labelObjectChanged(_LabelObjectChanged value),
+    TResult addLabelObject(_AddLabelObject value),
+    TResult removeLabelObject(_RemoveLabelObject value),
+    TResult updateNameData(_UpdateNameData value),
+    TResult updateCompany(_UpdateCompany value),
+    TResult addCompany(_AddCompany value),
+    TResult deleteCompany(_DeleteCompany value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (updateNameData != null) {
@@ -1193,6 +1219,7 @@ abstract class _UpdateNameData implements AddContactEvent {
   _$UpdateNameDataCopyWith<_UpdateNameData> get copyWith;
 }
 
+/// @nodoc
 abstract class _$UpdateCompanyCopyWith<$Res> {
   factory _$UpdateCompanyCopyWith(
           _UpdateCompany value, $Res Function(_UpdateCompany) then) =
@@ -1202,6 +1229,7 @@ abstract class _$UpdateCompanyCopyWith<$Res> {
   $CompanyCopyWith<$Res> get company;
 }
 
+/// @nodoc
 class __$UpdateCompanyCopyWithImpl<$Res>
     extends _$AddContactEventCopyWithImpl<$Res>
     implements _$UpdateCompanyCopyWith<$Res> {
@@ -1234,6 +1262,7 @@ class __$UpdateCompanyCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_UpdateCompany with DiagnosticableTreeMixin implements _UpdateCompany {
   const _$_UpdateCompany(this.company, this.index)
       : assert(company != null),
@@ -1281,17 +1310,17 @@ class _$_UpdateCompany with DiagnosticableTreeMixin implements _UpdateCompany {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
+  TResult when<TResult extends Object>({
     @required
-        Result initialize(Option<Contact> contactOption, BuildContext context),
-    @required Result saved(BuildContext context),
-    @required Result labelObjectChanged(ILabelObject labelObject, int pos),
-    @required Result addLabelObject(ILabelObject labelObject),
-    @required Result removeLabelObject(Type labelObjectType, int pos),
-    @required Result updateNameData(NameData nameData),
-    @required Result updateCompany(Company company, int index),
-    @required Result addCompany(),
-    @required Result deleteCompany(int index),
+        TResult initialize(Option<Contact> contactOption, BuildContext context),
+    @required TResult saved(BuildContext context),
+    @required TResult labelObjectChanged(ILabelObject labelObject, int pos),
+    @required TResult addLabelObject(ILabelObject labelObject),
+    @required TResult removeLabelObject(Type labelObjectType, int pos),
+    @required TResult updateNameData(NameData nameData),
+    @required TResult updateCompany(Company company, int index),
+    @required TResult addCompany(),
+    @required TResult deleteCompany(int index),
   }) {
     assert(initialize != null);
     assert(saved != null);
@@ -1307,17 +1336,17 @@ class _$_UpdateCompany with DiagnosticableTreeMixin implements _UpdateCompany {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initialize(Option<Contact> contactOption, BuildContext context),
-    Result saved(BuildContext context),
-    Result labelObjectChanged(ILabelObject labelObject, int pos),
-    Result addLabelObject(ILabelObject labelObject),
-    Result removeLabelObject(Type labelObjectType, int pos),
-    Result updateNameData(NameData nameData),
-    Result updateCompany(Company company, int index),
-    Result addCompany(),
-    Result deleteCompany(int index),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialize(Option<Contact> contactOption, BuildContext context),
+    TResult saved(BuildContext context),
+    TResult labelObjectChanged(ILabelObject labelObject, int pos),
+    TResult addLabelObject(ILabelObject labelObject),
+    TResult removeLabelObject(Type labelObjectType, int pos),
+    TResult updateNameData(NameData nameData),
+    TResult updateCompany(Company company, int index),
+    TResult addCompany(),
+    TResult deleteCompany(int index),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (updateCompany != null) {
@@ -1328,16 +1357,16 @@ class _$_UpdateCompany with DiagnosticableTreeMixin implements _UpdateCompany {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initialize(_Initialize value),
-    @required Result saved(_Saved value),
-    @required Result labelObjectChanged(_LabelObjectChanged value),
-    @required Result addLabelObject(_AddLabelObject value),
-    @required Result removeLabelObject(_RemoveLabelObject value),
-    @required Result updateNameData(_UpdateNameData value),
-    @required Result updateCompany(_UpdateCompany value),
-    @required Result addCompany(_AddCompany value),
-    @required Result deleteCompany(_DeleteCompany value),
+  TResult map<TResult extends Object>({
+    @required TResult initialize(_Initialize value),
+    @required TResult saved(_Saved value),
+    @required TResult labelObjectChanged(_LabelObjectChanged value),
+    @required TResult addLabelObject(_AddLabelObject value),
+    @required TResult removeLabelObject(_RemoveLabelObject value),
+    @required TResult updateNameData(_UpdateNameData value),
+    @required TResult updateCompany(_UpdateCompany value),
+    @required TResult addCompany(_AddCompany value),
+    @required TResult deleteCompany(_DeleteCompany value),
   }) {
     assert(initialize != null);
     assert(saved != null);
@@ -1353,17 +1382,17 @@ class _$_UpdateCompany with DiagnosticableTreeMixin implements _UpdateCompany {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initialize(_Initialize value),
-    Result saved(_Saved value),
-    Result labelObjectChanged(_LabelObjectChanged value),
-    Result addLabelObject(_AddLabelObject value),
-    Result removeLabelObject(_RemoveLabelObject value),
-    Result updateNameData(_UpdateNameData value),
-    Result updateCompany(_UpdateCompany value),
-    Result addCompany(_AddCompany value),
-    Result deleteCompany(_DeleteCompany value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initialize(_Initialize value),
+    TResult saved(_Saved value),
+    TResult labelObjectChanged(_LabelObjectChanged value),
+    TResult addLabelObject(_AddLabelObject value),
+    TResult removeLabelObject(_RemoveLabelObject value),
+    TResult updateNameData(_UpdateNameData value),
+    TResult updateCompany(_UpdateCompany value),
+    TResult addCompany(_AddCompany value),
+    TResult deleteCompany(_DeleteCompany value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (updateCompany != null) {
@@ -1381,12 +1410,14 @@ abstract class _UpdateCompany implements AddContactEvent {
   _$UpdateCompanyCopyWith<_UpdateCompany> get copyWith;
 }
 
+/// @nodoc
 abstract class _$AddCompanyCopyWith<$Res> {
   factory _$AddCompanyCopyWith(
           _AddCompany value, $Res Function(_AddCompany) then) =
       __$AddCompanyCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$AddCompanyCopyWithImpl<$Res>
     extends _$AddContactEventCopyWithImpl<$Res>
     implements _$AddCompanyCopyWith<$Res> {
@@ -1398,6 +1429,7 @@ class __$AddCompanyCopyWithImpl<$Res>
   _AddCompany get _value => super._value as _AddCompany;
 }
 
+/// @nodoc
 class _$_AddCompany with DiagnosticableTreeMixin implements _AddCompany {
   const _$_AddCompany();
 
@@ -1422,17 +1454,17 @@ class _$_AddCompany with DiagnosticableTreeMixin implements _AddCompany {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
+  TResult when<TResult extends Object>({
     @required
-        Result initialize(Option<Contact> contactOption, BuildContext context),
-    @required Result saved(BuildContext context),
-    @required Result labelObjectChanged(ILabelObject labelObject, int pos),
-    @required Result addLabelObject(ILabelObject labelObject),
-    @required Result removeLabelObject(Type labelObjectType, int pos),
-    @required Result updateNameData(NameData nameData),
-    @required Result updateCompany(Company company, int index),
-    @required Result addCompany(),
-    @required Result deleteCompany(int index),
+        TResult initialize(Option<Contact> contactOption, BuildContext context),
+    @required TResult saved(BuildContext context),
+    @required TResult labelObjectChanged(ILabelObject labelObject, int pos),
+    @required TResult addLabelObject(ILabelObject labelObject),
+    @required TResult removeLabelObject(Type labelObjectType, int pos),
+    @required TResult updateNameData(NameData nameData),
+    @required TResult updateCompany(Company company, int index),
+    @required TResult addCompany(),
+    @required TResult deleteCompany(int index),
   }) {
     assert(initialize != null);
     assert(saved != null);
@@ -1448,17 +1480,17 @@ class _$_AddCompany with DiagnosticableTreeMixin implements _AddCompany {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initialize(Option<Contact> contactOption, BuildContext context),
-    Result saved(BuildContext context),
-    Result labelObjectChanged(ILabelObject labelObject, int pos),
-    Result addLabelObject(ILabelObject labelObject),
-    Result removeLabelObject(Type labelObjectType, int pos),
-    Result updateNameData(NameData nameData),
-    Result updateCompany(Company company, int index),
-    Result addCompany(),
-    Result deleteCompany(int index),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialize(Option<Contact> contactOption, BuildContext context),
+    TResult saved(BuildContext context),
+    TResult labelObjectChanged(ILabelObject labelObject, int pos),
+    TResult addLabelObject(ILabelObject labelObject),
+    TResult removeLabelObject(Type labelObjectType, int pos),
+    TResult updateNameData(NameData nameData),
+    TResult updateCompany(Company company, int index),
+    TResult addCompany(),
+    TResult deleteCompany(int index),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (addCompany != null) {
@@ -1469,16 +1501,16 @@ class _$_AddCompany with DiagnosticableTreeMixin implements _AddCompany {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initialize(_Initialize value),
-    @required Result saved(_Saved value),
-    @required Result labelObjectChanged(_LabelObjectChanged value),
-    @required Result addLabelObject(_AddLabelObject value),
-    @required Result removeLabelObject(_RemoveLabelObject value),
-    @required Result updateNameData(_UpdateNameData value),
-    @required Result updateCompany(_UpdateCompany value),
-    @required Result addCompany(_AddCompany value),
-    @required Result deleteCompany(_DeleteCompany value),
+  TResult map<TResult extends Object>({
+    @required TResult initialize(_Initialize value),
+    @required TResult saved(_Saved value),
+    @required TResult labelObjectChanged(_LabelObjectChanged value),
+    @required TResult addLabelObject(_AddLabelObject value),
+    @required TResult removeLabelObject(_RemoveLabelObject value),
+    @required TResult updateNameData(_UpdateNameData value),
+    @required TResult updateCompany(_UpdateCompany value),
+    @required TResult addCompany(_AddCompany value),
+    @required TResult deleteCompany(_DeleteCompany value),
   }) {
     assert(initialize != null);
     assert(saved != null);
@@ -1494,17 +1526,17 @@ class _$_AddCompany with DiagnosticableTreeMixin implements _AddCompany {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initialize(_Initialize value),
-    Result saved(_Saved value),
-    Result labelObjectChanged(_LabelObjectChanged value),
-    Result addLabelObject(_AddLabelObject value),
-    Result removeLabelObject(_RemoveLabelObject value),
-    Result updateNameData(_UpdateNameData value),
-    Result updateCompany(_UpdateCompany value),
-    Result addCompany(_AddCompany value),
-    Result deleteCompany(_DeleteCompany value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initialize(_Initialize value),
+    TResult saved(_Saved value),
+    TResult labelObjectChanged(_LabelObjectChanged value),
+    TResult addLabelObject(_AddLabelObject value),
+    TResult removeLabelObject(_RemoveLabelObject value),
+    TResult updateNameData(_UpdateNameData value),
+    TResult updateCompany(_UpdateCompany value),
+    TResult addCompany(_AddCompany value),
+    TResult deleteCompany(_DeleteCompany value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (addCompany != null) {
@@ -1518,6 +1550,7 @@ abstract class _AddCompany implements AddContactEvent {
   const factory _AddCompany() = _$_AddCompany;
 }
 
+/// @nodoc
 abstract class _$DeleteCompanyCopyWith<$Res> {
   factory _$DeleteCompanyCopyWith(
           _DeleteCompany value, $Res Function(_DeleteCompany) then) =
@@ -1525,6 +1558,7 @@ abstract class _$DeleteCompanyCopyWith<$Res> {
   $Res call({int index});
 }
 
+/// @nodoc
 class __$DeleteCompanyCopyWithImpl<$Res>
     extends _$AddContactEventCopyWithImpl<$Res>
     implements _$DeleteCompanyCopyWith<$Res> {
@@ -1545,6 +1579,7 @@ class __$DeleteCompanyCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_DeleteCompany with DiagnosticableTreeMixin implements _DeleteCompany {
   const _$_DeleteCompany(this.index) : assert(index != null);
 
@@ -1582,17 +1617,17 @@ class _$_DeleteCompany with DiagnosticableTreeMixin implements _DeleteCompany {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
+  TResult when<TResult extends Object>({
     @required
-        Result initialize(Option<Contact> contactOption, BuildContext context),
-    @required Result saved(BuildContext context),
-    @required Result labelObjectChanged(ILabelObject labelObject, int pos),
-    @required Result addLabelObject(ILabelObject labelObject),
-    @required Result removeLabelObject(Type labelObjectType, int pos),
-    @required Result updateNameData(NameData nameData),
-    @required Result updateCompany(Company company, int index),
-    @required Result addCompany(),
-    @required Result deleteCompany(int index),
+        TResult initialize(Option<Contact> contactOption, BuildContext context),
+    @required TResult saved(BuildContext context),
+    @required TResult labelObjectChanged(ILabelObject labelObject, int pos),
+    @required TResult addLabelObject(ILabelObject labelObject),
+    @required TResult removeLabelObject(Type labelObjectType, int pos),
+    @required TResult updateNameData(NameData nameData),
+    @required TResult updateCompany(Company company, int index),
+    @required TResult addCompany(),
+    @required TResult deleteCompany(int index),
   }) {
     assert(initialize != null);
     assert(saved != null);
@@ -1608,17 +1643,17 @@ class _$_DeleteCompany with DiagnosticableTreeMixin implements _DeleteCompany {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initialize(Option<Contact> contactOption, BuildContext context),
-    Result saved(BuildContext context),
-    Result labelObjectChanged(ILabelObject labelObject, int pos),
-    Result addLabelObject(ILabelObject labelObject),
-    Result removeLabelObject(Type labelObjectType, int pos),
-    Result updateNameData(NameData nameData),
-    Result updateCompany(Company company, int index),
-    Result addCompany(),
-    Result deleteCompany(int index),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialize(Option<Contact> contactOption, BuildContext context),
+    TResult saved(BuildContext context),
+    TResult labelObjectChanged(ILabelObject labelObject, int pos),
+    TResult addLabelObject(ILabelObject labelObject),
+    TResult removeLabelObject(Type labelObjectType, int pos),
+    TResult updateNameData(NameData nameData),
+    TResult updateCompany(Company company, int index),
+    TResult addCompany(),
+    TResult deleteCompany(int index),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (deleteCompany != null) {
@@ -1629,16 +1664,16 @@ class _$_DeleteCompany with DiagnosticableTreeMixin implements _DeleteCompany {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initialize(_Initialize value),
-    @required Result saved(_Saved value),
-    @required Result labelObjectChanged(_LabelObjectChanged value),
-    @required Result addLabelObject(_AddLabelObject value),
-    @required Result removeLabelObject(_RemoveLabelObject value),
-    @required Result updateNameData(_UpdateNameData value),
-    @required Result updateCompany(_UpdateCompany value),
-    @required Result addCompany(_AddCompany value),
-    @required Result deleteCompany(_DeleteCompany value),
+  TResult map<TResult extends Object>({
+    @required TResult initialize(_Initialize value),
+    @required TResult saved(_Saved value),
+    @required TResult labelObjectChanged(_LabelObjectChanged value),
+    @required TResult addLabelObject(_AddLabelObject value),
+    @required TResult removeLabelObject(_RemoveLabelObject value),
+    @required TResult updateNameData(_UpdateNameData value),
+    @required TResult updateCompany(_UpdateCompany value),
+    @required TResult addCompany(_AddCompany value),
+    @required TResult deleteCompany(_DeleteCompany value),
   }) {
     assert(initialize != null);
     assert(saved != null);
@@ -1654,17 +1689,17 @@ class _$_DeleteCompany with DiagnosticableTreeMixin implements _DeleteCompany {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initialize(_Initialize value),
-    Result saved(_Saved value),
-    Result labelObjectChanged(_LabelObjectChanged value),
-    Result addLabelObject(_AddLabelObject value),
-    Result removeLabelObject(_RemoveLabelObject value),
-    Result updateNameData(_UpdateNameData value),
-    Result updateCompany(_UpdateCompany value),
-    Result addCompany(_AddCompany value),
-    Result deleteCompany(_DeleteCompany value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initialize(_Initialize value),
+    TResult saved(_Saved value),
+    TResult labelObjectChanged(_LabelObjectChanged value),
+    TResult addLabelObject(_AddLabelObject value),
+    TResult removeLabelObject(_RemoveLabelObject value),
+    TResult updateNameData(_UpdateNameData value),
+    TResult updateCompany(_UpdateCompany value),
+    TResult addCompany(_AddCompany value),
+    TResult deleteCompany(_DeleteCompany value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (deleteCompany != null) {
@@ -1681,6 +1716,7 @@ abstract class _DeleteCompany implements AddContactEvent {
   _$DeleteCompanyCopyWith<_DeleteCompany> get copyWith;
 }
 
+/// @nodoc
 class _$AddContactStateTearOff {
   const _$AddContactStateTearOff();
 
@@ -1699,9 +1735,11 @@ class _$AddContactStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $AddContactState = _$AddContactStateTearOff();
 
+/// @nodoc
 mixin _$AddContactState {
   Contact get contact;
   bool get isEditting;
@@ -1711,6 +1749,7 @@ mixin _$AddContactState {
   $AddContactStateCopyWith<AddContactState> get copyWith;
 }
 
+/// @nodoc
 abstract class $AddContactStateCopyWith<$Res> {
   factory $AddContactStateCopyWith(
           AddContactState value, $Res Function(AddContactState) then) =
@@ -1724,6 +1763,7 @@ abstract class $AddContactStateCopyWith<$Res> {
   $ContactCopyWith<$Res> get contact;
 }
 
+/// @nodoc
 class _$AddContactStateCopyWithImpl<$Res>
     implements $AddContactStateCopyWith<$Res> {
   _$AddContactStateCopyWithImpl(this._value, this._then);
@@ -1761,6 +1801,7 @@ class _$AddContactStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$AddContactStateCopyWith<$Res>
     implements $AddContactStateCopyWith<$Res> {
   factory _$AddContactStateCopyWith(
@@ -1777,6 +1818,7 @@ abstract class _$AddContactStateCopyWith<$Res>
   $ContactCopyWith<$Res> get contact;
 }
 
+/// @nodoc
 class __$AddContactStateCopyWithImpl<$Res>
     extends _$AddContactStateCopyWithImpl<$Res>
     implements _$AddContactStateCopyWith<$Res> {
@@ -1806,6 +1848,7 @@ class __$AddContactStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_AddContactState extends _AddContactState with DiagnosticableTreeMixin {
   const _$_AddContactState(
       {@required this.contact,

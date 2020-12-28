@@ -9,6 +9,7 @@ part of 'contact_actor_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$ContactActorEventTearOff {
   const _$ContactActorEventTearOff();
 
@@ -37,48 +38,55 @@ class _$ContactActorEventTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ContactActorEvent = _$ContactActorEventTearOff();
 
+/// @nodoc
 mixin _$ContactActorEvent {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result delete(Contact contact),
-    @required Result deleteSelectedContacts(),
-    @required Result toggleSelectionContact(Contact contact),
-    @required Result deselectAllContacts(),
+  TResult when<TResult extends Object>({
+    @required TResult delete(Contact contact),
+    @required TResult deleteSelectedContacts(),
+    @required TResult toggleSelectionContact(Contact contact),
+    @required TResult deselectAllContacts(),
   });
+
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result delete(Contact contact),
-    Result deleteSelectedContacts(),
-    Result toggleSelectionContact(Contact contact),
-    Result deselectAllContacts(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult delete(Contact contact),
+    TResult deleteSelectedContacts(),
+    TResult toggleSelectionContact(Contact contact),
+    TResult deselectAllContacts(),
+    @required TResult orElse(),
   });
+
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result delete(_Delete value),
-    @required Result deleteSelectedContacts(_DeleteSelectedContacts value),
-    @required Result toggleSelectionContact(_ToggleSelectionContact value),
-    @required Result deselectAllContacts(_DeselectAllContacts value),
+  TResult map<TResult extends Object>({
+    @required TResult delete(_Delete value),
+    @required TResult deleteSelectedContacts(_DeleteSelectedContacts value),
+    @required TResult toggleSelectionContact(_ToggleSelectionContact value),
+    @required TResult deselectAllContacts(_DeselectAllContacts value),
   });
+
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result delete(_Delete value),
-    Result deleteSelectedContacts(_DeleteSelectedContacts value),
-    Result toggleSelectionContact(_ToggleSelectionContact value),
-    Result deselectAllContacts(_DeselectAllContacts value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult delete(_Delete value),
+    TResult deleteSelectedContacts(_DeleteSelectedContacts value),
+    TResult toggleSelectionContact(_ToggleSelectionContact value),
+    TResult deselectAllContacts(_DeselectAllContacts value),
+    @required TResult orElse(),
   });
 }
 
+/// @nodoc
 abstract class $ContactActorEventCopyWith<$Res> {
   factory $ContactActorEventCopyWith(
           ContactActorEvent value, $Res Function(ContactActorEvent) then) =
       _$ContactActorEventCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$ContactActorEventCopyWithImpl<$Res>
     implements $ContactActorEventCopyWith<$Res> {
   _$ContactActorEventCopyWithImpl(this._value, this._then);
@@ -88,15 +96,16 @@ class _$ContactActorEventCopyWithImpl<$Res>
   final $Res Function(ContactActorEvent) _then;
 }
 
+/// @nodoc
 abstract class _$DeleteCopyWith<$Res> {
   factory _$DeleteCopyWith(_Delete value, $Res Function(_Delete) then) =
       __$DeleteCopyWithImpl<$Res>;
-
   $Res call({Contact contact});
 
   $ContactCopyWith<$Res> get contact;
 }
 
+/// @nodoc
 class __$DeleteCopyWithImpl<$Res> extends _$ContactActorEventCopyWithImpl<$Res>
     implements _$DeleteCopyWith<$Res> {
   __$DeleteCopyWithImpl(_Delete _value, $Res Function(_Delete) _then)
@@ -125,6 +134,7 @@ class __$DeleteCopyWithImpl<$Res> extends _$ContactActorEventCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_Delete implements _Delete {
   const _$_Delete({this.contact});
 
@@ -154,11 +164,11 @@ class _$_Delete implements _Delete {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result delete(Contact contact),
-    @required Result deleteSelectedContacts(),
-    @required Result toggleSelectionContact(Contact contact),
-    @required Result deselectAllContacts(),
+  TResult when<TResult extends Object>({
+    @required TResult delete(Contact contact),
+    @required TResult deleteSelectedContacts(),
+    @required TResult toggleSelectionContact(Contact contact),
+    @required TResult deselectAllContacts(),
   }) {
     assert(delete != null);
     assert(deleteSelectedContacts != null);
@@ -169,12 +179,12 @@ class _$_Delete implements _Delete {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result delete(Contact contact),
-    Result deleteSelectedContacts(),
-    Result toggleSelectionContact(Contact contact),
-    Result deselectAllContacts(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult delete(Contact contact),
+    TResult deleteSelectedContacts(),
+    TResult toggleSelectionContact(Contact contact),
+    TResult deselectAllContacts(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (delete != null) {
@@ -185,11 +195,11 @@ class _$_Delete implements _Delete {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result delete(_Delete value),
-    @required Result deleteSelectedContacts(_DeleteSelectedContacts value),
-    @required Result toggleSelectionContact(_ToggleSelectionContact value),
-    @required Result deselectAllContacts(_DeselectAllContacts value),
+  TResult map<TResult extends Object>({
+    @required TResult delete(_Delete value),
+    @required TResult deleteSelectedContacts(_DeleteSelectedContacts value),
+    @required TResult toggleSelectionContact(_ToggleSelectionContact value),
+    @required TResult deselectAllContacts(_DeselectAllContacts value),
   }) {
     assert(delete != null);
     assert(deleteSelectedContacts != null);
@@ -200,12 +210,12 @@ class _$_Delete implements _Delete {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result delete(_Delete value),
-    Result deleteSelectedContacts(_DeleteSelectedContacts value),
-    Result toggleSelectionContact(_ToggleSelectionContact value),
-    Result deselectAllContacts(_DeselectAllContacts value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult delete(_Delete value),
+    TResult deleteSelectedContacts(_DeleteSelectedContacts value),
+    TResult toggleSelectionContact(_ToggleSelectionContact value),
+    TResult deselectAllContacts(_DeselectAllContacts value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (delete != null) {
@@ -219,16 +229,17 @@ abstract class _Delete implements ContactActorEvent {
   const factory _Delete({Contact contact}) = _$_Delete;
 
   Contact get contact;
-
   _$DeleteCopyWith<_Delete> get copyWith;
 }
 
+/// @nodoc
 abstract class _$DeleteSelectedContactsCopyWith<$Res> {
   factory _$DeleteSelectedContactsCopyWith(_DeleteSelectedContacts value,
-      $Res Function(_DeleteSelectedContacts) then) =
-  __$DeleteSelectedContactsCopyWithImpl<$Res>;
+          $Res Function(_DeleteSelectedContacts) then) =
+      __$DeleteSelectedContactsCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$DeleteSelectedContactsCopyWithImpl<$Res>
     extends _$ContactActorEventCopyWithImpl<$Res>
     implements _$DeleteSelectedContactsCopyWith<$Res> {
@@ -240,6 +251,7 @@ class __$DeleteSelectedContactsCopyWithImpl<$Res>
   _DeleteSelectedContacts get _value => super._value as _DeleteSelectedContacts;
 }
 
+/// @nodoc
 class _$_DeleteSelectedContacts implements _DeleteSelectedContacts {
   const _$_DeleteSelectedContacts();
 
@@ -258,11 +270,11 @@ class _$_DeleteSelectedContacts implements _DeleteSelectedContacts {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result delete(Contact contact),
-    @required Result deleteSelectedContacts(),
-    @required Result toggleSelectionContact(Contact contact),
-    @required Result deselectAllContacts(),
+  TResult when<TResult extends Object>({
+    @required TResult delete(Contact contact),
+    @required TResult deleteSelectedContacts(),
+    @required TResult toggleSelectionContact(Contact contact),
+    @required TResult deselectAllContacts(),
   }) {
     assert(delete != null);
     assert(deleteSelectedContacts != null);
@@ -273,12 +285,12 @@ class _$_DeleteSelectedContacts implements _DeleteSelectedContacts {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result delete(Contact contact),
-    Result deleteSelectedContacts(),
-    Result toggleSelectionContact(Contact contact),
-    Result deselectAllContacts(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult delete(Contact contact),
+    TResult deleteSelectedContacts(),
+    TResult toggleSelectionContact(Contact contact),
+    TResult deselectAllContacts(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (deleteSelectedContacts != null) {
@@ -289,11 +301,11 @@ class _$_DeleteSelectedContacts implements _DeleteSelectedContacts {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result delete(_Delete value),
-    @required Result deleteSelectedContacts(_DeleteSelectedContacts value),
-    @required Result toggleSelectionContact(_ToggleSelectionContact value),
-    @required Result deselectAllContacts(_DeselectAllContacts value),
+  TResult map<TResult extends Object>({
+    @required TResult delete(_Delete value),
+    @required TResult deleteSelectedContacts(_DeleteSelectedContacts value),
+    @required TResult toggleSelectionContact(_ToggleSelectionContact value),
+    @required TResult deselectAllContacts(_DeselectAllContacts value),
   }) {
     assert(delete != null);
     assert(deleteSelectedContacts != null);
@@ -304,12 +316,12 @@ class _$_DeleteSelectedContacts implements _DeleteSelectedContacts {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result delete(_Delete value),
-    Result deleteSelectedContacts(_DeleteSelectedContacts value),
-    Result toggleSelectionContact(_ToggleSelectionContact value),
-    Result deselectAllContacts(_DeselectAllContacts value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult delete(_Delete value),
+    TResult deleteSelectedContacts(_DeleteSelectedContacts value),
+    TResult toggleSelectionContact(_ToggleSelectionContact value),
+    TResult deselectAllContacts(_DeselectAllContacts value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (deleteSelectedContacts != null) {
@@ -323,16 +335,17 @@ abstract class _DeleteSelectedContacts implements ContactActorEvent {
   const factory _DeleteSelectedContacts() = _$_DeleteSelectedContacts;
 }
 
+/// @nodoc
 abstract class _$ToggleSelectionContactCopyWith<$Res> {
   factory _$ToggleSelectionContactCopyWith(_ToggleSelectionContact value,
-      $Res Function(_ToggleSelectionContact) then) =
-  __$ToggleSelectionContactCopyWithImpl<$Res>;
-
+          $Res Function(_ToggleSelectionContact) then) =
+      __$ToggleSelectionContactCopyWithImpl<$Res>;
   $Res call({Contact contact});
 
   $ContactCopyWith<$Res> get contact;
 }
 
+/// @nodoc
 class __$ToggleSelectionContactCopyWithImpl<$Res>
     extends _$ContactActorEventCopyWithImpl<$Res>
     implements _$ToggleSelectionContactCopyWith<$Res> {
@@ -363,6 +376,7 @@ class __$ToggleSelectionContactCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_ToggleSelectionContact implements _ToggleSelectionContact {
   const _$_ToggleSelectionContact(this.contact) : assert(contact != null);
 
@@ -393,11 +407,11 @@ class _$_ToggleSelectionContact implements _ToggleSelectionContact {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result delete(Contact contact),
-    @required Result deleteSelectedContacts(),
-    @required Result toggleSelectionContact(Contact contact),
-    @required Result deselectAllContacts(),
+  TResult when<TResult extends Object>({
+    @required TResult delete(Contact contact),
+    @required TResult deleteSelectedContacts(),
+    @required TResult toggleSelectionContact(Contact contact),
+    @required TResult deselectAllContacts(),
   }) {
     assert(delete != null);
     assert(deleteSelectedContacts != null);
@@ -408,12 +422,12 @@ class _$_ToggleSelectionContact implements _ToggleSelectionContact {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result delete(Contact contact),
-    Result deleteSelectedContacts(),
-    Result toggleSelectionContact(Contact contact),
-    Result deselectAllContacts(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult delete(Contact contact),
+    TResult deleteSelectedContacts(),
+    TResult toggleSelectionContact(Contact contact),
+    TResult deselectAllContacts(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (toggleSelectionContact != null) {
@@ -424,11 +438,11 @@ class _$_ToggleSelectionContact implements _ToggleSelectionContact {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result delete(_Delete value),
-    @required Result deleteSelectedContacts(_DeleteSelectedContacts value),
-    @required Result toggleSelectionContact(_ToggleSelectionContact value),
-    @required Result deselectAllContacts(_DeselectAllContacts value),
+  TResult map<TResult extends Object>({
+    @required TResult delete(_Delete value),
+    @required TResult deleteSelectedContacts(_DeleteSelectedContacts value),
+    @required TResult toggleSelectionContact(_ToggleSelectionContact value),
+    @required TResult deselectAllContacts(_DeselectAllContacts value),
   }) {
     assert(delete != null);
     assert(deleteSelectedContacts != null);
@@ -439,12 +453,12 @@ class _$_ToggleSelectionContact implements _ToggleSelectionContact {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result delete(_Delete value),
-    Result deleteSelectedContacts(_DeleteSelectedContacts value),
-    Result toggleSelectionContact(_ToggleSelectionContact value),
-    Result deselectAllContacts(_DeselectAllContacts value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult delete(_Delete value),
+    TResult deleteSelectedContacts(_DeleteSelectedContacts value),
+    TResult toggleSelectionContact(_ToggleSelectionContact value),
+    TResult deselectAllContacts(_DeselectAllContacts value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (toggleSelectionContact != null) {
@@ -456,30 +470,32 @@ class _$_ToggleSelectionContact implements _ToggleSelectionContact {
 
 abstract class _ToggleSelectionContact implements ContactActorEvent {
   const factory _ToggleSelectionContact(Contact contact) =
-  _$_ToggleSelectionContact;
+      _$_ToggleSelectionContact;
 
   Contact get contact;
-
   _$ToggleSelectionContactCopyWith<_ToggleSelectionContact> get copyWith;
 }
 
+/// @nodoc
 abstract class _$DeselectAllContactsCopyWith<$Res> {
   factory _$DeselectAllContactsCopyWith(_DeselectAllContacts value,
-      $Res Function(_DeselectAllContacts) then) =
-  __$DeselectAllContactsCopyWithImpl<$Res>;
+          $Res Function(_DeselectAllContacts) then) =
+      __$DeselectAllContactsCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$DeselectAllContactsCopyWithImpl<$Res>
     extends _$ContactActorEventCopyWithImpl<$Res>
     implements _$DeselectAllContactsCopyWith<$Res> {
-  __$DeselectAllContactsCopyWithImpl(_DeselectAllContacts _value,
-      $Res Function(_DeselectAllContacts) _then)
+  __$DeselectAllContactsCopyWithImpl(
+      _DeselectAllContacts _value, $Res Function(_DeselectAllContacts) _then)
       : super(_value, (v) => _then(v as _DeselectAllContacts));
 
   @override
   _DeselectAllContacts get _value => super._value as _DeselectAllContacts;
 }
 
+/// @nodoc
 class _$_DeselectAllContacts implements _DeselectAllContacts {
   const _$_DeselectAllContacts();
 
@@ -498,11 +514,11 @@ class _$_DeselectAllContacts implements _DeselectAllContacts {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result delete(Contact contact),
-    @required Result deleteSelectedContacts(),
-    @required Result toggleSelectionContact(Contact contact),
-    @required Result deselectAllContacts(),
+  TResult when<TResult extends Object>({
+    @required TResult delete(Contact contact),
+    @required TResult deleteSelectedContacts(),
+    @required TResult toggleSelectionContact(Contact contact),
+    @required TResult deselectAllContacts(),
   }) {
     assert(delete != null);
     assert(deleteSelectedContacts != null);
@@ -513,12 +529,12 @@ class _$_DeselectAllContacts implements _DeselectAllContacts {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result delete(Contact contact),
-    Result deleteSelectedContacts(),
-    Result toggleSelectionContact(Contact contact),
-    Result deselectAllContacts(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult delete(Contact contact),
+    TResult deleteSelectedContacts(),
+    TResult toggleSelectionContact(Contact contact),
+    TResult deselectAllContacts(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (deselectAllContacts != null) {
@@ -529,11 +545,11 @@ class _$_DeselectAllContacts implements _DeselectAllContacts {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result delete(_Delete value),
-    @required Result deleteSelectedContacts(_DeleteSelectedContacts value),
-    @required Result toggleSelectionContact(_ToggleSelectionContact value),
-    @required Result deselectAllContacts(_DeselectAllContacts value),
+  TResult map<TResult extends Object>({
+    @required TResult delete(_Delete value),
+    @required TResult deleteSelectedContacts(_DeleteSelectedContacts value),
+    @required TResult toggleSelectionContact(_ToggleSelectionContact value),
+    @required TResult deselectAllContacts(_DeselectAllContacts value),
   }) {
     assert(delete != null);
     assert(deleteSelectedContacts != null);
@@ -544,12 +560,12 @@ class _$_DeselectAllContacts implements _DeselectAllContacts {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result delete(_Delete value),
-    Result deleteSelectedContacts(_DeleteSelectedContacts value),
-    Result toggleSelectionContact(_ToggleSelectionContact value),
-    Result deselectAllContacts(_DeselectAllContacts value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult delete(_Delete value),
+    TResult deleteSelectedContacts(_DeleteSelectedContacts value),
+    TResult toggleSelectionContact(_ToggleSelectionContact value),
+    TResult deselectAllContacts(_DeselectAllContacts value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (deselectAllContacts != null) {
@@ -563,6 +579,7 @@ abstract class _DeselectAllContacts implements ContactActorEvent {
   const factory _DeselectAllContacts() = _$_DeselectAllContacts;
 }
 
+/// @nodoc
 class _$ContactActorStateTearOff {
   const _$ContactActorStateTearOff();
 
@@ -596,52 +613,59 @@ class _$ContactActorStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ContactActorState = _$ContactActorStateTearOff();
 
+/// @nodoc
 mixin _$ContactActorState {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result actionInProgress(),
-    @required Result deleteSuccessful(),
-    @required Result selectContacts(Set<Contact> selectedContacts),
-    @required Result deleteFailure(ContactsFailure failure),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult actionInProgress(),
+    @required TResult deleteSuccessful(),
+    @required TResult selectContacts(Set<Contact> selectedContacts),
+    @required TResult deleteFailure(ContactsFailure failure),
   });
+
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result actionInProgress(),
-    Result deleteSuccessful(),
-    Result selectContacts(Set<Contact> selectedContacts),
-    Result deleteFailure(ContactsFailure failure),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult actionInProgress(),
+    TResult deleteSuccessful(),
+    TResult selectContacts(Set<Contact> selectedContacts),
+    TResult deleteFailure(ContactsFailure failure),
+    @required TResult orElse(),
   });
+
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result actionInProgress(_ActionInProgress value),
-    @required Result deleteSuccessful(_DeleteSuccessful value),
-    @required Result selectContacts(_SelectContacts value),
-    @required Result deleteFailure(_DeleteFailure value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult actionInProgress(_ActionInProgress value),
+    @required TResult deleteSuccessful(_DeleteSuccessful value),
+    @required TResult selectContacts(_SelectContacts value),
+    @required TResult deleteFailure(_DeleteFailure value),
   });
+
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result actionInProgress(_ActionInProgress value),
-    Result deleteSuccessful(_DeleteSuccessful value),
-    Result selectContacts(_SelectContacts value),
-    Result deleteFailure(_DeleteFailure value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult actionInProgress(_ActionInProgress value),
+    TResult deleteSuccessful(_DeleteSuccessful value),
+    TResult selectContacts(_SelectContacts value),
+    TResult deleteFailure(_DeleteFailure value),
+    @required TResult orElse(),
   });
 }
 
+/// @nodoc
 abstract class $ContactActorStateCopyWith<$Res> {
   factory $ContactActorStateCopyWith(
           ContactActorState value, $Res Function(ContactActorState) then) =
       _$ContactActorStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$ContactActorStateCopyWithImpl<$Res>
     implements $ContactActorStateCopyWith<$Res> {
   _$ContactActorStateCopyWithImpl(this._value, this._then);
@@ -651,11 +675,13 @@ class _$ContactActorStateCopyWithImpl<$Res>
   final $Res Function(ContactActorState) _then;
 }
 
+/// @nodoc
 abstract class _$InitialCopyWith<$Res> {
   factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
       __$InitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$InitialCopyWithImpl<$Res> extends _$ContactActorStateCopyWithImpl<$Res>
     implements _$InitialCopyWith<$Res> {
   __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
@@ -665,6 +691,7 @@ class __$InitialCopyWithImpl<$Res> extends _$ContactActorStateCopyWithImpl<$Res>
   _Initial get _value => super._value as _Initial;
 }
 
+/// @nodoc
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -683,12 +710,12 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result actionInProgress(),
-    @required Result deleteSuccessful(),
-    @required Result selectContacts(Set<Contact> selectedContacts),
-    @required Result deleteFailure(ContactsFailure failure),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult actionInProgress(),
+    @required TResult deleteSuccessful(),
+    @required TResult selectContacts(Set<Contact> selectedContacts),
+    @required TResult deleteFailure(ContactsFailure failure),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
@@ -700,13 +727,13 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result actionInProgress(),
-    Result deleteSuccessful(),
-    Result selectContacts(Set<Contact> selectedContacts),
-    Result deleteFailure(ContactsFailure failure),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult actionInProgress(),
+    TResult deleteSuccessful(),
+    TResult selectContacts(Set<Contact> selectedContacts),
+    TResult deleteFailure(ContactsFailure failure),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initial != null) {
@@ -717,12 +744,12 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result actionInProgress(_ActionInProgress value),
-    @required Result deleteSuccessful(_DeleteSuccessful value),
-    @required Result selectContacts(_SelectContacts value),
-    @required Result deleteFailure(_DeleteFailure value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult actionInProgress(_ActionInProgress value),
+    @required TResult deleteSuccessful(_DeleteSuccessful value),
+    @required TResult selectContacts(_SelectContacts value),
+    @required TResult deleteFailure(_DeleteFailure value),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
@@ -734,13 +761,13 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result actionInProgress(_ActionInProgress value),
-    Result deleteSuccessful(_DeleteSuccessful value),
-    Result selectContacts(_SelectContacts value),
-    Result deleteFailure(_DeleteFailure value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult actionInProgress(_ActionInProgress value),
+    TResult deleteSuccessful(_DeleteSuccessful value),
+    TResult selectContacts(_SelectContacts value),
+    TResult deleteFailure(_DeleteFailure value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initial != null) {
@@ -754,12 +781,14 @@ abstract class _Initial implements ContactActorState {
   const factory _Initial() = _$_Initial;
 }
 
+/// @nodoc
 abstract class _$ActionInProgressCopyWith<$Res> {
   factory _$ActionInProgressCopyWith(
           _ActionInProgress value, $Res Function(_ActionInProgress) then) =
       __$ActionInProgressCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$ActionInProgressCopyWithImpl<$Res>
     extends _$ContactActorStateCopyWithImpl<$Res>
     implements _$ActionInProgressCopyWith<$Res> {
@@ -771,6 +800,7 @@ class __$ActionInProgressCopyWithImpl<$Res>
   _ActionInProgress get _value => super._value as _ActionInProgress;
 }
 
+/// @nodoc
 class _$_ActionInProgress implements _ActionInProgress {
   const _$_ActionInProgress();
 
@@ -789,12 +819,12 @@ class _$_ActionInProgress implements _ActionInProgress {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result actionInProgress(),
-    @required Result deleteSuccessful(),
-    @required Result selectContacts(Set<Contact> selectedContacts),
-    @required Result deleteFailure(ContactsFailure failure),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult actionInProgress(),
+    @required TResult deleteSuccessful(),
+    @required TResult selectContacts(Set<Contact> selectedContacts),
+    @required TResult deleteFailure(ContactsFailure failure),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
@@ -806,13 +836,13 @@ class _$_ActionInProgress implements _ActionInProgress {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result actionInProgress(),
-    Result deleteSuccessful(),
-    Result selectContacts(Set<Contact> selectedContacts),
-    Result deleteFailure(ContactsFailure failure),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult actionInProgress(),
+    TResult deleteSuccessful(),
+    TResult selectContacts(Set<Contact> selectedContacts),
+    TResult deleteFailure(ContactsFailure failure),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (actionInProgress != null) {
@@ -823,12 +853,12 @@ class _$_ActionInProgress implements _ActionInProgress {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result actionInProgress(_ActionInProgress value),
-    @required Result deleteSuccessful(_DeleteSuccessful value),
-    @required Result selectContacts(_SelectContacts value),
-    @required Result deleteFailure(_DeleteFailure value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult actionInProgress(_ActionInProgress value),
+    @required TResult deleteSuccessful(_DeleteSuccessful value),
+    @required TResult selectContacts(_SelectContacts value),
+    @required TResult deleteFailure(_DeleteFailure value),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
@@ -840,13 +870,13 @@ class _$_ActionInProgress implements _ActionInProgress {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result actionInProgress(_ActionInProgress value),
-    Result deleteSuccessful(_DeleteSuccessful value),
-    Result selectContacts(_SelectContacts value),
-    Result deleteFailure(_DeleteFailure value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult actionInProgress(_ActionInProgress value),
+    TResult deleteSuccessful(_DeleteSuccessful value),
+    TResult selectContacts(_SelectContacts value),
+    TResult deleteFailure(_DeleteFailure value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (actionInProgress != null) {
@@ -860,12 +890,14 @@ abstract class _ActionInProgress implements ContactActorState {
   const factory _ActionInProgress() = _$_ActionInProgress;
 }
 
+/// @nodoc
 abstract class _$DeleteSuccessfulCopyWith<$Res> {
   factory _$DeleteSuccessfulCopyWith(
           _DeleteSuccessful value, $Res Function(_DeleteSuccessful) then) =
       __$DeleteSuccessfulCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$DeleteSuccessfulCopyWithImpl<$Res>
     extends _$ContactActorStateCopyWithImpl<$Res>
     implements _$DeleteSuccessfulCopyWith<$Res> {
@@ -877,6 +909,7 @@ class __$DeleteSuccessfulCopyWithImpl<$Res>
   _DeleteSuccessful get _value => super._value as _DeleteSuccessful;
 }
 
+/// @nodoc
 class _$_DeleteSuccessful implements _DeleteSuccessful {
   const _$_DeleteSuccessful();
 
@@ -895,12 +928,12 @@ class _$_DeleteSuccessful implements _DeleteSuccessful {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result actionInProgress(),
-    @required Result deleteSuccessful(),
-    @required Result selectContacts(Set<Contact> selectedContacts),
-    @required Result deleteFailure(ContactsFailure failure),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult actionInProgress(),
+    @required TResult deleteSuccessful(),
+    @required TResult selectContacts(Set<Contact> selectedContacts),
+    @required TResult deleteFailure(ContactsFailure failure),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
@@ -912,13 +945,13 @@ class _$_DeleteSuccessful implements _DeleteSuccessful {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result actionInProgress(),
-    Result deleteSuccessful(),
-    Result selectContacts(Set<Contact> selectedContacts),
-    Result deleteFailure(ContactsFailure failure),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult actionInProgress(),
+    TResult deleteSuccessful(),
+    TResult selectContacts(Set<Contact> selectedContacts),
+    TResult deleteFailure(ContactsFailure failure),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (deleteSuccessful != null) {
@@ -929,12 +962,12 @@ class _$_DeleteSuccessful implements _DeleteSuccessful {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result actionInProgress(_ActionInProgress value),
-    @required Result deleteSuccessful(_DeleteSuccessful value),
-    @required Result selectContacts(_SelectContacts value),
-    @required Result deleteFailure(_DeleteFailure value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult actionInProgress(_ActionInProgress value),
+    @required TResult deleteSuccessful(_DeleteSuccessful value),
+    @required TResult selectContacts(_SelectContacts value),
+    @required TResult deleteFailure(_DeleteFailure value),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
@@ -946,13 +979,13 @@ class _$_DeleteSuccessful implements _DeleteSuccessful {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result actionInProgress(_ActionInProgress value),
-    Result deleteSuccessful(_DeleteSuccessful value),
-    Result selectContacts(_SelectContacts value),
-    Result deleteFailure(_DeleteFailure value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult actionInProgress(_ActionInProgress value),
+    TResult deleteSuccessful(_DeleteSuccessful value),
+    TResult selectContacts(_SelectContacts value),
+    TResult deleteFailure(_DeleteFailure value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (deleteSuccessful != null) {
@@ -966,19 +999,21 @@ abstract class _DeleteSuccessful implements ContactActorState {
   const factory _DeleteSuccessful() = _$_DeleteSuccessful;
 }
 
+/// @nodoc
 abstract class _$SelectContactsCopyWith<$Res> {
-  factory _$SelectContactsCopyWith(_SelectContacts value,
-      $Res Function(_SelectContacts) then) =
-  __$SelectContactsCopyWithImpl<$Res>;
+  factory _$SelectContactsCopyWith(
+          _SelectContacts value, $Res Function(_SelectContacts) then) =
+      __$SelectContactsCopyWithImpl<$Res>;
 
   $Res call({Set<Contact> selectedContacts});
 }
 
+/// @nodoc
 class __$SelectContactsCopyWithImpl<$Res>
     extends _$ContactActorStateCopyWithImpl<$Res>
     implements _$SelectContactsCopyWith<$Res> {
-  __$SelectContactsCopyWithImpl(_SelectContacts _value,
-      $Res Function(_SelectContacts) _then)
+  __$SelectContactsCopyWithImpl(
+      _SelectContacts _value, $Res Function(_SelectContacts) _then)
       : super(_value, (v) => _then(v as _SelectContacts));
 
   @override
@@ -996,6 +1031,7 @@ class __$SelectContactsCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_SelectContacts implements _SelectContacts {
   const _$_SelectContacts(this.selectedContacts)
       : assert(selectedContacts != null);
@@ -1028,12 +1064,12 @@ class _$_SelectContacts implements _SelectContacts {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result actionInProgress(),
-    @required Result deleteSuccessful(),
-    @required Result selectContacts(Set<Contact> selectedContacts),
-    @required Result deleteFailure(ContactsFailure failure),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult actionInProgress(),
+    @required TResult deleteSuccessful(),
+    @required TResult selectContacts(Set<Contact> selectedContacts),
+    @required TResult deleteFailure(ContactsFailure failure),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
@@ -1045,13 +1081,13 @@ class _$_SelectContacts implements _SelectContacts {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result actionInProgress(),
-    Result deleteSuccessful(),
-    Result selectContacts(Set<Contact> selectedContacts),
-    Result deleteFailure(ContactsFailure failure),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult actionInProgress(),
+    TResult deleteSuccessful(),
+    TResult selectContacts(Set<Contact> selectedContacts),
+    TResult deleteFailure(ContactsFailure failure),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (selectContacts != null) {
@@ -1062,12 +1098,12 @@ class _$_SelectContacts implements _SelectContacts {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result actionInProgress(_ActionInProgress value),
-    @required Result deleteSuccessful(_DeleteSuccessful value),
-    @required Result selectContacts(_SelectContacts value),
-    @required Result deleteFailure(_DeleteFailure value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult actionInProgress(_ActionInProgress value),
+    @required TResult deleteSuccessful(_DeleteSuccessful value),
+    @required TResult selectContacts(_SelectContacts value),
+    @required TResult deleteFailure(_DeleteFailure value),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
@@ -1079,13 +1115,13 @@ class _$_SelectContacts implements _SelectContacts {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result actionInProgress(_ActionInProgress value),
-    Result deleteSuccessful(_DeleteSuccessful value),
-    Result selectContacts(_SelectContacts value),
-    Result deleteFailure(_DeleteFailure value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult actionInProgress(_ActionInProgress value),
+    TResult deleteSuccessful(_DeleteSuccessful value),
+    TResult selectContacts(_SelectContacts value),
+    TResult deleteFailure(_DeleteFailure value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (selectContacts != null) {
@@ -1097,23 +1133,24 @@ class _$_SelectContacts implements _SelectContacts {
 
 abstract class _SelectContacts implements ContactActorState {
   const factory _SelectContacts(Set<Contact> selectedContacts) =
-  _$_SelectContacts;
+      _$_SelectContacts;
 
   Set<Contact> get selectedContacts;
-
   _$SelectContactsCopyWith<_SelectContacts> get copyWith;
 }
 
+/// @nodoc
 abstract class _$DeleteFailureCopyWith<$Res> {
-  factory _$DeleteFailureCopyWith(_DeleteFailure value,
-      $Res Function(_DeleteFailure) then) =
-  __$DeleteFailureCopyWithImpl<$Res>;
+  factory _$DeleteFailureCopyWith(
+          _DeleteFailure value, $Res Function(_DeleteFailure) then) =
+      __$DeleteFailureCopyWithImpl<$Res>;
 
   $Res call({ContactsFailure failure});
 
   $ContactsFailureCopyWith<$Res> get failure;
 }
 
+/// @nodoc
 class __$DeleteFailureCopyWithImpl<$Res>
     extends _$ContactActorStateCopyWithImpl<$Res>
     implements _$DeleteFailureCopyWith<$Res> {
@@ -1144,6 +1181,7 @@ class __$DeleteFailureCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_DeleteFailure implements _DeleteFailure {
   const _$_DeleteFailure(this.failure) : assert(failure != null);
 
@@ -1173,12 +1211,12 @@ class _$_DeleteFailure implements _DeleteFailure {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result actionInProgress(),
-    @required Result deleteSuccessful(),
-    @required Result selectContacts(Set<Contact> selectedContacts),
-    @required Result deleteFailure(ContactsFailure failure),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult actionInProgress(),
+    @required TResult deleteSuccessful(),
+    @required TResult selectContacts(Set<Contact> selectedContacts),
+    @required TResult deleteFailure(ContactsFailure failure),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
@@ -1190,13 +1228,13 @@ class _$_DeleteFailure implements _DeleteFailure {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result actionInProgress(),
-    Result deleteSuccessful(),
-    Result selectContacts(Set<Contact> selectedContacts),
-    Result deleteFailure(ContactsFailure failure),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult actionInProgress(),
+    TResult deleteSuccessful(),
+    TResult selectContacts(Set<Contact> selectedContacts),
+    TResult deleteFailure(ContactsFailure failure),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (deleteFailure != null) {
@@ -1207,12 +1245,12 @@ class _$_DeleteFailure implements _DeleteFailure {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result actionInProgress(_ActionInProgress value),
-    @required Result deleteSuccessful(_DeleteSuccessful value),
-    @required Result selectContacts(_SelectContacts value),
-    @required Result deleteFailure(_DeleteFailure value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult actionInProgress(_ActionInProgress value),
+    @required TResult deleteSuccessful(_DeleteSuccessful value),
+    @required TResult selectContacts(_SelectContacts value),
+    @required TResult deleteFailure(_DeleteFailure value),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
@@ -1224,13 +1262,13 @@ class _$_DeleteFailure implements _DeleteFailure {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result actionInProgress(_ActionInProgress value),
-    Result deleteSuccessful(_DeleteSuccessful value),
-    Result selectContacts(_SelectContacts value),
-    Result deleteFailure(_DeleteFailure value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult actionInProgress(_ActionInProgress value),
+    TResult deleteSuccessful(_DeleteSuccessful value),
+    TResult selectContacts(_SelectContacts value),
+    TResult deleteFailure(_DeleteFailure value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (deleteFailure != null) {

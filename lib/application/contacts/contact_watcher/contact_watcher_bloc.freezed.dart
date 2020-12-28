@@ -9,6 +9,7 @@ part of 'contact_watcher_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$ContactWatcherEventTearOff {
   const _$ContactWatcherEventTearOff();
 
@@ -18,36 +19,43 @@ class _$ContactWatcherEventTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ContactWatcherEvent = _$ContactWatcherEventTearOff();
 
+/// @nodoc
 mixin _$ContactWatcherEvent {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result watchAllAlphabeticOrder(),
+  TResult when<TResult extends Object>({
+    @required TResult watchAllAlphabeticOrder(),
   });
+
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result watchAllAlphabeticOrder(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult watchAllAlphabeticOrder(),
+    @required TResult orElse(),
   });
+
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result watchAllAlphabeticOrder(_WatchAllAlphabeticOrder value),
+  TResult map<TResult extends Object>({
+    @required TResult watchAllAlphabeticOrder(_WatchAllAlphabeticOrder value),
   });
+
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result watchAllAlphabeticOrder(_WatchAllAlphabeticOrder value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult watchAllAlphabeticOrder(_WatchAllAlphabeticOrder value),
+    @required TResult orElse(),
   });
 }
 
+/// @nodoc
 abstract class $ContactWatcherEventCopyWith<$Res> {
   factory $ContactWatcherEventCopyWith(
           ContactWatcherEvent value, $Res Function(ContactWatcherEvent) then) =
       _$ContactWatcherEventCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$ContactWatcherEventCopyWithImpl<$Res>
     implements $ContactWatcherEventCopyWith<$Res> {
   _$ContactWatcherEventCopyWithImpl(this._value, this._then);
@@ -57,12 +65,14 @@ class _$ContactWatcherEventCopyWithImpl<$Res>
   final $Res Function(ContactWatcherEvent) _then;
 }
 
+/// @nodoc
 abstract class _$WatchAllAlphabeticOrderCopyWith<$Res> {
   factory _$WatchAllAlphabeticOrderCopyWith(_WatchAllAlphabeticOrder value,
           $Res Function(_WatchAllAlphabeticOrder) then) =
       __$WatchAllAlphabeticOrderCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$WatchAllAlphabeticOrderCopyWithImpl<$Res>
     extends _$ContactWatcherEventCopyWithImpl<$Res>
     implements _$WatchAllAlphabeticOrderCopyWith<$Res> {
@@ -75,6 +85,7 @@ class __$WatchAllAlphabeticOrderCopyWithImpl<$Res>
       super._value as _WatchAllAlphabeticOrder;
 }
 
+/// @nodoc
 class _$_WatchAllAlphabeticOrder implements _WatchAllAlphabeticOrder {
   const _$_WatchAllAlphabeticOrder();
 
@@ -93,8 +104,8 @@ class _$_WatchAllAlphabeticOrder implements _WatchAllAlphabeticOrder {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result watchAllAlphabeticOrder(),
+  TResult when<TResult extends Object>({
+    @required TResult watchAllAlphabeticOrder(),
   }) {
     assert(watchAllAlphabeticOrder != null);
     return watchAllAlphabeticOrder();
@@ -102,9 +113,9 @@ class _$_WatchAllAlphabeticOrder implements _WatchAllAlphabeticOrder {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result watchAllAlphabeticOrder(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult watchAllAlphabeticOrder(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (watchAllAlphabeticOrder != null) {
@@ -115,8 +126,8 @@ class _$_WatchAllAlphabeticOrder implements _WatchAllAlphabeticOrder {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result watchAllAlphabeticOrder(_WatchAllAlphabeticOrder value),
+  TResult map<TResult extends Object>({
+    @required TResult watchAllAlphabeticOrder(_WatchAllAlphabeticOrder value),
   }) {
     assert(watchAllAlphabeticOrder != null);
     return watchAllAlphabeticOrder(this);
@@ -124,9 +135,9 @@ class _$_WatchAllAlphabeticOrder implements _WatchAllAlphabeticOrder {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result watchAllAlphabeticOrder(_WatchAllAlphabeticOrder value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult watchAllAlphabeticOrder(_WatchAllAlphabeticOrder value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (watchAllAlphabeticOrder != null) {
@@ -140,6 +151,7 @@ abstract class _WatchAllAlphabeticOrder implements ContactWatcherEvent {
   const factory _WatchAllAlphabeticOrder() = _$_WatchAllAlphabeticOrder;
 }
 
+/// @nodoc
 class _$ContactWatcherStateTearOff {
   const _$ContactWatcherStateTearOff();
 
@@ -168,48 +180,55 @@ class _$ContactWatcherStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ContactWatcherState = _$ContactWatcherStateTearOff();
 
+/// @nodoc
 mixin _$ContactWatcherState {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result loadInProgress(),
-    @required Result loadSuccess(List<SelectedContact> selectedContacts),
-    @required Result loadFailure(ContactsFailure failure),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult loadInProgress(),
+    @required TResult loadSuccess(List<SelectedContact> selectedContacts),
+    @required TResult loadFailure(ContactsFailure failure),
   });
+
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result loadInProgress(),
-    Result loadSuccess(List<SelectedContact> selectedContacts),
-    Result loadFailure(ContactsFailure failure),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult loadInProgress(),
+    TResult loadSuccess(List<SelectedContact> selectedContacts),
+    TResult loadFailure(ContactsFailure failure),
+    @required TResult orElse(),
   });
+
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result loadInProgress(_LoadInProgress value),
-    @required Result loadSuccess(_LoadSuccess value),
-    @required Result loadFailure(_LoadFailure value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult loadInProgress(_LoadInProgress value),
+    @required TResult loadSuccess(_LoadSuccess value),
+    @required TResult loadFailure(_LoadFailure value),
   });
+
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result loadInProgress(_LoadInProgress value),
-    Result loadSuccess(_LoadSuccess value),
-    Result loadFailure(_LoadFailure value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult loadInProgress(_LoadInProgress value),
+    TResult loadSuccess(_LoadSuccess value),
+    TResult loadFailure(_LoadFailure value),
+    @required TResult orElse(),
   });
 }
 
+/// @nodoc
 abstract class $ContactWatcherStateCopyWith<$Res> {
   factory $ContactWatcherStateCopyWith(
           ContactWatcherState value, $Res Function(ContactWatcherState) then) =
       _$ContactWatcherStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$ContactWatcherStateCopyWithImpl<$Res>
     implements $ContactWatcherStateCopyWith<$Res> {
   _$ContactWatcherStateCopyWithImpl(this._value, this._then);
@@ -219,11 +238,13 @@ class _$ContactWatcherStateCopyWithImpl<$Res>
   final $Res Function(ContactWatcherState) _then;
 }
 
+/// @nodoc
 abstract class _$InitialCopyWith<$Res> {
   factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
       __$InitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$InitialCopyWithImpl<$Res>
     extends _$ContactWatcherStateCopyWithImpl<$Res>
     implements _$InitialCopyWith<$Res> {
@@ -234,6 +255,7 @@ class __$InitialCopyWithImpl<$Res>
   _Initial get _value => super._value as _Initial;
 }
 
+/// @nodoc
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -252,11 +274,11 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result loadInProgress(),
-    @required Result loadSuccess(List<SelectedContact> selectedContacts),
-    @required Result loadFailure(ContactsFailure failure),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult loadInProgress(),
+    @required TResult loadSuccess(List<SelectedContact> selectedContacts),
+    @required TResult loadFailure(ContactsFailure failure),
   }) {
     assert(initial != null);
     assert(loadInProgress != null);
@@ -267,12 +289,12 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result loadInProgress(),
-    Result loadSuccess(List<SelectedContact> selectedContacts),
-    Result loadFailure(ContactsFailure failure),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult loadInProgress(),
+    TResult loadSuccess(List<SelectedContact> selectedContacts),
+    TResult loadFailure(ContactsFailure failure),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initial != null) {
@@ -283,11 +305,11 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result loadInProgress(_LoadInProgress value),
-    @required Result loadSuccess(_LoadSuccess value),
-    @required Result loadFailure(_LoadFailure value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult loadInProgress(_LoadInProgress value),
+    @required TResult loadSuccess(_LoadSuccess value),
+    @required TResult loadFailure(_LoadFailure value),
   }) {
     assert(initial != null);
     assert(loadInProgress != null);
@@ -298,12 +320,12 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result loadInProgress(_LoadInProgress value),
-    Result loadSuccess(_LoadSuccess value),
-    Result loadFailure(_LoadFailure value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult loadInProgress(_LoadInProgress value),
+    TResult loadSuccess(_LoadSuccess value),
+    TResult loadFailure(_LoadFailure value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initial != null) {
@@ -317,12 +339,14 @@ abstract class _Initial implements ContactWatcherState {
   const factory _Initial() = _$_Initial;
 }
 
+/// @nodoc
 abstract class _$LoadInProgressCopyWith<$Res> {
   factory _$LoadInProgressCopyWith(
           _LoadInProgress value, $Res Function(_LoadInProgress) then) =
       __$LoadInProgressCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$LoadInProgressCopyWithImpl<$Res>
     extends _$ContactWatcherStateCopyWithImpl<$Res>
     implements _$LoadInProgressCopyWith<$Res> {
@@ -334,6 +358,7 @@ class __$LoadInProgressCopyWithImpl<$Res>
   _LoadInProgress get _value => super._value as _LoadInProgress;
 }
 
+/// @nodoc
 class _$_LoadInProgress implements _LoadInProgress {
   const _$_LoadInProgress();
 
@@ -352,11 +377,11 @@ class _$_LoadInProgress implements _LoadInProgress {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result loadInProgress(),
-    @required Result loadSuccess(List<SelectedContact> selectedContacts),
-    @required Result loadFailure(ContactsFailure failure),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult loadInProgress(),
+    @required TResult loadSuccess(List<SelectedContact> selectedContacts),
+    @required TResult loadFailure(ContactsFailure failure),
   }) {
     assert(initial != null);
     assert(loadInProgress != null);
@@ -367,12 +392,12 @@ class _$_LoadInProgress implements _LoadInProgress {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result loadInProgress(),
-    Result loadSuccess(List<SelectedContact> selectedContacts),
-    Result loadFailure(ContactsFailure failure),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult loadInProgress(),
+    TResult loadSuccess(List<SelectedContact> selectedContacts),
+    TResult loadFailure(ContactsFailure failure),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (loadInProgress != null) {
@@ -383,11 +408,11 @@ class _$_LoadInProgress implements _LoadInProgress {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result loadInProgress(_LoadInProgress value),
-    @required Result loadSuccess(_LoadSuccess value),
-    @required Result loadFailure(_LoadFailure value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult loadInProgress(_LoadInProgress value),
+    @required TResult loadSuccess(_LoadSuccess value),
+    @required TResult loadFailure(_LoadFailure value),
   }) {
     assert(initial != null);
     assert(loadInProgress != null);
@@ -398,12 +423,12 @@ class _$_LoadInProgress implements _LoadInProgress {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result loadInProgress(_LoadInProgress value),
-    Result loadSuccess(_LoadSuccess value),
-    Result loadFailure(_LoadFailure value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult loadInProgress(_LoadInProgress value),
+    TResult loadSuccess(_LoadSuccess value),
+    TResult loadFailure(_LoadFailure value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (loadInProgress != null) {
@@ -417,19 +442,20 @@ abstract class _LoadInProgress implements ContactWatcherState {
   const factory _LoadInProgress() = _$_LoadInProgress;
 }
 
+/// @nodoc
 abstract class _$LoadSuccessCopyWith<$Res> {
   factory _$LoadSuccessCopyWith(
           _LoadSuccess value, $Res Function(_LoadSuccess) then) =
       __$LoadSuccessCopyWithImpl<$Res>;
-
   $Res call({List<SelectedContact> selectedContacts});
 }
 
+/// @nodoc
 class __$LoadSuccessCopyWithImpl<$Res>
     extends _$ContactWatcherStateCopyWithImpl<$Res>
     implements _$LoadSuccessCopyWith<$Res> {
-  __$LoadSuccessCopyWithImpl(_LoadSuccess _value,
-      $Res Function(_LoadSuccess) _then)
+  __$LoadSuccessCopyWithImpl(
+      _LoadSuccess _value, $Res Function(_LoadSuccess) _then)
       : super(_value, (v) => _then(v as _LoadSuccess));
 
   @override
@@ -447,6 +473,7 @@ class __$LoadSuccessCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_LoadSuccess implements _LoadSuccess {
   const _$_LoadSuccess(this.selectedContacts)
       : assert(selectedContacts != null);
@@ -479,11 +506,11 @@ class _$_LoadSuccess implements _LoadSuccess {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result loadInProgress(),
-    @required Result loadSuccess(List<SelectedContact> selectedContacts),
-    @required Result loadFailure(ContactsFailure failure),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult loadInProgress(),
+    @required TResult loadSuccess(List<SelectedContact> selectedContacts),
+    @required TResult loadFailure(ContactsFailure failure),
   }) {
     assert(initial != null);
     assert(loadInProgress != null);
@@ -494,12 +521,12 @@ class _$_LoadSuccess implements _LoadSuccess {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result loadInProgress(),
-    Result loadSuccess(List<SelectedContact> selectedContacts),
-    Result loadFailure(ContactsFailure failure),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult loadInProgress(),
+    TResult loadSuccess(List<SelectedContact> selectedContacts),
+    TResult loadFailure(ContactsFailure failure),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (loadSuccess != null) {
@@ -510,11 +537,11 @@ class _$_LoadSuccess implements _LoadSuccess {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result loadInProgress(_LoadInProgress value),
-    @required Result loadSuccess(_LoadSuccess value),
-    @required Result loadFailure(_LoadFailure value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult loadInProgress(_LoadInProgress value),
+    @required TResult loadSuccess(_LoadSuccess value),
+    @required TResult loadFailure(_LoadFailure value),
   }) {
     assert(initial != null);
     assert(loadInProgress != null);
@@ -525,12 +552,12 @@ class _$_LoadSuccess implements _LoadSuccess {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result loadInProgress(_LoadInProgress value),
-    Result loadSuccess(_LoadSuccess value),
-    Result loadFailure(_LoadFailure value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult loadInProgress(_LoadInProgress value),
+    TResult loadSuccess(_LoadSuccess value),
+    TResult loadFailure(_LoadFailure value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (loadSuccess != null) {
@@ -542,13 +569,13 @@ class _$_LoadSuccess implements _LoadSuccess {
 
 abstract class _LoadSuccess implements ContactWatcherState {
   const factory _LoadSuccess(List<SelectedContact> selectedContacts) =
-  _$_LoadSuccess;
+      _$_LoadSuccess;
 
   List<SelectedContact> get selectedContacts;
-
   _$LoadSuccessCopyWith<_LoadSuccess> get copyWith;
 }
 
+/// @nodoc
 abstract class _$LoadFailureCopyWith<$Res> {
   factory _$LoadFailureCopyWith(
           _LoadFailure value, $Res Function(_LoadFailure) then) =
@@ -558,6 +585,7 @@ abstract class _$LoadFailureCopyWith<$Res> {
   $ContactsFailureCopyWith<$Res> get failure;
 }
 
+/// @nodoc
 class __$LoadFailureCopyWithImpl<$Res>
     extends _$ContactWatcherStateCopyWithImpl<$Res>
     implements _$LoadFailureCopyWith<$Res> {
@@ -588,6 +616,7 @@ class __$LoadFailureCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_LoadFailure implements _LoadFailure {
   const _$_LoadFailure(this.failure) : assert(failure != null);
 
@@ -617,11 +646,11 @@ class _$_LoadFailure implements _LoadFailure {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result loadInProgress(),
-    @required Result loadSuccess(List<SelectedContact> selectedContacts),
-    @required Result loadFailure(ContactsFailure failure),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult loadInProgress(),
+    @required TResult loadSuccess(List<SelectedContact> selectedContacts),
+    @required TResult loadFailure(ContactsFailure failure),
   }) {
     assert(initial != null);
     assert(loadInProgress != null);
@@ -632,12 +661,12 @@ class _$_LoadFailure implements _LoadFailure {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result loadInProgress(),
-    Result loadSuccess(List<SelectedContact> selectedContacts),
-    Result loadFailure(ContactsFailure failure),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult loadInProgress(),
+    TResult loadSuccess(List<SelectedContact> selectedContacts),
+    TResult loadFailure(ContactsFailure failure),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (loadFailure != null) {
@@ -648,11 +677,11 @@ class _$_LoadFailure implements _LoadFailure {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result loadInProgress(_LoadInProgress value),
-    @required Result loadSuccess(_LoadSuccess value),
-    @required Result loadFailure(_LoadFailure value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult loadInProgress(_LoadInProgress value),
+    @required TResult loadSuccess(_LoadSuccess value),
+    @required TResult loadFailure(_LoadFailure value),
   }) {
     assert(initial != null);
     assert(loadInProgress != null);
@@ -663,12 +692,12 @@ class _$_LoadFailure implements _LoadFailure {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result loadInProgress(_LoadInProgress value),
-    Result loadSuccess(_LoadSuccess value),
-    Result loadFailure(_LoadFailure value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult loadInProgress(_LoadInProgress value),
+    TResult loadSuccess(_LoadSuccess value),
+    TResult loadFailure(_LoadFailure value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (loadFailure != null) {

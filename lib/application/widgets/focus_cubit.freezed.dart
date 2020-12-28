@@ -9,6 +9,7 @@ part of 'focus_cubit.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$FocusStateTearOff {
   const _$FocusStateTearOff();
 
@@ -23,40 +24,47 @@ class _$FocusStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $FocusState = _$FocusStateTearOff();
 
+/// @nodoc
 mixin _$FocusState {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result focused(),
-    @required Result unfocused(),
+  TResult when<TResult extends Object>({
+    @required TResult focused(),
+    @required TResult unfocused(),
   });
+
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result focused(),
-    Result unfocused(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult focused(),
+    TResult unfocused(),
+    @required TResult orElse(),
   });
+
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result focused(_Focused value),
-    @required Result unfocused(_Unfocused value),
+  TResult map<TResult extends Object>({
+    @required TResult focused(_Focused value),
+    @required TResult unfocused(_Unfocused value),
   });
+
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result focused(_Focused value),
-    Result unfocused(_Unfocused value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult focused(_Focused value),
+    TResult unfocused(_Unfocused value),
+    @required TResult orElse(),
   });
 }
 
+/// @nodoc
 abstract class $FocusStateCopyWith<$Res> {
   factory $FocusStateCopyWith(
           FocusState value, $Res Function(FocusState) then) =
       _$FocusStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$FocusStateCopyWithImpl<$Res> implements $FocusStateCopyWith<$Res> {
   _$FocusStateCopyWithImpl(this._value, this._then);
 
@@ -65,11 +73,13 @@ class _$FocusStateCopyWithImpl<$Res> implements $FocusStateCopyWith<$Res> {
   final $Res Function(FocusState) _then;
 }
 
+/// @nodoc
 abstract class _$FocusedCopyWith<$Res> {
   factory _$FocusedCopyWith(_Focused value, $Res Function(_Focused) then) =
       __$FocusedCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$FocusedCopyWithImpl<$Res> extends _$FocusStateCopyWithImpl<$Res>
     implements _$FocusedCopyWith<$Res> {
   __$FocusedCopyWithImpl(_Focused _value, $Res Function(_Focused) _then)
@@ -79,6 +89,7 @@ class __$FocusedCopyWithImpl<$Res> extends _$FocusStateCopyWithImpl<$Res>
   _Focused get _value => super._value as _Focused;
 }
 
+/// @nodoc
 class _$_Focused implements _Focused {
   const _$_Focused();
 
@@ -97,9 +108,9 @@ class _$_Focused implements _Focused {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result focused(),
-    @required Result unfocused(),
+  TResult when<TResult extends Object>({
+    @required TResult focused(),
+    @required TResult unfocused(),
   }) {
     assert(focused != null);
     assert(unfocused != null);
@@ -108,10 +119,10 @@ class _$_Focused implements _Focused {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result focused(),
-    Result unfocused(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult focused(),
+    TResult unfocused(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (focused != null) {
@@ -122,9 +133,9 @@ class _$_Focused implements _Focused {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result focused(_Focused value),
-    @required Result unfocused(_Unfocused value),
+  TResult map<TResult extends Object>({
+    @required TResult focused(_Focused value),
+    @required TResult unfocused(_Unfocused value),
   }) {
     assert(focused != null);
     assert(unfocused != null);
@@ -133,10 +144,10 @@ class _$_Focused implements _Focused {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result focused(_Focused value),
-    Result unfocused(_Unfocused value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult focused(_Focused value),
+    TResult unfocused(_Unfocused value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (focused != null) {
@@ -150,12 +161,14 @@ abstract class _Focused implements FocusState {
   const factory _Focused() = _$_Focused;
 }
 
+/// @nodoc
 abstract class _$UnfocusedCopyWith<$Res> {
   factory _$UnfocusedCopyWith(
           _Unfocused value, $Res Function(_Unfocused) then) =
       __$UnfocusedCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$UnfocusedCopyWithImpl<$Res> extends _$FocusStateCopyWithImpl<$Res>
     implements _$UnfocusedCopyWith<$Res> {
   __$UnfocusedCopyWithImpl(_Unfocused _value, $Res Function(_Unfocused) _then)
@@ -165,6 +178,7 @@ class __$UnfocusedCopyWithImpl<$Res> extends _$FocusStateCopyWithImpl<$Res>
   _Unfocused get _value => super._value as _Unfocused;
 }
 
+/// @nodoc
 class _$_Unfocused implements _Unfocused {
   const _$_Unfocused();
 
@@ -183,9 +197,9 @@ class _$_Unfocused implements _Unfocused {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result focused(),
-    @required Result unfocused(),
+  TResult when<TResult extends Object>({
+    @required TResult focused(),
+    @required TResult unfocused(),
   }) {
     assert(focused != null);
     assert(unfocused != null);
@@ -194,10 +208,10 @@ class _$_Unfocused implements _Unfocused {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result focused(),
-    Result unfocused(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult focused(),
+    TResult unfocused(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (unfocused != null) {
@@ -208,9 +222,9 @@ class _$_Unfocused implements _Unfocused {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result focused(_Focused value),
-    @required Result unfocused(_Unfocused value),
+  TResult map<TResult extends Object>({
+    @required TResult focused(_Focused value),
+    @required TResult unfocused(_Unfocused value),
   }) {
     assert(focused != null);
     assert(unfocused != null);
@@ -219,10 +233,10 @@ class _$_Unfocused implements _Unfocused {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result focused(_Focused value),
-    Result unfocused(_Unfocused value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult focused(_Focused value),
+    TResult unfocused(_Unfocused value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (unfocused != null) {

@@ -9,6 +9,7 @@ part of 'name_data.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$NameDataTearOff {
   const _$NameDataTearOff();
 
@@ -33,9 +34,11 @@ class _$NameDataTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $NameData = _$NameDataTearOff();
 
+/// @nodoc
 mixin _$NameData {
   PhoneticNames get phoneticNames;
   String get firstName;
@@ -48,6 +51,7 @@ mixin _$NameData {
   $NameDataCopyWith<NameData> get copyWith;
 }
 
+/// @nodoc
 abstract class $NameDataCopyWith<$Res> {
   factory $NameDataCopyWith(NameData value, $Res Function(NameData) then) =
       _$NameDataCopyWithImpl<$Res>;
@@ -61,6 +65,7 @@ abstract class $NameDataCopyWith<$Res> {
       String nameSuffix});
 }
 
+/// @nodoc
 class _$NameDataCopyWithImpl<$Res> implements $NameDataCopyWith<$Res> {
   _$NameDataCopyWithImpl(this._value, this._then);
 
@@ -95,6 +100,7 @@ class _$NameDataCopyWithImpl<$Res> implements $NameDataCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$NameDataCopyWith<$Res> implements $NameDataCopyWith<$Res> {
   factory _$NameDataCopyWith(_NameData value, $Res Function(_NameData) then) =
       __$NameDataCopyWithImpl<$Res>;
@@ -109,6 +115,7 @@ abstract class _$NameDataCopyWith<$Res> implements $NameDataCopyWith<$Res> {
       String nameSuffix});
 }
 
+/// @nodoc
 class __$NameDataCopyWithImpl<$Res> extends _$NameDataCopyWithImpl<$Res>
     implements _$NameDataCopyWith<$Res> {
   __$NameDataCopyWithImpl(_NameData _value, $Res Function(_NameData) _then)
@@ -144,6 +151,7 @@ class __$NameDataCopyWithImpl<$Res> extends _$NameDataCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_NameData extends _NameData {
   const _$_NameData(
       {this.phoneticNames,
