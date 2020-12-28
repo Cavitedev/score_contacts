@@ -48,10 +48,8 @@ const $ContactDTO = _$ContactDTOTearOff();
 mixin _$ContactDTO {
   @JsonKey(ignore: true)
   String get id;
-
   @JsonKey(name: nameDataName)
   NameDataDTO get nameDataDTO;
-
   @JsonKey(name: companiesName)
   List<CompanyDTO> get companiesDTO;
   @JsonKey(name: emailsName)
@@ -189,13 +187,15 @@ class __$ContactDTOCopyWithImpl<$Res> extends _$ContactDTOCopyWithImpl<$Res>
 
 @JsonSerializable()
 
-/// @nodoc class _$_ContactDTO extends _ContactDTO {
-  const _$_ContactDTO({@JsonKey(ignore: true) this.id,
-    @JsonKey(name: nameDataName) this.nameDataDTO,
-    @JsonKey(name: companiesName) this.companiesDTO,
-    @JsonKey(name: emailsName) this.emailsDTO,
-    @JsonKey(name: phonesName) this.phonesDTO,
-    @required @ServerTimeStampConverter() this.serverTimeStamp})
+/// @nodoc
+class _$_ContactDTO extends _ContactDTO {
+  const _$_ContactDTO(
+      {@JsonKey(ignore: true) this.id,
+      @JsonKey(name: nameDataName) this.nameDataDTO,
+      @JsonKey(name: companiesName) this.companiesDTO,
+      @JsonKey(name: emailsName) this.emailsDTO,
+      @JsonKey(name: phonesName) this.phonesDTO,
+      @required @ServerTimeStampConverter() this.serverTimeStamp})
       : assert(serverTimeStamp != null),
         super._();
 
@@ -402,7 +402,8 @@ class __$NameDataDTOCopyWithImpl<$Res> extends _$NameDataDTOCopyWithImpl<$Res>
 
 @JsonSerializable()
 
-/// @nodoc class _$_NameDataDTO extends _NameDataDTO {
+/// @nodoc
+class _$_NameDataDTO extends _NameDataDTO {
   const _$_NameDataDTO({this.name, this.surname}) : super._();
 
   factory _$_NameDataDTO.fromJson(Map<String, dynamic> json) =>
@@ -558,7 +559,8 @@ class __$LabelObjectDTOCopyWithImpl<$Res>
 
 @JsonSerializable()
 
-/// @nodoc class _$_LabelObjectDTO extends _LabelObjectDTO {
+/// @nodoc
+class _$_LabelObjectDTO extends _LabelObjectDTO {
   const _$_LabelObjectDTO({this.name, this.label}) : super._();
 
   factory _$_LabelObjectDTO.fromJson(Map<String, dynamic> json) =>
@@ -645,11 +647,9 @@ const $CompanyDTO = _$CompanyDTOTearOff();
 /// @nodoc
 mixin _$CompanyDTO {
   String get name;
-
   String get title;
 
   Map<String, dynamic> toJson();
-
   $CompanyDTOCopyWith<CompanyDTO> get copyWith;
 }
 
@@ -714,7 +714,8 @@ class __$CompanyDTOCopyWithImpl<$Res> extends _$CompanyDTOCopyWithImpl<$Res>
 
 @JsonSerializable()
 
-/// @nodoc class _$_CompanyDTO extends _CompanyDTO {
+/// @nodoc
+class _$_CompanyDTO extends _CompanyDTO {
   const _$_CompanyDTO({this.name, this.title}) : super._();
 
   factory _$_CompanyDTO.fromJson(Map<String, dynamic> json) =>
