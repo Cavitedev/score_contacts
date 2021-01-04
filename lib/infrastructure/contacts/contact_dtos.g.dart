@@ -6,24 +6,33 @@ part of 'contact_dtos.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ContactDTO _$_$_ContactDTOFromJson(Map<String, dynamic> json) {
+_$_ContactDTO _$_$_ContactDTOFromJson(Map json) {
   return _$_ContactDTO(
     nameDataDTO: json['nameData'] == null
         ? null
-        : NameDataDTO.fromJson(json['nameData'] as Map<String, dynamic>),
+        : NameDataDTO.fromJson((json['nameData'] as Map)?.map(
+            (k, e) => MapEntry(k as String, e),
+          )),
     companiesDTO: (json['companies'] as List)
-        ?.map((e) =>
-            e == null ? null : CompanyDTO.fromJson(e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : CompanyDTO.fromJson((e as Map)?.map(
+                (k, e) => MapEntry(k as String, e),
+              )))
         ?.toList(),
     emailsDTO: (json['emails'] as List)
         ?.map((e) => e == null
             ? null
-            : LabelObjectDTO.fromJson(e as Map<String, dynamic>))
+            : LabelObjectDTO.fromJson((e as Map)?.map(
+                (k, e) => MapEntry(k as String, e),
+              )))
         ?.toList(),
     phonesDTO: (json['phones'] as List)
         ?.map((e) => e == null
             ? null
-            : LabelObjectDTO.fromJson(e as Map<String, dynamic>))
+            : LabelObjectDTO.fromJson((e as Map)?.map(
+                (k, e) => MapEntry(k as String, e),
+              )))
         ?.toList(),
     serverTimeStamp:
         const ServerTimeStampConverter().fromJson(json['serverTimeStamp']),
@@ -49,7 +58,7 @@ Map<String, dynamic> _$_$_ContactDTOToJson(_$_ContactDTO instance) {
   return val;
 }
 
-_$_NameDataDTO _$_$_NameDataDTOFromJson(Map<String, dynamic> json) {
+_$_NameDataDTO _$_$_NameDataDTOFromJson(Map json) {
   return _$_NameDataDTO(
     name: json['name'] as String,
     surname: json['surname'] as String,
@@ -70,7 +79,7 @@ Map<String, dynamic> _$_$_NameDataDTOToJson(_$_NameDataDTO instance) {
   return val;
 }
 
-_$_LabelObjectDTO _$_$_LabelObjectDTOFromJson(Map<String, dynamic> json) {
+_$_LabelObjectDTO _$_$_LabelObjectDTOFromJson(Map json) {
   return _$_LabelObjectDTO(
     name: json['name'] as String,
     label: json['label'] as String,
@@ -91,7 +100,7 @@ Map<String, dynamic> _$_$_LabelObjectDTOToJson(_$_LabelObjectDTO instance) {
   return val;
 }
 
-_$_CompanyDTO _$_$_CompanyDTOFromJson(Map<String, dynamic> json) {
+_$_CompanyDTO _$_$_CompanyDTOFromJson(Map json) {
   return _$_CompanyDTO(
     name: json['name'] as String,
     title: json['title'] as String,
