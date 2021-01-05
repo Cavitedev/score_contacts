@@ -6,7 +6,6 @@ import android.os.Build;
 
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.rule.ActivityTestRule;
-import dev.flutter.plugins.integration_test.FlutterTestRunner;
 
 import org.junit.Assert;
 import org.junit.Rule;
@@ -14,7 +13,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.cavitedev.scorecontacts.MainActivity;
 
 import static androidx.core.content.ContextCompat.checkSelfPermission;
 
