@@ -21,6 +21,7 @@ jobs:
         run: chmod +x ./gradlew
       - name: Add Google services json
         run: echo ${{ secrets.GOOGLE.SERVICES }} | base64 -d > android/app/google-services.json
+      - run: cat android/app/google-services.json
       - uses: subosito/flutter-action@v1
         with:
           flutter-version: '1.22.5'
