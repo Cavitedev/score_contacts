@@ -18,9 +18,9 @@ jobs:
           java-version: 1.8    
       - run: cd android
       - name: assemble tests
-        run: bash ./gradlew app:assembleAndroidTest
+        run: gradlew app:assembleAndroidTest
       - name: assemble 
-        run: bash ./gradlew app:assembleDebug -Ptarget=../integration_test.app_test.dart
+        run: gradlew app:assembleDebug -Ptarget=../integration_test.app_test.dart
       - run: cd..
       - name: decode google secret
         run: echo ${{ secrets.GCLOUD_AUTH }} | base64 --decode > ./gcloud_key_file.json
