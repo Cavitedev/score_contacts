@@ -29,18 +29,15 @@ mixin _$ContactWatcherEvent {
   TResult when<TResult extends Object>({
     @required TResult watchAllAlphabeticOrder(),
   });
-
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult watchAllAlphabeticOrder(),
     @required TResult orElse(),
   });
-
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult watchAllAlphabeticOrder(_WatchAllAlphabeticOrder value),
   });
-
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult watchAllAlphabeticOrder(_WatchAllAlphabeticOrder value),
@@ -193,7 +190,6 @@ mixin _$ContactWatcherState {
     @required TResult loadSuccess(List<SelectedContact> selectedContacts),
     @required TResult loadFailure(ContactsFailure failure),
   });
-
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
@@ -202,7 +198,6 @@ mixin _$ContactWatcherState {
     TResult loadFailure(ContactsFailure failure),
     @required TResult orElse(),
   });
-
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult initial(_Initial value),
@@ -210,7 +205,6 @@ mixin _$ContactWatcherState {
     @required TResult loadSuccess(_LoadSuccess value),
     @required TResult loadFailure(_LoadFailure value),
   });
-
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult initial(_Initial value),

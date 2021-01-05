@@ -41,7 +41,6 @@ mixin _$ContactsFailure {
     @required TResult notFound(),
     @required TResult unexpected(),
   });
-
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult insufficientPermissions(),
@@ -49,14 +48,12 @@ mixin _$ContactsFailure {
     TResult unexpected(),
     @required TResult orElse(),
   });
-
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult insufficientPermissions(_InsufficientPermissions value),
     @required TResult notFound(_NotFound value),
     @required TResult unexpected(_Unexpected value),
   });
-
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult insufficientPermissions(_InsufficientPermissions value),

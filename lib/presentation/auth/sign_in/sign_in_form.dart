@@ -40,7 +40,7 @@ class SignInForm extends StatelessWidget {
             const Spacer(),
             FlatButton.icon(
               onPressed: () {
-                context.bloc<SignInBloc>().add(SignInWithGoogle());
+                context.read<SignInBloc>().add(SignInWithGoogle());
               },
               icon: const Icon(Icons.email),
               label: const Text("Sign In with Google"),

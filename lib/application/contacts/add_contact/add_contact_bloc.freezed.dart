@@ -98,7 +98,6 @@ mixin _$AddContactEvent {
     @required TResult addCompany(),
     @required TResult deleteCompany(int index),
   });
-
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initialize(Option<Contact> contactOption, BuildContext context),
@@ -112,7 +111,6 @@ mixin _$AddContactEvent {
     TResult deleteCompany(int index),
     @required TResult orElse(),
   });
-
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult initialize(_Initialize value),
@@ -125,7 +123,6 @@ mixin _$AddContactEvent {
     @required TResult addCompany(_AddCompany value),
     @required TResult deleteCompany(_DeleteCompany value),
   });
-
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult initialize(_Initialize value),

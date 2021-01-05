@@ -51,7 +51,6 @@ mixin _$ContactActorEvent {
     @required TResult toggleSelectionContact(Contact contact),
     @required TResult deselectAllContacts(),
   });
-
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult delete(Contact contact),
@@ -60,7 +59,6 @@ mixin _$ContactActorEvent {
     TResult deselectAllContacts(),
     @required TResult orElse(),
   });
-
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult delete(_Delete value),
@@ -68,7 +66,6 @@ mixin _$ContactActorEvent {
     @required TResult toggleSelectionContact(_ToggleSelectionContact value),
     @required TResult deselectAllContacts(_DeselectAllContacts value),
   });
-
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult delete(_Delete value),
@@ -627,7 +624,6 @@ mixin _$ContactActorState {
     @required TResult selectContacts(Set<Contact> selectedContacts),
     @required TResult deleteFailure(ContactsFailure failure),
   });
-
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
@@ -637,7 +633,6 @@ mixin _$ContactActorState {
     TResult deleteFailure(ContactsFailure failure),
     @required TResult orElse(),
   });
-
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult initial(_Initial value),
@@ -646,7 +641,6 @@ mixin _$ContactActorState {
     @required TResult selectContacts(_SelectContacts value),
     @required TResult deleteFailure(_DeleteFailure value),
   });
-
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult initial(_Initial value),
@@ -1004,7 +998,6 @@ abstract class _$SelectContactsCopyWith<$Res> {
   factory _$SelectContactsCopyWith(
           _SelectContacts value, $Res Function(_SelectContacts) then) =
       __$SelectContactsCopyWithImpl<$Res>;
-
   $Res call({Set<Contact> selectedContacts});
 }
 
@@ -1144,7 +1137,6 @@ abstract class _$DeleteFailureCopyWith<$Res> {
   factory _$DeleteFailureCopyWith(
           _DeleteFailure value, $Res Function(_DeleteFailure) then) =
       __$DeleteFailureCopyWithImpl<$Res>;
-
   $Res call({ContactsFailure failure});
 
   $ContactsFailureCopyWith<$Res> get failure;

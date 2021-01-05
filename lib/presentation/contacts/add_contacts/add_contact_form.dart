@@ -36,7 +36,7 @@ class AddContactForm extends StatelessWidget {
                       prefixIcon: const Icon(Icons.person_outline),
                       // focusNode: FocusNode(),
                       onChangedValidator: (value) {
-                        context.bloc<AddContactBloc>().add(
+                        context.read<AddContactBloc>().add(
                             AddContactEvent.updateNameData(state
                                 .contact.nameData
                                 .copyWith(firstName: value)));
@@ -50,7 +50,7 @@ class AddContactForm extends StatelessWidget {
                       // focusNode: FocusNode(),
 
                       onChangedValidator: (value) {
-                        context.bloc<AddContactBloc>().add(
+                        context.read<AddContactBloc>().add(
                             AddContactEvent.updateNameData(state
                                 .contact.nameData
                                 .copyWith(surnames: value)));
@@ -126,20 +126,20 @@ class BuildCompaniesFields extends StatelessWidget {
           .toList(),
       onChangesValidators: [
         (value, index) {
-          context.bloc<AddContactBloc>().add(AddContactEvent.updateCompany(
+          context.read<AddContactBloc>().add(AddContactEvent.updateCompany(
               state.contact.companies[index].copyWith(name: value), index));
           return null;
         },
         (value, index) {
-          context.bloc<AddContactBloc>().add(AddContactEvent.updateCompany(
+          context.read<AddContactBloc>().add(AddContactEvent.updateCompany(
               state.contact.companies[index].copyWith(title: value), index));
           return null;
         },
       ],
-      onAddWidget: () => context.bloc<AddContactBloc>().add(
+      onAddWidget: () => context.read<AddContactBloc>().add(
             const AddContactEvent.addCompany(),
           ),
-      onRemoveWidget: (index) => context.bloc<AddContactBloc>().add(
+      onRemoveWidget: (index) => context.read<AddContactBloc>().add(
             AddContactEvent.deleteCompany(index),
           ),
     );

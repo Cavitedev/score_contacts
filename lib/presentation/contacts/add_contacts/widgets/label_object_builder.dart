@@ -39,17 +39,17 @@ class LabelObjectBuilder extends StatelessWidget {
       autoCorrect: autoCorrect,
       inputFormatters: inputFormatters,
       onAddWidget: () => context
-          .bloc<AddContactBloc>()
+          .read<AddContactBloc>()
           .add(AddContactEvent.addLabelObject(defaultLabelObject)),
-      onRemoveWidget: (pos) => context.bloc<AddContactBloc>().add(
+      onRemoveWidget: (pos) => context.read<AddContactBloc>().add(
           AddContactEvent.removeLabelObject(
               defaultLabelObject.runtimeType, pos)),
-      onTextChanged: (i, str) => context.bloc<AddContactBloc>().add(
+      onTextChanged: (i, str) => context.read<AddContactBloc>().add(
           AddContactEvent.labelObjectChanged(
               state.contact.labelObjects[defaultLabelObject.runtimeType][i]
                   .copyWith(value: str),
               i)),
-      onLabelChanged: (i, value) => context.bloc<AddContactBloc>().add(
+      onLabelChanged: (i, value) => context.read<AddContactBloc>().add(
           AddContactEvent.labelObjectChanged(
               state.contact.labelObjects[defaultLabelObject.runtimeType][i]
                   .copyWith(label: value),

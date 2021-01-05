@@ -66,7 +66,7 @@ class ContactsListScaffold extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          context.bloc<ContactActorBloc>().add(
+          context.read<ContactActorBloc>().add(
               const ContactActorEvent
                   .deselectAllContacts());
           ExtendedNavigator.of(context).pushAddContactPage();

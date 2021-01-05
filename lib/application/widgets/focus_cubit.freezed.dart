@@ -35,20 +35,17 @@ mixin _$FocusState {
     @required TResult focused(),
     @required TResult unfocused(),
   });
-
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult focused(),
     TResult unfocused(),
     @required TResult orElse(),
   });
-
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult focused(_Focused value),
     @required TResult unfocused(_Unfocused value),
   });
-
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult focused(_Focused value),

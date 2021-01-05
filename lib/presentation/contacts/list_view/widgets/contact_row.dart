@@ -28,7 +28,7 @@ class ContactRow extends StatelessWidget {
       onLongPress: () {
         final Offset offset = (context.findRenderObject() as RenderBox)
             .localToGlobal(Offset.zero);
-        final contactActorBloc = context.bloc<ContactActorBloc>();
+        final contactActorBloc = context.watch<ContactActorBloc>();
         const rowHeight = 60;
         showMenu(
             context: context,
