@@ -21,10 +21,10 @@ jobs:
         run: pwd
       - name: assemble tests
         working-directory: ./android
-        run: ./gradlew app:assembleAndroidTest
+        run: gradlew app:assembleAndroidTest
       - name: assemble 
         working-directory: ./android
-        run: ./gradlew app:assembleDebug -Ptarget=../integration_test.app_test.dart
+        run: gradlew app:assembleDebug -Ptarget=../integration_test.app_test.dart
       - name: decode google secret
         run: echo ${{ secrets.GCLOUD_AUTH }} | base64 --decode > ./gcloud_key_file.json
       - name: Sign in Google
