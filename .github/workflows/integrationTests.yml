@@ -16,6 +16,9 @@ jobs:
         uses: actions/setup-java@v1.4.3
         with:
           java-version: 1.8 
+      - name: pwd
+        working-directory: ./android
+        run: pwd
       - name: assemble tests
         working-directory: ./android
         run: ./gradlew app:assembleAndroidTest
