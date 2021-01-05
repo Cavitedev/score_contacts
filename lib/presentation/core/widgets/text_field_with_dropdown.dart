@@ -95,7 +95,7 @@ class _TextFieldWithDropdownState extends State<TextFieldWithDropdown> {
           ),
         ),
         Expanded(
-          flex: 2,
+          flex: 3,
           child: OutlinedInputField(
             topPadding: TextFieldWithDropdown.topMargin,
             writtenText: widget.labelObject.value ?? "",
