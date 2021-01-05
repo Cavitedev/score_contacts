@@ -19,8 +19,9 @@ jobs:
       - name: Make Gradle executable
         working-directory: ./android
         run: chmod +x ./gradlew
+      - run: echo "${{ secrets.GOOGLE.SERVICES }}"
       - name: Add Google services json
-        run: echo ${{ secrets.GOOGLE.SERVICES }} | base64 -d > android/app/google-services.json
+        run: echo "${{ secrets.GOOGLE.SERVICES }}" | base64 -d > android/app/google-services.json
       - run: cat android/app/google-services.json
       - uses: subosito/flutter-action@v1
         with:
@@ -33,7 +34,7 @@ jobs:
         working-directory: ./android
         run: ./gradlew app:assembleDebug -Ptarget=../integration_test.app_test.dart
       - name: decode google secret
-        run: echo ${{ secrets.GCLOUD_AUTH }} | base64 --decode > ./gcloud_key_file.json
+        run: echo "${{ secrets.GCLOUD_AUTH }}" | base64 --decode > ./gcloud_key_file.json
       - name: Sign in Google
         run: gcloud auth activate-service-account --key-file=gcloud_key_file.json
       - name: Set project
