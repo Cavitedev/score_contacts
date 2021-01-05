@@ -8,37 +8,17 @@ import 'package:scorecontacts/application/auth/auth_event.dart';
 import 'package:scorecontacts/injection.dart';
 import 'package:scorecontacts/presentation/routes/router.gr.dart' as r;
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   configureInjection(Environment.prod);
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  bool isPluginsBuilt = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _buildPlugins();
-  }
-
-  Future<void> _buildPlugins() async {
-    await Firebase.initializeApp();
-
-    setState(() {
-      isPluginsBuilt = true;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
-    if (isPluginsBuilt) {
       return MultiBlocProvider(
         providers: [
           BlocProvider(
@@ -90,9 +70,5 @@ class _MyAppState extends State<MyApp> {
           ),
         ),
       );
-    } else {
-      // ignore: avoid_unnecessary_containers
-      return Container(child: const CircularProgressIndicator());
     }
-  }
 }
