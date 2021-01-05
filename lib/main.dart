@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
                   fontSize: 24,
                 ),
                 headline6: const TextStyle(fontSize: 20, letterSpacing: .5),
-                subtitle1: const TextStyle(fontSize: 20, letterSpacing: .5),
+                subtitle1: const TextStyle(fontSize: 18, letterSpacing: .5),
                 subtitle2: const TextStyle(
                   fontSize: 18,
                   letterSpacing: .5,

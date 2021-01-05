@@ -82,6 +82,7 @@ class _TextFieldWithDropdownState extends State<TextFieldWithDropdown> {
     return Row(
       children: <Widget>[
         Expanded(
+          flex: 2,
           child: OutlinedDropdownButton(
             items: widget.labelObject.otherLabels,
             focusNode: focusNode,
@@ -95,7 +96,7 @@ class _TextFieldWithDropdownState extends State<TextFieldWithDropdown> {
           ),
         ),
         Expanded(
-          flex: 3,
+          flex: 5,
           child: OutlinedInputField(
             topPadding: TextFieldWithDropdown.topMargin,
             writtenText: widget.labelObject.value ?? "",

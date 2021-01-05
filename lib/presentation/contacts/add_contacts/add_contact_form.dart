@@ -115,6 +115,7 @@ class BuildCompaniesFields extends StatelessWidget {
           hintText: "Company",
           prefixIcon: Icon(Icons.business),
           textCapitalization: TextCapitalization.words,
+          topPadding: 3,
         ),
         OutlinedInputField(
           hintText: "Title",
