@@ -17,7 +17,6 @@ import 'application/contacts/contact_watcher/contact_watcher_bloc.dart';
 import 'infrastructure/contacts/contacts_repository.dart';
 import 'infrastructure/auth/firebase_auth_facade.dart';
 import 'infrastructure/core/firebase_injectable_module.dart';
-import 'application/widgets/focus_cubit.dart';
 import 'domain/auth/i_auth_facade.dart';
 import 'domain/user/contacts_data/i_contact_repository.dart';
 import 'application/auth/sign_in/sign_in_bloc.dart';
@@ -34,7 +33,6 @@ GetIt $initGetIt(
   final firebaseInjectableModule = _$FirebaseInjectableModule();
   gh.lazySingleton<FirebaseAuth>(() => firebaseInjectableModule.firebaseAuth);
   gh.lazySingleton<FirebaseFirestore>(() => firebaseInjectableModule.firestore);
-  gh.factory<FocusCubit>(() => FocusCubit());
   gh.lazySingleton<GoogleSignIn>(() => firebaseInjectableModule.googleSignIn);
   gh.factory<IAuthFacade>(() => FirebaseAuthFacade(
       googleSignIn: get<GoogleSignIn>(), firebaseAuth: get<FirebaseAuth>()));
