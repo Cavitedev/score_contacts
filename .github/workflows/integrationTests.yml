@@ -17,10 +17,11 @@ jobs:
         with:
           java-version: 1.8    
       - run: cd android
+      - run: pwd
       - name: assemble tests
-        run: gradlew app:assembleAndroidTest
+        run: ./gradlew app:assembleAndroidTest
       - name: assemble 
-        run: gradlew app:assembleDebug -Ptarget=../integration_test.app_test.dart
+        run: ./gradlew app:assembleDebug -Ptarget=../integration_test.app_test.dart
       - run: cd..
       - name: decode google secret
         run: echo ${{ secrets.GCLOUD_AUTH }} | base64 --decode > ./gcloud_key_file.json
