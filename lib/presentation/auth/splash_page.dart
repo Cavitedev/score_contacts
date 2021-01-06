@@ -11,9 +11,9 @@ class SplashPage extends StatelessWidget {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is UnauthenticatedAuthState) {
-          ExtendedNavigator.of(context).pushSignInPage();
+          ExtendedNavigator.of(context).popAndPush(Routes.signInPage);
         } else if (state is AuthenticatedAuthState) {
-          ExtendedNavigator.of(context).pushContactList();
+          ExtendedNavigator.of(context).popAndPush(Routes.contactList);
         }
       },
       child: const Scaffold(

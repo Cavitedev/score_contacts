@@ -33,6 +33,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData.dark().copyWith(
             scaffoldBackgroundColor: const Color.fromRGBO(30, 30, 30, 1),
             dialogBackgroundColor: const Color.fromRGBO(35, 35, 35, 1),
+            primaryColor: Colors.blue[800],
             accentColor: Colors.grey[400],
             floatingActionButtonTheme: FloatingActionButtonThemeData(
               backgroundColor: Colors.blue[900],
