@@ -9,6 +9,7 @@ import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import org.json.JSONObject
 
 class MainActivity : FlutterActivity() {
     private val CONTACTS_CHANNEL = "com.cavitedev.scorecontacts/contacts"
@@ -36,7 +37,9 @@ class MainActivity : FlutterActivity() {
                 GlobalScope.launch {
 
                     val contacts = ContactsService.fetchContacts(context)
-                    result.success(contacts)
+                    val json = JSONObject()
+                    json.put("contacts", contacts)
+                    result.success(json.toString())
 
                 }
 

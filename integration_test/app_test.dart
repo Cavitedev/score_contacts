@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:scorecontacts/main.dart' as m;
@@ -14,6 +15,14 @@ void main(){
     expect(find.byType(SignInPage), findsOneWidget);
   });
 
+  testWidgets('get contacts from phone on Android sucessfully works', (WidgetTester tester) async {
+    await m.main();
+    const channel = MethodChannel("com.cavitedev.scorecontacts/contacts");
+    final String result = await channel.invokeMethod("getContacts");
+    const String matcher = '{"id":"1","name":"hola","emails":"[a@a.com, b@b.es]","numbers":"[1]"}';
+    expect(result, matcher);
 
+
+  });
 
 }

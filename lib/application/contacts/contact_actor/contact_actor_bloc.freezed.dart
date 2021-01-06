@@ -36,6 +36,11 @@ class _$ContactActorEventTearOff {
   _DeselectAllContacts deselectAllContacts() {
     return const _DeselectAllContacts();
   }
+
+// ignore: unused_element
+  _LoadContactsFromSystem loadContactsFromSystem() {
+    return const _LoadContactsFromSystem();
+  }
 }
 
 /// @nodoc
@@ -50,6 +55,7 @@ mixin _$ContactActorEvent {
     @required TResult deleteSelectedContacts(),
     @required TResult toggleSelectionContact(Contact contact),
     @required TResult deselectAllContacts(),
+    @required TResult loadContactsFromSystem(),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
@@ -57,6 +63,7 @@ mixin _$ContactActorEvent {
     TResult deleteSelectedContacts(),
     TResult toggleSelectionContact(Contact contact),
     TResult deselectAllContacts(),
+    TResult loadContactsFromSystem(),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -65,6 +72,7 @@ mixin _$ContactActorEvent {
     @required TResult deleteSelectedContacts(_DeleteSelectedContacts value),
     @required TResult toggleSelectionContact(_ToggleSelectionContact value),
     @required TResult deselectAllContacts(_DeselectAllContacts value),
+    @required TResult loadContactsFromSystem(_LoadContactsFromSystem value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
@@ -72,6 +80,7 @@ mixin _$ContactActorEvent {
     TResult deleteSelectedContacts(_DeleteSelectedContacts value),
     TResult toggleSelectionContact(_ToggleSelectionContact value),
     TResult deselectAllContacts(_DeselectAllContacts value),
+    TResult loadContactsFromSystem(_LoadContactsFromSystem value),
     @required TResult orElse(),
   });
 }
@@ -166,11 +175,13 @@ class _$_Delete implements _Delete {
     @required TResult deleteSelectedContacts(),
     @required TResult toggleSelectionContact(Contact contact),
     @required TResult deselectAllContacts(),
+    @required TResult loadContactsFromSystem(),
   }) {
     assert(delete != null);
     assert(deleteSelectedContacts != null);
     assert(toggleSelectionContact != null);
     assert(deselectAllContacts != null);
+    assert(loadContactsFromSystem != null);
     return delete(contact);
   }
 
@@ -181,6 +192,7 @@ class _$_Delete implements _Delete {
     TResult deleteSelectedContacts(),
     TResult toggleSelectionContact(Contact contact),
     TResult deselectAllContacts(),
+    TResult loadContactsFromSystem(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -197,11 +209,13 @@ class _$_Delete implements _Delete {
     @required TResult deleteSelectedContacts(_DeleteSelectedContacts value),
     @required TResult toggleSelectionContact(_ToggleSelectionContact value),
     @required TResult deselectAllContacts(_DeselectAllContacts value),
+    @required TResult loadContactsFromSystem(_LoadContactsFromSystem value),
   }) {
     assert(delete != null);
     assert(deleteSelectedContacts != null);
     assert(toggleSelectionContact != null);
     assert(deselectAllContacts != null);
+    assert(loadContactsFromSystem != null);
     return delete(this);
   }
 
@@ -212,6 +226,7 @@ class _$_Delete implements _Delete {
     TResult deleteSelectedContacts(_DeleteSelectedContacts value),
     TResult toggleSelectionContact(_ToggleSelectionContact value),
     TResult deselectAllContacts(_DeselectAllContacts value),
+    TResult loadContactsFromSystem(_LoadContactsFromSystem value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -272,11 +287,13 @@ class _$_DeleteSelectedContacts implements _DeleteSelectedContacts {
     @required TResult deleteSelectedContacts(),
     @required TResult toggleSelectionContact(Contact contact),
     @required TResult deselectAllContacts(),
+    @required TResult loadContactsFromSystem(),
   }) {
     assert(delete != null);
     assert(deleteSelectedContacts != null);
     assert(toggleSelectionContact != null);
     assert(deselectAllContacts != null);
+    assert(loadContactsFromSystem != null);
     return deleteSelectedContacts();
   }
 
@@ -287,6 +304,7 @@ class _$_DeleteSelectedContacts implements _DeleteSelectedContacts {
     TResult deleteSelectedContacts(),
     TResult toggleSelectionContact(Contact contact),
     TResult deselectAllContacts(),
+    TResult loadContactsFromSystem(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -303,11 +321,13 @@ class _$_DeleteSelectedContacts implements _DeleteSelectedContacts {
     @required TResult deleteSelectedContacts(_DeleteSelectedContacts value),
     @required TResult toggleSelectionContact(_ToggleSelectionContact value),
     @required TResult deselectAllContacts(_DeselectAllContacts value),
+    @required TResult loadContactsFromSystem(_LoadContactsFromSystem value),
   }) {
     assert(delete != null);
     assert(deleteSelectedContacts != null);
     assert(toggleSelectionContact != null);
     assert(deselectAllContacts != null);
+    assert(loadContactsFromSystem != null);
     return deleteSelectedContacts(this);
   }
 
@@ -318,6 +338,7 @@ class _$_DeleteSelectedContacts implements _DeleteSelectedContacts {
     TResult deleteSelectedContacts(_DeleteSelectedContacts value),
     TResult toggleSelectionContact(_ToggleSelectionContact value),
     TResult deselectAllContacts(_DeselectAllContacts value),
+    TResult loadContactsFromSystem(_LoadContactsFromSystem value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -409,11 +430,13 @@ class _$_ToggleSelectionContact implements _ToggleSelectionContact {
     @required TResult deleteSelectedContacts(),
     @required TResult toggleSelectionContact(Contact contact),
     @required TResult deselectAllContacts(),
+    @required TResult loadContactsFromSystem(),
   }) {
     assert(delete != null);
     assert(deleteSelectedContacts != null);
     assert(toggleSelectionContact != null);
     assert(deselectAllContacts != null);
+    assert(loadContactsFromSystem != null);
     return toggleSelectionContact(contact);
   }
 
@@ -424,6 +447,7 @@ class _$_ToggleSelectionContact implements _ToggleSelectionContact {
     TResult deleteSelectedContacts(),
     TResult toggleSelectionContact(Contact contact),
     TResult deselectAllContacts(),
+    TResult loadContactsFromSystem(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -440,11 +464,13 @@ class _$_ToggleSelectionContact implements _ToggleSelectionContact {
     @required TResult deleteSelectedContacts(_DeleteSelectedContacts value),
     @required TResult toggleSelectionContact(_ToggleSelectionContact value),
     @required TResult deselectAllContacts(_DeselectAllContacts value),
+    @required TResult loadContactsFromSystem(_LoadContactsFromSystem value),
   }) {
     assert(delete != null);
     assert(deleteSelectedContacts != null);
     assert(toggleSelectionContact != null);
     assert(deselectAllContacts != null);
+    assert(loadContactsFromSystem != null);
     return toggleSelectionContact(this);
   }
 
@@ -455,6 +481,7 @@ class _$_ToggleSelectionContact implements _ToggleSelectionContact {
     TResult deleteSelectedContacts(_DeleteSelectedContacts value),
     TResult toggleSelectionContact(_ToggleSelectionContact value),
     TResult deselectAllContacts(_DeselectAllContacts value),
+    TResult loadContactsFromSystem(_LoadContactsFromSystem value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -516,11 +543,13 @@ class _$_DeselectAllContacts implements _DeselectAllContacts {
     @required TResult deleteSelectedContacts(),
     @required TResult toggleSelectionContact(Contact contact),
     @required TResult deselectAllContacts(),
+    @required TResult loadContactsFromSystem(),
   }) {
     assert(delete != null);
     assert(deleteSelectedContacts != null);
     assert(toggleSelectionContact != null);
     assert(deselectAllContacts != null);
+    assert(loadContactsFromSystem != null);
     return deselectAllContacts();
   }
 
@@ -531,6 +560,7 @@ class _$_DeselectAllContacts implements _DeselectAllContacts {
     TResult deleteSelectedContacts(),
     TResult toggleSelectionContact(Contact contact),
     TResult deselectAllContacts(),
+    TResult loadContactsFromSystem(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -547,11 +577,13 @@ class _$_DeselectAllContacts implements _DeselectAllContacts {
     @required TResult deleteSelectedContacts(_DeleteSelectedContacts value),
     @required TResult toggleSelectionContact(_ToggleSelectionContact value),
     @required TResult deselectAllContacts(_DeselectAllContacts value),
+    @required TResult loadContactsFromSystem(_LoadContactsFromSystem value),
   }) {
     assert(delete != null);
     assert(deleteSelectedContacts != null);
     assert(toggleSelectionContact != null);
     assert(deselectAllContacts != null);
+    assert(loadContactsFromSystem != null);
     return deselectAllContacts(this);
   }
 
@@ -562,6 +594,7 @@ class _$_DeselectAllContacts implements _DeselectAllContacts {
     TResult deleteSelectedContacts(_DeleteSelectedContacts value),
     TResult toggleSelectionContact(_ToggleSelectionContact value),
     TResult deselectAllContacts(_DeselectAllContacts value),
+    TResult loadContactsFromSystem(_LoadContactsFromSystem value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -574,6 +607,115 @@ class _$_DeselectAllContacts implements _DeselectAllContacts {
 
 abstract class _DeselectAllContacts implements ContactActorEvent {
   const factory _DeselectAllContacts() = _$_DeselectAllContacts;
+}
+
+/// @nodoc
+abstract class _$LoadContactsFromSystemCopyWith<$Res> {
+  factory _$LoadContactsFromSystemCopyWith(_LoadContactsFromSystem value,
+          $Res Function(_LoadContactsFromSystem) then) =
+      __$LoadContactsFromSystemCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$LoadContactsFromSystemCopyWithImpl<$Res>
+    extends _$ContactActorEventCopyWithImpl<$Res>
+    implements _$LoadContactsFromSystemCopyWith<$Res> {
+  __$LoadContactsFromSystemCopyWithImpl(_LoadContactsFromSystem _value,
+      $Res Function(_LoadContactsFromSystem) _then)
+      : super(_value, (v) => _then(v as _LoadContactsFromSystem));
+
+  @override
+  _LoadContactsFromSystem get _value => super._value as _LoadContactsFromSystem;
+}
+
+/// @nodoc
+class _$_LoadContactsFromSystem implements _LoadContactsFromSystem {
+  const _$_LoadContactsFromSystem();
+
+  @override
+  String toString() {
+    return 'ContactActorEvent.loadContactsFromSystem()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _LoadContactsFromSystem);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult delete(Contact contact),
+    @required TResult deleteSelectedContacts(),
+    @required TResult toggleSelectionContact(Contact contact),
+    @required TResult deselectAllContacts(),
+    @required TResult loadContactsFromSystem(),
+  }) {
+    assert(delete != null);
+    assert(deleteSelectedContacts != null);
+    assert(toggleSelectionContact != null);
+    assert(deselectAllContacts != null);
+    assert(loadContactsFromSystem != null);
+    return loadContactsFromSystem();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult delete(Contact contact),
+    TResult deleteSelectedContacts(),
+    TResult toggleSelectionContact(Contact contact),
+    TResult deselectAllContacts(),
+    TResult loadContactsFromSystem(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (loadContactsFromSystem != null) {
+      return loadContactsFromSystem();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult delete(_Delete value),
+    @required TResult deleteSelectedContacts(_DeleteSelectedContacts value),
+    @required TResult toggleSelectionContact(_ToggleSelectionContact value),
+    @required TResult deselectAllContacts(_DeselectAllContacts value),
+    @required TResult loadContactsFromSystem(_LoadContactsFromSystem value),
+  }) {
+    assert(delete != null);
+    assert(deleteSelectedContacts != null);
+    assert(toggleSelectionContact != null);
+    assert(deselectAllContacts != null);
+    assert(loadContactsFromSystem != null);
+    return loadContactsFromSystem(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult delete(_Delete value),
+    TResult deleteSelectedContacts(_DeleteSelectedContacts value),
+    TResult toggleSelectionContact(_ToggleSelectionContact value),
+    TResult deselectAllContacts(_DeselectAllContacts value),
+    TResult loadContactsFromSystem(_LoadContactsFromSystem value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (loadContactsFromSystem != null) {
+      return loadContactsFromSystem(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadContactsFromSystem implements ContactActorEvent {
+  const factory _LoadContactsFromSystem() = _$_LoadContactsFromSystem;
 }
 
 /// @nodoc

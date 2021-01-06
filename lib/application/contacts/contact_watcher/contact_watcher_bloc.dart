@@ -45,7 +45,8 @@ class ContactWatcherBloc
             });
           });
         });
-      },
+      }
+
     );
   }
 
@@ -64,4 +65,8 @@ class ContactWatcherBloc
     return (contact.nameData.firstName + (contact.nameData.surnames ?? ""))
         .toLowerCase();
   }
+
+
+
+
 }
