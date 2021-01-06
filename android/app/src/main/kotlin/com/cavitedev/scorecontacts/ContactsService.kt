@@ -7,16 +7,17 @@ import android.provider.ContactsContract
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 
-class ContactsService(context: Context) {
+object ContactsService {
 
-    private val contentRes : ContentResolver = context.contentResolver
 
-    suspend fun fetchContacts() : List<Contact> {
+
+    suspend fun fetchContacts(context: Context) : List<Contact> {
+        val contentRes : ContentResolver = context.contentResolver
         var contacts : List<Contact>
         coroutineScope {
-            val contactsListAsync = async { getPhoneContacts() }
-            val contactNumbersAsync = async { getContactNumbers() }
-            val contactEmailAsync = async { getContactEmails() }
+            val contactsListAsync = async { getPhoneContacts(contentRes) }
+            val contactNumbersAsync = async { getContactNumbers(contentRes) }
+            val contactEmailAsync = async { getContactEmails(contentRes) }
 
             contacts = contactsListAsync.await()
             val contactNumbers = contactNumbersAsync.await()
@@ -34,7 +35,7 @@ class ContactsService(context: Context) {
         return contacts
     }
 
-    private fun getPhoneContacts(): ArrayList<Contact> {
+    private fun getPhoneContacts(contentRes: ContentResolver): ArrayList<Contact> {
         val contactsList = ArrayList<Contact>()
         val contactsCursor = contentRes.query(
                 ContactsContract.Contacts.CONTENT_URI,
@@ -57,7 +58,7 @@ class ContactsService(context: Context) {
         return contactsList
     }
 
-    private fun getContactNumbers(): HashMap<String, ArrayList<String>> {
+    private fun getContactNumbers(contentRes: ContentResolver): HashMap<String, ArrayList<String>> {
         val contactsNumberMap = HashMap<String, ArrayList<String>>()
         val phoneCursor: Cursor? = contentRes.query(
                 ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
@@ -85,7 +86,7 @@ class ContactsService(context: Context) {
         return contactsNumberMap
     }
 
-    private fun getContactEmails(): HashMap<String, ArrayList<String>> {
+    private fun getContactEmails(contentRes: ContentResolver): HashMap<String, ArrayList<String>> {
         val contactsEmailMap = HashMap<String, ArrayList<String>>()
         val emailCursor = contentRes.query(ContactsContract.CommonDataKinds.Email.CONTENT_URI,
                 null,
