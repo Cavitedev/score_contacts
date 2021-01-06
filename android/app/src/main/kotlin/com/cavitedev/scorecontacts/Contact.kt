@@ -9,11 +9,13 @@ class Contact(val id: String, val name: String) {
 
 
     fun toJson() : String{
+
+
         val json = JSONObject()
         json.put("id",id)
         json.put("name",name)
-        json.put("emails",emails)
-        json.put("numbers", numbers)
+        emails?.forEach{json.accumulate("emails",it)}
+        numbers?.forEach { json.accumulate("numbers",it) }
 
         return json.toString()
 
