@@ -41,12 +41,18 @@ abstract class Contact implements _$Contact {
   }
 
   factory Contact.fromMap(Map<String,dynamic> map){
+    final List<dynamic> phones = (map["numbers"] is String) ? [map["numbers"]]
+        : (map["numbers"] as List<dynamic>);
+
+    final List<dynamic> emails = (map["emails"] is String) ? [map["emails"]]
+        : map["emails"] as List<dynamic>;
+
   return Contact(
   id: UniqueID.fromUniqueString(map["id"] as String),
   nameData: NameData(firstName: map["name"] as String),
     labelObjects: {
-    Phone: [Phone(value: map["numbers"] as String)],
-    Email: (map["emails"] as List<dynamic>).map((e) => Email(value: e as String)).toList(),
+    Phone: phones.map((e) => Phone(value: e as String)).toList(),
+    Email: emails.map((e) => Email(value: e as String)).toList(),
 
     }
 
