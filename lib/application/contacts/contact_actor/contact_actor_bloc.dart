@@ -109,7 +109,7 @@ class ContactActorBloc extends Bloc<ContactActorEvent, ContactActorState> {
       },
       loadContactsFromSystem: (e) async* {
         await _reloadContactsFromSystem();
-        yield const ContactActorState.initial();
+        yield state;
       },
     );
   }
@@ -117,6 +117,6 @@ class ContactActorBloc extends Bloc<ContactActorEvent, ContactActorState> {
   Future<void> _reloadContactsFromSystem() async {
     const channel = MethodChannel("com.cavitedev.scorecontacts/contacts");
     String result = await channel.invokeMethod("getContacts");
-
+    print(result);
   }
 }
