@@ -12,19 +12,20 @@ import 'package:scorecontacts/domain/user/contacts_data/contacts_failure.dart';
 import 'package:scorecontacts/domain/user/contacts_data/i_contact_repository.dart';
 
 part 'contact_actor_bloc.freezed.dart';
+
 part 'contact_actor_event.dart';
+
 part 'contact_actor_state.dart';
 
 @injectable
 class ContactActorBloc extends Bloc<ContactActorEvent, ContactActorState> {
   final IContactsRepository repository;
 
+
   ContactActorBloc(this.repository) : super(const ContactActorState.initial());
 
   @override
-  Stream<ContactActorState> mapEventToState(
-    ContactActorEvent event,
-  ) async* {
+  Stream<ContactActorState> mapEventToState(ContactActorEvent event,) async* {
     yield* event.map(
       delete: (e) async* {
         ContactActorState successfulState;
@@ -45,17 +46,18 @@ class ContactActorBloc extends Bloc<ContactActorEvent, ContactActorState> {
         });
         yield const ContactActorState.actionInProgress();
         final Either<ContactsFailure, Unit> failureOrUnit =
-            await repository.deleteContact(e.contact);
+        await repository.deleteContact(e.contact);
 
         yield failureOrUnit.fold(
-            (f) => ContactActorState.deleteFailure(f), (_) => successfulState);
+                (f) => ContactActorState.deleteFailure(f), (
+            _) => successfulState);
       },
       deleteSelectedContacts: (e) async* {
         yield* state.maybeMap(
             selectContacts: (state) async* {
               yield const ContactActorState.actionInProgress();
               final List<Future<Either<ContactsFailure, Unit>>>
-                  failureOrUnitsFutures = [];
+              failureOrUnitsFutures = [];
               for (final Contact contact in state.selectedContacts) {
                 failureOrUnitsFutures.add(repository.deleteContact(contact));
               }
@@ -63,23 +65,24 @@ class ContactActorBloc extends Bloc<ContactActorEvent, ContactActorState> {
               for (final failureOrUnit in failuresOrUnits) {
                 if (failureOrUnit.isLeft()) {
                   yield failureOrUnit.fold(
-                      (f) => ContactActorState.deleteFailure(f),
-                      (_) =>
-                          throw ImpossibleToReachError(msg: "Should be left"));
+                          (f) => ContactActorState.deleteFailure(f),
+                          (_) =>
+                      throw ImpossibleToReachError(msg: "Should be left"));
                   return;
                 }
               }
               yield const ContactActorState.deleteSuccessful();
             },
-            orElse: () => throw ImpossibleToReachError(
+            orElse: () =>
+            throw ImpossibleToReachError(
                 msg:
-                    "Event should only be called if there are any selected contact"));
+                "Event should only be called if there are any selected contact"));
       },
       toggleSelectionContact: (e) async* {
         yield* state.maybeMap(
           selectContacts: (state) async* {
             final Set<Contact> selectedContacts =
-                Set.of(state.selectedContacts);
+            Set.of(state.selectedContacts);
             if (selectedContacts.contains(e.contact)) {
               selectedContacts.remove(e.contact);
             } else {
@@ -116,7 +119,12 @@ class ContactActorBloc extends Bloc<ContactActorEvent, ContactActorState> {
 
   Future<void> _reloadContactsFromSystem() async {
     const channel = MethodChannel("com.cavitedev.scorecontacts/contacts");
-    String result = await channel.invokeMethod("getContacts");
-    print(result);
+    String result;
+    try {
+      result = await channel.invokeMethod("getContacts");
+      print(result);
+    }on PlatformException{
+      result = null;
+    }
   }
 }

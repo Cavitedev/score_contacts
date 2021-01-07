@@ -7,8 +7,7 @@ import android.os.PersistableBundle
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import org.json.JSONObject
 
 class MainActivity : FlutterActivity() {
@@ -30,18 +29,25 @@ class MainActivity : FlutterActivity() {
     }
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
+        val channel = MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CONTACTS_CHANNEL)
+
         super.configureFlutterEngine(flutterEngine)
-        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CONTACTS_CHANNEL).setMethodCallHandler { call, result ->
+
+        channel.setMethodCallHandler { call, result ->
+
 
             if (call.method == "getContacts") {
-                GlobalScope.launch {
+//                val contact = Contact("1", "hola")
+//                result.success(contact.toJson())
 
+
+                runBlocking {
                     val contacts = ContactsService.fetchContacts(context)
                     val json = JSONObject()
-                    json.put("contacts", contacts)
+                    contacts.forEach { json.accumulate("contacts", it.toJson()) }
                     result.success(json.toString())
-
                 }
+
 
             } else {
                 result.notImplemented()
@@ -49,6 +55,5 @@ class MainActivity : FlutterActivity() {
 
         }
     }
-
 
 }
