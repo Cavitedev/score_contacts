@@ -43,6 +43,7 @@ class _ContactsListScaffoldState extends State<ContactsListScaffold> {
                   title: const Text('Load Contacts from device'),
                   leading: const Icon(Icons.phone_android),
                   onTap: () {
+                    Navigator.pop(context);
                     context
                         .read<ContactActorBloc>()
                         .add(const ContactActorEvent.loadContactsFromSystem());
@@ -67,17 +68,26 @@ class _ContactsListScaffoldState extends State<ContactsListScaffold> {
                   },
                 ),
                 TextFieldContainer(
-                  child: TextField(
-                    decoration: InputDecoration(
-                        icon: IconButton(
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: IconButton(
                           icon: const Icon(Icons.menu),
                           onPressed: () {
-                            FocusScope.of(context).unfocus();
                             _scaffoldKey.currentState.openDrawer();
+                            FocusScope.of(context).unfocus();
                           },
                         ),
-                        hintText: "🔎 Search ${widget.contacts.length} contacts",
-                        border: InputBorder.none),
+                      ),
+                      Expanded(
+                        flex: 8,
+                        child: TextField(
+                          decoration: InputDecoration(
+                              hintText: "🔎 Search ${widget.contacts.length} contacts",
+                              border: InputBorder.none),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 Expanded(
