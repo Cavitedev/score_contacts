@@ -37,17 +37,17 @@ abstract class ContactDTO implements _$ContactDTO {
       companiesDTO: contact.companies
           ?.where((comp) => comp.title != null || comp.name != null)
           ?.map((comp) => CompanyDTO.fromDomain(comp))
-          ?.toList() ?? [],
+          ?.toList(),
       emailsDTO: (contact.labelObjects ?? const {})[Email]
           ?.where((email) => email.value != null)
           ?.map(
               (emailLabelObject) => LabelObjectDTO.fromDomain(emailLabelObject))
-          ?.toList() ?? [],
+          ?.toList(),
       phonesDTO: (contact.labelObjects ?? const{})[Phone]
           ?.where((phone) => phone.value != null)
           ?.map((phoneLabelObject) {
         return LabelObjectDTO.fromDomain(phoneLabelObject);
-      })?.toList() ?? [],
+      })?.toList() ,
       serverTimeStamp: FieldValue.serverTimestamp(),
     );
   }
@@ -56,16 +56,16 @@ abstract class ContactDTO implements _$ContactDTO {
     return Contact(
       id: UniqueID.fromUniqueString(id),
       nameData: nameDataDTO.toDomain(),
-      companies: companiesDTO.isEmpty
+      companies: (companiesDTO == null || companiesDTO.isEmpty)
           ? [Company.empty()]
           : companiesDTO.map((comp) => comp.toDomain()).toList(),
       labelObjects: {
-        Email: emailsDTO.isEmpty
+        Email: (emailsDTO == null || emailsDTO.isEmpty)
             ? [const Email()]
             : emailsDTO
                 .map((dto) => Email.fromLabelObject(dto.toDomain()))
                 .toList(),
-        Phone: phonesDTO.isEmpty
+        Phone: (phonesDTO == null || phonesDTO.isEmpty)
             ? [const Phone()]
             : phonesDTO
                 .map((dto) => Phone.fromLabelObject(dto.toDomain()))

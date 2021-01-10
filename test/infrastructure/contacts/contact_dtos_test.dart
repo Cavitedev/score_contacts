@@ -1,7 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:scorecontacts/domain/core/unique_id.dart';
 import 'package:scorecontacts/domain/user/contacts_data/contact.dart';
+import 'package:scorecontacts/domain/user/contacts_data/properties/company.dart';
+import 'package:scorecontacts/domain/user/contacts_data/properties/email.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/names/name_data.dart';
+import 'package:scorecontacts/domain/user/contacts_data/properties/phone.dart';
 import 'package:scorecontacts/infrastructure/contacts/contact_dtos.dart';
 
 import '../../core/fixtures/contacts.dart';
@@ -12,7 +15,7 @@ void main() {
 
 
 
-  test('Simple contact can be converted to json without errors', () {
+  test('Simple contact can be converted from domain without errors', () {
     const NameData nameDataDomain =
         NameData(firstName: "Ej1", surnames: "EjSurname");
     final Contact contact = Contact(
@@ -22,9 +25,6 @@ void main() {
     final ContactDTO expectedDto = ContactDTO(
       id: "1",
       nameDataDTO: NameDataDTO.fromDomain(nameDataDomain),
-      companiesDTO: [],
-      phonesDTO: [],
-      emailsDTO: []
     );
     final ContactDTO contactDTO = ContactDTO.fromDomain(contact);
     expect(expectedDto.id, contactDTO.id);
@@ -32,6 +32,23 @@ void main() {
     expect(expectedDto.emailsDTO, contactDTO.emailsDTO);
     expect(expectedDto.phonesDTO, contactDTO.phonesDTO);
   });
+
+  test('Simple contact can be converted to domain without errors', () {
+    const NameData nameDataDomain =
+    NameData(firstName: "Ej1", surnames: "EjSurname");
+    final Contact contact = Contact(
+      id: UniqueID.fromUniqueString("1"),
+      nameData: nameDataDomain,
+    );
+    final Contact expected = contact.copyWith(
+      companies: [Company.empty()],
+      labelObjects: {Email: [const Email()], Phone: [const Phone()]}
+    );
+    final Contact calculatedContact = ContactDTO.fromDomain(contact).toDomain();
+    expect(expected, calculatedContact);
+
+  });
+
 
   test('DTO json name parameters are ommited if they are null', () {
     final Map<String, dynamic> nameData =
