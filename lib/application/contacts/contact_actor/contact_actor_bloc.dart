@@ -12,9 +12,7 @@ import 'package:scorecontacts/domain/user/contacts_data/contacts_failure.dart';
 import 'package:scorecontacts/domain/user/contacts_data/i_contact_repository.dart';
 
 part 'contact_actor_bloc.freezed.dart';
-
 part 'contact_actor_event.dart';
-
 part 'contact_actor_state.dart';
 
 @injectable
@@ -122,7 +120,8 @@ class ContactActorBloc extends Bloc<ContactActorEvent, ContactActorState> {
     String result;
     try {
       result = await channel.invokeMethod("getContacts");
-      print(result);
+      List<Contact> contacts = Contact.contactsFromOtherPlatformJson(result);
+      print(contacts);
     }on PlatformException{
       result = null;
     }

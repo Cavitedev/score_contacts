@@ -8,7 +8,7 @@ class Contact(val id: String, val name: String) {
     var emails: List<String>? = null
 
 
-    fun toJson() : String{
+    fun toJson() : JSONObject{
 
 
         val json = JSONObject()
@@ -17,8 +17,18 @@ class Contact(val id: String, val name: String) {
         emails?.forEach{json.accumulate("emails",it)}
         numbers?.forEach { json.accumulate("numbers",it) }
 
-        return json.toString()
+        return json
 
+    }
+
+    companion object{
+
+        fun multipleToJson (contacts:Iterable<Contact>) : JSONObject{
+            val json = JSONObject()
+
+            contacts.forEach { json.accumulate("contacts", it.toJson()) }
+            return json
+        }
     }
 
     override fun equals(other: Any?): Boolean {

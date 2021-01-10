@@ -33,30 +33,51 @@ abstract class Contact implements _$Contact {
       );
 
   factory Contact.fromStringJson(String jsonStr) {
-
-    Map<String,dynamic> jsonMap = json.decode(jsonStr) as Map<String,dynamic>;
+    Map<String, dynamic> jsonMap = json.decode(jsonStr) as Map<String, dynamic>;
     return Contact.fromMap(jsonMap);
-
-
   }
 
-  factory Contact.fromMap(Map<String,dynamic> map){
-    final List<dynamic> phones = (map["numbers"] is String) ? [map["numbers"]]
+  factory Contact.fromMap(Map<String, dynamic> map) {
+    final List<dynamic> phones = (map["numbers"] is String)
+        ? [map["numbers"]]
         : (map["numbers"] as List<dynamic>);
 
-    final List<dynamic> emails = (map["emails"] is String) ? [map["emails"]]
+    final List<dynamic> emails = (map["emails"] is String)
+        ? [map["emails"]]
         : map["emails"] as List<dynamic>;
 
-  return Contact(
-  id: UniqueID.fromUniqueString(map["id"] as String),
-  nameData: NameData(firstName: map["name"] as String),
-    labelObjects: {
-    Phone: phones.map((e) => Phone(value: e as String)).toList(),
-    Email: emails.map((e) => Email(value: e as String)).toList(),
+    final bool areThereLabelObjects = phones != null || emails != null;
 
-    }
-
-  );
+    return Contact(
+        id: UniqueID.fromUniqueString(map["id"] as String),
+        nameData: NameData.fromFullName(map["name"] as String),
+        labelObjects: areThereLabelObjects
+            ? {
+          if (phones != null)
+            Phone: phones.map((e) => Phone(value: e as String)).toList(),
+          if (emails != null)
+            Email: emails.map((e) => Email(value: e as String)).toList(),
+        }
+            : null);
   }
+
+  static List<Contact> contactsFromOtherPlatformJson(String jsonStr) {
+    return contactsFromStringJson(jsonStr)
+        .map((contact) => contact.copyWith(id: UniqueID()))
+        .toList();
+  }
+
+  static List<Contact> contactsFromStringJson(String jsonStr) {
+    final Map<String, dynamic> jsonMap =
+        json.decode(jsonStr) as Map<String, dynamic>;
+
+    final List<dynamic> contacts = (jsonMap["contacts"] is String)
+        ? [jsonMap["contacts"]]
+        : (jsonMap["contacts"] as List<dynamic>);
+    return contacts
+        .map((e) => Contact.fromMap(e as Map<String, dynamic>))
+        .toList();
+  }
+
 
 }

@@ -8,7 +8,6 @@ import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
 import kotlinx.coroutines.runBlocking
-import org.json.JSONObject
 
 class MainActivity : FlutterActivity() {
     private val CONTACTS_CHANNEL = "com.cavitedev.scorecontacts/contacts"
@@ -43,8 +42,7 @@ class MainActivity : FlutterActivity() {
 
                 runBlocking {
                     val contacts = ContactsService.fetchContacts(context)
-                    val json = JSONObject()
-                    contacts.forEach { json.accumulate("contacts", it.toJson()) }
+                    val json = Contact.multipleToJson(contacts)
                     result.success(json.toString())
                 }
 
