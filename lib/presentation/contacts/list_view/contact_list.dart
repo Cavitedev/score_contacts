@@ -35,7 +35,7 @@ class ContactList extends StatelessWidget {
             BlocListener<ContactActorBloc, ContactActorState>(
               listener: (context, state) {
                 state.maybeMap(
-                    deleteFailure: (state) {
+                    contactsFailure: (state) {
                       FlushbarHelper.createError(
                           duration: const Duration(seconds: 6),
                           message: state.failure.map(
@@ -45,6 +45,8 @@ class ContactList extends StatelessWidget {
                                 "Updated contact not found, was it deleted from other device?",
                             unexpected: (_) =>
                                 "UNEXPECTED ERROR, REPORT TO SUPPORT TEAM",
+                            platformError: (_) =>
+                                "Platform error, could not fetch data from system",
                           )).show(context);
                     },
                     orElse: () {});
@@ -53,20 +55,19 @@ class ContactList extends StatelessWidget {
           ],
           child: BlocBuilder<ContactWatcherBloc, ContactWatcherState>(
               builder: (context, state) => state.map(
-                initial: (_) => Container(),
-                loadInProgress: (_) =>
-                const Center(
-                  child: CircularProgressIndicator(),
-                ),
-                loadSuccess: (state) {
-                  return ContactsListScaffold(
-                      contacts: state.selectedContacts
-                          .map((selectedContact) => selectedContact.contact)
-                          .toList());
-                },
-                loadFailure: (state) =>
-                    CriticalFailureDisplay(failure: state.failure),
-              )),
+                    initial: (_) => Container(),
+                    loadInProgress: (_) => const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                    loadSuccess: (state) {
+                      return ContactsListScaffold(
+                          contacts: state.selectedContacts
+                              .map((selectedContact) => selectedContact.contact)
+                              .toList());
+                    },
+                    loadFailure: (state) =>
+                        CriticalFailureDisplay(failure: state.failure),
+                  )),
         ));
   }
 }

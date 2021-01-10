@@ -10,4 +10,6 @@ abstract class ContactsFailure with _$ContactsFailure {
   const factory ContactsFailure.notFound() = _NotFound;
 
   const factory ContactsFailure.unexpected() = _Unexpected;
+
+  const factory ContactsFailure.platformError() = _PlatformError;
 }

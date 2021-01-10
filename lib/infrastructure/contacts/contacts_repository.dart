@@ -20,10 +20,7 @@ class ContactsRepository implements IContactsRepository {
   @override
   Future<Either<ContactsFailure, Unit>> createContact(Contact contact) async {
     try {
-      final CollectionReference contacts =
-          firestore.userDocument().contactsCollection;
-      final ContactDTO contactDTO = ContactDTO.fromDomain(contact);
-      await contacts.doc(contactDTO.id).set(contactDTO.toJson());
+      _createContact(contact);
       return right(unit);
     } catch (e) {
       if (e is PlatformException && e.message.contains(PERMISSIONDENIEDCODE)) {
@@ -35,13 +32,68 @@ class ContactsRepository implements IContactsRepository {
   }
 
   @override
+  Future<Either<ContactsFailure, Unit>> createContactList(
+      List<Contact> contactList) async {
+
+    while(contactList.length >= 500){
+
+      final either = await _performBatch(contactList.sublist(0,500));
+      contactList.removeRange(0, 500);
+      if(either.isLeft()){
+        return either;
+      }
+
+    }
+
+    return _performBatch(contactList);
+
+  }
+
+  Future<Either<ContactsFailure, Unit>> _performBatch(
+      List<Contact> contactList) async {
+
+    final batch = firestore.batch();
+    final CollectionReference contacts =
+        firestore
+            .userDocument()
+            .contactsCollection;
+    for (final Contact contact in contactList) {
+      final ContactDTO contactDTO = ContactDTO.fromDomain(contact);
+      batch.set(contacts.doc(contactDTO.id), contactDTO.toJson());
+    }
+    await batch.commit().
+    catchError((e){
+      if (e is PlatformException && e.message.contains(PERMISSIONDENIEDCODE)) {
+        return left(const ContactsFailure.insufficientPermissions());
+      } else {
+        return left(const ContactsFailure.unexpected());
+      }
+    });
+    return right(unit);
+  }
+
+  Future<void> _createContact(Contact contact) async {
+    final CollectionReference contacts =
+        firestore
+            .userDocument()
+            .contactsCollection;
+    final ContactDTO contactDTO = ContactDTO.fromDomain(contact);
+    await contacts.doc(contactDTO.id).set(contactDTO.toJson());
+  }
+
+
+  @override
   Stream<Either<ContactsFailure, List<Contact>>> watchAllContacts() async* {
     final CollectionReference contacts =
-        firestore.userDocument().contactsCollection;
+        firestore
+            .userDocument()
+            .contactsCollection;
     yield* contacts
         .snapshots()
-        .map((snapshot) => right<ContactsFailure, List<Contact>>(snapshot.docs
-            .map((doc) => ContactDTO.fromFirestore(doc).toDomain())
+        .map((snapshot) =>
+        right<ContactsFailure, List<Contact>>(snapshot.docs
+            .map(
+                (doc) => ContactDTO.fromFirestore(doc).toDomain())
             .toList()))
         .onErrorReturnWith((e) {
       if (e is PlatformException && e.message.contains(PERMISSIONDENIEDCODE)) {
@@ -56,7 +108,9 @@ class ContactsRepository implements IContactsRepository {
   Future<Either<ContactsFailure, Unit>> updateContact(Contact contact) async {
     try {
       final CollectionReference contacts =
-          firestore.userDocument().contactsCollection;
+          firestore
+              .userDocument()
+              .contactsCollection;
       final ContactDTO contactDTO = ContactDTO.fromDomain(contact);
       await contacts.doc(contactDTO.id).update(contactDTO.toJson());
       return right(unit);
@@ -75,7 +129,9 @@ class ContactsRepository implements IContactsRepository {
   Future<Either<ContactsFailure, Unit>> deleteContact(Contact contact) async {
     try {
       final CollectionReference contacts =
-          firestore.userDocument().contactsCollection;
+          firestore
+              .userDocument()
+              .contactsCollection;
       final ContactDTO contactDTO = ContactDTO.fromDomain(contact);
       await contacts.doc(contactDTO.id).delete();
       return right(unit);
@@ -89,4 +145,6 @@ class ContactsRepository implements IContactsRepository {
       }
     }
   }
+
+
 }

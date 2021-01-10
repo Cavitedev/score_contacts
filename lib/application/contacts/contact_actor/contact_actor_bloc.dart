@@ -19,11 +19,12 @@ part 'contact_actor_state.dart';
 class ContactActorBloc extends Bloc<ContactActorEvent, ContactActorState> {
   final IContactsRepository repository;
 
-
   ContactActorBloc(this.repository) : super(const ContactActorState.initial());
 
   @override
-  Stream<ContactActorState> mapEventToState(ContactActorEvent event,) async* {
+  Stream<ContactActorState> mapEventToState(
+    ContactActorEvent event,
+  ) async* {
     yield* event.map(
       delete: (e) async* {
         ContactActorState successfulState;
@@ -44,18 +45,17 @@ class ContactActorBloc extends Bloc<ContactActorEvent, ContactActorState> {
         });
         yield const ContactActorState.actionInProgress();
         final Either<ContactsFailure, Unit> failureOrUnit =
-        await repository.deleteContact(e.contact);
+            await repository.deleteContact(e.contact);
 
-        yield failureOrUnit.fold(
-                (f) => ContactActorState.deleteFailure(f), (
-            _) => successfulState);
+        yield failureOrUnit.fold((f) => ContactActorState.contactsFailure(f),
+            (_) => successfulState);
       },
       deleteSelectedContacts: (e) async* {
         yield* state.maybeMap(
             selectContacts: (state) async* {
               yield const ContactActorState.actionInProgress();
               final List<Future<Either<ContactsFailure, Unit>>>
-              failureOrUnitsFutures = [];
+                  failureOrUnitsFutures = [];
               for (final Contact contact in state.selectedContacts) {
                 failureOrUnitsFutures.add(repository.deleteContact(contact));
               }
@@ -63,24 +63,23 @@ class ContactActorBloc extends Bloc<ContactActorEvent, ContactActorState> {
               for (final failureOrUnit in failuresOrUnits) {
                 if (failureOrUnit.isLeft()) {
                   yield failureOrUnit.fold(
-                          (f) => ContactActorState.deleteFailure(f),
-                          (_) =>
-                      throw ImpossibleToReachError(msg: "Should be left"));
+                      (f) => ContactActorState.contactsFailure(f),
+                      (_) =>
+                          throw ImpossibleToReachError(msg: "Should be left"));
                   return;
                 }
               }
               yield const ContactActorState.deleteSuccessful();
             },
-            orElse: () =>
-            throw ImpossibleToReachError(
+            orElse: () => throw ImpossibleToReachError(
                 msg:
-                "Event should only be called if there are any selected contact"));
+                    "Event should only be called if there are any selected contact"));
       },
       toggleSelectionContact: (e) async* {
         yield* state.maybeMap(
           selectContacts: (state) async* {
             final Set<Contact> selectedContacts =
-            Set.of(state.selectedContacts);
+                Set.of(state.selectedContacts);
             if (selectedContacts.contains(e.contact)) {
               selectedContacts.remove(e.contact);
             } else {
@@ -109,21 +108,32 @@ class ContactActorBloc extends Bloc<ContactActorEvent, ContactActorState> {
         );
       },
       loadContactsFromSystem: (e) async* {
-        await _reloadContactsFromSystem();
-        yield state;
+        final Either<ContactsFailure, List<Contact>> contactsEither =
+            await _reloadContactsFromSystem();
+
+        yield contactsEither.fold((f) {
+          return ContactActorState.contactsFailure(f);
+        }, (contactList) {
+          final createContactsCall = repository.createContactList(contactList);
+          createContactsCall.then((either) => either.fold(
+                (f) => ContactActorState.contactsFailure(f),
+                (r) => null,
+              ));
+          return state;
+        },);
       },
     );
   }
 
-  Future<void> _reloadContactsFromSystem() async {
+  Future<Either<ContactsFailure, List<Contact>>>
+      _reloadContactsFromSystem() async {
     const channel = MethodChannel("com.cavitedev.scorecontacts/contacts");
-    String result;
+
     try {
-      result = await channel.invokeMethod("getContacts");
-      List<Contact> contacts = Contact.contactsFromOtherPlatformJson(result);
-      print(contacts);
-    }on PlatformException{
-      result = null;
+      final String result = await channel.invokeMethod("getContacts");
+      return right(Contact.contactsFromOtherPlatformJson(result));
+    } on PlatformException {
+      return left(const ContactsFailure.platformError());
     }
   }
 }

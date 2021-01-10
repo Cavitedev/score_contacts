@@ -27,7 +27,7 @@ abstract class ContactDTO implements _$ContactDTO {
     @JsonKey(name: companiesName) List<CompanyDTO> companiesDTO,
     @JsonKey(name: emailsName) List<LabelObjectDTO> emailsDTO,
     @JsonKey(name: phonesName) List<LabelObjectDTO> phonesDTO,
-    @required @ServerTimeStampConverter() FieldValue serverTimeStamp,
+    @ServerTimeStampConverter() FieldValue serverTimeStamp,
   }) = _ContactDTO;
 
   factory ContactDTO.fromDomain(Contact contact) {
@@ -35,19 +35,19 @@ abstract class ContactDTO implements _$ContactDTO {
       id: contact.id.value,
       nameDataDTO: NameDataDTO.fromDomain(contact.nameData),
       companiesDTO: contact.companies
-          .where((comp) => comp.title != null || comp.name != null)
-          .map((comp) => CompanyDTO.fromDomain(comp))
-          .toList(),
-      emailsDTO: contact.labelObjects[Email]
-          .where((email) => email.value != null)
-          .map(
+          ?.where((comp) => comp.title != null || comp.name != null)
+          ?.map((comp) => CompanyDTO.fromDomain(comp))
+          ?.toList() ?? [],
+      emailsDTO: (contact.labelObjects ?? const {})[Email]
+          ?.where((email) => email.value != null)
+          ?.map(
               (emailLabelObject) => LabelObjectDTO.fromDomain(emailLabelObject))
-          .toList(),
-      phonesDTO: contact.labelObjects[Phone]
-          .where((phone) => phone.value != null)
-          .map((phoneLabelObject) {
+          ?.toList() ?? [],
+      phonesDTO: (contact.labelObjects ?? const{})[Phone]
+          ?.where((phone) => phone.value != null)
+          ?.map((phoneLabelObject) {
         return LabelObjectDTO.fromDomain(phoneLabelObject);
-      }).toList(),
+      })?.toList() ?? [],
       serverTimeStamp: FieldValue.serverTimestamp(),
     );
   }

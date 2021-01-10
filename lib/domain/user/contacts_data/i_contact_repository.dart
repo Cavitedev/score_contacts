@@ -7,6 +7,8 @@ abstract class IContactsRepository {
   //CRUD
   Future<Either<ContactsFailure, Unit>> createContact(Contact contact);
 
+  Future<Either<ContactsFailure, Unit>> createContactList(List<Contact> contactList);
+
   Stream<Either<ContactsFailure, List<Contact>>> watchAllContacts();
 
   Future<Either<ContactsFailure, Unit>> updateContact(Contact contact);

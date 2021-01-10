@@ -11,6 +11,6 @@ abstract class ContactActorState with _$ContactActorState {
   const factory ContactActorState.selectContacts(
       Set<Contact> selectedContacts) = _SelectContacts;
 
-  const factory ContactActorState.deleteFailure(ContactsFailure failure) =
+  const factory ContactActorState.contactsFailure(ContactsFailure failure) =
       _DeleteFailure;
 }

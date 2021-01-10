@@ -38,6 +38,7 @@ class AddContactPage extends StatelessWidget {
                                   "Updated contact not found, was it deleted from other device?",
                               unexpected: (_) =>
                                   "UNEXPECTED ERROR, REPORT TO SUPPORT TEAM",
+                              platformError: (_) => "Platform error on device, could not fetch values from system",
                             )).show(context),
                         (_) {
                           ExtendedNavigator.of(context).popUntil((route) =>
@@ -53,9 +54,7 @@ class AddContactPage extends StatelessWidget {
 }
 
 class SavingProgressOverlay extends StatelessWidget {
-
   const SavingProgressOverlay();
-
 
   @override
   Widget build(BuildContext context) {
@@ -73,24 +72,23 @@ class SavingProgressOverlay extends StatelessWidget {
             height: MediaQuery.of(context).size.height,
             child: state.isSaving
                 ? Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const CircularProgressIndicator(),
-                const SizedBox(
-                  height: 8,
-                ),
-                Text(
-                  "Saving",
-                  style: Theme.of(context).textTheme.headline5,
-                )
-              ],
-            )
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      const CircularProgressIndicator(),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Text(
+                        "Saving",
+                        style: Theme.of(context).textTheme.headline5,
+                      )
+                    ],
+                  )
                 : null,
           ),
         );
       },
     );
   }
-
 }

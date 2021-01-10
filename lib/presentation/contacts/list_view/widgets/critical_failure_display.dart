@@ -17,7 +17,8 @@ class CriticalFailureDisplay extends StatelessWidget {
             Text(failure.map(
                 insufficientPermissions: (_) => "Insufficient Permissions",
                 notFound: (_) => "Deleted note not found",
-                unexpected: (_) => "Unexpected error")),
+                unexpected: (_) => "Unexpected error",
+                platformError: (_) => "Platform error")),
           ],
         ),
       ),
