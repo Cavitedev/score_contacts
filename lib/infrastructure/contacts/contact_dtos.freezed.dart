@@ -23,7 +23,7 @@ class _$ContactDTOTearOff {
       @JsonKey(name: companiesName) List<CompanyDTO> companiesDTO,
       @JsonKey(name: emailsName) List<LabelObjectDTO> emailsDTO,
       @JsonKey(name: phonesName) List<LabelObjectDTO> phonesDTO,
-      @required @ServerTimeStampConverter() FieldValue serverTimeStamp}) {
+      @ServerTimeStampConverter() FieldValue serverTimeStamp}) {
     return _ContactDTO(
       id: id,
       nameDataDTO: nameDataDTO,
@@ -195,9 +195,8 @@ class _$_ContactDTO extends _ContactDTO {
       @JsonKey(name: companiesName) this.companiesDTO,
       @JsonKey(name: emailsName) this.emailsDTO,
       @JsonKey(name: phonesName) this.phonesDTO,
-      @required @ServerTimeStampConverter() this.serverTimeStamp})
-      : assert(serverTimeStamp != null),
-        super._();
+      @ServerTimeStampConverter() this.serverTimeStamp})
+      : super._();
 
   factory _$_ContactDTO.fromJson(Map<String, dynamic> json) =>
       _$_$_ContactDTOFromJson(json);
@@ -272,13 +271,12 @@ class _$_ContactDTO extends _ContactDTO {
 abstract class _ContactDTO extends ContactDTO {
   const _ContactDTO._() : super._();
   const factory _ContactDTO(
-          {@JsonKey(ignore: true) String id,
-          @JsonKey(name: nameDataName) NameDataDTO nameDataDTO,
-          @JsonKey(name: companiesName) List<CompanyDTO> companiesDTO,
-          @JsonKey(name: emailsName) List<LabelObjectDTO> emailsDTO,
-          @JsonKey(name: phonesName) List<LabelObjectDTO> phonesDTO,
-          @required @ServerTimeStampConverter() FieldValue serverTimeStamp}) =
-      _$_ContactDTO;
+      {@JsonKey(ignore: true) String id,
+      @JsonKey(name: nameDataName) NameDataDTO nameDataDTO,
+      @JsonKey(name: companiesName) List<CompanyDTO> companiesDTO,
+      @JsonKey(name: emailsName) List<LabelObjectDTO> emailsDTO,
+      @JsonKey(name: phonesName) List<LabelObjectDTO> phonesDTO,
+      @ServerTimeStampConverter() FieldValue serverTimeStamp}) = _$_ContactDTO;
 
   factory _ContactDTO.fromJson(Map<String, dynamic> json) =
       _$_ContactDTO.fromJson;
