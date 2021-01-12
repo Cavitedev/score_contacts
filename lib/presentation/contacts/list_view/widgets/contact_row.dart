@@ -23,26 +23,31 @@ class ContactRow extends StatelessWidget {
 
     return InkWell(
       onTap: () {
-        ExtendedNavigator.of(context).pushAddContactPage(contact: contact);
+        final contactActorBloc = context.read<ContactActorBloc>();
+        contactActorBloc.state.maybeMap(
+          selectContacts: (_) {
+            contactActorBloc
+                .add(ContactActorEvent.toggleSelectionContact(contact));
+          },
+          orElse: () {
+            ExtendedNavigator.of(context).pushAddContactPage(contact: contact);
+          },
+        );
       },
       onLongPress: () {
-        final Offset offset = (context.findRenderObject() as RenderBox)
-            .localToGlobal(Offset.zero);
         final contactActorBloc = context.read<ContactActorBloc>();
-        const rowHeight = 60;
-        showMenu(
-            context: context,
-            position: RelativeRect.fromLTRB(
-              offset.dx,
-              offset.dy + rowHeight,
-              0,
-              0,
-            ),
-            items: ContactPopUp(
-              context: context,
-              contact: contact,
-              actorBloc: contactActorBloc,
-            ).popUpItems());
+
+        contactActorBloc.state.maybeMap(
+          selectContacts: (_) {
+            contactActorBloc
+                .add(ContactActorEvent.toggleSelectionContact(contact));
+          },
+          orElse: () {
+            _popUpItems(context, contactActorBloc);
+          },
+        );
+
+
       },
       child: Container(
         padding: const EdgeInsets.fromLTRB(20, 8, 4, 8),
@@ -78,5 +83,24 @@ class ContactRow extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _popUpItems(BuildContext context, ContactActorBloc contactActorBloc) {
+    final Offset offset = (context.findRenderObject() as RenderBox)
+        .localToGlobal(Offset.zero);
+    const rowHeight = 60;
+    showMenu(
+        context: context,
+        position: RelativeRect.fromLTRB(
+          offset.dx,
+          offset.dy + rowHeight,
+          0,
+          0,
+        ),
+        items: ContactPopUp(
+          context: context,
+          contact: contact,
+          actorBloc: contactActorBloc,
+        ).popUpItems());
   }
 }

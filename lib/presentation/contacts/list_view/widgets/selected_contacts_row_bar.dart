@@ -23,7 +23,7 @@ class SelectedContactsRowBar extends StatelessWidget {
           ),
           onPressed: () {
             context
-                .bloc<ContactActorBloc>()
+                .read()<ContactActorBloc>()
                 .add(const ContactActorEvent.deselectAllContacts());
           },
         ),
@@ -50,7 +50,7 @@ class SelectedContactsRowBar extends StatelessWidget {
           ),
           onPressed: () {
             context
-                .bloc<ContactActorBloc>()
+                .read()<ContactActorBloc>()
                 .add(const ContactActorEvent.deleteSelectedContacts());
           },
         ),

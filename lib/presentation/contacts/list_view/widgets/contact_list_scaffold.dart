@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/contacts/contact_actor/contact_actor_bloc.dart';
 import 'package:scorecontacts/domain/user/contacts_data/contact.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/contact_row.dart';
-import 'package:scorecontacts/presentation/contacts/list_view/widgets/selected_contaacts_row_bar.dart';
+import 'package:scorecontacts/presentation/contacts/list_view/widgets/selected_contacts_row_bar.dart';
 import 'package:scorecontacts/presentation/core/widgets/text_field_container.dart';
 import 'package:scorecontacts/presentation/routes/router.gr.dart';
 
