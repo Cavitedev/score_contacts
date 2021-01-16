@@ -36,8 +36,6 @@ class MainActivity : FlutterActivity() {
 
 
             if (call.method == "getContacts") {
-//                val contact = Contact("1", "hola")
-//                result.success(contact.toJson())
 
 
                 runBlocking {

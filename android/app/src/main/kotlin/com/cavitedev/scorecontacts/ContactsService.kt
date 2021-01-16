@@ -18,10 +18,12 @@ object ContactsService {
             val contactsListAsync = async { getPhoneContacts(contentRes) }
             val contactNumbersAsync = async { getContactNumbers(contentRes) }
             val contactEmailAsync = async { getContactEmails(contentRes) }
+            val contactCompanyAsync = async { getContactCompanies(contentRes) }
 
             contacts = contactsListAsync.await()
             val contactNumbers = contactNumbersAsync.await()
             val contactEmails = contactEmailAsync.await()
+            val contactCompanies = contactCompanyAsync.await()
 
             contacts.forEach {
                 contactNumbers[it.id]?.let { numbers ->
@@ -30,12 +32,17 @@ object ContactsService {
                 contactEmails[it.id]?.let { emails ->
                     it.emails = emails
                 }
+                contactCompanies[it.id]?.let { companies ->
+                    it.companies = companies
+                }
+
             }
         }
         return contacts
     }
 
     private fun getPhoneContacts(contentRes: ContentResolver): ArrayList<Contact> {
+
         val contactsList = ArrayList<Contact>()
         val contactsCursor = contentRes.query(
                 ContactsContract.Contacts.CONTENT_URI,
@@ -49,9 +56,9 @@ object ContactsService {
             while (contactsCursor.moveToNext()) {
                 val id = contactsCursor.getString(idIndex)
                 val name = contactsCursor.getString(nameIndex)
-                if (name != null) {
-                    contactsList.add(Contact(id, name))
-                }
+                val contact = Contact(id,name)
+                contactsList.add(contact)
+
             }
             contactsCursor.close()
         }
@@ -112,5 +119,36 @@ object ContactsService {
         return contactsEmailMap
     }
 
+    private fun getContactCompanies(contentRes: ContentResolver): HashMap<String, ArrayList<Company>> {
+        val contactsCompanyMap = HashMap<String, ArrayList<Company>>()
+        val where = ContactsContract.Data.MIMETYPE + " = ?"
+        val params = arrayOf( ContactsContract.CommonDataKinds.Organization.CONTENT_ITEM_TYPE)
+        val companyCursor = contentRes.query(ContactsContract.Data.CONTENT_URI,
+                null,
+                where,
+                params,
+                null)
+
+        if (companyCursor != null && companyCursor.count > 0) {
+            val contactIdIndex = companyCursor.getColumnIndex(ContactsContract.CommonDataKinds.Organization.CONTACT_ID)
+            val companyIndex = companyCursor.getColumnIndex(ContactsContract.CommonDataKinds.Organization.COMPANY)
+            val titleIndex = companyCursor.getColumnIndex(ContactsContract.CommonDataKinds.Organization.TITLE)
+            while (companyCursor.moveToNext()) {
+                val contactId = companyCursor.getString(contactIdIndex)
+                val companyName = companyCursor.getString(companyIndex)
+                val companyTitle = companyCursor.getString(titleIndex)
+                //check if the map contains key or not, if not then create a new array list with email
+                    val company = Company(companyName,companyTitle)
+                if (contactsCompanyMap.containsKey(contactId)) {
+                    contactsCompanyMap[contactId]?.add(company)
+                } else {
+                    contactsCompanyMap[contactId] = arrayListOf(company)
+                }
+            }
+            //contact contains all the emails of a particular contact
+            companyCursor.close()
+        }
+        return contactsCompanyMap
+    }
 
 }

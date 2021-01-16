@@ -7,7 +7,8 @@ abstract class ContactWatcherState with _$ContactWatcherState {
   const factory ContactWatcherState.loadInProgress() = _LoadInProgress;
 
   const factory ContactWatcherState.loadSuccess(
-      List<SelectedContact> selectedContacts) = _LoadSuccess;
+      List<SelectionContact> selectedContacts,
+      Filter filter) = _LoadSuccess;
 
   const factory ContactWatcherState.loadFailure(ContactsFailure failure) =
       _LoadFailure;

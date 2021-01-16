@@ -1,10 +1,12 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:scorecontacts/application/contacts/selected_contact.dart';
+import 'package:scorecontacts/domain/core/filter.dart';
 import 'package:scorecontacts/domain/user/contacts_data/contact.dart';
 import 'package:scorecontacts/domain/user/contacts_data/contacts_failure.dart';
 import 'package:scorecontacts/domain/user/contacts_data/i_contact_repository.dart';
@@ -16,9 +18,13 @@ part 'contact_watcher_state.dart';
 @injectable
 class ContactWatcherBloc
     extends Bloc<ContactWatcherEvent, ContactWatcherState> {
-  final IContactsRepository contactsRepository;
+  final IContactsRepository _contactsRepository;
 
-  ContactWatcherBloc(this.contactsRepository)
+  StreamSubscription<Either<ContactsFailure, List<Contact>>>
+      _contactsSubscription;
+
+
+  ContactWatcherBloc(this._contactsRepository)
       : super(const ContactWatcherState.initial());
 
   @override
@@ -26,27 +32,39 @@ class ContactWatcherBloc
     ContactWatcherEvent event,
   ) async* {
     yield* event.map(
-      watchAllAlphabeticOrder: (e) async* {
-        yield* state.maybeMap(loadSuccess: (e) async* {
-          _sortByNameAndSurnameSelectedContacts(e.selectedContacts);
-          yield e;
-        }, orElse: () async* {
-          yield const ContactWatcherState.loadInProgress();
+      contactsReceived: (contactsState) async* {
+        yield contactsState.contactsEither.fold(
+            (failure) => ContactWatcherState.loadFailure(failure), (contacts) {
+          _sortByNameAndSurname(contacts);
 
-          yield* contactsRepository.watchAllContacts().map((either) {
-            return either
-                .fold((failure) => ContactWatcherState.loadFailure(failure),
-                    (contacts) {
-              _sortByNameAndSurname(contacts);
-
-              return ContactWatcherState.loadSuccess(contacts
-                  .map((contact) => SelectedContact(contact: contact))
-                  .toList());
-            });
-          });
+          return ContactWatcherState.loadSuccess(
+              contacts
+                  .map((contact) => SelectionContact(contact: contact))
+                  .toList(),
+              const Filter());
         });
-      }
-
+      },
+      watchAll: (e) async* {
+        yield const ContactWatcherState.loadInProgress();
+        _contactsSubscription?.cancel();
+        _contactsSubscription = _contactsRepository.watchAllContacts().listen(
+            (contactsEither) =>
+                add(ContactWatcherEvent.contactsReceived(contactsEither)));
+      },
+      searchContact: (event) async* {
+        yield* state.maybeMap(
+            loadSuccess: (successState) async* {
+              Filter filter = successState.filter;
+              filter = filter?.copyWith(filterSearch: event.searchString);
+              final List<SelectionContact> contacts =
+                  successState.selectedContacts;
+              _filterContacts(contacts, filter);
+              yield successState.copyWith(
+                  selectedContacts: contacts,
+                  filter: filter);
+            },
+            orElse: () async* {});
+      },
     );
   }
 
@@ -56,17 +74,17 @@ class ContactWatcherBloc
     });
   }
 
-  void _sortByNameAndSurnameSelectedContacts(List<SelectedContact> contacts) {
-    _sortByNameAndSurname(
-        contacts.map((selectedContact) => selectedContact.contact).toList());
+    void _filterContacts(List<SelectionContact> contacts, Filter filter) {
+    if(filter.filterSearch == null) return;
+    for(final SelectionContact selectionContact in contacts){
+      final bool matches = selectionContact?.contact?.nameData?.firstName?.contains(filter?.filterSearch) ?? false;
+      selectionContact.display = matches;
+    }
+
   }
 
   String _getFullName(Contact contact) {
     return (contact.nameData.firstName + (contact.nameData.surnames ?? ""))
         .toLowerCase();
   }
-
-
-
-
 }

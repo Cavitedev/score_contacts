@@ -2,28 +2,39 @@ package com.cavitedev.scorecontacts
 
 import org.json.JSONObject
 
-class Contact(val id: String, val name: String) {
+class Contact(val id: String, val name: String?) {
+
+    constructor(_id: String) : this(_id, null)
+
 
     var numbers: List<String>? = null
     var emails: List<String>? = null
+    var companies: List<Company>? = null
 
 
-    fun toJson() : JSONObject{
+    fun toJson(): JSONObject {
 
 
         val json = JSONObject()
-        json.put("id",id)
-        json.put("name",name)
-        emails?.forEach{json.accumulate("emails",it)}
-        numbers?.forEach { json.accumulate("numbers",it) }
+        json.put("id", id)
+        if (name != null)
+            json.put("name", name)
+        emails?.forEach { json.accumulate("emails", it) }
+        numbers?.forEach { json.accumulate("numbers", it) }
+        companies?.forEach { if (it.isValid())
+                            json.accumulate("companies", it.toJson()) }
+
+
 
         return json
 
     }
 
-    companion object{
 
-        fun multipleToJson (contacts:Iterable<Contact>) : JSONObject{
+
+    companion object {
+
+        fun multipleToJson(contacts: Iterable<Contact>): JSONObject {
             val json = JSONObject()
 
             contacts.forEach { json.accumulate("contacts", it.toJson()) }
@@ -31,22 +42,29 @@ class Contact(val id: String, val name: String) {
         }
     }
 
+
+    override fun toString(): String {
+        return "Contact(id='$id', name=$name, numbers=$numbers, emails=$emails, companies=$companies)"
+    }
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other !is Contact) return false
 
-        if (id != other.id) return false
+        if (name != other.name) return false
+        if (numbers != other.numbers) return false
+        if (emails != other.emails) return false
+        if (companies != other.companies) return false
 
         return true
     }
 
     override fun hashCode(): Int {
-        return id.hashCode()
+        var result = name?.hashCode() ?: 0
+        result = 31 * result + (numbers?.hashCode() ?: 0)
+        result = 31 * result + (emails?.hashCode() ?: 0)
+        result = 31 * result + (companies?.hashCode() ?: 0)
+        return result
     }
-
-    override fun toString(): String {
-        return "Contact(id='$id', name='$name', numbers=$numbers, emails=$emails)"
-    }
-
 
 }

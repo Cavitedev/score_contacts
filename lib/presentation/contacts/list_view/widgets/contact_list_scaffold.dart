@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/contacts/contact_actor/contact_actor_bloc.dart';
+import 'package:scorecontacts/application/contacts/contact_watcher/contact_watcher_bloc.dart';
 import 'package:scorecontacts/domain/user/contacts_data/contact.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/contact_row.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/selected_contacts_row_bar.dart';
@@ -85,6 +86,9 @@ class _ContactsListScaffoldState extends State<ContactsListScaffold> {
                           decoration: InputDecoration(
                               hintText: "🔎 Search ${widget.contacts.length} contacts",
                               border: InputBorder.none),
+                          onChanged: (str){
+                            context.read<ContactWatcherBloc>().add(ContactWatcherEvent.searchContact(str));
+                          },
                         ),
                       ),
                     ],

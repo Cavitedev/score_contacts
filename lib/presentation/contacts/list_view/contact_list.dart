@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/auth/auth_bloc.dart';
 import 'package:scorecontacts/application/auth/auth_state.dart';
+import 'package:scorecontacts/application/contacts/selected_contact.dart';
 import 'package:scorecontacts/application/contacts/contact_actor/contact_actor_bloc.dart';
 import 'package:scorecontacts/application/contacts/contact_watcher/contact_watcher_bloc.dart';
 import 'package:scorecontacts/injection.dart';
@@ -18,7 +19,7 @@ class ContactList extends StatelessWidget {
         providers: [
           BlocProvider<ContactWatcherBloc>(
             create: (context) => getIt<ContactWatcherBloc>()
-              ..add(const ContactWatcherEvent.watchAllAlphabeticOrder()),
+              ..add(const ContactWatcherEvent.watchAll()),
           ),
           BlocProvider<ContactActorBloc>(
               create: (context) => getIt<ContactActorBloc>()),
@@ -61,7 +62,7 @@ class ContactList extends StatelessWidget {
                     ),
                     loadSuccess: (state) {
                       return ContactsListScaffold(
-                          contacts: state.selectedContacts
+                          contacts: state.selectedContacts.displayedContacts()
                               .map((selectedContact) => selectedContact.contact)
                               .toList());
                     },
