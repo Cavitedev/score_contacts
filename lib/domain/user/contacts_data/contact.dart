@@ -90,6 +90,10 @@ abstract class Contact implements _$Contact {
   }
 
 
+  String getDisplayedChar(){
+    return nameData?.firstName?.substring(0, 1)?.toUpperCase() ?? "";
+  }
+
   String matchPattern(String pattern) {
     if (pattern == null) return getFullName();
 
