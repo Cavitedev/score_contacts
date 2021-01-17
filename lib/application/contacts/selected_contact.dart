@@ -5,6 +5,7 @@ class SelectionContact {
   final Contact contact;
   bool isSelected;
   bool display;
+  String filterText;
 
   SelectionContact(
       {@required this.contact, this.isSelected = false, this.display = true});

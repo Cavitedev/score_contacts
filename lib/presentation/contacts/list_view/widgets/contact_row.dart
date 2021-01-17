@@ -3,15 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/contacts/contact_actor/contact_actor_bloc.dart';
 import 'package:scorecontacts/application/contacts/selected_contact.dart';
+import 'package:scorecontacts/domain/core/filter.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/pop_up_contact.dart';
 import 'package:scorecontacts/presentation/routes/router.gr.dart';
 
 class ContactRow extends StatelessWidget {
   final SelectionContact selectionContact;
+  final Filter filter;
 
   const ContactRow({
     Key key,
     @required this.selectionContact,
+    this.filter,
   }) : super(key: key);
 
   @override
@@ -72,17 +75,72 @@ class ContactRow extends StatelessWidget {
             const SizedBox(
               width: 20,
             ),
-            Flexible(
-              child: RichText(
-                overflow: TextOverflow.ellipsis,
-                text: TextSpan(
-                    text: selectionContact.contact.getFullName(),
-                    style: Theme.of(context).textTheme.headline5),
-              ),
-            )
+            _buildNameWithHints(context),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildNameWithHints(BuildContext context) {
+    if (selectionContact.filterText == null) {
+      return Flexible(child: _buildFullName(context));
+    } else if (selectionContact.filterText ==
+        selectionContact.contact.getFullName()) {
+      return Flexible(
+          child:
+              _buildFullNameHighlighted(context, selectionContact.filterText));
+    } else {
+      return Flexible(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildFullName(context),
+            RichText(
+              overflow: TextOverflow.ellipsis,
+              text: TextSpan(
+                  text: selectionContact.filterText,
+                  style: Theme.of(context).textTheme.caption),
+            )
+          ],
+        ),
+      );
+    }
+  }
+
+  RichText _buildFullNameHighlighted(BuildContext context, String highlight) {
+
+
+    final Match match = filter.filterSearch.toLowerCase().allMatches(highlight.toLowerCase()).first;
+    if (match != null) {
+      return RichText(
+        overflow: TextOverflow.ellipsis,
+        text: TextSpan(children: [
+          TextSpan(
+              text: highlight.substring(0, match.start),
+              style: Theme.of(context).textTheme.headline5),
+          TextSpan(
+              text: highlight.substring(match.start, match.end),
+              style: Theme.of(context)
+                  .textTheme
+                  .headline5
+                  .copyWith(fontWeight: FontWeight.bold)),
+          TextSpan(
+              text: highlight.substring(match.end),
+              style: Theme.of(context).textTheme.headline5),
+        ]),
+      );
+    }
+
+    return _buildFullName(context);
+  }
+
+  RichText _buildFullName(BuildContext context) {
+    return RichText(
+      overflow: TextOverflow.ellipsis,
+      text: TextSpan(
+          text: selectionContact.contact.getFullName(),
+          style: Theme.of(context).textTheme.headline5),
     );
   }
 

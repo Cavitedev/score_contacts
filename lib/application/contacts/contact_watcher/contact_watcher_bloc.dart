@@ -23,7 +23,6 @@ class ContactWatcherBloc
   StreamSubscription<Either<ContactsFailure, List<Contact>>>
       _contactsSubscription;
 
-
   ContactWatcherBloc(this._contactsRepository)
       : super(const ContactWatcherState.initial());
 
@@ -60,8 +59,7 @@ class ContactWatcherBloc
                   successState.selectedContacts;
               _filterContacts(contacts, filter);
               yield successState.copyWith(
-                  selectedContacts: contacts,
-                  filter: filter);
+                  selectedContacts: contacts, filter: filter);
             },
             orElse: () async* {});
       },
@@ -70,17 +68,27 @@ class ContactWatcherBloc
 
   void _sortByNameAndSurname(List<Contact> contacts) {
     contacts.sort((a, b) {
-      return a.getFullName().toLowerCase().compareTo(b.getFullName().toLowerCase());
+      return a
+          .getFullName()
+          .toLowerCase()
+          .compareTo(b.getFullName().toLowerCase());
     });
   }
 
-    void _filterContacts(List<SelectionContact> contacts, Filter filter) {
-    if(filter.filterSearch == null) return;
-    for(final SelectionContact selectionContact in contacts){
-      final String match = selectionContact?.contact?.matchPattern(filter.filterSearch);
-      selectionContact.display = match != null;
+  void _filterContacts(List<SelectionContact> contacts, Filter filter) {
+    if (filter.filterSearch == null || filter.filterSearch == "") {
+      for (final SelectionContact selectionContact in contacts) {
+        selectionContact.display = true;
+        selectionContact.filterText = null;
+      }
+      return;
     }
+    for (final SelectionContact selectionContact in contacts) {
+      final String match =
+          selectionContact?.contact?.matchPattern(filter.filterSearch);
+      selectionContact.display = match != null;
 
+      selectionContact.filterText = match;
+    }
   }
-
 }

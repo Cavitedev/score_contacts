@@ -57,7 +57,7 @@ class MyApp extends StatelessWidget {
             iconTheme: const IconThemeData(color: Colors.grey, size: 32),
             textTheme: TextTheme(
                 headline5: const TextStyle(
-                  fontSize: 24,
+                  fontSize: 22,
                 ),
                 headline6: const TextStyle(fontSize: 20, letterSpacing: .5),
                 subtitle1: const TextStyle(fontSize: 18, letterSpacing: .5),
@@ -66,6 +66,7 @@ class MyApp extends StatelessWidget {
                   letterSpacing: .5,
                   fontWeight: FontWeight.w400,
                 ),
+                caption: TextStyle(fontSize: 15, color: Colors.grey[400]),
                 button: TextStyle(fontSize: 20, color: Colors.blueAccent[100])),
             visualDensity: VisualDensity.adaptivePlatformDensity,
           ),

@@ -62,7 +62,10 @@ class ContactList extends StatelessWidget {
                     ),
                     loadSuccess: (state) {
                       return ContactsListScaffold(
-                          selectionContacts: state.selectedContacts.displayedContacts());
+                        selectionContacts:
+                            state.selectedContacts.displayedContacts(),
+                        filter: state.filter,
+                      );
                     },
                     loadFailure: (state) =>
                         CriticalFailureDisplay(failure: state.failure),
