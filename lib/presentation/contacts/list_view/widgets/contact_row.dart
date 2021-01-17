@@ -2,18 +2,16 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/contacts/contact_actor/contact_actor_bloc.dart';
-import 'package:scorecontacts/domain/user/contacts_data/contact.dart';
+import 'package:scorecontacts/application/contacts/selected_contact.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/pop_up_contact.dart';
 import 'package:scorecontacts/presentation/routes/router.gr.dart';
 
 class ContactRow extends StatelessWidget {
-  final Contact contact;
-  final bool selectedContact;
+  final SelectionContact selectionContact;
 
   const ContactRow({
     Key key,
-    @required this.contact,
-    this.selectedContact = false,
+    @required this.selectionContact,
   }) : super(key: key);
 
   @override
@@ -24,10 +22,10 @@ class ContactRow extends StatelessWidget {
         contactActorBloc.state.maybeMap(
           selectContacts: (_) {
             contactActorBloc
-                .add(ContactActorEvent.toggleSelectionContact(contact));
+                .add(ContactActorEvent.toggleSelectionContact(selectionContact.contact));
           },
           orElse: () {
-            ExtendedNavigator.of(context).pushAddContactPage(contact: contact);
+            ExtendedNavigator.of(context).pushAddContactPage(contact: selectionContact.contact);
           },
         );
       },
@@ -37,7 +35,7 @@ class ContactRow extends StatelessWidget {
         contactActorBloc.state.maybeMap(
           selectContacts: (_) {
             contactActorBloc
-                .add(ContactActorEvent.toggleSelectionContact(contact));
+                .add(ContactActorEvent.toggleSelectionContact(selectionContact.contact));
           },
           orElse: () {
             _popUpItems(context, contactActorBloc);
@@ -52,15 +50,15 @@ class ContactRow extends StatelessWidget {
           children: <Widget>[
             CircleAvatar(
               backgroundColor:
-                  selectedContact ? Colors.teal[200] : Colors.purple[200],
-              child: selectedContact
+                  selectionContact.isSelected ? Colors.teal[200] : Colors.purple[200],
+              child: selectionContact.isSelected
                   ? const Icon(
                       Icons.check,
                       color: Colors.black,
                       size: 30,
                     )
                   : Text(
-                      contact.nameData.firstName.substring(0, 1).toUpperCase(),
+                      selectionContact.contact?.nameData?.firstName?.substring(0, 1)?.toUpperCase() ?? "",
                       style: const TextStyle(
                           fontSize: 26, fontWeight: FontWeight.w500),
                     ),
@@ -72,7 +70,7 @@ class ContactRow extends StatelessWidget {
               child: RichText(
                 overflow: TextOverflow.ellipsis,
                 text: TextSpan(
-                    text: contact.getFullName(),
+                    text: selectionContact.contact.getFullName(),
                     style: Theme.of(context).textTheme.headline5),
               ),
             )
@@ -96,7 +94,7 @@ class ContactRow extends StatelessWidget {
         ),
         items: ContactPopUp(
           context: context,
-          contact: contact,
+          contact: selectionContact.contact,
           actorBloc: contactActorBloc,
         ).popUpItems());
   }

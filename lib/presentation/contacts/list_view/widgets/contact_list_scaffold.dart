@@ -3,19 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/contacts/contact_actor/contact_actor_bloc.dart';
 import 'package:scorecontacts/application/contacts/contact_watcher/contact_watcher_bloc.dart';
-import 'package:scorecontacts/domain/user/contacts_data/contact.dart';
+import 'package:scorecontacts/application/contacts/selected_contact.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/contact_row.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/selected_contacts_row_bar.dart';
 import 'package:scorecontacts/presentation/core/widgets/text_field_container.dart';
 import 'package:scorecontacts/presentation/routes/router.gr.dart';
 
 class ContactsListScaffold extends StatefulWidget {
-  final List<Contact> contacts;
+  final List<SelectionContact> selectionContacts;
 
 
   const ContactsListScaffold({
     Key key,
-    this.contacts,
+    this.selectionContacts,
   }) : super(key: key);
 
   @override
@@ -84,7 +84,7 @@ class _ContactsListScaffoldState extends State<ContactsListScaffold> {
                         flex: 8,
                         child: TextField(
                           decoration: InputDecoration(
-                              hintText: "🔎 Search ${widget.contacts.length} contacts",
+                              hintText: "🔎 Search ${widget.selectionContacts.length} contacts",
                               border: InputBorder.none),
                           onChanged: (str){
                             context.read<ContactWatcherBloc>().add(ContactWatcherEvent.searchContact(str));
@@ -98,14 +98,9 @@ class _ContactsListScaffoldState extends State<ContactsListScaffold> {
                   child: SingleChildScrollView(
                     child: BlocBuilder<ContactActorBloc, ContactActorState>(
                       builder: (context, state) => Column(
-                          children: widget.contacts
+                          children: widget.selectionContacts
                               .map((contact) => ContactRow(
-                                    contact: contact,
-                                    selectedContact: state.maybeMap(
-                                        selectContacts: (state) => state
-                                            .selectedContacts
-                                            .contains(contact),
-                                        orElse: () => false),
+                                    selectionContact: contact,
                                   ))
                               .toList()),
                     ),

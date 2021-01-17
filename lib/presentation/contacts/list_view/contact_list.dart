@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/auth/auth_bloc.dart';
 import 'package:scorecontacts/application/auth/auth_state.dart';
-import 'package:scorecontacts/application/contacts/selected_contact.dart';
 import 'package:scorecontacts/application/contacts/contact_actor/contact_actor_bloc.dart';
 import 'package:scorecontacts/application/contacts/contact_watcher/contact_watcher_bloc.dart';
+import 'package:scorecontacts/application/contacts/selected_contact.dart';
 import 'package:scorecontacts/injection.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/contact_list_scaffold.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/critical_failure_display.dart';
@@ -62,9 +62,7 @@ class ContactList extends StatelessWidget {
                     ),
                     loadSuccess: (state) {
                       return ContactsListScaffold(
-                          contacts: state.selectedContacts.displayedContacts()
-                              .map((selectedContact) => selectedContact.contact)
-                              .toList());
+                          selectionContacts: state.selectedContacts.displayedContacts());
                     },
                     loadFailure: (state) =>
                         CriticalFailureDisplay(failure: state.failure),
