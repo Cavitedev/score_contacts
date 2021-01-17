@@ -15,7 +15,7 @@ class ContactFixtures {
       ],
       labelObjects: {
         Email: [const Email(label: "Test", value: "asd@asd.asd")],
-        Phone: [const Phone(label: "Test", value: "1234")]
+        Phone: [const Phone(label: "Test", value: "+34 123 45 67 89"), const Phone(value: "(987) 654-321")]
       });
 
   static Contact emptyContact = Contact.empty();

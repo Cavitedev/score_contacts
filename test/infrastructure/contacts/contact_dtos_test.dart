@@ -7,7 +7,7 @@ import 'package:scorecontacts/domain/user/contacts_data/properties/names/name_da
 import 'package:scorecontacts/domain/user/contacts_data/properties/phone.dart';
 import 'package:scorecontacts/infrastructure/contacts/contact_dtos.dart';
 
-import '../../core/fixtures/contacts.dart';
+import '../../core/fixtures/contacts_fixture.dart';
 
 void main() {
   Map<String, dynamic> contactsWithNullsJson() =>

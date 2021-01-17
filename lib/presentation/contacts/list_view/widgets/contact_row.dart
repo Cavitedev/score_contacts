@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/contacts/contact_actor/contact_actor_bloc.dart';
 import 'package:scorecontacts/domain/user/contacts_data/contact.dart';
-import 'package:scorecontacts/domain/user/contacts_data/properties/names/name_data.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/pop_up_contact.dart';
 import 'package:scorecontacts/presentation/routes/router.gr.dart';
 
@@ -19,8 +18,6 @@ class ContactRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final NameData name = contact.nameData;
-
     return InkWell(
       onTap: () {
         final contactActorBloc = context.read<ContactActorBloc>();
@@ -75,7 +72,7 @@ class ContactRow extends StatelessWidget {
               child: RichText(
                 overflow: TextOverflow.ellipsis,
                 text: TextSpan(
-                    text: "${name.firstName ?? ""} ${name.surnames ?? ""}",
+                    text: contact.getFullName(),
                     style: Theme.of(context).textTheme.headline5),
               ),
             )

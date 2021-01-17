@@ -70,21 +70,17 @@ class ContactWatcherBloc
 
   void _sortByNameAndSurname(List<Contact> contacts) {
     contacts.sort((a, b) {
-      return _getFullName(a).compareTo(_getFullName(b));
+      return a.getFullName().toLowerCase().compareTo(b.getFullName().toLowerCase());
     });
   }
 
     void _filterContacts(List<SelectionContact> contacts, Filter filter) {
     if(filter.filterSearch == null) return;
     for(final SelectionContact selectionContact in contacts){
-      final bool matches = selectionContact?.contact?.nameData?.firstName?.contains(filter?.filterSearch) ?? false;
+      final bool matches = selectionContact?.contact?.getFullName()?.toLowerCase()?.contains(filter?.filterSearch?.toLowerCase()) ?? false;
       selectionContact.display = matches;
     }
 
   }
 
-  String _getFullName(Contact contact) {
-    return (contact.nameData.firstName + (contact.nameData.surnames ?? ""))
-        .toLowerCase();
-  }
 }

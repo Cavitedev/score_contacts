@@ -37,6 +37,14 @@ class Phone implements ILabelObject {
     );
   }
 
+  String toNumString(){
+    return toNumericString(value);
+  }
+
+  bool matches(String pattern){
+    return toNumString().contains(toNumericString(pattern));
+  }
+
   @override
   String toString() {
     return 'Phone{number: $value, phoneLabel: $label}';

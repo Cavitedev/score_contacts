@@ -17,14 +17,22 @@ abstract class NameData implements _$NameData {
     String nameSuffix,
   }) = _NameData;
 
-  factory NameData.fromFullName(String fullName){
-    List<String> names = fullName.split(' ');
+  factory NameData.fromFullName(String fullName) {
+    if(fullName == null || fullName.isEmpty) return const NameData();
+    final List<String> names = fullName.split(' ');
     final String name = names[0];
     names.removeAt(0);
-    final String surnames = names.join(" ");
+    String surnames;
+    if (names.isEmpty) {
+      surnames = null;
+    } else {
+      surnames = names.join(" ");
+    }
     return NameData(firstName: name, surnames: surnames);
   }
 
+  String toFullName() {
+    final String surnameWithSpace = (surnames == null) ? "" : " $surnames";
+    return "${firstName ?? ""}$surnameWithSpace";
+  }
 }
-
-

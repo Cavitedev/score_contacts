@@ -33,7 +33,8 @@ abstract class Contact implements _$Contact {
       );
 
   factory Contact.fromStringJson(String jsonStr) {
-    Map<String, dynamic> jsonMap = json.decode(jsonStr) as Map<String, dynamic>;
+    final Map<String, dynamic> jsonMap =
+        json.decode(jsonStr) as Map<String, dynamic>;
     return Contact.fromMap(jsonMap);
   }
 
@@ -53,11 +54,11 @@ abstract class Contact implements _$Contact {
         nameData: NameData.fromFullName(map["name"] as String),
         labelObjects: areThereLabelObjects
             ? {
-          if (phones != null)
-            Phone: phones.map((e) => Phone(value: e as String)).toList(),
-          if (emails != null)
-            Email: emails.map((e) => Email(value: e as String)).toList(),
-        }
+                if (phones != null)
+                  Phone: phones.map((e) => Phone(value: e as String)).toList(),
+                if (emails != null)
+                  Email: emails.map((e) => Email(value: e as String)).toList(),
+              }
             : null);
   }
 
@@ -79,5 +80,31 @@ abstract class Contact implements _$Contact {
         .toList();
   }
 
+  String getFullName() {
+    return nameData.toFullName();
+  }
 
+  Iterable<Phone> getPhones() {
+    return labelObjects[Phone].map((iLabelObject) => iLabelObject as Phone);
+  }
+
+  String matchPattern(String pattern) {
+    if (pattern == null) return getFullName();
+
+    final String lowerCasePattern = pattern.toLowerCase();
+    if (_matchesName(lowerCasePattern)) {
+      return getFullName();
+    }
+
+    for (final Phone phone in getPhones()) {
+      if (phone.matches(lowerCasePattern)) {
+        return phone.value;
+      }
+    }
+
+    return null;
+  }
+
+  bool _matchesName(String lowerCasePattern) =>
+      getFullName()?.toLowerCase()?.contains(lowerCasePattern) ?? false;
 }
