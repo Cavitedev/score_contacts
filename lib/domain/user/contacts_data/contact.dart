@@ -97,6 +97,8 @@ abstract class Contact implements _$Contact {
     if (_matchesName(lowerCasePattern)) {
       return getFullName();
     }
+
+
     if(isPhoneString(lowerCasePattern)){
       for (final Phone phone in getLabelObjectList<Phone>()) {
         if (phone.matches(lowerCasePattern)) {
@@ -106,7 +108,7 @@ abstract class Contact implements _$Contact {
     }
 
     for (final Email email in getLabelObjectList<Email>()) {
-      if (email.value.toLowerCase().contains(lowerCasePattern)) {
+      if (email?.value?.toLowerCase()?.contains(lowerCasePattern) ?? false) {
         return email.value;
       }
     }

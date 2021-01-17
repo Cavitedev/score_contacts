@@ -61,8 +61,15 @@ void main() {
     expect(match,"(987) 654-321");
   });
 
+  test("phones search works on contact with nulls", (){
+    final String match = ContactFixtures.contactWillNulls.matchPattern("1234");
+    expect(match,"1234");
+  });
+
   test("Emails are searched on first element", (){
     final String match = _completeContact().matchPattern("@asd.asd");
     expect(match,"asd@asd.asd");
   });
+
+
 }

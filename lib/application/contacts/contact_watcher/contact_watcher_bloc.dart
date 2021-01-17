@@ -77,8 +77,8 @@ class ContactWatcherBloc
     void _filterContacts(List<SelectionContact> contacts, Filter filter) {
     if(filter.filterSearch == null) return;
     for(final SelectionContact selectionContact in contacts){
-      final bool matches = selectionContact?.contact?.getFullName()?.toLowerCase()?.contains(filter?.filterSearch?.toLowerCase()) ?? false;
-      selectionContact.display = matches;
+      final String match = selectionContact?.contact?.matchPattern(filter.filterSearch);
+      selectionContact.display = match != null;
     }
 
   }
