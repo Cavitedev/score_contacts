@@ -11,7 +11,7 @@ void main() {
 
   test("Get phones work on complete contact", (){
     final Iterable<Phone> phones = [const Phone(label: "Test", value: "+34 123 45 67 89"), const Phone(value: "(987) 654-321")];
-    expect(_completeContact().getPhones(), phones);
+    expect(_completeContact().getLabelObjectList<Phone>(), phones);
   });
 
   test("Full name returns empty string on empty contact", (){
@@ -46,8 +46,23 @@ void main() {
 
   test("Should match phone number only looking at numbers", () {
 
-    final String match = _completeContact().matchPattern("#()+34123");
+    final String match = _completeContact().matchPattern(".-#()+34123");
     expect(match,"+34 123 45 67 89");
 
+  });
+
+  test("Phones are not searched when regex containt non-phone characters", (){
+    final String match = _completeContact().matchPattern("a+34 123");
+    expect(match,null);
+  });
+
+  test("All phones are searched", (){
+    final String match = _completeContact().matchPattern("(987) 654-32");
+    expect(match,"(987) 654-321");
+  });
+
+  test("Emails are searched on first element", (){
+    final String match = _completeContact().matchPattern("@asd.asd");
+    expect(match,"asd@asd.asd");
   });
 }

@@ -8,6 +8,7 @@ import 'package:scorecontacts/domain/user/contacts_data/properties/email.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/i_label_object.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/names/name_data.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/phone.dart';
+import 'package:scorecontacts/presentation/core/formatters/formatter_tools.dart';
 
 part 'contact.freezed.dart';
 
@@ -84,9 +85,10 @@ abstract class Contact implements _$Contact {
     return nameData.toFullName();
   }
 
-  Iterable<Phone> getPhones() {
-    return labelObjects[Phone].map((iLabelObject) => iLabelObject as Phone);
+  Iterable<T>  getLabelObjectList<T extends ILabelObject>() {
+    return labelObjects[T].map((iLabelObject) => iLabelObject as T);
   }
+
 
   String matchPattern(String pattern) {
     if (pattern == null) return getFullName();
@@ -95,12 +97,20 @@ abstract class Contact implements _$Contact {
     if (_matchesName(lowerCasePattern)) {
       return getFullName();
     }
-
-    for (final Phone phone in getPhones()) {
-      if (phone.matches(lowerCasePattern)) {
-        return phone.value;
+    if(isPhoneString(lowerCasePattern)){
+      for (final Phone phone in getLabelObjectList<Phone>()) {
+        if (phone.matches(lowerCasePattern)) {
+          return phone.value;
+        }
       }
     }
+
+    for (final Email email in getLabelObjectList<Email>()) {
+      if (email.value.toLowerCase().contains(lowerCasePattern)) {
+        return email.value;
+      }
+    }
+
 
     return null;
   }

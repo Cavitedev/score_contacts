@@ -1,8 +1,11 @@
-// ignore: unnecessary_raw_strings
 import 'package:flutter/cupertino.dart';
 import 'package:scorecontacts/presentation/core/formatters/phone_codes.dart';
 
+// ignore: unnecessary_raw_strings
 final _digitRegex = RegExp(r'[0-9]+');
+
+// ignore: unnecessary_raw_strings
+final _isNotPhoneRegex = RegExp(r'[^0-9()#+\-\. ]');
 
 /// Check is String of length 1 containst a digit [0-9]
 bool isDigit(String char) {
@@ -92,4 +95,9 @@ String addPrefixOnNumber(String phoneNumber, BuildContext context) {
 
   final String output = toNumericString(phoneNumber);
   return countryData.countryCodeToString() + output;
+}
+
+/// Entered string contains only phone characters
+bool isPhoneString(String str){
+  return !_isNotPhoneRegex.hasMatch(str);
 }

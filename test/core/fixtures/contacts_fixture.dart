@@ -14,7 +14,7 @@ class ContactFixtures {
         const Company(name: "good company", title: "job")
       ],
       labelObjects: {
-        Email: [const Email(label: "Test", value: "asd@asd.asd")],
+        Email: [const Email(label: "Test", value: "asd@asd.asd"), const Email(value: "ex@mail.com")],
         Phone: [const Phone(label: "Test", value: "+34 123 45 67 89"), const Phone(value: "(987) 654-321")]
       });
 
