@@ -12,6 +12,8 @@ class ContactPermissions : Activity() {
     private val PERMISSIONS_REQUEST_READ_CONTACTS: Int = 100
     var continuation : Continuation<Boolean>? = null
 
+
+
     private fun requestContactPermissions(continuation : Continuation<Boolean>) {
 
         if(this.continuation != null) return

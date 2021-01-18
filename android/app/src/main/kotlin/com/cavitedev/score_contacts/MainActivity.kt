@@ -29,7 +29,7 @@ class MainActivity : FlutterActivity() {
 
 
             if (call.method == "getContacts") {
-                requestPermissions();
+//                requestPermissions();
 
                 runBlocking {
                     val contacts = ContactsService.fetchContacts(context)
