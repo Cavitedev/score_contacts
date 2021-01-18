@@ -11,21 +11,14 @@ import kotlinx.coroutines.runBlocking
 
 class MainActivity : FlutterActivity() {
     private val CONTACTS_CHANNEL = "com.cavitedev.scorecontacts/contacts"
-    private val PERMISSIONS_REQUEST_READ_CONTACTS: Int = 100
 
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        requestPermissions()
         (super.onCreate(savedInstanceState, persistentState))
     }
 
 
-    private fun requestPermissions() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            requestPermissions(arrayOf(Manifest.permission.READ_CONTACTS, Manifest.permission.WRITE_CONTACTS),
-                    PERMISSIONS_REQUEST_READ_CONTACTS)
-        }
-    }
+
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         val channel = MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CONTACTS_CHANNEL)
@@ -36,7 +29,7 @@ class MainActivity : FlutterActivity() {
 
 
             if (call.method == "getContacts") {
-
+                requestPermissions();
 
                 runBlocking {
                     val contacts = ContactsService.fetchContacts(context)
@@ -51,5 +44,7 @@ class MainActivity : FlutterActivity() {
 
         }
     }
+
+
 
 }

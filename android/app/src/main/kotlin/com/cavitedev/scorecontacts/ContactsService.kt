@@ -11,6 +11,9 @@ object ContactsService {
 
 
 
+
+
+
     suspend fun fetchContacts(context: Context) : List<Contact> {
         val contentRes : ContentResolver = context.contentResolver
         var contacts : List<Contact>

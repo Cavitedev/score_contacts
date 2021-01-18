@@ -132,7 +132,7 @@ class ContactActorBloc extends Bloc<ContactActorEvent, ContactActorState> {
     try {
       final String result = await channel.invokeMethod("getContacts");
       return right(Contact.contactsFromOtherPlatformJson(result));
-    } on PlatformException {
+    } on PlatformException catch(e) {
       return left(const ContactsFailure.platformError());
     }
   }
