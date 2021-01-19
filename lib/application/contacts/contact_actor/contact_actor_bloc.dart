@@ -107,20 +107,29 @@ class ContactActorBloc extends Bloc<ContactActorEvent, ContactActorState> {
           },
         );
       },
+      selectAllContacts: (e) async* {
+        yield ContactActorState.selectContacts(e.contactSet);
+      },
       loadContactsFromSystem: (e) async* {
+        yield const ContactActorState.actionInProgress();
+
         final Either<ContactsFailure, List<Contact>> contactsEither =
             await _reloadContactsFromSystem();
 
-        yield contactsEither.fold((f) {
-          return ContactActorState.contactsFailure(f);
-        }, (contactList) {
-          final createContactsCall = repository.createContactList(contactList);
-          createContactsCall.then((either) => either.fold(
-                (f) => ContactActorState.contactsFailure(f),
-                (r) => null,
-              ));
-          return state;
-        },);
+        yield* contactsEither.fold(
+          (f) async* {
+            yield ContactActorState.contactsFailure(f);
+          },
+          (contactList) async* {
+            final eitherCreateContacts =
+                await repository.createContactList(contactList);
+
+            yield eitherCreateContacts.fold(
+              (f) => ContactActorState.contactsFailure(f),
+              (r) => state,
+            );
+          },
+        );
       },
     );
   }
@@ -132,7 +141,7 @@ class ContactActorBloc extends Bloc<ContactActorEvent, ContactActorState> {
     try {
       final String result = await channel.invokeMethod("getContacts");
       return right(Contact.contactsFromOtherPlatformJson(result));
-    } on PlatformException catch(e) {
+    } on PlatformException {
       return left(const ContactsFailure.platformError());
     }
   }

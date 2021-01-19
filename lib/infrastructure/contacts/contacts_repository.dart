@@ -35,10 +35,12 @@ class ContactsRepository implements IContactsRepository {
   Future<Either<ContactsFailure, Unit>> createContactList(
       List<Contact> contactList) async {
 
-    while(contactList.length >= 500){
+    const int range = 50;
+    
+    while(contactList.length >= range){
 
-      final either = await _performBatch(contactList.sublist(0,500));
-      contactList.removeRange(0, 500);
+      final either = await _performBatch(contactList.sublist(0,range));
+      contactList.removeRange(0, range);
       if(either.isLeft()){
         return either;
       }
@@ -61,15 +63,16 @@ class ContactsRepository implements IContactsRepository {
       final ContactDTO contactDTO = ContactDTO.fromDomain(contact);
       batch.set(contacts.doc(contactDTO.id), contactDTO.toJson());
     }
+    Either<ContactsFailure, Unit> returnValue;
     await batch.commit().
     catchError((e){
       if (e is PlatformException && e.message.contains(PERMISSIONDENIEDCODE)) {
-        return left(const ContactsFailure.insufficientPermissions());
+        returnValue = left(const ContactsFailure.insufficientPermissions());
       } else {
-        return left(const ContactsFailure.unexpected());
+        returnValue = left(const ContactsFailure.unexpected());
       }
     });
-    return right(unit);
+    return returnValue ?? right(unit);
   }
 
   Future<void> _createContact(Contact contact) async {
