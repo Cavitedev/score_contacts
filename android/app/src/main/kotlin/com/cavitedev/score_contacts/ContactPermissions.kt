@@ -4,6 +4,8 @@ import android.Manifest
 import android.app.Activity
 import android.content.pm.PackageManager
 import android.os.Build
+import com.cavitedev.score_contacts.Permissions.PermissionResult
+import kotlinx.coroutines.CompletableDeferred
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.resume
 
@@ -12,7 +14,7 @@ class ContactPermissions : Activity() {
     private val PERMISSIONS_REQUEST_READ_CONTACTS: Int = 100
     var continuation : Continuation<Boolean>? = null
 
-
+    var completable : CompletableDeferred<PermissionResult>? = null
 
     private fun requestContactPermissions(continuation : Continuation<Boolean>) {
 
