@@ -67,14 +67,7 @@ class ContactPopUp {
           text: "Delete",
         )),
         PopUpDivider(),
-        PopUpWidget(
-            addedWidget: InkPopUpButton(
-          onTap: () {
-            ExtendedNavigator.of(context).pop();
-          },
-          text: "Add to favourites TODO",
-        )),
-        PopUpDivider(),
+
       ];
 }
 
