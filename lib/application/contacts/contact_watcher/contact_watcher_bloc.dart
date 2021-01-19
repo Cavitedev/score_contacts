@@ -63,6 +63,22 @@ class ContactWatcherBloc
             },
             orElse: () async* {});
       },
+      toggleSelectionContact: (e) async* {
+        // e.selectionContact.
+      },
+      deselectAllContacts: (e) async* {
+        yield* state.maybeMap(
+          loadSuccess: (state) async* {
+            // state.selectedContacts.sele
+          },
+          orElse: () async* {
+            yield state;
+          },
+        );
+      },
+      selectAllContacts: (e) async* {
+        // yield ContactWatcherState.selectContacts(e.contactSet);
+      },
     );
   }
 

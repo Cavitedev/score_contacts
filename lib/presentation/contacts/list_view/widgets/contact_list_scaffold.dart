@@ -57,18 +57,15 @@ class _ContactsListScaffoldState extends State<ContactsListScaffold> {
       body: SafeArea(
         child: Column(
           children: <Widget>[
-            BlocBuilder<ContactActorBloc, ContactActorState>(
-              builder: (context, state) {
-                return state.maybeMap(
-                    selectContacts: (state) => Container(
-                          color: Theme.of(context).dialogBackgroundColor,
-                          child: SelectedContactsRowBar(
-                            selectedContacts: state.selectedContacts,
-                          ),
-                        ),
-                    orElse: () => const SizedBox());
-              },
-            ),
+            if (widget.selectionContacts.hasSelectedContacts())
+              Container(
+                color: Theme.of(context).dialogBackgroundColor,
+                child: SelectedContactsRowBar(
+                  selectionContacts: widget.selectionContacts,
+                ),
+              )
+            else
+              const SizedBox(),
             TextFieldContainer(
               child: Row(
                 children: [
@@ -103,7 +100,11 @@ class _ContactsListScaffoldState extends State<ContactsListScaffold> {
                 child: Column(
                     children: widget.selectionContacts
                         .map((contact) => ContactRow(
-                            selectionContact: contact, filter: widget.filter))
+                              selectionContact: contact,
+                              filter: widget.filter,
+                              selectionEnabled: widget.selectionContacts
+                                  .hasSelectedContacts(),
+                            ))
                         .toList()),
               ),
             )
@@ -113,8 +114,8 @@ class _ContactsListScaffoldState extends State<ContactsListScaffold> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           context
-              .read<ContactActorBloc>()
-              .add(const ContactActorEvent.deselectAllContacts());
+              .read<ContactWatcherBloc>()
+              .add(const ContactWatcherEvent.deselectAllContacts());
           ExtendedNavigator.of(context).pushAddContactPage();
         },
         child: const Icon(

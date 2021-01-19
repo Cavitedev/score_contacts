@@ -1,19 +1,22 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:scorecontacts/application/contacts/contact_actor/contact_actor_bloc.dart';
-import 'package:scorecontacts/domain/user/contacts_data/contact.dart';
+import 'package:scorecontacts/application/contacts/contact_watcher/contact_watcher_bloc.dart';
+import 'package:scorecontacts/application/contacts/selected_contact.dart';
 import 'package:scorecontacts/presentation/core/widgets/alert_dialogue_cancel_ok.dart';
 import 'package:scorecontacts/presentation/routes/router.gr.dart';
 
 class ContactPopUp {
   final BuildContext context;
-  final Contact contact;
+  final SelectionContact selectionContact;
   final ContactActorBloc actorBloc;
+  final ContactWatcherBloc watcherBloc;
 
   const ContactPopUp({
     @required this.context,
-    @required this.contact,
+    @required this.selectionContact,
     @required this.actorBloc,
+    @required this.watcherBloc
   });
 
   List<PopupMenuEntry> popUpItems() => [
@@ -21,7 +24,7 @@ class ContactPopUp {
         PopUpWidget(
             addedWidget: InkPopUpButton(
           onTap: () {
-            actorBloc.add(ContactActorEvent.toggleSelectionContact(contact));
+            watcherBloc.add(ContactWatcherEvent.toggleSelectionContact(selectionContact));
             ExtendedNavigator.of(context).pop();
           },
           text: "Select",
@@ -36,7 +39,7 @@ class ContactPopUp {
         PopUpWidget(
             addedWidget: InkPopUpButton(
           onTap: () {
-            ExtendedNavigator.of(context).pushAddContactPage(contact: contact);
+            ExtendedNavigator.of(context).pushAddContactPage(contact: selectionContact.contact);
           },
           text: "Edit",
         )),
@@ -48,10 +51,10 @@ class ContactPopUp {
                 context: context,
                 builder: (context) => AlertDialogueCancelOK(
                       title:
-                          'Do you want to delete "${contact.nameData.firstName} ${contact.nameData.surnames}" contact',
+                          'Do you want to delete "${selectionContact.contact.getFullName()}" contact',
                       onSubmit: () {
                         actorBloc.add(
-                            ContactActorEvent.delete(contact: contact));
+                            ContactActorEvent.delete(contactList: [selectionContact.contact]));
                         ExtendedNavigator.of(context).popUntil((route) =>
                         route.settings.name == Routes.contactList);
                       },

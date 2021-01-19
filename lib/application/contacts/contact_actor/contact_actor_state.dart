@@ -8,9 +8,6 @@ abstract class ContactActorState with _$ContactActorState {
 
   const factory ContactActorState.deleteSuccessful() = _DeleteSuccessful;
 
-  const factory ContactActorState.selectContacts(
-      Set<Contact> selectedContacts) = _SelectContacts;
-
   const factory ContactActorState.contactsFailure(ContactsFailure failure) =
       _DeleteFailure;
 }

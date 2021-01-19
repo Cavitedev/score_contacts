@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:scorecontacts/application/contacts/contact_actor/contact_actor_bloc.dart';
-import 'package:scorecontacts/domain/user/contacts_data/contact.dart';
+import 'package:scorecontacts/application/contacts/contact_watcher/contact_watcher_bloc.dart';
+import 'package:scorecontacts/application/contacts/selected_contact.dart';
 
 class SelectedContactsRowBar extends StatelessWidget {
-  final Set<Contact> selectedContacts;
+  final List<SelectionContact> selectionContacts;
 
   const SelectedContactsRowBar({
     Key key,
-    @required this.selectedContacts,
+    @required this.selectionContacts,
   }) : super(key: key);
 
   @override
@@ -23,13 +24,13 @@ class SelectedContactsRowBar extends StatelessWidget {
           ),
           onPressed: () {
             context
-                .read<ContactActorBloc>()
-                .add(const ContactActorEvent.deselectAllContacts());
+                .read<ContactWatcherBloc>()
+                .add(const ContactWatcherEvent.deselectAllContacts());
           },
         ),
         Expanded(
           child: Text(
-            "Selected ${selectedContacts.length} contacts",
+            "Selected ${selectionContacts.selectedContactsAmount()} contacts",
             overflow: TextOverflow.ellipsis,
             style: Theme.of(context).textTheme.subtitle1,
           ),
@@ -51,7 +52,7 @@ class SelectedContactsRowBar extends StatelessWidget {
           onPressed: () {
             context
                 .read<ContactActorBloc>()
-                .add(const ContactActorEvent.deleteSelectedContacts());
+                .add(ContactActorEvent.delete(contactList: selectionContacts.selectedContacts().toContacts()));
           },
         ),
         IconButton(
