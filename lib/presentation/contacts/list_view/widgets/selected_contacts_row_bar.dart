@@ -7,10 +7,12 @@ import 'package:scorecontacts/application/contacts/selected_contact.dart';
 
 class SelectedContactsRowBar extends StatelessWidget {
   final List<SelectionContact> selectionContacts;
+  final bool areAllContactsSelected;
 
   const SelectedContactsRowBar({
     Key key,
     @required this.selectionContacts,
+    @required this.areAllContactsSelected,
   }) : super(key: key);
 
   @override
@@ -32,7 +34,10 @@ class SelectedContactsRowBar extends StatelessWidget {
           child: Text(
             "Selected ${selectionContacts.selectedContactsAmount()} contacts",
             overflow: TextOverflow.ellipsis,
-            style: Theme.of(context).textTheme.subtitle1,
+            style: Theme
+                .of(context)
+                .textTheme
+                .subtitle1,
           ),
         ),
         IconButton(
@@ -50,18 +55,32 @@ class SelectedContactsRowBar extends StatelessWidget {
             size: 26,
           ),
           onPressed: () {
-            context
-                .read<ContactActorBloc>()
-                .add(ContactActorEvent.delete(contactList: selectionContacts.selectedContacts().toContacts()));
+            context.read<ContactActorBloc>().add(ContactActorEvent.delete(
+                contactList:
+                selectionContacts.selectedContacts().toContacts()));
           },
         ),
-        IconButton(
-          icon: const Icon(
-            Icons.more_vert,
-            size: 26,
-          ),
-          onPressed: () {
-            //TODO Menu Select all, add to label merge
+        if(!areAllContactsSelected)
+        PopupMenuButton(
+          onSelected: (selected) {
+            if (selected == "Select_all") {
+              context.read<ContactWatcherBloc>().add(
+                  const ContactWatcherEvent.selectAllContacts());
+            }
+          },
+          itemBuilder: (context) {
+            return [
+              PopupMenuItem(
+                value: "Select_all",
+                child: Text(
+                  "Select all",
+                  style: Theme
+                      .of(context)
+                      .textTheme
+                      .subtitle1,
+                ),
+              )
+            ];
           },
         ),
       ],

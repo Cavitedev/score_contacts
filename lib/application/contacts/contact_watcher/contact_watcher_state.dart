@@ -25,6 +25,7 @@ abstract class LoadSuccessValues implements _$LoadSuccessValues {
   }) = _LoadSuccessValues;
 
   bool hasSelectedContacts() => selectedContactsAmount > 0;
+  bool areAllContactsSelected() => selectedContactsAmount == selectionContactList.length;
 
   /// Returns the same value with only de selected contacts, use only on PRESENTATION LAYER
   LoadSuccessValues copyWithDisplayedContacts(){

@@ -71,8 +71,9 @@ class ContactWatcherBloc
           loadSuccess: (state) async* {
             e.selectionContact.toggleSelection();
 
-            yield state.copyWith(stateValues: state.stateValues.addOrDecrease1SelectedContact(
-                isAdd: e.selectionContact.isSelected)) ;
+            yield state.copyWith(
+                stateValues: state.stateValues.addOrDecrease1SelectedContact(
+                    isAdd: e.selectionContact.isSelected));
           },
           orElse: () async* {},
         );
@@ -80,16 +81,23 @@ class ContactWatcherBloc
       deselectAllContacts: (e) async* {
         yield* state.maybeMap(
           loadSuccess: (state) async* {
-            yield state.copyWith(stateValues:  state.stateValues.deselectAll());
+            yield state.copyWith(stateValues: state.stateValues.deselectAll());
           },
           orElse: () async* {},
         );
       },
       selectAllContacts: (e) async* {
-        // yield ContactWatcherState.selectContacts(e.contactSet);
+        yield* state.maybeMap(
+          loadSuccess: (state) async* {
+            yield state.copyWith(stateValues: state.stateValues.selectAll());
+          },
+          orElse: () async* {},
+        );
       },
     );
   }
+
+
 
   void _sortByNameAndSurname(List<Contact> contacts) {
     contacts.sort((a, b) {
