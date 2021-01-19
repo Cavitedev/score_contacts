@@ -32,6 +32,24 @@ class _$ContactWatcherEventTearOff {
       searchString,
     );
   }
+
+// ignore: unused_element
+  _ToggleSelectionContact toggleSelectionContact(
+      SelectionContact selectionContact) {
+    return _ToggleSelectionContact(
+      selectionContact,
+    );
+  }
+
+// ignore: unused_element
+  _DeselectAllContacts deselectAllContacts() {
+    return const _DeselectAllContacts();
+  }
+
+// ignore: unused_element
+  _SelectAllContacts selectAllContacts() {
+    return const _SelectAllContacts();
+  }
 }
 
 /// @nodoc
@@ -47,6 +65,9 @@ mixin _$ContactWatcherEvent {
             Either<ContactsFailure, List<Contact>> contactsEither),
     @required TResult watchAll(),
     @required TResult searchContact(String searchString),
+    @required TResult toggleSelectionContact(SelectionContact selectionContact),
+    @required TResult deselectAllContacts(),
+    @required TResult selectAllContacts(),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
@@ -54,6 +75,9 @@ mixin _$ContactWatcherEvent {
         Either<ContactsFailure, List<Contact>> contactsEither),
     TResult watchAll(),
     TResult searchContact(String searchString),
+    TResult toggleSelectionContact(SelectionContact selectionContact),
+    TResult deselectAllContacts(),
+    TResult selectAllContacts(),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -61,12 +85,18 @@ mixin _$ContactWatcherEvent {
     @required TResult contactsReceived(_ContactsReceived value),
     @required TResult watchAll(_WatchAll value),
     @required TResult searchContact(_SearchContact value),
+    @required TResult toggleSelectionContact(_ToggleSelectionContact value),
+    @required TResult deselectAllContacts(_DeselectAllContacts value),
+    @required TResult selectAllContacts(_SelectAllContacts value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult contactsReceived(_ContactsReceived value),
     TResult watchAll(_WatchAll value),
     TResult searchContact(_SearchContact value),
+    TResult toggleSelectionContact(_ToggleSelectionContact value),
+    TResult deselectAllContacts(_DeselectAllContacts value),
+    TResult selectAllContacts(_SelectAllContacts value),
     @required TResult orElse(),
   });
 }
@@ -158,10 +188,16 @@ class _$_ContactsReceived implements _ContactsReceived {
             Either<ContactsFailure, List<Contact>> contactsEither),
     @required TResult watchAll(),
     @required TResult searchContact(String searchString),
+    @required TResult toggleSelectionContact(SelectionContact selectionContact),
+    @required TResult deselectAllContacts(),
+    @required TResult selectAllContacts(),
   }) {
     assert(contactsReceived != null);
     assert(watchAll != null);
     assert(searchContact != null);
+    assert(toggleSelectionContact != null);
+    assert(deselectAllContacts != null);
+    assert(selectAllContacts != null);
     return contactsReceived(contactsEither);
   }
 
@@ -172,6 +208,9 @@ class _$_ContactsReceived implements _ContactsReceived {
         Either<ContactsFailure, List<Contact>> contactsEither),
     TResult watchAll(),
     TResult searchContact(String searchString),
+    TResult toggleSelectionContact(SelectionContact selectionContact),
+    TResult deselectAllContacts(),
+    TResult selectAllContacts(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -187,10 +226,16 @@ class _$_ContactsReceived implements _ContactsReceived {
     @required TResult contactsReceived(_ContactsReceived value),
     @required TResult watchAll(_WatchAll value),
     @required TResult searchContact(_SearchContact value),
+    @required TResult toggleSelectionContact(_ToggleSelectionContact value),
+    @required TResult deselectAllContacts(_DeselectAllContacts value),
+    @required TResult selectAllContacts(_SelectAllContacts value),
   }) {
     assert(contactsReceived != null);
     assert(watchAll != null);
     assert(searchContact != null);
+    assert(toggleSelectionContact != null);
+    assert(deselectAllContacts != null);
+    assert(selectAllContacts != null);
     return contactsReceived(this);
   }
 
@@ -200,6 +245,9 @@ class _$_ContactsReceived implements _ContactsReceived {
     TResult contactsReceived(_ContactsReceived value),
     TResult watchAll(_WatchAll value),
     TResult searchContact(_SearchContact value),
+    TResult toggleSelectionContact(_ToggleSelectionContact value),
+    TResult deselectAllContacts(_DeselectAllContacts value),
+    TResult selectAllContacts(_SelectAllContacts value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -261,10 +309,16 @@ class _$_WatchAll implements _WatchAll {
             Either<ContactsFailure, List<Contact>> contactsEither),
     @required TResult watchAll(),
     @required TResult searchContact(String searchString),
+    @required TResult toggleSelectionContact(SelectionContact selectionContact),
+    @required TResult deselectAllContacts(),
+    @required TResult selectAllContacts(),
   }) {
     assert(contactsReceived != null);
     assert(watchAll != null);
     assert(searchContact != null);
+    assert(toggleSelectionContact != null);
+    assert(deselectAllContacts != null);
+    assert(selectAllContacts != null);
     return watchAll();
   }
 
@@ -275,6 +329,9 @@ class _$_WatchAll implements _WatchAll {
         Either<ContactsFailure, List<Contact>> contactsEither),
     TResult watchAll(),
     TResult searchContact(String searchString),
+    TResult toggleSelectionContact(SelectionContact selectionContact),
+    TResult deselectAllContacts(),
+    TResult selectAllContacts(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -290,10 +347,16 @@ class _$_WatchAll implements _WatchAll {
     @required TResult contactsReceived(_ContactsReceived value),
     @required TResult watchAll(_WatchAll value),
     @required TResult searchContact(_SearchContact value),
+    @required TResult toggleSelectionContact(_ToggleSelectionContact value),
+    @required TResult deselectAllContacts(_DeselectAllContacts value),
+    @required TResult selectAllContacts(_SelectAllContacts value),
   }) {
     assert(contactsReceived != null);
     assert(watchAll != null);
     assert(searchContact != null);
+    assert(toggleSelectionContact != null);
+    assert(deselectAllContacts != null);
+    assert(selectAllContacts != null);
     return watchAll(this);
   }
 
@@ -303,6 +366,9 @@ class _$_WatchAll implements _WatchAll {
     TResult contactsReceived(_ContactsReceived value),
     TResult watchAll(_WatchAll value),
     TResult searchContact(_SearchContact value),
+    TResult toggleSelectionContact(_ToggleSelectionContact value),
+    TResult deselectAllContacts(_DeselectAllContacts value),
+    TResult selectAllContacts(_SelectAllContacts value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -383,10 +449,16 @@ class _$_SearchContact implements _SearchContact {
             Either<ContactsFailure, List<Contact>> contactsEither),
     @required TResult watchAll(),
     @required TResult searchContact(String searchString),
+    @required TResult toggleSelectionContact(SelectionContact selectionContact),
+    @required TResult deselectAllContacts(),
+    @required TResult selectAllContacts(),
   }) {
     assert(contactsReceived != null);
     assert(watchAll != null);
     assert(searchContact != null);
+    assert(toggleSelectionContact != null);
+    assert(deselectAllContacts != null);
+    assert(selectAllContacts != null);
     return searchContact(searchString);
   }
 
@@ -397,6 +469,9 @@ class _$_SearchContact implements _SearchContact {
         Either<ContactsFailure, List<Contact>> contactsEither),
     TResult watchAll(),
     TResult searchContact(String searchString),
+    TResult toggleSelectionContact(SelectionContact selectionContact),
+    TResult deselectAllContacts(),
+    TResult selectAllContacts(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -412,10 +487,16 @@ class _$_SearchContact implements _SearchContact {
     @required TResult contactsReceived(_ContactsReceived value),
     @required TResult watchAll(_WatchAll value),
     @required TResult searchContact(_SearchContact value),
+    @required TResult toggleSelectionContact(_ToggleSelectionContact value),
+    @required TResult deselectAllContacts(_DeselectAllContacts value),
+    @required TResult selectAllContacts(_SelectAllContacts value),
   }) {
     assert(contactsReceived != null);
     assert(watchAll != null);
     assert(searchContact != null);
+    assert(toggleSelectionContact != null);
+    assert(deselectAllContacts != null);
+    assert(selectAllContacts != null);
     return searchContact(this);
   }
 
@@ -425,6 +506,9 @@ class _$_SearchContact implements _SearchContact {
     TResult contactsReceived(_ContactsReceived value),
     TResult watchAll(_WatchAll value),
     TResult searchContact(_SearchContact value),
+    TResult toggleSelectionContact(_ToggleSelectionContact value),
+    TResult deselectAllContacts(_DeselectAllContacts value),
+    TResult selectAllContacts(_SelectAllContacts value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -443,6 +527,391 @@ abstract class _SearchContact implements ContactWatcherEvent {
 }
 
 /// @nodoc
+abstract class _$ToggleSelectionContactCopyWith<$Res> {
+  factory _$ToggleSelectionContactCopyWith(_ToggleSelectionContact value,
+          $Res Function(_ToggleSelectionContact) then) =
+      __$ToggleSelectionContactCopyWithImpl<$Res>;
+  $Res call({SelectionContact selectionContact});
+}
+
+/// @nodoc
+class __$ToggleSelectionContactCopyWithImpl<$Res>
+    extends _$ContactWatcherEventCopyWithImpl<$Res>
+    implements _$ToggleSelectionContactCopyWith<$Res> {
+  __$ToggleSelectionContactCopyWithImpl(_ToggleSelectionContact _value,
+      $Res Function(_ToggleSelectionContact) _then)
+      : super(_value, (v) => _then(v as _ToggleSelectionContact));
+
+  @override
+  _ToggleSelectionContact get _value => super._value as _ToggleSelectionContact;
+
+  @override
+  $Res call({
+    Object selectionContact = freezed,
+  }) {
+    return _then(_ToggleSelectionContact(
+      selectionContact == freezed
+          ? _value.selectionContact
+          : selectionContact as SelectionContact,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_ToggleSelectionContact implements _ToggleSelectionContact {
+  const _$_ToggleSelectionContact(this.selectionContact)
+      : assert(selectionContact != null);
+
+  @override
+  final SelectionContact selectionContact;
+
+  @override
+  String toString() {
+    return 'ContactWatcherEvent.toggleSelectionContact(selectionContact: $selectionContact)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _ToggleSelectionContact &&
+            (identical(other.selectionContact, selectionContact) ||
+                const DeepCollectionEquality()
+                    .equals(other.selectionContact, selectionContact)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(selectionContact);
+
+  @override
+  _$ToggleSelectionContactCopyWith<_ToggleSelectionContact> get copyWith =>
+      __$ToggleSelectionContactCopyWithImpl<_ToggleSelectionContact>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required
+        TResult contactsReceived(
+            Either<ContactsFailure, List<Contact>> contactsEither),
+    @required TResult watchAll(),
+    @required TResult searchContact(String searchString),
+    @required TResult toggleSelectionContact(SelectionContact selectionContact),
+    @required TResult deselectAllContacts(),
+    @required TResult selectAllContacts(),
+  }) {
+    assert(contactsReceived != null);
+    assert(watchAll != null);
+    assert(searchContact != null);
+    assert(toggleSelectionContact != null);
+    assert(deselectAllContacts != null);
+    assert(selectAllContacts != null);
+    return toggleSelectionContact(selectionContact);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult contactsReceived(
+        Either<ContactsFailure, List<Contact>> contactsEither),
+    TResult watchAll(),
+    TResult searchContact(String searchString),
+    TResult toggleSelectionContact(SelectionContact selectionContact),
+    TResult deselectAllContacts(),
+    TResult selectAllContacts(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (toggleSelectionContact != null) {
+      return toggleSelectionContact(selectionContact);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult contactsReceived(_ContactsReceived value),
+    @required TResult watchAll(_WatchAll value),
+    @required TResult searchContact(_SearchContact value),
+    @required TResult toggleSelectionContact(_ToggleSelectionContact value),
+    @required TResult deselectAllContacts(_DeselectAllContacts value),
+    @required TResult selectAllContacts(_SelectAllContacts value),
+  }) {
+    assert(contactsReceived != null);
+    assert(watchAll != null);
+    assert(searchContact != null);
+    assert(toggleSelectionContact != null);
+    assert(deselectAllContacts != null);
+    assert(selectAllContacts != null);
+    return toggleSelectionContact(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult contactsReceived(_ContactsReceived value),
+    TResult watchAll(_WatchAll value),
+    TResult searchContact(_SearchContact value),
+    TResult toggleSelectionContact(_ToggleSelectionContact value),
+    TResult deselectAllContacts(_DeselectAllContacts value),
+    TResult selectAllContacts(_SelectAllContacts value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (toggleSelectionContact != null) {
+      return toggleSelectionContact(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ToggleSelectionContact implements ContactWatcherEvent {
+  const factory _ToggleSelectionContact(SelectionContact selectionContact) =
+      _$_ToggleSelectionContact;
+
+  SelectionContact get selectionContact;
+  _$ToggleSelectionContactCopyWith<_ToggleSelectionContact> get copyWith;
+}
+
+/// @nodoc
+abstract class _$DeselectAllContactsCopyWith<$Res> {
+  factory _$DeselectAllContactsCopyWith(_DeselectAllContacts value,
+          $Res Function(_DeselectAllContacts) then) =
+      __$DeselectAllContactsCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$DeselectAllContactsCopyWithImpl<$Res>
+    extends _$ContactWatcherEventCopyWithImpl<$Res>
+    implements _$DeselectAllContactsCopyWith<$Res> {
+  __$DeselectAllContactsCopyWithImpl(
+      _DeselectAllContacts _value, $Res Function(_DeselectAllContacts) _then)
+      : super(_value, (v) => _then(v as _DeselectAllContacts));
+
+  @override
+  _DeselectAllContacts get _value => super._value as _DeselectAllContacts;
+}
+
+/// @nodoc
+class _$_DeselectAllContacts implements _DeselectAllContacts {
+  const _$_DeselectAllContacts();
+
+  @override
+  String toString() {
+    return 'ContactWatcherEvent.deselectAllContacts()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _DeselectAllContacts);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required
+        TResult contactsReceived(
+            Either<ContactsFailure, List<Contact>> contactsEither),
+    @required TResult watchAll(),
+    @required TResult searchContact(String searchString),
+    @required TResult toggleSelectionContact(SelectionContact selectionContact),
+    @required TResult deselectAllContacts(),
+    @required TResult selectAllContacts(),
+  }) {
+    assert(contactsReceived != null);
+    assert(watchAll != null);
+    assert(searchContact != null);
+    assert(toggleSelectionContact != null);
+    assert(deselectAllContacts != null);
+    assert(selectAllContacts != null);
+    return deselectAllContacts();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult contactsReceived(
+        Either<ContactsFailure, List<Contact>> contactsEither),
+    TResult watchAll(),
+    TResult searchContact(String searchString),
+    TResult toggleSelectionContact(SelectionContact selectionContact),
+    TResult deselectAllContacts(),
+    TResult selectAllContacts(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (deselectAllContacts != null) {
+      return deselectAllContacts();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult contactsReceived(_ContactsReceived value),
+    @required TResult watchAll(_WatchAll value),
+    @required TResult searchContact(_SearchContact value),
+    @required TResult toggleSelectionContact(_ToggleSelectionContact value),
+    @required TResult deselectAllContacts(_DeselectAllContacts value),
+    @required TResult selectAllContacts(_SelectAllContacts value),
+  }) {
+    assert(contactsReceived != null);
+    assert(watchAll != null);
+    assert(searchContact != null);
+    assert(toggleSelectionContact != null);
+    assert(deselectAllContacts != null);
+    assert(selectAllContacts != null);
+    return deselectAllContacts(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult contactsReceived(_ContactsReceived value),
+    TResult watchAll(_WatchAll value),
+    TResult searchContact(_SearchContact value),
+    TResult toggleSelectionContact(_ToggleSelectionContact value),
+    TResult deselectAllContacts(_DeselectAllContacts value),
+    TResult selectAllContacts(_SelectAllContacts value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (deselectAllContacts != null) {
+      return deselectAllContacts(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeselectAllContacts implements ContactWatcherEvent {
+  const factory _DeselectAllContacts() = _$_DeselectAllContacts;
+}
+
+/// @nodoc
+abstract class _$SelectAllContactsCopyWith<$Res> {
+  factory _$SelectAllContactsCopyWith(
+          _SelectAllContacts value, $Res Function(_SelectAllContacts) then) =
+      __$SelectAllContactsCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$SelectAllContactsCopyWithImpl<$Res>
+    extends _$ContactWatcherEventCopyWithImpl<$Res>
+    implements _$SelectAllContactsCopyWith<$Res> {
+  __$SelectAllContactsCopyWithImpl(
+      _SelectAllContacts _value, $Res Function(_SelectAllContacts) _then)
+      : super(_value, (v) => _then(v as _SelectAllContacts));
+
+  @override
+  _SelectAllContacts get _value => super._value as _SelectAllContacts;
+}
+
+/// @nodoc
+class _$_SelectAllContacts implements _SelectAllContacts {
+  const _$_SelectAllContacts();
+
+  @override
+  String toString() {
+    return 'ContactWatcherEvent.selectAllContacts()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _SelectAllContacts);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required
+        TResult contactsReceived(
+            Either<ContactsFailure, List<Contact>> contactsEither),
+    @required TResult watchAll(),
+    @required TResult searchContact(String searchString),
+    @required TResult toggleSelectionContact(SelectionContact selectionContact),
+    @required TResult deselectAllContacts(),
+    @required TResult selectAllContacts(),
+  }) {
+    assert(contactsReceived != null);
+    assert(watchAll != null);
+    assert(searchContact != null);
+    assert(toggleSelectionContact != null);
+    assert(deselectAllContacts != null);
+    assert(selectAllContacts != null);
+    return selectAllContacts();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult contactsReceived(
+        Either<ContactsFailure, List<Contact>> contactsEither),
+    TResult watchAll(),
+    TResult searchContact(String searchString),
+    TResult toggleSelectionContact(SelectionContact selectionContact),
+    TResult deselectAllContacts(),
+    TResult selectAllContacts(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (selectAllContacts != null) {
+      return selectAllContacts();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult contactsReceived(_ContactsReceived value),
+    @required TResult watchAll(_WatchAll value),
+    @required TResult searchContact(_SearchContact value),
+    @required TResult toggleSelectionContact(_ToggleSelectionContact value),
+    @required TResult deselectAllContacts(_DeselectAllContacts value),
+    @required TResult selectAllContacts(_SelectAllContacts value),
+  }) {
+    assert(contactsReceived != null);
+    assert(watchAll != null);
+    assert(searchContact != null);
+    assert(toggleSelectionContact != null);
+    assert(deselectAllContacts != null);
+    assert(selectAllContacts != null);
+    return selectAllContacts(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult contactsReceived(_ContactsReceived value),
+    TResult watchAll(_WatchAll value),
+    TResult searchContact(_SearchContact value),
+    TResult toggleSelectionContact(_ToggleSelectionContact value),
+    TResult deselectAllContacts(_DeselectAllContacts value),
+    TResult selectAllContacts(_SelectAllContacts value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (selectAllContacts != null) {
+      return selectAllContacts(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SelectAllContacts implements ContactWatcherEvent {
+  const factory _SelectAllContacts() = _$_SelectAllContacts;
+}
+
+/// @nodoc
 class _$ContactWatcherStateTearOff {
   const _$ContactWatcherStateTearOff();
 
@@ -457,11 +926,9 @@ class _$ContactWatcherStateTearOff {
   }
 
 // ignore: unused_element
-  _LoadSuccess loadSuccess(
-      List<SelectionContact> selectedContacts, Filter filter) {
+  _LoadSuccess loadSuccess(LoadSuccessValues stateValues) {
     return _LoadSuccess(
-      selectedContacts,
-      filter,
+      stateValues,
     );
   }
 
@@ -483,16 +950,14 @@ mixin _$ContactWatcherState {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult loadInProgress(),
-    @required
-        TResult loadSuccess(
-            List<SelectionContact> selectedContacts, Filter filter),
+    @required TResult loadSuccess(LoadSuccessValues stateValues),
     @required TResult loadFailure(ContactsFailure failure),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult loadInProgress(),
-    TResult loadSuccess(List<SelectionContact> selectedContacts, Filter filter),
+    TResult loadSuccess(LoadSuccessValues stateValues),
     TResult loadFailure(ContactsFailure failure),
     @required TResult orElse(),
   });
@@ -569,9 +1034,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult loadInProgress(),
-    @required
-        TResult loadSuccess(
-            List<SelectionContact> selectedContacts, Filter filter),
+    @required TResult loadSuccess(LoadSuccessValues stateValues),
     @required TResult loadFailure(ContactsFailure failure),
   }) {
     assert(initial != null);
@@ -586,7 +1049,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult loadInProgress(),
-    TResult loadSuccess(List<SelectionContact> selectedContacts, Filter filter),
+    TResult loadSuccess(LoadSuccessValues stateValues),
     TResult loadFailure(ContactsFailure failure),
     @required TResult orElse(),
   }) {
@@ -674,9 +1137,7 @@ class _$_LoadInProgress implements _LoadInProgress {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult loadInProgress(),
-    @required
-        TResult loadSuccess(
-            List<SelectionContact> selectedContacts, Filter filter),
+    @required TResult loadSuccess(LoadSuccessValues stateValues),
     @required TResult loadFailure(ContactsFailure failure),
   }) {
     assert(initial != null);
@@ -691,7 +1152,7 @@ class _$_LoadInProgress implements _LoadInProgress {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult loadInProgress(),
-    TResult loadSuccess(List<SelectionContact> selectedContacts, Filter filter),
+    TResult loadSuccess(LoadSuccessValues stateValues),
     TResult loadFailure(ContactsFailure failure),
     @required TResult orElse(),
   }) {
@@ -743,9 +1204,9 @@ abstract class _$LoadSuccessCopyWith<$Res> {
   factory _$LoadSuccessCopyWith(
           _LoadSuccess value, $Res Function(_LoadSuccess) then) =
       __$LoadSuccessCopyWithImpl<$Res>;
-  $Res call({List<SelectionContact> selectedContacts, Filter filter});
+  $Res call({LoadSuccessValues stateValues});
 
-  $FilterCopyWith<$Res> get filter;
+  $LoadSuccessValuesCopyWith<$Res> get stateValues;
 }
 
 /// @nodoc
@@ -761,60 +1222,50 @@ class __$LoadSuccessCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object selectedContacts = freezed,
-    Object filter = freezed,
+    Object stateValues = freezed,
   }) {
     return _then(_LoadSuccess(
-      selectedContacts == freezed
-          ? _value.selectedContacts
-          : selectedContacts as List<SelectionContact>,
-      filter == freezed ? _value.filter : filter as Filter,
+      stateValues == freezed
+          ? _value.stateValues
+          : stateValues as LoadSuccessValues,
     ));
   }
 
   @override
-  $FilterCopyWith<$Res> get filter {
-    if (_value.filter == null) {
+  $LoadSuccessValuesCopyWith<$Res> get stateValues {
+    if (_value.stateValues == null) {
       return null;
     }
-    return $FilterCopyWith<$Res>(_value.filter, (value) {
-      return _then(_value.copyWith(filter: value));
+    return $LoadSuccessValuesCopyWith<$Res>(_value.stateValues, (value) {
+      return _then(_value.copyWith(stateValues: value));
     });
   }
 }
 
 /// @nodoc
 class _$_LoadSuccess implements _LoadSuccess {
-  const _$_LoadSuccess(this.selectedContacts, this.filter)
-      : assert(selectedContacts != null),
-        assert(filter != null);
+  const _$_LoadSuccess(this.stateValues) : assert(stateValues != null);
 
   @override
-  final List<SelectionContact> selectedContacts;
-  @override
-  final Filter filter;
+  final LoadSuccessValues stateValues;
 
   @override
   String toString() {
-    return 'ContactWatcherState.loadSuccess(selectedContacts: $selectedContacts, filter: $filter)';
+    return 'ContactWatcherState.loadSuccess(stateValues: $stateValues)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _LoadSuccess &&
-            (identical(other.selectedContacts, selectedContacts) ||
+            (identical(other.stateValues, stateValues) ||
                 const DeepCollectionEquality()
-                    .equals(other.selectedContacts, selectedContacts)) &&
-            (identical(other.filter, filter) ||
-                const DeepCollectionEquality().equals(other.filter, filter)));
+                    .equals(other.stateValues, stateValues)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(selectedContacts) ^
-      const DeepCollectionEquality().hash(filter);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(stateValues);
 
   @override
   _$LoadSuccessCopyWith<_LoadSuccess> get copyWith =>
@@ -825,16 +1276,14 @@ class _$_LoadSuccess implements _LoadSuccess {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult loadInProgress(),
-    @required
-        TResult loadSuccess(
-            List<SelectionContact> selectedContacts, Filter filter),
+    @required TResult loadSuccess(LoadSuccessValues stateValues),
     @required TResult loadFailure(ContactsFailure failure),
   }) {
     assert(initial != null);
     assert(loadInProgress != null);
     assert(loadSuccess != null);
     assert(loadFailure != null);
-    return loadSuccess(selectedContacts, filter);
+    return loadSuccess(stateValues);
   }
 
   @override
@@ -842,13 +1291,13 @@ class _$_LoadSuccess implements _LoadSuccess {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult loadInProgress(),
-    TResult loadSuccess(List<SelectionContact> selectedContacts, Filter filter),
+    TResult loadSuccess(LoadSuccessValues stateValues),
     TResult loadFailure(ContactsFailure failure),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (loadSuccess != null) {
-      return loadSuccess(selectedContacts, filter);
+      return loadSuccess(stateValues);
     }
     return orElse();
   }
@@ -886,11 +1335,9 @@ class _$_LoadSuccess implements _LoadSuccess {
 }
 
 abstract class _LoadSuccess implements ContactWatcherState {
-  const factory _LoadSuccess(
-      List<SelectionContact> selectedContacts, Filter filter) = _$_LoadSuccess;
+  const factory _LoadSuccess(LoadSuccessValues stateValues) = _$_LoadSuccess;
 
-  List<SelectionContact> get selectedContacts;
-  Filter get filter;
+  LoadSuccessValues get stateValues;
   _$LoadSuccessCopyWith<_LoadSuccess> get copyWith;
 }
 
@@ -968,9 +1415,7 @@ class _$_LoadFailure implements _LoadFailure {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult loadInProgress(),
-    @required
-        TResult loadSuccess(
-            List<SelectionContact> selectedContacts, Filter filter),
+    @required TResult loadSuccess(LoadSuccessValues stateValues),
     @required TResult loadFailure(ContactsFailure failure),
   }) {
     assert(initial != null);
@@ -985,7 +1430,7 @@ class _$_LoadFailure implements _LoadFailure {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult loadInProgress(),
-    TResult loadSuccess(List<SelectionContact> selectedContacts, Filter filter),
+    TResult loadSuccess(LoadSuccessValues stateValues),
     TResult loadFailure(ContactsFailure failure),
     @required TResult orElse(),
   }) {
@@ -1033,4 +1478,190 @@ abstract class _LoadFailure implements ContactWatcherState {
 
   ContactsFailure get failure;
   _$LoadFailureCopyWith<_LoadFailure> get copyWith;
+}
+
+/// @nodoc
+class _$LoadSuccessValuesTearOff {
+  const _$LoadSuccessValuesTearOff();
+
+// ignore: unused_element
+  _LoadSuccessValues call(
+      {List<SelectionContact> selectionContactList,
+      Filter filter,
+      int selectedContactsAmount}) {
+    return _LoadSuccessValues(
+      selectionContactList: selectionContactList,
+      filter: filter,
+      selectedContactsAmount: selectedContactsAmount,
+    );
+  }
+}
+
+/// @nodoc
+// ignore: unused_element
+const $LoadSuccessValues = _$LoadSuccessValuesTearOff();
+
+/// @nodoc
+mixin _$LoadSuccessValues {
+  List<SelectionContact> get selectionContactList;
+  Filter get filter;
+  int get selectedContactsAmount;
+
+  $LoadSuccessValuesCopyWith<LoadSuccessValues> get copyWith;
+}
+
+/// @nodoc
+abstract class $LoadSuccessValuesCopyWith<$Res> {
+  factory $LoadSuccessValuesCopyWith(
+          LoadSuccessValues value, $Res Function(LoadSuccessValues) then) =
+      _$LoadSuccessValuesCopyWithImpl<$Res>;
+  $Res call(
+      {List<SelectionContact> selectionContactList,
+      Filter filter,
+      int selectedContactsAmount});
+
+  $FilterCopyWith<$Res> get filter;
+}
+
+/// @nodoc
+class _$LoadSuccessValuesCopyWithImpl<$Res>
+    implements $LoadSuccessValuesCopyWith<$Res> {
+  _$LoadSuccessValuesCopyWithImpl(this._value, this._then);
+
+  final LoadSuccessValues _value;
+  // ignore: unused_field
+  final $Res Function(LoadSuccessValues) _then;
+
+  @override
+  $Res call({
+    Object selectionContactList = freezed,
+    Object filter = freezed,
+    Object selectedContactsAmount = freezed,
+  }) {
+    return _then(_value.copyWith(
+      selectionContactList: selectionContactList == freezed
+          ? _value.selectionContactList
+          : selectionContactList as List<SelectionContact>,
+      filter: filter == freezed ? _value.filter : filter as Filter,
+      selectedContactsAmount: selectedContactsAmount == freezed
+          ? _value.selectedContactsAmount
+          : selectedContactsAmount as int,
+    ));
+  }
+
+  @override
+  $FilterCopyWith<$Res> get filter {
+    if (_value.filter == null) {
+      return null;
+    }
+    return $FilterCopyWith<$Res>(_value.filter, (value) {
+      return _then(_value.copyWith(filter: value));
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$LoadSuccessValuesCopyWith<$Res>
+    implements $LoadSuccessValuesCopyWith<$Res> {
+  factory _$LoadSuccessValuesCopyWith(
+          _LoadSuccessValues value, $Res Function(_LoadSuccessValues) then) =
+      __$LoadSuccessValuesCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {List<SelectionContact> selectionContactList,
+      Filter filter,
+      int selectedContactsAmount});
+
+  @override
+  $FilterCopyWith<$Res> get filter;
+}
+
+/// @nodoc
+class __$LoadSuccessValuesCopyWithImpl<$Res>
+    extends _$LoadSuccessValuesCopyWithImpl<$Res>
+    implements _$LoadSuccessValuesCopyWith<$Res> {
+  __$LoadSuccessValuesCopyWithImpl(
+      _LoadSuccessValues _value, $Res Function(_LoadSuccessValues) _then)
+      : super(_value, (v) => _then(v as _LoadSuccessValues));
+
+  @override
+  _LoadSuccessValues get _value => super._value as _LoadSuccessValues;
+
+  @override
+  $Res call({
+    Object selectionContactList = freezed,
+    Object filter = freezed,
+    Object selectedContactsAmount = freezed,
+  }) {
+    return _then(_LoadSuccessValues(
+      selectionContactList: selectionContactList == freezed
+          ? _value.selectionContactList
+          : selectionContactList as List<SelectionContact>,
+      filter: filter == freezed ? _value.filter : filter as Filter,
+      selectedContactsAmount: selectedContactsAmount == freezed
+          ? _value.selectedContactsAmount
+          : selectedContactsAmount as int,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_LoadSuccessValues extends _LoadSuccessValues {
+  const _$_LoadSuccessValues(
+      {this.selectionContactList, this.filter, this.selectedContactsAmount})
+      : super._();
+
+  @override
+  final List<SelectionContact> selectionContactList;
+  @override
+  final Filter filter;
+  @override
+  final int selectedContactsAmount;
+
+  @override
+  String toString() {
+    return 'LoadSuccessValues(selectionContactList: $selectionContactList, filter: $filter, selectedContactsAmount: $selectedContactsAmount)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _LoadSuccessValues &&
+            (identical(other.selectionContactList, selectionContactList) ||
+                const DeepCollectionEquality().equals(
+                    other.selectionContactList, selectionContactList)) &&
+            (identical(other.filter, filter) ||
+                const DeepCollectionEquality().equals(other.filter, filter)) &&
+            (identical(other.selectedContactsAmount, selectedContactsAmount) ||
+                const DeepCollectionEquality().equals(
+                    other.selectedContactsAmount, selectedContactsAmount)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(selectionContactList) ^
+      const DeepCollectionEquality().hash(filter) ^
+      const DeepCollectionEquality().hash(selectedContactsAmount);
+
+  @override
+  _$LoadSuccessValuesCopyWith<_LoadSuccessValues> get copyWith =>
+      __$LoadSuccessValuesCopyWithImpl<_LoadSuccessValues>(this, _$identity);
+}
+
+abstract class _LoadSuccessValues extends LoadSuccessValues {
+  const _LoadSuccessValues._() : super._();
+  const factory _LoadSuccessValues(
+      {List<SelectionContact> selectionContactList,
+      Filter filter,
+      int selectedContactsAmount}) = _$_LoadSuccessValues;
+
+  @override
+  List<SelectionContact> get selectionContactList;
+  @override
+  Filter get filter;
+  @override
+  int get selectedContactsAmount;
+  @override
+  _$LoadSuccessValuesCopyWith<_LoadSuccessValues> get copyWith;
 }

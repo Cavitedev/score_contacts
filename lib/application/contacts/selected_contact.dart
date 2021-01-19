@@ -29,9 +29,7 @@ extension SelectedContactsListExtension on List<SelectionContact> {
 
   List<SelectionContact> selectedContacts() =>  where((selectionContact) => selectionContact.isSelected).toList();
 
-  void deselectAll () => _selectAll(false);
-  void selectAll () => _selectAll(true);
-  void _selectAll (bool selectOn) => forEach((contact) => contact.isSelected = selectOn);
+
 }
 
 extension ContactsListExtension on List<Contact> {

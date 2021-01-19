@@ -3,21 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/contacts/contact_actor/contact_actor_bloc.dart';
 import 'package:scorecontacts/application/contacts/contact_watcher/contact_watcher_bloc.dart';
-import 'package:scorecontacts/application/contacts/selected_contact.dart';
-import 'package:scorecontacts/domain/core/filter.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/contact_row.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/selected_contacts_row_bar.dart';
 import 'package:scorecontacts/presentation/core/widgets/text_field_container.dart';
 import 'package:scorecontacts/presentation/routes/router.gr.dart';
 
 class ContactsListScaffold extends StatefulWidget {
-  final List<SelectionContact> selectionContacts;
-  final Filter filter;
+  final LoadSuccessValues stateValues;
 
   const ContactsListScaffold({
     Key key,
-    @required this.selectionContacts,
-    @required this.filter,
+    @required this.stateValues,
   }) : super(key: key);
 
   @override
@@ -29,6 +25,7 @@ class _ContactsListScaffoldState extends State<ContactsListScaffold> {
 
   @override
   Widget build(BuildContext context) {
+    final selectionContactList = widget.stateValues.selectionContactList;
     return Scaffold(
       key: _scaffoldKey,
       drawer: Drawer(
@@ -57,11 +54,11 @@ class _ContactsListScaffoldState extends State<ContactsListScaffold> {
       body: SafeArea(
         child: Column(
           children: <Widget>[
-            if (widget.selectionContacts.hasSelectedContacts())
+            if (widget.stateValues.hasSelectedContacts())
               Container(
                 color: Theme.of(context).dialogBackgroundColor,
                 child: SelectedContactsRowBar(
-                  selectionContacts: widget.selectionContacts,
+                  selectionContacts: selectionContactList,
                 ),
               )
             else
@@ -83,7 +80,7 @@ class _ContactsListScaffoldState extends State<ContactsListScaffold> {
                     child: TextField(
                       decoration: InputDecoration(
                           hintText:
-                              "🔎 Search ${widget.selectionContacts.length} contacts",
+                              "🔎 Search ${selectionContactList.length} contacts",
                           border: InputBorder.none),
                       onChanged: (str) {
                         context
@@ -98,12 +95,12 @@ class _ContactsListScaffoldState extends State<ContactsListScaffold> {
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
-                    children: widget.selectionContacts
+                    children: selectionContactList
                         .map((contact) => ContactRow(
                               selectionContact: contact,
-                              filter: widget.filter,
-                              selectionEnabled: widget.selectionContacts
-                                  .hasSelectedContacts(),
+                              filter: widget.stateValues.filter,
+                              selectionEnabled:
+                                  widget.stateValues.hasSelectedContacts(),
                             ))
                         .toList()),
               ),

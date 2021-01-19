@@ -36,11 +36,12 @@ class ContactWatcherBloc
             (failure) => ContactWatcherState.loadFailure(failure), (contacts) {
           _sortByNameAndSurname(contacts);
 
-          return ContactWatcherState.loadSuccess(
-              contacts
+          return ContactWatcherState.loadSuccess(LoadSuccessValues(
+              selectionContactList: contacts
                   .map((contact) => SelectionContact(contact: contact))
                   .toList(),
-              const Filter());
+              filter: const Filter(),
+              selectedContactsAmount: 0));
         });
       },
       watchAll: (e) async* {
@@ -53,27 +54,35 @@ class ContactWatcherBloc
       searchContact: (event) async* {
         yield* state.maybeMap(
             loadSuccess: (successState) async* {
-              Filter filter = successState.filter;
+              final LoadSuccessValues values = successState.stateValues;
+              Filter filter = values.filter;
               filter = filter?.copyWith(filterSearch: event.searchString);
               final List<SelectionContact> contacts =
-                  successState.selectedContacts;
+                  values.selectionContactList;
               _filterContacts(contacts, filter);
               yield successState.copyWith(
-                  selectedContacts: contacts, filter: filter);
+                  stateValues: values.copyWith(
+                      selectionContactList: contacts, filter: filter));
             },
             orElse: () async* {});
       },
       toggleSelectionContact: (e) async* {
-        // e.selectionContact.
+        yield* state.maybeMap(
+          loadSuccess: (state) async* {
+            e.selectionContact.toggleSelection();
+
+            yield state.copyWith(stateValues: state.stateValues.addOrDecrease1SelectedContact(
+                isAdd: e.selectionContact.isSelected)) ;
+          },
+          orElse: () async* {},
+        );
       },
       deselectAllContacts: (e) async* {
         yield* state.maybeMap(
           loadSuccess: (state) async* {
-            // state.selectedContacts.sele
+            yield state.copyWith(stateValues:  state.stateValues.deselectAll());
           },
-          orElse: () async* {
-            yield state;
-          },
+          orElse: () async* {},
         );
       },
       selectAllContacts: (e) async* {
