@@ -11,6 +11,7 @@ import 'package:injectable/injectable.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import 'application/contacts/add_contact/add_contact_bloc.dart';
+import 'application/core/app_manager_cubit.dart';
 import 'application/auth/auth_bloc.dart';
 import 'application/contacts/contact_actor/contact_actor_bloc.dart';
 import 'application/contacts/contact_watcher/contact_watcher_bloc.dart';
@@ -32,6 +33,7 @@ GetIt $initGetIt(
 }) {
   final gh = GetItHelper(get, environment, environmentFilter);
   final firebaseInjectableModule = _$FirebaseInjectableModule();
+  gh.factory<AppManagerCubit>(() => AppManagerCubit());
   gh.lazySingleton<FirebaseAuth>(() => firebaseInjectableModule.firebaseAuth);
   gh.lazySingleton<FirebaseFirestore>(() => firebaseInjectableModule.firestore);
   gh.lazySingleton<GoogleSignIn>(() => firebaseInjectableModule.googleSignIn);

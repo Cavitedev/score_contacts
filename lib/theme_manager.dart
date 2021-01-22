@@ -4,23 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
 @singleton
-class ThemeManager with ChangeNotifier{
-
-  ThemeManager(){
-    setCurrentTheme(ThemeMode.system);
-  }
-
-  ThemeMode _themeMode;
-
-  ThemeMode getCurrentTheme(){
-    return _themeMode;
-  }
-
-  void setCurrentTheme(ThemeMode mode){
-    _themeMode = mode;
-    notifyListeners();
-  }
-
+class ThemeManager {
 
   ThemeData lightTheme = ThemeData.light().copyWith(
     scaffoldBackgroundColor: const Color.fromRGBO(250, 250, 250, 1),
@@ -48,8 +32,7 @@ class ThemeManager with ChangeNotifier{
     ),
     iconTheme: const IconThemeData(color: Colors.grey, size: 32),
     textTheme: TextTheme(
-        headline2:
-        const TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
+        headline2: const TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
         headline3: const TextStyle(fontSize: 26, color: Colors.white),
         headline5: const TextStyle(fontSize: 22, color: Colors.black),
         headline6: const TextStyle(
@@ -65,7 +48,6 @@ class ThemeManager with ChangeNotifier{
         button: TextStyle(fontSize: 20, color: Colors.blueAccent[400])),
     visualDensity: VisualDensity.adaptivePlatformDensity,
   );
-
 
   ThemeData darkTheme = ThemeData.dark().copyWith(
     scaffoldBackgroundColor: const Color.fromRGBO(30, 30, 30, 1),
@@ -93,8 +75,7 @@ class ThemeManager with ChangeNotifier{
     ),
     iconTheme: const IconThemeData(color: Colors.grey, size: 32),
     textTheme: TextTheme(
-        headline2:
-        const TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
+        headline2: const TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
         headline3: const TextStyle(fontSize: 26),
         headline5: const TextStyle(
           fontSize: 22,
@@ -109,9 +90,4 @@ class ThemeManager with ChangeNotifier{
         button: TextStyle(fontSize: 20, color: Colors.blueAccent[100])),
     visualDensity: VisualDensity.adaptivePlatformDensity,
   );
-
-
 }
-
-
-

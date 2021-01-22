@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:scorecontacts/application/auth/auth_bloc.dart';
 import 'package:scorecontacts/application/auth/auth_event.dart';
+import 'package:scorecontacts/application/core/app_manager_cubit.dart';
 import 'package:scorecontacts/injection.dart';
 import 'package:scorecontacts/presentation/routes/router.gr.dart' as r;
 import 'package:scorecontacts/theme_manager.dart';
@@ -25,16 +26,20 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getIt<AuthBloc>()..add(const GetUser()),
         ),
-      ],
-      child: MaterialApp(
-          title: 'Contacts App',
-          builder: ExtendedNavigator.builder<r.Router>(
-            router: r.Router(),
-          ),
+        BlocProvider(create: (context) => getIt<AppManagerCubit>())
 
-          themeMode: getIt<ThemeManager>().getCurrentTheme(),
-          theme: getIt<ThemeManager>().lightTheme,
-          darkTheme: getIt<ThemeManager>().darkTheme,
+      ],
+      child: BlocBuilder<AppManagerCubit, AppManagerState>(
+        builder: (context, state) => MaterialApp(
+            title: 'Contacts App',
+            builder: ExtendedNavigator.builder<r.Router>(
+              router: r.Router(),
+            ),
+
+            themeMode: state.themeMode,
+            theme: getIt<ThemeManager>().lightTheme,
+            darkTheme: getIt<ThemeManager>().darkTheme,
+        ),
       ),
     );
   }

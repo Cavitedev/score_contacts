@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:scorecontacts/injection.dart';
-import 'package:scorecontacts/theme_manager.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:scorecontacts/application/core/app_manager_cubit.dart';
 
 class ThemeSwitch extends StatefulWidget {
   const ThemeSwitch({
@@ -32,8 +32,7 @@ class _ThemeSwitchState extends State<ThemeSwitch> {
       leading: const Icon(Icons.nights_stay),
       onTap: () {
 
-          getIt<ThemeManager>().setCurrentTheme
-            (isDarkTheme ? ThemeMode.dark : ThemeMode.light);
+        context.read<AppManagerCubit>().changeThemeData(isDarkTheme ? ThemeMode.light: ThemeMode.dark);
 
         setState(() {
           isDarkTheme = !isDarkTheme;
