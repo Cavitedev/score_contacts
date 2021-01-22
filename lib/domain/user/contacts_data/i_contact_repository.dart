@@ -14,4 +14,6 @@ abstract class IContactsRepository {
   Future<Either<ContactsFailure, Unit>> updateContact(Contact contact);
 
   Future<Either<ContactsFailure, Unit>> deleteContact(Contact contact);
+
+  Future<Either<ContactsFailure, Unit>> deleteContactList(List<Contact> contactList);
 }

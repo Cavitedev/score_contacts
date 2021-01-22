@@ -40,6 +40,15 @@ class ContactsRepository implements IContactsRepository {
 
   }
 
+  Future<void> _createContact(Contact contact) async {
+    final CollectionReference contacts =
+        firestore
+            .userDocument()
+            .contactsCollection;
+    final ContactDTO contactDTO = ContactDTO.fromDomain(contact);
+    await contacts.doc(contactDTO.id).set(contactDTO.toJson());
+  }
+
   Future<Either<ContactsFailure, Unit>> _createContactsBatch(
       List<Contact> contactList) async {
 
@@ -63,33 +72,6 @@ class ContactsRepository implements IContactsRepository {
     });
     return returnValue ?? right(unit);
   }
-
-  Future<R> _performingBatch<R extends Either ,P extends List> (P batchList ,Future<R> Function(P) batchOperation) async {
-    const int range = 50;
-
-    while(batchList.length >= range){
-
-      final P subList = batchList.sublist(0,range) as P;
-      final either = await batchOperation(subList);
-      batchList.removeRange(0, range);
-      if(either.isLeft()){
-        return batchOperation(batchList);
-      }
-
-    }
-
-    return batchOperation(batchList);
-  }
-
-  Future<void> _createContact(Contact contact) async {
-    final CollectionReference contacts =
-        firestore
-            .userDocument()
-            .contactsCollection;
-    final ContactDTO contactDTO = ContactDTO.fromDomain(contact);
-    await contacts.doc(contactDTO.id).set(contactDTO.toJson());
-  }
-
 
   @override
   Stream<Either<ContactsFailure, List<Contact>>> watchAllContacts() async* {
@@ -141,8 +123,7 @@ class ContactsRepository implements IContactsRepository {
           firestore
               .userDocument()
               .contactsCollection;
-      final ContactDTO contactDTO = ContactDTO.fromDomain(contact);
-      await contacts.doc(contactDTO.id).delete();
+      await contacts.doc(contact.id.value).delete();
       return right(unit);
     } catch (e) {
       if (e is PlatformException && e.message.contains(PERMISSIONDENIEDCODE)) {
@@ -155,5 +136,54 @@ class ContactsRepository implements IContactsRepository {
     }
   }
 
+  @override
+  Future<Either<ContactsFailure, Unit>> deleteContactList(List<Contact> contactList) {
+    return _performingBatch(contactList, _deleteContactsBatch);
+  }
+
+
+  Future<Either<ContactsFailure, Unit>> _deleteContactsBatch(
+      List<Contact> contactList) async {
+
+    final batch = firestore.batch();
+    final CollectionReference contacts =
+        firestore
+            .userDocument()
+            .contactsCollection;
+    for (final Contact contact in contactList) {
+
+      batch.delete(contacts.doc(contact.id.value));
+    }
+    Either<ContactsFailure, Unit> returnValue;
+    await batch.commit().
+    catchError((e){
+      if (e is PlatformException && e.message.contains(PERMISSIONDENIEDCODE)) {
+        returnValue = left(const ContactsFailure.insufficientPermissions());
+      } else if (e is PlatformException && e.message.contains(NOTFOUNDCODE)) {
+        return left(const ContactsFailure.notFound());
+      }else {
+        returnValue = left(const ContactsFailure.unexpected());
+      }
+    });
+    return returnValue ?? right(unit);
+  }
+
+
+  Future<R> _performingBatch<R extends Either ,P extends List> (P batchList ,Future<R> Function(P) batchOperation) async {
+    const int range = 200;
+
+    while(batchList.length >= range){
+
+      final P subList = batchList.sublist(0,range) as P;
+      final either = await batchOperation(subList);
+      batchList.removeRange(0, range);
+      if(either.isLeft()){
+        return batchOperation(batchList);
+      }
+
+    }
+
+    return batchOperation(batchList);
+  }
 
 }

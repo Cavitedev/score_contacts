@@ -26,18 +26,13 @@ class ContactActorBloc extends Bloc<ContactActorEvent, ContactActorState> {
   ) async* {
     yield* event.map(
       delete: (e) async* {
-
         yield const ContactActorState.actionInProgress();
-        for(final contact in e.contactList){
         final Either<ContactsFailure, Unit> failureOrUnit =
-        await repository.deleteContact(contact);
+            await repository.deleteContactList(e.contactList);
 
         yield failureOrUnit.fold((f) => ContactActorState.contactsFailure(f),
-        (_) => const ContactActorState.deleteSuccessful());
-        }
-
+            (_) => const ContactActorState.deleteSuccessful());
       },
-
       loadContactsFromSystem: (e) async* {
         yield const ContactActorState.actionInProgress();
 
