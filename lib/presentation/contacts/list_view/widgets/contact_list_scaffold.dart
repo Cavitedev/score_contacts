@@ -1,13 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:scorecontacts/application/contacts/contact_actor/contact_actor_bloc.dart';
 import 'package:scorecontacts/application/contacts/contact_watcher/contact_watcher_bloc.dart';
 import 'package:scorecontacts/application/contacts/selected_contact.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/contact_row.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/selected_contacts_row_bar.dart';
 import 'package:scorecontacts/presentation/core/widgets/text_field_container.dart';
 import 'package:scorecontacts/presentation/routes/router.gr.dart';
+
+import 'contact_list_drawer.dart';
 
 class ContactsListScaffold extends StatefulWidget {
   final LoadSuccessValues stateValues;
@@ -29,29 +30,7 @@ class _ContactsListScaffoldState extends State<ContactsListScaffold> {
     final displayedContactList = widget.stateValues.selectionContactList;
     return Scaffold(
       key: _scaffoldKey,
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
-              ),
-              child: const Text('Contacts'),
-            ),
-            ListTile(
-              title: const Text('Load Contacts from device'),
-              leading: const Icon(Icons.phone_android),
-              onTap: () {
-                Navigator.pop(context);
-                context
-                    .read<ContactActorBloc>()
-                    .add(const ContactActorEvent.loadContactsFromSystem());
-              },
-            ),
-          ],
-        ),
-      ),
+      drawer: const Contact_list_drawer(),
       body: SafeArea(
         child: Column(
           children: <Widget>[
@@ -127,3 +106,5 @@ class _ContactsListScaffoldState extends State<ContactsListScaffold> {
     );
   }
 }
+
+

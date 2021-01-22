@@ -20,6 +20,7 @@ import 'infrastructure/core/firebase_injectable_module.dart';
 import 'domain/auth/i_auth_facade.dart';
 import 'domain/user/contacts_data/i_contact_repository.dart';
 import 'application/auth/sign_in/sign_in_bloc.dart';
+import 'theme_manager.dart';
 
 /// adds generated dependencies
 /// to the provided [GetIt] instance
@@ -45,6 +46,9 @@ GetIt $initGetIt(
       () => ContactActorBloc(get<IContactsRepository>()));
   gh.factory<ContactWatcherBloc>(
       () => ContactWatcherBloc(get<IContactsRepository>()));
+
+  // Eager singletons must be registered in the right order
+  gh.singleton<ThemeManager>(ThemeManager());
   return get;
 }
 

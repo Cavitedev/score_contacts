@@ -70,8 +70,8 @@ class ContactRow extends StatelessWidget {
               )
                   : Text(
                 selectionContact.contact.getDisplayedChar(),
-                style: const TextStyle(
-                    fontSize: 26, fontWeight: FontWeight.w500),
+
+                style: Theme.of(context).textTheme.headline2,
               ),
             ),
             const SizedBox(
@@ -150,6 +150,7 @@ class ContactRow extends StatelessWidget {
 
   RichText _buildFullName(BuildContext context) {
     return RichText(
+      textScaleFactor: MediaQuery.of(context).textScaleFactor,
       overflow: TextOverflow.ellipsis,
       text: TextSpan(
           text: selectionContact.contact.getFullName(),

@@ -52,10 +52,8 @@ class _AlertDialogueWithFieldCancelOKState
           textColor: Theme.of(context).focusColor,
           child: const Text(
             "Cancel",
-            style: TextStyle(
-//              color: ,
-//              fontSize: 20,
-                ),
+            // style: TextStyle(
+            //     ),
           ),
         ),
         FlatButton(

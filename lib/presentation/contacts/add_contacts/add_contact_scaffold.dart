@@ -16,7 +16,7 @@ class AddContactScaffold extends StatelessWidget {
                 previous.isEditting != current.isEditting,
             builder: (context, state) => Text(
               state.isEditting ? "Edit contact" : "Create Contact",
-              style: Theme.of(context).textTheme.headline5,
+              style: Theme.of(context).textTheme.headline3,
             ),
           ),
         ),
@@ -32,7 +32,7 @@ class AddContactScaffold extends StatelessWidget {
             icon: const Icon(Icons.check),
             onPressed: () {
               context
-                  .bloc<AddContactBloc>()
+                  .read<AddContactBloc>()
                   .add(AddContactEvent.saved(context));
             },
           )
