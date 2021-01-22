@@ -34,15 +34,14 @@ class ThemeManager {
     textTheme: TextTheme(
         headline2: const TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
         headline3: const TextStyle(fontSize: 26, color: Colors.white),
-        headline5: const TextStyle(fontSize: 22, color: Colors.black),
-        headline6: const TextStyle(
-            fontSize: 20, letterSpacing: .5, color: Colors.black),
-        subtitle1: const TextStyle(
-            fontSize: 18, letterSpacing: .5, color: Colors.black),
-        subtitle2: const TextStyle(
+        headline5: const TextStyle(
           fontSize: 16,
+        ),
+        headline6: const TextStyle(fontSize: 14, letterSpacing: .5),
+        subtitle1: const TextStyle(fontSize: 16, letterSpacing: .5),
+        subtitle2: const TextStyle(
+          fontSize: 14,
           letterSpacing: .5,
-          color: Colors.black,
         ),
         caption: TextStyle(fontSize: 15, color: Colors.grey[700]),
         button: TextStyle(fontSize: 20, color: Colors.blueAccent[400])),
@@ -78,12 +77,12 @@ class ThemeManager {
         headline2: const TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
         headline3: const TextStyle(fontSize: 26),
         headline5: const TextStyle(
-          fontSize: 22,
-        ),
-        headline6: const TextStyle(fontSize: 20, letterSpacing: .5),
-        subtitle1: const TextStyle(fontSize: 18, letterSpacing: .5),
-        subtitle2: const TextStyle(
           fontSize: 16,
+        ),
+        headline6: const TextStyle(fontSize: 14, letterSpacing: .5),
+        subtitle1: const TextStyle(fontSize: 16, letterSpacing: .5),
+        subtitle2: const TextStyle(
+          fontSize: 14,
           letterSpacing: .5,
         ),
         caption: TextStyle(fontSize: 15, color: Colors.grey[400]),

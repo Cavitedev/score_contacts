@@ -100,6 +100,7 @@ class ContactRow extends StatelessWidget {
             _buildFullName(context),
             RichText(
               overflow: TextOverflow.ellipsis,
+              textScaleFactor: MediaQuery.of(context).textScaleFactor,
               text: TextSpan(
                   text: selectionContact.filterText,
                   style: Theme
@@ -121,6 +122,7 @@ class ContactRow extends StatelessWidget {
     if (match != null) {
       return RichText(
         overflow: TextOverflow.ellipsis,
+        textScaleFactor: MediaQuery.of(context).textScaleFactor,
         text: TextSpan(children: [
           TextSpan(
               text: highlight.substring(0, match.start),
