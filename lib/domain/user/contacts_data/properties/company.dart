@@ -17,4 +17,11 @@ abstract class Company implements _$Company {
       title: null,
     );
   }
+
+  factory Company.fromJson(Map<String, dynamic> json) {
+    String name = json["name"] as String;
+    String title = json["title"] as String;
+    return Company(name: name, title: title);
+
+  }
 }

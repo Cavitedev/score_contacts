@@ -48,11 +48,16 @@ abstract class Contact implements _$Contact {
         ? [map["emails"]]
         : map["emails"] as List<dynamic>;
 
+    final List<dynamic> companies = (map["companies"] is Map<String,dynamic>)
+        ? [map["companies"]]
+        : map["companies"] as List<dynamic>;
+
     final bool areThereLabelObjects = phones != null || emails != null;
 
     return Contact(
         id: UniqueID.fromUniqueString(map["id"] as String),
         nameData: NameData.fromFullName(map["name"] as String),
+        companies: companies?.map((compMap) => Company.fromJson(compMap as Map<String, dynamic>))?.toList(),
         labelObjects: areThereLabelObjects
             ? {
                 if (phones != null)
