@@ -35,23 +35,12 @@ class ContactsRepository implements IContactsRepository {
   Future<Either<ContactsFailure, Unit>> createContactList(
       List<Contact> contactList) async {
 
-    const int range = 50;
-    
-    while(contactList.length >= range){
-
-      final either = await _performBatch(contactList.sublist(0,range));
-      contactList.removeRange(0, range);
-      if(either.isLeft()){
-        return either;
-      }
-
-    }
-
-    return _performBatch(contactList);
+    return _performingBatch<Either<ContactsFailure, Unit>, List<Contact>>
+      (contactList, _createContactsBatch);
 
   }
 
-  Future<Either<ContactsFailure, Unit>> _performBatch(
+  Future<Either<ContactsFailure, Unit>> _createContactsBatch(
       List<Contact> contactList) async {
 
     final batch = firestore.batch();
@@ -73,6 +62,23 @@ class ContactsRepository implements IContactsRepository {
       }
     });
     return returnValue ?? right(unit);
+  }
+
+  Future<R> _performingBatch<R extends Either ,P extends List> (P batchList ,Future<R> Function(P) batchOperation) async {
+    const int range = 50;
+
+    while(batchList.length >= range){
+
+      final P subList = batchList.sublist(0,range) as P;
+      final either = await batchOperation(subList);
+      batchList.removeRange(0, range);
+      if(either.isLeft()){
+        return batchOperation(batchList);
+      }
+
+    }
+
+    return batchOperation(batchList);
   }
 
   Future<void> _createContact(Contact contact) async {
