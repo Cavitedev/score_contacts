@@ -4,6 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:scorecontacts/application/contacts/contact_actor/contact_actor_bloc.dart';
 import 'package:scorecontacts/application/contacts/contact_watcher/contact_watcher_bloc.dart';
 import 'package:scorecontacts/application/contacts/selected_contact.dart';
+import 'package:scorecontacts/presentation/core/widgets/alert_dialogue_cancel_ok.dart';
 
 class SelectedContactsRowBar extends StatelessWidget {
   final List<SelectionContact> selectionContacts;
@@ -17,6 +18,7 @@ class SelectedContactsRowBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int contactsAmount = selectionContacts.selectedContactsAmount();
     return Row(
       children: [
         IconButton(
@@ -32,7 +34,7 @@ class SelectedContactsRowBar extends StatelessWidget {
         ),
         Expanded(
           child: Text(
-            "Selected ${selectionContacts.selectedContactsAmount()} contacts",
+            "Selected $contactsAmount ${contactsAmount > 1 ? "contacts" : "contact"}",
             overflow: TextOverflow.ellipsis,
             style: Theme
                 .of(context)
@@ -55,9 +57,21 @@ class SelectedContactsRowBar extends StatelessWidget {
             size: 26,
           ),
           onPressed: () {
-            context.read<ContactActorBloc>().add(ContactActorEvent.delete(
-                contactList:
-                selectionContacts.selectedContacts().toContacts()));
+            final actorBloc = context.read<ContactActorBloc>();
+            showDialog(
+                context: context,
+                builder: (context) => AlertDialogueCancelOK(
+                  title:
+                  'Do you want to delete $contactsAmount ${contactsAmount > 1 ? "contacts" : "contact"}',
+                  onSubmit: () {
+                    actorBloc.add(ContactActorEvent.delete(
+                        contactList:
+                        selectionContacts.selectedContacts().toContacts()));
+                  },
+                ));
+
+
+
           },
         ),
         if(!areAllContactsSelected)
