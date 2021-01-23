@@ -44,7 +44,7 @@ class AddContactBloc extends Bloc<AddContactEvent, AddContactState> {
             final Contact sendedContact =
                 contact.copyWith(labelObjects: labelObjects);
 
-            return state.copyWith(contact: sendedContact);
+            return state.copyWith(contact: sendedContact, isEditting: e.isEditting);
           },
         );
       },

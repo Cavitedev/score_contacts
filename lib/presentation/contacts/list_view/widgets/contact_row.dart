@@ -33,7 +33,7 @@ class ContactRow extends StatelessWidget {
         }
         else {
           ExtendedNavigator.of(context)
-              .pushAddContactPage(contact: selectionContact.contact);
+              .pushAddContactPage(contact: selectionContact.contact, isEdditing: true);
         }
       },
       onLongPress: () {
