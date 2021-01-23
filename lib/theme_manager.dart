@@ -36,12 +36,14 @@ class ThemeManager {
         headline3: const TextStyle(fontSize: 26, color: Colors.white),
         headline5: const TextStyle(
           fontSize: 16,
+            color: Colors.black
         ),
-        headline6: const TextStyle(fontSize: 14, letterSpacing: .5),
-        subtitle1: const TextStyle(fontSize: 16, letterSpacing: .5),
+        headline6: const TextStyle(fontSize: 14, letterSpacing: .5,color: Colors.black),
+        subtitle1: const TextStyle(fontSize: 16, letterSpacing: .5, color: Colors.black),
         subtitle2: const TextStyle(
           fontSize: 14,
           letterSpacing: .5,
+            color: Colors.black
         ),
         caption: TextStyle(fontSize: 15, color: Colors.grey[700]),
         button: TextStyle(fontSize: 20, color: Colors.blueAccent[400])),
