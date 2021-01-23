@@ -29,7 +29,7 @@ abstract class LoadSuccessValues implements _$LoadSuccessValues {
 
 
   List<SelectionContact> displayedContacts() {
-    if(!hasSelectedContacts()) return selectionContactList;
+    if(filter.filterSearch.isEmpty) return selectionContactList;
     return selectionContactList.displayedContacts();
   }
 
