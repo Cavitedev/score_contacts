@@ -6,9 +6,9 @@ import android.content.Context
 import android.database.Cursor
 import android.provider.ContactsContract
 import com.cavitedev.score_contacts.core.StringManipulator.toJoinedPhoneString
-import com.cavitedev.score_contacts.permissions.PermissionManager
-import com.cavitedev.score_contacts.permissions.PermissionResult
 import com.cavitedev.scorecontacts.MainActivity
+import com.cavitedev.score_contacts.permissions.Peko
+import com.cavitedev.score_contacts.permissions.PermissionResult
 import io.flutter.Log
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
@@ -32,21 +32,11 @@ object ContactsService {
 
                 runBlocking {
 
-//                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-//                        flutterActivity.requestPermissions(arrayOf(Manifest.permission.READ_CONTACTS), 150)
-//                    }
-//
-//                    val permission : PermissionResult = PermissionResult.ShowRational(150)
-
-                    val permission = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-                        async { flutterActivity.requestPermissionsAsync(150, Manifest.permission.READ_CONTACTS) }.await()
-                    }else{
-                        PermissionResult.ShowRational(150)
-                    }
+                    val permission = async{Peko.requestPermissionsAsync(flutterActivity.baseContext, Manifest.permission.READ_CONTACTS)}.await()
 
                     Log.d("CavitedevDebug", permission.toString())
 
-                    if (permission is PermissionResult.PermissionGranted) {
+                    if (permission is PermissionResult.Granted) {
                         val contacts = fetchContacts(flutterActivity.baseContext)
                         val json = Contact.multipleToJson(contacts)
                         result.success(json.toString())
@@ -54,7 +44,6 @@ object ContactsService {
                         result.error("Rational", "sas", "as")
                     }
 
-                    result.notImplemented()
                 }
 
 
