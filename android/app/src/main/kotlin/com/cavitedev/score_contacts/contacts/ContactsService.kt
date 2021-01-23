@@ -7,8 +7,8 @@ import android.database.Cursor
 import android.provider.ContactsContract
 import com.cavitedev.score_contacts.core.StringManipulator.toJoinedPhoneString
 import com.cavitedev.scorecontacts.MainActivity
-import com.cavitedev.score_contacts.permissions.Peko
-import com.cavitedev.score_contacts.permissions.PermissionResult
+import com.markodevcic.peko.Peko
+import com.markodevcic.peko.PermissionResult
 import io.flutter.Log
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
@@ -32,7 +32,7 @@ object ContactsService {
 
                 runBlocking {
 
-                    val permission = async{Peko.requestPermissionsAsync(flutterActivity.baseContext, Manifest.permission.READ_CONTACTS)}.await()
+                    val permission = async{ Peko.requestPermissionsAsync(flutterActivity.baseContext, Manifest.permission.READ_CONTACTS)}.await()
 
                     Log.d("CavitedevDebug", permission.toString())
 
