@@ -61,7 +61,7 @@ abstract class BasePermissionManager : Fragment() {
             grantResults.all { it == PackageManager.PERMISSION_GRANTED }
 
 
-    protected fun requestPermissionsIfNotGranted(id: Int, vararg permissions: String) {
+    fun requestPermissionsIfNotGranted(id: Int, vararg permissions: String) {
 
         val notYetGrantedPermissions = permissions.filter {
             ContextCompat.checkSelfPermission(requireActivity(), it) != PackageManager.PERMISSION_GRANTED

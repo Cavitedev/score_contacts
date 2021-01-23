@@ -12,4 +12,6 @@ abstract class ContactsFailure with _$ContactsFailure {
   const factory ContactsFailure.unexpected() = _Unexpected;
 
   const factory ContactsFailure.platformError() = _PlatformError;
+  
+  const factory ContactsFailure.notContactPermissions() = _NotContactPermissions;
 }

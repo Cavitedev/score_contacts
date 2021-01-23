@@ -45,6 +45,7 @@ class ContactList extends StatelessWidget {
                                 "Updated contact not found, was it deleted from other device?",
                             unexpected: (_) =>
                                 "UNEXPECTED ERROR, REPORT TO SUPPORT TEAM",
+                            notContactPermissions: (_) => "Permissions for reading contacts are required",
                             platformError: (_) =>
                                 "Platform error, could not fetch data from system",
                           )).show(context);

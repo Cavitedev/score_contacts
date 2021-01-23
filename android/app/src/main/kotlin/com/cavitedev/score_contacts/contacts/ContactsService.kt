@@ -5,9 +5,11 @@ import android.content.ContentResolver
 import android.content.Context
 import android.database.Cursor
 import android.provider.ContactsContract
-import com.cavitedev.score_contacts.permissions.PermissionManager
 import com.cavitedev.score_contacts.core.StringManipulator.toJoinedPhoneString
-import io.flutter.embedding.android.FlutterFragmentActivity
+import com.cavitedev.score_contacts.permissions.PermissionManager
+import com.cavitedev.score_contacts.permissions.PermissionResult
+import com.cavitedev.scorecontacts.MainActivity
+import io.flutter.Log
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
 import kotlinx.coroutines.async
@@ -19,7 +21,7 @@ object ContactsService {
     private val CONTACTS_CHANNEL = "com.cavitedev.scorecontacts/contacts"
 
 
-    fun setLoadContactsChannel(flutterEngine: FlutterEngine, fragment : FlutterFragmentActivity) {
+    fun setLoadContactsChannel(flutterEngine: FlutterEngine, flutterActivity: MainActivity) {
         val contactsChannel = MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CONTACTS_CHANNEL)
 
 
@@ -28,28 +30,44 @@ object ContactsService {
 
             if (call.method == "getContacts") {
 
-
                 runBlocking {
 
+//                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+//                        flutterActivity.requestPermissions(arrayOf(Manifest.permission.READ_CONTACTS), 150)
+//                    }
+//
+//                    val permission : PermissionResult = PermissionResult.ShowRational(150)
 
-                    PermissionManager.requestPermissions(fragment.supportFragmentManager, 1, Manifest.permission.READ_CONTACTS)
-                    val contacts = fetchContacts(fragment.baseContext)
-                    val json = Contact.multipleToJson(contacts)
-                    result.success(json.toString())
+                    val permission = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                        async { flutterActivity.requestPermissionsAsync(150, Manifest.permission.READ_CONTACTS) }.await()
+                    }else{
+                        PermissionResult.ShowRational(150)
+                    }
+
+                    Log.d("CavitedevDebug", permission.toString())
+
+                    if (permission is PermissionResult.PermissionGranted) {
+                        val contacts = fetchContacts(flutterActivity.baseContext)
+                        val json = Contact.multipleToJson(contacts)
+                        result.success(json.toString())
+                    } else {
+                        result.error("Rational", "sas", "as")
+                    }
+
+                    result.notImplemented()
                 }
 
 
             } else {
                 result.notImplemented()
             }
-
         }
     }
 
 
-    suspend fun fetchContacts(context: Context) : List<Contact> {
-        val contentRes : ContentResolver = context.contentResolver
-        var contacts : List<Contact>
+    suspend fun fetchContacts(context: Context): List<Contact> {
+        val contentRes: ContentResolver = context.contentResolver
+        var contacts: List<Contact>
         coroutineScope {
             val contactsListAsync = async { getPhoneContacts(contentRes) }
             val contactNumbersAsync = async { getContactNumbers(contentRes) }
@@ -92,7 +110,7 @@ object ContactsService {
             while (contactsCursor.moveToNext()) {
                 val id = contactsCursor.getString(idIndex)
                 val name = contactsCursor.getString(nameIndex)
-                val contact = Contact(id,name)
+                val contact = Contact(id, name)
                 contactsList.add(contact)
 
             }
@@ -118,7 +136,7 @@ object ContactsService {
                 val number: String = toJoinedPhoneString(phoneCursor.getString(numberIndex))
                 //check if the map contains key or not, if not then create a new array list with number
                 if (contactsNumberMap.containsKey(contactId)) {
-                    if(!contactsNumberMap[contactId]!!.contains(number) ){
+                    if (!contactsNumberMap[contactId]!!.contains(number)) {
                         contactsNumberMap[contactId]!!.add(number)
                     }
                 } else {
@@ -160,7 +178,7 @@ object ContactsService {
     private fun getContactCompanies(contentRes: ContentResolver): HashMap<String, ArrayList<Company>> {
         val contactsCompanyMap = HashMap<String, ArrayList<Company>>()
         val where = ContactsContract.Data.MIMETYPE + " = ?"
-        val params = arrayOf( ContactsContract.CommonDataKinds.Organization.CONTENT_ITEM_TYPE)
+        val params = arrayOf(ContactsContract.CommonDataKinds.Organization.CONTENT_ITEM_TYPE)
         val companyCursor = contentRes.query(ContactsContract.Data.CONTENT_URI,
                 null,
                 where,
@@ -176,7 +194,7 @@ object ContactsService {
                 val companyName = companyCursor.getString(companyIndex)
                 val companyTitle = companyCursor.getString(titleIndex)
                 //check if the map contains key or not, if not then create a new array list with email
-                    val company = Company(companyName,companyTitle)
+                val company = Company(companyName, companyTitle)
                 if (contactsCompanyMap.containsKey(contactId)) {
                     contactsCompanyMap[contactId]?.add(company)
                 } else {

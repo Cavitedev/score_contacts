@@ -14,9 +14,10 @@ class _$AppManagerStateTearOff {
   const _$AppManagerStateTearOff();
 
 // ignore: unused_element
-  _AppManagerState call({ThemeMode themeMode}) {
+  _AppManagerState call({ThemeMode themeMode, String region}) {
     return _AppManagerState(
       themeMode: themeMode,
+      region: region,
     );
   }
 }
@@ -28,6 +29,7 @@ const $AppManagerState = _$AppManagerStateTearOff();
 /// @nodoc
 mixin _$AppManagerState {
   ThemeMode get themeMode;
+  String get region;
 
   $AppManagerStateCopyWith<AppManagerState> get copyWith;
 }
@@ -37,7 +39,7 @@ abstract class $AppManagerStateCopyWith<$Res> {
   factory $AppManagerStateCopyWith(
           AppManagerState value, $Res Function(AppManagerState) then) =
       _$AppManagerStateCopyWithImpl<$Res>;
-  $Res call({ThemeMode themeMode});
+  $Res call({ThemeMode themeMode, String region});
 }
 
 /// @nodoc
@@ -52,10 +54,12 @@ class _$AppManagerStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object themeMode = freezed,
+    Object region = freezed,
   }) {
     return _then(_value.copyWith(
       themeMode:
           themeMode == freezed ? _value.themeMode : themeMode as ThemeMode,
+      region: region == freezed ? _value.region : region as String,
     ));
   }
 }
@@ -67,7 +71,7 @@ abstract class _$AppManagerStateCopyWith<$Res>
           _AppManagerState value, $Res Function(_AppManagerState) then) =
       __$AppManagerStateCopyWithImpl<$Res>;
   @override
-  $Res call({ThemeMode themeMode});
+  $Res call({ThemeMode themeMode, String region});
 }
 
 /// @nodoc
@@ -84,24 +88,28 @@ class __$AppManagerStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object themeMode = freezed,
+    Object region = freezed,
   }) {
     return _then(_AppManagerState(
       themeMode:
           themeMode == freezed ? _value.themeMode : themeMode as ThemeMode,
+      region: region == freezed ? _value.region : region as String,
     ));
   }
 }
 
 /// @nodoc
 class _$_AppManagerState extends _AppManagerState {
-  const _$_AppManagerState({this.themeMode}) : super._();
+  const _$_AppManagerState({this.themeMode, this.region}) : super._();
 
   @override
   final ThemeMode themeMode;
+  @override
+  final String region;
 
   @override
   String toString() {
-    return 'AppManagerState(themeMode: $themeMode)';
+    return 'AppManagerState(themeMode: $themeMode, region: $region)';
   }
 
   @override
@@ -110,12 +118,16 @@ class _$_AppManagerState extends _AppManagerState {
         (other is _AppManagerState &&
             (identical(other.themeMode, themeMode) ||
                 const DeepCollectionEquality()
-                    .equals(other.themeMode, themeMode)));
+                    .equals(other.themeMode, themeMode)) &&
+            (identical(other.region, region) ||
+                const DeepCollectionEquality().equals(other.region, region)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(themeMode);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(themeMode) ^
+      const DeepCollectionEquality().hash(region);
 
   @override
   _$AppManagerStateCopyWith<_AppManagerState> get copyWith =>
@@ -124,10 +136,13 @@ class _$_AppManagerState extends _AppManagerState {
 
 abstract class _AppManagerState extends AppManagerState {
   const _AppManagerState._() : super._();
-  const factory _AppManagerState({ThemeMode themeMode}) = _$_AppManagerState;
+  const factory _AppManagerState({ThemeMode themeMode, String region}) =
+      _$_AppManagerState;
 
   @override
   ThemeMode get themeMode;
+  @override
+  String get region;
   @override
   _$AppManagerStateCopyWith<_AppManagerState> get copyWith;
 }

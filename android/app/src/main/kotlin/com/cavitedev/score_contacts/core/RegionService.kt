@@ -18,6 +18,8 @@ object RegionService {
             if (call.method == "getSystemRegion") {
                 val region = getRegion(context)
                 result.success(region)
+            }else{
+                result.notImplemented()
             }
 
         }

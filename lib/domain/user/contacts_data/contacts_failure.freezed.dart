@@ -32,6 +32,11 @@ class _$ContactsFailureTearOff {
   _PlatformError platformError() {
     return const _PlatformError();
   }
+
+// ignore: unused_element
+  _NotContactPermissions notContactPermissions() {
+    return const _NotContactPermissions();
+  }
 }
 
 /// @nodoc
@@ -46,6 +51,7 @@ mixin _$ContactsFailure {
     @required TResult notFound(),
     @required TResult unexpected(),
     @required TResult platformError(),
+    @required TResult notContactPermissions(),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
@@ -53,6 +59,7 @@ mixin _$ContactsFailure {
     TResult notFound(),
     TResult unexpected(),
     TResult platformError(),
+    TResult notContactPermissions(),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -61,6 +68,7 @@ mixin _$ContactsFailure {
     @required TResult notFound(_NotFound value),
     @required TResult unexpected(_Unexpected value),
     @required TResult platformError(_PlatformError value),
+    @required TResult notContactPermissions(_NotContactPermissions value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
@@ -68,6 +76,7 @@ mixin _$ContactsFailure {
     TResult notFound(_NotFound value),
     TResult unexpected(_Unexpected value),
     TResult platformError(_PlatformError value),
+    TResult notContactPermissions(_NotContactPermissions value),
     @required TResult orElse(),
   });
 }
@@ -133,11 +142,13 @@ class _$_InsufficientPermissions implements _InsufficientPermissions {
     @required TResult notFound(),
     @required TResult unexpected(),
     @required TResult platformError(),
+    @required TResult notContactPermissions(),
   }) {
     assert(insufficientPermissions != null);
     assert(notFound != null);
     assert(unexpected != null);
     assert(platformError != null);
+    assert(notContactPermissions != null);
     return insufficientPermissions();
   }
 
@@ -148,6 +159,7 @@ class _$_InsufficientPermissions implements _InsufficientPermissions {
     TResult notFound(),
     TResult unexpected(),
     TResult platformError(),
+    TResult notContactPermissions(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -164,11 +176,13 @@ class _$_InsufficientPermissions implements _InsufficientPermissions {
     @required TResult notFound(_NotFound value),
     @required TResult unexpected(_Unexpected value),
     @required TResult platformError(_PlatformError value),
+    @required TResult notContactPermissions(_NotContactPermissions value),
   }) {
     assert(insufficientPermissions != null);
     assert(notFound != null);
     assert(unexpected != null);
     assert(platformError != null);
+    assert(notContactPermissions != null);
     return insufficientPermissions(this);
   }
 
@@ -179,6 +193,7 @@ class _$_InsufficientPermissions implements _InsufficientPermissions {
     TResult notFound(_NotFound value),
     TResult unexpected(_Unexpected value),
     TResult platformError(_PlatformError value),
+    TResult notContactPermissions(_NotContactPermissions value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -233,11 +248,13 @@ class _$_NotFound implements _NotFound {
     @required TResult notFound(),
     @required TResult unexpected(),
     @required TResult platformError(),
+    @required TResult notContactPermissions(),
   }) {
     assert(insufficientPermissions != null);
     assert(notFound != null);
     assert(unexpected != null);
     assert(platformError != null);
+    assert(notContactPermissions != null);
     return notFound();
   }
 
@@ -248,6 +265,7 @@ class _$_NotFound implements _NotFound {
     TResult notFound(),
     TResult unexpected(),
     TResult platformError(),
+    TResult notContactPermissions(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -264,11 +282,13 @@ class _$_NotFound implements _NotFound {
     @required TResult notFound(_NotFound value),
     @required TResult unexpected(_Unexpected value),
     @required TResult platformError(_PlatformError value),
+    @required TResult notContactPermissions(_NotContactPermissions value),
   }) {
     assert(insufficientPermissions != null);
     assert(notFound != null);
     assert(unexpected != null);
     assert(platformError != null);
+    assert(notContactPermissions != null);
     return notFound(this);
   }
 
@@ -279,6 +299,7 @@ class _$_NotFound implements _NotFound {
     TResult notFound(_NotFound value),
     TResult unexpected(_Unexpected value),
     TResult platformError(_PlatformError value),
+    TResult notContactPermissions(_NotContactPermissions value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -336,11 +357,13 @@ class _$_Unexpected implements _Unexpected {
     @required TResult notFound(),
     @required TResult unexpected(),
     @required TResult platformError(),
+    @required TResult notContactPermissions(),
   }) {
     assert(insufficientPermissions != null);
     assert(notFound != null);
     assert(unexpected != null);
     assert(platformError != null);
+    assert(notContactPermissions != null);
     return unexpected();
   }
 
@@ -351,6 +374,7 @@ class _$_Unexpected implements _Unexpected {
     TResult notFound(),
     TResult unexpected(),
     TResult platformError(),
+    TResult notContactPermissions(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -367,11 +391,13 @@ class _$_Unexpected implements _Unexpected {
     @required TResult notFound(_NotFound value),
     @required TResult unexpected(_Unexpected value),
     @required TResult platformError(_PlatformError value),
+    @required TResult notContactPermissions(_NotContactPermissions value),
   }) {
     assert(insufficientPermissions != null);
     assert(notFound != null);
     assert(unexpected != null);
     assert(platformError != null);
+    assert(notContactPermissions != null);
     return unexpected(this);
   }
 
@@ -382,6 +408,7 @@ class _$_Unexpected implements _Unexpected {
     TResult notFound(_NotFound value),
     TResult unexpected(_Unexpected value),
     TResult platformError(_PlatformError value),
+    TResult notContactPermissions(_NotContactPermissions value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -439,11 +466,13 @@ class _$_PlatformError implements _PlatformError {
     @required TResult notFound(),
     @required TResult unexpected(),
     @required TResult platformError(),
+    @required TResult notContactPermissions(),
   }) {
     assert(insufficientPermissions != null);
     assert(notFound != null);
     assert(unexpected != null);
     assert(platformError != null);
+    assert(notContactPermissions != null);
     return platformError();
   }
 
@@ -454,6 +483,7 @@ class _$_PlatformError implements _PlatformError {
     TResult notFound(),
     TResult unexpected(),
     TResult platformError(),
+    TResult notContactPermissions(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -470,11 +500,13 @@ class _$_PlatformError implements _PlatformError {
     @required TResult notFound(_NotFound value),
     @required TResult unexpected(_Unexpected value),
     @required TResult platformError(_PlatformError value),
+    @required TResult notContactPermissions(_NotContactPermissions value),
   }) {
     assert(insufficientPermissions != null);
     assert(notFound != null);
     assert(unexpected != null);
     assert(platformError != null);
+    assert(notContactPermissions != null);
     return platformError(this);
   }
 
@@ -485,6 +517,7 @@ class _$_PlatformError implements _PlatformError {
     TResult notFound(_NotFound value),
     TResult unexpected(_Unexpected value),
     TResult platformError(_PlatformError value),
+    TResult notContactPermissions(_NotContactPermissions value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -497,4 +530,113 @@ class _$_PlatformError implements _PlatformError {
 
 abstract class _PlatformError implements ContactsFailure {
   const factory _PlatformError() = _$_PlatformError;
+}
+
+/// @nodoc
+abstract class _$NotContactPermissionsCopyWith<$Res> {
+  factory _$NotContactPermissionsCopyWith(_NotContactPermissions value,
+          $Res Function(_NotContactPermissions) then) =
+      __$NotContactPermissionsCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$NotContactPermissionsCopyWithImpl<$Res>
+    extends _$ContactsFailureCopyWithImpl<$Res>
+    implements _$NotContactPermissionsCopyWith<$Res> {
+  __$NotContactPermissionsCopyWithImpl(_NotContactPermissions _value,
+      $Res Function(_NotContactPermissions) _then)
+      : super(_value, (v) => _then(v as _NotContactPermissions));
+
+  @override
+  _NotContactPermissions get _value => super._value as _NotContactPermissions;
+}
+
+/// @nodoc
+class _$_NotContactPermissions implements _NotContactPermissions {
+  const _$_NotContactPermissions();
+
+  @override
+  String toString() {
+    return 'ContactsFailure.notContactPermissions()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _NotContactPermissions);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult insufficientPermissions(),
+    @required TResult notFound(),
+    @required TResult unexpected(),
+    @required TResult platformError(),
+    @required TResult notContactPermissions(),
+  }) {
+    assert(insufficientPermissions != null);
+    assert(notFound != null);
+    assert(unexpected != null);
+    assert(platformError != null);
+    assert(notContactPermissions != null);
+    return notContactPermissions();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult insufficientPermissions(),
+    TResult notFound(),
+    TResult unexpected(),
+    TResult platformError(),
+    TResult notContactPermissions(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (notContactPermissions != null) {
+      return notContactPermissions();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult insufficientPermissions(_InsufficientPermissions value),
+    @required TResult notFound(_NotFound value),
+    @required TResult unexpected(_Unexpected value),
+    @required TResult platformError(_PlatformError value),
+    @required TResult notContactPermissions(_NotContactPermissions value),
+  }) {
+    assert(insufficientPermissions != null);
+    assert(notFound != null);
+    assert(unexpected != null);
+    assert(platformError != null);
+    assert(notContactPermissions != null);
+    return notContactPermissions(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult insufficientPermissions(_InsufficientPermissions value),
+    TResult notFound(_NotFound value),
+    TResult unexpected(_Unexpected value),
+    TResult platformError(_PlatformError value),
+    TResult notContactPermissions(_NotContactPermissions value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (notContactPermissions != null) {
+      return notContactPermissions(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NotContactPermissions implements ContactsFailure {
+  const factory _NotContactPermissions() = _$_NotContactPermissions;
 }
