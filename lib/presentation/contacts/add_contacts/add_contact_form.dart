@@ -34,7 +34,6 @@ class AddContactForm extends StatelessWidget {
                       autoFocus: true,
                       textCapitalization: TextCapitalization.words,
                       prefixIcon: const Icon(Icons.person_outline),
-                      // focusNode: FocusNode(),
                       onChangedValidator: (value) {
                         context.read<AddContactBloc>().add(
                             AddContactEvent.updateNameData(state
@@ -47,8 +46,6 @@ class AddContactForm extends StatelessWidget {
                       hintText: "Surname",
                       writtenText: state.contact.nameData.surnames,
                       textCapitalization: TextCapitalization.words,
-                      // focusNode: FocusNode(),
-
                       onChangedValidator: (value) {
                         context.read<AddContactBloc>().add(
                             AddContactEvent.updateNameData(state
@@ -87,7 +84,7 @@ class AddContactForm extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                BuildCompaniesFields(state: state, context: context),
+                CompaniesFields(state: state, context: context),
               ],
             ),
           ),
@@ -97,8 +94,8 @@ class AddContactForm extends StatelessWidget {
   }
 }
 
-class BuildCompaniesFields extends StatelessWidget {
-  const BuildCompaniesFields({
+class CompaniesFields extends StatelessWidget {
+  const CompaniesFields({
     Key key,
     @required this.state,
     @required this.context,

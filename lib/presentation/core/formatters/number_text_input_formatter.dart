@@ -19,7 +19,7 @@ class PhoneTextFormatter extends TextInputFormatter {
     }
 
     if (newValue.text[0] == "+" && newValue.text.length > 1) {
-      _trySetCountryDataFromPhone(newValue);
+      _trySetCountryDataFromPhoneValue(newValue);
     } else {
       if (_countryData == null &&
           (isDigit(newValue.text[0]) ||
@@ -71,7 +71,7 @@ class PhoneTextFormatter extends TextInputFormatter {
     return _countryData.phoneMaskWithoutPrefix();
   }
 
-  void _trySetCountryDataFromPhone(TextEditingValue newValue) {
+  void _trySetCountryDataFromPhoneValue(TextEditingValue newValue) {
     final PhoneCountryData phoneCountryData =
     PhoneCodes.getCountryDataByPhone(newValue.text);
     if (phoneCountryData != null) {
