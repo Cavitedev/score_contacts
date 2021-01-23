@@ -76,7 +76,7 @@ class ThemeManager {
     ),
     iconTheme: const IconThemeData(color: Colors.grey, size: 32),
     textTheme: TextTheme(
-        headline2: const TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
+        headline2: const TextStyle(fontSize: 30, fontWeight: FontWeight.w500, color: Colors.black),
         headline3: const TextStyle(fontSize: 26),
         headline5: const TextStyle(
           fontSize: 16,
