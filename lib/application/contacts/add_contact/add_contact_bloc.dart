@@ -36,7 +36,7 @@ class AddContactBloc extends Bloc<AddContactEvent, AddContactState> {
             final List<Phone> phonesList =
                 List<Phone>.from(contact.labelObjects[Phone]);
             for (int i = 0; i < phonesList.length; i++) {
-              phonesList[i] = phonesList[i].fromDatabase(e.context);
+              phonesList[i] = phonesList[i].fromDatabase(e.countryCode);
             }
             final Map<Type, List<ILabelObject>> labelObjects =
                 Map.from(contact.labelObjects);
@@ -54,7 +54,7 @@ class AddContactBloc extends Bloc<AddContactEvent, AddContactState> {
         final List<Phone> phonesList = List<Phone>.from(
             state.contact.labelObjects[Phone]);
         for (int i = 0; i < phonesList.length; i++) {
-          phonesList[i] = phonesList[i].toDatabaseString(e.context);
+          phonesList[i] = phonesList[i].toDatabaseString(e.countryCode);
         }
         final Map<Type, List<ILabelObject>> labelObjects =
         Map.from(state.contact.labelObjects);

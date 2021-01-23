@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/contacts/add_contact/add_contact_bloc.dart';
+import 'package:scorecontacts/application/core/app_manager_cubit.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/email.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/phone.dart';
 import 'package:scorecontacts/presentation/contacts/add_contacts/widgets/label_object_builder.dart';
@@ -67,7 +68,7 @@ class AddContactForm extends StatelessWidget {
                   icon: const Icon(Icons.phone),
                   keyboardType: TextInputType.phone,
                   inputFormatters: <TextInputFormatter>[
-                    PhoneTextFormatter(context: context)
+                    PhoneTextFormatter(countryCode: context.read<AppManagerCubit>().state.region)
                   ],
                 ),
                 const SizedBox(

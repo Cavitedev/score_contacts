@@ -40,10 +40,7 @@ class PhoneCountryData {
     return PhoneCountryData.fromMap(countryData);
   }
 
-  factory PhoneCountryData.fromContext({@required BuildContext context}) {
-    return PhoneCountryData.fromCountryCode(
-        countryCode: Localizations.localeOf(context).countryCode);
-  }
+
 
   factory PhoneCountryData.fromMap(Map value) {
     final List<String> localMasks = <String>[];

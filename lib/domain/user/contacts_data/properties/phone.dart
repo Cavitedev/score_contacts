@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/i_label_object.dart';
 import 'package:scorecontacts/presentation/core/formatters/formatter_tools.dart';
 
@@ -21,17 +20,17 @@ class Phone implements ILabelObject {
     );
   }
 
-  Phone toDatabaseString(BuildContext context) {
+  Phone toDatabaseString(String countryCode) {
     return Phone(
-      value: addPrefixOnNumber(value, context),
+      value: addPrefixOnNumber(value, countryCode),
       label: label,
       otherLabels: otherLabels,
     );
   }
 
-  Phone fromDatabase(BuildContext context) {
+  Phone fromDatabase(String countryCode) {
     return Phone(
-      value: removePrefixOnNumberWhenSameCountry(value, context),
+      value: removePrefixOnNumberWhenSameCountry(value, countryCode),
       label: label,
       otherLabels: otherLabels,
     );

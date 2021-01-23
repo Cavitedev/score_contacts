@@ -4,11 +4,11 @@ import 'package:scorecontacts/presentation/core/formatters/formatter_tools.dart'
 import 'package:scorecontacts/presentation/core/formatters/phone_codes.dart';
 
 class PhoneTextFormatter extends TextInputFormatter {
-  final BuildContext context;
+  final String countryCode;
   PhoneCountryData _countryData;
   bool _localRegion = false;
 
-  PhoneTextFormatter({@required this.context});
+  PhoneTextFormatter({@required this.countryCode});
 
   @override
   TextEditingValue formatEditUpdate(
@@ -81,7 +81,8 @@ class PhoneTextFormatter extends TextInputFormatter {
   }
 
   void _setCountryDataToLocaleRegion() {
-    _countryData = PhoneCountryData.fromContext(context: context);
+
+    _countryData = PhoneCountryData.fromCountryCode(countryCode: countryCode);
     _localRegion = true;
   }
 

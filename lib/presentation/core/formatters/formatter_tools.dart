@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:scorecontacts/presentation/core/formatters/phone_codes.dart';
 
 // ignore: unnecessary_raw_strings
@@ -66,7 +65,7 @@ String formatByMask(String text, String mask) {
 /// removes the prefix of a number
 /// when the country of the number is the same of the context
 String removePrefixOnNumberWhenSameCountry(
-    String phoneNumber, BuildContext context) {
+    String phoneNumber, String countryCode) {
   if (phoneNumber == null || phoneNumber.isEmpty) return phoneNumber;
 
   if (!PhoneCodes.isCountryDataExplicit(phoneNumber)) return phoneNumber;
@@ -74,7 +73,7 @@ String removePrefixOnNumberWhenSameCountry(
       PhoneCodes.getCountryDataByPhone(phoneNumber);
 
   final PhoneCountryData countryData =
-      PhoneCountryData.fromContext(context: context);
+      PhoneCountryData.fromCountryCode(countryCode: countryCode);
 
   if (countryData == phoneCountryData) {
     String output = toNumericString(phoneNumber);
@@ -87,11 +86,11 @@ String removePrefixOnNumberWhenSameCountry(
 
 /// add the prefix of a number
 /// when the country of the number should be the same of the context
-String addPrefixOnNumber(String phoneNumber, BuildContext context) {
+String addPrefixOnNumber(String phoneNumber, String countryCode) {
   if (phoneNumber == null || phoneNumber.isEmpty) return phoneNumber;
   if (PhoneCodes.isCountryDataExplicit(phoneNumber)) return phoneNumber;
   final PhoneCountryData countryData =
-      PhoneCountryData.fromContext(context: context);
+      PhoneCountryData.fromCountryCode(countryCode: countryCode);
 
   final String output = toNumericString(phoneNumber);
   return countryData.countryCodeToString() + output;

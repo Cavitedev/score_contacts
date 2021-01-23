@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.cavitedev.score_contacts.Permissions
+package com.cavitedev.score_contacts.permissions
 
 sealed class PermissionResult(val requestCode: Int) {
     class PermissionGranted(requestCode: Int) : PermissionResult(requestCode)

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.cavitedev.score_contacts.Permissions
+package com.cavitedev.score_contacts.permissions
 
 import android.content.pm.PackageManager
 import android.os.Bundle

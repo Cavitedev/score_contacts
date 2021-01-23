@@ -1,4 +1,4 @@
-package com.cavitedev.scorecontacts
+package com.cavitedev.score_contacts.contacts
 
 import org.json.JSONObject
 

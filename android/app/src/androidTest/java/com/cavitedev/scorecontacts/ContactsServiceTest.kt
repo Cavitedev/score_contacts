@@ -1,6 +1,9 @@
 package com.cavitedev.scorecontacts
 
 import androidx.test.platform.app.InstrumentationRegistry
+import com.cavitedev.score_contacts.contacts.Company
+import com.cavitedev.score_contacts.contacts.Contact
+import com.cavitedev.score_contacts.contacts.ContactsService
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert

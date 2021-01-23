@@ -1,8 +1,6 @@
 package com.cavitedev.scorecontacts;
 
-import androidx.test.platform.app.InstrumentationRegistry
-import kotlinx.coroutines.async
-import kotlinx.coroutines.runBlocking
+import com.cavitedev.score_contacts.contacts.Contact
 import org.junit.Assert
 import org.junit.Test
 
@@ -33,7 +31,7 @@ class ContactsTest {
         contact2.numbers = listOf("666")
         val expected = "{\"contacts\":[{\"id\":\"1\",\"name\":\"hola\",\"emails\":[\"a@a.com\",\"b@b.es\"],\"numbers\":\"1\"},{\"id\":\"2\",\"name\":\"example2\",\"emails\":\"c@c.uk\",\"numbers\":\"666\"}]}"
 
-        Assert.assertEquals(expected,Contact.multipleToJson(listOf(contact1, contact2)).toString())
+        Assert.assertEquals(expected, Contact.multipleToJson(listOf(contact1, contact2)).toString())
     }
 
 }

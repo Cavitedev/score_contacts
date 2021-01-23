@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.cavitedev.score_contacts.Permissions
+package com.cavitedev.score_contacts.permissions
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

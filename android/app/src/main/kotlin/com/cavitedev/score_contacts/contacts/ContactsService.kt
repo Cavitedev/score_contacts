@@ -1,18 +1,50 @@
-package com.cavitedev.scorecontacts
+package com.cavitedev.score_contacts.contacts
 
+import android.Manifest
 import android.content.ContentResolver
 import android.content.Context
 import android.database.Cursor
 import android.provider.ContactsContract
+import com.cavitedev.score_contacts.permissions.PermissionManager
 import com.cavitedev.score_contacts.core.StringManipulator.toJoinedPhoneString
+import io.flutter.embedding.android.FlutterFragmentActivity
+import io.flutter.embedding.engine.FlutterEngine
+import io.flutter.plugin.common.MethodChannel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.runBlocking
 
 object ContactsService {
 
+    private val CONTACTS_CHANNEL = "com.cavitedev.scorecontacts/contacts"
 
 
+    fun setLoadContactsChannel(flutterEngine: FlutterEngine, fragment : FlutterFragmentActivity) {
+        val contactsChannel = MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CONTACTS_CHANNEL)
 
+
+        contactsChannel.setMethodCallHandler { call, result ->
+
+
+            if (call.method == "getContacts") {
+
+
+                runBlocking {
+
+
+                    PermissionManager.requestPermissions(fragment.supportFragmentManager, 1, Manifest.permission.READ_CONTACTS)
+                    val contacts = fetchContacts(fragment.baseContext)
+                    val json = Contact.multipleToJson(contacts)
+                    result.success(json.toString())
+                }
+
+
+            } else {
+                result.notImplemented()
+            }
+
+        }
+    }
 
 
     suspend fun fetchContacts(context: Context) : List<Contact> {

@@ -1,10 +1,10 @@
-package com.cavitedev.scorecontacts
+package com.cavitedev.score_contacts.contacts
 
 import android.Manifest
 import android.app.Activity
 import android.content.pm.PackageManager
 import android.os.Build
-import com.cavitedev.score_contacts.Permissions.PermissionResult
+import com.cavitedev.score_contacts.permissions.PermissionResult
 import kotlinx.coroutines.CompletableDeferred
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.resume
