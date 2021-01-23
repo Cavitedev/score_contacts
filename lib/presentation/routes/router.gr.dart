@@ -60,6 +60,7 @@ class Router extends RouterBase {
         builder: (context) => AddContactPage(
           key: args.key,
           contact: args.contact,
+          isEdditing: args.isEdditing,
         ),
         settings: data,
       );
@@ -85,10 +86,12 @@ extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
   Future<dynamic> pushAddContactPage({
     Key key,
     Contact contact,
+    bool isEdditing = false,
   }) =>
       push<dynamic>(
         Routes.addContactPage,
-        arguments: AddContactPageArguments(key: key, contact: contact),
+        arguments: AddContactPageArguments(
+            key: key, contact: contact, isEdditing: isEdditing),
       );
 
   Future<dynamic> pushSignInPage() => push<dynamic>(Routes.signInPage);
@@ -102,5 +105,6 @@ extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
 class AddContactPageArguments {
   final Key key;
   final Contact contact;
-  AddContactPageArguments({this.key, this.contact});
+  final bool isEdditing;
+  AddContactPageArguments({this.key, this.contact, this.isEdditing = false});
 }

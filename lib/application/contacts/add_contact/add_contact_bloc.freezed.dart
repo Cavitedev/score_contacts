@@ -14,10 +14,12 @@ class _$AddContactEventTearOff {
   const _$AddContactEventTearOff();
 
 // ignore: unused_element
-  _Initialize initialize(Option<Contact> contactOption, BuildContext context) {
+  _Initialize initialize(
+      Option<Contact> contactOption, BuildContext context, bool isEditting) {
     return _Initialize(
       contactOption,
       context,
+      isEditting,
     );
   }
 
@@ -88,7 +90,8 @@ mixin _$AddContactEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required
-        TResult initialize(Option<Contact> contactOption, BuildContext context),
+        TResult initialize(Option<Contact> contactOption, BuildContext context,
+            bool isEditting),
     @required TResult saved(BuildContext context),
     @required TResult labelObjectChanged(ILabelObject labelObject, int pos),
     @required TResult addLabelObject(ILabelObject labelObject),
@@ -100,7 +103,8 @@ mixin _$AddContactEvent {
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult initialize(Option<Contact> contactOption, BuildContext context),
+    TResult initialize(
+        Option<Contact> contactOption, BuildContext context, bool isEditting),
     TResult saved(BuildContext context),
     TResult labelObjectChanged(ILabelObject labelObject, int pos),
     TResult addLabelObject(ILabelObject labelObject),
@@ -160,7 +164,8 @@ abstract class _$InitializeCopyWith<$Res> {
   factory _$InitializeCopyWith(
           _Initialize value, $Res Function(_Initialize) then) =
       __$InitializeCopyWithImpl<$Res>;
-  $Res call({Option<Contact> contactOption, BuildContext context});
+  $Res call(
+      {Option<Contact> contactOption, BuildContext context, bool isEditting});
 }
 
 /// @nodoc
@@ -178,30 +183,35 @@ class __$InitializeCopyWithImpl<$Res>
   $Res call({
     Object contactOption = freezed,
     Object context = freezed,
+    Object isEditting = freezed,
   }) {
     return _then(_Initialize(
       contactOption == freezed
           ? _value.contactOption
           : contactOption as Option<Contact>,
       context == freezed ? _value.context : context as BuildContext,
+      isEditting == freezed ? _value.isEditting : isEditting as bool,
     ));
   }
 }
 
 /// @nodoc
 class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
-  const _$_Initialize(this.contactOption, this.context)
+  const _$_Initialize(this.contactOption, this.context, this.isEditting)
       : assert(contactOption != null),
-        assert(context != null);
+        assert(context != null),
+        assert(isEditting != null);
 
   @override
   final Option<Contact> contactOption;
   @override
   final BuildContext context;
+  @override
+  final bool isEditting;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AddContactEvent.initialize(contactOption: $contactOption, context: $context)';
+    return 'AddContactEvent.initialize(contactOption: $contactOption, context: $context, isEditting: $isEditting)';
   }
 
   @override
@@ -210,7 +220,8 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
     properties
       ..add(DiagnosticsProperty('type', 'AddContactEvent.initialize'))
       ..add(DiagnosticsProperty('contactOption', contactOption))
-      ..add(DiagnosticsProperty('context', context));
+      ..add(DiagnosticsProperty('context', context))
+      ..add(DiagnosticsProperty('isEditting', isEditting));
   }
 
   @override
@@ -221,14 +232,19 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
                 const DeepCollectionEquality()
                     .equals(other.contactOption, contactOption)) &&
             (identical(other.context, context) ||
-                const DeepCollectionEquality().equals(other.context, context)));
+                const DeepCollectionEquality()
+                    .equals(other.context, context)) &&
+            (identical(other.isEditting, isEditting) ||
+                const DeepCollectionEquality()
+                    .equals(other.isEditting, isEditting)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(contactOption) ^
-      const DeepCollectionEquality().hash(context);
+      const DeepCollectionEquality().hash(context) ^
+      const DeepCollectionEquality().hash(isEditting);
 
   @override
   _$InitializeCopyWith<_Initialize> get copyWith =>
@@ -238,7 +254,8 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required
-        TResult initialize(Option<Contact> contactOption, BuildContext context),
+        TResult initialize(Option<Contact> contactOption, BuildContext context,
+            bool isEditting),
     @required TResult saved(BuildContext context),
     @required TResult labelObjectChanged(ILabelObject labelObject, int pos),
     @required TResult addLabelObject(ILabelObject labelObject),
@@ -257,13 +274,14 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
     assert(updateCompany != null);
     assert(addCompany != null);
     assert(deleteCompany != null);
-    return initialize(contactOption, context);
+    return initialize(contactOption, context, isEditting);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult initialize(Option<Contact> contactOption, BuildContext context),
+    TResult initialize(
+        Option<Contact> contactOption, BuildContext context, bool isEditting),
     TResult saved(BuildContext context),
     TResult labelObjectChanged(ILabelObject labelObject, int pos),
     TResult addLabelObject(ILabelObject labelObject),
@@ -276,7 +294,7 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
   }) {
     assert(orElse != null);
     if (initialize != null) {
-      return initialize(contactOption, context);
+      return initialize(contactOption, context, isEditting);
     }
     return orElse();
   }
@@ -329,11 +347,12 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
 }
 
 abstract class _Initialize implements AddContactEvent {
-  const factory _Initialize(
-      Option<Contact> contactOption, BuildContext context) = _$_Initialize;
+  const factory _Initialize(Option<Contact> contactOption, BuildContext context,
+      bool isEditting) = _$_Initialize;
 
   Option<Contact> get contactOption;
   BuildContext get context;
+  bool get isEditting;
   _$InitializeCopyWith<_Initialize> get copyWith;
 }
 
@@ -403,7 +422,8 @@ class _$_Saved with DiagnosticableTreeMixin implements _Saved {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required
-        TResult initialize(Option<Contact> contactOption, BuildContext context),
+        TResult initialize(Option<Contact> contactOption, BuildContext context,
+            bool isEditting),
     @required TResult saved(BuildContext context),
     @required TResult labelObjectChanged(ILabelObject labelObject, int pos),
     @required TResult addLabelObject(ILabelObject labelObject),
@@ -428,7 +448,8 @@ class _$_Saved with DiagnosticableTreeMixin implements _Saved {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult initialize(Option<Contact> contactOption, BuildContext context),
+    TResult initialize(
+        Option<Contact> contactOption, BuildContext context, bool isEditting),
     TResult saved(BuildContext context),
     TResult labelObjectChanged(ILabelObject labelObject, int pos),
     TResult addLabelObject(ILabelObject labelObject),
@@ -583,7 +604,8 @@ class _$_LabelObjectChanged
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required
-        TResult initialize(Option<Contact> contactOption, BuildContext context),
+        TResult initialize(Option<Contact> contactOption, BuildContext context,
+            bool isEditting),
     @required TResult saved(BuildContext context),
     @required TResult labelObjectChanged(ILabelObject labelObject, int pos),
     @required TResult addLabelObject(ILabelObject labelObject),
@@ -608,7 +630,8 @@ class _$_LabelObjectChanged
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult initialize(Option<Contact> contactOption, BuildContext context),
+    TResult initialize(
+        Option<Contact> contactOption, BuildContext context, bool isEditting),
     TResult saved(BuildContext context),
     TResult labelObjectChanged(ILabelObject labelObject, int pos),
     TResult addLabelObject(ILabelObject labelObject),
@@ -754,7 +777,8 @@ class _$_AddLabelObject
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required
-        TResult initialize(Option<Contact> contactOption, BuildContext context),
+        TResult initialize(Option<Contact> contactOption, BuildContext context,
+            bool isEditting),
     @required TResult saved(BuildContext context),
     @required TResult labelObjectChanged(ILabelObject labelObject, int pos),
     @required TResult addLabelObject(ILabelObject labelObject),
@@ -779,7 +803,8 @@ class _$_AddLabelObject
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult initialize(Option<Contact> contactOption, BuildContext context),
+    TResult initialize(
+        Option<Contact> contactOption, BuildContext context, bool isEditting),
     TResult saved(BuildContext context),
     TResult labelObjectChanged(ILabelObject labelObject, int pos),
     TResult addLabelObject(ILabelObject labelObject),
@@ -936,7 +961,8 @@ class _$_RemoveLabelObject
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required
-        TResult initialize(Option<Contact> contactOption, BuildContext context),
+        TResult initialize(Option<Contact> contactOption, BuildContext context,
+            bool isEditting),
     @required TResult saved(BuildContext context),
     @required TResult labelObjectChanged(ILabelObject labelObject, int pos),
     @required TResult addLabelObject(ILabelObject labelObject),
@@ -961,7 +987,8 @@ class _$_RemoveLabelObject
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult initialize(Option<Contact> contactOption, BuildContext context),
+    TResult initialize(
+        Option<Contact> contactOption, BuildContext context, bool isEditting),
     TResult saved(BuildContext context),
     TResult labelObjectChanged(ILabelObject labelObject, int pos),
     TResult addLabelObject(ILabelObject labelObject),
@@ -1119,7 +1146,8 @@ class _$_UpdateNameData
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required
-        TResult initialize(Option<Contact> contactOption, BuildContext context),
+        TResult initialize(Option<Contact> contactOption, BuildContext context,
+            bool isEditting),
     @required TResult saved(BuildContext context),
     @required TResult labelObjectChanged(ILabelObject labelObject, int pos),
     @required TResult addLabelObject(ILabelObject labelObject),
@@ -1144,7 +1172,8 @@ class _$_UpdateNameData
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult initialize(Option<Contact> contactOption, BuildContext context),
+    TResult initialize(
+        Option<Contact> contactOption, BuildContext context, bool isEditting),
     TResult saved(BuildContext context),
     TResult labelObjectChanged(ILabelObject labelObject, int pos),
     TResult addLabelObject(ILabelObject labelObject),
@@ -1309,7 +1338,8 @@ class _$_UpdateCompany with DiagnosticableTreeMixin implements _UpdateCompany {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required
-        TResult initialize(Option<Contact> contactOption, BuildContext context),
+        TResult initialize(Option<Contact> contactOption, BuildContext context,
+            bool isEditting),
     @required TResult saved(BuildContext context),
     @required TResult labelObjectChanged(ILabelObject labelObject, int pos),
     @required TResult addLabelObject(ILabelObject labelObject),
@@ -1334,7 +1364,8 @@ class _$_UpdateCompany with DiagnosticableTreeMixin implements _UpdateCompany {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult initialize(Option<Contact> contactOption, BuildContext context),
+    TResult initialize(
+        Option<Contact> contactOption, BuildContext context, bool isEditting),
     TResult saved(BuildContext context),
     TResult labelObjectChanged(ILabelObject labelObject, int pos),
     TResult addLabelObject(ILabelObject labelObject),
@@ -1453,7 +1484,8 @@ class _$_AddCompany with DiagnosticableTreeMixin implements _AddCompany {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required
-        TResult initialize(Option<Contact> contactOption, BuildContext context),
+        TResult initialize(Option<Contact> contactOption, BuildContext context,
+            bool isEditting),
     @required TResult saved(BuildContext context),
     @required TResult labelObjectChanged(ILabelObject labelObject, int pos),
     @required TResult addLabelObject(ILabelObject labelObject),
@@ -1478,7 +1510,8 @@ class _$_AddCompany with DiagnosticableTreeMixin implements _AddCompany {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult initialize(Option<Contact> contactOption, BuildContext context),
+    TResult initialize(
+        Option<Contact> contactOption, BuildContext context, bool isEditting),
     TResult saved(BuildContext context),
     TResult labelObjectChanged(ILabelObject labelObject, int pos),
     TResult addLabelObject(ILabelObject labelObject),
@@ -1616,7 +1649,8 @@ class _$_DeleteCompany with DiagnosticableTreeMixin implements _DeleteCompany {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required
-        TResult initialize(Option<Contact> contactOption, BuildContext context),
+        TResult initialize(Option<Contact> contactOption, BuildContext context,
+            bool isEditting),
     @required TResult saved(BuildContext context),
     @required TResult labelObjectChanged(ILabelObject labelObject, int pos),
     @required TResult addLabelObject(ILabelObject labelObject),
@@ -1641,7 +1675,8 @@ class _$_DeleteCompany with DiagnosticableTreeMixin implements _DeleteCompany {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult initialize(Option<Contact> contactOption, BuildContext context),
+    TResult initialize(
+        Option<Contact> contactOption, BuildContext context, bool isEditting),
     TResult saved(BuildContext context),
     TResult labelObjectChanged(ILabelObject labelObject, int pos),
     TResult addLabelObject(ILabelObject labelObject),

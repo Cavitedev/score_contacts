@@ -4,6 +4,7 @@ import android.content.ContentResolver
 import android.content.Context
 import android.database.Cursor
 import android.provider.ContactsContract
+import com.cavitedev.score_contacts.core.StringManipulator.toJoinedPhoneString
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 
@@ -82,10 +83,12 @@ object ContactsService {
             val numberIndex = phoneCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
             while (phoneCursor.moveToNext()) {
                 val contactId = phoneCursor.getString(contactIdIndex)
-                val number: String = phoneCursor.getString(numberIndex)
+                val number: String = toJoinedPhoneString(phoneCursor.getString(numberIndex))
                 //check if the map contains key or not, if not then create a new array list with number
                 if (contactsNumberMap.containsKey(contactId)) {
-                    contactsNumberMap[contactId]?.add(number)
+                    if(!contactsNumberMap[contactId]!!.contains(number) ){
+                        contactsNumberMap[contactId]!!.add(number)
+                    }
                 } else {
                     contactsNumberMap[contactId] = arrayListOf(number)
                 }

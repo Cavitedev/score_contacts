@@ -30,6 +30,10 @@ class Contact(val id: String, val name: String?) {
 
     }
 
+    fun isEmpty() : Boolean {
+        return name == null && numbers == null && emails == null && companies == null
+    }
+
 
 
     companion object {
@@ -37,7 +41,7 @@ class Contact(val id: String, val name: String?) {
         fun multipleToJson(contacts: Iterable<Contact>): JSONObject {
             val json = JSONObject()
 
-            contacts.forEach { json.accumulate("contacts", it.toJson()) }
+            contacts.filter{!it.isEmpty()}.forEach { json.accumulate("contacts", it.toJson()) }
             return json
         }
     }

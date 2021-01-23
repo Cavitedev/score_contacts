@@ -73,6 +73,8 @@ void main() {
       expect(toNumericString('-0'), '0');
     });
   });
+
+
   group('positionOfUmpteenthNumber', () {
     test("Returns -1 when not number is found", () {
       expect(positionOfUmpteenthNumber("wedewf", 0), -1);
