@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:scorecontacts/application/contacts/contact_actor/contact_actor_bloc.dart';
 import 'package:scorecontacts/application/contacts/contact_watcher/contact_watcher_bloc.dart';
-import 'package:scorecontacts/application/contacts/selected_contact.dart';
+import 'package:scorecontacts/application/contacts/selection_contact.dart';
 import 'package:scorecontacts/presentation/core/widgets/alert_dialogue_cancel_ok.dart';
 import 'package:scorecontacts/presentation/routes/router.gr.dart';
 

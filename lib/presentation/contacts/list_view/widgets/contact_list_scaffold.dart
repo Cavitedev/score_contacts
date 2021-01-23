@@ -2,13 +2,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/contacts/contact_watcher/contact_watcher_bloc.dart';
-import 'package:scorecontacts/application/contacts/selected_contact.dart';
-import 'package:scorecontacts/presentation/contacts/list_view/widgets/contact_row.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/selected_contacts_row_bar.dart';
 import 'package:scorecontacts/presentation/core/widgets/text_field_container.dart';
 import 'package:scorecontacts/presentation/routes/router.gr.dart';
 
 import 'contact_list_drawer.dart';
+import 'contact_row.dart';
 
 class ContactsListScaffold extends StatefulWidget {
   final LoadSuccessValues stateValues;
@@ -39,7 +38,8 @@ class _ContactsListScaffoldState extends State<ContactsListScaffold> {
                 color: Theme.of(context).dialogBackgroundColor,
                 child: SelectedContactsRowBar(
                   selectionContacts: displayedContactList,
-                  areAllContactsSelected: widget.stateValues.areAllContactsSelected(),
+                  areAllContactsSelected:
+                      widget.stateValues.areAllContactsSelected(),
                 ),
               )
             else
@@ -73,18 +73,16 @@ class _ContactsListScaffoldState extends State<ContactsListScaffold> {
                 ],
               ),
             ),
-
             Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                    children: displayedContactList.displayedContacts()
-                        .map((contact) => ContactRow(
-                              selectionContact: contact,
-                              filter: widget.stateValues.filter,
-                              selectionEnabled:
-                                  widget.stateValues.hasSelectedContacts(),
-                            ))
-                        .toList()),
+              child: ListView(
+                children: widget.stateValues.displayedContacts()
+                    .map((contact) => ContactRow(
+                          selectionContact: contact,
+                          filter: widget.stateValues.filter,
+                          selectionEnabled:
+                              widget.stateValues.hasSelectedContacts(),
+                        ))
+                    .toList(),
               ),
             )
           ],
@@ -106,5 +104,3 @@ class _ContactsListScaffoldState extends State<ContactsListScaffold> {
     );
   }
 }
-
-
