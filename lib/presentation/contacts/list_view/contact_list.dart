@@ -54,6 +54,16 @@ class ContactList extends StatelessWidget {
                                 "Platform error, could not fetch data from system",
                           )).show(context);
                     },
+                    deleteSuccessful: (state) => FlushbarHelper.createSuccess(
+                          duration: const Duration(seconds: 4),
+                          message:
+                              "Successfully deleted ${state.numberContacts} ${state.numberContacts != 1 ? "Contacts" : "Contact"} ",
+                        ).show(context),
+                    loadSuccessful: (state) => FlushbarHelper.createSuccess(
+                          duration: const Duration(seconds: 4),
+                          message:
+                              "Successfully loaded ${state.numberContacts} ${state.numberContacts != 1 ? "Contacts" : "Contact"} ",
+                        ).show(context),
                     orElse: () {});
               },
             ),
@@ -85,10 +95,13 @@ class ActorOverlayProgressIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ContactActorBloc, ContactActorState>(
-      buildWhen: (previous, current) => _isLoading(previous) || _isLoading(current),
-      builder: (context, state) =>  OverlayedCircularProgressIndicator(isSaving: _isLoading(state)),
+      buildWhen: (previous, current) =>
+          _isLoading(previous) || _isLoading(current),
+      builder: (context, state) =>
+          OverlayedCircularProgressIndicator(isSaving: _isLoading(state)),
     );
   }
 
-  bool _isLoading(ContactActorState current) => current.maybeWhen(actionInProgress: () => true ,orElse: () => false);
+  bool _isLoading(ContactActorState current) =>
+      current.maybeWhen(actionInProgress: () => true, orElse: () => false);
 }

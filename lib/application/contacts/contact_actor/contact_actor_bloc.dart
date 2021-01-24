@@ -28,11 +28,12 @@ class ContactActorBloc extends Bloc<ContactActorEvent, ContactActorState> {
     yield* event.map(
       delete: (e) async* {
         yield const ContactActorState.actionInProgress();
+        final int contactsLength = e.contactList.length;
         final Either<ContactsFailure, Unit> failureOrUnit =
             await repository.deleteContactList(e.contactList);
 
         yield failureOrUnit.fold((f) => ContactActorState.contactsFailure(f),
-            (_) => const ContactActorState.deleteSuccessful());
+            (_) => ContactActorState.deleteSuccessful(contactsLength));
       },
       loadContactsFromSystem: (e) async* {
         yield const ContactActorState.actionInProgress();
@@ -45,12 +46,13 @@ class ContactActorBloc extends Bloc<ContactActorEvent, ContactActorState> {
             yield ContactActorState.contactsFailure(f);
           },
           (contactList) async* {
+            final int contactsLength = contactList.length;
             final eitherCreateContacts =
                 await repository.createContactList(contactList);
 
             yield eitherCreateContacts.fold(
               (f) => ContactActorState.contactsFailure(f),
-              (r) => const ContactActorState.deleteSuccessful(),
+              (r) => ContactActorState.loadSuccessful(contactsLength),
             );
           },
         );
@@ -60,22 +62,19 @@ class ContactActorBloc extends Bloc<ContactActorEvent, ContactActorState> {
 
   Future<Either<ContactsFailure, List<Contact>>>
       _reloadContactsFromSystem() async {
-
     try {
       final String result = await GetContacts.contactsJsonString;
       return right(Contact.contactsFromOtherPlatformJson(result));
-    } on PlatformException catch(e) {
-
-      switch(e.code){
+    } on PlatformException catch (e) {
+      switch (e.code) {
         case "DENIED PERMISSIONS":
           return left(const ContactsFailure.deniedContactPermissions());
         case "DENIED PERMISSIONS PERMANENTLY":
-          return left(const ContactsFailure.deniedPermanentlyContactPermissions());
+          return left(
+              const ContactsFailure.deniedPermanentlyContactPermissions());
         default:
           return left(const ContactsFailure.platformError());
       }
-
-
     }
   }
 }

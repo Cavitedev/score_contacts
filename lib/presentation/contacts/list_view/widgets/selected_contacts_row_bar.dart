@@ -34,7 +34,7 @@ class SelectedContactsRowBar extends StatelessWidget {
         ),
         Expanded(
           child: Text(
-            "Selected $contactsAmount ${contactsAmount > 1 ? "contacts" : "contact"}",
+            "Selected $contactsAmount ${contactsAmount != 1 ? "contacts" : "contact"}",
             overflow: TextOverflow.ellipsis,
             style: Theme
                 .of(context)
@@ -62,7 +62,7 @@ class SelectedContactsRowBar extends StatelessWidget {
                 context: context,
                 builder: (context) => AlertDialogueCancelOK(
                   title:
-                  'Do you want to delete $contactsAmount ${contactsAmount > 1 ? "contacts" : "contact"}',
+                  'Do you want to delete $contactsAmount ${contactsAmount != 1 ? "contacts" : "contact"}',
                   onSubmit: () {
                     actorBloc.add(ContactActorEvent.delete(
                         contactList:

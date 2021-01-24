@@ -6,7 +6,9 @@ abstract class ContactActorState with _$ContactActorState {
 
   const factory ContactActorState.actionInProgress() = _ActionInProgress;
 
-  const factory ContactActorState.deleteSuccessful() = _DeleteSuccessful;
+  const factory ContactActorState.deleteSuccessful(int numberContacts) = _DeleteSuccessful;
+
+  const factory ContactActorState.loadSuccessful(int numberContacts) = _LoadSuccessful;
 
   const factory ContactActorState.contactsFailure(ContactsFailure failure) =
       _DeleteFailure;
