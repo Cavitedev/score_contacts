@@ -9,6 +9,7 @@ import 'package:scorecontacts/application/contacts/contact_watcher/contact_watch
 import 'package:scorecontacts/injection.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/contact_list_scaffold.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/critical_failure_display.dart';
+import 'package:scorecontacts/presentation/core/widgets/overlayed_circular_progess_indicator.dart';
 import 'package:scorecontacts/presentation/routes/router.gr.dart';
 
 class ContactList extends StatelessWidget {
@@ -64,8 +65,13 @@ class ContactList extends StatelessWidget {
                       child: CircularProgressIndicator(),
                     ),
                     loadSuccess: (state) {
-                      return ContactsListScaffold(
-                        stateValues: state.stateValues,
+                      return Stack(
+                        children: [
+                          ContactsListScaffold(
+                            stateValues: state.stateValues,
+                          ),
+                          ActorOverlayProgressIndicator(),
+                        ],
                       );
                     },
                     loadFailure: (state) =>
@@ -73,4 +79,16 @@ class ContactList extends StatelessWidget {
                   )),
         ));
   }
+}
+
+class ActorOverlayProgressIndicator extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<ContactActorBloc, ContactActorState>(
+      buildWhen: (previous, current) => _isLoading(previous) || _isLoading(current),
+      builder: (context, state) =>  OverlayedCircularProgressIndicator(isSaving: _isLoading(state)),
+    );
+  }
+
+  bool _isLoading(ContactActorState current) => current.maybeWhen(actionInProgress: () => true ,orElse: () => false);
 }

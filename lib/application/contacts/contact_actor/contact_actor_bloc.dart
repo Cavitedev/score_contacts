@@ -50,7 +50,7 @@ class ContactActorBloc extends Bloc<ContactActorEvent, ContactActorState> {
 
             yield eitherCreateContacts.fold(
               (f) => ContactActorState.contactsFailure(f),
-              (r) => state,
+              (r) => const ContactActorState.deleteSuccessful(),
             );
           },
         );
