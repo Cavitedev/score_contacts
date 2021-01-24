@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:scorecontacts/domain/user/contacts_data/contact.dart';
 import 'package:scorecontacts/domain/user/contacts_data/contacts_failure.dart';
 import 'package:scorecontacts/domain/user/contacts_data/i_contact_repository.dart';
@@ -59,17 +60,23 @@ class ContactActorBloc extends Bloc<ContactActorEvent, ContactActorState> {
 
   Future<Either<ContactsFailure, List<Contact>>>
       _reloadContactsFromSystem() async {
-    const channel = MethodChannel("com.cavitedev.scorecontacts/contacts");
 
-    try {
-      final String result = await channel.invokeMethod("getContacts");
-      return right(Contact.contactsFromOtherPlatformJson(result));
-    } on PlatformException catch(e) {
+    if(await Permission.contacts.request().isGranted){
+      const channel = MethodChannel("com.cavitedev.scorecontacts/contacts");
 
-      if(e.code == "Rational"){
-        return left(const ContactsFailure.notContactPermissions());
+      try {
+        final String result = await channel.invokeMethod("getContacts");
+        return right(Contact.contactsFromOtherPlatformJson(result));
+      } on PlatformException catch(e) {
+
+        // if(e.code == "Rational"){
+        //
+        // }
+        return left(const ContactsFailure.platformError());
       }
-      return left(const ContactsFailure.platformError());
     }
+    return left(const ContactsFailure.notContactPermissions());
+
+
   }
 }

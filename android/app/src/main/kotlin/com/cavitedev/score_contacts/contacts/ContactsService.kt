@@ -6,9 +6,8 @@ import android.content.Context
 import android.database.Cursor
 import android.provider.ContactsContract
 import com.cavitedev.score_contacts.core.StringManipulator.toJoinedPhoneString
+import com.cavitedev.score_contacts.permissions.PermissionResult
 import com.cavitedev.scorecontacts.MainActivity
-import com.markodevcic.peko.Peko
-import com.markodevcic.peko.PermissionResult
 import io.flutter.Log
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
@@ -32,17 +31,22 @@ object ContactsService {
 
                 runBlocking {
 
-                    val permission = async{ Peko.requestPermissionsAsync(flutterActivity.baseContext, Manifest.permission.READ_CONTACTS)}.await()
+//                    val permission = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+//                        async { flutterActivity.requestPermissionsAsync(150, Manifest.permission.READ_CONTACTS) }.await()
+//                    }else{
+//                        PermissionResult.ShowRational(150)
+//                    }
 
-                    Log.d("CavitedevDebug", permission.toString())
+//                    Log.d("CavitedevDebug", permission.toString())
 
-                    if (permission is PermissionResult.Granted) {
-                        val contacts = fetchContacts(flutterActivity.baseContext)
-                        val json = Contact.multipleToJson(contacts)
-                        result.success(json.toString())
-                    } else {
-                        result.error("Rational", "sas", "as")
-                    }
+//                    if (permission is PermissionResult.PermissionGranted) {
+                    val contacts = fetchContacts(flutterActivity.baseContext)
+                    val json = Contact.multipleToJson(contacts)
+                    result.success(json.toString())
+
+//                    } else {
+//                        result.error("Rational", "sas", "as")
+//                    }
 
                 }
 
