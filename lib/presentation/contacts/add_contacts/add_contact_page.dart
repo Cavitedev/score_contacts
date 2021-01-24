@@ -33,7 +33,7 @@ class AddContactPage extends StatelessWidget {
                   () {},
                   (either) => either.fold(
                         (failure) => FlushbarHelper.createError(
-                            duration: const Duration(seconds: 12),
+                            duration: const Duration(seconds: 6),
                             message: failure.map(
                               insufficientPermissions: (_) =>
                                   "Insufficient permissions",
@@ -41,7 +41,10 @@ class AddContactPage extends StatelessWidget {
                                   "Updated contact not found, was it deleted from other device?",
                               unexpected: (_) =>
                                   "UNEXPECTED ERROR, REPORT TO SUPPORT TEAM",
-                              notContactPermissions: (_) => "We need system permissions to read contacts",
+                              deniedContactPermissions: (_) => "We need system permissions to read contacts, ask again",
+
+                              deniedPermanentlyContactPermissions: (_) => "Contact permissions are permanently denied. Allow them on app settings to use this function",
+
                               platformError: (_) => "Platform error on device, could not fetch values from system",
                             )).show(context),
                         (_) {

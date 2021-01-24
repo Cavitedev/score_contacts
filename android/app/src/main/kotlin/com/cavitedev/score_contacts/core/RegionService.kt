@@ -1,7 +1,6 @@
 package com.cavitedev.score_contacts.core
 
 import android.content.Context
-import com.cavitedev.score_contacts.contacts.ContactsService
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
 import java.util.*

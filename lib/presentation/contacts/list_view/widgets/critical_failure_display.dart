@@ -19,7 +19,9 @@ class CriticalFailureDisplay extends StatelessWidget {
                 notFound: (_) => "Deleted note not found",
                 unexpected: (_) => "Unexpected error",
                 platformError: (_) => "Platform error",
-                notContactPermissions: (_) => "No permissions for reading contacts" )),
+              deniedContactPermissions: (_) => "We need system permissions to read contacts, ask again",
+
+              deniedPermanentlyContactPermissions: (_) => "Contact permissions are permanently denied. Allow them on app settings to use this function", )),
           ],
         ),
       ),

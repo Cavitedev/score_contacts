@@ -13,5 +13,7 @@ abstract class ContactsFailure with _$ContactsFailure {
 
   const factory ContactsFailure.platformError() = _PlatformError;
 
-  const factory ContactsFailure.notContactPermissions() = _NotContactPermissions;
+  const factory ContactsFailure.deniedContactPermissions() = _NotContactPermissions;
+  
+  const factory ContactsFailure.deniedPermanentlyContactPermissions() = _DeniedPermanentlyContactPermissions;
 }
