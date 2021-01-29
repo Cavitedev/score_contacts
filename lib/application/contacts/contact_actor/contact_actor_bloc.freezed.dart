@@ -294,8 +294,17 @@ class _$ContactActorStateTearOff {
   }
 
 // ignore: unused_element
-  _DeleteSuccessful deleteSuccessful() {
-    return const _DeleteSuccessful();
+  _DeleteSuccessful deleteSuccessful(int numberContacts) {
+    return _DeleteSuccessful(
+      numberContacts,
+    );
+  }
+
+// ignore: unused_element
+  _LoadSuccessful loadSuccessful(int numberContacts) {
+    return _LoadSuccessful(
+      numberContacts,
+    );
   }
 
 // ignore: unused_element
@@ -316,14 +325,16 @@ mixin _$ContactActorState {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult actionInProgress(),
-    @required TResult deleteSuccessful(),
+    @required TResult deleteSuccessful(int numberContacts),
+    @required TResult loadSuccessful(int numberContacts),
     @required TResult contactsFailure(ContactsFailure failure),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult actionInProgress(),
-    TResult deleteSuccessful(),
+    TResult deleteSuccessful(int numberContacts),
+    TResult loadSuccessful(int numberContacts),
     TResult contactsFailure(ContactsFailure failure),
     @required TResult orElse(),
   });
@@ -332,6 +343,7 @@ mixin _$ContactActorState {
     @required TResult initial(_Initial value),
     @required TResult actionInProgress(_ActionInProgress value),
     @required TResult deleteSuccessful(_DeleteSuccessful value),
+    @required TResult loadSuccessful(_LoadSuccessful value),
     @required TResult contactsFailure(_DeleteFailure value),
   });
   @optionalTypeArgs
@@ -339,6 +351,7 @@ mixin _$ContactActorState {
     TResult initial(_Initial value),
     TResult actionInProgress(_ActionInProgress value),
     TResult deleteSuccessful(_DeleteSuccessful value),
+    TResult loadSuccessful(_LoadSuccessful value),
     TResult contactsFailure(_DeleteFailure value),
     @required TResult orElse(),
   });
@@ -399,12 +412,14 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult actionInProgress(),
-    @required TResult deleteSuccessful(),
+    @required TResult deleteSuccessful(int numberContacts),
+    @required TResult loadSuccessful(int numberContacts),
     @required TResult contactsFailure(ContactsFailure failure),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
     assert(deleteSuccessful != null);
+    assert(loadSuccessful != null);
     assert(contactsFailure != null);
     return initial();
   }
@@ -414,7 +429,8 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult actionInProgress(),
-    TResult deleteSuccessful(),
+    TResult deleteSuccessful(int numberContacts),
+    TResult loadSuccessful(int numberContacts),
     TResult contactsFailure(ContactsFailure failure),
     @required TResult orElse(),
   }) {
@@ -431,11 +447,13 @@ class _$_Initial implements _Initial {
     @required TResult initial(_Initial value),
     @required TResult actionInProgress(_ActionInProgress value),
     @required TResult deleteSuccessful(_DeleteSuccessful value),
+    @required TResult loadSuccessful(_LoadSuccessful value),
     @required TResult contactsFailure(_DeleteFailure value),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
     assert(deleteSuccessful != null);
+    assert(loadSuccessful != null);
     assert(contactsFailure != null);
     return initial(this);
   }
@@ -446,6 +464,7 @@ class _$_Initial implements _Initial {
     TResult initial(_Initial value),
     TResult actionInProgress(_ActionInProgress value),
     TResult deleteSuccessful(_DeleteSuccessful value),
+    TResult loadSuccessful(_LoadSuccessful value),
     TResult contactsFailure(_DeleteFailure value),
     @required TResult orElse(),
   }) {
@@ -502,12 +521,14 @@ class _$_ActionInProgress implements _ActionInProgress {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult actionInProgress(),
-    @required TResult deleteSuccessful(),
+    @required TResult deleteSuccessful(int numberContacts),
+    @required TResult loadSuccessful(int numberContacts),
     @required TResult contactsFailure(ContactsFailure failure),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
     assert(deleteSuccessful != null);
+    assert(loadSuccessful != null);
     assert(contactsFailure != null);
     return actionInProgress();
   }
@@ -517,7 +538,8 @@ class _$_ActionInProgress implements _ActionInProgress {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult actionInProgress(),
-    TResult deleteSuccessful(),
+    TResult deleteSuccessful(int numberContacts),
+    TResult loadSuccessful(int numberContacts),
     TResult contactsFailure(ContactsFailure failure),
     @required TResult orElse(),
   }) {
@@ -534,11 +556,13 @@ class _$_ActionInProgress implements _ActionInProgress {
     @required TResult initial(_Initial value),
     @required TResult actionInProgress(_ActionInProgress value),
     @required TResult deleteSuccessful(_DeleteSuccessful value),
+    @required TResult loadSuccessful(_LoadSuccessful value),
     @required TResult contactsFailure(_DeleteFailure value),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
     assert(deleteSuccessful != null);
+    assert(loadSuccessful != null);
     assert(contactsFailure != null);
     return actionInProgress(this);
   }
@@ -549,6 +573,7 @@ class _$_ActionInProgress implements _ActionInProgress {
     TResult initial(_Initial value),
     TResult actionInProgress(_ActionInProgress value),
     TResult deleteSuccessful(_DeleteSuccessful value),
+    TResult loadSuccessful(_LoadSuccessful value),
     TResult contactsFailure(_DeleteFailure value),
     @required TResult orElse(),
   }) {
@@ -569,6 +594,7 @@ abstract class _$DeleteSuccessfulCopyWith<$Res> {
   factory _$DeleteSuccessfulCopyWith(
           _DeleteSuccessful value, $Res Function(_DeleteSuccessful) then) =
       __$DeleteSuccessfulCopyWithImpl<$Res>;
+  $Res call({int numberContacts});
 }
 
 /// @nodoc
@@ -581,38 +607,63 @@ class __$DeleteSuccessfulCopyWithImpl<$Res>
 
   @override
   _DeleteSuccessful get _value => super._value as _DeleteSuccessful;
+
+  @override
+  $Res call({
+    Object numberContacts = freezed,
+  }) {
+    return _then(_DeleteSuccessful(
+      numberContacts == freezed ? _value.numberContacts : numberContacts as int,
+    ));
+  }
 }
 
 /// @nodoc
 class _$_DeleteSuccessful implements _DeleteSuccessful {
-  const _$_DeleteSuccessful();
+  const _$_DeleteSuccessful(this.numberContacts)
+      : assert(numberContacts != null);
+
+  @override
+  final int numberContacts;
 
   @override
   String toString() {
-    return 'ContactActorState.deleteSuccessful()';
+    return 'ContactActorState.deleteSuccessful(numberContacts: $numberContacts)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _DeleteSuccessful);
+    return identical(this, other) ||
+        (other is _DeleteSuccessful &&
+            (identical(other.numberContacts, numberContacts) ||
+                const DeepCollectionEquality()
+                    .equals(other.numberContacts, numberContacts)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(numberContacts);
+
+  @override
+  _$DeleteSuccessfulCopyWith<_DeleteSuccessful> get copyWith =>
+      __$DeleteSuccessfulCopyWithImpl<_DeleteSuccessful>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult actionInProgress(),
-    @required TResult deleteSuccessful(),
+    @required TResult deleteSuccessful(int numberContacts),
+    @required TResult loadSuccessful(int numberContacts),
     @required TResult contactsFailure(ContactsFailure failure),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
     assert(deleteSuccessful != null);
+    assert(loadSuccessful != null);
     assert(contactsFailure != null);
-    return deleteSuccessful();
+    return deleteSuccessful(numberContacts);
   }
 
   @override
@@ -620,13 +671,14 @@ class _$_DeleteSuccessful implements _DeleteSuccessful {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult actionInProgress(),
-    TResult deleteSuccessful(),
+    TResult deleteSuccessful(int numberContacts),
+    TResult loadSuccessful(int numberContacts),
     TResult contactsFailure(ContactsFailure failure),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (deleteSuccessful != null) {
-      return deleteSuccessful();
+      return deleteSuccessful(numberContacts);
     }
     return orElse();
   }
@@ -637,11 +689,13 @@ class _$_DeleteSuccessful implements _DeleteSuccessful {
     @required TResult initial(_Initial value),
     @required TResult actionInProgress(_ActionInProgress value),
     @required TResult deleteSuccessful(_DeleteSuccessful value),
+    @required TResult loadSuccessful(_LoadSuccessful value),
     @required TResult contactsFailure(_DeleteFailure value),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
     assert(deleteSuccessful != null);
+    assert(loadSuccessful != null);
     assert(contactsFailure != null);
     return deleteSuccessful(this);
   }
@@ -652,6 +706,7 @@ class _$_DeleteSuccessful implements _DeleteSuccessful {
     TResult initial(_Initial value),
     TResult actionInProgress(_ActionInProgress value),
     TResult deleteSuccessful(_DeleteSuccessful value),
+    TResult loadSuccessful(_LoadSuccessful value),
     TResult contactsFailure(_DeleteFailure value),
     @required TResult orElse(),
   }) {
@@ -664,7 +719,145 @@ class _$_DeleteSuccessful implements _DeleteSuccessful {
 }
 
 abstract class _DeleteSuccessful implements ContactActorState {
-  const factory _DeleteSuccessful() = _$_DeleteSuccessful;
+  const factory _DeleteSuccessful(int numberContacts) = _$_DeleteSuccessful;
+
+  int get numberContacts;
+  _$DeleteSuccessfulCopyWith<_DeleteSuccessful> get copyWith;
+}
+
+/// @nodoc
+abstract class _$LoadSuccessfulCopyWith<$Res> {
+  factory _$LoadSuccessfulCopyWith(
+          _LoadSuccessful value, $Res Function(_LoadSuccessful) then) =
+      __$LoadSuccessfulCopyWithImpl<$Res>;
+  $Res call({int numberContacts});
+}
+
+/// @nodoc
+class __$LoadSuccessfulCopyWithImpl<$Res>
+    extends _$ContactActorStateCopyWithImpl<$Res>
+    implements _$LoadSuccessfulCopyWith<$Res> {
+  __$LoadSuccessfulCopyWithImpl(
+      _LoadSuccessful _value, $Res Function(_LoadSuccessful) _then)
+      : super(_value, (v) => _then(v as _LoadSuccessful));
+
+  @override
+  _LoadSuccessful get _value => super._value as _LoadSuccessful;
+
+  @override
+  $Res call({
+    Object numberContacts = freezed,
+  }) {
+    return _then(_LoadSuccessful(
+      numberContacts == freezed ? _value.numberContacts : numberContacts as int,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_LoadSuccessful implements _LoadSuccessful {
+  const _$_LoadSuccessful(this.numberContacts) : assert(numberContacts != null);
+
+  @override
+  final int numberContacts;
+
+  @override
+  String toString() {
+    return 'ContactActorState.loadSuccessful(numberContacts: $numberContacts)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _LoadSuccessful &&
+            (identical(other.numberContacts, numberContacts) ||
+                const DeepCollectionEquality()
+                    .equals(other.numberContacts, numberContacts)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(numberContacts);
+
+  @override
+  _$LoadSuccessfulCopyWith<_LoadSuccessful> get copyWith =>
+      __$LoadSuccessfulCopyWithImpl<_LoadSuccessful>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult actionInProgress(),
+    @required TResult deleteSuccessful(int numberContacts),
+    @required TResult loadSuccessful(int numberContacts),
+    @required TResult contactsFailure(ContactsFailure failure),
+  }) {
+    assert(initial != null);
+    assert(actionInProgress != null);
+    assert(deleteSuccessful != null);
+    assert(loadSuccessful != null);
+    assert(contactsFailure != null);
+    return loadSuccessful(numberContacts);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult actionInProgress(),
+    TResult deleteSuccessful(int numberContacts),
+    TResult loadSuccessful(int numberContacts),
+    TResult contactsFailure(ContactsFailure failure),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (loadSuccessful != null) {
+      return loadSuccessful(numberContacts);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult actionInProgress(_ActionInProgress value),
+    @required TResult deleteSuccessful(_DeleteSuccessful value),
+    @required TResult loadSuccessful(_LoadSuccessful value),
+    @required TResult contactsFailure(_DeleteFailure value),
+  }) {
+    assert(initial != null);
+    assert(actionInProgress != null);
+    assert(deleteSuccessful != null);
+    assert(loadSuccessful != null);
+    assert(contactsFailure != null);
+    return loadSuccessful(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult actionInProgress(_ActionInProgress value),
+    TResult deleteSuccessful(_DeleteSuccessful value),
+    TResult loadSuccessful(_LoadSuccessful value),
+    TResult contactsFailure(_DeleteFailure value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (loadSuccessful != null) {
+      return loadSuccessful(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadSuccessful implements ContactActorState {
+  const factory _LoadSuccessful(int numberContacts) = _$_LoadSuccessful;
+
+  int get numberContacts;
+  _$LoadSuccessfulCopyWith<_LoadSuccessful> get copyWith;
 }
 
 /// @nodoc
@@ -741,12 +934,14 @@ class _$_DeleteFailure implements _DeleteFailure {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult actionInProgress(),
-    @required TResult deleteSuccessful(),
+    @required TResult deleteSuccessful(int numberContacts),
+    @required TResult loadSuccessful(int numberContacts),
     @required TResult contactsFailure(ContactsFailure failure),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
     assert(deleteSuccessful != null);
+    assert(loadSuccessful != null);
     assert(contactsFailure != null);
     return contactsFailure(failure);
   }
@@ -756,7 +951,8 @@ class _$_DeleteFailure implements _DeleteFailure {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult actionInProgress(),
-    TResult deleteSuccessful(),
+    TResult deleteSuccessful(int numberContacts),
+    TResult loadSuccessful(int numberContacts),
     TResult contactsFailure(ContactsFailure failure),
     @required TResult orElse(),
   }) {
@@ -773,11 +969,13 @@ class _$_DeleteFailure implements _DeleteFailure {
     @required TResult initial(_Initial value),
     @required TResult actionInProgress(_ActionInProgress value),
     @required TResult deleteSuccessful(_DeleteSuccessful value),
+    @required TResult loadSuccessful(_LoadSuccessful value),
     @required TResult contactsFailure(_DeleteFailure value),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
     assert(deleteSuccessful != null);
+    assert(loadSuccessful != null);
     assert(contactsFailure != null);
     return contactsFailure(this);
   }
@@ -788,6 +986,7 @@ class _$_DeleteFailure implements _DeleteFailure {
     TResult initial(_Initial value),
     TResult actionInProgress(_ActionInProgress value),
     TResult deleteSuccessful(_DeleteSuccessful value),
+    TResult loadSuccessful(_LoadSuccessful value),
     TResult contactsFailure(_DeleteFailure value),
     @required TResult orElse(),
   }) {
