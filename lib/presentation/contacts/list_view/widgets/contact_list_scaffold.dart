@@ -29,7 +29,7 @@ class _ContactsListScaffoldState extends State<ContactsListScaffold> {
     final displayedContactList = widget.stateValues.selectionContactList;
     return Scaffold(
       key: _scaffoldKey,
-      drawer: const Contact_list_drawer(),
+      drawer: const ContactListDrawer(),
       body: SafeArea(
         child: Column(
           children: <Widget>[

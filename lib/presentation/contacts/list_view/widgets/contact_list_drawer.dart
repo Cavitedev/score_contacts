@@ -4,8 +4,8 @@ import 'package:scorecontacts/application/auth/auth_bloc.dart';
 import 'package:scorecontacts/application/contacts/contact_actor/contact_actor_bloc.dart';
 import 'package:scorecontacts/presentation/core/widgets/theme_switch.dart';
 
-class Contact_list_drawer extends StatelessWidget {
-  const Contact_list_drawer({
+class ContactListDrawer extends StatelessWidget {
+  const ContactListDrawer({
     Key key,
   }) : super(key: key);
 
@@ -37,7 +37,7 @@ class Contact_list_drawer extends StatelessWidget {
             onTap: () {
               context
                   .read<AuthBloc>()
-                  .add(AuthEvent.signOut(context));
+                  .add(const AuthEvent.signOut());
             },
           ),
         const ThemeSwitch()

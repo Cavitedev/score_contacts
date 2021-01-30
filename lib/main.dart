@@ -48,8 +48,8 @@ class MyApp extends StatelessWidget {
             router: r.Router(),
           ),
           themeMode: state.themeMode,
-          theme: getIt<ThemeManager>().lightTheme,
-          darkTheme: getIt<ThemeManager>().darkTheme,
+          theme: lightTheme,
+          darkTheme: darkTheme,
         ),
       ),
     );

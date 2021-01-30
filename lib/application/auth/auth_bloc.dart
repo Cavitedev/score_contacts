@@ -8,7 +8,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:scorecontacts/domain/auth/i_auth_facade.dart';
 import 'package:scorecontacts/domain/user/user_data.dart';
-import 'package:scorecontacts/presentation/routes/router.gr.dart';
 
 part 'auth_bloc.freezed.dart';
 part 'auth_event.dart';
@@ -33,7 +32,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           );
       },
       signOut: (e) async* {
-          await ExtendedNavigator.of(e.context).pushAndRemoveUntil(Routes.signInPage, (route) => false);
           await authDao.signOut();
           yield const AuthState.unathenticated();
       },

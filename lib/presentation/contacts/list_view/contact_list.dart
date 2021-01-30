@@ -8,6 +8,7 @@ import 'package:scorecontacts/application/contacts/contact_watcher/contact_watch
 import 'package:scorecontacts/injection.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/contact_list_scaffold.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/critical_failure_display.dart';
+import 'package:scorecontacts/presentation/core/widgets/circular_progress_indicator_scaffold.dart';
 import 'package:scorecontacts/presentation/core/widgets/overlayed_circular_progess_indicator.dart';
 import 'package:scorecontacts/presentation/routes/router.gr.dart';
 
@@ -29,7 +30,7 @@ class ContactList extends StatelessWidget {
               listener: (context, state) {
                 state.maybeMap(
                     unathenticated: (_) {
-                      ExtendedNavigator.of(context).pushSignInPage();
+                      ExtendedNavigator.of(context).pushAndRemoveUntil(Routes.signInPage, (route) => false);
                     },
                     orElse: () {});
               },
@@ -72,9 +73,7 @@ class ContactList extends StatelessWidget {
           child: BlocBuilder<ContactWatcherBloc, ContactWatcherState>(
               builder: (context, state) => state.map(
                     initial: (_) => Container(),
-                    loadInProgress: (_) => const Center(
-                      child: CircularProgressIndicator(),
-                    ),
+                    loadInProgress: (_) => const CircularProgressIndicatorScaffold(),
                     loadSuccess: (state) {
                       return Stack(
                         children: [

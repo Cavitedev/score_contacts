@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:scorecontacts/application/auth/auth_bloc.dart';
 import 'package:scorecontacts/application/auth/sign_in/bloc.dart';
 import 'package:scorecontacts/presentation/routes/router.gr.dart';
 
@@ -11,7 +12,8 @@ class SignInForm extends StatelessWidget {
     return BlocConsumer<SignInBloc, SignInState>(
       listener: (context, state) {
         if (state is LoadedSignInState) {
-          ExtendedNavigator.of(context).pushContactList();
+          context.read<AuthBloc>().add(const AuthEvent.getUser());
+          ExtendedNavigator.of(context).popAndPush(Routes.contactList);
         } else if (state is ErrorSignInState) {
           FlushbarHelper.createError(
                   message: state.authFailure.message,
@@ -24,7 +26,7 @@ class SignInForm extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            const Center(child: Text("Sign IN")),
+            Center(child: Text("Sign IN", style: Theme.of(context).textTheme.headline4,)),
             const Text(
               "📝",
               style: TextStyle(fontSize: 140),
@@ -38,12 +40,13 @@ class SignInForm extends StatelessWidget {
               ...[const LinearProgressIndicator(value: null,)],
 
             const Spacer(),
-            FlatButton.icon(
+            RaisedButton.icon(
               onPressed: () {
                 context.read<SignInBloc>().add(SignInWithGoogle());
               },
-              icon: const Icon(Icons.email),
-              label: const Text("Sign In with Google"),
+              color: Theme.of(context).buttonColor,
+              icon:  Icon(Icons.email, color: Theme.of(context).focusColor),
+              label: Text("Sign In with Google", style: Theme.of(context).textTheme.button,),
             ),
             const SizedBox(
               height: 60,

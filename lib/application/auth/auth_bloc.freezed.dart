@@ -19,10 +19,8 @@ class _$AuthEventTearOff {
   }
 
 // ignore: unused_element
-  _SignOut signOut(BuildContext context) {
-    return _SignOut(
-      context,
-    );
+  _SignOut signOut() {
+    return const _SignOut();
   }
 }
 
@@ -35,12 +33,12 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult getUser(),
-    @required TResult signOut(BuildContext context),
+    @required TResult signOut(),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult getUser(),
-    TResult signOut(BuildContext context),
+    TResult signOut(),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -108,7 +106,7 @@ class _$_GetUser implements _GetUser {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult getUser(),
-    @required TResult signOut(BuildContext context),
+    @required TResult signOut(),
   }) {
     assert(getUser != null);
     assert(signOut != null);
@@ -119,7 +117,7 @@ class _$_GetUser implements _GetUser {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult getUser(),
-    TResult signOut(BuildContext context),
+    TResult signOut(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -163,7 +161,6 @@ abstract class _GetUser implements AuthEvent {
 abstract class _$SignOutCopyWith<$Res> {
   factory _$SignOutCopyWith(_SignOut value, $Res Function(_SignOut) then) =
       __$SignOutCopyWithImpl<$Res>;
-  $Res call({BuildContext context});
 }
 
 /// @nodoc
@@ -174,66 +171,46 @@ class __$SignOutCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
 
   @override
   _SignOut get _value => super._value as _SignOut;
-
-  @override
-  $Res call({
-    Object context = freezed,
-  }) {
-    return _then(_SignOut(
-      context == freezed ? _value.context : context as BuildContext,
-    ));
-  }
 }
 
 /// @nodoc
 class _$_SignOut implements _SignOut {
-  const _$_SignOut(this.context) : assert(context != null);
-
-  @override
-  final BuildContext context;
+  const _$_SignOut();
 
   @override
   String toString() {
-    return 'AuthEvent.signOut(context: $context)';
+    return 'AuthEvent.signOut()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is _SignOut &&
-            (identical(other.context, context) ||
-                const DeepCollectionEquality().equals(other.context, context)));
+    return identical(this, other) || (other is _SignOut);
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(context);
-
-  @override
-  _$SignOutCopyWith<_SignOut> get copyWith =>
-      __$SignOutCopyWithImpl<_SignOut>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult getUser(),
-    @required TResult signOut(BuildContext context),
+    @required TResult signOut(),
   }) {
     assert(getUser != null);
     assert(signOut != null);
-    return signOut(context);
+    return signOut();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult getUser(),
-    TResult signOut(BuildContext context),
+    TResult signOut(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (signOut != null) {
-      return signOut(context);
+      return signOut();
     }
     return orElse();
   }
@@ -265,10 +242,7 @@ class _$_SignOut implements _SignOut {
 }
 
 abstract class _SignOut implements AuthEvent {
-  const factory _SignOut(BuildContext context) = _$_SignOut;
-
-  BuildContext get context;
-  _$SignOutCopyWith<_SignOut> get copyWith;
+  const factory _SignOut() = _$_SignOut;
 }
 
 /// @nodoc
