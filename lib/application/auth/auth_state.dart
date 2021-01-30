@@ -1,18 +1,10 @@
-import 'package:meta/meta.dart';
+part of 'auth_bloc.dart';
 
-@immutable
-abstract class AuthState {
-  const AuthState();
-}
+@freezed
+abstract class AuthState with _$AuthState{
+    const factory AuthState.initial() = _Initial;
+    const factory AuthState.authenticated() = _Authenticated;
+    const factory AuthState.unathenticated() = _Unathenticated;
+      }
 
-class InitialAuthState extends AuthState {
-  const InitialAuthState();
-}
 
-class AuthenticatedAuthState extends AuthState {
-  const AuthenticatedAuthState();
-}
-
-class UnauthenticatedAuthState extends AuthState {
-  const UnauthenticatedAuthState();
-}

@@ -3,7 +3,6 @@ import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/auth/auth_bloc.dart';
-import 'package:scorecontacts/application/auth/auth_state.dart';
 import 'package:scorecontacts/application/contacts/contact_actor/contact_actor_bloc.dart';
 import 'package:scorecontacts/application/contacts/contact_watcher/contact_watcher_bloc.dart';
 import 'package:scorecontacts/injection.dart';
@@ -28,9 +27,11 @@ class ContactList extends StatelessWidget {
           listeners: [
             BlocListener<AuthBloc, AuthState>(
               listener: (context, state) {
-                if (state is UnauthenticatedAuthState) {
-                  ExtendedNavigator.of(context).pushSignInPage();
-                }
+                state.maybeMap(
+                    unathenticated: (_) {
+                      ExtendedNavigator.of(context).pushSignInPage();
+                    },
+                    orElse: () {});
               },
             ),
             BlocListener<ContactActorBloc, ContactActorState>(

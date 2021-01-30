@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/auth/auth_bloc.dart';
-import 'package:scorecontacts/application/auth/auth_event.dart';
 import 'package:scorecontacts/application/contacts/contact_actor/contact_actor_bloc.dart';
 import 'package:scorecontacts/presentation/core/widgets/theme_switch.dart';
 
@@ -36,10 +35,9 @@ class Contact_list_drawer extends StatelessWidget {
             title: Text('Sign Out', style: Theme.of(context).textTheme.subtitle2,),
             leading: const Icon(Icons.logout),
             onTap: () {
-              Navigator.pop(context);
               context
                   .read<AuthBloc>()
-                  .add(const SignOut());
+                  .add(AuthEvent.signOut(context));
             },
           ),
         const ThemeSwitch()

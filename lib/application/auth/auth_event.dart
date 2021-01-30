@@ -1,14 +1,8 @@
-import 'package:meta/meta.dart';
+part of 'auth_bloc.dart';
 
-@immutable
-abstract class AuthEvent {
-  const AuthEvent();
-}
+@freezed
+abstract class AuthEvent with _$AuthEvent {
+  const factory AuthEvent.getUser() = _GetUser;
 
-class GetUser extends AuthEvent {
-  const GetUser();
-}
-
-class SignOut extends AuthEvent {
-  const SignOut();
+  const factory AuthEvent.signOut(BuildContext context) = _SignOut;
 }

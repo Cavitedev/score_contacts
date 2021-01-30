@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:injectable/injectable.dart';
 import 'package:scorecontacts/application/auth/auth_bloc.dart';
-import 'package:scorecontacts/application/auth/auth_event.dart';
 import 'package:scorecontacts/application/core/app_manager_cubit.dart';
 import 'package:scorecontacts/injection.dart';
 import 'package:scorecontacts/presentation/routes/router.gr.dart' as r;
@@ -25,7 +24,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => getIt<AuthBloc>()..add(const GetUser()),
+          create: (context) => getIt<AuthBloc>()..add(const AuthEvent.getUser()),
         ),
         BlocProvider(create: (context) => getIt<AppManagerCubit>()..getSystemRegion())
       ],
