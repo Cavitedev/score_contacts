@@ -14,19 +14,19 @@ class ChangeThemeListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String msg = "No theme";
+    String key;
     if (themeMode == ThemeMode.system) {
-      msg = "System";
+      key = "system";
     } else if (themeMode == ThemeMode.dark) {
-      msg = "Dark";
+      key = "dark";
     } else if (themeMode == ThemeMode.light) {
-      msg = "Light";
+      key = "light";
     }
 
     return ListTile(
       contentPadding: const EdgeInsets.only(left: 48),
       title: Text(AppLocalization.of(context).translate("theme")),
-      subtitle: Text(msg),
+      subtitle: Text(AppLocalization.of(context).translate(key)),
       onTap: () {
         showDialog(
           context: context,
@@ -47,7 +47,7 @@ class ChangeThemeDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RadioDialog(
-      title: "Choose Theme",
+      title: AppLocalization.of(context).translate("choose_theme"),
       content: RadioThemeColumn(
         group: themeMode,
       ),
@@ -68,9 +68,21 @@ class RadioThemeColumn extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        _buildRadioListTile(context: context, value: ThemeMode.dark, msg: "Dark Theme"),
-        _buildRadioListTile(context: context, value: ThemeMode.light, msg: "Light Theme"),
-        _buildRadioListTile(context: context, value: ThemeMode.system, msg: "System Theme"),
+        _buildRadioListTile(
+          context: context,
+          value: ThemeMode.dark,
+          msg: AppLocalization.of(context).translate("dark"),
+        ),
+        _buildRadioListTile(
+          context: context,
+          value: ThemeMode.light,
+          msg: AppLocalization.of(context).translate("light"),
+        ),
+        _buildRadioListTile(
+          context: context,
+          value: ThemeMode.system,
+          msg: AppLocalization.of(context).translate("system_default"),
+        ),
       ],
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scorecontacts/core/app_localization.dart';
 
 class RadioDialog extends StatelessWidget {
   final Widget content;
@@ -26,8 +27,8 @@ class RadioDialog extends StatelessWidget {
             Navigator.of(context).pop();
           },
           textColor: Theme.of(context).focusColor,
-          child: const Text(
-            "Cancel",
+          child: Text(
+            AppLocalization.of(context).translate("cancel"),
           ),
         ),
       ],

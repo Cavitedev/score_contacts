@@ -1,7 +1,20 @@
 {
+  "cancel" : "Cancelar",
+  "choose_language": "Elegir lenguaje",
+  "choose_theme" : "Elegir tema",
+  "contacts": "Contactos",
+  "dark" : "Oscuro",
+  "english" : "Inglés",
+  "language" : "Idioma",
+  "light": "Claro",
+  "load_contacts_from_device": "Cargar contactos desde el dispositivo",
   "search_contacts": "Buscar, %s contactos",
-  "this_language" : "Español",
+  "settings": "Ajustes",
+  "sign_out": "Cerrar sesión",
+  "spanish" : "Español",
+  "system" : "Sistema",
+  "system_default": "Predeterminado del sistema",
   "theme" : "Tema",
-  "system" : "Sistema"
+  "this_language" : "Español"
 
 }

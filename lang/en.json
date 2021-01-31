@@ -1,6 +1,19 @@
 {
-  "search_contacts" : "Search, %s contacts",
-  "this_language" : "English",
-  "theme" : "Theme",
-  "system" : "System"
+  "cancel": "Cancel",
+  "choose_language": "Choose language",
+  "choose_theme": "Choose theme",
+  "contacts": "Contacts",
+  "dark": "Dark",
+  "english": "English",
+  "language": "Language",
+  "light": "Light",
+  "load_contacts_from_device": "Load contacts from device",
+  "search_contacts": "Search, %s contacts",
+  "settings": "Settings",
+  "sign_out": "Sign out",
+  "spanish": "Spanish",
+  "system": "System",
+  "system_default": "System default",
+  "theme": "Theme",
+  "this_language": "English"
 }

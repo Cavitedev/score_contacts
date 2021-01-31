@@ -16,7 +16,7 @@ class ChangeLanguageListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       contentPadding: const EdgeInsets.only(left: 48),
-      title: const Text("Language"),
+      title: Text(AppLocalization.of(context).translate("language")),
       subtitle: Text(AppLocalization.of(context)
           .translate(languageCode == null ? "system" : "this_language")),
       onTap: () {
@@ -39,13 +39,13 @@ class ChangeLanguageDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RadioDialog(
-      title: "Choose Language",
-      content: RadioLanguageColumn(group: language,),
+      title: AppLocalization.of(context).translate("choose_language"),
+      content: RadioLanguageColumn(
+        group: language,
+      ),
     );
   }
 }
-
-
 
 class RadioLanguageColumn extends StatelessWidget {
   final String group;
@@ -60,9 +60,21 @@ class RadioLanguageColumn extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        _buildRadioListTile(context: context, value: "en", msg: "English"),
-        _buildRadioListTile(context: context, value: "es", msg: "Español"),
-        _buildRadioListTile(context: context, value: "system", msg: "System"),
+        _buildRadioListTile(
+          context: context,
+          value: "en",
+          msg: AppLocalization.of(context).translate("english"),
+        ),
+        _buildRadioListTile(
+          context: context,
+          value: "es",
+          msg: AppLocalization.of(context).translate("spanish"),
+        ),
+        _buildRadioListTile(
+          context: context,
+          value: "system",
+          msg: AppLocalization.of(context).translate("system"),
+        ),
       ],
     );
   }

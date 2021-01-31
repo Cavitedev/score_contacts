@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/core/app_manager_cubit.dart';
+import 'package:scorecontacts/core/app_localization.dart';
 import 'package:scorecontacts/presentation/settings/change_language_widget.dart';
 import 'package:scorecontacts/presentation/settings/change_theme_widget.dart';
 
@@ -10,7 +11,7 @@ class SettingsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Settings",
+          AppLocalization.of(context).translate("settings"),
           style: Theme.of(context).textTheme.headline3,
         ),
       ),
