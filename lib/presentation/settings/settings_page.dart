@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/core/app_manager_cubit.dart';
+import 'package:scorecontacts/presentation/settings/change_theme_dialog.dart';
 
 class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    ThemeMode themeMode = context.read<AppManagerCubit>().state.themeMode;
+    final ThemeMode themeMode = context.read<AppManagerCubit>().state.themeMode;
     String msg = "No theme";
-    if(themeMode == ThemeMode.system){
+    if (themeMode == ThemeMode.system) {
       msg = "System";
-    }else if (themeMode == ThemeMode.dark){
-      msg = "dark";
-    }else if (themeMode == ThemeMode.light){
-      msg = "light";
+    } else if (themeMode == ThemeMode.dark) {
+      msg = "Dark";
+    } else if (themeMode == ThemeMode.light) {
+      msg = "Light";
     }
     return Scaffold(
       appBar: AppBar(
@@ -23,16 +24,17 @@ class SettingsPage extends StatelessWidget {
       ),
       body: ListView(
         children: [
-
           ListTile(
+            contentPadding: const EdgeInsets.only(left: 48),
             title: const Text("Theme"),
             subtitle: Text(msg),
-            onTap: (){
-
-
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (_) => ChangeThemeDialog(themeMode: themeMode,),
+              );
             },
           )
-
         ],
       ),
     );
