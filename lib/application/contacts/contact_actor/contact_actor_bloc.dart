@@ -9,6 +9,7 @@ import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:scorecontacts/domain/user/contacts_data/contact.dart';
 import 'package:scorecontacts/domain/user/contacts_data/contacts_failure.dart';
+import 'package:scorecontacts/domain/user/contacts_data/contacts_loading.dart';
 import 'package:scorecontacts/domain/user/contacts_data/i_contact_repository.dart';
 
 part 'contact_actor_bloc.freezed.dart';
@@ -27,8 +28,9 @@ class ContactActorBloc extends Bloc<ContactActorEvent, ContactActorState> {
   ) async* {
     yield* event.map(
       delete: (e) async* {
-        yield const ContactActorState.actionInProgress();
         final int contactsLength = e.contactList.length;
+        yield ContactActorState.actionInProgress
+          (ContactsLoading.deletingContacts(amount: contactsLength));
         final Either<ContactsFailure, Unit> failureOrUnit =
             await repository.deleteContactList(e.contactList);
 
@@ -36,7 +38,7 @@ class ContactActorBloc extends Bloc<ContactActorEvent, ContactActorState> {
             (_) => ContactActorState.deleteSuccessful(contactsLength));
       },
       loadContactsFromSystem: (e) async* {
-        yield const ContactActorState.actionInProgress();
+        yield const ContactActorState.actionInProgress(ContactsLoading.loadingContacts());
 
         final Either<ContactsFailure, List<Contact>> contactsEither =
             await _reloadContactsFromSystem();
@@ -47,6 +49,8 @@ class ContactActorBloc extends Bloc<ContactActorEvent, ContactActorState> {
           },
           (contactList) async* {
             final int contactsLength = contactList.length;
+            yield ContactActorState.actionInProgress(
+                ContactsLoading.loadingContacts(amount: contactsLength));
             final eitherCreateContacts =
                 await repository.createContactList(contactList);
 

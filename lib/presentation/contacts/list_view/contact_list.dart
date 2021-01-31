@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/auth/auth_bloc.dart';
 import 'package:scorecontacts/application/contacts/contact_actor/contact_actor_bloc.dart';
 import 'package:scorecontacts/application/contacts/contact_watcher/contact_watcher_bloc.dart';
+import 'package:scorecontacts/domain/user/contacts_data/contacts_loading.dart';
 import 'package:scorecontacts/injection.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/contact_list_scaffold.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/critical_failure_display.dart';
@@ -30,7 +31,8 @@ class ContactList extends StatelessWidget {
               listener: (context, state) {
                 state.maybeMap(
                     unathenticated: (_) {
-                      ExtendedNavigator.of(context).pushAndRemoveUntil(Routes.signInPage, (route) => false);
+                      ExtendedNavigator.of(context).pushAndRemoveUntil(
+                          Routes.signInPage, (route) => false);
                     },
                     orElse: () {});
               },
@@ -73,7 +75,8 @@ class ContactList extends StatelessWidget {
           child: BlocBuilder<ContactWatcherBloc, ContactWatcherState>(
               builder: (context, state) => state.map(
                     initial: (_) => Container(),
-                    loadInProgress: (_) => const CircularProgressIndicatorScaffold(),
+                    loadInProgress: (_) =>
+                        const CircularProgressIndicatorScaffold(),
                     loadSuccess: (state) {
                       return Stack(
                         children: [
@@ -96,12 +99,22 @@ class ActorOverlayProgressIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ContactActorBloc, ContactActorState>(
       buildWhen: (previous, current) =>
-          _isLoading(previous) || _isLoading(current),
-      builder: (context, state) =>
-          OverlayedCircularProgressIndicator(isSaving: _isLoading(state)),
+          _getLoading(previous) != _getLoading(current),
+      builder: (context, state) {
+        final ContactsLoading loading = _getLoading(state);
+        final bool isLoading = loading != null;
+        final String msg = isLoading ? loading.map(
+          loadingContacts: (l) => "Loading ${l.amount ?? "all"} Contacts",
+          deletingContacts: (l) => "Deleting ${l.amount} contacts",
+        ) : "";
+        return OverlayedCircularProgressIndicator(
+          isSaving: isLoading,
+          msg: msg,
+        );
+      },
     );
   }
 
-  bool _isLoading(ContactActorState current) =>
-      current.maybeWhen(actionInProgress: () => true, orElse: () => false);
+  ContactsLoading _getLoading(ContactActorState current) => current.maybeWhen(
+      actionInProgress: (loading) => loading, orElse: () => null);
 }
