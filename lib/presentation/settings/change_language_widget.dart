@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/core/app_manager_cubit.dart';
 import 'package:scorecontacts/core/app_localization.dart';
+import 'package:scorecontacts/presentation/core/widgets/radio_selection/radio_dialog.dart';
 
 class ChangeLanguageListTile extends StatelessWidget {
   final String languageCode;
@@ -37,30 +38,14 @@ class ChangeLanguageDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      title: const Text("Choose Language"),
-      elevation: 16,
-      contentPadding: const EdgeInsets.only(right: 24, top: 24),
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(16)),
-      ),
-      content: RadioLanguageColumn(
-        group: language,
-      ),
-      actions: <Widget>[
-        FlatButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          textColor: Theme.of(context).focusColor,
-          child: const Text(
-            "Cancel",
-          ),
-        ),
-      ],
+    return RadioDialog(
+      title: "Choose Language",
+      content: RadioLanguageColumn(group: language,),
     );
   }
 }
+
+
 
 class RadioLanguageColumn extends StatelessWidget {
   final String group;

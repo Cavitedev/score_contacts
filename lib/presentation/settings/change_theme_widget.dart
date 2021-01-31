@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/core/app_manager_cubit.dart';
 import 'package:scorecontacts/core/app_localization.dart';
+import 'package:scorecontacts/presentation/core/widgets/radio_selection/radio_dialog.dart';
 
 class ChangeThemeListTile extends StatelessWidget {
   final ThemeMode themeMode;
@@ -45,27 +46,11 @@ class ChangeThemeDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      title: const Text("Choose Theme"),
-      elevation: 16,
-      contentPadding: const EdgeInsets.only(right: 24, top: 24),
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(16)),
-      ),
+    return RadioDialog(
+      title: "Choose Theme",
       content: RadioThemeColumn(
         group: themeMode,
       ),
-      actions: <Widget>[
-        FlatButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          textColor: Theme.of(context).focusColor,
-          child: const Text(
-            "Cancel",
-          ),
-        ),
-      ],
     );
   }
 }
