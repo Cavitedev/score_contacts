@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/contacts/add_contact/add_contact_bloc.dart';
 import 'package:scorecontacts/application/core/app_manager_cubit.dart';
+import 'package:scorecontacts/core/app_localization.dart';
 import 'package:scorecontacts/presentation/contacts/add_contacts/add_contact_form.dart';
 import 'package:scorecontacts/presentation/routes/router.gr.dart';
 
@@ -16,7 +17,8 @@ class AddContactScaffold extends StatelessWidget {
             buildWhen: (previous, current) =>
                 previous.isEditting != current.isEditting,
             builder: (context, state) => Text(
-              state.isEditting ? "Edit contact" : "Create Contact",
+              AppLocalization.of(context).translate(
+                  state.isEditting ? "edit_contact" : "create_contact"),
               style: Theme.of(context).textTheme.headline3,
             ),
           ),
@@ -32,9 +34,8 @@ class AddContactScaffold extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.check),
             onPressed: () {
-              context
-                  .read<AddContactBloc>()
-                  .add(AddContactEvent.saved(context.read<AppManagerCubit>().state.region));
+              context.read<AddContactBloc>().add(AddContactEvent.saved(
+                  context.read<AppManagerCubit>().state.region));
             },
           )
         ],

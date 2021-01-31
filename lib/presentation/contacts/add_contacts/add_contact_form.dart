@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/contacts/add_contact/add_contact_bloc.dart';
 import 'package:scorecontacts/application/core/app_manager_cubit.dart';
+import 'package:scorecontacts/core/app_localization.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/email.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/phone.dart';
 import 'package:scorecontacts/presentation/contacts/add_contacts/widgets/label_object_builder.dart';
@@ -30,7 +31,7 @@ class AddContactForm extends StatelessWidget {
                 OutlinedInputFieldsGroup(
                   inputFields: [
                     OutlinedInputField(
-                      hintText: "Name",
+                      hintText: AppLocalization.of(context).translate("name"),
                       writtenText: state.contact.nameData.firstName,
                       autoFocus: true,
                       textCapitalization: TextCapitalization.words,
@@ -44,7 +45,7 @@ class AddContactForm extends StatelessWidget {
                       },
                     ),
                     OutlinedInputField(
-                      hintText: "Surname",
+                      hintText: AppLocalization.of(context).translate("surname"),
                       writtenText: state.contact.nameData.surnames,
                       textCapitalization: TextCapitalization.words,
                       onChangedValidator: (value) {
@@ -64,7 +65,7 @@ class AddContactForm extends StatelessWidget {
                   context: context,
                   state: state,
                   defaultLabelObject: const Phone(),
-                  hintText: "Phone",
+                  hintText: AppLocalization.of(context).translate("phone"),
                   icon: const Icon(Icons.phone),
                   keyboardType: TextInputType.phone,
                   inputFormatters: <TextInputFormatter>[
@@ -78,7 +79,7 @@ class AddContactForm extends StatelessWidget {
                   context: context,
                   state: state,
                   defaultLabelObject: const Email(),
-                  hintText: "Email",
+                  hintText: AppLocalization.of(context).translate("email"),
                   icon: const Icon(Icons.mail),
                   keyboardType: TextInputType.emailAddress,
                 ),
@@ -108,15 +109,15 @@ class CompaniesFields extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return OutlinedInputFieldsGrowableList(
-      fieldPrefabs: const [
+      fieldPrefabs: [
         OutlinedInputField(
-          hintText: "Company",
-          prefixIcon: Icon(Icons.business),
+          hintText: AppLocalization.of(context).translate("company"),
+          prefixIcon: const Icon(Icons.business),
           textCapitalization: TextCapitalization.words,
           topPadding: 3,
         ),
         OutlinedInputField(
-          hintText: "Title",
+          hintText: AppLocalization.of(context).translate("title"),
           textCapitalization: TextCapitalization.words,
         ),
       ],
