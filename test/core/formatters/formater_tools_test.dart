@@ -74,7 +74,6 @@ void main() {
     });
   });
 
-
   group('positionOfUmpteenthNumber', () {
     test("Returns -1 when not number is found", () {
       expect(positionOfUmpteenthNumber("wedewf", 0), -1);
@@ -97,6 +96,14 @@ void main() {
       expect(formatByMask("12345", "00-000"), "12-345");
       expect(formatByMask("12345", "000(000)00-#0"), "123(45");
       expect(formatByMask("+688", "+000 00000"), "+688");
+    });
+  });
+
+  group('Remove prefix on same country', () {
+    test("Should remove prefix on right country", () {
+      final String number = "+34123456789";
+      String formattedNumber = removePrefixOnNumberWhenSameCountry(number, "ES");
+      expect(formattedNumber, "123 45 67 89");
     });
   });
 }

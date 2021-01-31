@@ -29,6 +29,7 @@ const $Filter = _$FilterTearOff();
 mixin _$Filter {
   String get filterSearch;
 
+  @JsonKey(ignore: true)
   $FilterCopyWith<Filter> get copyWith;
 }
 
@@ -113,6 +114,7 @@ class _$_Filter extends _Filter {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(filterSearch);
 
+  @JsonKey(ignore: true)
   @override
   _$FilterCopyWith<_Filter> get copyWith =>
       __$FilterCopyWithImpl<_Filter>(this, _$identity);
@@ -125,5 +127,6 @@ abstract class _Filter extends Filter {
   @override
   String get filterSearch;
   @override
+  @JsonKey(ignore: true)
   _$FilterCopyWith<_Filter> get copyWith;
 }

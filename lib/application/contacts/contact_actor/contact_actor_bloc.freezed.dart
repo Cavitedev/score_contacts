@@ -126,6 +126,7 @@ class _$_Delete implements _Delete {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(contactList);
 
+  @JsonKey(ignore: true)
   @override
   _$DeleteCopyWith<_Delete> get copyWith =>
       __$DeleteCopyWithImpl<_Delete>(this, _$identity);
@@ -185,6 +186,7 @@ abstract class _Delete implements ContactActorEvent {
   const factory _Delete({List<Contact> contactList}) = _$_Delete;
 
   List<Contact> get contactList;
+  @JsonKey(ignore: true)
   _$DeleteCopyWith<_Delete> get copyWith;
 }
 
@@ -289,8 +291,10 @@ class _$ContactActorStateTearOff {
   }
 
 // ignore: unused_element
-  _ActionInProgress actionInProgress() {
-    return const _ActionInProgress();
+  _ActionInProgress actionInProgress(ContactsLoading loadingMsg) {
+    return _ActionInProgress(
+      loadingMsg,
+    );
   }
 
 // ignore: unused_element
@@ -324,7 +328,7 @@ mixin _$ContactActorState {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
-    @required TResult actionInProgress(),
+    @required TResult actionInProgress(ContactsLoading loadingMsg),
     @required TResult deleteSuccessful(int numberContacts),
     @required TResult loadSuccessful(int numberContacts),
     @required TResult contactsFailure(ContactsFailure failure),
@@ -332,7 +336,7 @@ mixin _$ContactActorState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
-    TResult actionInProgress(),
+    TResult actionInProgress(ContactsLoading loadingMsg),
     TResult deleteSuccessful(int numberContacts),
     TResult loadSuccessful(int numberContacts),
     TResult contactsFailure(ContactsFailure failure),
@@ -411,7 +415,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
-    @required TResult actionInProgress(),
+    @required TResult actionInProgress(ContactsLoading loadingMsg),
     @required TResult deleteSuccessful(int numberContacts),
     @required TResult loadSuccessful(int numberContacts),
     @required TResult contactsFailure(ContactsFailure failure),
@@ -428,7 +432,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
-    TResult actionInProgress(),
+    TResult actionInProgress(ContactsLoading loadingMsg),
     TResult deleteSuccessful(int numberContacts),
     TResult loadSuccessful(int numberContacts),
     TResult contactsFailure(ContactsFailure failure),
@@ -485,6 +489,9 @@ abstract class _$ActionInProgressCopyWith<$Res> {
   factory _$ActionInProgressCopyWith(
           _ActionInProgress value, $Res Function(_ActionInProgress) then) =
       __$ActionInProgressCopyWithImpl<$Res>;
+  $Res call({ContactsLoading loadingMsg});
+
+  $ContactsLoadingCopyWith<$Res> get loadingMsg;
 }
 
 /// @nodoc
@@ -497,30 +504,62 @@ class __$ActionInProgressCopyWithImpl<$Res>
 
   @override
   _ActionInProgress get _value => super._value as _ActionInProgress;
+
+  @override
+  $Res call({
+    Object loadingMsg = freezed,
+  }) {
+    return _then(_ActionInProgress(
+      loadingMsg == freezed ? _value.loadingMsg : loadingMsg as ContactsLoading,
+    ));
+  }
+
+  @override
+  $ContactsLoadingCopyWith<$Res> get loadingMsg {
+    if (_value.loadingMsg == null) {
+      return null;
+    }
+    return $ContactsLoadingCopyWith<$Res>(_value.loadingMsg, (value) {
+      return _then(_value.copyWith(loadingMsg: value));
+    });
+  }
 }
 
 /// @nodoc
 class _$_ActionInProgress implements _ActionInProgress {
-  const _$_ActionInProgress();
+  const _$_ActionInProgress(this.loadingMsg) : assert(loadingMsg != null);
+
+  @override
+  final ContactsLoading loadingMsg;
 
   @override
   String toString() {
-    return 'ContactActorState.actionInProgress()';
+    return 'ContactActorState.actionInProgress(loadingMsg: $loadingMsg)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _ActionInProgress);
+    return identical(this, other) ||
+        (other is _ActionInProgress &&
+            (identical(other.loadingMsg, loadingMsg) ||
+                const DeepCollectionEquality()
+                    .equals(other.loadingMsg, loadingMsg)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(loadingMsg);
+
+  @JsonKey(ignore: true)
+  @override
+  _$ActionInProgressCopyWith<_ActionInProgress> get copyWith =>
+      __$ActionInProgressCopyWithImpl<_ActionInProgress>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
-    @required TResult actionInProgress(),
+    @required TResult actionInProgress(ContactsLoading loadingMsg),
     @required TResult deleteSuccessful(int numberContacts),
     @required TResult loadSuccessful(int numberContacts),
     @required TResult contactsFailure(ContactsFailure failure),
@@ -530,14 +569,14 @@ class _$_ActionInProgress implements _ActionInProgress {
     assert(deleteSuccessful != null);
     assert(loadSuccessful != null);
     assert(contactsFailure != null);
-    return actionInProgress();
+    return actionInProgress(loadingMsg);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
-    TResult actionInProgress(),
+    TResult actionInProgress(ContactsLoading loadingMsg),
     TResult deleteSuccessful(int numberContacts),
     TResult loadSuccessful(int numberContacts),
     TResult contactsFailure(ContactsFailure failure),
@@ -545,7 +584,7 @@ class _$_ActionInProgress implements _ActionInProgress {
   }) {
     assert(orElse != null);
     if (actionInProgress != null) {
-      return actionInProgress();
+      return actionInProgress(loadingMsg);
     }
     return orElse();
   }
@@ -586,7 +625,12 @@ class _$_ActionInProgress implements _ActionInProgress {
 }
 
 abstract class _ActionInProgress implements ContactActorState {
-  const factory _ActionInProgress() = _$_ActionInProgress;
+  const factory _ActionInProgress(ContactsLoading loadingMsg) =
+      _$_ActionInProgress;
+
+  ContactsLoading get loadingMsg;
+  @JsonKey(ignore: true)
+  _$ActionInProgressCopyWith<_ActionInProgress> get copyWith;
 }
 
 /// @nodoc
@@ -645,6 +689,7 @@ class _$_DeleteSuccessful implements _DeleteSuccessful {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(numberContacts);
 
+  @JsonKey(ignore: true)
   @override
   _$DeleteSuccessfulCopyWith<_DeleteSuccessful> get copyWith =>
       __$DeleteSuccessfulCopyWithImpl<_DeleteSuccessful>(this, _$identity);
@@ -653,7 +698,7 @@ class _$_DeleteSuccessful implements _DeleteSuccessful {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
-    @required TResult actionInProgress(),
+    @required TResult actionInProgress(ContactsLoading loadingMsg),
     @required TResult deleteSuccessful(int numberContacts),
     @required TResult loadSuccessful(int numberContacts),
     @required TResult contactsFailure(ContactsFailure failure),
@@ -670,7 +715,7 @@ class _$_DeleteSuccessful implements _DeleteSuccessful {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
-    TResult actionInProgress(),
+    TResult actionInProgress(ContactsLoading loadingMsg),
     TResult deleteSuccessful(int numberContacts),
     TResult loadSuccessful(int numberContacts),
     TResult contactsFailure(ContactsFailure failure),
@@ -722,6 +767,7 @@ abstract class _DeleteSuccessful implements ContactActorState {
   const factory _DeleteSuccessful(int numberContacts) = _$_DeleteSuccessful;
 
   int get numberContacts;
+  @JsonKey(ignore: true)
   _$DeleteSuccessfulCopyWith<_DeleteSuccessful> get copyWith;
 }
 
@@ -780,6 +826,7 @@ class _$_LoadSuccessful implements _LoadSuccessful {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(numberContacts);
 
+  @JsonKey(ignore: true)
   @override
   _$LoadSuccessfulCopyWith<_LoadSuccessful> get copyWith =>
       __$LoadSuccessfulCopyWithImpl<_LoadSuccessful>(this, _$identity);
@@ -788,7 +835,7 @@ class _$_LoadSuccessful implements _LoadSuccessful {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
-    @required TResult actionInProgress(),
+    @required TResult actionInProgress(ContactsLoading loadingMsg),
     @required TResult deleteSuccessful(int numberContacts),
     @required TResult loadSuccessful(int numberContacts),
     @required TResult contactsFailure(ContactsFailure failure),
@@ -805,7 +852,7 @@ class _$_LoadSuccessful implements _LoadSuccessful {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
-    TResult actionInProgress(),
+    TResult actionInProgress(ContactsLoading loadingMsg),
     TResult deleteSuccessful(int numberContacts),
     TResult loadSuccessful(int numberContacts),
     TResult contactsFailure(ContactsFailure failure),
@@ -857,6 +904,7 @@ abstract class _LoadSuccessful implements ContactActorState {
   const factory _LoadSuccessful(int numberContacts) = _$_LoadSuccessful;
 
   int get numberContacts;
+  @JsonKey(ignore: true)
   _$LoadSuccessfulCopyWith<_LoadSuccessful> get copyWith;
 }
 
@@ -925,6 +973,7 @@ class _$_DeleteFailure implements _DeleteFailure {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(failure);
 
+  @JsonKey(ignore: true)
   @override
   _$DeleteFailureCopyWith<_DeleteFailure> get copyWith =>
       __$DeleteFailureCopyWithImpl<_DeleteFailure>(this, _$identity);
@@ -933,7 +982,7 @@ class _$_DeleteFailure implements _DeleteFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
-    @required TResult actionInProgress(),
+    @required TResult actionInProgress(ContactsLoading loadingMsg),
     @required TResult deleteSuccessful(int numberContacts),
     @required TResult loadSuccessful(int numberContacts),
     @required TResult contactsFailure(ContactsFailure failure),
@@ -950,7 +999,7 @@ class _$_DeleteFailure implements _DeleteFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
-    TResult actionInProgress(),
+    TResult actionInProgress(ContactsLoading loadingMsg),
     TResult deleteSuccessful(int numberContacts),
     TResult loadSuccessful(int numberContacts),
     TResult contactsFailure(ContactsFailure failure),
@@ -1002,5 +1051,6 @@ abstract class _DeleteFailure implements ContactActorState {
   const factory _DeleteFailure(ContactsFailure failure) = _$_DeleteFailure;
 
   ContactsFailure get failure;
+  @JsonKey(ignore: true)
   _$DeleteFailureCopyWith<_DeleteFailure> get copyWith;
 }

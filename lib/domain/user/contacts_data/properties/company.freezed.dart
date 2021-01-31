@@ -31,6 +31,7 @@ mixin _$Company {
   String get name;
   String get title;
 
+  @JsonKey(ignore: true)
   $CompanyCopyWith<Company> get copyWith;
 }
 
@@ -120,6 +121,7 @@ class _$_Company extends _Company {
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(title);
 
+  @JsonKey(ignore: true)
   @override
   _$CompanyCopyWith<_Company> get copyWith =>
       __$CompanyCopyWithImpl<_Company>(this, _$identity);
@@ -134,5 +136,6 @@ abstract class _Company extends Company {
   @override
   String get title;
   @override
+  @JsonKey(ignore: true)
   _$CompanyCopyWith<_Company> get copyWith;
 }

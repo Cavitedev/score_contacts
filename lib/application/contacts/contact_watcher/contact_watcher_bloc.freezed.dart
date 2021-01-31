@@ -176,6 +176,7 @@ class _$_ContactsReceived implements _ContactsReceived {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(contactsEither);
 
+  @JsonKey(ignore: true)
   @override
   _$ContactsReceivedCopyWith<_ContactsReceived> get copyWith =>
       __$ContactsReceivedCopyWithImpl<_ContactsReceived>(this, _$identity);
@@ -264,6 +265,7 @@ abstract class _ContactsReceived implements ContactWatcherEvent {
       _$_ContactsReceived;
 
   Either<ContactsFailure, List<Contact>> get contactsEither;
+  @JsonKey(ignore: true)
   _$ContactsReceivedCopyWith<_ContactsReceived> get copyWith;
 }
 
@@ -437,6 +439,7 @@ class _$_SearchContact implements _SearchContact {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(searchString);
 
+  @JsonKey(ignore: true)
   @override
   _$SearchContactCopyWith<_SearchContact> get copyWith =>
       __$SearchContactCopyWithImpl<_SearchContact>(this, _$identity);
@@ -523,6 +526,7 @@ abstract class _SearchContact implements ContactWatcherEvent {
   const factory _SearchContact(String searchString) = _$_SearchContact;
 
   String get searchString;
+  @JsonKey(ignore: true)
   _$SearchContactCopyWith<_SearchContact> get copyWith;
 }
 
@@ -584,6 +588,7 @@ class _$_ToggleSelectionContact implements _ToggleSelectionContact {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(selectionContact);
 
+  @JsonKey(ignore: true)
   @override
   _$ToggleSelectionContactCopyWith<_ToggleSelectionContact> get copyWith =>
       __$ToggleSelectionContactCopyWithImpl<_ToggleSelectionContact>(
@@ -672,6 +677,7 @@ abstract class _ToggleSelectionContact implements ContactWatcherEvent {
       _$_ToggleSelectionContact;
 
   SelectionContact get selectionContact;
+  @JsonKey(ignore: true)
   _$ToggleSelectionContactCopyWith<_ToggleSelectionContact> get copyWith;
 }
 
@@ -1267,6 +1273,7 @@ class _$_LoadSuccess implements _LoadSuccess {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(stateValues);
 
+  @JsonKey(ignore: true)
   @override
   _$LoadSuccessCopyWith<_LoadSuccess> get copyWith =>
       __$LoadSuccessCopyWithImpl<_LoadSuccess>(this, _$identity);
@@ -1338,6 +1345,7 @@ abstract class _LoadSuccess implements ContactWatcherState {
   const factory _LoadSuccess(LoadSuccessValues stateValues) = _$_LoadSuccess;
 
   LoadSuccessValues get stateValues;
+  @JsonKey(ignore: true)
   _$LoadSuccessCopyWith<_LoadSuccess> get copyWith;
 }
 
@@ -1406,6 +1414,7 @@ class _$_LoadFailure implements _LoadFailure {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(failure);
 
+  @JsonKey(ignore: true)
   @override
   _$LoadFailureCopyWith<_LoadFailure> get copyWith =>
       __$LoadFailureCopyWithImpl<_LoadFailure>(this, _$identity);
@@ -1477,6 +1486,7 @@ abstract class _LoadFailure implements ContactWatcherState {
   const factory _LoadFailure(ContactsFailure failure) = _$_LoadFailure;
 
   ContactsFailure get failure;
+  @JsonKey(ignore: true)
   _$LoadFailureCopyWith<_LoadFailure> get copyWith;
 }
 
@@ -1507,6 +1517,7 @@ mixin _$LoadSuccessValues {
   Filter get filter;
   int get selectedContactsAmount;
 
+  @JsonKey(ignore: true)
   $LoadSuccessValuesCopyWith<LoadSuccessValues> get copyWith;
 }
 
@@ -1644,6 +1655,7 @@ class _$_LoadSuccessValues extends _LoadSuccessValues {
       const DeepCollectionEquality().hash(filter) ^
       const DeepCollectionEquality().hash(selectedContactsAmount);
 
+  @JsonKey(ignore: true)
   @override
   _$LoadSuccessValuesCopyWith<_LoadSuccessValues> get copyWith =>
       __$LoadSuccessValuesCopyWithImpl<_LoadSuccessValues>(this, _$identity);
@@ -1663,5 +1675,6 @@ abstract class _LoadSuccessValues extends LoadSuccessValues {
   @override
   int get selectedContactsAmount;
   @override
+  @JsonKey(ignore: true)
   _$LoadSuccessValuesCopyWith<_LoadSuccessValues> get copyWith;
 }

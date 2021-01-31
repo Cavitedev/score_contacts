@@ -60,6 +60,7 @@ mixin _$ContactDTO {
   FieldValue get serverTimeStamp;
 
   Map<String, dynamic> toJson();
+  @JsonKey(ignore: true)
   $ContactDTOCopyWith<ContactDTO> get copyWith;
 }
 
@@ -258,6 +259,7 @@ class _$_ContactDTO extends _ContactDTO {
       const DeepCollectionEquality().hash(phonesDTO) ^
       const DeepCollectionEquality().hash(serverTimeStamp);
 
+  @JsonKey(ignore: true)
   @override
   _$ContactDTOCopyWith<_ContactDTO> get copyWith =>
       __$ContactDTOCopyWithImpl<_ContactDTO>(this, _$identity);
@@ -300,6 +302,7 @@ abstract class _ContactDTO extends ContactDTO {
   @ServerTimeStampConverter()
   FieldValue get serverTimeStamp;
   @override
+  @JsonKey(ignore: true)
   _$ContactDTOCopyWith<_ContactDTO> get copyWith;
 }
 
@@ -335,6 +338,7 @@ mixin _$NameDataDTO {
   String get surname;
 
   Map<String, dynamic> toJson();
+  @JsonKey(ignore: true)
   $NameDataDTOCopyWith<NameDataDTO> get copyWith;
 }
 
@@ -433,6 +437,7 @@ class _$_NameDataDTO extends _NameDataDTO {
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(surname);
 
+  @JsonKey(ignore: true)
   @override
   _$NameDataDTOCopyWith<_NameDataDTO> get copyWith =>
       __$NameDataDTOCopyWithImpl<_NameDataDTO>(this, _$identity);
@@ -455,6 +460,7 @@ abstract class _NameDataDTO extends NameDataDTO {
   @override
   String get surname;
   @override
+  @JsonKey(ignore: true)
   _$NameDataDTOCopyWith<_NameDataDTO> get copyWith;
 }
 
@@ -490,6 +496,7 @@ mixin _$LabelObjectDTO {
   String get label;
 
   Map<String, dynamic> toJson();
+  @JsonKey(ignore: true)
   $LabelObjectDTOCopyWith<LabelObjectDTO> get copyWith;
 }
 
@@ -590,6 +597,7 @@ class _$_LabelObjectDTO extends _LabelObjectDTO {
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(label);
 
+  @JsonKey(ignore: true)
   @override
   _$LabelObjectDTOCopyWith<_LabelObjectDTO> get copyWith =>
       __$LabelObjectDTOCopyWithImpl<_LabelObjectDTO>(this, _$identity);
@@ -613,6 +621,7 @@ abstract class _LabelObjectDTO extends LabelObjectDTO {
   @override
   String get label;
   @override
+  @JsonKey(ignore: true)
   _$LabelObjectDTOCopyWith<_LabelObjectDTO> get copyWith;
 }
 
@@ -648,6 +657,7 @@ mixin _$CompanyDTO {
   String get title;
 
   Map<String, dynamic> toJson();
+  @JsonKey(ignore: true)
   $CompanyDTOCopyWith<CompanyDTO> get copyWith;
 }
 
@@ -745,6 +755,7 @@ class _$_CompanyDTO extends _CompanyDTO {
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(title);
 
+  @JsonKey(ignore: true)
   @override
   _$CompanyDTOCopyWith<_CompanyDTO> get copyWith =>
       __$CompanyDTOCopyWithImpl<_CompanyDTO>(this, _$identity);
@@ -767,5 +778,6 @@ abstract class _CompanyDTO extends CompanyDTO {
   @override
   String get title;
   @override
+  @JsonKey(ignore: true)
   _$CompanyDTOCopyWith<_CompanyDTO> get copyWith;
 }

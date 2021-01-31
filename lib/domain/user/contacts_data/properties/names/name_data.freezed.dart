@@ -48,6 +48,7 @@ mixin _$NameData {
   String get surnames;
   String get nameSuffix;
 
+  @JsonKey(ignore: true)
   $NameDataCopyWith<NameData> get copyWith;
 }
 
@@ -221,6 +222,7 @@ class _$_NameData extends _NameData {
       const DeepCollectionEquality().hash(surnames) ^
       const DeepCollectionEquality().hash(nameSuffix);
 
+  @JsonKey(ignore: true)
   @override
   _$NameDataCopyWith<_NameData> get copyWith =>
       __$NameDataCopyWithImpl<_NameData>(this, _$identity);
@@ -252,5 +254,6 @@ abstract class _NameData extends NameData {
   @override
   String get nameSuffix;
   @override
+  @JsonKey(ignore: true)
   _$NameDataCopyWith<_NameData> get copyWith;
 }

@@ -39,6 +39,7 @@ mixin _$Contact {
   Map<Type, List<ILabelObject>> get labelObjects;
   List<Company> get companies;
 
+  @JsonKey(ignore: true)
   $ContactCopyWith<Contact> get copyWith;
 }
 
@@ -185,6 +186,7 @@ class _$_Contact extends _Contact {
       const DeepCollectionEquality().hash(labelObjects) ^
       const DeepCollectionEquality().hash(companies);
 
+  @JsonKey(ignore: true)
   @override
   _$ContactCopyWith<_Contact> get copyWith =>
       __$ContactCopyWithImpl<_Contact>(this, _$identity);
@@ -207,5 +209,6 @@ abstract class _Contact extends Contact {
   @override
   List<Company> get companies;
   @override
+  @JsonKey(ignore: true)
   _$ContactCopyWith<_Contact> get copyWith;
 }

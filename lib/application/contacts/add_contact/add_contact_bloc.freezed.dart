@@ -246,6 +246,7 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
       const DeepCollectionEquality().hash(countryCode) ^
       const DeepCollectionEquality().hash(isEditting);
 
+  @JsonKey(ignore: true)
   @override
   _$InitializeCopyWith<_Initialize> get copyWith =>
       __$InitializeCopyWithImpl<_Initialize>(this, _$identity);
@@ -354,6 +355,7 @@ abstract class _Initialize implements AddContactEvent {
   Option<Contact> get contactOption;
   String get countryCode;
   bool get isEditting;
+  @JsonKey(ignore: true)
   _$InitializeCopyWith<_Initialize> get copyWith;
 }
 
@@ -416,6 +418,7 @@ class _$_Saved with DiagnosticableTreeMixin implements _Saved {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(countryCode);
 
+  @JsonKey(ignore: true)
   @override
   _$SavedCopyWith<_Saved> get copyWith =>
       __$SavedCopyWithImpl<_Saved>(this, _$identity);
@@ -520,6 +523,7 @@ abstract class _Saved implements AddContactEvent {
   const factory _Saved(String countryCode) = _$_Saved;
 
   String get countryCode;
+  @JsonKey(ignore: true)
   _$SavedCopyWith<_Saved> get copyWith;
 }
 
@@ -598,6 +602,7 @@ class _$_LabelObjectChanged
       const DeepCollectionEquality().hash(labelObject) ^
       const DeepCollectionEquality().hash(pos);
 
+  @JsonKey(ignore: true)
   @override
   _$LabelObjectChangedCopyWith<_LabelObjectChanged> get copyWith =>
       __$LabelObjectChangedCopyWithImpl<_LabelObjectChanged>(this, _$identity);
@@ -704,6 +709,7 @@ abstract class _LabelObjectChanged implements AddContactEvent {
 
   ILabelObject get labelObject;
   int get pos;
+  @JsonKey(ignore: true)
   _$LabelObjectChangedCopyWith<_LabelObjectChanged> get copyWith;
 }
 
@@ -771,6 +777,7 @@ class _$_AddLabelObject
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(labelObject);
 
+  @JsonKey(ignore: true)
   @override
   _$AddLabelObjectCopyWith<_AddLabelObject> get copyWith =>
       __$AddLabelObjectCopyWithImpl<_AddLabelObject>(this, _$identity);
@@ -875,6 +882,7 @@ abstract class _AddLabelObject implements AddContactEvent {
   const factory _AddLabelObject(ILabelObject labelObject) = _$_AddLabelObject;
 
   ILabelObject get labelObject;
+  @JsonKey(ignore: true)
   _$AddLabelObjectCopyWith<_AddLabelObject> get copyWith;
 }
 
@@ -955,6 +963,7 @@ class _$_RemoveLabelObject
       const DeepCollectionEquality().hash(labelObjectType) ^
       const DeepCollectionEquality().hash(pos);
 
+  @JsonKey(ignore: true)
   @override
   _$RemoveLabelObjectCopyWith<_RemoveLabelObject> get copyWith =>
       __$RemoveLabelObjectCopyWithImpl<_RemoveLabelObject>(this, _$identity);
@@ -1061,6 +1070,7 @@ abstract class _RemoveLabelObject implements AddContactEvent {
 
   Type get labelObjectType;
   int get pos;
+  @JsonKey(ignore: true)
   _$RemoveLabelObjectCopyWith<_RemoveLabelObject> get copyWith;
 }
 
@@ -1140,6 +1150,7 @@ class _$_UpdateNameData
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(nameData);
 
+  @JsonKey(ignore: true)
   @override
   _$UpdateNameDataCopyWith<_UpdateNameData> get copyWith =>
       __$UpdateNameDataCopyWithImpl<_UpdateNameData>(this, _$identity);
@@ -1244,6 +1255,7 @@ abstract class _UpdateNameData implements AddContactEvent {
   const factory _UpdateNameData(NameData nameData) = _$_UpdateNameData;
 
   NameData get nameData;
+  @JsonKey(ignore: true)
   _$UpdateNameDataCopyWith<_UpdateNameData> get copyWith;
 }
 
@@ -1332,6 +1344,7 @@ class _$_UpdateCompany with DiagnosticableTreeMixin implements _UpdateCompany {
       const DeepCollectionEquality().hash(company) ^
       const DeepCollectionEquality().hash(index);
 
+  @JsonKey(ignore: true)
   @override
   _$UpdateCompanyCopyWith<_UpdateCompany> get copyWith =>
       __$UpdateCompanyCopyWithImpl<_UpdateCompany>(this, _$identity);
@@ -1437,6 +1450,7 @@ abstract class _UpdateCompany implements AddContactEvent {
 
   Company get company;
   int get index;
+  @JsonKey(ignore: true)
   _$UpdateCompanyCopyWith<_UpdateCompany> get copyWith;
 }
 
@@ -1643,6 +1657,7 @@ class _$_DeleteCompany with DiagnosticableTreeMixin implements _DeleteCompany {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(index);
 
+  @JsonKey(ignore: true)
   @override
   _$DeleteCompanyCopyWith<_DeleteCompany> get copyWith =>
       __$DeleteCompanyCopyWithImpl<_DeleteCompany>(this, _$identity);
@@ -1747,6 +1762,7 @@ abstract class _DeleteCompany implements AddContactEvent {
   const factory _DeleteCompany(int index) = _$_DeleteCompany;
 
   int get index;
+  @JsonKey(ignore: true)
   _$DeleteCompanyCopyWith<_DeleteCompany> get copyWith;
 }
 
@@ -1780,6 +1796,7 @@ mixin _$AddContactState {
   bool get isSaving;
   Option<Either<ContactsFailure, Unit>> get savingOrFailureOption;
 
+  @JsonKey(ignore: true)
   $AddContactStateCopyWith<AddContactState> get copyWith;
 }
 
@@ -1947,6 +1964,7 @@ class _$_AddContactState extends _AddContactState with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(isSaving) ^
       const DeepCollectionEquality().hash(savingOrFailureOption);
 
+  @JsonKey(ignore: true)
   @override
   _$AddContactStateCopyWith<_AddContactState> get copyWith =>
       __$AddContactStateCopyWithImpl<_AddContactState>(this, _$identity);
@@ -1974,5 +1992,6 @@ abstract class _AddContactState extends AddContactState {
   @override
   Option<Either<ContactsFailure, Unit>> get savingOrFailureOption;
   @override
+  @JsonKey(ignore: true)
   _$AddContactStateCopyWith<_AddContactState> get copyWith;
 }

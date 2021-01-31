@@ -78,7 +78,7 @@ String removePrefixOnNumberWhenSameCountry(
   if (countryData == phoneCountryData) {
     String output = toNumericString(phoneNumber);
     output = output.substring(phoneCountryData.countryCode.length);
-    return formatByMask(output, phoneCountryData.shortestLocalMask(output));
+    return formatByMask(output, phoneCountryData.phoneMaskWithoutPrefix());
   } else {
     return phoneNumber;
   }

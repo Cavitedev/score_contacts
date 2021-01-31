@@ -31,6 +31,7 @@ mixin _$AppManagerState {
   ThemeMode get themeMode;
   String get region;
 
+  @JsonKey(ignore: true)
   $AppManagerStateCopyWith<AppManagerState> get copyWith;
 }
 
@@ -129,6 +130,7 @@ class _$_AppManagerState extends _AppManagerState {
       const DeepCollectionEquality().hash(themeMode) ^
       const DeepCollectionEquality().hash(region);
 
+  @JsonKey(ignore: true)
   @override
   _$AppManagerStateCopyWith<_AppManagerState> get copyWith =>
       __$AppManagerStateCopyWithImpl<_AppManagerState>(this, _$identity);
@@ -144,5 +146,6 @@ abstract class _AppManagerState extends AppManagerState {
   @override
   String get region;
   @override
+  @JsonKey(ignore: true)
   _$AppManagerStateCopyWith<_AppManagerState> get copyWith;
 }
