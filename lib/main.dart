@@ -22,17 +22,21 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => getIt<AuthBloc>()..add(const AuthEvent.getUser()),
+          create: (context) =>
+              getIt<AuthBloc>()..add(const AuthEvent.getUser()),
         ),
-        BlocProvider(create: (context) => getIt<AppManagerCubit>()..getSystemRegion())
+        BlocProvider(
+            create: (context) => getIt<AppManagerCubit>()..getSystemRegion())
       ],
       child: BlocBuilder<AppManagerCubit, AppManagerState>(
         builder: (context, state) => MaterialApp(
           title: 'Contacts App',
+          locale: state.languageCode == null
+              ? null
+              : Locale(state.languageCode, state.region),
           supportedLocales: const [
             Locale("en"),
             Locale("es"),

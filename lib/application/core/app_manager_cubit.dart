@@ -23,4 +23,13 @@ class AppManagerCubit extends Cubit<AppManagerState> {
     emit(state.copyWith(region:region));
   }
 
+  Future<void> changeLanguage(BuildContext context, String languageCode) async {
+    if(languageCode == "system"){
+      emit(state.copyWith(languageCode: null));
+    }else{
+      emit(state.copyWith(languageCode: languageCode));
+    }
+
+  }
+
 }

@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class AppLocalization {
-  final String languageCode;
+  String _languageCode;
+  String get languageCode => _languageCode;
 
-  AppLocalization(this.languageCode);
+
+  AppLocalization(this._languageCode);
 
   factory AppLocalization.of(BuildContext context) =>
       Localizations.of<AppLocalization>(context, AppLocalization);
@@ -15,17 +17,9 @@ class AppLocalization {
 
   Map<String, String> _localizedStrings;
 
-  Future<void> load() async {
-    final String jsonString =
-        await rootBundle.loadString("lang/$languageCode.json");
-    final Map<String, dynamic> jsonMap =
-        json.decode(jsonString) as Map<String, dynamic>;
-    _localizedStrings =
-        jsonMap.map((key, value) => MapEntry(key, value.toString()));
-  }
-
   String translate(String key, {List<String> args}){
     String textStr = _localizedStrings[key];
+    if(args == null) return textStr;
     while(args.isNotEmpty){
       textStr = textStr.replaceFirst("%s", args[0]);
       args.removeAt(0);
@@ -33,6 +27,24 @@ class AppLocalization {
     return textStr;
 
   }
+
+  Future<void> load() async {
+    final String jsonString =
+        await rootBundle.loadString("lang/$_languageCode.json");
+    final Map<String, dynamic> jsonMap =
+        json.decode(jsonString) as Map<String, dynamic>;
+    _localizedStrings =
+        jsonMap.map((key, value) => MapEntry(key, value.toString()));
+  }
+
+  Future<void> changeLanguage(String languageCode) async{
+    if(_languageCode == _languageCode) return;
+    _languageCode = languageCode;
+    await load();
+
+  }
+
+
 
 
 }
@@ -45,9 +57,9 @@ class _AppLocalizationDelegate extends LocalizationsDelegate<AppLocalization> {
 
   @override
   Future<AppLocalization> load(Locale locale) async {
-    AppLocalization localizations = AppLocalization(locale.languageCode);
-    await localizations.load();
-    return localizations;
+    final AppLocalization localization = AppLocalization(locale.languageCode);
+    await localization.load();
+    return localization;
   }
 
   @override

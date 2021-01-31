@@ -4,8 +4,12 @@ part of 'app_manager_cubit.dart';
 abstract class AppManagerState implements _$AppManagerState {
   const AppManagerState._();
 
-  const factory AppManagerState({ThemeMode themeMode, String region}) = _AppManagerState;
+  const factory AppManagerState({
+    ThemeMode themeMode,
+    String region,
+    String languageCode,
+  }) = _AppManagerState;
 
   factory AppManagerState.initial() =>
-      const AppManagerState(themeMode: ThemeMode.system, region:"US");
+      const AppManagerState(themeMode: ThemeMode.system, region: "US");
 }

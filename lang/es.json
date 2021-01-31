@@ -1,3 +1,7 @@
 {
-  "search_contacts": "Buscar, %s contactos"
+  "search_contacts": "Buscar, %s contactos",
+  "this_language" : "Español",
+  "theme" : "Tema",
+  "system" : "Sistema"
+
 }

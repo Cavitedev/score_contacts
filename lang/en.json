@@ -1,3 +1,6 @@
 {
-  "search_contacts" : "Search, %s contacts"
+  "search_contacts" : "Search, %s contacts",
+  "this_language" : "English",
+  "theme" : "Theme",
+  "system" : "System"
 }

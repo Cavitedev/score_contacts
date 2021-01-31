@@ -2,22 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/core/app_manager_cubit.dart';
 
-class ChangeThemeDialog extends StatelessWidget {
-  final ThemeMode themeMode;
+class ChangeLanguageDialog extends StatelessWidget {
+  final String language;
 
-  const ChangeThemeDialog({@required this.themeMode});
+  const ChangeLanguageDialog({@required this.language});
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text("Choose Theme"),
+      title: const Text("Choose Language"),
       elevation: 16,
       contentPadding: const EdgeInsets.only(right: 24, top: 24),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(16)),
       ),
-      content: RadioThemeColumn(
-        group: themeMode,
+      content: RadioLanguageColumn(
+        group: language,
       ),
       actions: <Widget>[
         FlatButton(
@@ -34,10 +34,10 @@ class ChangeThemeDialog extends StatelessWidget {
   }
 }
 
-class RadioThemeColumn extends StatelessWidget {
-  final ThemeMode group;
+class RadioLanguageColumn extends StatelessWidget {
+  final String group;
 
-  const RadioThemeColumn({
+  const RadioLanguageColumn({
     Key key,
     this.group,
   }) : super(key: key);
@@ -47,39 +47,39 @@ class RadioThemeColumn extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        ThemeRadioListTile(
-            group: group, themeMode: ThemeMode.dark, msg: "Dark Theme"),
-        ThemeRadioListTile(
-            group: group, themeMode: ThemeMode.light, msg: "Light Theme"),
-        ThemeRadioListTile(
-            group: group, themeMode: ThemeMode.system, msg: "System Theme"),
+        LanguageRadioListTile(
+            group: group, value: "en", msg: "English"),
+        LanguageRadioListTile(
+            group: group, value: "es", msg: "Español"),
+        LanguageRadioListTile(
+            group: group, value: "system", msg: "System"),
       ],
     );
   }
 }
 
-class ThemeRadioListTile extends StatelessWidget {
-  final ThemeMode group;
+class LanguageRadioListTile extends StatelessWidget {
+  final String group;
   final String msg;
-  final ThemeMode themeMode;
+  final String value;
 
-  const ThemeRadioListTile({
+  const LanguageRadioListTile({
     Key key,
     @required this.group,
     @required this.msg,
-    @required this.themeMode,
+    @required this.value,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
+      onTap: () async {
         Navigator.of(context).pop();
-        context.read<AppManagerCubit>().changeThemeData(themeMode);
+        context.read<AppManagerCubit>().changeLanguage(context, value);
       },
       child: ListTile(
         leading: Radio(
-          value: themeMode,
+          value: value,
           onChanged: (_) {},
           groupValue: group,
         ),
