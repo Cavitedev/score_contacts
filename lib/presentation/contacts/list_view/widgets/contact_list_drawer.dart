@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/auth/auth_bloc.dart';
 import 'package:scorecontacts/application/contacts/contact_actor/contact_actor_bloc.dart';
 import 'package:scorecontacts/presentation/core/widgets/theme_switch.dart';
+import 'package:scorecontacts/presentation/routes/router.gr.dart';
 
 class ContactListDrawer extends StatelessWidget {
   const ContactListDrawer({
@@ -38,6 +40,14 @@ class ContactListDrawer extends StatelessWidget {
               context
                   .read<AuthBloc>()
                   .add(const AuthEvent.signOut());
+            },
+          ),
+          ListTile(
+            title: Text('Settings', style: Theme.of(context).textTheme.subtitle2,),
+            leading: const Icon(Icons.settings),
+            onTap: () {
+
+              ExtendedNavigator.of(context).pushSettingsPage();
             },
           ),
         const ThemeSwitch()
