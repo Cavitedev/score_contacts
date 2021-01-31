@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/contacts/contact_watcher/contact_watcher_bloc.dart';
+import 'package:scorecontacts/core/app_localization.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/selected_contacts_row_bar.dart';
 import 'package:scorecontacts/presentation/core/widgets/text_field_container.dart';
 import 'package:scorecontacts/presentation/routes/router.gr.dart';
@@ -61,7 +62,8 @@ class _ContactsListScaffoldState extends State<ContactsListScaffold> {
                     child: TextField(
                       decoration: InputDecoration(
                           hintText:
-                              "🔎 Search ${displayedContactList.length} contacts",
+                              "🔎 ${AppLocalization.of(context).translate("search_contacts",
+                              args: [displayedContactList.length.toString()],)}",
                           border: InputBorder.none),
                       onChanged: (str) {
                         context

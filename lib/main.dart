@@ -10,6 +10,8 @@ import 'package:scorecontacts/injection.dart';
 import 'package:scorecontacts/presentation/routes/router.gr.dart' as r;
 import 'package:scorecontacts/theme_manager.dart';
 
+import 'core/app_localization.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   configureInjection(Environment.prod);
@@ -31,19 +33,15 @@ class MyApp extends StatelessWidget {
       child: BlocBuilder<AppManagerCubit, AppManagerState>(
         builder: (context, state) => MaterialApp(
           title: 'Contacts App',
+          supportedLocales: const [
+            Locale("en"),
+            Locale("es"),
+          ],
           localizationsDelegates: const [
+            AppLocalization.delegate,
             GlobalWidgetsLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
           ],
-          supportedLocales: const [
-            Locale("en", "US"),
-            Locale("en", "GB"),
-            Locale("en", "ES"),
-            Locale("es", "US"),
-            Locale("es", "GB"),
-            Locale("es", "ES"),
-          ],
-
           builder: ExtendedNavigator.builder<r.Router>(
             router: r.Router(),
           ),

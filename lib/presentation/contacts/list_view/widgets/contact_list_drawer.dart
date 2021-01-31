@@ -45,7 +45,6 @@ class ContactListDrawer extends StatelessWidget {
             title: Text('Settings', style: Theme.of(context).textTheme.subtitle2,),
             leading: const Icon(Icons.settings),
             onTap: () {
-
               ExtendedNavigator.of(context).pushSettingsPage();
             },
           ),
