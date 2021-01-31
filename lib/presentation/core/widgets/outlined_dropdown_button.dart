@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scorecontacts/core/app_localization.dart';
 import 'package:scorecontacts/presentation/core/widgets/alert_dialogue_cancel_ok.dart';
 
 const double helperTextSep = 22;
@@ -32,8 +33,7 @@ class OutlinedDropdownButton extends StatefulWidget {
   _OutlinedDropdownButtonState createState() => _OutlinedDropdownButtonState();
 }
 
-class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
-    with TickerProviderStateMixin {
+class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton> with TickerProviderStateMixin {
   String selected;
   String lastSelected;
   String customSelected;
@@ -46,21 +46,9 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
 
   @override
   void initState() {
-    _items = <DropdownMenuItem<String>>[
-      ...widget.items
-          .map((String item) => DropdownMenuItem(
-                value: item,
-                child: Text(item),
-              ))
-          .toList(),
-      const DropdownMenuItem(
-        value: "Custom",
-        child: Text("Custom"),
-      ),
-    ];
 
-    opacityAnimationController = AnimationController(
-        duration: const Duration(milliseconds: 200), vsync: this);
+
+    opacityAnimationController = AnimationController(duration: const Duration(milliseconds: 200), vsync: this);
     final Tween<double> opacityTween = Tween<double>(begin: 0, end: 1);
     opacityAnimation = opacityTween.animate(opacityAnimationController);
 
@@ -70,9 +58,7 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
 
   void outlineFocusListener() {
     setState(() {
-      widget.focusNode.hasFocus
-          ? opacityAnimationController.forward()
-          : opacityAnimationController.reverse();
+      widget.focusNode.hasFocus ? opacityAnimationController.forward() : opacityAnimationController.reverse();
     });
   }
 
@@ -86,18 +72,17 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
   void _showDialogue(BuildContext context) {
     showDialog(
       context: context,
-      builder: (context) =>
-          AlertDialogueWithFieldCancelOK(
-            title: "Custom label name",
-            hintText: "Label name",
-            onCancel: () {
-              setState(() {
-                selected = lastSelected;
-                customSelected = null;
-              });
-              if (widget.onLabelChanged != null) {
-                widget.onLabelChanged(lastSelected);
-              }
+      builder: (context) => AlertDialogueWithFieldCancelOK(
+        title: AppLocalization.of(context).translate("custom_label_name"),
+        hintText: AppLocalization.of(context).translate("custom_label"),
+        onCancel: () {
+          setState(() {
+            selected = lastSelected;
+            customSelected = null;
+          });
+          if (widget.onLabelChanged != null) {
+            widget.onLabelChanged(lastSelected);
+          }
         },
         onSubmit: (String text) {
           customSelected = text;
@@ -112,6 +97,20 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
 
   @override
   Widget build(BuildContext context) {
+    _items = <DropdownMenuItem<String>>[
+      ...widget.items
+          .map((String item) => DropdownMenuItem(
+        value: item,
+        child: Text(AppLocalization.of(context).translate(item.toLowerCase())),
+      ))
+          .toList(),
+      DropdownMenuItem(
+        value: "Custom",
+        child: Text(AppLocalization.of(context).translate("custom")),
+      ),
+    ];
+
+
     if (widget.selected != null) {
       selected = widget.selected;
     } else {
@@ -120,95 +119,68 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
     final List<DropdownMenuItem<String>> itemsRendered = customSelected == null
         ? _items
         : [
-      DropdownMenuItem(
-        value: customSelected,
-        child: Text(customSelected),
-      ),
-      ..._items
-    ];
+            DropdownMenuItem(
+              value: customSelected,
+              child: Text(customSelected),
+            ),
+            ..._items
+          ];
     return AnimatedBuilder(
       animation: opacityAnimationController,
-      builder: (context, child) =>
-          Container(
-            margin: EdgeInsets.only(top: widget.topMargin,
-                bottom: widget.expandBottomMargin == true ? helperTextSep : 0),
-            padding: const EdgeInsets.only(left: 6),
-            height: 48,
-            decoration: BoxDecoration(
-              shape: BoxShape.rectangle,
-              color: Theme
-                  .of(context)
-                  .textSelectionColor,
-              borderRadius: widget.borderRadius,
-              border: Border.all(
-                color: Theme
-                    .of(context)
-                    .highlightColor
-                    .withOpacity(opacityAnimation.value),
-                width: 2,
-//            widget.focusNode.hasFocus
-              ),
-            ),
-            child: DropdownButton<String>(
-                focusNode: widget.focusNode,
-
-                focusColor: Theme
-                    .of(context)
-                    .textSelectionColor,
-
-                onChanged: (value) {
-                  widget.focusNode.requestFocus();
-                  if (value == "Custom") {
-                    _showDialogue(context);
-                  }
-                  setState(() {
-                    lastSelected = selected;
-                    selected = value;
-                    customSelected = null;
-                  });
-                  if (widget.onLabelChanged != null) {
-                    widget.onLabelChanged(value);
-                  }
-                },
-
-
-                selectedItemBuilder: (context) =>
-                    itemsRendered
-                        .map((item) =>
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            item.value,
-                            style: widget.focusNode.hasFocus || widget.isActive
-                                ? Theme
-                                .of(context)
-                                .textTheme
-                                .subtitle1
-                                : Theme
-                                .of(context)
-                                .textTheme
-                                .subtitle1
-                                .copyWith(
-                                color: Theme
-                                    .of(context)
-                                    .disabledColor),
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ))
-                        .cast<Widget>()
-                        .toList(),
-
-                value: selected,
-                elevation: 16,
-                isExpanded: true,
-                underline: Container(
-                  height: 0,
-                ),
-                icon: const Icon(Icons.arrow_drop_down),
-                iconSize: 24,
-                hint: const Text("label"),
-                items: itemsRendered),
+      builder: (context, child) => Container(
+        margin: EdgeInsets.only(top: widget.topMargin, bottom: widget.expandBottomMargin == true ? helperTextSep : 0),
+        padding: const EdgeInsets.only(left: 6),
+        height: 48,
+        decoration: BoxDecoration(
+          shape: BoxShape.rectangle,
+          color: Theme.of(context).textSelectionColor,
+          borderRadius: widget.borderRadius,
+          border: Border.all(
+            color: Theme.of(context).highlightColor.withOpacity(opacityAnimation.value),
+            width: 2,
           ),
+        ),
+        child: DropdownButton<String>(
+            focusNode: widget.focusNode,
+            focusColor: Theme.of(context).textSelectionColor,
+            onChanged: (value) {
+              widget.focusNode.requestFocus();
+              if (value == "Custom") {
+                _showDialogue(context);
+              }
+              setState(() {
+                lastSelected = selected;
+                selected = value;
+                customSelected = null;
+              });
+              if (widget.onLabelChanged != null) {
+                widget.onLabelChanged(value);
+              }
+            },
+            selectedItemBuilder: (context) => itemsRendered
+                .map((item) => Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        AppLocalization.of(context).translate(item.value.toLowerCase()),
+                        style: widget.focusNode.hasFocus || widget.isActive
+                            ? Theme.of(context).textTheme.subtitle1
+                            : Theme.of(context).textTheme.subtitle1.copyWith(color: Theme.of(context).disabledColor),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ))
+                .cast<Widget>()
+                .toList(),
+            value: selected,
+            elevation: 16,
+            isExpanded: true,
+            underline: Container(
+              height: 0,
+            ),
+            icon: const Icon(Icons.arrow_drop_down),
+            iconSize: 24,
+            hint: const Text("label"),
+            items: itemsRendered),
+      ),
     );
   }
 }

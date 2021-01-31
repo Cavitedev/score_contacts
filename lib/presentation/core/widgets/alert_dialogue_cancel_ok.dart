@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scorecontacts/core/app_localization.dart';
 
 import 'outlined_input_field.dart';
 
@@ -50,8 +51,8 @@ class _AlertDialogueWithFieldCancelOKState
             Navigator.of(context).pop();
           },
           textColor: Theme.of(context).focusColor,
-          child: const Text(
-            "Cancel",
+          child:  Text(
+            AppLocalization.of(context).translate("cancel"),
             // style: TextStyle(
             //     ),
           ),
@@ -65,7 +66,7 @@ class _AlertDialogueWithFieldCancelOKState
               : null,
           disabledTextColor: Theme.of(context).disabledColor,
           textColor: Theme.of(context).focusColor,
-          child: const Text("OK"),
+          child: Text(AppLocalization.of(context).translate("ok")),
         )
       ],
     );
@@ -100,12 +101,8 @@ class AlertDialogueCancelOK extends StatelessWidget {
             onCancel?.call();
           },
           textColor: Theme.of(context).focusColor,
-          child: const Text(
-            "Cancel",
-            style: TextStyle(
-//              color: ,
-//              fontSize: 20,
-                ),
+          child: Text(
+            AppLocalization.of(context).translate("cancel"),
           ),
         ),
         FlatButton(
@@ -115,7 +112,7 @@ class AlertDialogueCancelOK extends StatelessWidget {
           },
           disabledTextColor: Theme.of(context).disabledColor,
           textColor: Theme.of(context).focusColor,
-          child: const Text("OK"),
+          child: Text(AppLocalization.of(context).translate("ok")),
         )
       ],
     );

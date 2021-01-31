@@ -19,12 +19,12 @@ class AppLocalization {
 
   String translate(String key, {List<String> args}){
     String textStr = _localizedStrings[key];
-    if(args == null) return textStr;
+    if(args == null) return textStr ?? key;
     while(args.isNotEmpty){
       textStr = textStr.replaceFirst("%s", args[0]);
       args.removeAt(0);
     }
-    return textStr;
+    return textStr ?? "";
 
   }
 

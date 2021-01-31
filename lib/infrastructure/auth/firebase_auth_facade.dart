@@ -31,7 +31,7 @@ class FirebaseAuthFacade implements IAuthFacade {
       final GoogleSignInAccount googleAccount = await googleSignIn.signIn();
       if (googleAccount == null) {
         return left(const CancelledByUserAuthFailure(
-            "Google sign in has been cancelled"));
+            "google_cancelled"));
       }
       final GoogleSignInAuthentication authentication =
       await googleAccount.authentication;
@@ -42,7 +42,7 @@ class FirebaseAuthFacade implements IAuthFacade {
       await firebaseAuth.signInWithCredential(credential);
       return right(unit);
     } on PlatformException {
-      return left(const DatabaseAuthFailure("Error on database"));
+      return left(const DatabaseAuthFailure("error_database"));
     }
   }
 
