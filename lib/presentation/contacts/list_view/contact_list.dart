@@ -5,12 +5,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/auth/auth_bloc.dart';
 import 'package:scorecontacts/application/contacts/contact_actor/contact_actor_bloc.dart';
 import 'package:scorecontacts/application/contacts/contact_watcher/contact_watcher_bloc.dart';
-import 'package:scorecontacts/domain/user/contacts_data/contacts_loading.dart';
 import 'package:scorecontacts/injection.dart';
+import 'package:scorecontacts/presentation/contacts/list_view/widgets/actor_overlay_progress_indicator.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/contact_list_scaffold.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/critical_failure_display.dart';
 import 'package:scorecontacts/presentation/core/widgets/circular_progress_indicator_scaffold.dart';
-import 'package:scorecontacts/presentation/core/widgets/overlayed_circular_progess_indicator.dart';
 import 'package:scorecontacts/presentation/routes/router.gr.dart';
 
 class ContactList extends StatelessWidget {
@@ -94,27 +93,4 @@ class ContactList extends StatelessWidget {
   }
 }
 
-class ActorOverlayProgressIndicator extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<ContactActorBloc, ContactActorState>(
-      buildWhen: (previous, current) =>
-          _getLoading(previous) != _getLoading(current),
-      builder: (context, state) {
-        final ContactsLoading loading = _getLoading(state);
-        final bool isLoading = loading != null;
-        final String msg = isLoading ? loading.map(
-          loadingContacts: (l) => "Loading ${l.amount ?? "all"} Contacts",
-          deletingContacts: (l) => "Deleting ${l.amount} contacts",
-        ) : "";
-        return OverlayedCircularProgressIndicator(
-          isSaving: isLoading,
-          msg: msg,
-        );
-      },
-    );
-  }
 
-  ContactsLoading _getLoading(ContactActorState current) => current.maybeWhen(
-      actionInProgress: (loading) => loading, orElse: () => null);
-}
