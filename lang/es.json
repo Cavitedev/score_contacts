@@ -11,7 +11,7 @@
   "custom_label": "Etiqueta personalizada",
   "custom_label_name": "Nombre de etiqueta personalizado",
   "dark" : "Oscuro",
-  "deleting_contacts": "Eliminando $s contactos",
+  "deleting_contacts": "Eliminando %s contactos",
   "denied_permanently_read_contacts_permissions_failure": "Los permisos de contactos están rechazados permanentemente, Otórgale permisos en los ajustes del sistema",
   "denied_read_contacts_permissions_failure": "Necesitamos permisos para leer sus contactos, inténtalo de de nuevo",
   "edit_contact": "Editar contacto",

@@ -11,7 +11,7 @@
   "custom_label": "Custom label",
   "custom_label_name": "Custom label name",
   "dark": "Dark",
-  "deleting_contacts": "Deleting $s contacts",
+  "deleting_contacts": "Deleting %s contacts",
   "denied_permanently_read_contacts_permissions_failure": "Contact permissions are permanently denied. Allow them on system settings to use this function",
   "denied_read_contacts_permissions_failure": "We need system permissions to read contacts, ask again",
   "edit_contact": "Edit contact",
