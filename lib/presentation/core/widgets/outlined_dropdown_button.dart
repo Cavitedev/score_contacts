@@ -161,7 +161,7 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton> with Ti
                 .map((item) => Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        AppLocalization.of(context).translate(item.value.toLowerCase()),
+                        AppLocalization.of(context).translate(item.value.toLowerCase())??item.value,
                         style: widget.focusNode.hasFocus || widget.isActive
                             ? Theme.of(context).textTheme.subtitle1
                             : Theme.of(context).textTheme.subtitle1.copyWith(color: Theme.of(context).disabledColor),

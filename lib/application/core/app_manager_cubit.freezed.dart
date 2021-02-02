@@ -14,10 +14,12 @@ class _$AppManagerStateTearOff {
   const _$AppManagerStateTearOff();
 
 // ignore: unused_element
-  _AppManagerState call({ThemeMode themeMode, String region}) {
+  _AppManagerState call(
+      {ThemeMode themeMode, String region, String languageCode}) {
     return _AppManagerState(
       themeMode: themeMode,
       region: region,
+      languageCode: languageCode,
     );
   }
 }
@@ -30,6 +32,7 @@ const $AppManagerState = _$AppManagerStateTearOff();
 mixin _$AppManagerState {
   ThemeMode get themeMode;
   String get region;
+  String get languageCode;
 
   @JsonKey(ignore: true)
   $AppManagerStateCopyWith<AppManagerState> get copyWith;
@@ -40,7 +43,7 @@ abstract class $AppManagerStateCopyWith<$Res> {
   factory $AppManagerStateCopyWith(
           AppManagerState value, $Res Function(AppManagerState) then) =
       _$AppManagerStateCopyWithImpl<$Res>;
-  $Res call({ThemeMode themeMode, String region});
+  $Res call({ThemeMode themeMode, String region, String languageCode});
 }
 
 /// @nodoc
@@ -56,11 +59,15 @@ class _$AppManagerStateCopyWithImpl<$Res>
   $Res call({
     Object themeMode = freezed,
     Object region = freezed,
+    Object languageCode = freezed,
   }) {
     return _then(_value.copyWith(
       themeMode:
           themeMode == freezed ? _value.themeMode : themeMode as ThemeMode,
       region: region == freezed ? _value.region : region as String,
+      languageCode: languageCode == freezed
+          ? _value.languageCode
+          : languageCode as String,
     ));
   }
 }
@@ -72,7 +79,7 @@ abstract class _$AppManagerStateCopyWith<$Res>
           _AppManagerState value, $Res Function(_AppManagerState) then) =
       __$AppManagerStateCopyWithImpl<$Res>;
   @override
-  $Res call({ThemeMode themeMode, String region});
+  $Res call({ThemeMode themeMode, String region, String languageCode});
 }
 
 /// @nodoc
@@ -90,27 +97,34 @@ class __$AppManagerStateCopyWithImpl<$Res>
   $Res call({
     Object themeMode = freezed,
     Object region = freezed,
+    Object languageCode = freezed,
   }) {
     return _then(_AppManagerState(
       themeMode:
           themeMode == freezed ? _value.themeMode : themeMode as ThemeMode,
       region: region == freezed ? _value.region : region as String,
+      languageCode: languageCode == freezed
+          ? _value.languageCode
+          : languageCode as String,
     ));
   }
 }
 
 /// @nodoc
 class _$_AppManagerState extends _AppManagerState {
-  const _$_AppManagerState({this.themeMode, this.region}) : super._();
+  const _$_AppManagerState({this.themeMode, this.region, this.languageCode})
+      : super._();
 
   @override
   final ThemeMode themeMode;
   @override
   final String region;
+  @override
+  final String languageCode;
 
   @override
   String toString() {
-    return 'AppManagerState(themeMode: $themeMode, region: $region)';
+    return 'AppManagerState(themeMode: $themeMode, region: $region, languageCode: $languageCode)';
   }
 
   @override
@@ -121,14 +135,18 @@ class _$_AppManagerState extends _AppManagerState {
                 const DeepCollectionEquality()
                     .equals(other.themeMode, themeMode)) &&
             (identical(other.region, region) ||
-                const DeepCollectionEquality().equals(other.region, region)));
+                const DeepCollectionEquality().equals(other.region, region)) &&
+            (identical(other.languageCode, languageCode) ||
+                const DeepCollectionEquality()
+                    .equals(other.languageCode, languageCode)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(themeMode) ^
-      const DeepCollectionEquality().hash(region);
+      const DeepCollectionEquality().hash(region) ^
+      const DeepCollectionEquality().hash(languageCode);
 
   @JsonKey(ignore: true)
   @override
@@ -138,13 +156,17 @@ class _$_AppManagerState extends _AppManagerState {
 
 abstract class _AppManagerState extends AppManagerState {
   const _AppManagerState._() : super._();
-  const factory _AppManagerState({ThemeMode themeMode, String region}) =
-      _$_AppManagerState;
+  const factory _AppManagerState(
+      {ThemeMode themeMode,
+      String region,
+      String languageCode}) = _$_AppManagerState;
 
   @override
   ThemeMode get themeMode;
   @override
   String get region;
+  @override
+  String get languageCode;
   @override
   @JsonKey(ignore: true)
   _$AppManagerStateCopyWith<_AppManagerState> get copyWith;
