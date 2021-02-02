@@ -63,6 +63,7 @@ class _OutlinedInputFieldsGrowableListState
       key: animatedList,
       shrinkWrap: true,
       initialItemCount: listCount,
+      primary: false,
       itemBuilder: (context, index, animation) {
         return _listTransitionBuild(
           animation,

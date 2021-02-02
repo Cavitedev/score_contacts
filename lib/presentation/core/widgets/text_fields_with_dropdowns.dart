@@ -69,6 +69,7 @@ class _TextFieldsWithDropdownsState extends State<TextFieldsWithDropdowns> {
       key: animatedList,
       shrinkWrap: true,
       initialItemCount: 1,
+      primary: false,
       itemBuilder: (context, index, animation) {
         return _listTransitionBuild(animation, _buildField(pos: index));
       },
