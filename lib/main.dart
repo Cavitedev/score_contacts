@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
               getIt<AuthBloc>()..add(const AuthEvent.getUser()),
         ),
         BlocProvider(
-            create: (context) => getIt<AppManagerCubit>()..getSystemRegion())
+            create: (context) => getIt<AppManagerCubit>()..init())
       ],
       child: BlocBuilder<AppManagerCubit, AppManagerState>(
         builder: (context, state) => MaterialApp(

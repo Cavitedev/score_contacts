@@ -90,7 +90,7 @@ class RadioLanguageColumn extends StatelessWidget {
       title: Text(msg),
       onChanged: (_) {
         Navigator.pop(context);
-        context.read<AppManagerCubit>().changeLanguage(context, value);
+        context.read<AppManagerCubit>().changeLanguage(value);
       },
     );
   }
