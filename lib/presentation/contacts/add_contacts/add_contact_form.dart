@@ -22,73 +22,72 @@ class AddContactForm extends StatelessWidget {
       builder: (context, state) => Form(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
-          child: SingleChildScrollView(
-            child: Column(
-              children: <Widget>[
-                const SizedBox(
-                  height: 15,
-                ),
-                OutlinedInputFieldsGroup(
-                  inputFields: [
-                    OutlinedInputField(
-                      hintText: AppLocalization.of(context).translate("name"),
-                      writtenText: state.contact.nameData.firstName,
-                      autoFocus: true,
-                      textCapitalization: TextCapitalization.words,
-                      prefixIcon: const Icon(Icons.person_outline),
-                      onChangedValidator: (value) {
-                        context.read<AddContactBloc>().add(
-                            AddContactEvent.updateNameData(state
-                                .contact.nameData
-                                .copyWith(firstName: value)));
-                        return null;
-                      },
-                    ),
-                    OutlinedInputField(
-                      hintText: AppLocalization.of(context).translate("surname"),
-                      writtenText: state.contact.nameData.surnames,
-                      textCapitalization: TextCapitalization.words,
-                      onChangedValidator: (value) {
-                        context.read<AddContactBloc>().add(
-                            AddContactEvent.updateNameData(state
-                                .contact.nameData
-                                .copyWith(surnames: value)));
-                        return null;
-                      },
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                LabelObjectBuilder(
-                  context: context,
-                  state: state,
-                  defaultLabelObject: const Phone(),
-                  hintText: AppLocalization.of(context).translate("phone"),
-                  icon: const Icon(Icons.phone),
-                  keyboardType: TextInputType.phone,
-                  inputFormatters: <TextInputFormatter>[
-                    PhoneTextFormatter(countryCode: context.read<AppManagerCubit>().state.region)
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                LabelObjectBuilder(
-                  context: context,
-                  state: state,
-                  defaultLabelObject: const Email(),
-                  hintText: AppLocalization.of(context).translate("email"),
-                  icon: const Icon(Icons.mail),
-                  keyboardType: TextInputType.emailAddress,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                CompaniesFields(state: state, context: context),
-              ],
-            ),
+          child: ListView(
+            physics: const BouncingScrollPhysics(),
+            children: <Widget>[
+              const SizedBox(
+                height: 15,
+              ),
+              OutlinedInputFieldsGroup(
+                inputFields: [
+                  OutlinedInputField(
+                    hintText: AppLocalization.of(context).translate("name"),
+                    writtenText: state.contact.nameData.firstName,
+                    autoFocus: true,
+                    textCapitalization: TextCapitalization.words,
+                    prefixIcon: const Icon(Icons.person_outline),
+                    onChangedValidator: (value) {
+                      context.read<AddContactBloc>().add(
+                          AddContactEvent.updateNameData(state
+                              .contact.nameData
+                              .copyWith(firstName: value)));
+                      return null;
+                    },
+                  ),
+                  OutlinedInputField(
+                    hintText: AppLocalization.of(context).translate("surname"),
+                    writtenText: state.contact.nameData.surnames,
+                    textCapitalization: TextCapitalization.words,
+                    onChangedValidator: (value) {
+                      context.read<AddContactBloc>().add(
+                          AddContactEvent.updateNameData(state
+                              .contact.nameData
+                              .copyWith(surnames: value)));
+                      return null;
+                    },
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              LabelObjectBuilder(
+                context: context,
+                state: state,
+                defaultLabelObject: const Phone(),
+                hintText: AppLocalization.of(context).translate("phone"),
+                icon: const Icon(Icons.phone),
+                keyboardType: TextInputType.phone,
+                inputFormatters: <TextInputFormatter>[
+                  PhoneTextFormatter(countryCode: context.read<AppManagerCubit>().state.region)
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              LabelObjectBuilder(
+                context: context,
+                state: state,
+                defaultLabelObject: const Email(),
+                hintText: AppLocalization.of(context).translate("email"),
+                icon: const Icon(Icons.mail),
+                keyboardType: TextInputType.emailAddress,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              CompaniesFields(state: state, context: context),
+            ],
           ),
         ),
       ),
