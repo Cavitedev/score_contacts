@@ -86,7 +86,6 @@ class _TextFieldsWithDropdownsState extends State<TextFieldsWithDropdowns> {
     } else if (activeFields < widget.labelObjects.length - 1) {
       posInactiveWidget = widget.labelObjects.indexWhere((labelObject) =>
       labelObject.value != null && labelObject.value.isEmpty);
-
       _removeWidget(pos: posInactiveWidget);
     }
   }
@@ -106,21 +105,24 @@ class _TextFieldsWithDropdownsState extends State<TextFieldsWithDropdowns> {
   }
 
   void _updateAnimatedList() {
-    if (widget.labelObjects.length > listCount) {
-      focusNodes.add(FocusNode());
-      animatedList.currentState.insertItem(listCount);
-      listCount++;
-    } else if (widget.labelObjects.length < listCount) {
-      animatedList.currentState.removeItem(posInactiveWidget,
-              (context, animation) {
-            return _listTransitionBuild(
-                animation,
-                _buildField(
-                    pos: posInactiveWidget, labelObject: objectToRemove));
-          }, duration: const Duration(milliseconds: 300));
-      listCount--;
-      focusNodes.removeAt(posInactiveWidget);
+    while(widget.labelObjects.length != listCount){
+      if (widget.labelObjects.length > listCount) {
+        focusNodes.add(FocusNode());
+        animatedList.currentState.insertItem(listCount);
+        listCount++;
+      } else if (widget.labelObjects.length < listCount) {
+        animatedList.currentState.removeItem(posInactiveWidget,
+                (context, animation) {
+              return _listTransitionBuild(
+                  animation,
+                  _buildField(
+                      pos: posInactiveWidget, labelObject: objectToRemove));
+            }, duration: const Duration(milliseconds: 300));
+        listCount--;
+        focusNodes.removeAt(posInactiveWidget);
+      }
     }
+
   }
 
   SizeTransition _listTransitionBuild(Animation<double> animation,

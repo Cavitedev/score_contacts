@@ -103,27 +103,32 @@ class _OutlinedInputFieldsGrowableListState
   }
 
   void _updateAnimatedList() {
-    if (widget.writtenTexts.length > listCount) {
-      focusNodes
-          .add(Iterable<FocusNode>.generate(widget.fieldPrefabs.length, (i) {
-        return FocusNode();
-      }).toList());
-      animatedList.currentState.insertItem(listCount);
-      listCount++;
-    } else if (widget.writtenTexts.isNotEmpty &&
-        widget.writtenTexts.length < listCount) {
-      final List<String> messagesLeft = widget.writtenTexts[posInactiveWidget];
-      animatedList.currentState.removeItem(posInactiveWidget,
-          (context, animation) {
-        return _listTransitionBuild(
-            animation,
-            _buildField(
-                listIndex: posInactiveWidget, writtenTexts: messagesLeft));
-      }, duration: const Duration(milliseconds: 300));
-      listCount--;
+    while(widget.writtenTexts.length != listCount){
 
-      focusNodes.removeAt(posInactiveWidget);
+      if (widget.writtenTexts.length > listCount) {
+        focusNodes
+            .add(Iterable<FocusNode>.generate(widget.fieldPrefabs.length, (i) {
+          return FocusNode();
+        }).toList());
+        animatedList.currentState.insertItem(listCount);
+        listCount++;
+      } else if (widget.writtenTexts.isNotEmpty &&
+          widget.writtenTexts.length < listCount) {
+        final List<String> messagesLeft = widget.writtenTexts[posInactiveWidget];
+        animatedList.currentState.removeItem(posInactiveWidget,
+                (context, animation) {
+              return _listTransitionBuild(
+                  animation,
+                  _buildField(
+                      listIndex: posInactiveWidget, writtenTexts: messagesLeft));
+            }, duration: const Duration(milliseconds: 300));
+        listCount--;
+
+        focusNodes.removeAt(posInactiveWidget);
+      }
+
     }
+
   }
 
   Widget _buildField({@required int listIndex, List<String> writtenTexts}) {
