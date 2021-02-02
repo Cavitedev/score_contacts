@@ -77,6 +77,7 @@ class _ContactsListScaffoldState extends State<ContactsListScaffold> {
             ),
             Expanded(
               child: ListView(
+                physics: const BouncingScrollPhysics(),
                 children: widget.stateValues.displayedContacts()
                     .map((contact) => ContactRow(
                           selectionContact: contact,
