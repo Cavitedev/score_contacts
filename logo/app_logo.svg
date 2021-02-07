@@ -3,7 +3,8 @@
         xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
         xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="500" height="500"
         viewBox="0 0 132.29167 132.29167" version="1.1" id="svg232" inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"
-        sodipodi:docname="app_logo.svg">
+        sodipodi:docname="app_logo.svg" inkscape:export-filename="E:\Personal\Android\Projects\score_contacts\score_contacts\logo\app_logo2.png"
+        inkscape:export-xdpi="384" inkscape:export-ydpi="384">
   <defs
      id="defs226">
     <filter
@@ -79,8 +80,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="262.88472"
-     inkscape:cy="278.47771"
+     inkscape:cx="259.85426"
+     inkscape:cy="264.33558"
      inkscape:document-units="px"
      inkscape:current-layer="layer4"
      inkscape:document-rotation="0"
@@ -128,10 +129,10 @@
      inkscape:label="PersonHead"
      style="display:inline">
     <circle
-       style="fill:#d7e3f4;stroke-width:0.268417;filter:url(#filter3908)"
+       style="fill:#ffffff;fill-opacity:1;stroke-width:0.268417;filter:url(#filter3908)"
        id="path246"
        cx="66.145836"
-       cy="46.302086"
+       cy="37.041668"
        r="19.84375" />
   </g>
   <g
@@ -141,9 +142,11 @@
      style="display:inline">
     <path
        id="path2158"
-       style="fill:#d5e5ff;fill-opacity:1;stroke:#d5e5ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter4040)"
+       style="fill:#ffffff;fill-opacity:1;stroke:#d5e5ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter4040)"
        d="m 250,275 c -35.69485,0 -55.35043,5.07483 -103.95117,25.71484 C 97.448107,321.35486 100,368.50421 100,385 v 15 c -0.246954,10.14898 -0.715608,15.14178 4.17578,20.0332 C 109.06717,424.92455 114.6678,425 125,425 h 125 125 c 10.3322,0 15.93283,-0.0754 20.82422,-4.9668 C 400.71561,415.14178 400.24695,410.14898 400,400 v -15 c 0,-16.49579 2.55189,-63.64514 -46.04883,-84.28516 C 305.35043,280.07483 285.69485,275 250,275 Z"
-       transform="scale(0.26458334)"
-       sodipodi:nodetypes="zsscsscsscssz" />
+       transform="matrix(0.26458325,0,0,0.26458335,7.9050736e-6,-9.2604195)"
+       sodipodi:nodetypes="zsscsscsscssz"
+       inkscape:export-xdpi="384"
+       inkscape:export-ydpi="384" />
   </g>
 </svg>

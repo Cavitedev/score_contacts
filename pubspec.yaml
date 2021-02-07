@@ -1,9 +1,9 @@
 ---
 
 name: scorecontacts
-description: Contacts app with scores badges and so on
+description: Contacts app
 publish_to: none
-version: 1.0.0+1
+version: 0.0.1
 
 environment:
   sdk: '>=2.10.0 <3.0.0'

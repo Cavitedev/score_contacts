@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -11,9 +12,10 @@ import 'package:scorecontacts/theme_manager.dart';
 
 import 'core/app_localization.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   configureInjection(Environment.prod);
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -31,7 +33,8 @@ class MyApp extends StatelessWidget {
       ],
       child: BlocBuilder<AppManagerCubit, AppManagerState>(
         builder: (context, state) => MaterialApp(
-          title: 'Contacts App',
+          debugShowCheckedModeBanner: false,
+          title: 'Contacts',
           locale: state.languageCode == null
               ? null
               : Locale(state.languageCode, state.region),
