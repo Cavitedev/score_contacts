@@ -11,7 +11,7 @@ import 'package:scorecontacts/theme_manager.dart';
 
 import 'core/app_localization.dart';
 
-Future<void> main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
   configureInjection(Environment.prod);
   runApp(MyApp());
