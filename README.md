@@ -1,6 +1,8 @@
 # scorecontacts
 
-Contacts app with scores badges and so on
+![Contacts Logo](android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png)
+
+Contacts app by the moment
 
 ## Getting Started
 
