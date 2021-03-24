@@ -4,11 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/auth/auth_bloc.dart';
 import 'package:scorecontacts/application/contacts/contact_actor/contact_actor_bloc.dart';
 import 'package:scorecontacts/core/app_localization.dart';
-import 'package:scorecontacts/presentation/routes/router.gr.dart';
+import 'package:scorecontacts/presentation/routes/router.gr.dart' as r;
 
 class ContactListDrawer extends StatelessWidget {
   const ContactListDrawer({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -57,7 +57,7 @@ class ContactListDrawer extends StatelessWidget {
             ),
             leading: const Icon(Icons.settings),
             onTap: () {
-              ExtendedNavigator.of(context).pushSettingsPage();
+              context.router.push(const r.SettingsPageRoute());
             },
           ),
         ],

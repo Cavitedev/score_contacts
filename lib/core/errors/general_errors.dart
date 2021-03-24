@@ -1,5 +1,5 @@
 class ImpossibleToReachError extends Error {
-  final String msg;
+  final String? msg;
 
   ImpossibleToReachError({this.msg});
 }

@@ -1,5 +1,5 @@
 class ConstructorException implements Exception {
-  final String message;
+  final String? message;
 
   ConstructorException([this.message]);
 }

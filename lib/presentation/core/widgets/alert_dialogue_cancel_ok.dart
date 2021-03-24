@@ -10,11 +10,11 @@ class AlertDialogueWithFieldCancelOK extends StatefulWidget {
   final Function(String) onSubmit;
 
   const AlertDialogueWithFieldCancelOK({
-    Key key,
-    @required this.onCancel,
-    @required this.title,
-    @required this.hintText,
-    @required this.onSubmit,
+    Key? key,
+    required this.onCancel,
+    required this.title,
+    required this.hintText,
+    required this.onSubmit,
   }) : super(key: key);
 
   @override
@@ -24,7 +24,7 @@ class AlertDialogueWithFieldCancelOK extends StatefulWidget {
 
 class _AlertDialogueWithFieldCancelOKState
     extends State<AlertDialogueWithFieldCancelOK> {
-  String text;
+  String? text;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class _AlertDialogueWithFieldCancelOKState
           setState(() {
             text = value;
           });
-          return null;
+          return "";
         },
       ),
       contentPadding: const EdgeInsets.only(left: 24, right: 24, top: 24),
@@ -58,9 +58,9 @@ class _AlertDialogueWithFieldCancelOKState
           ),
         ),
         FlatButton(
-          onPressed: text != null && text.isNotEmpty
+          onPressed: text != null && text!.isNotEmpty
               ? () {
-                  widget.onSubmit(text);
+                  widget.onSubmit(text!);
                   Navigator.of(context).pop();
                 }
               : null,
@@ -75,15 +75,15 @@ class _AlertDialogueWithFieldCancelOKState
 
 class AlertDialogueCancelOK extends StatelessWidget {
   const AlertDialogueCancelOK({
-    Key key,
-    @required this.title,
+    Key? key,
+    required this.title,
     this.onSubmit,
     this.onCancel,
   }) : super(key: key);
 
   final String title;
-  final Function onSubmit;
-  final Function onCancel;
+  final Function? onSubmit;
+  final Function? onCancel;
 
   @override
   Widget build(BuildContext context) {

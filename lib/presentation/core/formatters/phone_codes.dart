@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
 import 'package:scorecontacts/core/exceptions/constructor_exceptions.dart';
 import 'package:scorecontacts/presentation/core/formatters/formatter_tools.dart';
 
@@ -11,42 +10,38 @@ class PhoneCountryData {
   final String phoneCode;
   final String countryCode;
   final String phoneMask;
-  final List<String> localMasks;
+  final List<String>? localMasks;
 
   PhoneCountryData._init(
-      {this.country,
-      this.countryCode,
-      this.phoneCode,
-      this.phoneMask,
+      {required this.country,
+      required this.countryCode,
+      required this.phoneCode,
+      required this.phoneMask,
       this.localMasks});
 
   String shortestLocalMask(String phoneToMask) {
-    for (final String mask in localMasks) {
-      if (mask == null) {
-        return phoneMask;
-      }
-      if (toNumericString(mask).length > toNumericString(phoneToMask).length) {
+    if (localMasks == null) return phoneMask;
+
+    for (final String mask in localMasks!) {
+      if (toNumericString(mask)!.length > toNumericString(phoneToMask)!.length) {
         return mask;
       }
     }
+
     return phoneMask;
   }
 
-  factory PhoneCountryData.fromCountryCode({@required String countryCode}) {
-    final Map countryData = countryPhoneCodes.firstWhere(
-        (phoneCode) => phoneCode['countryCode'] == countryCode,
-        orElse: () =>
-            throw ConstructorException("Country code does not exist"));
+  factory PhoneCountryData.fromCountryCode({required String countryCode}) {
+    final Map countryData = countryPhoneCodes.firstWhere((phoneCode) => phoneCode['countryCode'] == countryCode,
+        orElse: () => throw ConstructorException("Country code does not exist"));
     return PhoneCountryData.fromMap(countryData);
   }
-
-
 
   factory PhoneCountryData.fromMap(Map value) {
     final List<String> localMasks = <String>[];
     const maxLocalMasks = 2;
     for (int i = 1; i <= maxLocalMasks; i++) {
-      final String localMask = value['localMask$i'] as String;
+      final String? localMask = value['localMask$i'] as String?;
       if (localMask == null) {
         break;
       }
@@ -64,18 +59,14 @@ class PhoneCountryData {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is PhoneCountryData &&
-              runtimeType == other.runtimeType &&
-              countryCode == other.countryCode;
+      other is PhoneCountryData && runtimeType == other.runtimeType && countryCode == other.countryCode;
 
   @override
   int get hashCode => countryCode.hashCode;
 
   String phoneMaskWithoutPrefix() {
     final int prefixLength = phoneCode.length;
-    return phoneMask
-        .substring(positionOfUmpteenthNumber(phoneMask, prefixLength) + 2)
-        .trim();
+    return phoneMask.substring(positionOfUmpteenthNumber(phoneMask, prefixLength) + 2).trim();
   }
 
   String countryCodeToString() {
@@ -84,28 +75,22 @@ class PhoneCountryData {
 
   @override
   String toString() {
-    return '[PhoneCountryData(country: $country,' +
-        ' phoneCode: $phoneCode, countryCode: $countryCode)]';
+    return '[PhoneCountryData(country: $country,' + ' phoneCode: $phoneCode, countryCode: $countryCode)]';
   }
 }
 
 class PhoneCodes {
-
-  static bool isCountryDataExplicit(String phoneNumber) =>
-      phoneNumber[0] == '+';
+  static bool isCountryDataExplicit(String phoneNumber) => phoneNumber[0] == '+';
 
   /// returns the country of the phone if exists
-  static PhoneCountryData getCountryDataByPhone(String phone) {
-    final String numericPhone = toNumericString(phone);
+  static PhoneCountryData? getCountryDataByPhone(String phone) {
+    final String? numericPhone = toNumericString(phone);
     if (numericPhone == null || numericPhone.isEmpty) return null;
-    for (int prefixLength = min(longestPrefix, numericPhone.length);
-    prefixLength > 0;
-    prefixLength--) {
+    for (int prefixLength = min(longestPrefix, numericPhone.length); prefixLength > 0; prefixLength--) {
       final String phonePrefix = numericPhone.substring(0, prefixLength);
-      final Map rawData = countryPhoneCodes.firstWhere(
-              (data) => data['phoneCode'] == phonePrefix,
-          orElse: () => null);
-      if (rawData != null) return PhoneCountryData.fromMap(rawData);
+      final Map rawData =
+          countryPhoneCodes.firstWhere((data) => data['phoneCode'] == phonePrefix, orElse: () => {});
+      if (rawData.isNotEmpty) return PhoneCountryData.fromMap(rawData);
     }
 
     return null;

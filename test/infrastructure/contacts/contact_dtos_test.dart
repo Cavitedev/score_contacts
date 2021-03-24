@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:scorecontacts/domain/core/unique_id.dart';
 import 'package:scorecontacts/domain/user/contacts_data/contact.dart';
@@ -10,14 +13,10 @@ import 'package:scorecontacts/infrastructure/contacts/contact_dtos.dart';
 import '../../core/fixtures/contacts_fixture.dart';
 
 void main() {
-  Map<String, dynamic> contactsWithNullsJson() =>
-      ContactDTO.fromDomain(ContactFixtures.contactWillNulls).toJson();
-
-
+  Map<String, dynamic> contactsWithNullsJson() => ContactDTO.fromDomain(ContactFixtures.contactWillNulls).toJson();
 
   test('Simple contact can be converted from domain without errors', () {
-    const NameData nameDataDomain =
-        NameData(firstName: "Ej1", surnames: "EjSurname");
+    const NameData nameDataDomain = NameData(firstName: "Ej1", surnames: "EjSurname");
     final Contact contact = Contact(
       id: UniqueID.fromUniqueString("1"),
       nameData: nameDataDomain,
@@ -25,6 +24,7 @@ void main() {
     final ContactDTO expectedDto = ContactDTO(
       id: "1",
       nameDataDTO: NameDataDTO.fromDomain(nameDataDomain),
+      serverTimeStamp: FieldValue.serverTimestamp()
     );
     final ContactDTO contactDTO = ContactDTO.fromDomain(contact);
     expect(expectedDto.id, contactDTO.id);
@@ -34,25 +34,23 @@ void main() {
   });
 
   test('Simple contact can be converted to domain without errors', () {
-    const NameData nameDataDomain =
-    NameData(firstName: "Ej1", surnames: "EjSurname");
+    const NameData nameDataDomain = NameData(firstName: "Ej1", surnames: "EjSurname");
     final Contact contact = Contact(
       id: UniqueID.fromUniqueString("1"),
       nameData: nameDataDomain,
     );
-    final Contact expected = contact.copyWith(
-      companies: [Company.empty()],
-      labelObjects: {Email: [const Email()], Phone: [const Phone()]}
-    );
+    final Contact expected = contact.copyWith(companies: [
+      Company.empty()
+    ], labelObjects: {
+      Email: [const Email()],
+      Phone: [const Phone()]
+    });
     final Contact calculatedContact = ContactDTO.fromDomain(contact).toDomain();
     expect(expected, calculatedContact);
-
   });
 
-
   test('DTO json name parameters are ommited if they are null', () {
-    final Map<String, dynamic> nameData =
-        contactsWithNullsJson()[nameDataName] as Map<String, dynamic>;
+    final Map<String, dynamic> nameData = contactsWithNullsJson()[nameDataName] as Map<String, dynamic>;
 
     expect(nameData.containsKey("surname"), false);
   });
@@ -71,22 +69,28 @@ void main() {
   });
 
   test('DTO json company are ommited if they are null', () {
-    final List<Map<String, dynamic>> companies =
-        contactsWithNullsJson()['companies'] as List<Map<String, dynamic>>;
+    final List<Map<String, dynamic>?> companies = contactsWithNullsJson()['companies'] as List<Map<String, dynamic>?>;
 
-    expect(companies[0].containsKey("name"), true);
-    expect(companies[0].containsKey("title"), true);
-    expect(companies[1].containsKey("name"), true);
-    expect(companies[1].containsKey("title"), false);
-    expect(companies[2].containsKey("name"), false);
-    expect(companies[2].containsKey("title"), true);
+    expect(companies[0]!.containsKey("name"), true);
+    expect(companies[0]!.containsKey("title"), true);
+    expect(companies[1]!.containsKey("name"), true);
+    expect(companies[1]!.containsKey("title"), false);
+    expect(companies[2]!.containsKey("name"), false);
+    expect(companies[2]!.containsKey("title"), true);
     expect(companies.length, 3);
   });
 
   test('DTO json labelObjects are ommited if their value are null', () {
-    final List<Map<String, dynamic>> labelObjects =
-        contactsWithNullsJson()[emailsName] as List<Map<String, dynamic>>;
+    final List<Map<String, dynamic>?> labelObjects = contactsWithNullsJson()[emailsName] as List<Map<String, dynamic>?>;
 
     expect(labelObjects.length, 1);
+  });
+
+  test("From json works Simple name data, phone and null servertimestamp works", () {
+    Map<String, dynamic> jsonData = json.decode(
+            """{"serverTimeStamp": null, "nameData": {"surname":"Casa", "name":"Mi"}, "phones": [{"name": "967244959", "label": "Mobile"}]}""")
+        as Map<String, dynamic>;
+
+    ContactDTO.fromJson(jsonData);
   });
 }

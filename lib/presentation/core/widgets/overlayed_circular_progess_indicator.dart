@@ -5,8 +5,8 @@ class OverlayedCircularProgressIndicator extends StatelessWidget {
   final String msg;
 
   const OverlayedCircularProgressIndicator({
-    Key key,
-    this.isSaving,
+    Key? key,
+    this.isSaving = false,
     this.msg = "",
   }) : super(key: key);
 

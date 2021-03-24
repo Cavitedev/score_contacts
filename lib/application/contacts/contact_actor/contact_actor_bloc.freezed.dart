@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'contact_actor_bloc.dart';
 
@@ -9,51 +9,56 @@ part of 'contact_actor_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$ContactActorEventTearOff {
   const _$ContactActorEventTearOff();
 
-// ignore: unused_element
-  _Delete delete({List<Contact> contactList}) {
+  _Delete delete({required List<Contact> contactList}) {
     return _Delete(
       contactList: contactList,
     );
   }
 
-// ignore: unused_element
   _LoadContactsFromSystem loadContactsFromSystem() {
     return const _LoadContactsFromSystem();
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $ContactActorEvent = _$ContactActorEventTearOff();
 
 /// @nodoc
 mixin _$ContactActorEvent {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult delete(List<Contact> contactList),
-    @required TResult loadContactsFromSystem(),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<Contact> contactList) delete,
+    required TResult Function() loadContactsFromSystem,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult delete(List<Contact> contactList),
-    TResult loadContactsFromSystem(),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<Contact> contactList)? delete,
+    TResult Function()? loadContactsFromSystem,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult delete(_Delete value),
-    @required TResult loadContactsFromSystem(_LoadContactsFromSystem value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Delete value) delete,
+    required TResult Function(_LoadContactsFromSystem value)
+        loadContactsFromSystem,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult delete(_Delete value),
-    TResult loadContactsFromSystem(_LoadContactsFromSystem value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Delete value)? delete,
+    TResult Function(_LoadContactsFromSystem value)? loadContactsFromSystem,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -91,19 +96,20 @@ class __$DeleteCopyWithImpl<$Res> extends _$ContactActorEventCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object contactList = freezed,
+    Object? contactList = freezed,
   }) {
     return _then(_Delete(
       contactList: contactList == freezed
           ? _value.contactList
-          : contactList as List<Contact>,
+          : contactList // ignore: cast_nullable_to_non_nullable
+              as List<Contact>,
     ));
   }
 }
 
 /// @nodoc
 class _$_Delete implements _Delete {
-  const _$_Delete({this.contactList});
+  const _$_Delete({required this.contactList});
 
   @override
   final List<Contact> contactList;
@@ -133,23 +139,20 @@ class _$_Delete implements _Delete {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult delete(List<Contact> contactList),
-    @required TResult loadContactsFromSystem(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<Contact> contactList) delete,
+    required TResult Function() loadContactsFromSystem,
   }) {
-    assert(delete != null);
-    assert(loadContactsFromSystem != null);
     return delete(contactList);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult delete(List<Contact> contactList),
-    TResult loadContactsFromSystem(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<Contact> contactList)? delete,
+    TResult Function()? loadContactsFromSystem,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (delete != null) {
       return delete(contactList);
     }
@@ -158,23 +161,21 @@ class _$_Delete implements _Delete {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult delete(_Delete value),
-    @required TResult loadContactsFromSystem(_LoadContactsFromSystem value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Delete value) delete,
+    required TResult Function(_LoadContactsFromSystem value)
+        loadContactsFromSystem,
   }) {
-    assert(delete != null);
-    assert(loadContactsFromSystem != null);
     return delete(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult delete(_Delete value),
-    TResult loadContactsFromSystem(_LoadContactsFromSystem value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Delete value)? delete,
+    TResult Function(_LoadContactsFromSystem value)? loadContactsFromSystem,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (delete != null) {
       return delete(this);
     }
@@ -183,11 +184,11 @@ class _$_Delete implements _Delete {
 }
 
 abstract class _Delete implements ContactActorEvent {
-  const factory _Delete({List<Contact> contactList}) = _$_Delete;
+  const factory _Delete({required List<Contact> contactList}) = _$_Delete;
 
-  List<Contact> get contactList;
+  List<Contact> get contactList => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$DeleteCopyWith<_Delete> get copyWith;
+  _$DeleteCopyWith<_Delete> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -228,23 +229,20 @@ class _$_LoadContactsFromSystem implements _LoadContactsFromSystem {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult delete(List<Contact> contactList),
-    @required TResult loadContactsFromSystem(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<Contact> contactList) delete,
+    required TResult Function() loadContactsFromSystem,
   }) {
-    assert(delete != null);
-    assert(loadContactsFromSystem != null);
     return loadContactsFromSystem();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult delete(List<Contact> contactList),
-    TResult loadContactsFromSystem(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<Contact> contactList)? delete,
+    TResult Function()? loadContactsFromSystem,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loadContactsFromSystem != null) {
       return loadContactsFromSystem();
     }
@@ -253,23 +251,21 @@ class _$_LoadContactsFromSystem implements _LoadContactsFromSystem {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult delete(_Delete value),
-    @required TResult loadContactsFromSystem(_LoadContactsFromSystem value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Delete value) delete,
+    required TResult Function(_LoadContactsFromSystem value)
+        loadContactsFromSystem,
   }) {
-    assert(delete != null);
-    assert(loadContactsFromSystem != null);
     return loadContactsFromSystem(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult delete(_Delete value),
-    TResult loadContactsFromSystem(_LoadContactsFromSystem value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Delete value)? delete,
+    TResult Function(_LoadContactsFromSystem value)? loadContactsFromSystem,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loadContactsFromSystem != null) {
       return loadContactsFromSystem(this);
     }
@@ -285,33 +281,28 @@ abstract class _LoadContactsFromSystem implements ContactActorEvent {
 class _$ContactActorStateTearOff {
   const _$ContactActorStateTearOff();
 
-// ignore: unused_element
   _Initial initial() {
     return const _Initial();
   }
 
-// ignore: unused_element
   _ActionInProgress actionInProgress(ContactsLoading loadingMsg) {
     return _ActionInProgress(
       loadingMsg,
     );
   }
 
-// ignore: unused_element
   _DeleteSuccessful deleteSuccessful(int numberContacts) {
     return _DeleteSuccessful(
       numberContacts,
     );
   }
 
-// ignore: unused_element
   _LoadSuccessful loadSuccessful(int numberContacts) {
     return _LoadSuccessful(
       numberContacts,
     );
   }
 
-// ignore: unused_element
   _DeleteFailure contactsFailure(ContactsFailure failure) {
     return _DeleteFailure(
       failure,
@@ -320,45 +311,48 @@ class _$ContactActorStateTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $ContactActorState = _$ContactActorStateTearOff();
 
 /// @nodoc
 mixin _$ContactActorState {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult actionInProgress(ContactsLoading loadingMsg),
-    @required TResult deleteSuccessful(int numberContacts),
-    @required TResult loadSuccessful(int numberContacts),
-    @required TResult contactsFailure(ContactsFailure failure),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(ContactsLoading loadingMsg) actionInProgress,
+    required TResult Function(int numberContacts) deleteSuccessful,
+    required TResult Function(int numberContacts) loadSuccessful,
+    required TResult Function(ContactsFailure failure) contactsFailure,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult actionInProgress(ContactsLoading loadingMsg),
-    TResult deleteSuccessful(int numberContacts),
-    TResult loadSuccessful(int numberContacts),
-    TResult contactsFailure(ContactsFailure failure),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(ContactsLoading loadingMsg)? actionInProgress,
+    TResult Function(int numberContacts)? deleteSuccessful,
+    TResult Function(int numberContacts)? loadSuccessful,
+    TResult Function(ContactsFailure failure)? contactsFailure,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult actionInProgress(_ActionInProgress value),
-    @required TResult deleteSuccessful(_DeleteSuccessful value),
-    @required TResult loadSuccessful(_LoadSuccessful value),
-    @required TResult contactsFailure(_DeleteFailure value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_ActionInProgress value) actionInProgress,
+    required TResult Function(_DeleteSuccessful value) deleteSuccessful,
+    required TResult Function(_LoadSuccessful value) loadSuccessful,
+    required TResult Function(_DeleteFailure value) contactsFailure,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult actionInProgress(_ActionInProgress value),
-    TResult deleteSuccessful(_DeleteSuccessful value),
-    TResult loadSuccessful(_LoadSuccessful value),
-    TResult contactsFailure(_DeleteFailure value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_ActionInProgress value)? actionInProgress,
+    TResult Function(_DeleteSuccessful value)? deleteSuccessful,
+    TResult Function(_LoadSuccessful value)? loadSuccessful,
+    TResult Function(_DeleteFailure value)? contactsFailure,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -413,32 +407,26 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult actionInProgress(ContactsLoading loadingMsg),
-    @required TResult deleteSuccessful(int numberContacts),
-    @required TResult loadSuccessful(int numberContacts),
-    @required TResult contactsFailure(ContactsFailure failure),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(ContactsLoading loadingMsg) actionInProgress,
+    required TResult Function(int numberContacts) deleteSuccessful,
+    required TResult Function(int numberContacts) loadSuccessful,
+    required TResult Function(ContactsFailure failure) contactsFailure,
   }) {
-    assert(initial != null);
-    assert(actionInProgress != null);
-    assert(deleteSuccessful != null);
-    assert(loadSuccessful != null);
-    assert(contactsFailure != null);
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult actionInProgress(ContactsLoading loadingMsg),
-    TResult deleteSuccessful(int numberContacts),
-    TResult loadSuccessful(int numberContacts),
-    TResult contactsFailure(ContactsFailure failure),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(ContactsLoading loadingMsg)? actionInProgress,
+    TResult Function(int numberContacts)? deleteSuccessful,
+    TResult Function(int numberContacts)? loadSuccessful,
+    TResult Function(ContactsFailure failure)? contactsFailure,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial();
     }
@@ -447,32 +435,26 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult actionInProgress(_ActionInProgress value),
-    @required TResult deleteSuccessful(_DeleteSuccessful value),
-    @required TResult loadSuccessful(_LoadSuccessful value),
-    @required TResult contactsFailure(_DeleteFailure value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_ActionInProgress value) actionInProgress,
+    required TResult Function(_DeleteSuccessful value) deleteSuccessful,
+    required TResult Function(_LoadSuccessful value) loadSuccessful,
+    required TResult Function(_DeleteFailure value) contactsFailure,
   }) {
-    assert(initial != null);
-    assert(actionInProgress != null);
-    assert(deleteSuccessful != null);
-    assert(loadSuccessful != null);
-    assert(contactsFailure != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult actionInProgress(_ActionInProgress value),
-    TResult deleteSuccessful(_DeleteSuccessful value),
-    TResult loadSuccessful(_LoadSuccessful value),
-    TResult contactsFailure(_DeleteFailure value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_ActionInProgress value)? actionInProgress,
+    TResult Function(_DeleteSuccessful value)? deleteSuccessful,
+    TResult Function(_LoadSuccessful value)? loadSuccessful,
+    TResult Function(_DeleteFailure value)? contactsFailure,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -507,18 +489,18 @@ class __$ActionInProgressCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object loadingMsg = freezed,
+    Object? loadingMsg = freezed,
   }) {
     return _then(_ActionInProgress(
-      loadingMsg == freezed ? _value.loadingMsg : loadingMsg as ContactsLoading,
+      loadingMsg == freezed
+          ? _value.loadingMsg
+          : loadingMsg // ignore: cast_nullable_to_non_nullable
+              as ContactsLoading,
     ));
   }
 
   @override
   $ContactsLoadingCopyWith<$Res> get loadingMsg {
-    if (_value.loadingMsg == null) {
-      return null;
-    }
     return $ContactsLoadingCopyWith<$Res>(_value.loadingMsg, (value) {
       return _then(_value.copyWith(loadingMsg: value));
     });
@@ -527,7 +509,7 @@ class __$ActionInProgressCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_ActionInProgress implements _ActionInProgress {
-  const _$_ActionInProgress(this.loadingMsg) : assert(loadingMsg != null);
+  const _$_ActionInProgress(this.loadingMsg);
 
   @override
   final ContactsLoading loadingMsg;
@@ -557,32 +539,26 @@ class _$_ActionInProgress implements _ActionInProgress {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult actionInProgress(ContactsLoading loadingMsg),
-    @required TResult deleteSuccessful(int numberContacts),
-    @required TResult loadSuccessful(int numberContacts),
-    @required TResult contactsFailure(ContactsFailure failure),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(ContactsLoading loadingMsg) actionInProgress,
+    required TResult Function(int numberContacts) deleteSuccessful,
+    required TResult Function(int numberContacts) loadSuccessful,
+    required TResult Function(ContactsFailure failure) contactsFailure,
   }) {
-    assert(initial != null);
-    assert(actionInProgress != null);
-    assert(deleteSuccessful != null);
-    assert(loadSuccessful != null);
-    assert(contactsFailure != null);
     return actionInProgress(loadingMsg);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult actionInProgress(ContactsLoading loadingMsg),
-    TResult deleteSuccessful(int numberContacts),
-    TResult loadSuccessful(int numberContacts),
-    TResult contactsFailure(ContactsFailure failure),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(ContactsLoading loadingMsg)? actionInProgress,
+    TResult Function(int numberContacts)? deleteSuccessful,
+    TResult Function(int numberContacts)? loadSuccessful,
+    TResult Function(ContactsFailure failure)? contactsFailure,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (actionInProgress != null) {
       return actionInProgress(loadingMsg);
     }
@@ -591,32 +567,26 @@ class _$_ActionInProgress implements _ActionInProgress {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult actionInProgress(_ActionInProgress value),
-    @required TResult deleteSuccessful(_DeleteSuccessful value),
-    @required TResult loadSuccessful(_LoadSuccessful value),
-    @required TResult contactsFailure(_DeleteFailure value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_ActionInProgress value) actionInProgress,
+    required TResult Function(_DeleteSuccessful value) deleteSuccessful,
+    required TResult Function(_LoadSuccessful value) loadSuccessful,
+    required TResult Function(_DeleteFailure value) contactsFailure,
   }) {
-    assert(initial != null);
-    assert(actionInProgress != null);
-    assert(deleteSuccessful != null);
-    assert(loadSuccessful != null);
-    assert(contactsFailure != null);
     return actionInProgress(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult actionInProgress(_ActionInProgress value),
-    TResult deleteSuccessful(_DeleteSuccessful value),
-    TResult loadSuccessful(_LoadSuccessful value),
-    TResult contactsFailure(_DeleteFailure value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_ActionInProgress value)? actionInProgress,
+    TResult Function(_DeleteSuccessful value)? deleteSuccessful,
+    TResult Function(_LoadSuccessful value)? loadSuccessful,
+    TResult Function(_DeleteFailure value)? contactsFailure,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (actionInProgress != null) {
       return actionInProgress(this);
     }
@@ -628,9 +598,10 @@ abstract class _ActionInProgress implements ContactActorState {
   const factory _ActionInProgress(ContactsLoading loadingMsg) =
       _$_ActionInProgress;
 
-  ContactsLoading get loadingMsg;
+  ContactsLoading get loadingMsg => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$ActionInProgressCopyWith<_ActionInProgress> get copyWith;
+  _$ActionInProgressCopyWith<_ActionInProgress> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -654,18 +625,20 @@ class __$DeleteSuccessfulCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object numberContacts = freezed,
+    Object? numberContacts = freezed,
   }) {
     return _then(_DeleteSuccessful(
-      numberContacts == freezed ? _value.numberContacts : numberContacts as int,
+      numberContacts == freezed
+          ? _value.numberContacts
+          : numberContacts // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
 
 /// @nodoc
 class _$_DeleteSuccessful implements _DeleteSuccessful {
-  const _$_DeleteSuccessful(this.numberContacts)
-      : assert(numberContacts != null);
+  const _$_DeleteSuccessful(this.numberContacts);
 
   @override
   final int numberContacts;
@@ -696,32 +669,26 @@ class _$_DeleteSuccessful implements _DeleteSuccessful {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult actionInProgress(ContactsLoading loadingMsg),
-    @required TResult deleteSuccessful(int numberContacts),
-    @required TResult loadSuccessful(int numberContacts),
-    @required TResult contactsFailure(ContactsFailure failure),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(ContactsLoading loadingMsg) actionInProgress,
+    required TResult Function(int numberContacts) deleteSuccessful,
+    required TResult Function(int numberContacts) loadSuccessful,
+    required TResult Function(ContactsFailure failure) contactsFailure,
   }) {
-    assert(initial != null);
-    assert(actionInProgress != null);
-    assert(deleteSuccessful != null);
-    assert(loadSuccessful != null);
-    assert(contactsFailure != null);
     return deleteSuccessful(numberContacts);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult actionInProgress(ContactsLoading loadingMsg),
-    TResult deleteSuccessful(int numberContacts),
-    TResult loadSuccessful(int numberContacts),
-    TResult contactsFailure(ContactsFailure failure),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(ContactsLoading loadingMsg)? actionInProgress,
+    TResult Function(int numberContacts)? deleteSuccessful,
+    TResult Function(int numberContacts)? loadSuccessful,
+    TResult Function(ContactsFailure failure)? contactsFailure,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (deleteSuccessful != null) {
       return deleteSuccessful(numberContacts);
     }
@@ -730,32 +697,26 @@ class _$_DeleteSuccessful implements _DeleteSuccessful {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult actionInProgress(_ActionInProgress value),
-    @required TResult deleteSuccessful(_DeleteSuccessful value),
-    @required TResult loadSuccessful(_LoadSuccessful value),
-    @required TResult contactsFailure(_DeleteFailure value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_ActionInProgress value) actionInProgress,
+    required TResult Function(_DeleteSuccessful value) deleteSuccessful,
+    required TResult Function(_LoadSuccessful value) loadSuccessful,
+    required TResult Function(_DeleteFailure value) contactsFailure,
   }) {
-    assert(initial != null);
-    assert(actionInProgress != null);
-    assert(deleteSuccessful != null);
-    assert(loadSuccessful != null);
-    assert(contactsFailure != null);
     return deleteSuccessful(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult actionInProgress(_ActionInProgress value),
-    TResult deleteSuccessful(_DeleteSuccessful value),
-    TResult loadSuccessful(_LoadSuccessful value),
-    TResult contactsFailure(_DeleteFailure value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_ActionInProgress value)? actionInProgress,
+    TResult Function(_DeleteSuccessful value)? deleteSuccessful,
+    TResult Function(_LoadSuccessful value)? loadSuccessful,
+    TResult Function(_DeleteFailure value)? contactsFailure,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (deleteSuccessful != null) {
       return deleteSuccessful(this);
     }
@@ -766,9 +727,10 @@ class _$_DeleteSuccessful implements _DeleteSuccessful {
 abstract class _DeleteSuccessful implements ContactActorState {
   const factory _DeleteSuccessful(int numberContacts) = _$_DeleteSuccessful;
 
-  int get numberContacts;
+  int get numberContacts => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$DeleteSuccessfulCopyWith<_DeleteSuccessful> get copyWith;
+  _$DeleteSuccessfulCopyWith<_DeleteSuccessful> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -792,17 +754,20 @@ class __$LoadSuccessfulCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object numberContacts = freezed,
+    Object? numberContacts = freezed,
   }) {
     return _then(_LoadSuccessful(
-      numberContacts == freezed ? _value.numberContacts : numberContacts as int,
+      numberContacts == freezed
+          ? _value.numberContacts
+          : numberContacts // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
 
 /// @nodoc
 class _$_LoadSuccessful implements _LoadSuccessful {
-  const _$_LoadSuccessful(this.numberContacts) : assert(numberContacts != null);
+  const _$_LoadSuccessful(this.numberContacts);
 
   @override
   final int numberContacts;
@@ -833,32 +798,26 @@ class _$_LoadSuccessful implements _LoadSuccessful {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult actionInProgress(ContactsLoading loadingMsg),
-    @required TResult deleteSuccessful(int numberContacts),
-    @required TResult loadSuccessful(int numberContacts),
-    @required TResult contactsFailure(ContactsFailure failure),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(ContactsLoading loadingMsg) actionInProgress,
+    required TResult Function(int numberContacts) deleteSuccessful,
+    required TResult Function(int numberContacts) loadSuccessful,
+    required TResult Function(ContactsFailure failure) contactsFailure,
   }) {
-    assert(initial != null);
-    assert(actionInProgress != null);
-    assert(deleteSuccessful != null);
-    assert(loadSuccessful != null);
-    assert(contactsFailure != null);
     return loadSuccessful(numberContacts);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult actionInProgress(ContactsLoading loadingMsg),
-    TResult deleteSuccessful(int numberContacts),
-    TResult loadSuccessful(int numberContacts),
-    TResult contactsFailure(ContactsFailure failure),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(ContactsLoading loadingMsg)? actionInProgress,
+    TResult Function(int numberContacts)? deleteSuccessful,
+    TResult Function(int numberContacts)? loadSuccessful,
+    TResult Function(ContactsFailure failure)? contactsFailure,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loadSuccessful != null) {
       return loadSuccessful(numberContacts);
     }
@@ -867,32 +826,26 @@ class _$_LoadSuccessful implements _LoadSuccessful {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult actionInProgress(_ActionInProgress value),
-    @required TResult deleteSuccessful(_DeleteSuccessful value),
-    @required TResult loadSuccessful(_LoadSuccessful value),
-    @required TResult contactsFailure(_DeleteFailure value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_ActionInProgress value) actionInProgress,
+    required TResult Function(_DeleteSuccessful value) deleteSuccessful,
+    required TResult Function(_LoadSuccessful value) loadSuccessful,
+    required TResult Function(_DeleteFailure value) contactsFailure,
   }) {
-    assert(initial != null);
-    assert(actionInProgress != null);
-    assert(deleteSuccessful != null);
-    assert(loadSuccessful != null);
-    assert(contactsFailure != null);
     return loadSuccessful(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult actionInProgress(_ActionInProgress value),
-    TResult deleteSuccessful(_DeleteSuccessful value),
-    TResult loadSuccessful(_LoadSuccessful value),
-    TResult contactsFailure(_DeleteFailure value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_ActionInProgress value)? actionInProgress,
+    TResult Function(_DeleteSuccessful value)? deleteSuccessful,
+    TResult Function(_LoadSuccessful value)? loadSuccessful,
+    TResult Function(_DeleteFailure value)? contactsFailure,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loadSuccessful != null) {
       return loadSuccessful(this);
     }
@@ -903,9 +856,10 @@ class _$_LoadSuccessful implements _LoadSuccessful {
 abstract class _LoadSuccessful implements ContactActorState {
   const factory _LoadSuccessful(int numberContacts) = _$_LoadSuccessful;
 
-  int get numberContacts;
+  int get numberContacts => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$LoadSuccessfulCopyWith<_LoadSuccessful> get copyWith;
+  _$LoadSuccessfulCopyWith<_LoadSuccessful> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -931,18 +885,18 @@ class __$DeleteFailureCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object failure = freezed,
+    Object? failure = freezed,
   }) {
     return _then(_DeleteFailure(
-      failure == freezed ? _value.failure : failure as ContactsFailure,
+      failure == freezed
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as ContactsFailure,
     ));
   }
 
   @override
   $ContactsFailureCopyWith<$Res> get failure {
-    if (_value.failure == null) {
-      return null;
-    }
     return $ContactsFailureCopyWith<$Res>(_value.failure, (value) {
       return _then(_value.copyWith(failure: value));
     });
@@ -951,7 +905,7 @@ class __$DeleteFailureCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_DeleteFailure implements _DeleteFailure {
-  const _$_DeleteFailure(this.failure) : assert(failure != null);
+  const _$_DeleteFailure(this.failure);
 
   @override
   final ContactsFailure failure;
@@ -980,32 +934,26 @@ class _$_DeleteFailure implements _DeleteFailure {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult actionInProgress(ContactsLoading loadingMsg),
-    @required TResult deleteSuccessful(int numberContacts),
-    @required TResult loadSuccessful(int numberContacts),
-    @required TResult contactsFailure(ContactsFailure failure),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(ContactsLoading loadingMsg) actionInProgress,
+    required TResult Function(int numberContacts) deleteSuccessful,
+    required TResult Function(int numberContacts) loadSuccessful,
+    required TResult Function(ContactsFailure failure) contactsFailure,
   }) {
-    assert(initial != null);
-    assert(actionInProgress != null);
-    assert(deleteSuccessful != null);
-    assert(loadSuccessful != null);
-    assert(contactsFailure != null);
     return contactsFailure(failure);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult actionInProgress(ContactsLoading loadingMsg),
-    TResult deleteSuccessful(int numberContacts),
-    TResult loadSuccessful(int numberContacts),
-    TResult contactsFailure(ContactsFailure failure),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(ContactsLoading loadingMsg)? actionInProgress,
+    TResult Function(int numberContacts)? deleteSuccessful,
+    TResult Function(int numberContacts)? loadSuccessful,
+    TResult Function(ContactsFailure failure)? contactsFailure,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (contactsFailure != null) {
       return contactsFailure(failure);
     }
@@ -1014,32 +962,26 @@ class _$_DeleteFailure implements _DeleteFailure {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult actionInProgress(_ActionInProgress value),
-    @required TResult deleteSuccessful(_DeleteSuccessful value),
-    @required TResult loadSuccessful(_LoadSuccessful value),
-    @required TResult contactsFailure(_DeleteFailure value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_ActionInProgress value) actionInProgress,
+    required TResult Function(_DeleteSuccessful value) deleteSuccessful,
+    required TResult Function(_LoadSuccessful value) loadSuccessful,
+    required TResult Function(_DeleteFailure value) contactsFailure,
   }) {
-    assert(initial != null);
-    assert(actionInProgress != null);
-    assert(deleteSuccessful != null);
-    assert(loadSuccessful != null);
-    assert(contactsFailure != null);
     return contactsFailure(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult actionInProgress(_ActionInProgress value),
-    TResult deleteSuccessful(_DeleteSuccessful value),
-    TResult loadSuccessful(_LoadSuccessful value),
-    TResult contactsFailure(_DeleteFailure value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_ActionInProgress value)? actionInProgress,
+    TResult Function(_DeleteSuccessful value)? deleteSuccessful,
+    TResult Function(_LoadSuccessful value)? loadSuccessful,
+    TResult Function(_DeleteFailure value)? contactsFailure,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (contactsFailure != null) {
       return contactsFailure(this);
     }
@@ -1050,7 +992,8 @@ class _$_DeleteFailure implements _DeleteFailure {
 abstract class _DeleteFailure implements ContactActorState {
   const factory _DeleteFailure(ContactsFailure failure) = _$_DeleteFailure;
 
-  ContactsFailure get failure;
+  ContactsFailure get failure => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$DeleteFailureCopyWith<_DeleteFailure> get copyWith;
+  _$DeleteFailureCopyWith<_DeleteFailure> get copyWith =>
+      throw _privateConstructorUsedError;
 }

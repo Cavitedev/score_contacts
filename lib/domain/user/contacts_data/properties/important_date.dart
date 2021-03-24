@@ -1,6 +1,6 @@
 class ImportantDate{
-  DateTime date;
-  String label;
+  DateTime? date;
+  String? label;
 
   ImportantDate({this.date, this.label});
 

@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'filter.dart';
 
@@ -9,12 +9,14 @@ part of 'filter.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$FilterTearOff {
   const _$FilterTearOff();
 
-// ignore: unused_element
-  _Filter call({String filterSearch}) {
+  _Filter call({String? filterSearch}) {
     return _Filter(
       filterSearch: filterSearch,
     );
@@ -22,22 +24,21 @@ class _$FilterTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $Filter = _$FilterTearOff();
 
 /// @nodoc
 mixin _$Filter {
-  String get filterSearch;
+  String? get filterSearch => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $FilterCopyWith<Filter> get copyWith;
+  $FilterCopyWith<Filter> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $FilterCopyWith<$Res> {
   factory $FilterCopyWith(Filter value, $Res Function(Filter) then) =
       _$FilterCopyWithImpl<$Res>;
-  $Res call({String filterSearch});
+  $Res call({String? filterSearch});
 }
 
 /// @nodoc
@@ -50,12 +51,13 @@ class _$FilterCopyWithImpl<$Res> implements $FilterCopyWith<$Res> {
 
   @override
   $Res call({
-    Object filterSearch = freezed,
+    Object? filterSearch = freezed,
   }) {
     return _then(_value.copyWith(
       filterSearch: filterSearch == freezed
           ? _value.filterSearch
-          : filterSearch as String,
+          : filterSearch // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -65,7 +67,7 @@ abstract class _$FilterCopyWith<$Res> implements $FilterCopyWith<$Res> {
   factory _$FilterCopyWith(_Filter value, $Res Function(_Filter) then) =
       __$FilterCopyWithImpl<$Res>;
   @override
-  $Res call({String filterSearch});
+  $Res call({String? filterSearch});
 }
 
 /// @nodoc
@@ -79,12 +81,13 @@ class __$FilterCopyWithImpl<$Res> extends _$FilterCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object filterSearch = freezed,
+    Object? filterSearch = freezed,
   }) {
     return _then(_Filter(
       filterSearch: filterSearch == freezed
           ? _value.filterSearch
-          : filterSearch as String,
+          : filterSearch // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -94,7 +97,7 @@ class _$_Filter extends _Filter {
   const _$_Filter({this.filterSearch}) : super._();
 
   @override
-  final String filterSearch;
+  final String? filterSearch;
 
   @override
   String toString() {
@@ -121,12 +124,12 @@ class _$_Filter extends _Filter {
 }
 
 abstract class _Filter extends Filter {
+  const factory _Filter({String? filterSearch}) = _$_Filter;
   const _Filter._() : super._();
-  const factory _Filter({String filterSearch}) = _$_Filter;
 
   @override
-  String get filterSearch;
+  String? get filterSearch => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$FilterCopyWith<_Filter> get copyWith;
+  _$FilterCopyWith<_Filter> get copyWith => throw _privateConstructorUsedError;
 }

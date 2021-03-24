@@ -1,13 +1,12 @@
-import 'package:flutter/foundation.dart';
 import 'package:scorecontacts/domain/core/unique_id.dart';
 import 'package:scorecontacts/domain/user/contacts_data/contact.dart';
 
 class User {
   final UniqueID uid;
-  List<Contact> contacts;
+  List<Contact>? contacts;
 
   User({
-    @required this.uid,
+    required this.uid,
     contacts,
   }) : assert(uid != null);
 

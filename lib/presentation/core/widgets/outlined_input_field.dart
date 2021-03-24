@@ -5,17 +5,17 @@ class OutlinedInputFieldsGrowableList extends StatefulWidget {
   final List<OutlinedInputField> fieldPrefabs;
 
   /// list index and later parameter index
-  final List<List<String>> writtenTexts;
+  final List<List<String?>> writtenTexts;
   final List<String Function(String, int)> onChangesValidators;
 
-  final Function onAddWidget;
-  final Function(int) onRemoveWidget;
+  final Function? onAddWidget;
+  final Function(int)? onRemoveWidget;
 
   const OutlinedInputFieldsGrowableList({
-    Key key,
-    @required this.fieldPrefabs,
-    @required this.writtenTexts,
-    @required this.onChangesValidators,
+    Key? key,
+    required this.fieldPrefabs,
+    required this.writtenTexts,
+    required this.onChangesValidators,
     this.onAddWidget,
     this.onRemoveWidget,
   }) : super(key: key);
@@ -28,10 +28,10 @@ class OutlinedInputFieldsGrowableList extends StatefulWidget {
 class _OutlinedInputFieldsGrowableListState
     extends State<OutlinedInputFieldsGrowableList> {
   GlobalKey<AnimatedListState> animatedList = GlobalKey<AnimatedListState>();
-  int posInactiveWidget;
-  String objectToRemove;
-  int listCount;
-  List<List<FocusNode>> focusNodes;
+  int? posInactiveWidget;
+  String? objectToRemove;
+  late int listCount;
+  late List<List<FocusNode>> focusNodes;
 
   @override
   void initState() {
@@ -84,22 +84,18 @@ class _OutlinedInputFieldsGrowableListState
       posInactiveWidget =
           widget.writtenTexts.indexWhere((texts) => !_isEmptyList(texts));
 
-      _removeWidget(pos: posInactiveWidget);
+      _removeWidget(pos: posInactiveWidget!);
     }
   }
 
   void _addWidget() {
-    if (widget.onAddWidget != null) {
-      widget.onAddWidget();
-    }
+      widget.onAddWidget?.call();
   }
 
-  void _removeWidget({@required int pos}) {
+  void _removeWidget({required int pos}) {
     // objectToRemove = widget.writtenTexts[pos];
 
-    if (widget.onRemoveWidget != null) {
-      widget.onRemoveWidget(pos);
-    }
+      widget.onRemoveWidget?.call(pos);
   }
 
   void _updateAnimatedList() {
@@ -110,35 +106,35 @@ class _OutlinedInputFieldsGrowableListState
             .add(Iterable<FocusNode>.generate(widget.fieldPrefabs.length, (i) {
           return FocusNode();
         }).toList());
-        animatedList.currentState.insertItem(listCount);
+        animatedList.currentState!.insertItem(listCount);
         listCount++;
       } else if (widget.writtenTexts.isNotEmpty &&
           widget.writtenTexts.length < listCount) {
-        final List<String> messagesLeft = widget.writtenTexts[posInactiveWidget];
-        animatedList.currentState.removeItem(posInactiveWidget,
+        final List<String?> messagesLeft = widget.writtenTexts[posInactiveWidget!];
+        animatedList.currentState!.removeItem(posInactiveWidget!,
                 (context, animation) {
               return _listTransitionBuild(
                   animation,
                   _buildField(
-                      listIndex: posInactiveWidget, writtenTexts: messagesLeft));
+                      listIndex: posInactiveWidget!, writtenTexts: messagesLeft));
             }, duration: const Duration(milliseconds: 300));
         listCount--;
 
-        focusNodes.removeAt(posInactiveWidget);
+        focusNodes.removeAt(posInactiveWidget!);
       }
 
     }
 
   }
 
-  Widget _buildField({@required int listIndex, List<String> writtenTexts}) {
+  Widget _buildField({required int listIndex, List<String?>? writtenTexts}) {
     return Column(
         children: Iterable<int>.generate(widget.fieldPrefabs.length)
             .map((parameterIndex) {
           return OutlinedInputField(
             writtenText: writtenTexts != null
                 ? writtenTexts[parameterIndex]
-                : widget.writtenTexts[listIndex][parameterIndex] ?? "",
+                : widget.writtenTexts[listIndex][parameterIndex],
             onChangedValidator: (String str) {
               return widget.onChangesValidators[parameterIndex](str, listIndex);
             },
@@ -163,7 +159,7 @@ class _OutlinedInputFieldsGrowableListState
         }).toList());
   }
 
-  bool _isEmptyList(List<String> list) {
+  bool _isEmptyList(List<String?> list) {
     return list.any((str) => str != null && str.isNotEmpty);
   }
 
@@ -188,22 +184,22 @@ class OutlinedInputField extends StatefulWidget {
   final BorderRadius borderRadius;
 
   /// override outline when it is set
-  final OutlineInputBorder outlineInputBorder;
+  final OutlineInputBorder? outlineInputBorder;
 
   final TextInputType keyboardType;
   final TextCapitalization textCapitalization;
-  final Icon prefixIcon;
-  final FocusNode focusNode;
-  final List<TextInputFormatter> inputFormatters;
-  final String writtenText;
+  final Icon? prefixIcon;
+  final FocusNode? focusNode;
+  final List<TextInputFormatter>? inputFormatters;
+  final String? writtenText;
   final String helperText;
 
   /// return null to not show any helper
-  final String Function(String) onChangedValidator;
+  final String Function(String)? onChangedValidator;
 
   const OutlinedInputField({
-    Key key,
-    @required this.hintText,
+    Key? key,
+    required this.hintText,
     this.autoCorrect = false,
     this.autoFocus = false,
     this.keyboardType = TextInputType.text,
@@ -222,70 +218,14 @@ class OutlinedInputField extends StatefulWidget {
   @override
   _OutlinedInputFieldState createState() => _OutlinedInputFieldState();
 
-//#region copyWith
-  OutlinedInputField copyWith({
-    String hintText,
-    bool autoFocus,
-    bool autoCorrect,
-    double topPadding,
-    BorderRadius borderRadius,
-    OutlineInputBorder outlineInputBorder,
-    TextInputType keyboardType,
-    TextCapitalization textCapitalization,
-    Icon prefixIcon,
-    FocusNode focusNode,
-    List<TextInputFormatter> inputFormatters,
-    String writtenText,
-    String helperText,
-    String Function(String) onChangedValidator,
-  }) {
-    if ((hintText == null || identical(hintText, this.hintText)) &&
-        (autoFocus == null || identical(autoFocus, this.autoFocus)) &&
-        (autoCorrect == null || identical(autoCorrect, this.autoCorrect)) &&
-        (topPadding == null || identical(topPadding, this.topPadding)) &&
-        (borderRadius == null || identical(borderRadius, this.borderRadius)) &&
-        (outlineInputBorder == null ||
-            identical(outlineInputBorder, this.outlineInputBorder)) &&
-        (keyboardType == null || identical(keyboardType, this.keyboardType)) &&
-        (textCapitalization == null ||
-            identical(textCapitalization, this.textCapitalization)) &&
-        (prefixIcon == null || identical(prefixIcon, this.prefixIcon)) &&
-        (focusNode == null || identical(focusNode, this.focusNode)) &&
-        (inputFormatters == null ||
-            identical(inputFormatters, this.inputFormatters)) &&
-        (writtenText == null || identical(writtenText, this.writtenText)) &&
-        (helperText == null || identical(helperText, this.helperText)) &&
-        (onChangedValidator == null ||
-            identical(onChangedValidator, this.onChangedValidator))) {
-      return this;
-    }
 
-    return OutlinedInputField(
-      hintText: hintText ?? this.hintText,
-      autoFocus: autoFocus ?? this.autoFocus,
-      autoCorrect: autoCorrect ?? this.autoCorrect,
-      topPadding: topPadding ?? this.topPadding,
-      borderRadius: borderRadius ?? this.borderRadius,
-      outlineInputBorder: outlineInputBorder ?? this.outlineInputBorder,
-      keyboardType: keyboardType ?? this.keyboardType,
-      textCapitalization: textCapitalization ?? this.textCapitalization,
-      prefixIcon: prefixIcon ?? this.prefixIcon,
-      focusNode: focusNode ?? this.focusNode,
-      inputFormatters: inputFormatters ?? this.inputFormatters,
-      writtenText: writtenText ?? this.writtenText,
-      helperText: helperText ?? this.helperText,
-      onChangedValidator: onChangedValidator ?? this.onChangedValidator,
-    );
-  }
-
-//#endregion
 }
 
 class _OutlinedInputFieldState extends State<OutlinedInputField> {
   bool hasText = false;
-  TextEditingController textEditingController;
+  late TextEditingController textEditingController;
   bool showHelperText = false;
-  String helpText;
+  String? helpText;
 
   @override
   void initState() {
@@ -303,11 +243,11 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
   Widget build(BuildContext context) {
     if (widget.writtenText != null) {
       textEditingController.value = TextEditingValue(
-          text: widget.writtenText,
+          text: widget.writtenText!,
           selection:
-          TextSelection.collapsed(offset: widget.writtenText.length));
+          TextSelection.collapsed(offset: widget.writtenText!.length));
 
-      hasText = widget.writtenText.isNotEmpty;
+      hasText = widget.writtenText!.isNotEmpty;
     }
     return Container(
       padding: EdgeInsets.only(top: widget.topPadding),
@@ -318,7 +258,7 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
             hasText = str.isNotEmpty;
             helpText = widget.onChangedValidator == null
                 ? null
-                : widget.onChangedValidator(str);
+                : widget.onChangedValidator!(str);
           });
         },
         focusNode: widget.focusNode,
@@ -337,7 +277,7 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
                 .textSelectionColor,
             helperText: (widget.helperText.isNotEmpty)
                 ? widget.helperText
-                : (helpText != null && helpText.isNotEmpty) ? helpText : null,
+                : (helpText != null && helpText!.isNotEmpty) ? helpText : null,
             prefixIcon: widget.prefixIcon,
             suffixIcon: hasText
                 ? InkWell(
@@ -366,12 +306,12 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
   void _clearText() {
     textEditingController.clear();
     if (widget.focusNode != null) {
-      widget.focusNode.unfocus();
+      widget.focusNode!.unfocus();
     }
     setState(() {
       hasText = false;
       if (widget.onChangedValidator != null) {
-        helpText = widget.onChangedValidator("");
+        helpText = widget.onChangedValidator!("");
       }
     });
   }

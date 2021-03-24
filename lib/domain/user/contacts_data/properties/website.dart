@@ -1,7 +1,7 @@
 class Website {
   String website;
 
-  Website({this.website});
+  Website({required this.website});
 
   @override
   String toString() {

@@ -11,7 +11,7 @@ class ActorOverlayProgressIndicator extends StatelessWidget {
     return BlocBuilder<ContactActorBloc, ContactActorState>(
       buildWhen: (previous, current) => _getLoading(previous) != _getLoading(current),
       builder: (context, state) {
-        final ContactsLoading loading = _getLoading(state);
+        final ContactsLoading? loading = _getLoading(state);
         final bool isLoading = loading != null;
         final String msg = isLoading
             ? loading.map(
@@ -30,6 +30,6 @@ class ActorOverlayProgressIndicator extends StatelessWidget {
     );
   }
 
-  ContactsLoading _getLoading(ContactActorState current) =>
+  ContactsLoading? _getLoading(ContactActorState current) =>
       current.maybeWhen(actionInProgress: (loading) => loading, orElse: () => null);
 }

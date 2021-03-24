@@ -4,7 +4,7 @@ import 'package:scorecontacts/application/contacts/contact_actor/contact_actor_b
 import 'package:scorecontacts/application/contacts/contact_watcher/contact_watcher_bloc.dart';
 import 'package:scorecontacts/application/contacts/selection_contact.dart';
 import 'package:scorecontacts/presentation/core/widgets/alert_dialogue_cancel_ok.dart';
-import 'package:scorecontacts/presentation/routes/router.gr.dart';
+import 'package:scorecontacts/presentation/routes/router.gr.dart' as r;
 
 class ContactPopUp {
   final BuildContext context;
@@ -13,10 +13,10 @@ class ContactPopUp {
   final ContactWatcherBloc watcherBloc;
 
   const ContactPopUp({
-    @required this.context,
-    @required this.selectionContact,
-    @required this.actorBloc,
-    @required this.watcherBloc
+    required this.context,
+    required this.selectionContact,
+    required this.actorBloc,
+    required this.watcherBloc
   });
 
   List<PopupMenuEntry> popUpItems() => [
@@ -25,7 +25,7 @@ class ContactPopUp {
             addedWidget: InkPopUpButton(
           onTap: () {
             watcherBloc.add(ContactWatcherEvent.toggleSelectionContact(selectionContact));
-            ExtendedNavigator.of(context).pop();
+            context.router.pop();
           },
           text: "Select",
         )),
@@ -39,7 +39,7 @@ class ContactPopUp {
         PopUpWidget(
             addedWidget: InkPopUpButton(
           onTap: () {
-            ExtendedNavigator.of(context).pushAddContactPage(contact: selectionContact.contact);
+            context.router.push(r.AddContactPageRoute(contact: selectionContact.contact));
           },
           text: "Edit",
         )),
@@ -55,12 +55,12 @@ class ContactPopUp {
                       onSubmit: () {
                         actorBloc.add(
                             ContactActorEvent.delete(contactList: [selectionContact.contact]));
-                        ExtendedNavigator.of(context).popUntil((route) =>
-                        route.settings.name == Routes.contactList);
+                        context.router.popUntil((route) =>
+                        route.settings.name == r.ContactListRoute.name);
                       },
                       onCancel: () {
-                        ExtendedNavigator.of(context).popUntil((route) =>
-                            route.settings.name == Routes.contactList);
+                        context.router.popUntil((route) =>
+                            route.settings.name == r.ContactListRoute.name);
                       },
                     ));
           },
@@ -72,13 +72,13 @@ class ContactPopUp {
 }
 
 class InkPopUpButton extends StatelessWidget {
-  final Function onTap;
+  final Function? onTap;
   final String text;
 
   const InkPopUpButton({
-    Key key,
+    Key? key,
     this.onTap,
-    @required this.text,
+    required this.text,
   }) : super(key: key);
 
   @override
@@ -108,7 +108,7 @@ class PopUpDivider<T> extends PopupMenuEntry<T> {
   double get height => 5;
 
   @override
-  bool represents(T value) {
+  bool represents(T? value) {
     return false;
   }
 }
@@ -128,7 +128,7 @@ class PopUpDividerState extends State<PopUpDivider> {
 class PopUpWidget<T> extends PopupMenuEntry<T> {
   final Widget addedWidget;
 
-  const PopUpWidget({@required this.addedWidget});
+  const PopUpWidget({required this.addedWidget});
 
   @override
   State<StatefulWidget> createState() {
@@ -139,7 +139,7 @@ class PopUpWidget<T> extends PopupMenuEntry<T> {
   double get height => 40;
 
   @override
-  bool represents(T value) {
+  bool represents(T? value) {
     return true;
   }
 }

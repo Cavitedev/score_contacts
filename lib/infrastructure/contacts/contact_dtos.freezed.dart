@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'contact_dtos.dart';
 
@@ -8,6 +8,10 @@ part of 'contact_dtos.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 ContactDTO _$ContactDTOFromJson(Map<String, dynamic> json) {
   return _ContactDTO.fromJson(json);
 }
@@ -16,14 +20,13 @@ ContactDTO _$ContactDTOFromJson(Map<String, dynamic> json) {
 class _$ContactDTOTearOff {
   const _$ContactDTOTearOff();
 
-// ignore: unused_element
   _ContactDTO call(
-      {@JsonKey(ignore: true) String id,
-      @JsonKey(name: nameDataName) NameDataDTO nameDataDTO,
-      @JsonKey(name: companiesName) List<CompanyDTO> companiesDTO,
-      @JsonKey(name: emailsName) List<LabelObjectDTO> emailsDTO,
-      @JsonKey(name: phonesName) List<LabelObjectDTO> phonesDTO,
-      @ServerTimeStampConverter() FieldValue serverTimeStamp}) {
+      {@JsonKey(ignore: true) String? id,
+      @JsonKey(name: nameDataName) required NameDataDTO nameDataDTO,
+      @JsonKey(name: companiesName) List<CompanyDTO?>? companiesDTO,
+      @JsonKey(name: emailsName) List<LabelObjectDTO?>? emailsDTO,
+      @JsonKey(name: phonesName) List<LabelObjectDTO?>? phonesDTO,
+      @ServerTimeStampConverter() required FieldValue serverTimeStamp}) {
     return _ContactDTO(
       id: id,
       nameDataDTO: nameDataDTO,
@@ -34,34 +37,33 @@ class _$ContactDTOTearOff {
     );
   }
 
-// ignore: unused_element
   ContactDTO fromJson(Map<String, Object> json) {
     return ContactDTO.fromJson(json);
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $ContactDTO = _$ContactDTOTearOff();
 
 /// @nodoc
 mixin _$ContactDTO {
   @JsonKey(ignore: true)
-  String get id;
+  String? get id => throw _privateConstructorUsedError;
   @JsonKey(name: nameDataName)
-  NameDataDTO get nameDataDTO;
+  NameDataDTO get nameDataDTO => throw _privateConstructorUsedError;
   @JsonKey(name: companiesName)
-  List<CompanyDTO> get companiesDTO;
+  List<CompanyDTO?>? get companiesDTO => throw _privateConstructorUsedError;
   @JsonKey(name: emailsName)
-  List<LabelObjectDTO> get emailsDTO;
+  List<LabelObjectDTO?>? get emailsDTO => throw _privateConstructorUsedError;
   @JsonKey(name: phonesName)
-  List<LabelObjectDTO> get phonesDTO;
+  List<LabelObjectDTO?>? get phonesDTO => throw _privateConstructorUsedError;
   @ServerTimeStampConverter()
-  FieldValue get serverTimeStamp;
+  FieldValue get serverTimeStamp => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson();
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ContactDTOCopyWith<ContactDTO> get copyWith;
+  $ContactDTOCopyWith<ContactDTO> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -70,11 +72,11 @@ abstract class $ContactDTOCopyWith<$Res> {
           ContactDTO value, $Res Function(ContactDTO) then) =
       _$ContactDTOCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(ignore: true) String id,
+      {@JsonKey(ignore: true) String? id,
       @JsonKey(name: nameDataName) NameDataDTO nameDataDTO,
-      @JsonKey(name: companiesName) List<CompanyDTO> companiesDTO,
-      @JsonKey(name: emailsName) List<LabelObjectDTO> emailsDTO,
-      @JsonKey(name: phonesName) List<LabelObjectDTO> phonesDTO,
+      @JsonKey(name: companiesName) List<CompanyDTO?>? companiesDTO,
+      @JsonKey(name: emailsName) List<LabelObjectDTO?>? emailsDTO,
+      @JsonKey(name: phonesName) List<LabelObjectDTO?>? phonesDTO,
       @ServerTimeStampConverter() FieldValue serverTimeStamp});
 
   $NameDataDTOCopyWith<$Res> get nameDataDTO;
@@ -90,38 +92,43 @@ class _$ContactDTOCopyWithImpl<$Res> implements $ContactDTOCopyWith<$Res> {
 
   @override
   $Res call({
-    Object id = freezed,
-    Object nameDataDTO = freezed,
-    Object companiesDTO = freezed,
-    Object emailsDTO = freezed,
-    Object phonesDTO = freezed,
-    Object serverTimeStamp = freezed,
+    Object? id = freezed,
+    Object? nameDataDTO = freezed,
+    Object? companiesDTO = freezed,
+    Object? emailsDTO = freezed,
+    Object? phonesDTO = freezed,
+    Object? serverTimeStamp = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed ? _value.id : id as String,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       nameDataDTO: nameDataDTO == freezed
           ? _value.nameDataDTO
-          : nameDataDTO as NameDataDTO,
+          : nameDataDTO // ignore: cast_nullable_to_non_nullable
+              as NameDataDTO,
       companiesDTO: companiesDTO == freezed
           ? _value.companiesDTO
-          : companiesDTO as List<CompanyDTO>,
+          : companiesDTO // ignore: cast_nullable_to_non_nullable
+              as List<CompanyDTO?>?,
       emailsDTO: emailsDTO == freezed
           ? _value.emailsDTO
-          : emailsDTO as List<LabelObjectDTO>,
+          : emailsDTO // ignore: cast_nullable_to_non_nullable
+              as List<LabelObjectDTO?>?,
       phonesDTO: phonesDTO == freezed
           ? _value.phonesDTO
-          : phonesDTO as List<LabelObjectDTO>,
+          : phonesDTO // ignore: cast_nullable_to_non_nullable
+              as List<LabelObjectDTO?>?,
       serverTimeStamp: serverTimeStamp == freezed
           ? _value.serverTimeStamp
-          : serverTimeStamp as FieldValue,
+          : serverTimeStamp // ignore: cast_nullable_to_non_nullable
+              as FieldValue,
     ));
   }
 
   @override
   $NameDataDTOCopyWith<$Res> get nameDataDTO {
-    if (_value.nameDataDTO == null) {
-      return null;
-    }
     return $NameDataDTOCopyWith<$Res>(_value.nameDataDTO, (value) {
       return _then(_value.copyWith(nameDataDTO: value));
     });
@@ -135,11 +142,11 @@ abstract class _$ContactDTOCopyWith<$Res> implements $ContactDTOCopyWith<$Res> {
       __$ContactDTOCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(ignore: true) String id,
+      {@JsonKey(ignore: true) String? id,
       @JsonKey(name: nameDataName) NameDataDTO nameDataDTO,
-      @JsonKey(name: companiesName) List<CompanyDTO> companiesDTO,
-      @JsonKey(name: emailsName) List<LabelObjectDTO> emailsDTO,
-      @JsonKey(name: phonesName) List<LabelObjectDTO> phonesDTO,
+      @JsonKey(name: companiesName) List<CompanyDTO?>? companiesDTO,
+      @JsonKey(name: emailsName) List<LabelObjectDTO?>? emailsDTO,
+      @JsonKey(name: phonesName) List<LabelObjectDTO?>? phonesDTO,
       @ServerTimeStampConverter() FieldValue serverTimeStamp});
 
   @override
@@ -158,30 +165,38 @@ class __$ContactDTOCopyWithImpl<$Res> extends _$ContactDTOCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object id = freezed,
-    Object nameDataDTO = freezed,
-    Object companiesDTO = freezed,
-    Object emailsDTO = freezed,
-    Object phonesDTO = freezed,
-    Object serverTimeStamp = freezed,
+    Object? id = freezed,
+    Object? nameDataDTO = freezed,
+    Object? companiesDTO = freezed,
+    Object? emailsDTO = freezed,
+    Object? phonesDTO = freezed,
+    Object? serverTimeStamp = freezed,
   }) {
     return _then(_ContactDTO(
-      id: id == freezed ? _value.id : id as String,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       nameDataDTO: nameDataDTO == freezed
           ? _value.nameDataDTO
-          : nameDataDTO as NameDataDTO,
+          : nameDataDTO // ignore: cast_nullable_to_non_nullable
+              as NameDataDTO,
       companiesDTO: companiesDTO == freezed
           ? _value.companiesDTO
-          : companiesDTO as List<CompanyDTO>,
+          : companiesDTO // ignore: cast_nullable_to_non_nullable
+              as List<CompanyDTO?>?,
       emailsDTO: emailsDTO == freezed
           ? _value.emailsDTO
-          : emailsDTO as List<LabelObjectDTO>,
+          : emailsDTO // ignore: cast_nullable_to_non_nullable
+              as List<LabelObjectDTO?>?,
       phonesDTO: phonesDTO == freezed
           ? _value.phonesDTO
-          : phonesDTO as List<LabelObjectDTO>,
+          : phonesDTO // ignore: cast_nullable_to_non_nullable
+              as List<LabelObjectDTO?>?,
       serverTimeStamp: serverTimeStamp == freezed
           ? _value.serverTimeStamp
-          : serverTimeStamp as FieldValue,
+          : serverTimeStamp // ignore: cast_nullable_to_non_nullable
+              as FieldValue,
     ));
   }
 }
@@ -192,11 +207,11 @@ class __$ContactDTOCopyWithImpl<$Res> extends _$ContactDTOCopyWithImpl<$Res>
 class _$_ContactDTO extends _ContactDTO {
   const _$_ContactDTO(
       {@JsonKey(ignore: true) this.id,
-      @JsonKey(name: nameDataName) this.nameDataDTO,
+      @JsonKey(name: nameDataName) required this.nameDataDTO,
       @JsonKey(name: companiesName) this.companiesDTO,
       @JsonKey(name: emailsName) this.emailsDTO,
       @JsonKey(name: phonesName) this.phonesDTO,
-      @ServerTimeStampConverter() this.serverTimeStamp})
+      @ServerTimeStampConverter() required this.serverTimeStamp})
       : super._();
 
   factory _$_ContactDTO.fromJson(Map<String, dynamic> json) =>
@@ -204,19 +219,19 @@ class _$_ContactDTO extends _ContactDTO {
 
   @override
   @JsonKey(ignore: true)
-  final String id;
+  final String? id;
   @override
   @JsonKey(name: nameDataName)
   final NameDataDTO nameDataDTO;
   @override
   @JsonKey(name: companiesName)
-  final List<CompanyDTO> companiesDTO;
+  final List<CompanyDTO?>? companiesDTO;
   @override
   @JsonKey(name: emailsName)
-  final List<LabelObjectDTO> emailsDTO;
+  final List<LabelObjectDTO?>? emailsDTO;
   @override
   @JsonKey(name: phonesName)
-  final List<LabelObjectDTO> phonesDTO;
+  final List<LabelObjectDTO?>? phonesDTO;
   @override
   @ServerTimeStampConverter()
   final FieldValue serverTimeStamp;
@@ -271,39 +286,41 @@ class _$_ContactDTO extends _ContactDTO {
 }
 
 abstract class _ContactDTO extends ContactDTO {
-  const _ContactDTO._() : super._();
   const factory _ContactDTO(
-      {@JsonKey(ignore: true) String id,
-      @JsonKey(name: nameDataName) NameDataDTO nameDataDTO,
-      @JsonKey(name: companiesName) List<CompanyDTO> companiesDTO,
-      @JsonKey(name: emailsName) List<LabelObjectDTO> emailsDTO,
-      @JsonKey(name: phonesName) List<LabelObjectDTO> phonesDTO,
-      @ServerTimeStampConverter() FieldValue serverTimeStamp}) = _$_ContactDTO;
+          {@JsonKey(ignore: true) String? id,
+          @JsonKey(name: nameDataName) required NameDataDTO nameDataDTO,
+          @JsonKey(name: companiesName) List<CompanyDTO?>? companiesDTO,
+          @JsonKey(name: emailsName) List<LabelObjectDTO?>? emailsDTO,
+          @JsonKey(name: phonesName) List<LabelObjectDTO?>? phonesDTO,
+          @ServerTimeStampConverter() required FieldValue serverTimeStamp}) =
+      _$_ContactDTO;
+  const _ContactDTO._() : super._();
 
   factory _ContactDTO.fromJson(Map<String, dynamic> json) =
       _$_ContactDTO.fromJson;
 
   @override
   @JsonKey(ignore: true)
-  String get id;
+  String? get id => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: nameDataName)
-  NameDataDTO get nameDataDTO;
+  NameDataDTO get nameDataDTO => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: companiesName)
-  List<CompanyDTO> get companiesDTO;
+  List<CompanyDTO?>? get companiesDTO => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: emailsName)
-  List<LabelObjectDTO> get emailsDTO;
+  List<LabelObjectDTO?>? get emailsDTO => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: phonesName)
-  List<LabelObjectDTO> get phonesDTO;
+  List<LabelObjectDTO?>? get phonesDTO => throw _privateConstructorUsedError;
   @override
   @ServerTimeStampConverter()
-  FieldValue get serverTimeStamp;
+  FieldValue get serverTimeStamp => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ContactDTOCopyWith<_ContactDTO> get copyWith;
+  _$ContactDTOCopyWith<_ContactDTO> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 NameDataDTO _$NameDataDTOFromJson(Map<String, dynamic> json) {
@@ -314,32 +331,30 @@ NameDataDTO _$NameDataDTOFromJson(Map<String, dynamic> json) {
 class _$NameDataDTOTearOff {
   const _$NameDataDTOTearOff();
 
-// ignore: unused_element
-  _NameDataDTO call({String name, String surname}) {
+  _NameDataDTO call({String? name, String? surname}) {
     return _NameDataDTO(
       name: name,
       surname: surname,
     );
   }
 
-// ignore: unused_element
   NameDataDTO fromJson(Map<String, Object> json) {
     return NameDataDTO.fromJson(json);
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $NameDataDTO = _$NameDataDTOTearOff();
 
 /// @nodoc
 mixin _$NameDataDTO {
-  String get name;
-  String get surname;
+  String? get name => throw _privateConstructorUsedError;
+  String? get surname => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson();
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $NameDataDTOCopyWith<NameDataDTO> get copyWith;
+  $NameDataDTOCopyWith<NameDataDTO> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -347,7 +362,7 @@ abstract class $NameDataDTOCopyWith<$Res> {
   factory $NameDataDTOCopyWith(
           NameDataDTO value, $Res Function(NameDataDTO) then) =
       _$NameDataDTOCopyWithImpl<$Res>;
-  $Res call({String name, String surname});
+  $Res call({String? name, String? surname});
 }
 
 /// @nodoc
@@ -360,12 +375,18 @@ class _$NameDataDTOCopyWithImpl<$Res> implements $NameDataDTOCopyWith<$Res> {
 
   @override
   $Res call({
-    Object name = freezed,
-    Object surname = freezed,
+    Object? name = freezed,
+    Object? surname = freezed,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed ? _value.name : name as String,
-      surname: surname == freezed ? _value.surname : surname as String,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      surname: surname == freezed
+          ? _value.surname
+          : surname // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -377,7 +398,7 @@ abstract class _$NameDataDTOCopyWith<$Res>
           _NameDataDTO value, $Res Function(_NameDataDTO) then) =
       __$NameDataDTOCopyWithImpl<$Res>;
   @override
-  $Res call({String name, String surname});
+  $Res call({String? name, String? surname});
 }
 
 /// @nodoc
@@ -392,12 +413,18 @@ class __$NameDataDTOCopyWithImpl<$Res> extends _$NameDataDTOCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object name = freezed,
-    Object surname = freezed,
+    Object? name = freezed,
+    Object? surname = freezed,
   }) {
     return _then(_NameDataDTO(
-      name: name == freezed ? _value.name : name as String,
-      surname: surname == freezed ? _value.surname : surname as String,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      surname: surname == freezed
+          ? _value.surname
+          : surname // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -412,9 +439,9 @@ class _$_NameDataDTO extends _NameDataDTO {
       _$_$_NameDataDTOFromJson(json);
 
   @override
-  final String name;
+  final String? name;
   @override
-  final String surname;
+  final String? surname;
 
   @override
   String toString() {
@@ -449,19 +476,20 @@ class _$_NameDataDTO extends _NameDataDTO {
 }
 
 abstract class _NameDataDTO extends NameDataDTO {
+  const factory _NameDataDTO({String? name, String? surname}) = _$_NameDataDTO;
   const _NameDataDTO._() : super._();
-  const factory _NameDataDTO({String name, String surname}) = _$_NameDataDTO;
 
   factory _NameDataDTO.fromJson(Map<String, dynamic> json) =
       _$_NameDataDTO.fromJson;
 
   @override
-  String get name;
+  String? get name => throw _privateConstructorUsedError;
   @override
-  String get surname;
+  String? get surname => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$NameDataDTOCopyWith<_NameDataDTO> get copyWith;
+  _$NameDataDTOCopyWith<_NameDataDTO> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 LabelObjectDTO _$LabelObjectDTOFromJson(Map<String, dynamic> json) {
@@ -472,32 +500,30 @@ LabelObjectDTO _$LabelObjectDTOFromJson(Map<String, dynamic> json) {
 class _$LabelObjectDTOTearOff {
   const _$LabelObjectDTOTearOff();
 
-// ignore: unused_element
-  _LabelObjectDTO call({String name, String label}) {
+  _LabelObjectDTO call({String? name, String? label}) {
     return _LabelObjectDTO(
       name: name,
       label: label,
     );
   }
 
-// ignore: unused_element
   LabelObjectDTO fromJson(Map<String, Object> json) {
     return LabelObjectDTO.fromJson(json);
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $LabelObjectDTO = _$LabelObjectDTOTearOff();
 
 /// @nodoc
 mixin _$LabelObjectDTO {
-  String get name;
-  String get label;
+  String? get name => throw _privateConstructorUsedError;
+  String? get label => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson();
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $LabelObjectDTOCopyWith<LabelObjectDTO> get copyWith;
+  $LabelObjectDTOCopyWith<LabelObjectDTO> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -505,7 +531,7 @@ abstract class $LabelObjectDTOCopyWith<$Res> {
   factory $LabelObjectDTOCopyWith(
           LabelObjectDTO value, $Res Function(LabelObjectDTO) then) =
       _$LabelObjectDTOCopyWithImpl<$Res>;
-  $Res call({String name, String label});
+  $Res call({String? name, String? label});
 }
 
 /// @nodoc
@@ -519,12 +545,18 @@ class _$LabelObjectDTOCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object name = freezed,
-    Object label = freezed,
+    Object? name = freezed,
+    Object? label = freezed,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed ? _value.name : name as String,
-      label: label == freezed ? _value.label : label as String,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      label: label == freezed
+          ? _value.label
+          : label // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -536,7 +568,7 @@ abstract class _$LabelObjectDTOCopyWith<$Res>
           _LabelObjectDTO value, $Res Function(_LabelObjectDTO) then) =
       __$LabelObjectDTOCopyWithImpl<$Res>;
   @override
-  $Res call({String name, String label});
+  $Res call({String? name, String? label});
 }
 
 /// @nodoc
@@ -552,12 +584,18 @@ class __$LabelObjectDTOCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object name = freezed,
-    Object label = freezed,
+    Object? name = freezed,
+    Object? label = freezed,
   }) {
     return _then(_LabelObjectDTO(
-      name: name == freezed ? _value.name : name as String,
-      label: label == freezed ? _value.label : label as String,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      label: label == freezed
+          ? _value.label
+          : label // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -572,9 +610,9 @@ class _$_LabelObjectDTO extends _LabelObjectDTO {
       _$_$_LabelObjectDTOFromJson(json);
 
   @override
-  final String name;
+  final String? name;
   @override
-  final String label;
+  final String? label;
 
   @override
   String toString() {
@@ -609,20 +647,21 @@ class _$_LabelObjectDTO extends _LabelObjectDTO {
 }
 
 abstract class _LabelObjectDTO extends LabelObjectDTO {
-  const _LabelObjectDTO._() : super._();
-  const factory _LabelObjectDTO({String name, String label}) =
+  const factory _LabelObjectDTO({String? name, String? label}) =
       _$_LabelObjectDTO;
+  const _LabelObjectDTO._() : super._();
 
   factory _LabelObjectDTO.fromJson(Map<String, dynamic> json) =
       _$_LabelObjectDTO.fromJson;
 
   @override
-  String get name;
+  String? get name => throw _privateConstructorUsedError;
   @override
-  String get label;
+  String? get label => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$LabelObjectDTOCopyWith<_LabelObjectDTO> get copyWith;
+  _$LabelObjectDTOCopyWith<_LabelObjectDTO> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 CompanyDTO _$CompanyDTOFromJson(Map<String, dynamic> json) {
@@ -633,32 +672,30 @@ CompanyDTO _$CompanyDTOFromJson(Map<String, dynamic> json) {
 class _$CompanyDTOTearOff {
   const _$CompanyDTOTearOff();
 
-// ignore: unused_element
-  _CompanyDTO call({String name, String title}) {
+  _CompanyDTO call({String? name, String? title}) {
     return _CompanyDTO(
       name: name,
       title: title,
     );
   }
 
-// ignore: unused_element
   CompanyDTO fromJson(Map<String, Object> json) {
     return CompanyDTO.fromJson(json);
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $CompanyDTO = _$CompanyDTOTearOff();
 
 /// @nodoc
 mixin _$CompanyDTO {
-  String get name;
-  String get title;
+  String? get name => throw _privateConstructorUsedError;
+  String? get title => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson();
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CompanyDTOCopyWith<CompanyDTO> get copyWith;
+  $CompanyDTOCopyWith<CompanyDTO> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -666,7 +703,7 @@ abstract class $CompanyDTOCopyWith<$Res> {
   factory $CompanyDTOCopyWith(
           CompanyDTO value, $Res Function(CompanyDTO) then) =
       _$CompanyDTOCopyWithImpl<$Res>;
-  $Res call({String name, String title});
+  $Res call({String? name, String? title});
 }
 
 /// @nodoc
@@ -679,12 +716,18 @@ class _$CompanyDTOCopyWithImpl<$Res> implements $CompanyDTOCopyWith<$Res> {
 
   @override
   $Res call({
-    Object name = freezed,
-    Object title = freezed,
+    Object? name = freezed,
+    Object? title = freezed,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed ? _value.name : name as String,
-      title: title == freezed ? _value.title : title as String,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -695,7 +738,7 @@ abstract class _$CompanyDTOCopyWith<$Res> implements $CompanyDTOCopyWith<$Res> {
           _CompanyDTO value, $Res Function(_CompanyDTO) then) =
       __$CompanyDTOCopyWithImpl<$Res>;
   @override
-  $Res call({String name, String title});
+  $Res call({String? name, String? title});
 }
 
 /// @nodoc
@@ -710,12 +753,18 @@ class __$CompanyDTOCopyWithImpl<$Res> extends _$CompanyDTOCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object name = freezed,
-    Object title = freezed,
+    Object? name = freezed,
+    Object? title = freezed,
   }) {
     return _then(_CompanyDTO(
-      name: name == freezed ? _value.name : name as String,
-      title: title == freezed ? _value.title : title as String,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -730,9 +779,9 @@ class _$_CompanyDTO extends _CompanyDTO {
       _$_$_CompanyDTOFromJson(json);
 
   @override
-  final String name;
+  final String? name;
   @override
-  final String title;
+  final String? title;
 
   @override
   String toString() {
@@ -767,17 +816,18 @@ class _$_CompanyDTO extends _CompanyDTO {
 }
 
 abstract class _CompanyDTO extends CompanyDTO {
+  const factory _CompanyDTO({String? name, String? title}) = _$_CompanyDTO;
   const _CompanyDTO._() : super._();
-  const factory _CompanyDTO({String name, String title}) = _$_CompanyDTO;
 
   factory _CompanyDTO.fromJson(Map<String, dynamic> json) =
       _$_CompanyDTO.fromJson;
 
   @override
-  String get name;
+  String? get name => throw _privateConstructorUsedError;
   @override
-  String get title;
+  String? get title => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CompanyDTOCopyWith<_CompanyDTO> get copyWith;
+  _$CompanyDTOCopyWith<_CompanyDTO> get copyWith =>
+      throw _privateConstructorUsedError;
 }

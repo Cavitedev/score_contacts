@@ -6,9 +6,9 @@ class RadioDialog extends StatelessWidget {
   final String title;
 
   const RadioDialog({
-    Key key,
-    @required this.content,
-    @required this.title,
+    Key? key,
+    required this.content,
+    required this.title,
   }) : super(key: key);
 
   @override

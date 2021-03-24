@@ -43,7 +43,7 @@ class AppManagerCubit extends Cubit<AppManagerState> {
 
   Future<void> _getSystemRegion() async {
     const channel = MethodChannel("com.cavitedev.scorecontacts/region");
-    final String region = await channel.invokeMethod("getSystemRegion");
+    final String region =  await channel.invokeMethod("getSystemRegion") as String;
     emit(state.copyWith(region: region));
   }
 
@@ -55,7 +55,7 @@ class AppManagerCubit extends Cubit<AppManagerState> {
     _setLanguageCode(language);
   }
 
-  SharedPreferences _prefs;
+  SharedPreferences? _prefs;
 
   Future<SharedPreferences> _getPrefs() async =>
       _prefs == null ? SharedPreferences.getInstance() : Future.value(_prefs);

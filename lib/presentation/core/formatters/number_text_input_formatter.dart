@@ -5,10 +5,10 @@ import 'package:scorecontacts/presentation/core/formatters/phone_codes.dart';
 
 class PhoneTextFormatter extends TextInputFormatter {
   final String countryCode;
-  PhoneCountryData _countryData;
+  PhoneCountryData? _countryData;
   bool _localRegion = false;
 
-  PhoneTextFormatter({@required this.countryCode});
+  PhoneTextFormatter({required this.countryCode});
 
   @override
   TextEditingValue formatEditUpdate(
@@ -28,12 +28,14 @@ class PhoneTextFormatter extends TextInputFormatter {
       }
     }
     if (_countryData == null) return newValue;
+    PhoneCountryData countryData = _countryData!;
+
 
     final String mask = _localRegion
         ? _getLocalPhoneMask(newValue.text)
-        : _countryData.phoneMask;
+        : countryData.phoneMask;
     final bool overflowPhoneMask =
-        toNumericString(newValue.text).length > toNumericString(mask).length;
+        toNumericString(newValue.text)!.length > toNumericString(mask)!.length;
 
     final bool isErasing = newValue.text.length < oldValue.text.length;
 
@@ -45,7 +47,7 @@ class PhoneTextFormatter extends TextInputFormatter {
 
     String newText;
     if (overflowPhoneMask) {
-      newText = (_localRegion ? '' : '+') + toNumericString(newValue.text);
+      newText = (_localRegion ? '' : '+') + (toNumericString(newValue.text) ?? "");
     } else {
       newText = formatByMask(newValue.text, mask);
     }
@@ -59,20 +61,19 @@ class PhoneTextFormatter extends TextInputFormatter {
   }
 
   String _getLocalPhoneMask(String newText) {
-    for (final String mask in _countryData.localMasks) {
-      if (mask == null) {
-        break;
-      }
-      if (toNumericString(mask).length > toNumericString(newText).length) {
+
+
+    for (final String mask in _countryData!.localMasks!) {
+      if (toNumericString(mask)!.length > toNumericString(newText)!.length) {
         return mask;
       }
     }
 
-    return _countryData.phoneMaskWithoutPrefix();
+    return _countryData!.phoneMaskWithoutPrefix();
   }
 
   void _trySetCountryDataFromPhoneValue(TextEditingValue newValue) {
-    final PhoneCountryData phoneCountryData =
+    final PhoneCountryData? phoneCountryData =
     PhoneCodes.getCountryDataByPhone(newValue.text);
     if (phoneCountryData != null) {
       _countryData = phoneCountryData;

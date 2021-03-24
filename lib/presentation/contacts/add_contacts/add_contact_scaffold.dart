@@ -5,7 +5,7 @@ import 'package:scorecontacts/application/contacts/add_contact/add_contact_bloc.
 import 'package:scorecontacts/application/core/app_manager_cubit.dart';
 import 'package:scorecontacts/core/app_localization.dart';
 import 'package:scorecontacts/presentation/contacts/add_contacts/add_contact_form.dart';
-import 'package:scorecontacts/presentation/routes/router.gr.dart';
+import 'package:scorecontacts/presentation/routes/router.gr.dart' as r;
 
 class AddContactScaffold extends StatelessWidget {
   @override
@@ -25,8 +25,7 @@ class AddContactScaffold extends StatelessWidget {
         ),
         leading: IconButton(
           onPressed: () {
-            ExtendedNavigator.of(context)
-                .popUntil((route) => route.settings.name == Routes.contactList);
+            context.router.popUntil((route) => route.settings.name == r.ContactListRoute.name);
           },
           icon: const Icon(Icons.close),
         ),

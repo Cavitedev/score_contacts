@@ -1,15 +1,13 @@
-import 'package:flutter/foundation.dart';
-
 ///Implement fromLabelObject on children
 abstract class ILabelObject {
-  final String value;
-  final String label;
-  final List<String> otherLabels;
+  final String? value;
+  final String? label;
+  final List<String>? otherLabels;
 
   ILabelObject({
-    @required this.value,
-    @required this.label,
-    @required this.otherLabels,
+    required this.value,
+    required this.label,
+    required this.otherLabels,
   });
 
   ILabelObject copyWith({
@@ -20,18 +18,17 @@ abstract class ILabelObject {
 
 ///For DTOS transition
 class LabelObject implements ILabelObject {
-  final String value;
-  final String label;
-  final List<String> otherLabels;
+  final String? value;
+  final String? label;
+  final List<String>? otherLabels;
 
   LabelObject({this.value, this.label, this.otherLabels});
 
   LabelObject copyWith({
-    String value,
-    String label,
+    String? value,
+    String? label,
   }) {
-    if ((value == null || identical(value, this.value)) &&
-        (label == null || identical(label, this.label))) {
+    if ((value == null || identical(value, this.value)) && (label == null || identical(label, this.label))) {
       return this;
     }
 

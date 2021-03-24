@@ -1,8 +1,8 @@
 class PhoneticNames{
-  final String phoneticFirstName;
-  final String phoneticMiddleName;
-  final String phoneticFirstSurname;
-  final String phoneticSecondSurname;
+  final String? phoneticFirstName;
+  final String? phoneticMiddleName;
+  final String? phoneticFirstSurname;
+  final String? phoneticSecondSurname;
 
   const PhoneticNames(
       {this.phoneticFirstName,

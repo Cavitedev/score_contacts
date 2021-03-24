@@ -25,49 +25,49 @@ void main() {
 
   test("Should not match when input is null", () {
 
-    final String match = _completeContact().matchPattern(null);
+    final String? match = _completeContact().matchPattern(null);
     expect(match,_completeContact().getFullName());
 
   });
 
   test("Should match on any case the name", () {
 
-    final String match = _completeContact().matchPattern("NaMe SurNaME");
+    final String? match = _completeContact().matchPattern("NaMe SurNaME");
     expect(match,_completeContact().getFullName());
 
   });
 
   test("Should match phone number when correctly written", () {
 
-    final String match = _completeContact().matchPattern("123 45");
+    final String? match = _completeContact().matchPattern("123 45");
     expect(match,"+34 123 45 67 89");
 
   });
 
   test("Should match phone number only looking at numbers", () {
 
-    final String match = _completeContact().matchPattern(".-#()+34123");
+    final String? match = _completeContact().matchPattern(".-#()+34123");
     expect(match,"+34 123 45 67 89");
 
   });
 
   test("Phones are not searched when regex containt non-phone characters", (){
-    final String match = _completeContact().matchPattern("a+34 123");
+    final String? match = _completeContact().matchPattern("a+34 123");
     expect(match,null);
   });
 
   test("All phones are searched", (){
-    final String match = _completeContact().matchPattern("(987) 654-32");
+    final String? match = _completeContact().matchPattern("(987) 654-32");
     expect(match,"(987) 654-321");
   });
 
   test("phones search works on contact with nulls", (){
-    final String match = ContactFixtures.contactWillNulls.matchPattern("1234");
+    final String? match = ContactFixtures.contactWillNulls.matchPattern("1234");
     expect(match,"1234");
   });
 
   test("Emails are searched on first element", (){
-    final String match = _completeContact().matchPattern("@asd.asd");
+    final String? match = _completeContact().matchPattern("@asd.asd");
     expect(match,"asd@asd.asd");
   });
 

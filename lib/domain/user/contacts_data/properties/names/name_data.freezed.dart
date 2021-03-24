@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'name_data.dart';
 
@@ -9,19 +9,21 @@ part of 'name_data.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$NameDataTearOff {
   const _$NameDataTearOff();
 
-// ignore: unused_element
   _NameData call(
-      {PhoneticNames phoneticNames,
-      String firstName,
-      String nickname,
-      String namePrefix,
-      String middleName,
-      String surnames,
-      String nameSuffix}) {
+      {PhoneticNames? phoneticNames,
+      String? firstName,
+      String? nickname,
+      String? namePrefix,
+      String? middleName,
+      String? surnames,
+      String? nameSuffix}) {
     return _NameData(
       phoneticNames: phoneticNames,
       firstName: firstName,
@@ -35,21 +37,21 @@ class _$NameDataTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $NameData = _$NameDataTearOff();
 
 /// @nodoc
 mixin _$NameData {
-  PhoneticNames get phoneticNames;
-  String get firstName;
-  String get nickname;
-  String get namePrefix;
-  String get middleName;
-  String get surnames;
-  String get nameSuffix;
+  PhoneticNames? get phoneticNames => throw _privateConstructorUsedError;
+  String? get firstName => throw _privateConstructorUsedError;
+  String? get nickname => throw _privateConstructorUsedError;
+  String? get namePrefix => throw _privateConstructorUsedError;
+  String? get middleName => throw _privateConstructorUsedError;
+  String? get surnames => throw _privateConstructorUsedError;
+  String? get nameSuffix => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $NameDataCopyWith<NameData> get copyWith;
+  $NameDataCopyWith<NameData> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -57,13 +59,13 @@ abstract class $NameDataCopyWith<$Res> {
   factory $NameDataCopyWith(NameData value, $Res Function(NameData) then) =
       _$NameDataCopyWithImpl<$Res>;
   $Res call(
-      {PhoneticNames phoneticNames,
-      String firstName,
-      String nickname,
-      String namePrefix,
-      String middleName,
-      String surnames,
-      String nameSuffix});
+      {PhoneticNames? phoneticNames,
+      String? firstName,
+      String? nickname,
+      String? namePrefix,
+      String? middleName,
+      String? surnames,
+      String? nameSuffix});
 }
 
 /// @nodoc
@@ -76,27 +78,43 @@ class _$NameDataCopyWithImpl<$Res> implements $NameDataCopyWith<$Res> {
 
   @override
   $Res call({
-    Object phoneticNames = freezed,
-    Object firstName = freezed,
-    Object nickname = freezed,
-    Object namePrefix = freezed,
-    Object middleName = freezed,
-    Object surnames = freezed,
-    Object nameSuffix = freezed,
+    Object? phoneticNames = freezed,
+    Object? firstName = freezed,
+    Object? nickname = freezed,
+    Object? namePrefix = freezed,
+    Object? middleName = freezed,
+    Object? surnames = freezed,
+    Object? nameSuffix = freezed,
   }) {
     return _then(_value.copyWith(
       phoneticNames: phoneticNames == freezed
           ? _value.phoneticNames
-          : phoneticNames as PhoneticNames,
-      firstName: firstName == freezed ? _value.firstName : firstName as String,
-      nickname: nickname == freezed ? _value.nickname : nickname as String,
-      namePrefix:
-          namePrefix == freezed ? _value.namePrefix : namePrefix as String,
-      middleName:
-          middleName == freezed ? _value.middleName : middleName as String,
-      surnames: surnames == freezed ? _value.surnames : surnames as String,
-      nameSuffix:
-          nameSuffix == freezed ? _value.nameSuffix : nameSuffix as String,
+          : phoneticNames // ignore: cast_nullable_to_non_nullable
+              as PhoneticNames?,
+      firstName: firstName == freezed
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nickname: nickname == freezed
+          ? _value.nickname
+          : nickname // ignore: cast_nullable_to_non_nullable
+              as String?,
+      namePrefix: namePrefix == freezed
+          ? _value.namePrefix
+          : namePrefix // ignore: cast_nullable_to_non_nullable
+              as String?,
+      middleName: middleName == freezed
+          ? _value.middleName
+          : middleName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      surnames: surnames == freezed
+          ? _value.surnames
+          : surnames // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nameSuffix: nameSuffix == freezed
+          ? _value.nameSuffix
+          : nameSuffix // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -107,13 +125,13 @@ abstract class _$NameDataCopyWith<$Res> implements $NameDataCopyWith<$Res> {
       __$NameDataCopyWithImpl<$Res>;
   @override
   $Res call(
-      {PhoneticNames phoneticNames,
-      String firstName,
-      String nickname,
-      String namePrefix,
-      String middleName,
-      String surnames,
-      String nameSuffix});
+      {PhoneticNames? phoneticNames,
+      String? firstName,
+      String? nickname,
+      String? namePrefix,
+      String? middleName,
+      String? surnames,
+      String? nameSuffix});
 }
 
 /// @nodoc
@@ -127,27 +145,43 @@ class __$NameDataCopyWithImpl<$Res> extends _$NameDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object phoneticNames = freezed,
-    Object firstName = freezed,
-    Object nickname = freezed,
-    Object namePrefix = freezed,
-    Object middleName = freezed,
-    Object surnames = freezed,
-    Object nameSuffix = freezed,
+    Object? phoneticNames = freezed,
+    Object? firstName = freezed,
+    Object? nickname = freezed,
+    Object? namePrefix = freezed,
+    Object? middleName = freezed,
+    Object? surnames = freezed,
+    Object? nameSuffix = freezed,
   }) {
     return _then(_NameData(
       phoneticNames: phoneticNames == freezed
           ? _value.phoneticNames
-          : phoneticNames as PhoneticNames,
-      firstName: firstName == freezed ? _value.firstName : firstName as String,
-      nickname: nickname == freezed ? _value.nickname : nickname as String,
-      namePrefix:
-          namePrefix == freezed ? _value.namePrefix : namePrefix as String,
-      middleName:
-          middleName == freezed ? _value.middleName : middleName as String,
-      surnames: surnames == freezed ? _value.surnames : surnames as String,
-      nameSuffix:
-          nameSuffix == freezed ? _value.nameSuffix : nameSuffix as String,
+          : phoneticNames // ignore: cast_nullable_to_non_nullable
+              as PhoneticNames?,
+      firstName: firstName == freezed
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nickname: nickname == freezed
+          ? _value.nickname
+          : nickname // ignore: cast_nullable_to_non_nullable
+              as String?,
+      namePrefix: namePrefix == freezed
+          ? _value.namePrefix
+          : namePrefix // ignore: cast_nullable_to_non_nullable
+              as String?,
+      middleName: middleName == freezed
+          ? _value.middleName
+          : middleName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      surnames: surnames == freezed
+          ? _value.surnames
+          : surnames // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nameSuffix: nameSuffix == freezed
+          ? _value.nameSuffix
+          : nameSuffix // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -165,19 +199,19 @@ class _$_NameData extends _NameData {
       : super._();
 
   @override
-  final PhoneticNames phoneticNames;
+  final PhoneticNames? phoneticNames;
   @override
-  final String firstName;
+  final String? firstName;
   @override
-  final String nickname;
+  final String? nickname;
   @override
-  final String namePrefix;
+  final String? namePrefix;
   @override
-  final String middleName;
+  final String? middleName;
   @override
-  final String surnames;
+  final String? surnames;
   @override
-  final String nameSuffix;
+  final String? nameSuffix;
 
   @override
   String toString() {
@@ -229,31 +263,32 @@ class _$_NameData extends _NameData {
 }
 
 abstract class _NameData extends NameData {
-  const _NameData._() : super._();
   const factory _NameData(
-      {PhoneticNames phoneticNames,
-      String firstName,
-      String nickname,
-      String namePrefix,
-      String middleName,
-      String surnames,
-      String nameSuffix}) = _$_NameData;
+      {PhoneticNames? phoneticNames,
+      String? firstName,
+      String? nickname,
+      String? namePrefix,
+      String? middleName,
+      String? surnames,
+      String? nameSuffix}) = _$_NameData;
+  const _NameData._() : super._();
 
   @override
-  PhoneticNames get phoneticNames;
+  PhoneticNames? get phoneticNames => throw _privateConstructorUsedError;
   @override
-  String get firstName;
+  String? get firstName => throw _privateConstructorUsedError;
   @override
-  String get nickname;
+  String? get nickname => throw _privateConstructorUsedError;
   @override
-  String get namePrefix;
+  String? get namePrefix => throw _privateConstructorUsedError;
   @override
-  String get middleName;
+  String? get middleName => throw _privateConstructorUsedError;
   @override
-  String get surnames;
+  String? get surnames => throw _privateConstructorUsedError;
   @override
-  String get nameSuffix;
+  String? get nameSuffix => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$NameDataCopyWith<_NameData> get copyWith;
+  _$NameDataCopyWith<_NameData> get copyWith =>
+      throw _privateConstructorUsedError;
 }

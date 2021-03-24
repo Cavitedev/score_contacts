@@ -80,5 +80,6 @@ class ContactActorBloc extends Bloc<ContactActorEvent, ContactActorState> {
           return left(const ContactsFailure.platformError());
       }
     }
+
   }
 }

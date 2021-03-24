@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'add_contact_bloc.dart';
 
@@ -9,11 +9,13 @@ part of 'add_contact_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$AddContactEventTearOff {
   const _$AddContactEventTearOff();
 
-// ignore: unused_element
   _Initialize initialize(
       Option<Contact> contactOption, String countryCode, bool isEditting) {
     return _Initialize(
@@ -23,14 +25,12 @@ class _$AddContactEventTearOff {
     );
   }
 
-// ignore: unused_element
   _Saved saved(String countryCode) {
     return _Saved(
       countryCode,
     );
   }
 
-// ignore: unused_element
   _LabelObjectChanged labelObjectChanged(ILabelObject labelObject, int pos) {
     return _LabelObjectChanged(
       labelObject,
@@ -38,14 +38,12 @@ class _$AddContactEventTearOff {
     );
   }
 
-// ignore: unused_element
   _AddLabelObject addLabelObject(ILabelObject labelObject) {
     return _AddLabelObject(
       labelObject,
     );
   }
 
-// ignore: unused_element
   _RemoveLabelObject removeLabelObject(Type labelObjectType, int pos) {
     return _RemoveLabelObject(
       labelObjectType,
@@ -53,14 +51,12 @@ class _$AddContactEventTearOff {
     );
   }
 
-// ignore: unused_element
   _UpdateNameData updateNameData(NameData nameData) {
     return _UpdateNameData(
       nameData,
     );
   }
 
-// ignore: unused_element
   _UpdateCompany updateCompany(Company company, int index) {
     return _UpdateCompany(
       company,
@@ -68,12 +64,10 @@ class _$AddContactEventTearOff {
     );
   }
 
-// ignore: unused_element
   _AddCompany addCompany() {
     return const _AddCompany();
   }
 
-// ignore: unused_element
   _DeleteCompany deleteCompany(int index) {
     return _DeleteCompany(
       index,
@@ -82,64 +76,69 @@ class _$AddContactEventTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $AddContactEvent = _$AddContactEventTearOff();
 
 /// @nodoc
 mixin _$AddContactEvent {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required
-        TResult initialize(
-            Option<Contact> contactOption, String countryCode, bool isEditting),
-    @required TResult saved(String countryCode),
-    @required TResult labelObjectChanged(ILabelObject labelObject, int pos),
-    @required TResult addLabelObject(ILabelObject labelObject),
-    @required TResult removeLabelObject(Type labelObjectType, int pos),
-    @required TResult updateNameData(NameData nameData),
-    @required TResult updateCompany(Company company, int index),
-    @required TResult addCompany(),
-    @required TResult deleteCompany(int index),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            Option<Contact> contactOption, String countryCode, bool isEditting)
+        initialize,
+    required TResult Function(String countryCode) saved,
+    required TResult Function(ILabelObject labelObject, int pos)
+        labelObjectChanged,
+    required TResult Function(ILabelObject labelObject) addLabelObject,
+    required TResult Function(Type labelObjectType, int pos) removeLabelObject,
+    required TResult Function(NameData nameData) updateNameData,
+    required TResult Function(Company company, int index) updateCompany,
+    required TResult Function() addCompany,
+    required TResult Function(int index) deleteCompany,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initialize(
-        Option<Contact> contactOption, String countryCode, bool isEditting),
-    TResult saved(String countryCode),
-    TResult labelObjectChanged(ILabelObject labelObject, int pos),
-    TResult addLabelObject(ILabelObject labelObject),
-    TResult removeLabelObject(Type labelObjectType, int pos),
-    TResult updateNameData(NameData nameData),
-    TResult updateCompany(Company company, int index),
-    TResult addCompany(),
-    TResult deleteCompany(int index),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            Option<Contact> contactOption, String countryCode, bool isEditting)?
+        initialize,
+    TResult Function(String countryCode)? saved,
+    TResult Function(ILabelObject labelObject, int pos)? labelObjectChanged,
+    TResult Function(ILabelObject labelObject)? addLabelObject,
+    TResult Function(Type labelObjectType, int pos)? removeLabelObject,
+    TResult Function(NameData nameData)? updateNameData,
+    TResult Function(Company company, int index)? updateCompany,
+    TResult Function()? addCompany,
+    TResult Function(int index)? deleteCompany,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initialize(_Initialize value),
-    @required TResult saved(_Saved value),
-    @required TResult labelObjectChanged(_LabelObjectChanged value),
-    @required TResult addLabelObject(_AddLabelObject value),
-    @required TResult removeLabelObject(_RemoveLabelObject value),
-    @required TResult updateNameData(_UpdateNameData value),
-    @required TResult updateCompany(_UpdateCompany value),
-    @required TResult addCompany(_AddCompany value),
-    @required TResult deleteCompany(_DeleteCompany value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_Saved value) saved,
+    required TResult Function(_LabelObjectChanged value) labelObjectChanged,
+    required TResult Function(_AddLabelObject value) addLabelObject,
+    required TResult Function(_RemoveLabelObject value) removeLabelObject,
+    required TResult Function(_UpdateNameData value) updateNameData,
+    required TResult Function(_UpdateCompany value) updateCompany,
+    required TResult Function(_AddCompany value) addCompany,
+    required TResult Function(_DeleteCompany value) deleteCompany,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initialize(_Initialize value),
-    TResult saved(_Saved value),
-    TResult labelObjectChanged(_LabelObjectChanged value),
-    TResult addLabelObject(_AddLabelObject value),
-    TResult removeLabelObject(_RemoveLabelObject value),
-    TResult updateNameData(_UpdateNameData value),
-    TResult updateCompany(_UpdateCompany value),
-    TResult addCompany(_AddCompany value),
-    TResult deleteCompany(_DeleteCompany value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_Saved value)? saved,
+    TResult Function(_LabelObjectChanged value)? labelObjectChanged,
+    TResult Function(_AddLabelObject value)? addLabelObject,
+    TResult Function(_RemoveLabelObject value)? removeLabelObject,
+    TResult Function(_UpdateNameData value)? updateNameData,
+    TResult Function(_UpdateCompany value)? updateCompany,
+    TResult Function(_AddCompany value)? addCompany,
+    TResult Function(_DeleteCompany value)? deleteCompany,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -181,26 +180,30 @@ class __$InitializeCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object contactOption = freezed,
-    Object countryCode = freezed,
-    Object isEditting = freezed,
+    Object? contactOption = freezed,
+    Object? countryCode = freezed,
+    Object? isEditting = freezed,
   }) {
     return _then(_Initialize(
       contactOption == freezed
           ? _value.contactOption
-          : contactOption as Option<Contact>,
-      countryCode == freezed ? _value.countryCode : countryCode as String,
-      isEditting == freezed ? _value.isEditting : isEditting as bool,
+          : contactOption // ignore: cast_nullable_to_non_nullable
+              as Option<Contact>,
+      countryCode == freezed
+          ? _value.countryCode
+          : countryCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      isEditting == freezed
+          ? _value.isEditting
+          : isEditting // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
 /// @nodoc
 class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
-  const _$_Initialize(this.contactOption, this.countryCode, this.isEditting)
-      : assert(contactOption != null),
-        assert(countryCode != null),
-        assert(isEditting != null);
+  const _$_Initialize(this.contactOption, this.countryCode, this.isEditting);
 
   @override
   final Option<Contact> contactOption;
@@ -253,47 +256,39 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required
-        TResult initialize(
-            Option<Contact> contactOption, String countryCode, bool isEditting),
-    @required TResult saved(String countryCode),
-    @required TResult labelObjectChanged(ILabelObject labelObject, int pos),
-    @required TResult addLabelObject(ILabelObject labelObject),
-    @required TResult removeLabelObject(Type labelObjectType, int pos),
-    @required TResult updateNameData(NameData nameData),
-    @required TResult updateCompany(Company company, int index),
-    @required TResult addCompany(),
-    @required TResult deleteCompany(int index),
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            Option<Contact> contactOption, String countryCode, bool isEditting)
+        initialize,
+    required TResult Function(String countryCode) saved,
+    required TResult Function(ILabelObject labelObject, int pos)
+        labelObjectChanged,
+    required TResult Function(ILabelObject labelObject) addLabelObject,
+    required TResult Function(Type labelObjectType, int pos) removeLabelObject,
+    required TResult Function(NameData nameData) updateNameData,
+    required TResult Function(Company company, int index) updateCompany,
+    required TResult Function() addCompany,
+    required TResult Function(int index) deleteCompany,
   }) {
-    assert(initialize != null);
-    assert(saved != null);
-    assert(labelObjectChanged != null);
-    assert(addLabelObject != null);
-    assert(removeLabelObject != null);
-    assert(updateNameData != null);
-    assert(updateCompany != null);
-    assert(addCompany != null);
-    assert(deleteCompany != null);
     return initialize(contactOption, countryCode, isEditting);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initialize(
-        Option<Contact> contactOption, String countryCode, bool isEditting),
-    TResult saved(String countryCode),
-    TResult labelObjectChanged(ILabelObject labelObject, int pos),
-    TResult addLabelObject(ILabelObject labelObject),
-    TResult removeLabelObject(Type labelObjectType, int pos),
-    TResult updateNameData(NameData nameData),
-    TResult updateCompany(Company company, int index),
-    TResult addCompany(),
-    TResult deleteCompany(int index),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            Option<Contact> contactOption, String countryCode, bool isEditting)?
+        initialize,
+    TResult Function(String countryCode)? saved,
+    TResult Function(ILabelObject labelObject, int pos)? labelObjectChanged,
+    TResult Function(ILabelObject labelObject)? addLabelObject,
+    TResult Function(Type labelObjectType, int pos)? removeLabelObject,
+    TResult Function(NameData nameData)? updateNameData,
+    TResult Function(Company company, int index)? updateCompany,
+    TResult Function()? addCompany,
+    TResult Function(int index)? deleteCompany,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initialize != null) {
       return initialize(contactOption, countryCode, isEditting);
     }
@@ -302,44 +297,34 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initialize(_Initialize value),
-    @required TResult saved(_Saved value),
-    @required TResult labelObjectChanged(_LabelObjectChanged value),
-    @required TResult addLabelObject(_AddLabelObject value),
-    @required TResult removeLabelObject(_RemoveLabelObject value),
-    @required TResult updateNameData(_UpdateNameData value),
-    @required TResult updateCompany(_UpdateCompany value),
-    @required TResult addCompany(_AddCompany value),
-    @required TResult deleteCompany(_DeleteCompany value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_Saved value) saved,
+    required TResult Function(_LabelObjectChanged value) labelObjectChanged,
+    required TResult Function(_AddLabelObject value) addLabelObject,
+    required TResult Function(_RemoveLabelObject value) removeLabelObject,
+    required TResult Function(_UpdateNameData value) updateNameData,
+    required TResult Function(_UpdateCompany value) updateCompany,
+    required TResult Function(_AddCompany value) addCompany,
+    required TResult Function(_DeleteCompany value) deleteCompany,
   }) {
-    assert(initialize != null);
-    assert(saved != null);
-    assert(labelObjectChanged != null);
-    assert(addLabelObject != null);
-    assert(removeLabelObject != null);
-    assert(updateNameData != null);
-    assert(updateCompany != null);
-    assert(addCompany != null);
-    assert(deleteCompany != null);
     return initialize(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initialize(_Initialize value),
-    TResult saved(_Saved value),
-    TResult labelObjectChanged(_LabelObjectChanged value),
-    TResult addLabelObject(_AddLabelObject value),
-    TResult removeLabelObject(_RemoveLabelObject value),
-    TResult updateNameData(_UpdateNameData value),
-    TResult updateCompany(_UpdateCompany value),
-    TResult addCompany(_AddCompany value),
-    TResult deleteCompany(_DeleteCompany value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_Saved value)? saved,
+    TResult Function(_LabelObjectChanged value)? labelObjectChanged,
+    TResult Function(_AddLabelObject value)? addLabelObject,
+    TResult Function(_RemoveLabelObject value)? removeLabelObject,
+    TResult Function(_UpdateNameData value)? updateNameData,
+    TResult Function(_UpdateCompany value)? updateCompany,
+    TResult Function(_AddCompany value)? addCompany,
+    TResult Function(_DeleteCompany value)? deleteCompany,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initialize != null) {
       return initialize(this);
     }
@@ -352,11 +337,12 @@ abstract class _Initialize implements AddContactEvent {
           Option<Contact> contactOption, String countryCode, bool isEditting) =
       _$_Initialize;
 
-  Option<Contact> get contactOption;
-  String get countryCode;
-  bool get isEditting;
+  Option<Contact> get contactOption => throw _privateConstructorUsedError;
+  String get countryCode => throw _privateConstructorUsedError;
+  bool get isEditting => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$InitializeCopyWith<_Initialize> get copyWith;
+  _$InitializeCopyWith<_Initialize> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -377,17 +363,20 @@ class __$SavedCopyWithImpl<$Res> extends _$AddContactEventCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object countryCode = freezed,
+    Object? countryCode = freezed,
   }) {
     return _then(_Saved(
-      countryCode == freezed ? _value.countryCode : countryCode as String,
+      countryCode == freezed
+          ? _value.countryCode
+          : countryCode // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
 class _$_Saved with DiagnosticableTreeMixin implements _Saved {
-  const _$_Saved(this.countryCode) : assert(countryCode != null);
+  const _$_Saved(this.countryCode);
 
   @override
   final String countryCode;
@@ -425,47 +414,39 @@ class _$_Saved with DiagnosticableTreeMixin implements _Saved {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required
-        TResult initialize(
-            Option<Contact> contactOption, String countryCode, bool isEditting),
-    @required TResult saved(String countryCode),
-    @required TResult labelObjectChanged(ILabelObject labelObject, int pos),
-    @required TResult addLabelObject(ILabelObject labelObject),
-    @required TResult removeLabelObject(Type labelObjectType, int pos),
-    @required TResult updateNameData(NameData nameData),
-    @required TResult updateCompany(Company company, int index),
-    @required TResult addCompany(),
-    @required TResult deleteCompany(int index),
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            Option<Contact> contactOption, String countryCode, bool isEditting)
+        initialize,
+    required TResult Function(String countryCode) saved,
+    required TResult Function(ILabelObject labelObject, int pos)
+        labelObjectChanged,
+    required TResult Function(ILabelObject labelObject) addLabelObject,
+    required TResult Function(Type labelObjectType, int pos) removeLabelObject,
+    required TResult Function(NameData nameData) updateNameData,
+    required TResult Function(Company company, int index) updateCompany,
+    required TResult Function() addCompany,
+    required TResult Function(int index) deleteCompany,
   }) {
-    assert(initialize != null);
-    assert(saved != null);
-    assert(labelObjectChanged != null);
-    assert(addLabelObject != null);
-    assert(removeLabelObject != null);
-    assert(updateNameData != null);
-    assert(updateCompany != null);
-    assert(addCompany != null);
-    assert(deleteCompany != null);
     return saved(countryCode);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initialize(
-        Option<Contact> contactOption, String countryCode, bool isEditting),
-    TResult saved(String countryCode),
-    TResult labelObjectChanged(ILabelObject labelObject, int pos),
-    TResult addLabelObject(ILabelObject labelObject),
-    TResult removeLabelObject(Type labelObjectType, int pos),
-    TResult updateNameData(NameData nameData),
-    TResult updateCompany(Company company, int index),
-    TResult addCompany(),
-    TResult deleteCompany(int index),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            Option<Contact> contactOption, String countryCode, bool isEditting)?
+        initialize,
+    TResult Function(String countryCode)? saved,
+    TResult Function(ILabelObject labelObject, int pos)? labelObjectChanged,
+    TResult Function(ILabelObject labelObject)? addLabelObject,
+    TResult Function(Type labelObjectType, int pos)? removeLabelObject,
+    TResult Function(NameData nameData)? updateNameData,
+    TResult Function(Company company, int index)? updateCompany,
+    TResult Function()? addCompany,
+    TResult Function(int index)? deleteCompany,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (saved != null) {
       return saved(countryCode);
     }
@@ -474,44 +455,34 @@ class _$_Saved with DiagnosticableTreeMixin implements _Saved {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initialize(_Initialize value),
-    @required TResult saved(_Saved value),
-    @required TResult labelObjectChanged(_LabelObjectChanged value),
-    @required TResult addLabelObject(_AddLabelObject value),
-    @required TResult removeLabelObject(_RemoveLabelObject value),
-    @required TResult updateNameData(_UpdateNameData value),
-    @required TResult updateCompany(_UpdateCompany value),
-    @required TResult addCompany(_AddCompany value),
-    @required TResult deleteCompany(_DeleteCompany value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_Saved value) saved,
+    required TResult Function(_LabelObjectChanged value) labelObjectChanged,
+    required TResult Function(_AddLabelObject value) addLabelObject,
+    required TResult Function(_RemoveLabelObject value) removeLabelObject,
+    required TResult Function(_UpdateNameData value) updateNameData,
+    required TResult Function(_UpdateCompany value) updateCompany,
+    required TResult Function(_AddCompany value) addCompany,
+    required TResult Function(_DeleteCompany value) deleteCompany,
   }) {
-    assert(initialize != null);
-    assert(saved != null);
-    assert(labelObjectChanged != null);
-    assert(addLabelObject != null);
-    assert(removeLabelObject != null);
-    assert(updateNameData != null);
-    assert(updateCompany != null);
-    assert(addCompany != null);
-    assert(deleteCompany != null);
     return saved(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initialize(_Initialize value),
-    TResult saved(_Saved value),
-    TResult labelObjectChanged(_LabelObjectChanged value),
-    TResult addLabelObject(_AddLabelObject value),
-    TResult removeLabelObject(_RemoveLabelObject value),
-    TResult updateNameData(_UpdateNameData value),
-    TResult updateCompany(_UpdateCompany value),
-    TResult addCompany(_AddCompany value),
-    TResult deleteCompany(_DeleteCompany value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_Saved value)? saved,
+    TResult Function(_LabelObjectChanged value)? labelObjectChanged,
+    TResult Function(_AddLabelObject value)? addLabelObject,
+    TResult Function(_RemoveLabelObject value)? removeLabelObject,
+    TResult Function(_UpdateNameData value)? updateNameData,
+    TResult Function(_UpdateCompany value)? updateCompany,
+    TResult Function(_AddCompany value)? addCompany,
+    TResult Function(_DeleteCompany value)? deleteCompany,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (saved != null) {
       return saved(this);
     }
@@ -522,9 +493,9 @@ class _$_Saved with DiagnosticableTreeMixin implements _Saved {
 abstract class _Saved implements AddContactEvent {
   const factory _Saved(String countryCode) = _$_Saved;
 
-  String get countryCode;
+  String get countryCode => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$SavedCopyWith<_Saved> get copyWith;
+  _$SavedCopyWith<_Saved> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -548,12 +519,18 @@ class __$LabelObjectChangedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object labelObject = freezed,
-    Object pos = freezed,
+    Object? labelObject = freezed,
+    Object? pos = freezed,
   }) {
     return _then(_LabelObjectChanged(
-      labelObject == freezed ? _value.labelObject : labelObject as ILabelObject,
-      pos == freezed ? _value.pos : pos as int,
+      labelObject == freezed
+          ? _value.labelObject
+          : labelObject // ignore: cast_nullable_to_non_nullable
+              as ILabelObject,
+      pos == freezed
+          ? _value.pos
+          : pos // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -562,9 +539,7 @@ class __$LabelObjectChangedCopyWithImpl<$Res>
 class _$_LabelObjectChanged
     with DiagnosticableTreeMixin
     implements _LabelObjectChanged {
-  const _$_LabelObjectChanged(this.labelObject, this.pos)
-      : assert(labelObject != null),
-        assert(pos != null);
+  const _$_LabelObjectChanged(this.labelObject, this.pos);
 
   @override
   final ILabelObject labelObject;
@@ -609,47 +584,39 @@ class _$_LabelObjectChanged
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required
-        TResult initialize(
-            Option<Contact> contactOption, String countryCode, bool isEditting),
-    @required TResult saved(String countryCode),
-    @required TResult labelObjectChanged(ILabelObject labelObject, int pos),
-    @required TResult addLabelObject(ILabelObject labelObject),
-    @required TResult removeLabelObject(Type labelObjectType, int pos),
-    @required TResult updateNameData(NameData nameData),
-    @required TResult updateCompany(Company company, int index),
-    @required TResult addCompany(),
-    @required TResult deleteCompany(int index),
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            Option<Contact> contactOption, String countryCode, bool isEditting)
+        initialize,
+    required TResult Function(String countryCode) saved,
+    required TResult Function(ILabelObject labelObject, int pos)
+        labelObjectChanged,
+    required TResult Function(ILabelObject labelObject) addLabelObject,
+    required TResult Function(Type labelObjectType, int pos) removeLabelObject,
+    required TResult Function(NameData nameData) updateNameData,
+    required TResult Function(Company company, int index) updateCompany,
+    required TResult Function() addCompany,
+    required TResult Function(int index) deleteCompany,
   }) {
-    assert(initialize != null);
-    assert(saved != null);
-    assert(labelObjectChanged != null);
-    assert(addLabelObject != null);
-    assert(removeLabelObject != null);
-    assert(updateNameData != null);
-    assert(updateCompany != null);
-    assert(addCompany != null);
-    assert(deleteCompany != null);
     return labelObjectChanged(labelObject, pos);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initialize(
-        Option<Contact> contactOption, String countryCode, bool isEditting),
-    TResult saved(String countryCode),
-    TResult labelObjectChanged(ILabelObject labelObject, int pos),
-    TResult addLabelObject(ILabelObject labelObject),
-    TResult removeLabelObject(Type labelObjectType, int pos),
-    TResult updateNameData(NameData nameData),
-    TResult updateCompany(Company company, int index),
-    TResult addCompany(),
-    TResult deleteCompany(int index),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            Option<Contact> contactOption, String countryCode, bool isEditting)?
+        initialize,
+    TResult Function(String countryCode)? saved,
+    TResult Function(ILabelObject labelObject, int pos)? labelObjectChanged,
+    TResult Function(ILabelObject labelObject)? addLabelObject,
+    TResult Function(Type labelObjectType, int pos)? removeLabelObject,
+    TResult Function(NameData nameData)? updateNameData,
+    TResult Function(Company company, int index)? updateCompany,
+    TResult Function()? addCompany,
+    TResult Function(int index)? deleteCompany,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (labelObjectChanged != null) {
       return labelObjectChanged(labelObject, pos);
     }
@@ -658,44 +625,34 @@ class _$_LabelObjectChanged
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initialize(_Initialize value),
-    @required TResult saved(_Saved value),
-    @required TResult labelObjectChanged(_LabelObjectChanged value),
-    @required TResult addLabelObject(_AddLabelObject value),
-    @required TResult removeLabelObject(_RemoveLabelObject value),
-    @required TResult updateNameData(_UpdateNameData value),
-    @required TResult updateCompany(_UpdateCompany value),
-    @required TResult addCompany(_AddCompany value),
-    @required TResult deleteCompany(_DeleteCompany value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_Saved value) saved,
+    required TResult Function(_LabelObjectChanged value) labelObjectChanged,
+    required TResult Function(_AddLabelObject value) addLabelObject,
+    required TResult Function(_RemoveLabelObject value) removeLabelObject,
+    required TResult Function(_UpdateNameData value) updateNameData,
+    required TResult Function(_UpdateCompany value) updateCompany,
+    required TResult Function(_AddCompany value) addCompany,
+    required TResult Function(_DeleteCompany value) deleteCompany,
   }) {
-    assert(initialize != null);
-    assert(saved != null);
-    assert(labelObjectChanged != null);
-    assert(addLabelObject != null);
-    assert(removeLabelObject != null);
-    assert(updateNameData != null);
-    assert(updateCompany != null);
-    assert(addCompany != null);
-    assert(deleteCompany != null);
     return labelObjectChanged(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initialize(_Initialize value),
-    TResult saved(_Saved value),
-    TResult labelObjectChanged(_LabelObjectChanged value),
-    TResult addLabelObject(_AddLabelObject value),
-    TResult removeLabelObject(_RemoveLabelObject value),
-    TResult updateNameData(_UpdateNameData value),
-    TResult updateCompany(_UpdateCompany value),
-    TResult addCompany(_AddCompany value),
-    TResult deleteCompany(_DeleteCompany value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_Saved value)? saved,
+    TResult Function(_LabelObjectChanged value)? labelObjectChanged,
+    TResult Function(_AddLabelObject value)? addLabelObject,
+    TResult Function(_RemoveLabelObject value)? removeLabelObject,
+    TResult Function(_UpdateNameData value)? updateNameData,
+    TResult Function(_UpdateCompany value)? updateCompany,
+    TResult Function(_AddCompany value)? addCompany,
+    TResult Function(_DeleteCompany value)? deleteCompany,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (labelObjectChanged != null) {
       return labelObjectChanged(this);
     }
@@ -707,10 +664,11 @@ abstract class _LabelObjectChanged implements AddContactEvent {
   const factory _LabelObjectChanged(ILabelObject labelObject, int pos) =
       _$_LabelObjectChanged;
 
-  ILabelObject get labelObject;
-  int get pos;
+  ILabelObject get labelObject => throw _privateConstructorUsedError;
+  int get pos => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$LabelObjectChangedCopyWith<_LabelObjectChanged> get copyWith;
+  _$LabelObjectChangedCopyWith<_LabelObjectChanged> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -734,10 +692,13 @@ class __$AddLabelObjectCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object labelObject = freezed,
+    Object? labelObject = freezed,
   }) {
     return _then(_AddLabelObject(
-      labelObject == freezed ? _value.labelObject : labelObject as ILabelObject,
+      labelObject == freezed
+          ? _value.labelObject
+          : labelObject // ignore: cast_nullable_to_non_nullable
+              as ILabelObject,
     ));
   }
 }
@@ -746,7 +707,7 @@ class __$AddLabelObjectCopyWithImpl<$Res>
 class _$_AddLabelObject
     with DiagnosticableTreeMixin
     implements _AddLabelObject {
-  const _$_AddLabelObject(this.labelObject) : assert(labelObject != null);
+  const _$_AddLabelObject(this.labelObject);
 
   @override
   final ILabelObject labelObject;
@@ -784,47 +745,39 @@ class _$_AddLabelObject
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required
-        TResult initialize(
-            Option<Contact> contactOption, String countryCode, bool isEditting),
-    @required TResult saved(String countryCode),
-    @required TResult labelObjectChanged(ILabelObject labelObject, int pos),
-    @required TResult addLabelObject(ILabelObject labelObject),
-    @required TResult removeLabelObject(Type labelObjectType, int pos),
-    @required TResult updateNameData(NameData nameData),
-    @required TResult updateCompany(Company company, int index),
-    @required TResult addCompany(),
-    @required TResult deleteCompany(int index),
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            Option<Contact> contactOption, String countryCode, bool isEditting)
+        initialize,
+    required TResult Function(String countryCode) saved,
+    required TResult Function(ILabelObject labelObject, int pos)
+        labelObjectChanged,
+    required TResult Function(ILabelObject labelObject) addLabelObject,
+    required TResult Function(Type labelObjectType, int pos) removeLabelObject,
+    required TResult Function(NameData nameData) updateNameData,
+    required TResult Function(Company company, int index) updateCompany,
+    required TResult Function() addCompany,
+    required TResult Function(int index) deleteCompany,
   }) {
-    assert(initialize != null);
-    assert(saved != null);
-    assert(labelObjectChanged != null);
-    assert(addLabelObject != null);
-    assert(removeLabelObject != null);
-    assert(updateNameData != null);
-    assert(updateCompany != null);
-    assert(addCompany != null);
-    assert(deleteCompany != null);
     return addLabelObject(labelObject);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initialize(
-        Option<Contact> contactOption, String countryCode, bool isEditting),
-    TResult saved(String countryCode),
-    TResult labelObjectChanged(ILabelObject labelObject, int pos),
-    TResult addLabelObject(ILabelObject labelObject),
-    TResult removeLabelObject(Type labelObjectType, int pos),
-    TResult updateNameData(NameData nameData),
-    TResult updateCompany(Company company, int index),
-    TResult addCompany(),
-    TResult deleteCompany(int index),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            Option<Contact> contactOption, String countryCode, bool isEditting)?
+        initialize,
+    TResult Function(String countryCode)? saved,
+    TResult Function(ILabelObject labelObject, int pos)? labelObjectChanged,
+    TResult Function(ILabelObject labelObject)? addLabelObject,
+    TResult Function(Type labelObjectType, int pos)? removeLabelObject,
+    TResult Function(NameData nameData)? updateNameData,
+    TResult Function(Company company, int index)? updateCompany,
+    TResult Function()? addCompany,
+    TResult Function(int index)? deleteCompany,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (addLabelObject != null) {
       return addLabelObject(labelObject);
     }
@@ -833,44 +786,34 @@ class _$_AddLabelObject
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initialize(_Initialize value),
-    @required TResult saved(_Saved value),
-    @required TResult labelObjectChanged(_LabelObjectChanged value),
-    @required TResult addLabelObject(_AddLabelObject value),
-    @required TResult removeLabelObject(_RemoveLabelObject value),
-    @required TResult updateNameData(_UpdateNameData value),
-    @required TResult updateCompany(_UpdateCompany value),
-    @required TResult addCompany(_AddCompany value),
-    @required TResult deleteCompany(_DeleteCompany value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_Saved value) saved,
+    required TResult Function(_LabelObjectChanged value) labelObjectChanged,
+    required TResult Function(_AddLabelObject value) addLabelObject,
+    required TResult Function(_RemoveLabelObject value) removeLabelObject,
+    required TResult Function(_UpdateNameData value) updateNameData,
+    required TResult Function(_UpdateCompany value) updateCompany,
+    required TResult Function(_AddCompany value) addCompany,
+    required TResult Function(_DeleteCompany value) deleteCompany,
   }) {
-    assert(initialize != null);
-    assert(saved != null);
-    assert(labelObjectChanged != null);
-    assert(addLabelObject != null);
-    assert(removeLabelObject != null);
-    assert(updateNameData != null);
-    assert(updateCompany != null);
-    assert(addCompany != null);
-    assert(deleteCompany != null);
     return addLabelObject(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initialize(_Initialize value),
-    TResult saved(_Saved value),
-    TResult labelObjectChanged(_LabelObjectChanged value),
-    TResult addLabelObject(_AddLabelObject value),
-    TResult removeLabelObject(_RemoveLabelObject value),
-    TResult updateNameData(_UpdateNameData value),
-    TResult updateCompany(_UpdateCompany value),
-    TResult addCompany(_AddCompany value),
-    TResult deleteCompany(_DeleteCompany value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_Saved value)? saved,
+    TResult Function(_LabelObjectChanged value)? labelObjectChanged,
+    TResult Function(_AddLabelObject value)? addLabelObject,
+    TResult Function(_RemoveLabelObject value)? removeLabelObject,
+    TResult Function(_UpdateNameData value)? updateNameData,
+    TResult Function(_UpdateCompany value)? updateCompany,
+    TResult Function(_AddCompany value)? addCompany,
+    TResult Function(_DeleteCompany value)? deleteCompany,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (addLabelObject != null) {
       return addLabelObject(this);
     }
@@ -881,9 +824,10 @@ class _$_AddLabelObject
 abstract class _AddLabelObject implements AddContactEvent {
   const factory _AddLabelObject(ILabelObject labelObject) = _$_AddLabelObject;
 
-  ILabelObject get labelObject;
+  ILabelObject get labelObject => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$AddLabelObjectCopyWith<_AddLabelObject> get copyWith;
+  _$AddLabelObjectCopyWith<_AddLabelObject> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -907,14 +851,18 @@ class __$RemoveLabelObjectCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object labelObjectType = freezed,
-    Object pos = freezed,
+    Object? labelObjectType = freezed,
+    Object? pos = freezed,
   }) {
     return _then(_RemoveLabelObject(
       labelObjectType == freezed
           ? _value.labelObjectType
-          : labelObjectType as Type,
-      pos == freezed ? _value.pos : pos as int,
+          : labelObjectType // ignore: cast_nullable_to_non_nullable
+              as Type,
+      pos == freezed
+          ? _value.pos
+          : pos // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -923,9 +871,7 @@ class __$RemoveLabelObjectCopyWithImpl<$Res>
 class _$_RemoveLabelObject
     with DiagnosticableTreeMixin
     implements _RemoveLabelObject {
-  const _$_RemoveLabelObject(this.labelObjectType, this.pos)
-      : assert(labelObjectType != null),
-        assert(pos != null);
+  const _$_RemoveLabelObject(this.labelObjectType, this.pos);
 
   @override
   final Type labelObjectType;
@@ -970,47 +916,39 @@ class _$_RemoveLabelObject
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required
-        TResult initialize(
-            Option<Contact> contactOption, String countryCode, bool isEditting),
-    @required TResult saved(String countryCode),
-    @required TResult labelObjectChanged(ILabelObject labelObject, int pos),
-    @required TResult addLabelObject(ILabelObject labelObject),
-    @required TResult removeLabelObject(Type labelObjectType, int pos),
-    @required TResult updateNameData(NameData nameData),
-    @required TResult updateCompany(Company company, int index),
-    @required TResult addCompany(),
-    @required TResult deleteCompany(int index),
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            Option<Contact> contactOption, String countryCode, bool isEditting)
+        initialize,
+    required TResult Function(String countryCode) saved,
+    required TResult Function(ILabelObject labelObject, int pos)
+        labelObjectChanged,
+    required TResult Function(ILabelObject labelObject) addLabelObject,
+    required TResult Function(Type labelObjectType, int pos) removeLabelObject,
+    required TResult Function(NameData nameData) updateNameData,
+    required TResult Function(Company company, int index) updateCompany,
+    required TResult Function() addCompany,
+    required TResult Function(int index) deleteCompany,
   }) {
-    assert(initialize != null);
-    assert(saved != null);
-    assert(labelObjectChanged != null);
-    assert(addLabelObject != null);
-    assert(removeLabelObject != null);
-    assert(updateNameData != null);
-    assert(updateCompany != null);
-    assert(addCompany != null);
-    assert(deleteCompany != null);
     return removeLabelObject(labelObjectType, pos);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initialize(
-        Option<Contact> contactOption, String countryCode, bool isEditting),
-    TResult saved(String countryCode),
-    TResult labelObjectChanged(ILabelObject labelObject, int pos),
-    TResult addLabelObject(ILabelObject labelObject),
-    TResult removeLabelObject(Type labelObjectType, int pos),
-    TResult updateNameData(NameData nameData),
-    TResult updateCompany(Company company, int index),
-    TResult addCompany(),
-    TResult deleteCompany(int index),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            Option<Contact> contactOption, String countryCode, bool isEditting)?
+        initialize,
+    TResult Function(String countryCode)? saved,
+    TResult Function(ILabelObject labelObject, int pos)? labelObjectChanged,
+    TResult Function(ILabelObject labelObject)? addLabelObject,
+    TResult Function(Type labelObjectType, int pos)? removeLabelObject,
+    TResult Function(NameData nameData)? updateNameData,
+    TResult Function(Company company, int index)? updateCompany,
+    TResult Function()? addCompany,
+    TResult Function(int index)? deleteCompany,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (removeLabelObject != null) {
       return removeLabelObject(labelObjectType, pos);
     }
@@ -1019,44 +957,34 @@ class _$_RemoveLabelObject
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initialize(_Initialize value),
-    @required TResult saved(_Saved value),
-    @required TResult labelObjectChanged(_LabelObjectChanged value),
-    @required TResult addLabelObject(_AddLabelObject value),
-    @required TResult removeLabelObject(_RemoveLabelObject value),
-    @required TResult updateNameData(_UpdateNameData value),
-    @required TResult updateCompany(_UpdateCompany value),
-    @required TResult addCompany(_AddCompany value),
-    @required TResult deleteCompany(_DeleteCompany value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_Saved value) saved,
+    required TResult Function(_LabelObjectChanged value) labelObjectChanged,
+    required TResult Function(_AddLabelObject value) addLabelObject,
+    required TResult Function(_RemoveLabelObject value) removeLabelObject,
+    required TResult Function(_UpdateNameData value) updateNameData,
+    required TResult Function(_UpdateCompany value) updateCompany,
+    required TResult Function(_AddCompany value) addCompany,
+    required TResult Function(_DeleteCompany value) deleteCompany,
   }) {
-    assert(initialize != null);
-    assert(saved != null);
-    assert(labelObjectChanged != null);
-    assert(addLabelObject != null);
-    assert(removeLabelObject != null);
-    assert(updateNameData != null);
-    assert(updateCompany != null);
-    assert(addCompany != null);
-    assert(deleteCompany != null);
     return removeLabelObject(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initialize(_Initialize value),
-    TResult saved(_Saved value),
-    TResult labelObjectChanged(_LabelObjectChanged value),
-    TResult addLabelObject(_AddLabelObject value),
-    TResult removeLabelObject(_RemoveLabelObject value),
-    TResult updateNameData(_UpdateNameData value),
-    TResult updateCompany(_UpdateCompany value),
-    TResult addCompany(_AddCompany value),
-    TResult deleteCompany(_DeleteCompany value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_Saved value)? saved,
+    TResult Function(_LabelObjectChanged value)? labelObjectChanged,
+    TResult Function(_AddLabelObject value)? addLabelObject,
+    TResult Function(_RemoveLabelObject value)? removeLabelObject,
+    TResult Function(_UpdateNameData value)? updateNameData,
+    TResult Function(_UpdateCompany value)? updateCompany,
+    TResult Function(_AddCompany value)? addCompany,
+    TResult Function(_DeleteCompany value)? deleteCompany,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (removeLabelObject != null) {
       return removeLabelObject(this);
     }
@@ -1068,10 +996,11 @@ abstract class _RemoveLabelObject implements AddContactEvent {
   const factory _RemoveLabelObject(Type labelObjectType, int pos) =
       _$_RemoveLabelObject;
 
-  Type get labelObjectType;
-  int get pos;
+  Type get labelObjectType => throw _privateConstructorUsedError;
+  int get pos => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$RemoveLabelObjectCopyWith<_RemoveLabelObject> get copyWith;
+  _$RemoveLabelObjectCopyWith<_RemoveLabelObject> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1097,18 +1026,18 @@ class __$UpdateNameDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object nameData = freezed,
+    Object? nameData = freezed,
   }) {
     return _then(_UpdateNameData(
-      nameData == freezed ? _value.nameData : nameData as NameData,
+      nameData == freezed
+          ? _value.nameData
+          : nameData // ignore: cast_nullable_to_non_nullable
+              as NameData,
     ));
   }
 
   @override
   $NameDataCopyWith<$Res> get nameData {
-    if (_value.nameData == null) {
-      return null;
-    }
     return $NameDataCopyWith<$Res>(_value.nameData, (value) {
       return _then(_value.copyWith(nameData: value));
     });
@@ -1119,7 +1048,7 @@ class __$UpdateNameDataCopyWithImpl<$Res>
 class _$_UpdateNameData
     with DiagnosticableTreeMixin
     implements _UpdateNameData {
-  const _$_UpdateNameData(this.nameData) : assert(nameData != null);
+  const _$_UpdateNameData(this.nameData);
 
   @override
   final NameData nameData;
@@ -1157,47 +1086,39 @@ class _$_UpdateNameData
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required
-        TResult initialize(
-            Option<Contact> contactOption, String countryCode, bool isEditting),
-    @required TResult saved(String countryCode),
-    @required TResult labelObjectChanged(ILabelObject labelObject, int pos),
-    @required TResult addLabelObject(ILabelObject labelObject),
-    @required TResult removeLabelObject(Type labelObjectType, int pos),
-    @required TResult updateNameData(NameData nameData),
-    @required TResult updateCompany(Company company, int index),
-    @required TResult addCompany(),
-    @required TResult deleteCompany(int index),
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            Option<Contact> contactOption, String countryCode, bool isEditting)
+        initialize,
+    required TResult Function(String countryCode) saved,
+    required TResult Function(ILabelObject labelObject, int pos)
+        labelObjectChanged,
+    required TResult Function(ILabelObject labelObject) addLabelObject,
+    required TResult Function(Type labelObjectType, int pos) removeLabelObject,
+    required TResult Function(NameData nameData) updateNameData,
+    required TResult Function(Company company, int index) updateCompany,
+    required TResult Function() addCompany,
+    required TResult Function(int index) deleteCompany,
   }) {
-    assert(initialize != null);
-    assert(saved != null);
-    assert(labelObjectChanged != null);
-    assert(addLabelObject != null);
-    assert(removeLabelObject != null);
-    assert(updateNameData != null);
-    assert(updateCompany != null);
-    assert(addCompany != null);
-    assert(deleteCompany != null);
     return updateNameData(nameData);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initialize(
-        Option<Contact> contactOption, String countryCode, bool isEditting),
-    TResult saved(String countryCode),
-    TResult labelObjectChanged(ILabelObject labelObject, int pos),
-    TResult addLabelObject(ILabelObject labelObject),
-    TResult removeLabelObject(Type labelObjectType, int pos),
-    TResult updateNameData(NameData nameData),
-    TResult updateCompany(Company company, int index),
-    TResult addCompany(),
-    TResult deleteCompany(int index),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            Option<Contact> contactOption, String countryCode, bool isEditting)?
+        initialize,
+    TResult Function(String countryCode)? saved,
+    TResult Function(ILabelObject labelObject, int pos)? labelObjectChanged,
+    TResult Function(ILabelObject labelObject)? addLabelObject,
+    TResult Function(Type labelObjectType, int pos)? removeLabelObject,
+    TResult Function(NameData nameData)? updateNameData,
+    TResult Function(Company company, int index)? updateCompany,
+    TResult Function()? addCompany,
+    TResult Function(int index)? deleteCompany,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (updateNameData != null) {
       return updateNameData(nameData);
     }
@@ -1206,44 +1127,34 @@ class _$_UpdateNameData
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initialize(_Initialize value),
-    @required TResult saved(_Saved value),
-    @required TResult labelObjectChanged(_LabelObjectChanged value),
-    @required TResult addLabelObject(_AddLabelObject value),
-    @required TResult removeLabelObject(_RemoveLabelObject value),
-    @required TResult updateNameData(_UpdateNameData value),
-    @required TResult updateCompany(_UpdateCompany value),
-    @required TResult addCompany(_AddCompany value),
-    @required TResult deleteCompany(_DeleteCompany value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_Saved value) saved,
+    required TResult Function(_LabelObjectChanged value) labelObjectChanged,
+    required TResult Function(_AddLabelObject value) addLabelObject,
+    required TResult Function(_RemoveLabelObject value) removeLabelObject,
+    required TResult Function(_UpdateNameData value) updateNameData,
+    required TResult Function(_UpdateCompany value) updateCompany,
+    required TResult Function(_AddCompany value) addCompany,
+    required TResult Function(_DeleteCompany value) deleteCompany,
   }) {
-    assert(initialize != null);
-    assert(saved != null);
-    assert(labelObjectChanged != null);
-    assert(addLabelObject != null);
-    assert(removeLabelObject != null);
-    assert(updateNameData != null);
-    assert(updateCompany != null);
-    assert(addCompany != null);
-    assert(deleteCompany != null);
     return updateNameData(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initialize(_Initialize value),
-    TResult saved(_Saved value),
-    TResult labelObjectChanged(_LabelObjectChanged value),
-    TResult addLabelObject(_AddLabelObject value),
-    TResult removeLabelObject(_RemoveLabelObject value),
-    TResult updateNameData(_UpdateNameData value),
-    TResult updateCompany(_UpdateCompany value),
-    TResult addCompany(_AddCompany value),
-    TResult deleteCompany(_DeleteCompany value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_Saved value)? saved,
+    TResult Function(_LabelObjectChanged value)? labelObjectChanged,
+    TResult Function(_AddLabelObject value)? addLabelObject,
+    TResult Function(_RemoveLabelObject value)? removeLabelObject,
+    TResult Function(_UpdateNameData value)? updateNameData,
+    TResult Function(_UpdateCompany value)? updateCompany,
+    TResult Function(_AddCompany value)? addCompany,
+    TResult Function(_DeleteCompany value)? deleteCompany,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (updateNameData != null) {
       return updateNameData(this);
     }
@@ -1254,9 +1165,10 @@ class _$_UpdateNameData
 abstract class _UpdateNameData implements AddContactEvent {
   const factory _UpdateNameData(NameData nameData) = _$_UpdateNameData;
 
-  NameData get nameData;
+  NameData get nameData => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$UpdateNameDataCopyWith<_UpdateNameData> get copyWith;
+  _$UpdateNameDataCopyWith<_UpdateNameData> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1282,20 +1194,23 @@ class __$UpdateCompanyCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object company = freezed,
-    Object index = freezed,
+    Object? company = freezed,
+    Object? index = freezed,
   }) {
     return _then(_UpdateCompany(
-      company == freezed ? _value.company : company as Company,
-      index == freezed ? _value.index : index as int,
+      company == freezed
+          ? _value.company
+          : company // ignore: cast_nullable_to_non_nullable
+              as Company,
+      index == freezed
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 
   @override
   $CompanyCopyWith<$Res> get company {
-    if (_value.company == null) {
-      return null;
-    }
     return $CompanyCopyWith<$Res>(_value.company, (value) {
       return _then(_value.copyWith(company: value));
     });
@@ -1304,9 +1219,7 @@ class __$UpdateCompanyCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_UpdateCompany with DiagnosticableTreeMixin implements _UpdateCompany {
-  const _$_UpdateCompany(this.company, this.index)
-      : assert(company != null),
-        assert(index != null);
+  const _$_UpdateCompany(this.company, this.index);
 
   @override
   final Company company;
@@ -1351,47 +1264,39 @@ class _$_UpdateCompany with DiagnosticableTreeMixin implements _UpdateCompany {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required
-        TResult initialize(
-            Option<Contact> contactOption, String countryCode, bool isEditting),
-    @required TResult saved(String countryCode),
-    @required TResult labelObjectChanged(ILabelObject labelObject, int pos),
-    @required TResult addLabelObject(ILabelObject labelObject),
-    @required TResult removeLabelObject(Type labelObjectType, int pos),
-    @required TResult updateNameData(NameData nameData),
-    @required TResult updateCompany(Company company, int index),
-    @required TResult addCompany(),
-    @required TResult deleteCompany(int index),
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            Option<Contact> contactOption, String countryCode, bool isEditting)
+        initialize,
+    required TResult Function(String countryCode) saved,
+    required TResult Function(ILabelObject labelObject, int pos)
+        labelObjectChanged,
+    required TResult Function(ILabelObject labelObject) addLabelObject,
+    required TResult Function(Type labelObjectType, int pos) removeLabelObject,
+    required TResult Function(NameData nameData) updateNameData,
+    required TResult Function(Company company, int index) updateCompany,
+    required TResult Function() addCompany,
+    required TResult Function(int index) deleteCompany,
   }) {
-    assert(initialize != null);
-    assert(saved != null);
-    assert(labelObjectChanged != null);
-    assert(addLabelObject != null);
-    assert(removeLabelObject != null);
-    assert(updateNameData != null);
-    assert(updateCompany != null);
-    assert(addCompany != null);
-    assert(deleteCompany != null);
     return updateCompany(company, index);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initialize(
-        Option<Contact> contactOption, String countryCode, bool isEditting),
-    TResult saved(String countryCode),
-    TResult labelObjectChanged(ILabelObject labelObject, int pos),
-    TResult addLabelObject(ILabelObject labelObject),
-    TResult removeLabelObject(Type labelObjectType, int pos),
-    TResult updateNameData(NameData nameData),
-    TResult updateCompany(Company company, int index),
-    TResult addCompany(),
-    TResult deleteCompany(int index),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            Option<Contact> contactOption, String countryCode, bool isEditting)?
+        initialize,
+    TResult Function(String countryCode)? saved,
+    TResult Function(ILabelObject labelObject, int pos)? labelObjectChanged,
+    TResult Function(ILabelObject labelObject)? addLabelObject,
+    TResult Function(Type labelObjectType, int pos)? removeLabelObject,
+    TResult Function(NameData nameData)? updateNameData,
+    TResult Function(Company company, int index)? updateCompany,
+    TResult Function()? addCompany,
+    TResult Function(int index)? deleteCompany,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (updateCompany != null) {
       return updateCompany(company, index);
     }
@@ -1400,44 +1305,34 @@ class _$_UpdateCompany with DiagnosticableTreeMixin implements _UpdateCompany {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initialize(_Initialize value),
-    @required TResult saved(_Saved value),
-    @required TResult labelObjectChanged(_LabelObjectChanged value),
-    @required TResult addLabelObject(_AddLabelObject value),
-    @required TResult removeLabelObject(_RemoveLabelObject value),
-    @required TResult updateNameData(_UpdateNameData value),
-    @required TResult updateCompany(_UpdateCompany value),
-    @required TResult addCompany(_AddCompany value),
-    @required TResult deleteCompany(_DeleteCompany value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_Saved value) saved,
+    required TResult Function(_LabelObjectChanged value) labelObjectChanged,
+    required TResult Function(_AddLabelObject value) addLabelObject,
+    required TResult Function(_RemoveLabelObject value) removeLabelObject,
+    required TResult Function(_UpdateNameData value) updateNameData,
+    required TResult Function(_UpdateCompany value) updateCompany,
+    required TResult Function(_AddCompany value) addCompany,
+    required TResult Function(_DeleteCompany value) deleteCompany,
   }) {
-    assert(initialize != null);
-    assert(saved != null);
-    assert(labelObjectChanged != null);
-    assert(addLabelObject != null);
-    assert(removeLabelObject != null);
-    assert(updateNameData != null);
-    assert(updateCompany != null);
-    assert(addCompany != null);
-    assert(deleteCompany != null);
     return updateCompany(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initialize(_Initialize value),
-    TResult saved(_Saved value),
-    TResult labelObjectChanged(_LabelObjectChanged value),
-    TResult addLabelObject(_AddLabelObject value),
-    TResult removeLabelObject(_RemoveLabelObject value),
-    TResult updateNameData(_UpdateNameData value),
-    TResult updateCompany(_UpdateCompany value),
-    TResult addCompany(_AddCompany value),
-    TResult deleteCompany(_DeleteCompany value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_Saved value)? saved,
+    TResult Function(_LabelObjectChanged value)? labelObjectChanged,
+    TResult Function(_AddLabelObject value)? addLabelObject,
+    TResult Function(_RemoveLabelObject value)? removeLabelObject,
+    TResult Function(_UpdateNameData value)? updateNameData,
+    TResult Function(_UpdateCompany value)? updateCompany,
+    TResult Function(_AddCompany value)? addCompany,
+    TResult Function(_DeleteCompany value)? deleteCompany,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (updateCompany != null) {
       return updateCompany(this);
     }
@@ -1448,10 +1343,11 @@ class _$_UpdateCompany with DiagnosticableTreeMixin implements _UpdateCompany {
 abstract class _UpdateCompany implements AddContactEvent {
   const factory _UpdateCompany(Company company, int index) = _$_UpdateCompany;
 
-  Company get company;
-  int get index;
+  Company get company => throw _privateConstructorUsedError;
+  int get index => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$UpdateCompanyCopyWith<_UpdateCompany> get copyWith;
+  _$UpdateCompanyCopyWith<_UpdateCompany> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1498,47 +1394,39 @@ class _$_AddCompany with DiagnosticableTreeMixin implements _AddCompany {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required
-        TResult initialize(
-            Option<Contact> contactOption, String countryCode, bool isEditting),
-    @required TResult saved(String countryCode),
-    @required TResult labelObjectChanged(ILabelObject labelObject, int pos),
-    @required TResult addLabelObject(ILabelObject labelObject),
-    @required TResult removeLabelObject(Type labelObjectType, int pos),
-    @required TResult updateNameData(NameData nameData),
-    @required TResult updateCompany(Company company, int index),
-    @required TResult addCompany(),
-    @required TResult deleteCompany(int index),
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            Option<Contact> contactOption, String countryCode, bool isEditting)
+        initialize,
+    required TResult Function(String countryCode) saved,
+    required TResult Function(ILabelObject labelObject, int pos)
+        labelObjectChanged,
+    required TResult Function(ILabelObject labelObject) addLabelObject,
+    required TResult Function(Type labelObjectType, int pos) removeLabelObject,
+    required TResult Function(NameData nameData) updateNameData,
+    required TResult Function(Company company, int index) updateCompany,
+    required TResult Function() addCompany,
+    required TResult Function(int index) deleteCompany,
   }) {
-    assert(initialize != null);
-    assert(saved != null);
-    assert(labelObjectChanged != null);
-    assert(addLabelObject != null);
-    assert(removeLabelObject != null);
-    assert(updateNameData != null);
-    assert(updateCompany != null);
-    assert(addCompany != null);
-    assert(deleteCompany != null);
     return addCompany();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initialize(
-        Option<Contact> contactOption, String countryCode, bool isEditting),
-    TResult saved(String countryCode),
-    TResult labelObjectChanged(ILabelObject labelObject, int pos),
-    TResult addLabelObject(ILabelObject labelObject),
-    TResult removeLabelObject(Type labelObjectType, int pos),
-    TResult updateNameData(NameData nameData),
-    TResult updateCompany(Company company, int index),
-    TResult addCompany(),
-    TResult deleteCompany(int index),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            Option<Contact> contactOption, String countryCode, bool isEditting)?
+        initialize,
+    TResult Function(String countryCode)? saved,
+    TResult Function(ILabelObject labelObject, int pos)? labelObjectChanged,
+    TResult Function(ILabelObject labelObject)? addLabelObject,
+    TResult Function(Type labelObjectType, int pos)? removeLabelObject,
+    TResult Function(NameData nameData)? updateNameData,
+    TResult Function(Company company, int index)? updateCompany,
+    TResult Function()? addCompany,
+    TResult Function(int index)? deleteCompany,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (addCompany != null) {
       return addCompany();
     }
@@ -1547,44 +1435,34 @@ class _$_AddCompany with DiagnosticableTreeMixin implements _AddCompany {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initialize(_Initialize value),
-    @required TResult saved(_Saved value),
-    @required TResult labelObjectChanged(_LabelObjectChanged value),
-    @required TResult addLabelObject(_AddLabelObject value),
-    @required TResult removeLabelObject(_RemoveLabelObject value),
-    @required TResult updateNameData(_UpdateNameData value),
-    @required TResult updateCompany(_UpdateCompany value),
-    @required TResult addCompany(_AddCompany value),
-    @required TResult deleteCompany(_DeleteCompany value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_Saved value) saved,
+    required TResult Function(_LabelObjectChanged value) labelObjectChanged,
+    required TResult Function(_AddLabelObject value) addLabelObject,
+    required TResult Function(_RemoveLabelObject value) removeLabelObject,
+    required TResult Function(_UpdateNameData value) updateNameData,
+    required TResult Function(_UpdateCompany value) updateCompany,
+    required TResult Function(_AddCompany value) addCompany,
+    required TResult Function(_DeleteCompany value) deleteCompany,
   }) {
-    assert(initialize != null);
-    assert(saved != null);
-    assert(labelObjectChanged != null);
-    assert(addLabelObject != null);
-    assert(removeLabelObject != null);
-    assert(updateNameData != null);
-    assert(updateCompany != null);
-    assert(addCompany != null);
-    assert(deleteCompany != null);
     return addCompany(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initialize(_Initialize value),
-    TResult saved(_Saved value),
-    TResult labelObjectChanged(_LabelObjectChanged value),
-    TResult addLabelObject(_AddLabelObject value),
-    TResult removeLabelObject(_RemoveLabelObject value),
-    TResult updateNameData(_UpdateNameData value),
-    TResult updateCompany(_UpdateCompany value),
-    TResult addCompany(_AddCompany value),
-    TResult deleteCompany(_DeleteCompany value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_Saved value)? saved,
+    TResult Function(_LabelObjectChanged value)? labelObjectChanged,
+    TResult Function(_AddLabelObject value)? addLabelObject,
+    TResult Function(_RemoveLabelObject value)? removeLabelObject,
+    TResult Function(_UpdateNameData value)? updateNameData,
+    TResult Function(_UpdateCompany value)? updateCompany,
+    TResult Function(_AddCompany value)? addCompany,
+    TResult Function(_DeleteCompany value)? deleteCompany,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (addCompany != null) {
       return addCompany(this);
     }
@@ -1617,17 +1495,20 @@ class __$DeleteCompanyCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object index = freezed,
+    Object? index = freezed,
   }) {
     return _then(_DeleteCompany(
-      index == freezed ? _value.index : index as int,
+      index == freezed
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
 
 /// @nodoc
 class _$_DeleteCompany with DiagnosticableTreeMixin implements _DeleteCompany {
-  const _$_DeleteCompany(this.index) : assert(index != null);
+  const _$_DeleteCompany(this.index);
 
   @override
   final int index;
@@ -1664,47 +1545,39 @@ class _$_DeleteCompany with DiagnosticableTreeMixin implements _DeleteCompany {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required
-        TResult initialize(
-            Option<Contact> contactOption, String countryCode, bool isEditting),
-    @required TResult saved(String countryCode),
-    @required TResult labelObjectChanged(ILabelObject labelObject, int pos),
-    @required TResult addLabelObject(ILabelObject labelObject),
-    @required TResult removeLabelObject(Type labelObjectType, int pos),
-    @required TResult updateNameData(NameData nameData),
-    @required TResult updateCompany(Company company, int index),
-    @required TResult addCompany(),
-    @required TResult deleteCompany(int index),
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            Option<Contact> contactOption, String countryCode, bool isEditting)
+        initialize,
+    required TResult Function(String countryCode) saved,
+    required TResult Function(ILabelObject labelObject, int pos)
+        labelObjectChanged,
+    required TResult Function(ILabelObject labelObject) addLabelObject,
+    required TResult Function(Type labelObjectType, int pos) removeLabelObject,
+    required TResult Function(NameData nameData) updateNameData,
+    required TResult Function(Company company, int index) updateCompany,
+    required TResult Function() addCompany,
+    required TResult Function(int index) deleteCompany,
   }) {
-    assert(initialize != null);
-    assert(saved != null);
-    assert(labelObjectChanged != null);
-    assert(addLabelObject != null);
-    assert(removeLabelObject != null);
-    assert(updateNameData != null);
-    assert(updateCompany != null);
-    assert(addCompany != null);
-    assert(deleteCompany != null);
     return deleteCompany(index);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initialize(
-        Option<Contact> contactOption, String countryCode, bool isEditting),
-    TResult saved(String countryCode),
-    TResult labelObjectChanged(ILabelObject labelObject, int pos),
-    TResult addLabelObject(ILabelObject labelObject),
-    TResult removeLabelObject(Type labelObjectType, int pos),
-    TResult updateNameData(NameData nameData),
-    TResult updateCompany(Company company, int index),
-    TResult addCompany(),
-    TResult deleteCompany(int index),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            Option<Contact> contactOption, String countryCode, bool isEditting)?
+        initialize,
+    TResult Function(String countryCode)? saved,
+    TResult Function(ILabelObject labelObject, int pos)? labelObjectChanged,
+    TResult Function(ILabelObject labelObject)? addLabelObject,
+    TResult Function(Type labelObjectType, int pos)? removeLabelObject,
+    TResult Function(NameData nameData)? updateNameData,
+    TResult Function(Company company, int index)? updateCompany,
+    TResult Function()? addCompany,
+    TResult Function(int index)? deleteCompany,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (deleteCompany != null) {
       return deleteCompany(index);
     }
@@ -1713,44 +1586,34 @@ class _$_DeleteCompany with DiagnosticableTreeMixin implements _DeleteCompany {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initialize(_Initialize value),
-    @required TResult saved(_Saved value),
-    @required TResult labelObjectChanged(_LabelObjectChanged value),
-    @required TResult addLabelObject(_AddLabelObject value),
-    @required TResult removeLabelObject(_RemoveLabelObject value),
-    @required TResult updateNameData(_UpdateNameData value),
-    @required TResult updateCompany(_UpdateCompany value),
-    @required TResult addCompany(_AddCompany value),
-    @required TResult deleteCompany(_DeleteCompany value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_Saved value) saved,
+    required TResult Function(_LabelObjectChanged value) labelObjectChanged,
+    required TResult Function(_AddLabelObject value) addLabelObject,
+    required TResult Function(_RemoveLabelObject value) removeLabelObject,
+    required TResult Function(_UpdateNameData value) updateNameData,
+    required TResult Function(_UpdateCompany value) updateCompany,
+    required TResult Function(_AddCompany value) addCompany,
+    required TResult Function(_DeleteCompany value) deleteCompany,
   }) {
-    assert(initialize != null);
-    assert(saved != null);
-    assert(labelObjectChanged != null);
-    assert(addLabelObject != null);
-    assert(removeLabelObject != null);
-    assert(updateNameData != null);
-    assert(updateCompany != null);
-    assert(addCompany != null);
-    assert(deleteCompany != null);
     return deleteCompany(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initialize(_Initialize value),
-    TResult saved(_Saved value),
-    TResult labelObjectChanged(_LabelObjectChanged value),
-    TResult addLabelObject(_AddLabelObject value),
-    TResult removeLabelObject(_RemoveLabelObject value),
-    TResult updateNameData(_UpdateNameData value),
-    TResult updateCompany(_UpdateCompany value),
-    TResult addCompany(_AddCompany value),
-    TResult deleteCompany(_DeleteCompany value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_Saved value)? saved,
+    TResult Function(_LabelObjectChanged value)? labelObjectChanged,
+    TResult Function(_AddLabelObject value)? addLabelObject,
+    TResult Function(_RemoveLabelObject value)? removeLabelObject,
+    TResult Function(_UpdateNameData value)? updateNameData,
+    TResult Function(_UpdateCompany value)? updateCompany,
+    TResult Function(_AddCompany value)? addCompany,
+    TResult Function(_DeleteCompany value)? deleteCompany,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (deleteCompany != null) {
       return deleteCompany(this);
     }
@@ -1761,21 +1624,21 @@ class _$_DeleteCompany with DiagnosticableTreeMixin implements _DeleteCompany {
 abstract class _DeleteCompany implements AddContactEvent {
   const factory _DeleteCompany(int index) = _$_DeleteCompany;
 
-  int get index;
+  int get index => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$DeleteCompanyCopyWith<_DeleteCompany> get copyWith;
+  _$DeleteCompanyCopyWith<_DeleteCompany> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 class _$AddContactStateTearOff {
   const _$AddContactStateTearOff();
 
-// ignore: unused_element
   _AddContactState call(
-      {@required Contact contact,
-      @required bool isEditting,
-      @required bool isSaving,
-      @required Option<Either<ContactsFailure, Unit>> savingOrFailureOption}) {
+      {required Contact contact,
+      required bool isEditting,
+      required bool isSaving,
+      required Option<Either<ContactsFailure, Unit>> savingOrFailureOption}) {
     return _AddContactState(
       contact: contact,
       isEditting: isEditting,
@@ -1786,18 +1649,19 @@ class _$AddContactStateTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $AddContactState = _$AddContactStateTearOff();
 
 /// @nodoc
 mixin _$AddContactState {
-  Contact get contact;
-  bool get isEditting;
-  bool get isSaving;
-  Option<Either<ContactsFailure, Unit>> get savingOrFailureOption;
+  Contact get contact => throw _privateConstructorUsedError;
+  bool get isEditting => throw _privateConstructorUsedError;
+  bool get isSaving => throw _privateConstructorUsedError;
+  Option<Either<ContactsFailure, Unit>> get savingOrFailureOption =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $AddContactStateCopyWith<AddContactState> get copyWith;
+  $AddContactStateCopyWith<AddContactState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1825,27 +1689,33 @@ class _$AddContactStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object contact = freezed,
-    Object isEditting = freezed,
-    Object isSaving = freezed,
-    Object savingOrFailureOption = freezed,
+    Object? contact = freezed,
+    Object? isEditting = freezed,
+    Object? isSaving = freezed,
+    Object? savingOrFailureOption = freezed,
   }) {
     return _then(_value.copyWith(
-      contact: contact == freezed ? _value.contact : contact as Contact,
-      isEditting:
-          isEditting == freezed ? _value.isEditting : isEditting as bool,
-      isSaving: isSaving == freezed ? _value.isSaving : isSaving as bool,
+      contact: contact == freezed
+          ? _value.contact
+          : contact // ignore: cast_nullable_to_non_nullable
+              as Contact,
+      isEditting: isEditting == freezed
+          ? _value.isEditting
+          : isEditting // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isSaving: isSaving == freezed
+          ? _value.isSaving
+          : isSaving // ignore: cast_nullable_to_non_nullable
+              as bool,
       savingOrFailureOption: savingOrFailureOption == freezed
           ? _value.savingOrFailureOption
-          : savingOrFailureOption as Option<Either<ContactsFailure, Unit>>,
+          : savingOrFailureOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<ContactsFailure, Unit>>,
     ));
   }
 
   @override
   $ContactCopyWith<$Res> get contact {
-    if (_value.contact == null) {
-      return null;
-    }
     return $ContactCopyWith<$Res>(_value.contact, (value) {
       return _then(_value.copyWith(contact: value));
     });
@@ -1882,19 +1752,28 @@ class __$AddContactStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object contact = freezed,
-    Object isEditting = freezed,
-    Object isSaving = freezed,
-    Object savingOrFailureOption = freezed,
+    Object? contact = freezed,
+    Object? isEditting = freezed,
+    Object? isSaving = freezed,
+    Object? savingOrFailureOption = freezed,
   }) {
     return _then(_AddContactState(
-      contact: contact == freezed ? _value.contact : contact as Contact,
-      isEditting:
-          isEditting == freezed ? _value.isEditting : isEditting as bool,
-      isSaving: isSaving == freezed ? _value.isSaving : isSaving as bool,
+      contact: contact == freezed
+          ? _value.contact
+          : contact // ignore: cast_nullable_to_non_nullable
+              as Contact,
+      isEditting: isEditting == freezed
+          ? _value.isEditting
+          : isEditting // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isSaving: isSaving == freezed
+          ? _value.isSaving
+          : isSaving // ignore: cast_nullable_to_non_nullable
+              as bool,
       savingOrFailureOption: savingOrFailureOption == freezed
           ? _value.savingOrFailureOption
-          : savingOrFailureOption as Option<Either<ContactsFailure, Unit>>,
+          : savingOrFailureOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<ContactsFailure, Unit>>,
     ));
   }
 }
@@ -1902,15 +1781,11 @@ class __$AddContactStateCopyWithImpl<$Res>
 /// @nodoc
 class _$_AddContactState extends _AddContactState with DiagnosticableTreeMixin {
   const _$_AddContactState(
-      {@required this.contact,
-      @required this.isEditting,
-      @required this.isSaving,
-      @required this.savingOrFailureOption})
-      : assert(contact != null),
-        assert(isEditting != null),
-        assert(isSaving != null),
-        assert(savingOrFailureOption != null),
-        super._();
+      {required this.contact,
+      required this.isEditting,
+      required this.isSaving,
+      required this.savingOrFailureOption})
+      : super._();
 
   @override
   final Contact contact;
@@ -1971,27 +1846,25 @@ class _$_AddContactState extends _AddContactState with DiagnosticableTreeMixin {
 }
 
 abstract class _AddContactState extends AddContactState {
-  const _AddContactState._() : super._();
   const factory _AddContactState(
-          {@required
-              Contact contact,
-          @required
-              bool isEditting,
-          @required
-              bool isSaving,
-          @required
-              Option<Either<ContactsFailure, Unit>> savingOrFailureOption}) =
-      _$_AddContactState;
+      {required Contact contact,
+      required bool isEditting,
+      required bool isSaving,
+      required Option<Either<ContactsFailure, Unit>>
+          savingOrFailureOption}) = _$_AddContactState;
+  const _AddContactState._() : super._();
 
   @override
-  Contact get contact;
+  Contact get contact => throw _privateConstructorUsedError;
   @override
-  bool get isEditting;
+  bool get isEditting => throw _privateConstructorUsedError;
   @override
-  bool get isSaving;
+  bool get isSaving => throw _privateConstructorUsedError;
   @override
-  Option<Either<ContactsFailure, Unit>> get savingOrFailureOption;
+  Option<Either<ContactsFailure, Unit>> get savingOrFailureOption =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AddContactStateCopyWith<_AddContactState> get copyWith;
+  _$AddContactStateCopyWith<_AddContactState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

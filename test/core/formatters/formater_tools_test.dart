@@ -101,8 +101,8 @@ void main() {
 
   group('Remove prefix on same country', () {
     test("Should remove prefix on right country", () {
-      final String number = "+34123456789";
-      String formattedNumber = removePrefixOnNumberWhenSameCountry(number, "ES");
+      const String number = "+34123456789";
+      final String? formattedNumber = removePrefixOnNumberWhenSameCountry(number, "ES");
       expect(formattedNumber, "123 45 67 89");
     });
   });

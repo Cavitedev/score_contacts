@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'app_manager_cubit.dart';
 
@@ -9,13 +9,17 @@ part of 'app_manager_cubit.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$AppManagerStateTearOff {
   const _$AppManagerStateTearOff();
 
-// ignore: unused_element
   _AppManagerState call(
-      {ThemeMode themeMode, String region, String languageCode}) {
+      {required ThemeMode themeMode,
+      required String region,
+      String? languageCode}) {
     return _AppManagerState(
       themeMode: themeMode,
       region: region,
@@ -25,17 +29,17 @@ class _$AppManagerStateTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $AppManagerState = _$AppManagerStateTearOff();
 
 /// @nodoc
 mixin _$AppManagerState {
-  ThemeMode get themeMode;
-  String get region;
-  String get languageCode;
+  ThemeMode get themeMode => throw _privateConstructorUsedError;
+  String get region => throw _privateConstructorUsedError;
+  String? get languageCode => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $AppManagerStateCopyWith<AppManagerState> get copyWith;
+  $AppManagerStateCopyWith<AppManagerState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -43,7 +47,7 @@ abstract class $AppManagerStateCopyWith<$Res> {
   factory $AppManagerStateCopyWith(
           AppManagerState value, $Res Function(AppManagerState) then) =
       _$AppManagerStateCopyWithImpl<$Res>;
-  $Res call({ThemeMode themeMode, String region, String languageCode});
+  $Res call({ThemeMode themeMode, String region, String? languageCode});
 }
 
 /// @nodoc
@@ -57,17 +61,23 @@ class _$AppManagerStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object themeMode = freezed,
-    Object region = freezed,
-    Object languageCode = freezed,
+    Object? themeMode = freezed,
+    Object? region = freezed,
+    Object? languageCode = freezed,
   }) {
     return _then(_value.copyWith(
-      themeMode:
-          themeMode == freezed ? _value.themeMode : themeMode as ThemeMode,
-      region: region == freezed ? _value.region : region as String,
+      themeMode: themeMode == freezed
+          ? _value.themeMode
+          : themeMode // ignore: cast_nullable_to_non_nullable
+              as ThemeMode,
+      region: region == freezed
+          ? _value.region
+          : region // ignore: cast_nullable_to_non_nullable
+              as String,
       languageCode: languageCode == freezed
           ? _value.languageCode
-          : languageCode as String,
+          : languageCode // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -79,7 +89,7 @@ abstract class _$AppManagerStateCopyWith<$Res>
           _AppManagerState value, $Res Function(_AppManagerState) then) =
       __$AppManagerStateCopyWithImpl<$Res>;
   @override
-  $Res call({ThemeMode themeMode, String region, String languageCode});
+  $Res call({ThemeMode themeMode, String region, String? languageCode});
 }
 
 /// @nodoc
@@ -95,24 +105,31 @@ class __$AppManagerStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object themeMode = freezed,
-    Object region = freezed,
-    Object languageCode = freezed,
+    Object? themeMode = freezed,
+    Object? region = freezed,
+    Object? languageCode = freezed,
   }) {
     return _then(_AppManagerState(
-      themeMode:
-          themeMode == freezed ? _value.themeMode : themeMode as ThemeMode,
-      region: region == freezed ? _value.region : region as String,
+      themeMode: themeMode == freezed
+          ? _value.themeMode
+          : themeMode // ignore: cast_nullable_to_non_nullable
+              as ThemeMode,
+      region: region == freezed
+          ? _value.region
+          : region // ignore: cast_nullable_to_non_nullable
+              as String,
       languageCode: languageCode == freezed
           ? _value.languageCode
-          : languageCode as String,
+          : languageCode // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 class _$_AppManagerState extends _AppManagerState {
-  const _$_AppManagerState({this.themeMode, this.region, this.languageCode})
+  const _$_AppManagerState(
+      {required this.themeMode, required this.region, this.languageCode})
       : super._();
 
   @override
@@ -120,7 +137,7 @@ class _$_AppManagerState extends _AppManagerState {
   @override
   final String region;
   @override
-  final String languageCode;
+  final String? languageCode;
 
   @override
   String toString() {
@@ -155,19 +172,20 @@ class _$_AppManagerState extends _AppManagerState {
 }
 
 abstract class _AppManagerState extends AppManagerState {
-  const _AppManagerState._() : super._();
   const factory _AppManagerState(
-      {ThemeMode themeMode,
-      String region,
-      String languageCode}) = _$_AppManagerState;
+      {required ThemeMode themeMode,
+      required String region,
+      String? languageCode}) = _$_AppManagerState;
+  const _AppManagerState._() : super._();
 
   @override
-  ThemeMode get themeMode;
+  ThemeMode get themeMode => throw _privateConstructorUsedError;
   @override
-  String get region;
+  String get region => throw _privateConstructorUsedError;
   @override
-  String get languageCode;
+  String? get languageCode => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AppManagerStateCopyWith<_AppManagerState> get copyWith;
+  _$AppManagerStateCopyWith<_AppManagerState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

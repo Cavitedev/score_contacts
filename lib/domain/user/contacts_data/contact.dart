@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:auto_route/auto_route.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:scorecontacts/domain/core/unique_id.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/company.dart';
@@ -13,14 +12,16 @@ import 'package:scorecontacts/presentation/core/formatters/formatter_tools.dart'
 part 'contact.freezed.dart';
 
 @freezed
-abstract class Contact implements _$Contact {
+class Contact with _$Contact {
+
+
   const Contact._();
 
   const factory Contact({
-    @required UniqueID id,
-    @required NameData nameData,
-    Map<Type, List<ILabelObject>> labelObjects,
-    List<Company> companies,
+    required UniqueID id,
+    required NameData nameData,
+    Map<Type, List<ILabelObject>?>? labelObjects,
+    List<Company>? companies,
   }) = _Contact;
 
   factory Contact.empty() => Contact(
@@ -40,24 +41,25 @@ abstract class Contact implements _$Contact {
   }
 
   factory Contact.fromMap(Map<String, dynamic> map) {
-    final List<dynamic> phones = (map["numbers"] is String)
+
+    final List<dynamic>? phones = (map["numbers"] is String)
         ? [map["numbers"]]
-        : (map["numbers"] as List<dynamic>);
+        : (map["numbers"] as List<dynamic>?);
 
-    final List<dynamic> emails = (map["emails"] is String)
+    final List<dynamic>? emails = (map["emails"] is String)
         ? [map["emails"]]
-        : map["emails"] as List<dynamic>;
+        : map["emails"] as List<dynamic>?;
 
-    final List<dynamic> companies = (map["companies"] is Map<String,dynamic>)
+    final List<dynamic>? companies = (map["companies"] is Map<String,dynamic>)
         ? [map["companies"]]
-        : map["companies"] as List<dynamic>;
+        : map["companies"] as List<dynamic>?;
 
     final bool areThereLabelObjects = phones != null || emails != null;
 
     return Contact(
         id: UniqueID.fromUniqueString(map["id"] as String),
         nameData: NameData.fromFullName(map["name"] as String),
-        companies: companies?.map((compMap) => Company.fromJson(compMap as Map<String, dynamic>))?.toList(),
+        companies: companies?.map((compMap) => Company.fromJson(compMap as Map<String, dynamic>)).toList(),
         labelObjects: areThereLabelObjects
             ? {
                 if (phones != null)
@@ -91,15 +93,15 @@ abstract class Contact implements _$Contact {
   }
 
   Iterable<T>  getLabelObjectList<T extends ILabelObject>() {
-    return labelObjects[T].map((iLabelObject) => iLabelObject as T);
+    return labelObjects![T]!.map((iLabelObject) => iLabelObject as T);
   }
 
 
   String getDisplayedChar(){
-    return nameData?.firstName?.substring(0, 1)?.toUpperCase() ?? "";
+    return nameData.firstName?.substring(0, 1).toUpperCase() ?? "";
   }
 
-  String matchPattern(String pattern) {
+  String? matchPattern(String? pattern) {
     if (pattern == null) return getFullName();
 
     final String lowerCasePattern = pattern.toLowerCase();
@@ -117,7 +119,7 @@ abstract class Contact implements _$Contact {
     }
 
     for (final Email email in getLabelObjectList<Email>()) {
-      if (email?.value?.toLowerCase()?.contains(lowerCasePattern) ?? false) {
+      if (email.value?.toLowerCase().contains(lowerCasePattern) ?? false) {
         return email.value;
       }
     }
@@ -127,5 +129,5 @@ abstract class Contact implements _$Contact {
   }
 
   bool _matchesName(String lowerCasePattern) =>
-      getFullName()?.toLowerCase()?.contains(lowerCasePattern) ?? false;
+      getFullName().toLowerCase().contains(lowerCasePattern);
 }

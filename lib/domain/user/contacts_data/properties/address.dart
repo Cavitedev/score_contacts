@@ -1,6 +1,6 @@
 class Address{
-  String address;
-  String labelAddress;
+  String? address;
+  String? labelAddress;
 
   Address({this.address, this.labelAddress});
 

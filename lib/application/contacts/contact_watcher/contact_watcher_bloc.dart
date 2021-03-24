@@ -16,15 +16,12 @@ part 'contact_watcher_event.dart';
 part 'contact_watcher_state.dart';
 
 @injectable
-class ContactWatcherBloc
-    extends Bloc<ContactWatcherEvent, ContactWatcherState> {
+class ContactWatcherBloc extends Bloc<ContactWatcherEvent, ContactWatcherState> {
   final IContactsRepository _contactsRepository;
 
-  StreamSubscription<Either<ContactsFailure, List<Contact>>>
-      _contactsSubscription;
+  StreamSubscription<Either<ContactsFailure, List<Contact>>>? _contactsSubscription;
 
-  ContactWatcherBloc(this._contactsRepository)
-      : super(const ContactWatcherState.initial());
+  ContactWatcherBloc(this._contactsRepository) : super(const ContactWatcherState.initial());
 
   @override
   Stream<ContactWatcherState> mapEventToState(
@@ -32,14 +29,11 @@ class ContactWatcherBloc
   ) async* {
     yield* event.map(
       contactsReceived: (contactsState) async* {
-        yield contactsState.contactsEither.fold(
-            (failure) => ContactWatcherState.loadFailure(failure), (contacts) {
+        yield contactsState.contactsEither.fold((failure) => ContactWatcherState.loadFailure(failure), (contacts) {
           _sortByNameAndSurname(contacts);
 
           return ContactWatcherState.loadSuccess(LoadSuccessValues(
-              selectionContactList: contacts
-                  .map((contact) => SelectionContact(contact: contact))
-                  .toList(),
+              selectionContactList: contacts.map((contact) => SelectionContact(contact: contact)).toList(),
               filter: const Filter(),
               selectedContactsAmount: 0));
         });
@@ -47,22 +41,19 @@ class ContactWatcherBloc
       watchAll: (e) async* {
         yield const ContactWatcherState.loadInProgress();
         _contactsSubscription?.cancel();
-        _contactsSubscription = _contactsRepository.watchAllContacts().listen(
-            (contactsEither) =>
-                add(ContactWatcherEvent.contactsReceived(contactsEither)));
+        _contactsSubscription = _contactsRepository
+            .watchAllContacts()
+            .listen((contactsEither) => add(ContactWatcherEvent.contactsReceived(contactsEither)));
       },
       searchContact: (event) async* {
         yield* state.maybeMap(
             loadSuccess: (successState) async* {
               final LoadSuccessValues values = successState.stateValues;
-              Filter filter = values.filter;
+              Filter? filter = values.filter;
               filter = filter?.copyWith(filterSearch: event.searchString);
-              final List<SelectionContact> contacts =
-                  values.selectionContactList;
+              final List<SelectionContact> contacts = values.selectionContactList;
               _filterContacts(contacts, filter);
-              yield successState.copyWith(
-                  stateValues: values.copyWith(
-                      selectionContactList: contacts, filter: filter));
+              yield successState.copyWith(stateValues: values.copyWith(selectionContactList: contacts, filter: filter));
             },
             orElse: () async* {});
       },
@@ -72,8 +63,7 @@ class ContactWatcherBloc
             e.selectionContact.toggleSelection();
 
             yield state.copyWith(
-                stateValues: state.stateValues.addOrDecrease1SelectedContact(
-                    isAdd: e.selectionContact.isSelected));
+                stateValues: state.stateValues.addOrDecrease1SelectedContact(isAdd: e.selectionContact.isSelected));
           },
           orElse: () async* {},
         );
@@ -97,19 +87,14 @@ class ContactWatcherBloc
     );
   }
 
-
-
   void _sortByNameAndSurname(List<Contact> contacts) {
     contacts.sort((a, b) {
-      return a
-          .getFullName()
-          .toLowerCase()
-          .compareTo(b.getFullName().toLowerCase());
+      return a.getFullName().toLowerCase().compareTo(b.getFullName().toLowerCase());
     });
   }
 
-  void _filterContacts(List<SelectionContact> contacts, Filter filter) {
-    if (filter.filterSearch == null || filter.filterSearch == "") {
+  void _filterContacts(List<SelectionContact> contacts, Filter? filter) {
+    if (filter == null || filter.filterSearch == null || filter.filterSearch == "") {
       for (final SelectionContact selectionContact in contacts) {
         selectionContact.display = true;
         selectionContact.filterText = null;
@@ -117,11 +102,10 @@ class ContactWatcherBloc
       return;
     }
     for (final SelectionContact selectionContact in contacts) {
-      final String match =
-          selectionContact?.contact?.matchPattern(filter.filterSearch);
+      final String? match = selectionContact.contact.matchPattern(filter.filterSearch);
       selectionContact.display = match != null;
 
-      selectionContact.filterText = match;
+      selectionContact.filterText = match!;
     }
   }
 }

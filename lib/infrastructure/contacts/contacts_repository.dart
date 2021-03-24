@@ -23,7 +23,7 @@ class ContactsRepository implements IContactsRepository {
       _createContact(contact);
       return right(unit);
     } catch (e) {
-      if (e is PlatformException && e.message.contains(PERMISSIONDENIEDCODE)) {
+      if (e is PlatformException && e.message!.contains(PERMISSIONDENIEDCODE)) {
         return left(const ContactsFailure.insufficientPermissions());
       } else {
         return left(const ContactsFailure.unexpected());
@@ -61,10 +61,10 @@ class ContactsRepository implements IContactsRepository {
       final ContactDTO contactDTO = ContactDTO.fromDomain(contact);
       batch.set(contacts.doc(contactDTO.id), contactDTO.toJson());
     }
-    Either<ContactsFailure, Unit> returnValue;
+    Either<ContactsFailure, Unit>? returnValue;
     await batch.commit().
     catchError((e){
-      if (e is PlatformException && e.message.contains(PERMISSIONDENIEDCODE)) {
+      if (e is PlatformException && e.message!.contains(PERMISSIONDENIEDCODE)) {
         returnValue = left(const ContactsFailure.insufficientPermissions());
       } else {
         returnValue = left(const ContactsFailure.unexpected());
@@ -87,7 +87,7 @@ class ContactsRepository implements IContactsRepository {
                 (doc) => ContactDTO.fromFirestore(doc).toDomain())
             .toList()))
         .onErrorReturnWith((e) {
-      if (e is PlatformException && e.message.contains(PERMISSIONDENIEDCODE)) {
+      if (e is PlatformException && e.message!.contains(PERMISSIONDENIEDCODE)) {
         return left(const ContactsFailure.insufficientPermissions());
       } else {
         return left(const ContactsFailure.unexpected());
@@ -106,9 +106,9 @@ class ContactsRepository implements IContactsRepository {
       await contacts.doc(contactDTO.id).update(contactDTO.toJson());
       return right(unit);
     } catch (e) {
-      if (e is PlatformException && e.message.contains(PERMISSIONDENIEDCODE)) {
+      if (e is PlatformException && e.message!.contains(PERMISSIONDENIEDCODE)) {
         return left(const ContactsFailure.insufficientPermissions());
-      } else if (e is PlatformException && e.message.contains(NOTFOUNDCODE)) {
+      } else if (e is PlatformException && e.message!.contains(NOTFOUNDCODE)) {
         return left(const ContactsFailure.notFound());
       } else {
         return left(const ContactsFailure.unexpected());
@@ -126,9 +126,9 @@ class ContactsRepository implements IContactsRepository {
       await contacts.doc(contact.id.value).delete();
       return right(unit);
     } catch (e) {
-      if (e is PlatformException && e.message.contains(PERMISSIONDENIEDCODE)) {
+      if (e is PlatformException && e.message!.contains(PERMISSIONDENIEDCODE)) {
         return left(const ContactsFailure.insufficientPermissions());
-      } else if (e is PlatformException && e.message.contains(NOTFOUNDCODE)) {
+      } else if (e is PlatformException && e.message!.contains(NOTFOUNDCODE)) {
         return left(const ContactsFailure.notFound());
       } else {
         return left(const ContactsFailure.unexpected());
@@ -154,13 +154,13 @@ class ContactsRepository implements IContactsRepository {
 
       batch.delete(contacts.doc(contact.id.value));
     }
-    Either<ContactsFailure, Unit> returnValue;
+    Either<ContactsFailure, Unit>? returnValue;
     await batch.commit().
     catchError((e){
-      if (e is PlatformException && e.message.contains(PERMISSIONDENIEDCODE)) {
+      if (e is PlatformException && e.message!.contains(PERMISSIONDENIEDCODE)) {
         returnValue = left(const ContactsFailure.insufficientPermissions());
-      } else if (e is PlatformException && e.message.contains(NOTFOUNDCODE)) {
-        return left(const ContactsFailure.notFound());
+      } else if (e is PlatformException && e.message!.contains(NOTFOUNDCODE)) {
+        returnValue = left(const ContactsFailure.notFound());
       }else {
         returnValue = left(const ContactsFailure.unexpected());
       }

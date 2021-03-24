@@ -14,14 +14,14 @@ abstract class ContactWatcherState with _$ContactWatcherState {
 }
 
 @freezed
-abstract class LoadSuccessValues implements _$LoadSuccessValues {
+class LoadSuccessValues with _$LoadSuccessValues {
   const LoadSuccessValues._();
 
 
   const factory LoadSuccessValues({
-    List<SelectionContact> selectionContactList,
-    Filter filter,
-    int selectedContactsAmount,
+    required List<SelectionContact> selectionContactList,
+    Filter? filter,
+    required int selectedContactsAmount,
   }) = _LoadSuccessValues;
 
   bool hasSelectedContacts() => selectedContactsAmount > 0;
@@ -38,7 +38,7 @@ abstract class LoadSuccessValues implements _$LoadSuccessValues {
     return copyWith(selectionContactList: displayedContacts());
   }
 
-  LoadSuccessValues addOrDecrease1SelectedContact({@required bool isAdd}){
+  LoadSuccessValues addOrDecrease1SelectedContact({required bool isAdd}){
     return copyWith(selectedContactsAmount:selectedContactsAmount + (isAdd?1:-1));
   }
 

@@ -1,5 +1,5 @@
+import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/auth/auth_bloc.dart';
@@ -12,20 +12,19 @@ import 'package:scorecontacts/presentation/contacts/list_view/widgets/actor_over
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/contact_list_scaffold.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/critical_failure_display.dart';
 import 'package:scorecontacts/presentation/core/widgets/circular_progress_indicator_scaffold.dart';
-import 'package:scorecontacts/presentation/routes/router.gr.dart';
+import 'package:scorecontacts/presentation/routes/router.gr.dart' as r;
 
 class ContactList extends StatelessWidget {
+  get predicate => null;
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
         providers: [
           BlocProvider<ContactWatcherBloc>(
-            create: (context) =>
-            getIt<ContactWatcherBloc>()
-              ..add(const ContactWatcherEvent.watchAll()),
+            create: (context) => getIt<ContactWatcherBloc>()..add(const ContactWatcherEvent.watchAll()),
           ),
-          BlocProvider<ContactActorBloc>(
-              create: (context) => getIt<ContactActorBloc>()),
+          BlocProvider<ContactActorBloc>(create: (context) => getIt<ContactActorBloc>()),
         ],
         child: MultiBlocListener(
           listeners: [
@@ -33,8 +32,10 @@ class ContactList extends StatelessWidget {
               listener: (context, state) {
                 state.maybeMap(
                     unathenticated: (_) {
-                      ExtendedNavigator.of(context).pushAndRemoveUntil(
-                          Routes.signInPage, (route) => false);
+                      context.router.pushAndRemoveUntil(
+                        const r.SignInPageRoute(),
+                        predicate: (route) => false,
+                      );
                     },
                     orElse: () {});
               },
@@ -44,26 +45,23 @@ class ContactList extends StatelessWidget {
                 state.maybeMap(
                     contactsFailure: (state) {
                       FlushbarHelper.createError(
-                          duration: const Duration(seconds: 12),
-                          message: getContactsFailureMessage(
-                              context, state.failure))
+                              duration: const Duration(seconds: 12),
+                              message: getContactsFailureMessage(context, state.failure))
                           .show(context);
                     },
-                    deleteSuccessful: (state) =>
-                        FlushbarHelper.createSuccess(
-                            duration: const Duration(seconds: 4),
-                            message: AppLocalization.of(context)
-                                .translate(state.numberContacts != 1 ? "success_delete_contacts_plural" :
-                                "success_delete_contacts_single",
-                                args: [state.numberContacts.toString()])).show(
-                            context),
-                    loadSuccessful: (state) =>
-                        FlushbarHelper.createSuccess(
+                    deleteSuccessful: (state) => FlushbarHelper.createSuccess(
+                        duration: const Duration(seconds: 4),
+                        message: AppLocalization.of(context).translate(
+                            state.numberContacts != 1
+                                ? "success_delete_contacts_plural"
+                                : "success_delete_contacts_single",
+                            args: [state.numberContacts.toString()])).show(context),
+                    loadSuccessful: (state) => FlushbarHelper.createSuccess(
                           duration: const Duration(seconds: 4),
-                          message:
-                          AppLocalization.of(context)
-                              .translate(state.numberContacts != 1 ? "success_load_contacts_plural" :
-                          "success_load_contacts_single",
+                          message: AppLocalization.of(context).translate(
+                              state.numberContacts != 1
+                                  ? "success_load_contacts_plural"
+                                  : "success_load_contacts_single",
                               args: [state.numberContacts.toString()]),
                         ).show(context),
                     orElse: () {});
@@ -71,11 +69,9 @@ class ContactList extends StatelessWidget {
             ),
           ],
           child: BlocBuilder<ContactWatcherBloc, ContactWatcherState>(
-              builder: (context, state) =>
-                  state.map(
+              builder: (context, state) => state.map(
                     initial: (_) => Container(),
-                    loadInProgress: (_) =>
-                    const CircularProgressIndicatorScaffold(),
+                    loadInProgress: (_) => const CircularProgressIndicatorScaffold(),
                     loadSuccess: (state) {
                       return Stack(
                         children: [
@@ -86,11 +82,8 @@ class ContactList extends StatelessWidget {
                         ],
                       );
                     },
-                    loadFailure: (state) =>
-                        CriticalFailureDisplay(failure: state.failure),
+                    loadFailure: (state) => CriticalFailureDisplay(failure: state.failure),
                   )),
         ));
   }
-
-
 }

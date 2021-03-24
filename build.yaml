@@ -12,4 +12,3 @@ targets:
           disallow_unrecognized_keys: false
           field_rename: none
           ignore_unannotated: false
-          nullable: true

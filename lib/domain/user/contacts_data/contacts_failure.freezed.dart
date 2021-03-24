@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'contacts_failure.dart';
 
@@ -9,88 +9,89 @@ part of 'contacts_failure.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$ContactsFailureTearOff {
   const _$ContactsFailureTearOff();
 
-// ignore: unused_element
   _InsufficientPermissions insufficientPermissions() {
     return const _InsufficientPermissions();
   }
 
-// ignore: unused_element
   _NotFound notFound() {
     return const _NotFound();
   }
 
-// ignore: unused_element
   _Unexpected unexpected() {
     return const _Unexpected();
   }
 
-// ignore: unused_element
   _PlatformError platformError() {
     return const _PlatformError();
   }
 
-// ignore: unused_element
   _NotContactPermissions deniedContactPermissions() {
     return const _NotContactPermissions();
   }
 
-// ignore: unused_element
   _DeniedPermanentlyContactPermissions deniedPermanentlyContactPermissions() {
     return const _DeniedPermanentlyContactPermissions();
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $ContactsFailure = _$ContactsFailureTearOff();
 
 /// @nodoc
 mixin _$ContactsFailure {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult insufficientPermissions(),
-    @required TResult notFound(),
-    @required TResult unexpected(),
-    @required TResult platformError(),
-    @required TResult deniedContactPermissions(),
-    @required TResult deniedPermanentlyContactPermissions(),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function() insufficientPermissions,
+    required TResult Function() notFound,
+    required TResult Function() unexpected,
+    required TResult Function() platformError,
+    required TResult Function() deniedContactPermissions,
+    required TResult Function() deniedPermanentlyContactPermissions,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult insufficientPermissions(),
-    TResult notFound(),
-    TResult unexpected(),
-    TResult platformError(),
-    TResult deniedContactPermissions(),
-    TResult deniedPermanentlyContactPermissions(),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? insufficientPermissions,
+    TResult Function()? notFound,
+    TResult Function()? unexpected,
+    TResult Function()? platformError,
+    TResult Function()? deniedContactPermissions,
+    TResult Function()? deniedPermanentlyContactPermissions,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult insufficientPermissions(_InsufficientPermissions value),
-    @required TResult notFound(_NotFound value),
-    @required TResult unexpected(_Unexpected value),
-    @required TResult platformError(_PlatformError value),
-    @required TResult deniedContactPermissions(_NotContactPermissions value),
-    @required
-        TResult deniedPermanentlyContactPermissions(
-            _DeniedPermanentlyContactPermissions value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InsufficientPermissions value)
+        insufficientPermissions,
+    required TResult Function(_NotFound value) notFound,
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PlatformError value) platformError,
+    required TResult Function(_NotContactPermissions value)
+        deniedContactPermissions,
+    required TResult Function(_DeniedPermanentlyContactPermissions value)
+        deniedPermanentlyContactPermissions,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult insufficientPermissions(_InsufficientPermissions value),
-    TResult notFound(_NotFound value),
-    TResult unexpected(_Unexpected value),
-    TResult platformError(_PlatformError value),
-    TResult deniedContactPermissions(_NotContactPermissions value),
-    TResult deniedPermanentlyContactPermissions(
-        _DeniedPermanentlyContactPermissions value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InsufficientPermissions value)? insufficientPermissions,
+    TResult Function(_NotFound value)? notFound,
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PlatformError value)? platformError,
+    TResult Function(_NotContactPermissions value)? deniedContactPermissions,
+    TResult Function(_DeniedPermanentlyContactPermissions value)?
+        deniedPermanentlyContactPermissions,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -149,35 +150,28 @@ class _$_InsufficientPermissions implements _InsufficientPermissions {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult insufficientPermissions(),
-    @required TResult notFound(),
-    @required TResult unexpected(),
-    @required TResult platformError(),
-    @required TResult deniedContactPermissions(),
-    @required TResult deniedPermanentlyContactPermissions(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() insufficientPermissions,
+    required TResult Function() notFound,
+    required TResult Function() unexpected,
+    required TResult Function() platformError,
+    required TResult Function() deniedContactPermissions,
+    required TResult Function() deniedPermanentlyContactPermissions,
   }) {
-    assert(insufficientPermissions != null);
-    assert(notFound != null);
-    assert(unexpected != null);
-    assert(platformError != null);
-    assert(deniedContactPermissions != null);
-    assert(deniedPermanentlyContactPermissions != null);
     return insufficientPermissions();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult insufficientPermissions(),
-    TResult notFound(),
-    TResult unexpected(),
-    TResult platformError(),
-    TResult deniedContactPermissions(),
-    TResult deniedPermanentlyContactPermissions(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? insufficientPermissions,
+    TResult Function()? notFound,
+    TResult Function()? unexpected,
+    TResult Function()? platformError,
+    TResult Function()? deniedContactPermissions,
+    TResult Function()? deniedPermanentlyContactPermissions,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (insufficientPermissions != null) {
       return insufficientPermissions();
     }
@@ -186,38 +180,32 @@ class _$_InsufficientPermissions implements _InsufficientPermissions {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult insufficientPermissions(_InsufficientPermissions value),
-    @required TResult notFound(_NotFound value),
-    @required TResult unexpected(_Unexpected value),
-    @required TResult platformError(_PlatformError value),
-    @required TResult deniedContactPermissions(_NotContactPermissions value),
-    @required
-        TResult deniedPermanentlyContactPermissions(
-            _DeniedPermanentlyContactPermissions value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InsufficientPermissions value)
+        insufficientPermissions,
+    required TResult Function(_NotFound value) notFound,
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PlatformError value) platformError,
+    required TResult Function(_NotContactPermissions value)
+        deniedContactPermissions,
+    required TResult Function(_DeniedPermanentlyContactPermissions value)
+        deniedPermanentlyContactPermissions,
   }) {
-    assert(insufficientPermissions != null);
-    assert(notFound != null);
-    assert(unexpected != null);
-    assert(platformError != null);
-    assert(deniedContactPermissions != null);
-    assert(deniedPermanentlyContactPermissions != null);
     return insufficientPermissions(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult insufficientPermissions(_InsufficientPermissions value),
-    TResult notFound(_NotFound value),
-    TResult unexpected(_Unexpected value),
-    TResult platformError(_PlatformError value),
-    TResult deniedContactPermissions(_NotContactPermissions value),
-    TResult deniedPermanentlyContactPermissions(
-        _DeniedPermanentlyContactPermissions value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InsufficientPermissions value)? insufficientPermissions,
+    TResult Function(_NotFound value)? notFound,
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PlatformError value)? platformError,
+    TResult Function(_NotContactPermissions value)? deniedContactPermissions,
+    TResult Function(_DeniedPermanentlyContactPermissions value)?
+        deniedPermanentlyContactPermissions,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (insufficientPermissions != null) {
       return insufficientPermissions(this);
     }
@@ -264,35 +252,28 @@ class _$_NotFound implements _NotFound {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult insufficientPermissions(),
-    @required TResult notFound(),
-    @required TResult unexpected(),
-    @required TResult platformError(),
-    @required TResult deniedContactPermissions(),
-    @required TResult deniedPermanentlyContactPermissions(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() insufficientPermissions,
+    required TResult Function() notFound,
+    required TResult Function() unexpected,
+    required TResult Function() platformError,
+    required TResult Function() deniedContactPermissions,
+    required TResult Function() deniedPermanentlyContactPermissions,
   }) {
-    assert(insufficientPermissions != null);
-    assert(notFound != null);
-    assert(unexpected != null);
-    assert(platformError != null);
-    assert(deniedContactPermissions != null);
-    assert(deniedPermanentlyContactPermissions != null);
     return notFound();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult insufficientPermissions(),
-    TResult notFound(),
-    TResult unexpected(),
-    TResult platformError(),
-    TResult deniedContactPermissions(),
-    TResult deniedPermanentlyContactPermissions(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? insufficientPermissions,
+    TResult Function()? notFound,
+    TResult Function()? unexpected,
+    TResult Function()? platformError,
+    TResult Function()? deniedContactPermissions,
+    TResult Function()? deniedPermanentlyContactPermissions,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (notFound != null) {
       return notFound();
     }
@@ -301,38 +282,32 @@ class _$_NotFound implements _NotFound {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult insufficientPermissions(_InsufficientPermissions value),
-    @required TResult notFound(_NotFound value),
-    @required TResult unexpected(_Unexpected value),
-    @required TResult platformError(_PlatformError value),
-    @required TResult deniedContactPermissions(_NotContactPermissions value),
-    @required
-        TResult deniedPermanentlyContactPermissions(
-            _DeniedPermanentlyContactPermissions value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InsufficientPermissions value)
+        insufficientPermissions,
+    required TResult Function(_NotFound value) notFound,
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PlatformError value) platformError,
+    required TResult Function(_NotContactPermissions value)
+        deniedContactPermissions,
+    required TResult Function(_DeniedPermanentlyContactPermissions value)
+        deniedPermanentlyContactPermissions,
   }) {
-    assert(insufficientPermissions != null);
-    assert(notFound != null);
-    assert(unexpected != null);
-    assert(platformError != null);
-    assert(deniedContactPermissions != null);
-    assert(deniedPermanentlyContactPermissions != null);
     return notFound(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult insufficientPermissions(_InsufficientPermissions value),
-    TResult notFound(_NotFound value),
-    TResult unexpected(_Unexpected value),
-    TResult platformError(_PlatformError value),
-    TResult deniedContactPermissions(_NotContactPermissions value),
-    TResult deniedPermanentlyContactPermissions(
-        _DeniedPermanentlyContactPermissions value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InsufficientPermissions value)? insufficientPermissions,
+    TResult Function(_NotFound value)? notFound,
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PlatformError value)? platformError,
+    TResult Function(_NotContactPermissions value)? deniedContactPermissions,
+    TResult Function(_DeniedPermanentlyContactPermissions value)?
+        deniedPermanentlyContactPermissions,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (notFound != null) {
       return notFound(this);
     }
@@ -382,35 +357,28 @@ class _$_Unexpected implements _Unexpected {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult insufficientPermissions(),
-    @required TResult notFound(),
-    @required TResult unexpected(),
-    @required TResult platformError(),
-    @required TResult deniedContactPermissions(),
-    @required TResult deniedPermanentlyContactPermissions(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() insufficientPermissions,
+    required TResult Function() notFound,
+    required TResult Function() unexpected,
+    required TResult Function() platformError,
+    required TResult Function() deniedContactPermissions,
+    required TResult Function() deniedPermanentlyContactPermissions,
   }) {
-    assert(insufficientPermissions != null);
-    assert(notFound != null);
-    assert(unexpected != null);
-    assert(platformError != null);
-    assert(deniedContactPermissions != null);
-    assert(deniedPermanentlyContactPermissions != null);
     return unexpected();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult insufficientPermissions(),
-    TResult notFound(),
-    TResult unexpected(),
-    TResult platformError(),
-    TResult deniedContactPermissions(),
-    TResult deniedPermanentlyContactPermissions(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? insufficientPermissions,
+    TResult Function()? notFound,
+    TResult Function()? unexpected,
+    TResult Function()? platformError,
+    TResult Function()? deniedContactPermissions,
+    TResult Function()? deniedPermanentlyContactPermissions,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (unexpected != null) {
       return unexpected();
     }
@@ -419,38 +387,32 @@ class _$_Unexpected implements _Unexpected {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult insufficientPermissions(_InsufficientPermissions value),
-    @required TResult notFound(_NotFound value),
-    @required TResult unexpected(_Unexpected value),
-    @required TResult platformError(_PlatformError value),
-    @required TResult deniedContactPermissions(_NotContactPermissions value),
-    @required
-        TResult deniedPermanentlyContactPermissions(
-            _DeniedPermanentlyContactPermissions value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InsufficientPermissions value)
+        insufficientPermissions,
+    required TResult Function(_NotFound value) notFound,
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PlatformError value) platformError,
+    required TResult Function(_NotContactPermissions value)
+        deniedContactPermissions,
+    required TResult Function(_DeniedPermanentlyContactPermissions value)
+        deniedPermanentlyContactPermissions,
   }) {
-    assert(insufficientPermissions != null);
-    assert(notFound != null);
-    assert(unexpected != null);
-    assert(platformError != null);
-    assert(deniedContactPermissions != null);
-    assert(deniedPermanentlyContactPermissions != null);
     return unexpected(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult insufficientPermissions(_InsufficientPermissions value),
-    TResult notFound(_NotFound value),
-    TResult unexpected(_Unexpected value),
-    TResult platformError(_PlatformError value),
-    TResult deniedContactPermissions(_NotContactPermissions value),
-    TResult deniedPermanentlyContactPermissions(
-        _DeniedPermanentlyContactPermissions value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InsufficientPermissions value)? insufficientPermissions,
+    TResult Function(_NotFound value)? notFound,
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PlatformError value)? platformError,
+    TResult Function(_NotContactPermissions value)? deniedContactPermissions,
+    TResult Function(_DeniedPermanentlyContactPermissions value)?
+        deniedPermanentlyContactPermissions,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (unexpected != null) {
       return unexpected(this);
     }
@@ -500,35 +462,28 @@ class _$_PlatformError implements _PlatformError {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult insufficientPermissions(),
-    @required TResult notFound(),
-    @required TResult unexpected(),
-    @required TResult platformError(),
-    @required TResult deniedContactPermissions(),
-    @required TResult deniedPermanentlyContactPermissions(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() insufficientPermissions,
+    required TResult Function() notFound,
+    required TResult Function() unexpected,
+    required TResult Function() platformError,
+    required TResult Function() deniedContactPermissions,
+    required TResult Function() deniedPermanentlyContactPermissions,
   }) {
-    assert(insufficientPermissions != null);
-    assert(notFound != null);
-    assert(unexpected != null);
-    assert(platformError != null);
-    assert(deniedContactPermissions != null);
-    assert(deniedPermanentlyContactPermissions != null);
     return platformError();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult insufficientPermissions(),
-    TResult notFound(),
-    TResult unexpected(),
-    TResult platformError(),
-    TResult deniedContactPermissions(),
-    TResult deniedPermanentlyContactPermissions(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? insufficientPermissions,
+    TResult Function()? notFound,
+    TResult Function()? unexpected,
+    TResult Function()? platformError,
+    TResult Function()? deniedContactPermissions,
+    TResult Function()? deniedPermanentlyContactPermissions,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (platformError != null) {
       return platformError();
     }
@@ -537,38 +492,32 @@ class _$_PlatformError implements _PlatformError {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult insufficientPermissions(_InsufficientPermissions value),
-    @required TResult notFound(_NotFound value),
-    @required TResult unexpected(_Unexpected value),
-    @required TResult platformError(_PlatformError value),
-    @required TResult deniedContactPermissions(_NotContactPermissions value),
-    @required
-        TResult deniedPermanentlyContactPermissions(
-            _DeniedPermanentlyContactPermissions value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InsufficientPermissions value)
+        insufficientPermissions,
+    required TResult Function(_NotFound value) notFound,
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PlatformError value) platformError,
+    required TResult Function(_NotContactPermissions value)
+        deniedContactPermissions,
+    required TResult Function(_DeniedPermanentlyContactPermissions value)
+        deniedPermanentlyContactPermissions,
   }) {
-    assert(insufficientPermissions != null);
-    assert(notFound != null);
-    assert(unexpected != null);
-    assert(platformError != null);
-    assert(deniedContactPermissions != null);
-    assert(deniedPermanentlyContactPermissions != null);
     return platformError(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult insufficientPermissions(_InsufficientPermissions value),
-    TResult notFound(_NotFound value),
-    TResult unexpected(_Unexpected value),
-    TResult platformError(_PlatformError value),
-    TResult deniedContactPermissions(_NotContactPermissions value),
-    TResult deniedPermanentlyContactPermissions(
-        _DeniedPermanentlyContactPermissions value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InsufficientPermissions value)? insufficientPermissions,
+    TResult Function(_NotFound value)? notFound,
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PlatformError value)? platformError,
+    TResult Function(_NotContactPermissions value)? deniedContactPermissions,
+    TResult Function(_DeniedPermanentlyContactPermissions value)?
+        deniedPermanentlyContactPermissions,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (platformError != null) {
       return platformError(this);
     }
@@ -618,35 +567,28 @@ class _$_NotContactPermissions implements _NotContactPermissions {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult insufficientPermissions(),
-    @required TResult notFound(),
-    @required TResult unexpected(),
-    @required TResult platformError(),
-    @required TResult deniedContactPermissions(),
-    @required TResult deniedPermanentlyContactPermissions(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() insufficientPermissions,
+    required TResult Function() notFound,
+    required TResult Function() unexpected,
+    required TResult Function() platformError,
+    required TResult Function() deniedContactPermissions,
+    required TResult Function() deniedPermanentlyContactPermissions,
   }) {
-    assert(insufficientPermissions != null);
-    assert(notFound != null);
-    assert(unexpected != null);
-    assert(platformError != null);
-    assert(deniedContactPermissions != null);
-    assert(deniedPermanentlyContactPermissions != null);
     return deniedContactPermissions();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult insufficientPermissions(),
-    TResult notFound(),
-    TResult unexpected(),
-    TResult platformError(),
-    TResult deniedContactPermissions(),
-    TResult deniedPermanentlyContactPermissions(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? insufficientPermissions,
+    TResult Function()? notFound,
+    TResult Function()? unexpected,
+    TResult Function()? platformError,
+    TResult Function()? deniedContactPermissions,
+    TResult Function()? deniedPermanentlyContactPermissions,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (deniedContactPermissions != null) {
       return deniedContactPermissions();
     }
@@ -655,38 +597,32 @@ class _$_NotContactPermissions implements _NotContactPermissions {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult insufficientPermissions(_InsufficientPermissions value),
-    @required TResult notFound(_NotFound value),
-    @required TResult unexpected(_Unexpected value),
-    @required TResult platformError(_PlatformError value),
-    @required TResult deniedContactPermissions(_NotContactPermissions value),
-    @required
-        TResult deniedPermanentlyContactPermissions(
-            _DeniedPermanentlyContactPermissions value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InsufficientPermissions value)
+        insufficientPermissions,
+    required TResult Function(_NotFound value) notFound,
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PlatformError value) platformError,
+    required TResult Function(_NotContactPermissions value)
+        deniedContactPermissions,
+    required TResult Function(_DeniedPermanentlyContactPermissions value)
+        deniedPermanentlyContactPermissions,
   }) {
-    assert(insufficientPermissions != null);
-    assert(notFound != null);
-    assert(unexpected != null);
-    assert(platformError != null);
-    assert(deniedContactPermissions != null);
-    assert(deniedPermanentlyContactPermissions != null);
     return deniedContactPermissions(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult insufficientPermissions(_InsufficientPermissions value),
-    TResult notFound(_NotFound value),
-    TResult unexpected(_Unexpected value),
-    TResult platformError(_PlatformError value),
-    TResult deniedContactPermissions(_NotContactPermissions value),
-    TResult deniedPermanentlyContactPermissions(
-        _DeniedPermanentlyContactPermissions value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InsufficientPermissions value)? insufficientPermissions,
+    TResult Function(_NotFound value)? notFound,
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PlatformError value)? platformError,
+    TResult Function(_NotContactPermissions value)? deniedContactPermissions,
+    TResult Function(_DeniedPermanentlyContactPermissions value)?
+        deniedPermanentlyContactPermissions,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (deniedContactPermissions != null) {
       return deniedContactPermissions(this);
     }
@@ -741,35 +677,28 @@ class _$_DeniedPermanentlyContactPermissions
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult insufficientPermissions(),
-    @required TResult notFound(),
-    @required TResult unexpected(),
-    @required TResult platformError(),
-    @required TResult deniedContactPermissions(),
-    @required TResult deniedPermanentlyContactPermissions(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() insufficientPermissions,
+    required TResult Function() notFound,
+    required TResult Function() unexpected,
+    required TResult Function() platformError,
+    required TResult Function() deniedContactPermissions,
+    required TResult Function() deniedPermanentlyContactPermissions,
   }) {
-    assert(insufficientPermissions != null);
-    assert(notFound != null);
-    assert(unexpected != null);
-    assert(platformError != null);
-    assert(deniedContactPermissions != null);
-    assert(deniedPermanentlyContactPermissions != null);
     return deniedPermanentlyContactPermissions();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult insufficientPermissions(),
-    TResult notFound(),
-    TResult unexpected(),
-    TResult platformError(),
-    TResult deniedContactPermissions(),
-    TResult deniedPermanentlyContactPermissions(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? insufficientPermissions,
+    TResult Function()? notFound,
+    TResult Function()? unexpected,
+    TResult Function()? platformError,
+    TResult Function()? deniedContactPermissions,
+    TResult Function()? deniedPermanentlyContactPermissions,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (deniedPermanentlyContactPermissions != null) {
       return deniedPermanentlyContactPermissions();
     }
@@ -778,38 +707,32 @@ class _$_DeniedPermanentlyContactPermissions
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult insufficientPermissions(_InsufficientPermissions value),
-    @required TResult notFound(_NotFound value),
-    @required TResult unexpected(_Unexpected value),
-    @required TResult platformError(_PlatformError value),
-    @required TResult deniedContactPermissions(_NotContactPermissions value),
-    @required
-        TResult deniedPermanentlyContactPermissions(
-            _DeniedPermanentlyContactPermissions value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InsufficientPermissions value)
+        insufficientPermissions,
+    required TResult Function(_NotFound value) notFound,
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PlatformError value) platformError,
+    required TResult Function(_NotContactPermissions value)
+        deniedContactPermissions,
+    required TResult Function(_DeniedPermanentlyContactPermissions value)
+        deniedPermanentlyContactPermissions,
   }) {
-    assert(insufficientPermissions != null);
-    assert(notFound != null);
-    assert(unexpected != null);
-    assert(platformError != null);
-    assert(deniedContactPermissions != null);
-    assert(deniedPermanentlyContactPermissions != null);
     return deniedPermanentlyContactPermissions(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult insufficientPermissions(_InsufficientPermissions value),
-    TResult notFound(_NotFound value),
-    TResult unexpected(_Unexpected value),
-    TResult platformError(_PlatformError value),
-    TResult deniedContactPermissions(_NotContactPermissions value),
-    TResult deniedPermanentlyContactPermissions(
-        _DeniedPermanentlyContactPermissions value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InsufficientPermissions value)? insufficientPermissions,
+    TResult Function(_NotFound value)? notFound,
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PlatformError value)? platformError,
+    TResult Function(_NotContactPermissions value)? deniedContactPermissions,
+    TResult Function(_DeniedPermanentlyContactPermissions value)?
+        deniedPermanentlyContactPermissions,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (deniedPermanentlyContactPermissions != null) {
       return deniedPermanentlyContactPermissions(this);
     }

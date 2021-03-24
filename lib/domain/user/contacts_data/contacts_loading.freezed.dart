@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'contacts_loading.dart';
 
@@ -9,19 +9,20 @@ part of 'contacts_loading.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$ContactsLoadingTearOff {
   const _$ContactsLoadingTearOff();
 
-// ignore: unused_element
-  _LoadingContacts loadingContacts({int amount}) {
+  _LoadingContacts loadingContacts({int? amount}) {
     return _LoadingContacts(
       amount: amount,
     );
   }
 
-// ignore: unused_element
-  _DeletingContacts deletingContacts({@required int amount}) {
+  _DeletingContacts deletingContacts({required int amount}) {
     return _DeletingContacts(
       amount: amount,
     );
@@ -29,38 +30,36 @@ class _$ContactsLoadingTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $ContactsLoading = _$ContactsLoadingTearOff();
 
 /// @nodoc
 mixin _$ContactsLoading {
-  int get amount;
-
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult loadingContacts(int amount),
-    @required TResult deletingContacts(int amount),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function(int? amount) loadingContacts,
+    required TResult Function(int amount) deletingContacts,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult loadingContacts(int amount),
-    TResult deletingContacts(int amount),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int? amount)? loadingContacts,
+    TResult Function(int amount)? deletingContacts,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult loadingContacts(_LoadingContacts value),
-    @required TResult deletingContacts(_DeletingContacts value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadingContacts value) loadingContacts,
+    required TResult Function(_DeletingContacts value) deletingContacts,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult loadingContacts(_LoadingContacts value),
-    TResult deletingContacts(_DeletingContacts value),
-    @required TResult orElse(),
-  });
-
-  @JsonKey(ignore: true)
-  $ContactsLoadingCopyWith<ContactsLoading> get copyWith;
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadingContacts value)? loadingContacts,
+    TResult Function(_DeletingContacts value)? deletingContacts,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -68,7 +67,6 @@ abstract class $ContactsLoadingCopyWith<$Res> {
   factory $ContactsLoadingCopyWith(
           ContactsLoading value, $Res Function(ContactsLoading) then) =
       _$ContactsLoadingCopyWithImpl<$Res>;
-  $Res call({int amount});
 }
 
 /// @nodoc
@@ -79,25 +77,14 @@ class _$ContactsLoadingCopyWithImpl<$Res>
   final ContactsLoading _value;
   // ignore: unused_field
   final $Res Function(ContactsLoading) _then;
-
-  @override
-  $Res call({
-    Object amount = freezed,
-  }) {
-    return _then(_value.copyWith(
-      amount: amount == freezed ? _value.amount : amount as int,
-    ));
-  }
 }
 
 /// @nodoc
-abstract class _$LoadingContactsCopyWith<$Res>
-    implements $ContactsLoadingCopyWith<$Res> {
+abstract class _$LoadingContactsCopyWith<$Res> {
   factory _$LoadingContactsCopyWith(
           _LoadingContacts value, $Res Function(_LoadingContacts) then) =
       __$LoadingContactsCopyWithImpl<$Res>;
-  @override
-  $Res call({int amount});
+  $Res call({int? amount});
 }
 
 /// @nodoc
@@ -113,10 +100,13 @@ class __$LoadingContactsCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object amount = freezed,
+    Object? amount = freezed,
   }) {
     return _then(_LoadingContacts(
-      amount: amount == freezed ? _value.amount : amount as int,
+      amount: amount == freezed
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -126,7 +116,7 @@ class _$_LoadingContacts implements _LoadingContacts {
   const _$_LoadingContacts({this.amount});
 
   @override
-  final int amount;
+  final int? amount;
 
   @override
   String toString() {
@@ -152,23 +142,20 @@ class _$_LoadingContacts implements _LoadingContacts {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult loadingContacts(int amount),
-    @required TResult deletingContacts(int amount),
+  TResult when<TResult extends Object?>({
+    required TResult Function(int? amount) loadingContacts,
+    required TResult Function(int amount) deletingContacts,
   }) {
-    assert(loadingContacts != null);
-    assert(deletingContacts != null);
     return loadingContacts(amount);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult loadingContacts(int amount),
-    TResult deletingContacts(int amount),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int? amount)? loadingContacts,
+    TResult Function(int amount)? deletingContacts,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loadingContacts != null) {
       return loadingContacts(amount);
     }
@@ -177,23 +164,20 @@ class _$_LoadingContacts implements _LoadingContacts {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult loadingContacts(_LoadingContacts value),
-    @required TResult deletingContacts(_DeletingContacts value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadingContacts value) loadingContacts,
+    required TResult Function(_DeletingContacts value) deletingContacts,
   }) {
-    assert(loadingContacts != null);
-    assert(deletingContacts != null);
     return loadingContacts(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult loadingContacts(_LoadingContacts value),
-    TResult deletingContacts(_DeletingContacts value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadingContacts value)? loadingContacts,
+    TResult Function(_DeletingContacts value)? deletingContacts,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loadingContacts != null) {
       return loadingContacts(this);
     }
@@ -202,22 +186,19 @@ class _$_LoadingContacts implements _LoadingContacts {
 }
 
 abstract class _LoadingContacts implements ContactsLoading {
-  const factory _LoadingContacts({int amount}) = _$_LoadingContacts;
+  const factory _LoadingContacts({int? amount}) = _$_LoadingContacts;
 
-  @override
-  int get amount;
-  @override
+  int? get amount => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$LoadingContactsCopyWith<_LoadingContacts> get copyWith;
+  _$LoadingContactsCopyWith<_LoadingContacts> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$DeletingContactsCopyWith<$Res>
-    implements $ContactsLoadingCopyWith<$Res> {
+abstract class _$DeletingContactsCopyWith<$Res> {
   factory _$DeletingContactsCopyWith(
           _DeletingContacts value, $Res Function(_DeletingContacts) then) =
       __$DeletingContactsCopyWithImpl<$Res>;
-  @override
   $Res call({int amount});
 }
 
@@ -234,17 +215,20 @@ class __$DeletingContactsCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object amount = freezed,
+    Object? amount = freezed,
   }) {
     return _then(_DeletingContacts(
-      amount: amount == freezed ? _value.amount : amount as int,
+      amount: amount == freezed
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
 
 /// @nodoc
 class _$_DeletingContacts implements _DeletingContacts {
-  const _$_DeletingContacts({@required this.amount}) : assert(amount != null);
+  const _$_DeletingContacts({required this.amount});
 
   @override
   final int amount;
@@ -273,23 +257,20 @@ class _$_DeletingContacts implements _DeletingContacts {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult loadingContacts(int amount),
-    @required TResult deletingContacts(int amount),
+  TResult when<TResult extends Object?>({
+    required TResult Function(int? amount) loadingContacts,
+    required TResult Function(int amount) deletingContacts,
   }) {
-    assert(loadingContacts != null);
-    assert(deletingContacts != null);
     return deletingContacts(amount);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult loadingContacts(int amount),
-    TResult deletingContacts(int amount),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int? amount)? loadingContacts,
+    TResult Function(int amount)? deletingContacts,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (deletingContacts != null) {
       return deletingContacts(amount);
     }
@@ -298,23 +279,20 @@ class _$_DeletingContacts implements _DeletingContacts {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult loadingContacts(_LoadingContacts value),
-    @required TResult deletingContacts(_DeletingContacts value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadingContacts value) loadingContacts,
+    required TResult Function(_DeletingContacts value) deletingContacts,
   }) {
-    assert(loadingContacts != null);
-    assert(deletingContacts != null);
     return deletingContacts(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult loadingContacts(_LoadingContacts value),
-    TResult deletingContacts(_DeletingContacts value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadingContacts value)? loadingContacts,
+    TResult Function(_DeletingContacts value)? deletingContacts,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (deletingContacts != null) {
       return deletingContacts(this);
     }
@@ -323,11 +301,10 @@ class _$_DeletingContacts implements _DeletingContacts {
 }
 
 abstract class _DeletingContacts implements ContactsLoading {
-  const factory _DeletingContacts({@required int amount}) = _$_DeletingContacts;
+  const factory _DeletingContacts({required int amount}) = _$_DeletingContacts;
 
-  @override
-  int get amount;
-  @override
+  int get amount => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$DeletingContactsCopyWith<_DeletingContacts> get copyWith;
+  _$DeletingContactsCopyWith<_DeletingContacts> get copyWith =>
+      throw _privateConstructorUsedError;
 }

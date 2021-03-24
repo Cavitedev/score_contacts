@@ -7,7 +7,10 @@ import 'package:scorecontacts/presentation/core/widgets/circular_progress_indica
 class CriticalFailureDisplay extends StatelessWidget {
   final ContactsFailure failure;
 
-  const CriticalFailureDisplay({Key key, this.failure}) : super(key: key);
+  const CriticalFailureDisplay({
+    Key? key,
+    required this.failure,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

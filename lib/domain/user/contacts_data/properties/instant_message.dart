@@ -1,7 +1,7 @@
 
 class InstantMessage{
-  String instantMessage;
-  String label;
+  String? instantMessage;
+  String? label;
 
   InstantMessage({this.instantMessage, this.label});
 

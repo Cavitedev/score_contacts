@@ -5,11 +5,11 @@ import 'package:scorecontacts/core/app_localization.dart';
 import 'package:scorecontacts/presentation/core/widgets/radio_selection/radio_dialog.dart';
 
 class ChangeLanguageListTile extends StatelessWidget {
-  final String languageCode;
+  final String? languageCode;
 
   const ChangeLanguageListTile({
-    Key key,
-    @required this.languageCode,
+    Key? key,
+    required this.languageCode,
   }) : super(key: key);
 
   @override
@@ -34,7 +34,7 @@ class ChangeLanguageListTile extends StatelessWidget {
 class ChangeLanguageDialog extends StatelessWidget {
   final String language;
 
-  const ChangeLanguageDialog({@required this.language});
+  const ChangeLanguageDialog({required this.language});
 
   @override
   Widget build(BuildContext context) {
@@ -51,8 +51,8 @@ class RadioLanguageColumn extends StatelessWidget {
   final String group;
 
   const RadioLanguageColumn({
-    Key key,
-    this.group,
+    required this.group,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -80,9 +80,9 @@ class RadioLanguageColumn extends StatelessWidget {
   }
 
   RadioListTile<String> _buildRadioListTile({
-    @required BuildContext context,
-    @required String value,
-    @required String msg,
+    required BuildContext context,
+    required String value,
+    required String msg,
   }) {
     return RadioListTile<String>(
       groupValue: group,

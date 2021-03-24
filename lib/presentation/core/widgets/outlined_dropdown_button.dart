@@ -8,19 +8,19 @@ class OutlinedDropdownButton extends StatefulWidget {
   final List<String> items;
   final FocusNode focusNode;
   final bool isActive;
-  final Function(String) onLabelChanged;
+  final Function(String)? onLabelChanged;
   final double topMargin;
 
   /// With Radius.circular(12) by default
   final BorderRadius borderRadius;
-  final String selected;
+  final String? selected;
 
   final bool expandBottomMargin;
 
   const OutlinedDropdownButton({
-    Key key,
-    @required this.items,
-    @required this.focusNode,
+    Key? key,
+    required this.items,
+    required this.focusNode,
     this.borderRadius = const BorderRadius.all(Radius.circular(12)),
     this.isActive = false,
     this.onLabelChanged,
@@ -34,20 +34,18 @@ class OutlinedDropdownButton extends StatefulWidget {
 }
 
 class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton> with TickerProviderStateMixin {
-  String selected;
-  String lastSelected;
-  String customSelected;
-  List<DropdownMenuItem<String>> _items;
+  String? selected;
+  String? lastSelected;
+  String? customSelected;
+  List<DropdownMenuItem<String>>? _items;
 
-  Animation<double> opacityAnimation;
-  AnimationController opacityAnimationController;
+  late Animation<double> opacityAnimation;
+  late AnimationController opacityAnimationController;
 
   _OutlinedDropdownButtonState();
 
   @override
   void initState() {
-
-
     opacityAnimationController = AnimationController(duration: const Duration(milliseconds: 200), vsync: this);
     final Tween<double> opacityTween = Tween<double>(begin: 0, end: 1);
     opacityAnimation = opacityTween.animate(opacityAnimationController);
@@ -81,14 +79,14 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton> with Ti
             customSelected = null;
           });
           if (widget.onLabelChanged != null) {
-            widget.onLabelChanged(lastSelected);
+            widget.onLabelChanged?.call(lastSelected!);
           }
         },
         onSubmit: (String text) {
           customSelected = text;
           selected = customSelected;
           if (widget.onLabelChanged != null) {
-            widget.onLabelChanged(selected);
+            widget.onLabelChanged?.call(selected!);
           }
         },
       ),
@@ -100,9 +98,9 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton> with Ti
     _items = <DropdownMenuItem<String>>[
       ...widget.items
           .map((String item) => DropdownMenuItem(
-        value: item,
-        child: Text(AppLocalization.of(context).translate(item.toLowerCase())),
-      ))
+                value: item,
+                child: Text(AppLocalization.of(context).translate(item.toLowerCase())),
+              ))
           .toList(),
       DropdownMenuItem(
         value: "Custom",
@@ -110,21 +108,20 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton> with Ti
       ),
     ];
 
-
     if (widget.selected != null) {
       selected = widget.selected;
     } else {
       selected = widget.items[0];
     }
-    final List<DropdownMenuItem<String>> itemsRendered = customSelected == null
+    final List<DropdownMenuItem<String>> itemsRendered = (customSelected == null
         ? _items
         : [
             DropdownMenuItem(
               value: customSelected,
-              child: Text(customSelected),
+              child: Text(customSelected!),
             ),
-            ..._items
-          ];
+            ..._items!
+          ])!;
     return AnimatedBuilder(
       animation: opacityAnimationController,
       builder: (context, child) => Container(
@@ -153,18 +150,16 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton> with Ti
                 selected = value;
                 customSelected = null;
               });
-              if (widget.onLabelChanged != null) {
-                widget.onLabelChanged(value);
-              }
+              widget.onLabelChanged?.call(value!);
             },
             selectedItemBuilder: (context) => itemsRendered
                 .map((item) => Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        AppLocalization.of(context).translate(item.value.toLowerCase())??item.value,
+                        AppLocalization.of(context).translate(item.value?.toLowerCase() ?? item.value!),
                         style: widget.focusNode.hasFocus || widget.isActive
                             ? Theme.of(context).textTheme.subtitle1
-                            : Theme.of(context).textTheme.subtitle1.copyWith(color: Theme.of(context).disabledColor),
+                            : Theme.of(context).textTheme.subtitle1!.copyWith(color: Theme.of(context).disabledColor),
                         overflow: TextOverflow.ellipsis,
                       ),
                     ))

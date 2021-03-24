@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/auth/auth_bloc.dart';
-import 'package:scorecontacts/presentation/routes/router.gr.dart';
+import 'package:scorecontacts/presentation/routes/router.gr.dart' as r;
 
 class SplashPage extends StatelessWidget {
   @override
@@ -11,10 +11,10 @@ class SplashPage extends StatelessWidget {
       listener: (context, state) {
         state.maybeMap(
           unathenticated: (e) {
-            ExtendedNavigator.of(context).popAndPush(Routes.signInPage);
+            context.router.popAndPush(const r.SignInPageRoute());
           },
           authenticated: (e) {
-            ExtendedNavigator.of(context).popAndPush(Routes.contactList);
+            context.router.popAndPush(const r.ContactListRoute());
           },
           orElse: () {},
         );
@@ -26,4 +26,7 @@ class SplashPage extends StatelessWidget {
       ),
     );
   }
+}
+
+class Routes {
 }

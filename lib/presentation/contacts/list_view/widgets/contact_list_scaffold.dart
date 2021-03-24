@@ -5,7 +5,7 @@ import 'package:scorecontacts/application/contacts/contact_watcher/contact_watch
 import 'package:scorecontacts/core/app_localization.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/selected_contacts_row_bar.dart';
 import 'package:scorecontacts/presentation/core/widgets/text_field_container.dart';
-import 'package:scorecontacts/presentation/routes/router.gr.dart';
+import 'package:scorecontacts/presentation/routes/router.gr.dart' as r;
 
 import 'contact_list_drawer.dart';
 import 'contact_row.dart';
@@ -14,8 +14,8 @@ class ContactsListScaffold extends StatefulWidget {
   final LoadSuccessValues stateValues;
 
   const ContactsListScaffold({
-    Key key,
-    @required this.stateValues,
+    Key? key,
+    required this.stateValues,
   }) : super(key: key);
 
   @override
@@ -52,7 +52,7 @@ class _ContactsListScaffoldState extends State<ContactsListScaffold> {
                     child: IconButton(
                       icon: const Icon(Icons.menu),
                       onPressed: () {
-                        _scaffoldKey.currentState.openDrawer();
+                        _scaffoldKey.currentState!.openDrawer();
                         FocusScope.of(context).unfocus();
                       },
                     ),
@@ -96,7 +96,7 @@ class _ContactsListScaffoldState extends State<ContactsListScaffold> {
           context
               .read<ContactWatcherBloc>()
               .add(const ContactWatcherEvent.deselectAllContacts());
-          ExtendedNavigator.of(context).pushAddContactPage();
+          context.router.push(r.AddContactPageRoute());
         },
         child: const Icon(
           Icons.add,

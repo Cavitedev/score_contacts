@@ -95,13 +95,14 @@ void main() {
       expect(
           PhoneCodes
               .getCountryDataByPhone("+34 666 66 66")
-              .countryCode, 'ES');
+              ?.countryCode, 'ES');
       expect(
           PhoneCodes
               .getCountryDataByPhone("+1671 6 (666) 666 6666")
-              .countryCode,
+              ?.countryCode,
           'GU');
     });
+
     test('Not complete prefix given', () {
       expect(PhoneCodes.getCountryDataByPhone("+3"), null);
     });

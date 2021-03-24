@@ -7,17 +7,17 @@ final _digitRegex = RegExp(r'[0-9]+');
 final _isNotPhoneRegex = RegExp(r'[^0-9()#+\-\. ]');
 
 /// Check is String of length 1 containst a digit [0-9]
-bool isDigit(String char) {
+bool isDigit(String? char) {
   if (char == null || char.length > 1) return false;
   return _digitRegex.hasMatch(char);
 }
 
 /// Convert a String to another one becoming a positive number
-String toNumericString(String str) {
-  if (str == null) return '';
+String? toNumericString(String? str) {
+  if (str == null) return null;
   return str.splitMapJoin(
     _digitRegex,
-    onMatch: (match) => match.group(0),
+    onMatch: (match) => match.group(0)!,
     onNonMatch: (match) => '',
   );
 }
@@ -42,8 +42,8 @@ int positionOfUmpteenthNumber(String str, int pos) {
 /// format a String , the 0 of the mask means any number
 /// For example number "12345" with mask "00-000" returns "12-345"
 String formatByMask(String text, String mask) {
-  final String numberText = toNumericString(text);
-  if (numberText.isEmpty) return "";
+  final String? numberText = toNumericString(text);
+  if (numberText==null || numberText.isEmpty) return "";
   final StringBuffer stringBuffer = StringBuffer();
   int numIndex = 0;
   for (int i = 0; i < mask.length; i++) {
@@ -64,20 +64,20 @@ String formatByMask(String text, String mask) {
 
 /// removes the prefix of a number
 /// when the country of the number is the same of the context
-String removePrefixOnNumberWhenSameCountry(
-    String phoneNumber, String countryCode) {
+String? removePrefixOnNumberWhenSameCountry(
+    String? phoneNumber, String countryCode) {
   if (phoneNumber == null || phoneNumber.isEmpty) return phoneNumber;
 
   if (!PhoneCodes.isCountryDataExplicit(phoneNumber)) return phoneNumber;
-  final PhoneCountryData phoneCountryData =
+  final PhoneCountryData? phoneCountryData =
       PhoneCodes.getCountryDataByPhone(phoneNumber);
 
   final PhoneCountryData countryData =
       PhoneCountryData.fromCountryCode(countryCode: countryCode);
 
   if (countryData == phoneCountryData) {
-    String output = toNumericString(phoneNumber);
-    output = output.substring(phoneCountryData.countryCode.length);
+    String output = toNumericString(phoneNumber)!;
+    output = output.substring(phoneCountryData!.countryCode.length);
     return formatByMask(output, phoneCountryData.phoneMaskWithoutPrefix());
   } else {
     return phoneNumber;
@@ -86,13 +86,13 @@ String removePrefixOnNumberWhenSameCountry(
 
 /// add the prefix of a number
 /// when the country of the number should be the same of the context
-String addPrefixOnNumber(String phoneNumber, String countryCode) {
-  if (phoneNumber == null || phoneNumber.isEmpty) return phoneNumber;
+String addPrefixOnNumber(String? phoneNumber, String countryCode) {
+  if (phoneNumber == null || phoneNumber.isEmpty) return "";
   if (PhoneCodes.isCountryDataExplicit(phoneNumber)) return phoneNumber;
   final PhoneCountryData countryData =
       PhoneCountryData.fromCountryCode(countryCode: countryCode);
 
-  final String output = toNumericString(phoneNumber);
+  final String output = toNumericString(phoneNumber)!;
   return countryData.countryCodeToString() + output;
 }
 

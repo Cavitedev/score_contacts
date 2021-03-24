@@ -14,16 +14,16 @@ class TextFieldWithDropdown extends StatefulWidget {
   final bool autoCorrect;
   final TextInputType keyboardType;
   final TextCapitalization textCapitalization;
-  final Icon prefixIcon;
-  final Function(String) onChangedValidator;
-  final Function(String) onLabelChanged;
-  final List<TextInputFormatter> inputFormatters;
-  final FocusNode focusNode;
+  final Icon? prefixIcon;
+  final Function(String)? onChangedValidator;
+  final Function(String)? onLabelChanged;
+  final List<TextInputFormatter>? inputFormatters;
+  final FocusNode? focusNode;
 
   const TextFieldWithDropdown(
-      {Key key,
-      @required this.labelObject,
-      @required this.hintText,
+      {Key? key,
+      required this.labelObject,
+      required this.hintText,
       this.autoCorrect = false,
       this.keyboardType = TextInputType.text,
       this.textCapitalization = TextCapitalization.none,
@@ -39,8 +39,8 @@ class TextFieldWithDropdown extends StatefulWidget {
 }
 
 class _TextFieldWithDropdownState extends State<TextFieldWithDropdown> {
-  FocusNode focusNode;
-  String Function(String) changeValidatorWithCheck;
+  late FocusNode? focusNode;
+  late String Function(String)? changeValidatorWithCheck;
   bool isActive = false;
 
   @override
@@ -54,9 +54,7 @@ class _TextFieldWithDropdownState extends State<TextFieldWithDropdown> {
       setState(() {
         isActive = str.isNotEmpty;
       });
-      if (widget.onChangedValidator != null) {
-        widget.onChangedValidator(str);
-      }
+      widget.onChangedValidator?.call(str);
       return "";
     };
     super.initState();
@@ -64,9 +62,7 @@ class _TextFieldWithDropdownState extends State<TextFieldWithDropdown> {
 
   @override
   void dispose() {
-    if (widget.focusNode == null) {
-      focusNode.dispose();
-    }
+    focusNode?.dispose();
 
     super.dispose();
   }
@@ -74,25 +70,24 @@ class _TextFieldWithDropdownState extends State<TextFieldWithDropdown> {
   @override
   Widget build(BuildContext context) {
     if (widget.labelObject.value != null) {
-      isActive = widget.labelObject.value.isNotEmpty;
+      isActive = widget.labelObject.value!.isNotEmpty;
     }
 
-    final String hint = _getHint() ?? "";
+    final String hint = _getHint();
 
     return Row(
       children: <Widget>[
         Expanded(
           flex: 2,
           child: OutlinedDropdownButton(
-            items: widget.labelObject.otherLabels,
-            focusNode: focusNode,
+            items: widget.labelObject.otherLabels!,
+            focusNode: focusNode!,
             isActive: isActive,
             onLabelChanged: widget.onLabelChanged,
             topMargin: TextFieldWithDropdown.topMargin,
             selected: widget.labelObject.label,
-            expandBottomMargin: hint != null && hint.isNotEmpty,
-            borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(12), bottomLeft: Radius.circular(12)),
+            expandBottomMargin: hint.isNotEmpty,
+            borderRadius: const BorderRadius.only(topLeft: Radius.circular(12), bottomLeft: Radius.circular(12)),
           ),
         ),
         Expanded(
@@ -103,15 +98,13 @@ class _TextFieldWithDropdownState extends State<TextFieldWithDropdown> {
             helperText: hint,
             hintText: widget.hintText,
             prefixIcon: widget.prefixIcon,
-            autoCorrect: widget?.autoCorrect,
+            autoCorrect: widget.autoCorrect,
             keyboardType: widget.keyboardType,
             textCapitalization: widget.textCapitalization,
             onChangedValidator: changeValidatorWithCheck,
             focusNode: focusNode,
             inputFormatters: widget.inputFormatters,
-            borderRadius: const BorderRadius.only(
-                topRight: Radius.circular(12),
-                bottomRight: Radius.circular(12)),
+            borderRadius: const BorderRadius.only(topRight: Radius.circular(12), bottomRight: Radius.circular(12)),
           ),
         ),
       ],
@@ -120,9 +113,7 @@ class _TextFieldWithDropdownState extends State<TextFieldWithDropdown> {
 
   String _getHint() {
     if (widget.labelObject is IHintValidator) {
-      return (widget.labelObject as IHintValidator)
-          .hintValidate(widget.labelObject.value)
-          .message;
+      return (widget.labelObject as IHintValidator).hintValidate(widget.labelObject.value).message;
     }
     return "";
   }

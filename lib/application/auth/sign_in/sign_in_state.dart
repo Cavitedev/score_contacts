@@ -21,7 +21,7 @@ class SubmittingSignInState extends SignInState {
 class ErrorSignInState extends SignInState {
   final AuthFailure authFailure;
 
-  const ErrorSignInState({@required this.authFailure});
+  const ErrorSignInState({required this.authFailure});
 
   @override
   bool operator ==(Object other) =>

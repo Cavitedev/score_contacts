@@ -1,6 +1,6 @@
+import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/contacts/add_contact/add_contact_bloc.dart';
@@ -11,13 +11,17 @@ import 'package:scorecontacts/domain/user/contacts_data/contacts_failure.dart';
 import 'package:scorecontacts/injection.dart';
 import 'package:scorecontacts/presentation/contacts/add_contacts/add_contact_scaffold.dart';
 import 'package:scorecontacts/presentation/core/widgets/overlayed_circular_progess_indicator.dart';
-import 'package:scorecontacts/presentation/routes/router.gr.dart';
+import 'package:scorecontacts/presentation/routes/router.gr.dart' as r;
 
 class AddContactPage extends StatelessWidget {
-  final Contact contact;
+  final Contact? contact;
   final bool isEdditing;
 
-  const AddContactPage({Key key, this.contact, this.isEdditing = false}) : super(key: key);
+  const AddContactPage({
+    Key? key,
+    this.contact,
+    this.isEdditing = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +43,7 @@ class AddContactPage extends StatelessWidget {
                           message: getContactsFailureMessage(context, failure),
                         ).show(context),
                         (_) {
-                          ExtendedNavigator.of(context).popUntil((route) => route.settings.name == Routes.contactList);
+                          context.router.popUntil((route) => route.settings.name == r.ContactListRoute.name);
                         },
                       ));
             },

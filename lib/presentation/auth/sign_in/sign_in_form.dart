@@ -1,11 +1,11 @@
+import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/auth/auth_bloc.dart';
 import 'package:scorecontacts/application/auth/sign_in/bloc.dart';
 import 'package:scorecontacts/core/app_localization.dart';
-import 'package:scorecontacts/presentation/routes/router.gr.dart';
+import 'package:scorecontacts/presentation/routes/router.gr.dart' as r;
 
 class SignInForm extends StatelessWidget {
   @override
@@ -14,7 +14,7 @@ class SignInForm extends StatelessWidget {
       listener: (context, state) {
         if (state is LoadedSignInState) {
           context.read<AuthBloc>().add(const AuthEvent.getUser());
-          ExtendedNavigator.of(context).popAndPush(Routes.contactList);
+          context.router.popAndPush(const r.ContactListRoute());
         } else if (state is ErrorSignInState) {
           FlushbarHelper.createError(message: AppLocalization.of(context).translate(state.authFailure.message), duration: const Duration(seconds: 5))
               .show(context);

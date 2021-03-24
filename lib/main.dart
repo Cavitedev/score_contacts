@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,6 +19,9 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
+
+  final _appRouter = r.Router();
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -32,12 +34,14 @@ class MyApp extends StatelessWidget {
             create: (context) => getIt<AppManagerCubit>()..init())
       ],
       child: BlocBuilder<AppManagerCubit, AppManagerState>(
-        builder: (context, state) => MaterialApp(
+        builder: (context, state) => MaterialApp.router(
+          routerDelegate: _appRouter.delegate(),
+          routeInformationParser: _appRouter.defaultRouteParser(),
           debugShowCheckedModeBanner: false,
           title: 'Contacts',
           locale: state.languageCode == null
               ? null
-              : Locale(state.languageCode, state.region),
+              : Locale(state.languageCode!, state.region),
           supportedLocales: const [
             Locale("en"),
             Locale("es"),
@@ -47,9 +51,7 @@ class MyApp extends StatelessWidget {
             GlobalWidgetsLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
           ],
-          builder: ExtendedNavigator.builder<r.Router>(
-            router: r.Router(),
-          ),
+
           themeMode: state.themeMode,
           theme: lightTheme,
           darkTheme: darkTheme,

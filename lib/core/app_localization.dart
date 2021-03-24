@@ -11,20 +11,21 @@ class AppLocalization {
   AppLocalization(this._languageCode);
 
   factory AppLocalization.of(BuildContext context) =>
-      Localizations.of<AppLocalization>(context, AppLocalization);
+      Localizations.of<AppLocalization>(context, AppLocalization)!;
 
   static const LocalizationsDelegate<AppLocalization> delegate = _AppLocalizationDelegate();
 
-  Map<String, String> _localizedStrings;
+  late Map<String, String>? _localizedStrings;
 
-  String translate(String key, {List<String> args}){
-    String textStr = _localizedStrings[key];
+  String translate(String key, {List<String>? args}){
+    String? textStr = _localizedStrings![key];
+    textStr ??= "null value";
     if(args == null) return textStr;
     while(args.isNotEmpty){
-      textStr = textStr.replaceFirst("%s", args[0]);
+      textStr = textStr!.replaceFirst("%s", args[0]);
       args.removeAt(0);
     }
-    return textStr;
+    return textStr!;
 
   }
 

@@ -4,119 +4,97 @@
 // AutoRouteGenerator
 // **************************************************************************
 
-// ignore_for_file: public_member_api_docs
+import 'package:auto_route/auto_route.dart' as _i1;
+import 'package:flutter/material.dart' as _i7;
 
-import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart';
+import '../../domain/user/contacts_data/contact.dart' as _i8;
+import '../auth/sign_in/sign_in_page.dart' as _i5;
+import '../auth/splash_page.dart' as _i2;
+import '../contacts/add_contacts/add_contact_page.dart' as _i4;
+import '../contacts/list_view/contact_list.dart' as _i3;
+import '../settings/settings_page.dart' as _i6;
 
-import '../../domain/user/contacts_data/contact.dart';
-import '../auth/sign_in/sign_in_page.dart';
-import '../auth/splash_page.dart';
-import '../contacts/add_contacts/add_contact_page.dart';
-import '../contacts/list_view/contact_list.dart';
-import '../settings/settings_page.dart';
+class Router extends _i1.RootStackRouter {
+  Router();
 
-class Routes {
-  static const String splashPage = '/';
-  static const String contactList = '/contact-list';
-  static const String addContactPage = '/add-contact-page';
-  static const String signInPage = '/sign-in-page';
-  static const String settingsPage = '/settings-page';
-  static const all = <String>{
-    splashPage,
-    contactList,
-    addContactPage,
-    signInPage,
-    settingsPage,
-  };
-}
-
-class Router extends RouterBase {
   @override
-  List<RouteDef> get routes => _routes;
-  final _routes = <RouteDef>[
-    RouteDef(Routes.splashPage, page: SplashPage),
-    RouteDef(Routes.contactList, page: ContactList),
-    RouteDef(Routes.addContactPage, page: AddContactPage),
-    RouteDef(Routes.signInPage, page: SignInPage),
-    RouteDef(Routes.settingsPage, page: SettingsPage),
-  ];
-  @override
-  Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
-  final _pagesMap = <Type, AutoRouteFactory>{
-    SplashPage: (data) {
-      return MaterialPageRoute<dynamic>(
-        builder: (context) => SplashPage(),
-        settings: data,
-      );
+  final Map<String, _i1.PageFactory> pagesMap = {
+    SplashPageRoute.name: (entry) {
+      return _i1.MaterialPageX(entry: entry, child: _i2.SplashPage());
     },
-    ContactList: (data) {
-      return MaterialPageRoute<dynamic>(
-        builder: (context) => ContactList(),
-        settings: data,
-      );
+    ContactListRoute.name: (entry) {
+      return _i1.MaterialPageX(entry: entry, child: _i3.ContactList());
     },
-    AddContactPage: (data) {
-      final args = data.getArgs<AddContactPageArguments>(
-        orElse: () => AddContactPageArguments(),
-      );
-      return MaterialPageRoute<dynamic>(
-        builder: (context) => AddContactPage(
-          key: args.key,
-          contact: args.contact,
-          isEdditing: args.isEdditing,
-        ),
-        settings: data,
-      );
+    AddContactPageRoute.name: (entry) {
+      var args = entry.routeData.argsAs<AddContactPageRouteArgs>(
+          orElse: () => AddContactPageRouteArgs());
+      return _i1.MaterialPageX(
+          entry: entry,
+          child: _i4.AddContactPage(
+              key: args.key,
+              contact: args.contact,
+              isEdditing: args.isEdditing));
     },
-    SignInPage: (data) {
-      return MaterialPageRoute<dynamic>(
-        builder: (context) => SignInPage(),
-        settings: data,
-      );
+    SignInPageRoute.name: (entry) {
+      return _i1.MaterialPageX(entry: entry, child: _i5.SignInPage());
     },
-    SettingsPage: (data) {
-      return MaterialPageRoute<dynamic>(
-        builder: (context) => SettingsPage(),
-        settings: data,
-      );
-    },
+    SettingsPageRoute.name: (entry) {
+      return _i1.MaterialPageX(entry: entry, child: _i6.SettingsPage());
+    }
   };
+
+  @override
+  List<_i1.RouteConfig> get routes => [
+        _i1.RouteConfig(SplashPageRoute.name, path: '/'),
+        _i1.RouteConfig(ContactListRoute.name, path: '/contact-list'),
+        _i1.RouteConfig(AddContactPageRoute.name, path: '/add-contact-page'),
+        _i1.RouteConfig(SignInPageRoute.name, path: '/sign-in-page'),
+        _i1.RouteConfig(SettingsPageRoute.name, path: '/settings-page')
+      ];
 }
 
-/// ************************************************************************
-/// Navigation helper methods extension
-/// *************************************************************************
+class SplashPageRoute extends _i1.PageRouteInfo {
+  const SplashPageRoute() : super(name, path: '/');
 
-extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
-  Future<dynamic> pushSplashPage() => push<dynamic>(Routes.splashPage);
-
-  Future<dynamic> pushContactList() => push<dynamic>(Routes.contactList);
-
-  Future<dynamic> pushAddContactPage({
-    Key key,
-    Contact contact,
-    bool isEdditing = false,
-  }) =>
-      push<dynamic>(
-        Routes.addContactPage,
-        arguments: AddContactPageArguments(
-            key: key, contact: contact, isEdditing: isEdditing),
-      );
-
-  Future<dynamic> pushSignInPage() => push<dynamic>(Routes.signInPage);
-
-  Future<dynamic> pushSettingsPage() => push<dynamic>(Routes.settingsPage);
+  static const String name = 'SplashPageRoute';
 }
 
-/// ************************************************************************
-/// Arguments holder classes
-/// *************************************************************************
+class ContactListRoute extends _i1.PageRouteInfo {
+  const ContactListRoute() : super(name, path: '/contact-list');
 
-/// AddContactPage arguments holder class
-class AddContactPageArguments {
-  final Key key;
-  final Contact contact;
+  static const String name = 'ContactListRoute';
+}
+
+class AddContactPageRoute extends _i1.PageRouteInfo<AddContactPageRouteArgs> {
+  AddContactPageRoute(
+      {_i7.Key? key, _i8.Contact? contact, bool isEdditing = false})
+      : super(name,
+            path: '/add-contact-page',
+            args: AddContactPageRouteArgs(
+                key: key, contact: contact, isEdditing: isEdditing));
+
+  static const String name = 'AddContactPageRoute';
+}
+
+class AddContactPageRouteArgs {
+  const AddContactPageRouteArgs(
+      {this.key, this.contact, this.isEdditing = false});
+
+  final _i7.Key? key;
+
+  final _i8.Contact? contact;
+
   final bool isEdditing;
-  AddContactPageArguments({this.key, this.contact, this.isEdditing = false});
+}
+
+class SignInPageRoute extends _i1.PageRouteInfo {
+  const SignInPageRoute() : super(name, path: '/sign-in-page');
+
+  static const String name = 'SignInPageRoute';
+}
+
+class SettingsPageRoute extends _i1.PageRouteInfo {
+  const SettingsPageRoute() : super(name, path: '/settings-page');
+
+  static const String name = 'SettingsPageRoute';
 }

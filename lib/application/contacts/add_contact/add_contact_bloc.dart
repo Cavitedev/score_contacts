@@ -34,12 +34,12 @@ class AddContactBloc extends Bloc<AddContactEvent, AddContactState> {
           () => state,
           (contact) {
             final List<Phone> phonesList =
-                List<Phone>.from(contact.labelObjects[Phone]);
+                List<Phone>.from(contact.labelObjects![Phone]!);
             for (int i = 0; i < phonesList.length; i++) {
               phonesList[i] = phonesList[i].fromDatabase(e.countryCode);
             }
             final Map<Type, List<ILabelObject>> labelObjects =
-                Map.from(contact.labelObjects);
+                Map.from(contact.labelObjects!);
             labelObjects[Phone] = phonesList;
             final Contact sendedContact =
                 contact.copyWith(labelObjects: labelObjects);
@@ -52,12 +52,12 @@ class AddContactBloc extends Bloc<AddContactEvent, AddContactState> {
         yield state.copyWith(isSaving: true, savingOrFailureOption: none());
 
         final List<Phone> phonesList = List<Phone>.from(
-            state.contact.labelObjects[Phone]);
+            state.contact.labelObjects![Phone]!);
         for (int i = 0; i < phonesList.length; i++) {
           phonesList[i] = phonesList[i].toDatabaseString(e.countryCode);
         }
         final Map<Type, List<ILabelObject>> labelObjects =
-        Map.from(state.contact.labelObjects);
+        Map.from(state.contact.labelObjects!);
         labelObjects[Phone] = phonesList;
         final Contact sendedContact = state.contact.copyWith(
             labelObjects: labelObjects
@@ -72,11 +72,11 @@ class AddContactBloc extends Bloc<AddContactEvent, AddContactState> {
       },
       labelObjectChanged: (e) async* {
         final List<ILabelObject> labelObjectList = List<ILabelObject>.from(
-            state.contact.labelObjects[e.labelObject.runtimeType]);
+            state.contact.labelObjects![e.labelObject.runtimeType]!);
         labelObjectList[e.pos] = e.labelObject;
 
         final Map<Type, List<ILabelObject>> labelObjects =
-            Map.from(state.contact.labelObjects);
+            Map.from(state.contact.labelObjects!);
 
         labelObjects[e.labelObject.runtimeType] = labelObjectList;
         yield state.copyWith(
@@ -84,11 +84,11 @@ class AddContactBloc extends Bloc<AddContactEvent, AddContactState> {
       },
       addLabelObject: (e) async* {
         final List<ILabelObject> labelObjectList = List<ILabelObject>.from(
-            state.contact.labelObjects[e.labelObject.runtimeType]);
+            state.contact.labelObjects![e.labelObject.runtimeType]!);
         labelObjectList.add(e.labelObject);
 
         final Map<Type, List<ILabelObject>> labelObjects =
-        Map.from(state.contact.labelObjects);
+        Map.from(state.contact.labelObjects!);
 
         labelObjects[e.labelObject.runtimeType] = labelObjectList;
         yield state.copyWith(
@@ -96,11 +96,11 @@ class AddContactBloc extends Bloc<AddContactEvent, AddContactState> {
       },
       removeLabelObject: (e) async* {
         final List<ILabelObject> labelObjectList = List<ILabelObject>.from(
-            state.contact.labelObjects[e.labelObjectType]);
+            state.contact.labelObjects![e.labelObjectType]!);
         labelObjectList.removeAt(e.pos);
 
         final Map<Type, List<ILabelObject>> labelObjects =
-        Map.from(state.contact.labelObjects);
+        Map.from(state.contact.labelObjects!);
 
         labelObjects[e.labelObjectType] = labelObjectList;
         yield state.copyWith(
@@ -111,20 +111,20 @@ class AddContactBloc extends Bloc<AddContactEvent, AddContactState> {
             contact: state.contact.copyWith(nameData: e.nameData));
       },
       updateCompany: (e) async* {
-        final List<Company> companies = List.of(state.contact.companies);
+        final List<Company> companies = List.of(state.contact.companies!);
         companies[e.index] = e.company;
 
         yield state.copyWith(
             contact: state.contact.copyWith(companies: companies));
       },
       addCompany: (e) async* {
-        final List<Company> companies = List.of(state.contact.companies);
+        final List<Company> companies = List.of(state.contact.companies!);
         companies.add(Company.empty());
         yield state.copyWith(
             contact: state.contact.copyWith(companies: companies));
       },
       deleteCompany: (e) async* {
-        final List<Company> companies = List.of(state.contact.companies);
+        final List<Company> companies = List.of(state.contact.companies!);
         companies.removeAt(e.index);
         yield state.copyWith(
             contact: state.contact.copyWith(companies: companies));

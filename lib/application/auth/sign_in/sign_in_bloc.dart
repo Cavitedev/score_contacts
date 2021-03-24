@@ -12,7 +12,7 @@ import './bloc.dart';
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
   final IAuthFacade authDao;
 
-  SignInBloc({this.authDao}) : super(const InitialSignInState());
+  SignInBloc({required this.authDao}) : super(const InitialSignInState());
 
   @override
   Stream<SignInState> mapEventToState(

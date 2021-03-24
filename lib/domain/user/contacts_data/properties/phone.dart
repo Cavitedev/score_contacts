@@ -3,11 +3,11 @@ import 'package:scorecontacts/presentation/core/formatters/formatter_tools.dart'
 
 class Phone implements ILabelObject {
   @override
-  final String value;
+  final String? value;
   @override
-  final String label;
+  final String? label;
   @override
-  final List<String> otherLabels;
+  final List<String>? otherLabels;
 
   const Phone({this.value,
       this.label = "Mobile",
@@ -30,18 +30,18 @@ class Phone implements ILabelObject {
 
   Phone fromDatabase(String countryCode) {
     return Phone(
-      value: removePrefixOnNumberWhenSameCountry(value, countryCode),
+      value: removePrefixOnNumberWhenSameCountry(value!, countryCode),
       label: label,
       otherLabels: otherLabels,
     );
   }
 
   String toNumString(){
-    return toNumericString(value);
+    return toNumericString(value) ?? "";
   }
 
   bool matches(String pattern){
-    return toNumString().contains(toNumericString(pattern));
+    return toNumString().contains(toNumericString(pattern)?? "");
   }
 
   @override
@@ -62,9 +62,9 @@ class Phone implements ILabelObject {
 
   @override
   Phone copyWith({
-    String value,
-    String label,
-    List<String> otherLabels,
+    String? value,
+    String? label,
+    List<String>? otherLabels,
   }) {
     if ((value == null || identical(value, this.value)) &&
         (label == null || identical(label, this.label)) &&

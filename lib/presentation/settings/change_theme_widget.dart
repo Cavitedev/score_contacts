@@ -8,8 +8,8 @@ class ChangeThemeListTile extends StatelessWidget {
   final ThemeMode themeMode;
 
   const ChangeThemeListTile({
-    Key key,
-    @required this.themeMode,
+    Key? key,
+    required this.themeMode,
   }) : super(key: key);
 
   @override
@@ -19,7 +19,7 @@ class ChangeThemeListTile extends StatelessWidget {
       key = "system";
     } else if (themeMode == ThemeMode.dark) {
       key = "dark";
-    } else if (themeMode == ThemeMode.light) {
+    } else {
       key = "light";
     }
 
@@ -42,7 +42,7 @@ class ChangeThemeListTile extends StatelessWidget {
 class ChangeThemeDialog extends StatelessWidget {
   final ThemeMode themeMode;
 
-  const ChangeThemeDialog({@required this.themeMode});
+  const ChangeThemeDialog({required this.themeMode});
 
   @override
   Widget build(BuildContext context) {
@@ -59,8 +59,8 @@ class RadioThemeColumn extends StatelessWidget {
   final ThemeMode group;
 
   const RadioThemeColumn({
-    Key key,
-    this.group,
+    required this.group,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -88,9 +88,9 @@ class RadioThemeColumn extends StatelessWidget {
   }
 
   RadioListTile<ThemeMode> _buildRadioListTile({
-    @required BuildContext context,
-    @required ThemeMode value,
-    @required String msg,
+    required BuildContext context,
+    required ThemeMode value,
+    required String msg,
   }) {
     return RadioListTile<ThemeMode>(
       groupValue: group,

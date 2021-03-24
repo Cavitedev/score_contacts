@@ -8,39 +8,32 @@ part of 'contact_dtos.dart';
 
 _$_ContactDTO _$_$_ContactDTOFromJson(Map json) {
   return _$_ContactDTO(
-    nameDataDTO: json['nameData'] == null
-        ? null
-        : NameDataDTO.fromJson((json['nameData'] as Map)?.map(
-            (k, e) => MapEntry(k as String, e),
-          )),
-    companiesDTO: (json['companies'] as List)
+    nameDataDTO: NameDataDTO.fromJson(
+        Map<String, dynamic>.from(json['nameData'] as Map)),
+    companiesDTO: (json['companies'] as List<dynamic>?)
         ?.map((e) => e == null
             ? null
-            : CompanyDTO.fromJson((e as Map)?.map(
-                (k, e) => MapEntry(k as String, e),
-              )))
-        ?.toList(),
-    emailsDTO: (json['emails'] as List)
+            : CompanyDTO.fromJson(Map<String, dynamic>.from(e as Map)))
+        .toList(),
+    emailsDTO: (json['emails'] as List<dynamic>?)
         ?.map((e) => e == null
             ? null
-            : LabelObjectDTO.fromJson((e as Map)?.map(
-                (k, e) => MapEntry(k as String, e),
-              )))
-        ?.toList(),
-    phonesDTO: (json['phones'] as List)
+            : LabelObjectDTO.fromJson(Map<String, dynamic>.from(e as Map)))
+        .toList(),
+    phonesDTO: (json['phones'] as List<dynamic>?)
         ?.map((e) => e == null
             ? null
-            : LabelObjectDTO.fromJson((e as Map)?.map(
-                (k, e) => MapEntry(k as String, e),
-              )))
-        ?.toList(),
+            : LabelObjectDTO.fromJson(Map<String, dynamic>.from(e as Map)))
+        .toList(),
     serverTimeStamp:
         const ServerTimeStampConverter().fromJson(json['serverTimeStamp']),
   );
 }
 
 Map<String, dynamic> _$_$_ContactDTOToJson(_$_ContactDTO instance) {
-  final val = <String, dynamic>{};
+  final val = <String, dynamic>{
+    'nameData': instance.nameDataDTO.toJson(),
+  };
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -48,11 +41,10 @@ Map<String, dynamic> _$_$_ContactDTOToJson(_$_ContactDTO instance) {
     }
   }
 
-  writeNotNull('nameData', instance.nameDataDTO?.toJson());
   writeNotNull(
-      'companies', instance.companiesDTO?.map((e) => e?.toJson())?.toList());
-  writeNotNull('emails', instance.emailsDTO?.map((e) => e?.toJson())?.toList());
-  writeNotNull('phones', instance.phonesDTO?.map((e) => e?.toJson())?.toList());
+      'companies', instance.companiesDTO?.map((e) => e?.toJson()).toList());
+  writeNotNull('emails', instance.emailsDTO?.map((e) => e?.toJson()).toList());
+  writeNotNull('phones', instance.phonesDTO?.map((e) => e?.toJson()).toList());
   writeNotNull('serverTimeStamp',
       const ServerTimeStampConverter().toJson(instance.serverTimeStamp));
   return val;
@@ -60,8 +52,8 @@ Map<String, dynamic> _$_$_ContactDTOToJson(_$_ContactDTO instance) {
 
 _$_NameDataDTO _$_$_NameDataDTOFromJson(Map json) {
   return _$_NameDataDTO(
-    name: json['name'] as String,
-    surname: json['surname'] as String,
+    name: json['name'] as String?,
+    surname: json['surname'] as String?,
   );
 }
 
@@ -81,8 +73,8 @@ Map<String, dynamic> _$_$_NameDataDTOToJson(_$_NameDataDTO instance) {
 
 _$_LabelObjectDTO _$_$_LabelObjectDTOFromJson(Map json) {
   return _$_LabelObjectDTO(
-    name: json['name'] as String,
-    label: json['label'] as String,
+    name: json['name'] as String?,
+    label: json['label'] as String?,
   );
 }
 
@@ -102,8 +94,8 @@ Map<String, dynamic> _$_$_LabelObjectDTOToJson(_$_LabelObjectDTO instance) {
 
 _$_CompanyDTO _$_$_CompanyDTOFromJson(Map json) {
   return _$_CompanyDTO(
-    name: json['name'] as String,
-    title: json['title'] as String,
+    name: json['name'] as String?,
+    title: json['title'] as String?,
   );
 }
 

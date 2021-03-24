@@ -5,9 +5,9 @@ import 'package:scorecontacts/domain/user/contacts_data/properties/i_label_objec
 
 class Email implements ILabelObject, IHintValidator<String> {
   @override
-  final String label;
+  final String? label;
   @override
-  final String value;
+  final String? value;
   @override
   final List<String> otherLabels;
 
@@ -25,15 +25,15 @@ class Email implements ILabelObject, IHintValidator<String> {
   }
 
   @override
-  IHint hintValidate(String value) {
+  IHint hintValidate(String? value) {
     return emailValidate(value);
   }
 
   @override
   Email copyWith({
-    String label,
-    String value,
-    List<String> otherLabels,
+    String? label,
+    String? value,
+    List<String>? otherLabels,
   }) {
     if ((label == null || identical(label, this.label)) &&
         (value == null || identical(value, this.value)) &&

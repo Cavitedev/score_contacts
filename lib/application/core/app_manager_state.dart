@@ -5,9 +5,9 @@ abstract class AppManagerState implements _$AppManagerState {
   const AppManagerState._();
 
   const factory AppManagerState({
-    ThemeMode themeMode,
-    String region,
-    String languageCode,
+    required ThemeMode themeMode,
+    required String region,
+    String? languageCode,
   }) = _AppManagerState;
 
   factory AppManagerState.initial() =>

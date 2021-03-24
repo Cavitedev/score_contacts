@@ -9,17 +9,17 @@ class TextFieldsWithDropdowns extends StatefulWidget {
   final bool autoCorrect;
   final TextInputType keyboardType;
   final TextCapitalization textCapitalization;
-  final Icon prefixIcon;
-  final Function(int, String) onTextChanged;
-  final Function(int, String) onLabelChanged;
-  final List<TextInputFormatter> inputFormatters;
-  final Function onAddWidget;
-  final Function(int) onRemoveWidget;
+  final Icon? prefixIcon;
+  final Function(int, String)? onTextChanged;
+  final Function(int, String)? onLabelChanged;
+  final List<TextInputFormatter>? inputFormatters;
+  final Function? onAddWidget;
+  final Function(int)? onRemoveWidget;
 
   const TextFieldsWithDropdowns({
-    Key key,
-    @required this.labelObjects,
-    @required this.hintText,
+    Key? key,
+    required this.labelObjects,
+    required this.hintText,
     this.autoCorrect = false,
     this.keyboardType = TextInputType.text,
     this.textCapitalization = TextCapitalization.none,
@@ -32,18 +32,17 @@ class TextFieldsWithDropdowns extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _TextFieldsWithDropdownsState createState() =>
-      _TextFieldsWithDropdownsState();
+  _TextFieldsWithDropdownsState createState() => _TextFieldsWithDropdownsState();
 }
 
 class _TextFieldsWithDropdownsState extends State<TextFieldsWithDropdowns> {
-  List<TextFieldWithDropdown> itemsBuilt;
+  List<TextFieldWithDropdown>? itemsBuilt;
   GlobalKey<AnimatedListState> animatedList = GlobalKey<AnimatedListState>();
-  int listCount;
+  late int listCount;
   int posInactiveWidget = 0;
-  ILabelObject objectToRemove;
+  ILabelObject? objectToRemove;
 
-  List<FocusNode> focusNodes;
+  late List<FocusNode> focusNodes;
 
   @override
   void initState() {
@@ -77,67 +76,53 @@ class _TextFieldsWithDropdownsState extends State<TextFieldsWithDropdowns> {
   }
 
   void _onActiveChange() {
-    final int activeFields = widget.labelObjects
-        .where((labelObject) =>
-            labelObject.value != null && labelObject.value.isNotEmpty)
-        .length;
+    final int activeFields =
+        widget.labelObjects.where((labelObject) => labelObject.value != null && labelObject.value!.isNotEmpty).length;
     if (activeFields >= widget.labelObjects.length) {
       _addWidget();
     } else if (activeFields < widget.labelObjects.length - 1) {
-      posInactiveWidget = widget.labelObjects.indexWhere((labelObject) =>
-      labelObject.value != null && labelObject.value.isEmpty);
+      posInactiveWidget =
+          widget.labelObjects.indexWhere((labelObject) => labelObject.value != null && labelObject.value!.isEmpty);
       _removeWidget(pos: posInactiveWidget);
     }
   }
 
   void _addWidget() {
-    if (widget.onAddWidget != null) {
-      widget.onAddWidget();
-    }
+    widget.onAddWidget?.call();
   }
 
-  void _removeWidget({@required int pos}) {
+  void _removeWidget({required int pos}) {
     objectToRemove = widget.labelObjects[pos];
 
-    if (widget.onRemoveWidget != null) {
-      widget.onRemoveWidget(pos);
-    }
+    widget.onRemoveWidget?.call(pos);
   }
 
   void _updateAnimatedList() {
-    while(widget.labelObjects.length != listCount){
+    while (widget.labelObjects.length != listCount) {
       if (widget.labelObjects.length > listCount) {
         focusNodes.add(FocusNode());
-        animatedList.currentState.insertItem(listCount);
+        animatedList.currentState!.insertItem(listCount);
         listCount++;
       } else if (widget.labelObjects.length < listCount) {
-        animatedList.currentState.removeItem(posInactiveWidget,
-                (context, animation) {
-              return _listTransitionBuild(
-                  animation,
-                  _buildField(
-                      pos: posInactiveWidget, labelObject: objectToRemove));
-            }, duration: const Duration(milliseconds: 300));
+        animatedList.currentState!.removeItem(posInactiveWidget, (context, animation) {
+          return _listTransitionBuild(animation, _buildField(pos: posInactiveWidget, labelObject: objectToRemove!));
+        }, duration: const Duration(milliseconds: 300));
         listCount--;
         focusNodes.removeAt(posInactiveWidget);
       }
     }
-
   }
 
-  SizeTransition _listTransitionBuild(Animation<double> animation,
-      Widget child) {
+  SizeTransition _listTransitionBuild(Animation<double> animation, Widget child) {
     return SizeTransition(
-      sizeFactor: CurvedAnimation(
-          curve: const Interval(0, 1, curve: Curves.decelerate),
-          parent: animation),
+      sizeFactor: CurvedAnimation(curve: const Interval(0, 1, curve: Curves.decelerate), parent: animation),
       child: child,
     );
   }
 
   TextFieldWithDropdown _buildField({
-    ILabelObject labelObject,
-    @required int pos,
+    ILabelObject? labelObject,
+    required int pos,
   }) {
     return TextFieldWithDropdown(
       labelObject: labelObject ?? widget.labelObjects[pos],
@@ -146,14 +131,10 @@ class _TextFieldsWithDropdownsState extends State<TextFieldsWithDropdowns> {
       inputFormatters: widget.inputFormatters,
       keyboardType: widget.keyboardType,
       onChangedValidator: (str) {
-        if (widget.onTextChanged != null) {
-          widget.onTextChanged(pos, str);
-        }
+        widget.onTextChanged?.call(pos, str);
       },
       onLabelChanged: (str) {
-        if (widget.onLabelChanged != null) {
-          widget.onLabelChanged(pos, str);
-        }
+        widget.onLabelChanged?.call(pos, str);
       },
       textCapitalization: widget.textCapitalization,
       autoCorrect: widget.autoCorrect,

@@ -8,21 +8,21 @@ abstract class NameData implements _$NameData {
   const NameData._();
 
   const factory NameData({
-    PhoneticNames phoneticNames,
-    String firstName,
-    String nickname,
-    String namePrefix,
-    String middleName,
-    String surnames,
-    String nameSuffix,
+    PhoneticNames? phoneticNames,
+    String? firstName,
+    String? nickname,
+    String? namePrefix,
+    String? middleName,
+    String? surnames,
+    String? nameSuffix,
   }) = _NameData;
 
-  factory NameData.fromFullName(String fullName) {
+  factory NameData.fromFullName(String? fullName) {
     if(fullName == null || fullName.isEmpty) return const NameData();
     final List<String> names = fullName.split(' ');
     final String name = names[0];
     names.removeAt(0);
-    String surnames;
+    String? surnames;
     if (names.isEmpty) {
       surnames = null;
     } else {

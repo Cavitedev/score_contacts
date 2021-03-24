@@ -6,7 +6,7 @@ part 'filter.freezed.dart';
 abstract class Filter with _$Filter{
     const Filter._();
 
-    const factory Filter({String filterSearch}) = _Filter;
+    const factory Filter({String? filterSearch}) = _Filter;
 
 
 

@@ -14,16 +14,16 @@ class LabelObjectBuilder extends StatelessWidget {
   final bool autoCorrect = false;
   final TextInputType keyboardType;
   final TextCapitalization textCapitalization = TextCapitalization.none;
-  final Icon icon;
-  final List<TextInputFormatter> inputFormatters;
+  final Icon? icon;
+  final List<TextInputFormatter>? inputFormatters;
 
   const LabelObjectBuilder(
-      {Key key,
-      @required this.state,
-      @required this.context,
-      @required this.defaultLabelObject,
-      this.hintText,
-      this.keyboardType,
+      {Key? key,
+      required this.state,
+      required this.context,
+      required this.defaultLabelObject,
+      required this.hintText,
+      required this.keyboardType,
       this.icon,
       this.inputFormatters})
       : super(key: key);
@@ -31,7 +31,7 @@ class LabelObjectBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFieldsWithDropdowns(
-      labelObjects: state.contact.labelObjects[defaultLabelObject.runtimeType],
+      labelObjects: state.contact.labelObjects![defaultLabelObject.runtimeType]!,
       hintText: hintText,
       prefixIcon: icon,
       keyboardType: keyboardType,
@@ -46,12 +46,12 @@ class LabelObjectBuilder extends StatelessWidget {
               defaultLabelObject.runtimeType, pos)),
       onTextChanged: (i, str) => context.read<AddContactBloc>().add(
           AddContactEvent.labelObjectChanged(
-              state.contact.labelObjects[defaultLabelObject.runtimeType][i]
+              state.contact.labelObjects![defaultLabelObject.runtimeType]![i]
                   .copyWith(value: str),
               i)),
       onLabelChanged: (i, value) => context.read<AddContactBloc>().add(
           AddContactEvent.labelObjectChanged(
-              state.contact.labelObjects[defaultLabelObject.runtimeType][i]
+              state.contact.labelObjects![defaultLabelObject.runtimeType]![i]
                   .copyWith(label: value),
               i)),
     );

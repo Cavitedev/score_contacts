@@ -18,16 +18,16 @@ const String emailsName = "emails";
 const String phonesName = "phones";
 
 @freezed
-abstract class ContactDTO implements _$ContactDTO {
+class ContactDTO with _$ContactDTO {
   const ContactDTO._();
 
   const factory ContactDTO({
-    @JsonKey(ignore: true) String id,
-    @JsonKey(name: nameDataName) NameDataDTO nameDataDTO,
-    @JsonKey(name: companiesName) List<CompanyDTO> companiesDTO,
-    @JsonKey(name: emailsName) List<LabelObjectDTO> emailsDTO,
-    @JsonKey(name: phonesName) List<LabelObjectDTO> phonesDTO,
-    @ServerTimeStampConverter() FieldValue serverTimeStamp,
+    @JsonKey(ignore: true) String? id,
+    @JsonKey(name: nameDataName) required NameDataDTO nameDataDTO,
+    @JsonKey(name: companiesName) List<CompanyDTO?>? companiesDTO,
+    @JsonKey(name: emailsName) List<LabelObjectDTO?>? emailsDTO,
+    @JsonKey(name: phonesName) List<LabelObjectDTO?>? phonesDTO,
+    @ServerTimeStampConverter() required FieldValue serverTimeStamp,
   }) = _ContactDTO;
 
   factory ContactDTO.fromDomain(Contact contact) {
@@ -36,39 +36,39 @@ abstract class ContactDTO implements _$ContactDTO {
       nameDataDTO: NameDataDTO.fromDomain(contact.nameData),
       companiesDTO: contact.companies
           ?.where((comp) => comp.title != null || comp.name != null)
-          ?.map((comp) => CompanyDTO.fromDomain(comp))
-          ?.toList(),
+          .map((comp) => CompanyDTO.fromDomain(comp))
+          .toList(),
       emailsDTO: (contact.labelObjects ?? const {})[Email]
           ?.where((email) => email.value != null)
-          ?.map(
+          .map(
               (emailLabelObject) => LabelObjectDTO.fromDomain(emailLabelObject))
-          ?.toList(),
+          .toList(),
       phonesDTO: (contact.labelObjects ?? const{})[Phone]
           ?.where((phone) => phone.value != null)
-          ?.map((phoneLabelObject) {
+          .map((phoneLabelObject) {
         return LabelObjectDTO.fromDomain(phoneLabelObject);
-      })?.toList() ,
+      }).toList() ,
       serverTimeStamp: FieldValue.serverTimestamp(),
     );
   }
 
   Contact toDomain() {
     return Contact(
-      id: UniqueID.fromUniqueString(id),
+      id: UniqueID.fromUniqueString(id!),
       nameData: nameDataDTO.toDomain(),
-      companies: (companiesDTO == null || companiesDTO.isEmpty)
+      companies: (companiesDTO == null || companiesDTO!.isEmpty)
           ? [Company.empty()]
-          : companiesDTO.map((comp) => comp.toDomain()).toList(),
+          : companiesDTO!.map((comp) => comp!.toDomain()).toList(),
       labelObjects: {
-        Email: (emailsDTO == null || emailsDTO.isEmpty)
+        Email: (emailsDTO == null || emailsDTO!.isEmpty)
             ? [const Email()]
             : emailsDTO
-                .map((dto) => Email.fromLabelObject(dto.toDomain()))
+                !.map((dto) => Email.fromLabelObject(dto!.toDomain()))
                 .toList(),
-        Phone: (phonesDTO == null || phonesDTO.isEmpty)
+        Phone: (phonesDTO == null || phonesDTO!.isEmpty)
             ? [const Phone()]
             : phonesDTO
-                .map((dto) => Phone.fromLabelObject(dto.toDomain()))
+                !.map((dto) => Phone.fromLabelObject(dto!.toDomain()))
                 .toList(),
       },
     );
@@ -78,17 +78,17 @@ abstract class ContactDTO implements _$ContactDTO {
       _$ContactDTOFromJson(json);
 
   factory ContactDTO.fromFirestore(DocumentSnapshot doc) {
-    return ContactDTO.fromJson(doc.data()).copyWith(id: doc.id);
+    return ContactDTO.fromJson(doc.data()!).copyWith(id: doc.id);
   }
 }
 
 @freezed
-abstract class NameDataDTO implements _$NameDataDTO {
+class NameDataDTO with _$NameDataDTO {
   const NameDataDTO._();
 
   const factory NameDataDTO({
-    String name,
-    String surname,
+    String? name,
+    String? surname,
   }) = _NameDataDTO;
 
   factory NameDataDTO.fromDomain(NameData nameData) {
@@ -107,12 +107,12 @@ abstract class NameDataDTO implements _$NameDataDTO {
 }
 
 @freezed
-abstract class LabelObjectDTO implements _$LabelObjectDTO {
+class LabelObjectDTO with _$LabelObjectDTO {
   const LabelObjectDTO._();
 
   const factory LabelObjectDTO({
-    String name,
-    String label,
+    String? name,
+    String? label,
   }) = _LabelObjectDTO;
 
   factory LabelObjectDTO.fromDomain(ILabelObject labelObject) {
@@ -136,12 +136,12 @@ abstract class LabelObjectDTO implements _$LabelObjectDTO {
 }
 
 @freezed
-abstract class CompanyDTO implements _$CompanyDTO {
+class CompanyDTO with _$CompanyDTO {
   const CompanyDTO._();
 
   const factory CompanyDTO({
-    String name,
-    String title,
+    String? name,
+    String? title,
   }) = _CompanyDTO;
 
   factory CompanyDTO.fromDomain(Company company) {

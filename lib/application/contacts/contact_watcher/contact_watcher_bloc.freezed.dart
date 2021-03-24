@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'contact_watcher_bloc.dart';
 
@@ -9,11 +9,13 @@ part of 'contact_watcher_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$ContactWatcherEventTearOff {
   const _$ContactWatcherEventTearOff();
 
-// ignore: unused_element
   _ContactsReceived contactsReceived(
       Either<ContactsFailure, List<Contact>> contactsEither) {
     return _ContactsReceived(
@@ -21,19 +23,16 @@ class _$ContactWatcherEventTearOff {
     );
   }
 
-// ignore: unused_element
   _WatchAll watchAll() {
     return const _WatchAll();
   }
 
-// ignore: unused_element
   _SearchContact searchContact(String searchString) {
     return _SearchContact(
       searchString,
     );
   }
 
-// ignore: unused_element
   _ToggleSelectionContact toggleSelectionContact(
       SelectionContact selectionContact) {
     return _ToggleSelectionContact(
@@ -41,64 +40,67 @@ class _$ContactWatcherEventTearOff {
     );
   }
 
-// ignore: unused_element
   _DeselectAllContacts deselectAllContacts() {
     return const _DeselectAllContacts();
   }
 
-// ignore: unused_element
   _SelectAllContacts selectAllContacts() {
     return const _SelectAllContacts();
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $ContactWatcherEvent = _$ContactWatcherEventTearOff();
 
 /// @nodoc
 mixin _$ContactWatcherEvent {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required
-        TResult contactsReceived(
-            Either<ContactsFailure, List<Contact>> contactsEither),
-    @required TResult watchAll(),
-    @required TResult searchContact(String searchString),
-    @required TResult toggleSelectionContact(SelectionContact selectionContact),
-    @required TResult deselectAllContacts(),
-    @required TResult selectAllContacts(),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            Either<ContactsFailure, List<Contact>> contactsEither)
+        contactsReceived,
+    required TResult Function() watchAll,
+    required TResult Function(String searchString) searchContact,
+    required TResult Function(SelectionContact selectionContact)
+        toggleSelectionContact,
+    required TResult Function() deselectAllContacts,
+    required TResult Function() selectAllContacts,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult contactsReceived(
-        Either<ContactsFailure, List<Contact>> contactsEither),
-    TResult watchAll(),
-    TResult searchContact(String searchString),
-    TResult toggleSelectionContact(SelectionContact selectionContact),
-    TResult deselectAllContacts(),
-    TResult selectAllContacts(),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Either<ContactsFailure, List<Contact>> contactsEither)?
+        contactsReceived,
+    TResult Function()? watchAll,
+    TResult Function(String searchString)? searchContact,
+    TResult Function(SelectionContact selectionContact)? toggleSelectionContact,
+    TResult Function()? deselectAllContacts,
+    TResult Function()? selectAllContacts,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult contactsReceived(_ContactsReceived value),
-    @required TResult watchAll(_WatchAll value),
-    @required TResult searchContact(_SearchContact value),
-    @required TResult toggleSelectionContact(_ToggleSelectionContact value),
-    @required TResult deselectAllContacts(_DeselectAllContacts value),
-    @required TResult selectAllContacts(_SelectAllContacts value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ContactsReceived value) contactsReceived,
+    required TResult Function(_WatchAll value) watchAll,
+    required TResult Function(_SearchContact value) searchContact,
+    required TResult Function(_ToggleSelectionContact value)
+        toggleSelectionContact,
+    required TResult Function(_DeselectAllContacts value) deselectAllContacts,
+    required TResult Function(_SelectAllContacts value) selectAllContacts,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult contactsReceived(_ContactsReceived value),
-    TResult watchAll(_WatchAll value),
-    TResult searchContact(_SearchContact value),
-    TResult toggleSelectionContact(_ToggleSelectionContact value),
-    TResult deselectAllContacts(_DeselectAllContacts value),
-    TResult selectAllContacts(_SelectAllContacts value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ContactsReceived value)? contactsReceived,
+    TResult Function(_WatchAll value)? watchAll,
+    TResult Function(_SearchContact value)? searchContact,
+    TResult Function(_ToggleSelectionContact value)? toggleSelectionContact,
+    TResult Function(_DeselectAllContacts value)? deselectAllContacts,
+    TResult Function(_SelectAllContacts value)? selectAllContacts,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -139,20 +141,20 @@ class __$ContactsReceivedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object contactsEither = freezed,
+    Object? contactsEither = freezed,
   }) {
     return _then(_ContactsReceived(
       contactsEither == freezed
           ? _value.contactsEither
-          : contactsEither as Either<ContactsFailure, List<Contact>>,
+          : contactsEither // ignore: cast_nullable_to_non_nullable
+              as Either<ContactsFailure, List<Contact>>,
     ));
   }
 }
 
 /// @nodoc
 class _$_ContactsReceived implements _ContactsReceived {
-  const _$_ContactsReceived(this.contactsEither)
-      : assert(contactsEither != null);
+  const _$_ContactsReceived(this.contactsEither);
 
   @override
   final Either<ContactsFailure, List<Contact>> contactsEither;
@@ -183,38 +185,32 @@ class _$_ContactsReceived implements _ContactsReceived {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required
-        TResult contactsReceived(
-            Either<ContactsFailure, List<Contact>> contactsEither),
-    @required TResult watchAll(),
-    @required TResult searchContact(String searchString),
-    @required TResult toggleSelectionContact(SelectionContact selectionContact),
-    @required TResult deselectAllContacts(),
-    @required TResult selectAllContacts(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            Either<ContactsFailure, List<Contact>> contactsEither)
+        contactsReceived,
+    required TResult Function() watchAll,
+    required TResult Function(String searchString) searchContact,
+    required TResult Function(SelectionContact selectionContact)
+        toggleSelectionContact,
+    required TResult Function() deselectAllContacts,
+    required TResult Function() selectAllContacts,
   }) {
-    assert(contactsReceived != null);
-    assert(watchAll != null);
-    assert(searchContact != null);
-    assert(toggleSelectionContact != null);
-    assert(deselectAllContacts != null);
-    assert(selectAllContacts != null);
     return contactsReceived(contactsEither);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult contactsReceived(
-        Either<ContactsFailure, List<Contact>> contactsEither),
-    TResult watchAll(),
-    TResult searchContact(String searchString),
-    TResult toggleSelectionContact(SelectionContact selectionContact),
-    TResult deselectAllContacts(),
-    TResult selectAllContacts(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Either<ContactsFailure, List<Contact>> contactsEither)?
+        contactsReceived,
+    TResult Function()? watchAll,
+    TResult Function(String searchString)? searchContact,
+    TResult Function(SelectionContact selectionContact)? toggleSelectionContact,
+    TResult Function()? deselectAllContacts,
+    TResult Function()? selectAllContacts,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (contactsReceived != null) {
       return contactsReceived(contactsEither);
     }
@@ -223,35 +219,29 @@ class _$_ContactsReceived implements _ContactsReceived {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult contactsReceived(_ContactsReceived value),
-    @required TResult watchAll(_WatchAll value),
-    @required TResult searchContact(_SearchContact value),
-    @required TResult toggleSelectionContact(_ToggleSelectionContact value),
-    @required TResult deselectAllContacts(_DeselectAllContacts value),
-    @required TResult selectAllContacts(_SelectAllContacts value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ContactsReceived value) contactsReceived,
+    required TResult Function(_WatchAll value) watchAll,
+    required TResult Function(_SearchContact value) searchContact,
+    required TResult Function(_ToggleSelectionContact value)
+        toggleSelectionContact,
+    required TResult Function(_DeselectAllContacts value) deselectAllContacts,
+    required TResult Function(_SelectAllContacts value) selectAllContacts,
   }) {
-    assert(contactsReceived != null);
-    assert(watchAll != null);
-    assert(searchContact != null);
-    assert(toggleSelectionContact != null);
-    assert(deselectAllContacts != null);
-    assert(selectAllContacts != null);
     return contactsReceived(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult contactsReceived(_ContactsReceived value),
-    TResult watchAll(_WatchAll value),
-    TResult searchContact(_SearchContact value),
-    TResult toggleSelectionContact(_ToggleSelectionContact value),
-    TResult deselectAllContacts(_DeselectAllContacts value),
-    TResult selectAllContacts(_SelectAllContacts value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ContactsReceived value)? contactsReceived,
+    TResult Function(_WatchAll value)? watchAll,
+    TResult Function(_SearchContact value)? searchContact,
+    TResult Function(_ToggleSelectionContact value)? toggleSelectionContact,
+    TResult Function(_DeselectAllContacts value)? deselectAllContacts,
+    TResult Function(_SelectAllContacts value)? selectAllContacts,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (contactsReceived != null) {
       return contactsReceived(this);
     }
@@ -264,9 +254,11 @@ abstract class _ContactsReceived implements ContactWatcherEvent {
           Either<ContactsFailure, List<Contact>> contactsEither) =
       _$_ContactsReceived;
 
-  Either<ContactsFailure, List<Contact>> get contactsEither;
+  Either<ContactsFailure, List<Contact>> get contactsEither =>
+      throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$ContactsReceivedCopyWith<_ContactsReceived> get copyWith;
+  _$ContactsReceivedCopyWith<_ContactsReceived> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -305,38 +297,32 @@ class _$_WatchAll implements _WatchAll {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required
-        TResult contactsReceived(
-            Either<ContactsFailure, List<Contact>> contactsEither),
-    @required TResult watchAll(),
-    @required TResult searchContact(String searchString),
-    @required TResult toggleSelectionContact(SelectionContact selectionContact),
-    @required TResult deselectAllContacts(),
-    @required TResult selectAllContacts(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            Either<ContactsFailure, List<Contact>> contactsEither)
+        contactsReceived,
+    required TResult Function() watchAll,
+    required TResult Function(String searchString) searchContact,
+    required TResult Function(SelectionContact selectionContact)
+        toggleSelectionContact,
+    required TResult Function() deselectAllContacts,
+    required TResult Function() selectAllContacts,
   }) {
-    assert(contactsReceived != null);
-    assert(watchAll != null);
-    assert(searchContact != null);
-    assert(toggleSelectionContact != null);
-    assert(deselectAllContacts != null);
-    assert(selectAllContacts != null);
     return watchAll();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult contactsReceived(
-        Either<ContactsFailure, List<Contact>> contactsEither),
-    TResult watchAll(),
-    TResult searchContact(String searchString),
-    TResult toggleSelectionContact(SelectionContact selectionContact),
-    TResult deselectAllContacts(),
-    TResult selectAllContacts(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Either<ContactsFailure, List<Contact>> contactsEither)?
+        contactsReceived,
+    TResult Function()? watchAll,
+    TResult Function(String searchString)? searchContact,
+    TResult Function(SelectionContact selectionContact)? toggleSelectionContact,
+    TResult Function()? deselectAllContacts,
+    TResult Function()? selectAllContacts,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (watchAll != null) {
       return watchAll();
     }
@@ -345,35 +331,29 @@ class _$_WatchAll implements _WatchAll {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult contactsReceived(_ContactsReceived value),
-    @required TResult watchAll(_WatchAll value),
-    @required TResult searchContact(_SearchContact value),
-    @required TResult toggleSelectionContact(_ToggleSelectionContact value),
-    @required TResult deselectAllContacts(_DeselectAllContacts value),
-    @required TResult selectAllContacts(_SelectAllContacts value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ContactsReceived value) contactsReceived,
+    required TResult Function(_WatchAll value) watchAll,
+    required TResult Function(_SearchContact value) searchContact,
+    required TResult Function(_ToggleSelectionContact value)
+        toggleSelectionContact,
+    required TResult Function(_DeselectAllContacts value) deselectAllContacts,
+    required TResult Function(_SelectAllContacts value) selectAllContacts,
   }) {
-    assert(contactsReceived != null);
-    assert(watchAll != null);
-    assert(searchContact != null);
-    assert(toggleSelectionContact != null);
-    assert(deselectAllContacts != null);
-    assert(selectAllContacts != null);
     return watchAll(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult contactsReceived(_ContactsReceived value),
-    TResult watchAll(_WatchAll value),
-    TResult searchContact(_SearchContact value),
-    TResult toggleSelectionContact(_ToggleSelectionContact value),
-    TResult deselectAllContacts(_DeselectAllContacts value),
-    TResult selectAllContacts(_SelectAllContacts value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ContactsReceived value)? contactsReceived,
+    TResult Function(_WatchAll value)? watchAll,
+    TResult Function(_SearchContact value)? searchContact,
+    TResult Function(_ToggleSelectionContact value)? toggleSelectionContact,
+    TResult Function(_DeselectAllContacts value)? deselectAllContacts,
+    TResult Function(_SelectAllContacts value)? selectAllContacts,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (watchAll != null) {
       return watchAll(this);
     }
@@ -406,17 +386,20 @@ class __$SearchContactCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object searchString = freezed,
+    Object? searchString = freezed,
   }) {
     return _then(_SearchContact(
-      searchString == freezed ? _value.searchString : searchString as String,
+      searchString == freezed
+          ? _value.searchString
+          : searchString // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
 class _$_SearchContact implements _SearchContact {
-  const _$_SearchContact(this.searchString) : assert(searchString != null);
+  const _$_SearchContact(this.searchString);
 
   @override
   final String searchString;
@@ -446,38 +429,32 @@ class _$_SearchContact implements _SearchContact {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required
-        TResult contactsReceived(
-            Either<ContactsFailure, List<Contact>> contactsEither),
-    @required TResult watchAll(),
-    @required TResult searchContact(String searchString),
-    @required TResult toggleSelectionContact(SelectionContact selectionContact),
-    @required TResult deselectAllContacts(),
-    @required TResult selectAllContacts(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            Either<ContactsFailure, List<Contact>> contactsEither)
+        contactsReceived,
+    required TResult Function() watchAll,
+    required TResult Function(String searchString) searchContact,
+    required TResult Function(SelectionContact selectionContact)
+        toggleSelectionContact,
+    required TResult Function() deselectAllContacts,
+    required TResult Function() selectAllContacts,
   }) {
-    assert(contactsReceived != null);
-    assert(watchAll != null);
-    assert(searchContact != null);
-    assert(toggleSelectionContact != null);
-    assert(deselectAllContacts != null);
-    assert(selectAllContacts != null);
     return searchContact(searchString);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult contactsReceived(
-        Either<ContactsFailure, List<Contact>> contactsEither),
-    TResult watchAll(),
-    TResult searchContact(String searchString),
-    TResult toggleSelectionContact(SelectionContact selectionContact),
-    TResult deselectAllContacts(),
-    TResult selectAllContacts(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Either<ContactsFailure, List<Contact>> contactsEither)?
+        contactsReceived,
+    TResult Function()? watchAll,
+    TResult Function(String searchString)? searchContact,
+    TResult Function(SelectionContact selectionContact)? toggleSelectionContact,
+    TResult Function()? deselectAllContacts,
+    TResult Function()? selectAllContacts,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (searchContact != null) {
       return searchContact(searchString);
     }
@@ -486,35 +463,29 @@ class _$_SearchContact implements _SearchContact {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult contactsReceived(_ContactsReceived value),
-    @required TResult watchAll(_WatchAll value),
-    @required TResult searchContact(_SearchContact value),
-    @required TResult toggleSelectionContact(_ToggleSelectionContact value),
-    @required TResult deselectAllContacts(_DeselectAllContacts value),
-    @required TResult selectAllContacts(_SelectAllContacts value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ContactsReceived value) contactsReceived,
+    required TResult Function(_WatchAll value) watchAll,
+    required TResult Function(_SearchContact value) searchContact,
+    required TResult Function(_ToggleSelectionContact value)
+        toggleSelectionContact,
+    required TResult Function(_DeselectAllContacts value) deselectAllContacts,
+    required TResult Function(_SelectAllContacts value) selectAllContacts,
   }) {
-    assert(contactsReceived != null);
-    assert(watchAll != null);
-    assert(searchContact != null);
-    assert(toggleSelectionContact != null);
-    assert(deselectAllContacts != null);
-    assert(selectAllContacts != null);
     return searchContact(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult contactsReceived(_ContactsReceived value),
-    TResult watchAll(_WatchAll value),
-    TResult searchContact(_SearchContact value),
-    TResult toggleSelectionContact(_ToggleSelectionContact value),
-    TResult deselectAllContacts(_DeselectAllContacts value),
-    TResult selectAllContacts(_SelectAllContacts value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ContactsReceived value)? contactsReceived,
+    TResult Function(_WatchAll value)? watchAll,
+    TResult Function(_SearchContact value)? searchContact,
+    TResult Function(_ToggleSelectionContact value)? toggleSelectionContact,
+    TResult Function(_DeselectAllContacts value)? deselectAllContacts,
+    TResult Function(_SelectAllContacts value)? selectAllContacts,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (searchContact != null) {
       return searchContact(this);
     }
@@ -525,9 +496,10 @@ class _$_SearchContact implements _SearchContact {
 abstract class _SearchContact implements ContactWatcherEvent {
   const factory _SearchContact(String searchString) = _$_SearchContact;
 
-  String get searchString;
+  String get searchString => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$SearchContactCopyWith<_SearchContact> get copyWith;
+  _$SearchContactCopyWith<_SearchContact> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -551,20 +523,20 @@ class __$ToggleSelectionContactCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object selectionContact = freezed,
+    Object? selectionContact = freezed,
   }) {
     return _then(_ToggleSelectionContact(
       selectionContact == freezed
           ? _value.selectionContact
-          : selectionContact as SelectionContact,
+          : selectionContact // ignore: cast_nullable_to_non_nullable
+              as SelectionContact,
     ));
   }
 }
 
 /// @nodoc
 class _$_ToggleSelectionContact implements _ToggleSelectionContact {
-  const _$_ToggleSelectionContact(this.selectionContact)
-      : assert(selectionContact != null);
+  const _$_ToggleSelectionContact(this.selectionContact);
 
   @override
   final SelectionContact selectionContact;
@@ -596,38 +568,32 @@ class _$_ToggleSelectionContact implements _ToggleSelectionContact {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required
-        TResult contactsReceived(
-            Either<ContactsFailure, List<Contact>> contactsEither),
-    @required TResult watchAll(),
-    @required TResult searchContact(String searchString),
-    @required TResult toggleSelectionContact(SelectionContact selectionContact),
-    @required TResult deselectAllContacts(),
-    @required TResult selectAllContacts(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            Either<ContactsFailure, List<Contact>> contactsEither)
+        contactsReceived,
+    required TResult Function() watchAll,
+    required TResult Function(String searchString) searchContact,
+    required TResult Function(SelectionContact selectionContact)
+        toggleSelectionContact,
+    required TResult Function() deselectAllContacts,
+    required TResult Function() selectAllContacts,
   }) {
-    assert(contactsReceived != null);
-    assert(watchAll != null);
-    assert(searchContact != null);
-    assert(toggleSelectionContact != null);
-    assert(deselectAllContacts != null);
-    assert(selectAllContacts != null);
     return toggleSelectionContact(selectionContact);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult contactsReceived(
-        Either<ContactsFailure, List<Contact>> contactsEither),
-    TResult watchAll(),
-    TResult searchContact(String searchString),
-    TResult toggleSelectionContact(SelectionContact selectionContact),
-    TResult deselectAllContacts(),
-    TResult selectAllContacts(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Either<ContactsFailure, List<Contact>> contactsEither)?
+        contactsReceived,
+    TResult Function()? watchAll,
+    TResult Function(String searchString)? searchContact,
+    TResult Function(SelectionContact selectionContact)? toggleSelectionContact,
+    TResult Function()? deselectAllContacts,
+    TResult Function()? selectAllContacts,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (toggleSelectionContact != null) {
       return toggleSelectionContact(selectionContact);
     }
@@ -636,35 +602,29 @@ class _$_ToggleSelectionContact implements _ToggleSelectionContact {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult contactsReceived(_ContactsReceived value),
-    @required TResult watchAll(_WatchAll value),
-    @required TResult searchContact(_SearchContact value),
-    @required TResult toggleSelectionContact(_ToggleSelectionContact value),
-    @required TResult deselectAllContacts(_DeselectAllContacts value),
-    @required TResult selectAllContacts(_SelectAllContacts value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ContactsReceived value) contactsReceived,
+    required TResult Function(_WatchAll value) watchAll,
+    required TResult Function(_SearchContact value) searchContact,
+    required TResult Function(_ToggleSelectionContact value)
+        toggleSelectionContact,
+    required TResult Function(_DeselectAllContacts value) deselectAllContacts,
+    required TResult Function(_SelectAllContacts value) selectAllContacts,
   }) {
-    assert(contactsReceived != null);
-    assert(watchAll != null);
-    assert(searchContact != null);
-    assert(toggleSelectionContact != null);
-    assert(deselectAllContacts != null);
-    assert(selectAllContacts != null);
     return toggleSelectionContact(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult contactsReceived(_ContactsReceived value),
-    TResult watchAll(_WatchAll value),
-    TResult searchContact(_SearchContact value),
-    TResult toggleSelectionContact(_ToggleSelectionContact value),
-    TResult deselectAllContacts(_DeselectAllContacts value),
-    TResult selectAllContacts(_SelectAllContacts value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ContactsReceived value)? contactsReceived,
+    TResult Function(_WatchAll value)? watchAll,
+    TResult Function(_SearchContact value)? searchContact,
+    TResult Function(_ToggleSelectionContact value)? toggleSelectionContact,
+    TResult Function(_DeselectAllContacts value)? deselectAllContacts,
+    TResult Function(_SelectAllContacts value)? selectAllContacts,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (toggleSelectionContact != null) {
       return toggleSelectionContact(this);
     }
@@ -676,9 +636,10 @@ abstract class _ToggleSelectionContact implements ContactWatcherEvent {
   const factory _ToggleSelectionContact(SelectionContact selectionContact) =
       _$_ToggleSelectionContact;
 
-  SelectionContact get selectionContact;
+  SelectionContact get selectionContact => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$ToggleSelectionContactCopyWith<_ToggleSelectionContact> get copyWith;
+  _$ToggleSelectionContactCopyWith<_ToggleSelectionContact> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -719,38 +680,32 @@ class _$_DeselectAllContacts implements _DeselectAllContacts {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required
-        TResult contactsReceived(
-            Either<ContactsFailure, List<Contact>> contactsEither),
-    @required TResult watchAll(),
-    @required TResult searchContact(String searchString),
-    @required TResult toggleSelectionContact(SelectionContact selectionContact),
-    @required TResult deselectAllContacts(),
-    @required TResult selectAllContacts(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            Either<ContactsFailure, List<Contact>> contactsEither)
+        contactsReceived,
+    required TResult Function() watchAll,
+    required TResult Function(String searchString) searchContact,
+    required TResult Function(SelectionContact selectionContact)
+        toggleSelectionContact,
+    required TResult Function() deselectAllContacts,
+    required TResult Function() selectAllContacts,
   }) {
-    assert(contactsReceived != null);
-    assert(watchAll != null);
-    assert(searchContact != null);
-    assert(toggleSelectionContact != null);
-    assert(deselectAllContacts != null);
-    assert(selectAllContacts != null);
     return deselectAllContacts();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult contactsReceived(
-        Either<ContactsFailure, List<Contact>> contactsEither),
-    TResult watchAll(),
-    TResult searchContact(String searchString),
-    TResult toggleSelectionContact(SelectionContact selectionContact),
-    TResult deselectAllContacts(),
-    TResult selectAllContacts(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Either<ContactsFailure, List<Contact>> contactsEither)?
+        contactsReceived,
+    TResult Function()? watchAll,
+    TResult Function(String searchString)? searchContact,
+    TResult Function(SelectionContact selectionContact)? toggleSelectionContact,
+    TResult Function()? deselectAllContacts,
+    TResult Function()? selectAllContacts,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (deselectAllContacts != null) {
       return deselectAllContacts();
     }
@@ -759,35 +714,29 @@ class _$_DeselectAllContacts implements _DeselectAllContacts {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult contactsReceived(_ContactsReceived value),
-    @required TResult watchAll(_WatchAll value),
-    @required TResult searchContact(_SearchContact value),
-    @required TResult toggleSelectionContact(_ToggleSelectionContact value),
-    @required TResult deselectAllContacts(_DeselectAllContacts value),
-    @required TResult selectAllContacts(_SelectAllContacts value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ContactsReceived value) contactsReceived,
+    required TResult Function(_WatchAll value) watchAll,
+    required TResult Function(_SearchContact value) searchContact,
+    required TResult Function(_ToggleSelectionContact value)
+        toggleSelectionContact,
+    required TResult Function(_DeselectAllContacts value) deselectAllContacts,
+    required TResult Function(_SelectAllContacts value) selectAllContacts,
   }) {
-    assert(contactsReceived != null);
-    assert(watchAll != null);
-    assert(searchContact != null);
-    assert(toggleSelectionContact != null);
-    assert(deselectAllContacts != null);
-    assert(selectAllContacts != null);
     return deselectAllContacts(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult contactsReceived(_ContactsReceived value),
-    TResult watchAll(_WatchAll value),
-    TResult searchContact(_SearchContact value),
-    TResult toggleSelectionContact(_ToggleSelectionContact value),
-    TResult deselectAllContacts(_DeselectAllContacts value),
-    TResult selectAllContacts(_SelectAllContacts value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ContactsReceived value)? contactsReceived,
+    TResult Function(_WatchAll value)? watchAll,
+    TResult Function(_SearchContact value)? searchContact,
+    TResult Function(_ToggleSelectionContact value)? toggleSelectionContact,
+    TResult Function(_DeselectAllContacts value)? deselectAllContacts,
+    TResult Function(_SelectAllContacts value)? selectAllContacts,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (deselectAllContacts != null) {
       return deselectAllContacts(this);
     }
@@ -837,38 +786,32 @@ class _$_SelectAllContacts implements _SelectAllContacts {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required
-        TResult contactsReceived(
-            Either<ContactsFailure, List<Contact>> contactsEither),
-    @required TResult watchAll(),
-    @required TResult searchContact(String searchString),
-    @required TResult toggleSelectionContact(SelectionContact selectionContact),
-    @required TResult deselectAllContacts(),
-    @required TResult selectAllContacts(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            Either<ContactsFailure, List<Contact>> contactsEither)
+        contactsReceived,
+    required TResult Function() watchAll,
+    required TResult Function(String searchString) searchContact,
+    required TResult Function(SelectionContact selectionContact)
+        toggleSelectionContact,
+    required TResult Function() deselectAllContacts,
+    required TResult Function() selectAllContacts,
   }) {
-    assert(contactsReceived != null);
-    assert(watchAll != null);
-    assert(searchContact != null);
-    assert(toggleSelectionContact != null);
-    assert(deselectAllContacts != null);
-    assert(selectAllContacts != null);
     return selectAllContacts();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult contactsReceived(
-        Either<ContactsFailure, List<Contact>> contactsEither),
-    TResult watchAll(),
-    TResult searchContact(String searchString),
-    TResult toggleSelectionContact(SelectionContact selectionContact),
-    TResult deselectAllContacts(),
-    TResult selectAllContacts(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Either<ContactsFailure, List<Contact>> contactsEither)?
+        contactsReceived,
+    TResult Function()? watchAll,
+    TResult Function(String searchString)? searchContact,
+    TResult Function(SelectionContact selectionContact)? toggleSelectionContact,
+    TResult Function()? deselectAllContacts,
+    TResult Function()? selectAllContacts,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (selectAllContacts != null) {
       return selectAllContacts();
     }
@@ -877,35 +820,29 @@ class _$_SelectAllContacts implements _SelectAllContacts {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult contactsReceived(_ContactsReceived value),
-    @required TResult watchAll(_WatchAll value),
-    @required TResult searchContact(_SearchContact value),
-    @required TResult toggleSelectionContact(_ToggleSelectionContact value),
-    @required TResult deselectAllContacts(_DeselectAllContacts value),
-    @required TResult selectAllContacts(_SelectAllContacts value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ContactsReceived value) contactsReceived,
+    required TResult Function(_WatchAll value) watchAll,
+    required TResult Function(_SearchContact value) searchContact,
+    required TResult Function(_ToggleSelectionContact value)
+        toggleSelectionContact,
+    required TResult Function(_DeselectAllContacts value) deselectAllContacts,
+    required TResult Function(_SelectAllContacts value) selectAllContacts,
   }) {
-    assert(contactsReceived != null);
-    assert(watchAll != null);
-    assert(searchContact != null);
-    assert(toggleSelectionContact != null);
-    assert(deselectAllContacts != null);
-    assert(selectAllContacts != null);
     return selectAllContacts(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult contactsReceived(_ContactsReceived value),
-    TResult watchAll(_WatchAll value),
-    TResult searchContact(_SearchContact value),
-    TResult toggleSelectionContact(_ToggleSelectionContact value),
-    TResult deselectAllContacts(_DeselectAllContacts value),
-    TResult selectAllContacts(_SelectAllContacts value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ContactsReceived value)? contactsReceived,
+    TResult Function(_WatchAll value)? watchAll,
+    TResult Function(_SearchContact value)? searchContact,
+    TResult Function(_ToggleSelectionContact value)? toggleSelectionContact,
+    TResult Function(_DeselectAllContacts value)? deselectAllContacts,
+    TResult Function(_SelectAllContacts value)? selectAllContacts,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (selectAllContacts != null) {
       return selectAllContacts(this);
     }
@@ -921,24 +858,20 @@ abstract class _SelectAllContacts implements ContactWatcherEvent {
 class _$ContactWatcherStateTearOff {
   const _$ContactWatcherStateTearOff();
 
-// ignore: unused_element
   _Initial initial() {
     return const _Initial();
   }
 
-// ignore: unused_element
   _LoadInProgress loadInProgress() {
     return const _LoadInProgress();
   }
 
-// ignore: unused_element
   _LoadSuccess loadSuccess(LoadSuccessValues stateValues) {
     return _LoadSuccess(
       stateValues,
     );
   }
 
-// ignore: unused_element
   _LoadFailure loadFailure(ContactsFailure failure) {
     return _LoadFailure(
       failure,
@@ -947,41 +880,44 @@ class _$ContactWatcherStateTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $ContactWatcherState = _$ContactWatcherStateTearOff();
 
 /// @nodoc
 mixin _$ContactWatcherState {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult loadInProgress(),
-    @required TResult loadSuccess(LoadSuccessValues stateValues),
-    @required TResult loadFailure(ContactsFailure failure),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loadInProgress,
+    required TResult Function(LoadSuccessValues stateValues) loadSuccess,
+    required TResult Function(ContactsFailure failure) loadFailure,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult loadInProgress(),
-    TResult loadSuccess(LoadSuccessValues stateValues),
-    TResult loadFailure(ContactsFailure failure),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadInProgress,
+    TResult Function(LoadSuccessValues stateValues)? loadSuccess,
+    TResult Function(ContactsFailure failure)? loadFailure,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult loadInProgress(_LoadInProgress value),
-    @required TResult loadSuccess(_LoadSuccess value),
-    @required TResult loadFailure(_LoadFailure value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadInProgress value) loadInProgress,
+    required TResult Function(_LoadSuccess value) loadSuccess,
+    required TResult Function(_LoadFailure value) loadFailure,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult loadInProgress(_LoadInProgress value),
-    TResult loadSuccess(_LoadSuccess value),
-    TResult loadFailure(_LoadFailure value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadInProgress value)? loadInProgress,
+    TResult Function(_LoadSuccess value)? loadSuccess,
+    TResult Function(_LoadFailure value)? loadFailure,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1037,29 +973,24 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult loadInProgress(),
-    @required TResult loadSuccess(LoadSuccessValues stateValues),
-    @required TResult loadFailure(ContactsFailure failure),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loadInProgress,
+    required TResult Function(LoadSuccessValues stateValues) loadSuccess,
+    required TResult Function(ContactsFailure failure) loadFailure,
   }) {
-    assert(initial != null);
-    assert(loadInProgress != null);
-    assert(loadSuccess != null);
-    assert(loadFailure != null);
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult loadInProgress(),
-    TResult loadSuccess(LoadSuccessValues stateValues),
-    TResult loadFailure(ContactsFailure failure),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadInProgress,
+    TResult Function(LoadSuccessValues stateValues)? loadSuccess,
+    TResult Function(ContactsFailure failure)? loadFailure,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial();
     }
@@ -1068,29 +999,24 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult loadInProgress(_LoadInProgress value),
-    @required TResult loadSuccess(_LoadSuccess value),
-    @required TResult loadFailure(_LoadFailure value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadInProgress value) loadInProgress,
+    required TResult Function(_LoadSuccess value) loadSuccess,
+    required TResult Function(_LoadFailure value) loadFailure,
   }) {
-    assert(initial != null);
-    assert(loadInProgress != null);
-    assert(loadSuccess != null);
-    assert(loadFailure != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult loadInProgress(_LoadInProgress value),
-    TResult loadSuccess(_LoadSuccess value),
-    TResult loadFailure(_LoadFailure value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadInProgress value)? loadInProgress,
+    TResult Function(_LoadSuccess value)? loadSuccess,
+    TResult Function(_LoadFailure value)? loadFailure,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -1140,29 +1066,24 @@ class _$_LoadInProgress implements _LoadInProgress {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult loadInProgress(),
-    @required TResult loadSuccess(LoadSuccessValues stateValues),
-    @required TResult loadFailure(ContactsFailure failure),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loadInProgress,
+    required TResult Function(LoadSuccessValues stateValues) loadSuccess,
+    required TResult Function(ContactsFailure failure) loadFailure,
   }) {
-    assert(initial != null);
-    assert(loadInProgress != null);
-    assert(loadSuccess != null);
-    assert(loadFailure != null);
     return loadInProgress();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult loadInProgress(),
-    TResult loadSuccess(LoadSuccessValues stateValues),
-    TResult loadFailure(ContactsFailure failure),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadInProgress,
+    TResult Function(LoadSuccessValues stateValues)? loadSuccess,
+    TResult Function(ContactsFailure failure)? loadFailure,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loadInProgress != null) {
       return loadInProgress();
     }
@@ -1171,29 +1092,24 @@ class _$_LoadInProgress implements _LoadInProgress {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult loadInProgress(_LoadInProgress value),
-    @required TResult loadSuccess(_LoadSuccess value),
-    @required TResult loadFailure(_LoadFailure value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadInProgress value) loadInProgress,
+    required TResult Function(_LoadSuccess value) loadSuccess,
+    required TResult Function(_LoadFailure value) loadFailure,
   }) {
-    assert(initial != null);
-    assert(loadInProgress != null);
-    assert(loadSuccess != null);
-    assert(loadFailure != null);
     return loadInProgress(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult loadInProgress(_LoadInProgress value),
-    TResult loadSuccess(_LoadSuccess value),
-    TResult loadFailure(_LoadFailure value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadInProgress value)? loadInProgress,
+    TResult Function(_LoadSuccess value)? loadSuccess,
+    TResult Function(_LoadFailure value)? loadFailure,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loadInProgress != null) {
       return loadInProgress(this);
     }
@@ -1228,20 +1144,18 @@ class __$LoadSuccessCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object stateValues = freezed,
+    Object? stateValues = freezed,
   }) {
     return _then(_LoadSuccess(
       stateValues == freezed
           ? _value.stateValues
-          : stateValues as LoadSuccessValues,
+          : stateValues // ignore: cast_nullable_to_non_nullable
+              as LoadSuccessValues,
     ));
   }
 
   @override
   $LoadSuccessValuesCopyWith<$Res> get stateValues {
-    if (_value.stateValues == null) {
-      return null;
-    }
     return $LoadSuccessValuesCopyWith<$Res>(_value.stateValues, (value) {
       return _then(_value.copyWith(stateValues: value));
     });
@@ -1250,7 +1164,7 @@ class __$LoadSuccessCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_LoadSuccess implements _LoadSuccess {
-  const _$_LoadSuccess(this.stateValues) : assert(stateValues != null);
+  const _$_LoadSuccess(this.stateValues);
 
   @override
   final LoadSuccessValues stateValues;
@@ -1280,29 +1194,24 @@ class _$_LoadSuccess implements _LoadSuccess {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult loadInProgress(),
-    @required TResult loadSuccess(LoadSuccessValues stateValues),
-    @required TResult loadFailure(ContactsFailure failure),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loadInProgress,
+    required TResult Function(LoadSuccessValues stateValues) loadSuccess,
+    required TResult Function(ContactsFailure failure) loadFailure,
   }) {
-    assert(initial != null);
-    assert(loadInProgress != null);
-    assert(loadSuccess != null);
-    assert(loadFailure != null);
     return loadSuccess(stateValues);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult loadInProgress(),
-    TResult loadSuccess(LoadSuccessValues stateValues),
-    TResult loadFailure(ContactsFailure failure),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadInProgress,
+    TResult Function(LoadSuccessValues stateValues)? loadSuccess,
+    TResult Function(ContactsFailure failure)? loadFailure,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loadSuccess != null) {
       return loadSuccess(stateValues);
     }
@@ -1311,29 +1220,24 @@ class _$_LoadSuccess implements _LoadSuccess {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult loadInProgress(_LoadInProgress value),
-    @required TResult loadSuccess(_LoadSuccess value),
-    @required TResult loadFailure(_LoadFailure value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadInProgress value) loadInProgress,
+    required TResult Function(_LoadSuccess value) loadSuccess,
+    required TResult Function(_LoadFailure value) loadFailure,
   }) {
-    assert(initial != null);
-    assert(loadInProgress != null);
-    assert(loadSuccess != null);
-    assert(loadFailure != null);
     return loadSuccess(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult loadInProgress(_LoadInProgress value),
-    TResult loadSuccess(_LoadSuccess value),
-    TResult loadFailure(_LoadFailure value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadInProgress value)? loadInProgress,
+    TResult Function(_LoadSuccess value)? loadSuccess,
+    TResult Function(_LoadFailure value)? loadFailure,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loadSuccess != null) {
       return loadSuccess(this);
     }
@@ -1344,9 +1248,10 @@ class _$_LoadSuccess implements _LoadSuccess {
 abstract class _LoadSuccess implements ContactWatcherState {
   const factory _LoadSuccess(LoadSuccessValues stateValues) = _$_LoadSuccess;
 
-  LoadSuccessValues get stateValues;
+  LoadSuccessValues get stateValues => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$LoadSuccessCopyWith<_LoadSuccess> get copyWith;
+  _$LoadSuccessCopyWith<_LoadSuccess> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1372,18 +1277,18 @@ class __$LoadFailureCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object failure = freezed,
+    Object? failure = freezed,
   }) {
     return _then(_LoadFailure(
-      failure == freezed ? _value.failure : failure as ContactsFailure,
+      failure == freezed
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as ContactsFailure,
     ));
   }
 
   @override
   $ContactsFailureCopyWith<$Res> get failure {
-    if (_value.failure == null) {
-      return null;
-    }
     return $ContactsFailureCopyWith<$Res>(_value.failure, (value) {
       return _then(_value.copyWith(failure: value));
     });
@@ -1392,7 +1297,7 @@ class __$LoadFailureCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_LoadFailure implements _LoadFailure {
-  const _$_LoadFailure(this.failure) : assert(failure != null);
+  const _$_LoadFailure(this.failure);
 
   @override
   final ContactsFailure failure;
@@ -1421,29 +1326,24 @@ class _$_LoadFailure implements _LoadFailure {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult loadInProgress(),
-    @required TResult loadSuccess(LoadSuccessValues stateValues),
-    @required TResult loadFailure(ContactsFailure failure),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loadInProgress,
+    required TResult Function(LoadSuccessValues stateValues) loadSuccess,
+    required TResult Function(ContactsFailure failure) loadFailure,
   }) {
-    assert(initial != null);
-    assert(loadInProgress != null);
-    assert(loadSuccess != null);
-    assert(loadFailure != null);
     return loadFailure(failure);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult loadInProgress(),
-    TResult loadSuccess(LoadSuccessValues stateValues),
-    TResult loadFailure(ContactsFailure failure),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadInProgress,
+    TResult Function(LoadSuccessValues stateValues)? loadSuccess,
+    TResult Function(ContactsFailure failure)? loadFailure,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loadFailure != null) {
       return loadFailure(failure);
     }
@@ -1452,29 +1352,24 @@ class _$_LoadFailure implements _LoadFailure {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult loadInProgress(_LoadInProgress value),
-    @required TResult loadSuccess(_LoadSuccess value),
-    @required TResult loadFailure(_LoadFailure value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadInProgress value) loadInProgress,
+    required TResult Function(_LoadSuccess value) loadSuccess,
+    required TResult Function(_LoadFailure value) loadFailure,
   }) {
-    assert(initial != null);
-    assert(loadInProgress != null);
-    assert(loadSuccess != null);
-    assert(loadFailure != null);
     return loadFailure(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult loadInProgress(_LoadInProgress value),
-    TResult loadSuccess(_LoadSuccess value),
-    TResult loadFailure(_LoadFailure value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadInProgress value)? loadInProgress,
+    TResult Function(_LoadSuccess value)? loadSuccess,
+    TResult Function(_LoadFailure value)? loadFailure,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loadFailure != null) {
       return loadFailure(this);
     }
@@ -1485,20 +1380,20 @@ class _$_LoadFailure implements _LoadFailure {
 abstract class _LoadFailure implements ContactWatcherState {
   const factory _LoadFailure(ContactsFailure failure) = _$_LoadFailure;
 
-  ContactsFailure get failure;
+  ContactsFailure get failure => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$LoadFailureCopyWith<_LoadFailure> get copyWith;
+  _$LoadFailureCopyWith<_LoadFailure> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 class _$LoadSuccessValuesTearOff {
   const _$LoadSuccessValuesTearOff();
 
-// ignore: unused_element
   _LoadSuccessValues call(
-      {List<SelectionContact> selectionContactList,
-      Filter filter,
-      int selectedContactsAmount}) {
+      {required List<SelectionContact> selectionContactList,
+      Filter? filter,
+      required int selectedContactsAmount}) {
     return _LoadSuccessValues(
       selectionContactList: selectionContactList,
       filter: filter,
@@ -1508,17 +1403,18 @@ class _$LoadSuccessValuesTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $LoadSuccessValues = _$LoadSuccessValuesTearOff();
 
 /// @nodoc
 mixin _$LoadSuccessValues {
-  List<SelectionContact> get selectionContactList;
-  Filter get filter;
-  int get selectedContactsAmount;
+  List<SelectionContact> get selectionContactList =>
+      throw _privateConstructorUsedError;
+  Filter? get filter => throw _privateConstructorUsedError;
+  int get selectedContactsAmount => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $LoadSuccessValuesCopyWith<LoadSuccessValues> get copyWith;
+  $LoadSuccessValuesCopyWith<LoadSuccessValues> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1528,10 +1424,10 @@ abstract class $LoadSuccessValuesCopyWith<$Res> {
       _$LoadSuccessValuesCopyWithImpl<$Res>;
   $Res call(
       {List<SelectionContact> selectionContactList,
-      Filter filter,
+      Filter? filter,
       int selectedContactsAmount});
 
-  $FilterCopyWith<$Res> get filter;
+  $FilterCopyWith<$Res>? get filter;
 }
 
 /// @nodoc
@@ -1545,27 +1441,33 @@ class _$LoadSuccessValuesCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object selectionContactList = freezed,
-    Object filter = freezed,
-    Object selectedContactsAmount = freezed,
+    Object? selectionContactList = freezed,
+    Object? filter = freezed,
+    Object? selectedContactsAmount = freezed,
   }) {
     return _then(_value.copyWith(
       selectionContactList: selectionContactList == freezed
           ? _value.selectionContactList
-          : selectionContactList as List<SelectionContact>,
-      filter: filter == freezed ? _value.filter : filter as Filter,
+          : selectionContactList // ignore: cast_nullable_to_non_nullable
+              as List<SelectionContact>,
+      filter: filter == freezed
+          ? _value.filter
+          : filter // ignore: cast_nullable_to_non_nullable
+              as Filter?,
       selectedContactsAmount: selectedContactsAmount == freezed
           ? _value.selectedContactsAmount
-          : selectedContactsAmount as int,
+          : selectedContactsAmount // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 
   @override
-  $FilterCopyWith<$Res> get filter {
+  $FilterCopyWith<$Res>? get filter {
     if (_value.filter == null) {
       return null;
     }
-    return $FilterCopyWith<$Res>(_value.filter, (value) {
+
+    return $FilterCopyWith<$Res>(_value.filter!, (value) {
       return _then(_value.copyWith(filter: value));
     });
   }
@@ -1580,11 +1482,11 @@ abstract class _$LoadSuccessValuesCopyWith<$Res>
   @override
   $Res call(
       {List<SelectionContact> selectionContactList,
-      Filter filter,
+      Filter? filter,
       int selectedContactsAmount});
 
   @override
-  $FilterCopyWith<$Res> get filter;
+  $FilterCopyWith<$Res>? get filter;
 }
 
 /// @nodoc
@@ -1600,18 +1502,23 @@ class __$LoadSuccessValuesCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object selectionContactList = freezed,
-    Object filter = freezed,
-    Object selectedContactsAmount = freezed,
+    Object? selectionContactList = freezed,
+    Object? filter = freezed,
+    Object? selectedContactsAmount = freezed,
   }) {
     return _then(_LoadSuccessValues(
       selectionContactList: selectionContactList == freezed
           ? _value.selectionContactList
-          : selectionContactList as List<SelectionContact>,
-      filter: filter == freezed ? _value.filter : filter as Filter,
+          : selectionContactList // ignore: cast_nullable_to_non_nullable
+              as List<SelectionContact>,
+      filter: filter == freezed
+          ? _value.filter
+          : filter // ignore: cast_nullable_to_non_nullable
+              as Filter?,
       selectedContactsAmount: selectedContactsAmount == freezed
           ? _value.selectedContactsAmount
-          : selectedContactsAmount as int,
+          : selectedContactsAmount // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -1619,13 +1526,15 @@ class __$LoadSuccessValuesCopyWithImpl<$Res>
 /// @nodoc
 class _$_LoadSuccessValues extends _LoadSuccessValues {
   const _$_LoadSuccessValues(
-      {this.selectionContactList, this.filter, this.selectedContactsAmount})
+      {required this.selectionContactList,
+      this.filter,
+      required this.selectedContactsAmount})
       : super._();
 
   @override
   final List<SelectionContact> selectionContactList;
   @override
-  final Filter filter;
+  final Filter? filter;
   @override
   final int selectedContactsAmount;
 
@@ -1662,19 +1571,21 @@ class _$_LoadSuccessValues extends _LoadSuccessValues {
 }
 
 abstract class _LoadSuccessValues extends LoadSuccessValues {
-  const _LoadSuccessValues._() : super._();
   const factory _LoadSuccessValues(
-      {List<SelectionContact> selectionContactList,
-      Filter filter,
-      int selectedContactsAmount}) = _$_LoadSuccessValues;
+      {required List<SelectionContact> selectionContactList,
+      Filter? filter,
+      required int selectedContactsAmount}) = _$_LoadSuccessValues;
+  const _LoadSuccessValues._() : super._();
 
   @override
-  List<SelectionContact> get selectionContactList;
+  List<SelectionContact> get selectionContactList =>
+      throw _privateConstructorUsedError;
   @override
-  Filter get filter;
+  Filter? get filter => throw _privateConstructorUsedError;
   @override
-  int get selectedContactsAmount;
+  int get selectedContactsAmount => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$LoadSuccessValuesCopyWith<_LoadSuccessValues> get copyWith;
+  _$LoadSuccessValuesCopyWith<_LoadSuccessValues> get copyWith =>
+      throw _privateConstructorUsedError;
 }

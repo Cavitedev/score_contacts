@@ -6,18 +6,18 @@ import 'package:scorecontacts/application/contacts/contact_watcher/contact_watch
 import 'package:scorecontacts/application/contacts/selection_contact.dart';
 import 'package:scorecontacts/domain/core/filter.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/pop_up_contact.dart';
-import 'package:scorecontacts/presentation/routes/router.gr.dart';
+import 'package:scorecontacts/presentation/routes/router.gr.dart' as r;
 
 class ContactRow extends StatelessWidget {
   final SelectionContact selectionContact;
-  final Filter filter;
+  final Filter? filter;
   final bool selectionEnabled;
 
   const ContactRow({
-    Key key,
-    @required this.selectionContact,
+    Key? key,
+    required this.selectionContact,
     this.filter,
-    @required this.selectionEnabled,
+    required this.selectionEnabled,
   }) : super(key: key);
 
   @override
@@ -32,8 +32,7 @@ class ContactRow extends StatelessWidget {
               selectionContact));
         }
         else {
-          ExtendedNavigator.of(context)
-              .pushAddContactPage(contact: selectionContact.contact, isEdditing: true);
+          context.router.push(r.AddContactPageRoute(contact: selectionContact.contact, isEdditing: true));;
         }
       },
       onLongPress: () {
@@ -91,7 +90,7 @@ class ContactRow extends StatelessWidget {
         selectionContact.contact.getFullName()) {
       return Flexible(
           child:
-          _buildFullNameHighlighted(context, selectionContact.filterText));
+          _buildFullNameHighlighted(context, selectionContact.filterText!));
     } else {
       return Flexible(
         child: Column(
@@ -115,8 +114,8 @@ class ContactRow extends StatelessWidget {
   }
 
   RichText _buildFullNameHighlighted(BuildContext context, String highlight) {
-    final Match match = filter.filterSearch
-        .toLowerCase()
+    final Match? match = filter?.filterSearch
+        ?.toLowerCase()
         .allMatches(highlight.toLowerCase())
         .first;
     if (match != null) {
@@ -135,7 +134,7 @@ class ContactRow extends StatelessWidget {
               style: Theme
                   .of(context)
                   .textTheme
-                  .headline5
+                  .headline5!
                   .copyWith(fontWeight: FontWeight.bold)),
           TextSpan(
               text: highlight.substring(match.end),
