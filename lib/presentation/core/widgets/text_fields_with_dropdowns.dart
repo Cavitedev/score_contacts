@@ -42,20 +42,16 @@ class _TextFieldsWithDropdownsState extends State<TextFieldsWithDropdowns> {
   int posInactiveWidget = 0;
   ILabelObject? objectToRemove;
 
-  late List<FocusNode> focusNodes;
 
   @override
   void initState() {
     listCount = widget.labelObjects.length;
-    focusNodes = <FocusNode>[FocusNode()];
     super.initState();
   }
 
   @override
   void dispose() {
-    for (final node in focusNodes) {
-      node.dispose();
-    }
+
     super.dispose();
   }
 
@@ -100,7 +96,6 @@ class _TextFieldsWithDropdownsState extends State<TextFieldsWithDropdowns> {
   void _updateAnimatedList() {
     while (widget.labelObjects.length != listCount) {
       if (widget.labelObjects.length > listCount) {
-        focusNodes.add(FocusNode());
         animatedList.currentState!.insertItem(listCount);
         listCount++;
       } else if (widget.labelObjects.length < listCount) {
@@ -108,7 +103,6 @@ class _TextFieldsWithDropdownsState extends State<TextFieldsWithDropdowns> {
           return _listTransitionBuild(animation, _buildField(pos: posInactiveWidget, labelObject: objectToRemove!));
         }, duration: const Duration(milliseconds: 300));
         listCount--;
-        focusNodes.removeAt(posInactiveWidget);
       }
     }
   }
@@ -126,7 +120,6 @@ class _TextFieldsWithDropdownsState extends State<TextFieldsWithDropdowns> {
   }) {
     return TextFieldWithDropdown(
       labelObject: labelObject ?? widget.labelObjects[pos],
-      focusNode: focusNodes[pos],
       hintText: widget.hintText,
       inputFormatters: widget.inputFormatters,
       keyboardType: widget.keyboardType,
