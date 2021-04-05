@@ -27,7 +27,7 @@ dependencies:
   auto_route: ^1.0.2
   freezed_annotation: ^0.14.1
   json_annotation: ^4.0.1
-  uuid: ^3.0.2
+  uuid: ^3.0.3
   rxdart: ^0.26.0
 dev_dependencies:
   flutter_test:

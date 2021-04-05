@@ -80,7 +80,7 @@ class ContactsRepository implements IContactsRepository {
             .userDocument()
             .contactsCollection;
     yield* contacts
-        .snapshots()
+        .snapshots(includeMetadataChanges: true)
         .map((snapshot) =>
         right<ContactsFailure, List<Contact>>(snapshot.docs
             .map(
