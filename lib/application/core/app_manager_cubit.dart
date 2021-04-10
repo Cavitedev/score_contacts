@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,12 +11,11 @@ part 'app_manager_cubit.freezed.dart';
 part 'app_manager_state.dart';
 
 @injectable
-class AppManagerCubit extends Cubit<AppManagerState> {
+class AppManagerCubit extends Cubit<AppManagerState>
+    with WidgetsBindingObserver {
   AppManagerCubit() : super(AppManagerState.initial());
 
-
   Future<void> changeThemeData(ThemeMode themeMode) async {
-
     await _getPrefs().then((prefs) => prefs.setInt("theme", themeMode.index));
     _setThemeData(themeMode);
   }
@@ -24,7 +25,8 @@ class AppManagerCubit extends Cubit<AppManagerState> {
   }
 
   Future<void> changeLanguage(String languageCode) async {
-    await _getPrefs().then((prefs) => prefs.setString("language", languageCode));
+    await _getPrefs()
+        .then((prefs) => prefs.setString("language", languageCode));
     _setLanguageCode(languageCode);
   }
 
@@ -42,9 +44,28 @@ class AppManagerCubit extends Cubit<AppManagerState> {
   }
 
   Future<void> _getSystemRegion() async {
-    const channel = MethodChannel("com.cavitedev.scorecontacts/region");
-    final String region =  await channel.invokeMethod("getSystemRegion") as String;
-    emit(state.copyWith(region: region));
+    if (Platform.isAndroid) {
+      const channel = MethodChannel("com.cavitedev.scorecontacts/region");
+      final String region =
+      await channel.invokeMethod("getSystemRegion") as String;
+      emit(state.copyWith(region: region));
+    } else {
+      final String region = Platform.localeName.split('_')[1];
+      emit(state.copyWith(region: region));
+      WidgetsBinding.instance?.addObserver(this);
+    }
+  }
+
+
+  @override
+  void didChangeLocales(List<Locale>? locales) {
+    super.didChangeLocales(locales);
+
+    //Removing last ?. breaks the code
+    final String? region = WidgetsBinding.instance?.window.locale?.countryCode;
+    if (region != null) {
+      emit(state.copyWith(region: region));
+    }
   }
 
   Future<void> _readPreferences() async {

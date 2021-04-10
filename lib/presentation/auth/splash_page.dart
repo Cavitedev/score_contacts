@@ -9,6 +9,7 @@ class SplashPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
+
         state.maybeMap(
           unathenticated: (e) {
             context.router.replace(const r.SignInPageRoute());
