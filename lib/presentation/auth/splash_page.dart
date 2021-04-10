@@ -11,10 +11,10 @@ class SplashPage extends StatelessWidget {
       listener: (context, state) {
         state.maybeMap(
           unathenticated: (e) {
-            context.router.popAndPush(const r.SignInPageRoute());
+            context.router.replace(const r.SignInPageRoute());
           },
           authenticated: (e) {
-            context.router.popAndPush(const r.ContactListRoute());
+            context.router.replace(const r.ContactListRoute());
           },
           orElse: () {},
         );
