@@ -29,18 +29,21 @@ class FirebaseAuthFacade implements IAuthFacade {
     try {
       final GoogleSignInAccount? googleAccount = await googleSignIn.signIn();
       if (googleAccount == null) {
-        return left(const CancelledByUserAuthFailure(
-            "google_cancelled"));
+        return left(const CancelledByUserAuthFailure("google_cancelled"));
       }
       final GoogleSignInAuthentication authentication =
-      await googleAccount.authentication;
+          await googleAccount.authentication;
       final _fbAuth.AuthCredential credential =
           _fbAuth.GoogleAuthProvider.credential(
               idToken: authentication.idToken,
               accessToken: authentication.accessToken);
       await firebaseAuth.signInWithCredential(credential);
       return right(unit);
-    } on PlatformException {
+    } on PlatformException catch (e) {
+      if (e.code == "popup_closed_by_user") {
+        return left(const CancelledByUserAuthFailure("google_cancelled"));
+      }
+
       return left(const DatabaseAuthFailure("error_database"));
     }
   }
