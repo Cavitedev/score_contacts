@@ -47,24 +47,26 @@ class ContactRow extends StatelessWidget {
           _popUpItems(context, contactActorBloc, contactWatcherBloc);
         }
       },
-      child: Container(
-        padding: const EdgeInsets.fromLTRB(20, 8, 4, 8),
-        child: Row(
-          children: <Widget>[
-            CircleAvatar(
-              backgroundColor: selectionContact.isSelected
-                  ? Colors.teal[200]
-                  : Colors.purple[200],
-              child: selectionContact.isSelected
-                  ? const Icon(
-                Icons.check,
-                color: Colors.black,
-                size: 30,
-              )
-                  : selectionContact.contact.getDisplayedChar() == ""
-                  ? const Icon(
-                Icons.person,
-                color: Colors.black,
+
+    child: Container(
+    padding: const EdgeInsets.fromLTRB(20, 8, 4, 8),
+    child: Row(
+    children: <Widget>[
+    CircleAvatar(
+    backgroundColor: selectionContact.isSelected
+    ? Colors.teal[200]
+        : Colors.purple[200],
+    child: selectionContact.isSelected
+    ? const Icon(
+    Icons.check,
+    color: Colors.black,
+    size: 30,
+    )
+        : selectionContact.contact.getDisplayedChar() == ""
+    ? const Icon(
+    Icons.person,
+    color: Colors
+    }.black,
                 size: 30,
               )
                   : Text(

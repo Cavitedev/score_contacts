@@ -1,6 +1,7 @@
-import 'dart:io';
+import 'dart:ui';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -25,8 +26,10 @@ class AppManagerCubit extends Cubit<AppManagerState>
   }
 
   Future<void> changeLanguage(String languageCode) async {
-    await _getPrefs()
-        .then((prefs) => prefs.setString("language", languageCode));
+    if (defaultTargetPlatform == TargetPlatform.android) {
+      await _getPrefs()
+          .then((prefs) => prefs.setString("language", languageCode));
+    }
     _setLanguageCode(languageCode);
   }
 
@@ -44,14 +47,14 @@ class AppManagerCubit extends Cubit<AppManagerState>
   }
 
   Future<void> _getSystemRegion() async {
-    if (Platform.isAndroid) {
+    if (defaultTargetPlatform == TargetPlatform.android) {
       const channel = MethodChannel("com.cavitedev.scorecontacts/region");
       final String region =
       await channel.invokeMethod("getSystemRegion") as String;
       emit(state.copyWith(region: region));
     } else {
-      final String region = Platform.localeName.split('_')[1];
-      emit(state.copyWith(region: region));
+      final String? region = window.locale?.countryCode;
+      emit(state.copyWith(region: region!));
       WidgetsBinding.instance?.addObserver(this);
     }
   }
@@ -69,6 +72,9 @@ class AppManagerCubit extends Cubit<AppManagerState>
   }
 
   Future<void> _readPreferences() async {
+    if (defaultTargetPlatform != TargetPlatform.android) {
+      return;
+    }
     final prefs = await _getPrefs();
     final int themeIndex = prefs.getInt('theme') ?? ThemeMode.system.index;
     _setThemeData(ThemeMode.values[themeIndex]);
