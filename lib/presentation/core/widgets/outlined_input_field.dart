@@ -274,7 +274,7 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
             filled: true,
             fillColor: Theme
                 .of(context)
-                .textSelectionColor,
+                .textSelectionTheme.selectionColor,
             helperText: (widget.helperText.isNotEmpty)
                 ? widget.helperText
                 : (helpText != null && helpText!.isNotEmpty) ? helpText : null,

@@ -1,7 +1,7 @@
 part of 'app_manager_cubit.dart';
 
 @freezed
-abstract class AppManagerState implements _$AppManagerState {
+class AppManagerState with _$AppManagerState{
   const AppManagerState._();
 
   const factory AppManagerState({

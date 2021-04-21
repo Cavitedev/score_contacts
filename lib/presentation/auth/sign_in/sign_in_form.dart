@@ -23,7 +23,6 @@ class SignInForm extends StatelessWidget {
       builder: (context, state) {
         return Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Center(
                 child: Text(
@@ -44,11 +43,10 @@ class SignInForm extends StatelessWidget {
               )
             ],
             const Spacer(),
-            RaisedButton.icon(
+            ElevatedButton.icon(
               onPressed: () {
                 context.read<SignInBloc>().add(SignInWithGoogle());
               },
-              color: Theme.of(context).buttonColor,
               icon: Icon(Icons.email, color: Theme.of(context).focusColor),
               label: Text(
                 AppLocalization.of(context).translate("sign_in_google"),

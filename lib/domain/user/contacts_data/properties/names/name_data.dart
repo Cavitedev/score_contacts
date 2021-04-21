@@ -4,7 +4,7 @@ import 'package:scorecontacts/domain/user/contacts_data/properties/names/phoneti
 part 'name_data.freezed.dart';
 
 @freezed
-abstract class NameData implements _$NameData {
+class NameData with _$NameData{
   const NameData._();
 
   const factory NameData({

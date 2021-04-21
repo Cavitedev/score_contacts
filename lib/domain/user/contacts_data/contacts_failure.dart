@@ -5,7 +5,7 @@ import 'package:scorecontacts/core/app_localization.dart';
 part 'contacts_failure.freezed.dart';
 
 @freezed
-abstract class ContactsFailure with _$ContactsFailure {
+class ContactsFailure with _$ContactsFailure{
   const factory ContactsFailure.insufficientPermissions() =
       _InsufficientPermissions;
 

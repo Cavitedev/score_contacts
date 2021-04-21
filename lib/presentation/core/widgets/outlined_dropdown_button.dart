@@ -130,7 +130,7 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton> with Ti
         height: 48,
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
-          color: Theme.of(context).textSelectionColor,
+          color: Theme.of(context).textSelectionTheme.selectionColor,
           borderRadius: widget.borderRadius,
           border: Border.all(
             color: Theme.of(context).highlightColor.withOpacity(opacityAnimation.value),
@@ -139,7 +139,7 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton> with Ti
         ),
         child: DropdownButton<String>(
             focusNode: widget.focusNode,
-            focusColor: Theme.of(context).textSelectionColor,
+            focusColor: Theme.of(context).textSelectionTheme.selectionColor,
             onChanged: (value) {
               widget.focusNode.requestFocus();
               if (value == "Custom") {

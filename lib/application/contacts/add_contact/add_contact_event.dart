@@ -1,7 +1,7 @@
 part of 'add_contact_bloc.dart';
 
 @freezed
-abstract class AddContactEvent with _$AddContactEvent {
+class AddContactEvent with _$AddContactEvent{
   const factory AddContactEvent.initialize(
       Option<Contact> contactOption, String countryCode, bool isEditting) = _Initialize;
 

@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 ThemeData lightTheme = ThemeData.light().copyWith(
+    brightness: Brightness.light,
   scaffoldBackgroundColor: const Color.fromRGBO(250, 250, 250, 1),
   dialogBackgroundColor: const Color.fromRGBO(245, 245, 245, 1),
   primaryColor: Colors.blue[800],
@@ -22,9 +23,12 @@ ThemeData lightTheme = ThemeData.light().copyWith(
   dividerColor: const Color.fromRGBO(20, 20, 20, 1),
   highlightColor: Colors.blueAccent[700],
   focusColor: Colors.blueAccent[400],
-  cursorColor: Colors.blue[700],
-  textSelectionColor: Colors.white,
-  textSelectionHandleColor: Colors.blue[600],
+  textSelectionTheme: TextSelectionThemeData(
+    cursorColor: Colors.blue[700],
+    selectionColor: Colors.white,
+    selectionHandleColor: Colors.blue[600]
+  ),
+
   disabledColor: Colors.grey[500],
   inputDecorationTheme: const InputDecorationTheme(
     border: InputBorder.none,
@@ -47,6 +51,7 @@ ThemeData lightTheme = ThemeData.light().copyWith(
 );
 
 ThemeData darkTheme = ThemeData.dark().copyWith(
+  brightness: Brightness.dark,
   scaffoldBackgroundColor: const Color.fromRGBO(30, 30, 30, 1),
   dialogBackgroundColor: const Color.fromRGBO(35, 35, 35, 1),
   primaryColor: Colors.blue[800],
@@ -64,29 +69,36 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
   dividerColor: const Color.fromRGBO(20, 20, 20, 1),
   highlightColor: Colors.blueAccent[700],
   focusColor: Colors.blue[50],
-  cursorColor: Colors.blue[700],
-  textSelectionColor: const Color.fromRGBO(40, 40, 40, 1),
-  textSelectionHandleColor: Colors.blue[600],
+
+    textSelectionTheme: TextSelectionThemeData(
+    cursorColor: Colors.blue[700],
+    selectionColor: const Color.fromRGBO(40, 40, 40, 1),
+    selectionHandleColor: Colors.blue[600]
+  ),
+
   disabledColor: Colors.grey[500],
   inputDecorationTheme: const InputDecorationTheme(
     border: InputBorder.none,
   ),
   iconTheme: const IconThemeData(color: Colors.grey, size: 32),
   textTheme: TextTheme(
+
       headline2: const TextStyle(
           fontSize: 30, fontWeight: FontWeight.w500, color: Colors.black),
-      headline3: const TextStyle(fontSize: 26),
+      headline3: const TextStyle(fontSize: 26, color: Colors.white),
       headline4: const TextStyle(fontSize: 24, color: Colors.white),
       headline5: const TextStyle(
         fontSize: 16,
+        color: Colors.white
       ),
-      headline6: const TextStyle(fontSize: 14, letterSpacing: .5),
-      subtitle1: const TextStyle(fontSize: 16, letterSpacing: .5),
+      headline6: const TextStyle(fontSize: 14, letterSpacing: .5, color: Colors.white),
+      subtitle1: const TextStyle(fontSize: 16, letterSpacing: .5, color: Colors.white),
       subtitle2: const TextStyle(
         fontSize: 14,
         letterSpacing: .5,
+        color: Colors.white
       ),
-      caption: TextStyle(fontSize: 15, color: Colors.grey[400]),
+      caption: TextStyle(fontSize: 15, color: Colors.grey[500]),
       button: TextStyle(fontSize: 20, color: Colors.blue[50])),
   visualDensity: VisualDensity.adaptivePlatformDensity,
 );

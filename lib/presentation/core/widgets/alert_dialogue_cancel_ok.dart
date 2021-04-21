@@ -45,27 +45,24 @@ class _AlertDialogueWithFieldCancelOKState
         borderRadius: BorderRadius.all(Radius.circular(16)),
       ),
       actions: <Widget>[
-        FlatButton(
+        TextButton(
           onPressed: () {
             widget.onCancel();
             Navigator.of(context).pop();
           },
-          textColor: Theme.of(context).focusColor,
-          child:  Text(
+          child: Text(
             AppLocalization.of(context).translate("cancel"),
             // style: TextStyle(
             //     ),
           ),
         ),
-        FlatButton(
+        TextButton(
           onPressed: text != null && text!.isNotEmpty
               ? () {
                   widget.onSubmit(text!);
                   Navigator.of(context).pop();
                 }
               : null,
-          disabledTextColor: Theme.of(context).disabledColor,
-          textColor: Theme.of(context).focusColor,
           child: Text(AppLocalization.of(context).translate("ok")),
         )
       ],
@@ -95,23 +92,20 @@ class AlertDialogueCancelOK extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(16)),
       ),
       actions: <Widget>[
-        FlatButton(
+        TextButton(
           onPressed: () {
             Navigator.of(context).pop();
             onCancel?.call();
           },
-          textColor: Theme.of(context).focusColor,
           child: Text(
             AppLocalization.of(context).translate("cancel"),
           ),
         ),
-        FlatButton(
+        TextButton(
           onPressed: () {
             Navigator.of(context).pop();
             onSubmit?.call();
           },
-          disabledTextColor: Theme.of(context).disabledColor,
-          textColor: Theme.of(context).focusColor,
           child: Text(AppLocalization.of(context).translate("ok")),
         )
       ],

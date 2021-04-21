@@ -22,11 +22,11 @@ class RadioDialog extends StatelessWidget {
       ),
       content: content,
       actions: <Widget>[
-        FlatButton(
+        TextButton(
           onPressed: () {
             Navigator.of(context).pop();
           },
-          textColor: Theme.of(context).focusColor,
+
           child: Text(
             AppLocalization.of(context).translate("cancel"),
           ),

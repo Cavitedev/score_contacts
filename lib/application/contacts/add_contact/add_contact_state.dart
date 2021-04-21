@@ -1,7 +1,7 @@
 part of 'add_contact_bloc.dart';
 
 @freezed
-abstract class AddContactState implements _$AddContactState {
+class AddContactState with _$AddContactState{
   const AddContactState._();
 
   const factory AddContactState({

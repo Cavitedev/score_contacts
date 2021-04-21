@@ -1,7 +1,7 @@
 part of 'contact_actor_bloc.dart';
 
 @freezed
-abstract class ContactActorState with _$ContactActorState {
+class ContactActorState with _$ContactActorState{
   const factory ContactActorState.initial() = _Initial;
 
   const factory ContactActorState.actionInProgress(ContactsLoading loadingMsg) = _ActionInProgress;
