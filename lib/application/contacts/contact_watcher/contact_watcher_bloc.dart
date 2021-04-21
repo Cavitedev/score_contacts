@@ -105,7 +105,7 @@ class ContactWatcherBloc extends Bloc<ContactWatcherEvent, ContactWatcherState> 
       final String? match = selectionContact.contact.matchPattern(filter.filterSearch);
       selectionContact.display = match != null;
 
-      selectionContact.filterText = match!;
+      selectionContact.filterText = match;
     }
   }
 }
