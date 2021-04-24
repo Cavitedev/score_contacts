@@ -6,6 +6,7 @@ import 'package:scorecontacts/application/core/app_manager_cubit.dart';
 import 'package:scorecontacts/core/app_localization.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/email.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/phone.dart';
+import 'package:scorecontacts/presentation/contacts/add_contacts/widgets/image_pick_up.dart';
 import 'package:scorecontacts/presentation/contacts/add_contacts/widgets/label_object_builder.dart';
 import 'package:scorecontacts/presentation/core/formatters/number_text_input_formatter.dart';
 import 'package:scorecontacts/presentation/core/widgets/outlined_input_field.dart';
@@ -25,9 +26,9 @@ class AddContactForm extends StatelessWidget {
           child: ListView(
             physics: const BouncingScrollPhysics(),
             children: <Widget>[
-              const SizedBox(
-                height: 15,
-              ),
+
+              const ImagePickUp(),
+
               OutlinedInputFieldsGroup(
                 inputFields: [
                   OutlinedInputField(

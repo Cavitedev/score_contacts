@@ -9,7 +9,7 @@ ThemeData lightTheme = ThemeData.light().copyWith(
   primaryColor: Colors.blue[800],
   primaryColorDark: Colors.grey[900],
   primaryColorLight: Colors.white,
-  accentColor: Colors.grey[400],
+  accentColor: Colors.blueGrey[100],
   buttonColor: const Color.fromRGBO(250, 250, 250, 1),
   floatingActionButtonTheme: FloatingActionButtonThemeData(
     backgroundColor: Colors.blue[900],
@@ -53,7 +53,7 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
   scaffoldBackgroundColor: const Color.fromRGBO(30, 30, 30, 1),
   dialogBackgroundColor: const Color.fromRGBO(35, 35, 35, 1),
   primaryColor: Colors.blue[800],
-  accentColor: Colors.grey[400],
+  accentColor: Colors.blueGrey[100],
   buttonColor: Colors.blue[900],
   floatingActionButtonTheme: FloatingActionButtonThemeData(
     backgroundColor: Colors.blue[900],
