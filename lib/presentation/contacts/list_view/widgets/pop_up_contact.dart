@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:scorecontacts/application/contacts/contact_actor/contact_actor_bloc.dart';
 import 'package:scorecontacts/application/contacts/contact_watcher/contact_watcher_bloc.dart';
 import 'package:scorecontacts/application/contacts/selection_contact.dart';
+import 'package:scorecontacts/core/app_localization.dart';
 import 'package:scorecontacts/presentation/core/widgets/alert_dialogue_cancel_ok.dart';
 import 'package:scorecontacts/presentation/routes/router.gr.dart' as r;
 
@@ -12,36 +13,37 @@ class ContactPopUp {
   final ContactActorBloc actorBloc;
   final ContactWatcherBloc watcherBloc;
 
-  const ContactPopUp({
-    required this.context,
-    required this.selectionContact,
-    required this.actorBloc,
-    required this.watcherBloc
-  });
+  const ContactPopUp(
+      {required this.context,
+      required this.selectionContact,
+      required this.actorBloc,
+      required this.watcherBloc});
 
   List<PopupMenuEntry> popUpItems() => [
         PopUpDivider(),
         PopUpWidget(
             addedWidget: InkPopUpButton(
           onTap: () {
-            watcherBloc.add(ContactWatcherEvent.toggleSelectionContact(selectionContact));
+            watcherBloc.add(
+                ContactWatcherEvent.toggleSelectionContact(selectionContact));
             context.router.pop();
           },
-          text: "Select",
+          text: AppLocalization.of(context).translate("select"),
         )),
         PopUpDivider(),
         PopUpWidget(
             addedWidget: InkPopUpButton(
           onTap: () {},
-          text: "View",
+          text: AppLocalization.of(context).translate("view"),
         )),
         PopUpDivider(),
         PopUpWidget(
             addedWidget: InkPopUpButton(
           onTap: () {
-            context.router.push(r.AddContactPageRoute(contact: selectionContact.contact));
+            context.router
+                .push(r.AddContactPageRoute(contact: selectionContact.contact));
           },
-          text: "Edit",
+          text: AppLocalization.of(context).translate("edit"),
         )),
         PopUpDivider(),
         PopUpWidget(
@@ -50,13 +52,14 @@ class ContactPopUp {
             showDialog(
                 context: context,
                 builder: (context) => AlertDialogueCancelOK(
-                      title:
-                          'Do you want to delete "${selectionContact.contact.getFullName()}" contact',
+                      title: AppLocalization.of(context).translate(
+                          "confirm_delection",
+                          args: [selectionContact.contact.getFullName()]),
                       onSubmit: () {
-                        actorBloc.add(
-                            ContactActorEvent.delete(contactList: [selectionContact.contact]));
+                        actorBloc.add(ContactActorEvent.delete(
+                            contactList: [selectionContact.contact]));
                         context.router.popUntil((route) =>
-                        route.settings.name == r.ContactListRoute.name);
+                            route.settings.name == r.ContactListRoute.name);
                       },
                       onCancel: () {
                         context.router.popUntil((route) =>
@@ -64,10 +67,9 @@ class ContactPopUp {
                       },
                     ));
           },
-          text: "Delete",
+          text: AppLocalization.of(context).translate("delete"),
         )),
         PopUpDivider(),
-
       ];
 }
 
