@@ -1,0 +1,172 @@
+@startjson
+{{
+  "users": [
+    {
+      "d1fe2216-a4ec-11eb-bcbc-0242ac130002": {
+        "Contacts": [
+          {
+            "contact": {
+              "nameData": {
+                "name": "Nombre1",
+                "surname": "Apellido1"
+              },
+              "phone": [
+                {
+                  "label": "Mobile",
+                  "name": "+3461231241"
+                },
+                {
+                  "label": "Home",
+                  "name": "967133136"
+                }
+              ],
+              "emails": [
+                {
+                  "label": "Home",
+                  "name": "mail1@mail.com"
+                },
+                {
+                  "label": "Work",
+                  "name": "mail2@mail.com"
+                }
+              ],
+              "companies": [
+                {
+                  "name": "Empresa1",
+                  "title": "Cargo1"
+                },
+                {
+                  "name": "Empresa2",
+                  "title": "Cargo2"
+                }
+              ],
+              "serverTimeStamp": "April 15, 2021 at 7:39:19 PM UTC+2"
+            }
+          },
+          {
+            "contact": {
+              "nameData": {
+                "name": "Nombre2",
+                "surname": "Apellido2"
+              },
+              "phone": [
+                {
+                  "label": "Mobile",
+                  "name": "+(1) 213 313 13134"
+                },
+                {
+                  "label": "Otro",
+                  "name": "96713123"
+                }
+              ],
+              "emails": [
+                {
+                  "label": "Home",
+                  "name": "mail21@mail.com"
+                },
+                {
+                  "label": "Otro",
+                  "name": "mail22@mail.com"
+                }
+              ],
+              "companies": [
+                {
+                  "name": "Empresa21",
+                  "title": "Cargo21"
+                },
+                {
+                  "name": "Empresa22",
+                  "title": "Cargo22"
+                }
+              ],
+              "serverTimeStamp": "April 15, 2021 at 7:39:26 PM UTC+2"
+            }
+          }
+        ]
+      },
+      "3974b28c-a4ef-11eb-bcbc-0242ac130002": {
+        "Contacts": [
+          {
+            "41224e04-a4ef-11eb-bcbc-0242ac130002": {
+              "nameData": {
+                "name": "Nombre3",
+                "surname": "Apellido3"
+              },
+              "phone": [
+                {
+                  "label": "Mobile",
+                  "name": "+3461231241"
+                },
+                {
+                  "label": "Home",
+                  "name": "967133136"
+                }
+              ],
+              "emails": [
+                {
+                  "label": "Home",
+                  "name": "mail3@mail.com"
+                },
+                {
+                  "label": "Work",
+                  "name": "mail4@mail.com"
+                }
+              ],
+              "companies": [
+                {
+                  "name": "Empresa3",
+                  "title": "Cargo3"
+                },
+                {
+                  "name": "Empresa4",
+                  "title": "Cargo4"
+                }
+              ],
+              "serverTimeStamp": "April 15, 2021 at 7:39:19 PM UTC+2"
+            }
+          },
+          {
+            "44292b54-a4ef-11eb-bcbc-0242ac130002": {
+              "nameData": {
+                "name": "Nombre22",
+                "surname": "Apellido22"
+              },
+              "phone": [
+                {
+                  "label": "Mobile",
+                  "name": "+(1) 213 313 13134"
+                },
+                {
+                  "label": "Otro",
+                  "name": "96713123"
+                }
+              ],
+              "emails": [
+                {
+                  "label": "Home",
+                  "name": "mail23@mail.com"
+                },
+                {
+                  "label": "Otro",
+                  "name": "mail24@mail.com"
+                }
+              ],
+              "companies": [
+                {
+                  "name": "Empresa21",
+                  "title": "Cargo23"
+                },
+                {
+                  "name": "Empresa22",
+                  "title": "Cargo24"
+                }
+              ],
+              "serverTimeStamp": "April 15, 2021 at 7:39:26 PM UTC+2"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+@endjson

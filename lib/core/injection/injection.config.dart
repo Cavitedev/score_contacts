@@ -10,17 +10,19 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:google_sign_in/google_sign_in.dart' as _i6;
 import 'package:injectable/injectable.dart' as _i2;
 
-import 'application/auth/auth_bloc.dart' as _i13;
-import 'application/auth/sign_in/sign_in_bloc.dart' as _i11;
-import 'application/contacts/add_contact/add_contact_bloc.dart' as _i12;
-import 'application/contacts/contact_actor/contact_actor_bloc.dart' as _i14;
-import 'application/contacts/contact_watcher/contact_watcher_bloc.dart' as _i15;
-import 'application/core/app_manager_cubit.dart' as _i3;
-import 'domain/auth/i_auth_facade.dart' as _i7;
-import 'domain/user/contacts_data/i_contact_repository.dart' as _i9;
-import 'infrastructure/auth/firebase_auth_facade.dart' as _i8;
-import 'infrastructure/contacts/contacts_repository.dart' as _i10;
-import 'infrastructure/core/firebase_injectable_module.dart'
+import '../../application/auth/auth_bloc.dart' as _i13;
+import '../../application/auth/sign_in/sign_in_bloc.dart' as _i11;
+import '../../application/contacts/add_contact/add_contact_bloc.dart' as _i12;
+import '../../application/contacts/contact_actor/contact_actor_bloc.dart'
+    as _i14;
+import '../../application/contacts/contact_watcher/contact_watcher_bloc.dart'
+    as _i15;
+import '../../application/core/app_manager_cubit.dart' as _i3;
+import '../../domain/auth/i_auth_facade.dart' as _i7;
+import '../../domain/user/contacts_data/i_contact_repository.dart' as _i9;
+import '../../infrastructure/auth/firebase_auth_facade.dart' as _i8;
+import '../../infrastructure/contacts/contacts_repository.dart' as _i10;
+import '../../infrastructure/core/firebase_injectable_module.dart'
     as _i16; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars

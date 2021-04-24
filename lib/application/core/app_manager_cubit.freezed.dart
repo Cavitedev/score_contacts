@@ -127,7 +127,7 @@ class __$AppManagerStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$_AppManagerState extends _AppManagerState {
+class _$_AppManagerState extends _AppManagerState with DiagnosticableTreeMixin {
   const _$_AppManagerState(
       {required this.themeMode, required this.region, this.languageCode})
       : super._();
@@ -140,8 +140,18 @@ class _$_AppManagerState extends _AppManagerState {
   final String? languageCode;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AppManagerState(themeMode: $themeMode, region: $region, languageCode: $languageCode)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AppManagerState'))
+      ..add(DiagnosticsProperty('themeMode', themeMode))
+      ..add(DiagnosticsProperty('region', region))
+      ..add(DiagnosticsProperty('languageCode', languageCode));
   }
 
   @override

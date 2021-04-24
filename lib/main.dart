@@ -5,11 +5,11 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:injectable/injectable.dart';
 import 'package:scorecontacts/application/auth/auth_bloc.dart';
 import 'package:scorecontacts/application/core/app_manager_cubit.dart';
-import 'package:scorecontacts/injection.dart';
+import 'package:scorecontacts/core/theme_manager.dart';
 import 'package:scorecontacts/presentation/routes/router.gr.dart' as r;
-import 'package:scorecontacts/theme_manager.dart';
 
 import 'core/app_localization.dart';
+import 'core/injection/injection.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -33,7 +33,7 @@
 #Custom
 google-services.json
 # Web related
-lib/generated_plugin_registrant.dart
+lib/core/injection/generated_plugin_registrant.dart
 
 # Symbolication related
 app.*.symbols
