@@ -27,7 +27,7 @@ class AddContactForm extends StatelessWidget {
             physics: const BouncingScrollPhysics(),
             children: <Widget>[
 
-              const ImagePickUp(),
+              ImagePickUp(onImageReturned: (file){},),
 
               OutlinedInputFieldsGroup(
                 inputFields: [
