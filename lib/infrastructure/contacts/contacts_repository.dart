@@ -1,9 +1,10 @@
-import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:scorecontacts/domain/auth/i_auth_facade.dart';
@@ -180,17 +181,18 @@ class ContactsRepository implements IContactsRepository {
   Reference _getFirestorageRef(Contact contact) {
     final String userId = authFacade.getUserOrCrash().uid.value;
     final Reference storageRef =
-        firestorage.ref("Users/$userId/contacts/${contact.id.value}/image");
+        firestorage.ref("Users/$userId/contacts/${contact.id.value}/avatar.jpg");
     return storageRef;
   }
 
   Future<String?> _adaptImage(Contact contact) async {
-    final File? imageFile = contact.contactImage?.file;
+    final PickedFile? imageFile = contact.contactImage?.file;
     if (imageFile == null) {
       return null;
     }
     final Reference storageRef = _getFirestorageRef(contact);
-    final UploadTask uploadTask = storageRef.putFile(imageFile);
+    final Uint8List imageBytes = await imageFile.readAsBytes();
+    final UploadTask uploadTask = storageRef.putData(imageBytes);
     return uploadTask.then(
       (snaphot) => snaphot.ref.getDownloadURL(),
     );

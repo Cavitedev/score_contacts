@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -36,10 +34,9 @@ class AddContactForm extends StatelessWidget {
                   backgroundUrl: contactImageUrl,
                   onImageReturned: (imageFile) {
                     if (imageFile != null) {
-                      final File file = File(imageFile.path);
                       context
                           .read<AddContactBloc>()
-                          .add(AddContactEvent.updateImage(file));
+                          .add(AddContactEvent.updateImage(imageFile));
                     } else {
                       FlushbarHelper.createError(
                         message: "Image could not be loaded",
