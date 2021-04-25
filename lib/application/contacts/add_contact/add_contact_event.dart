@@ -25,6 +25,9 @@ class AddContactEvent with _$AddContactEvent{
   const factory AddContactEvent.addCompany() = _AddCompany;
 
   const factory AddContactEvent.deleteCompany(int index) = _DeleteCompany;
+
+  const factory AddContactEvent.updateImage(File file) = _UpdateImage;
+
 }
 
 

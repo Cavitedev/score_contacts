@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:scorecontacts/domain/core/unique_id.dart';
 import 'package:scorecontacts/domain/user/contacts_data/contact.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/company.dart';
+import 'package:scorecontacts/domain/user/contacts_data/properties/contact_image.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/email.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/i_label_object.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/names/name_data.dart';
@@ -16,6 +17,7 @@ const String nameDataName = "nameData";
 const String companiesName = "companies";
 const String emailsName = "emails";
 const String phonesName = "phones";
+const String imageUrlName = "imageUrl";
 
 @freezed
 class ContactDTO with _$ContactDTO {
@@ -27,6 +29,7 @@ class ContactDTO with _$ContactDTO {
     @JsonKey(name: companiesName) List<CompanyDTO?>? companiesDTO,
     @JsonKey(name: emailsName) List<LabelObjectDTO?>? emailsDTO,
     @JsonKey(name: phonesName) List<LabelObjectDTO?>? phonesDTO,
+    @JsonKey(name: imageUrlName) String? imageUrl,
     @ServerTimeStampConverter() required FieldValue serverTimeStamp,
   }) = _ContactDTO;
 
@@ -43,11 +46,11 @@ class ContactDTO with _$ContactDTO {
           .map(
               (emailLabelObject) => LabelObjectDTO.fromDomain(emailLabelObject))
           .toList(),
-      phonesDTO: (contact.labelObjects ?? const{})[Phone]
+      phonesDTO: (contact.labelObjects ?? const {})[Phone]
           ?.where((phone) => phone.value != null)
           .map((phoneLabelObject) {
         return LabelObjectDTO.fromDomain(phoneLabelObject);
-      }).toList() ,
+      }).toList(),
       serverTimeStamp: FieldValue.serverTimestamp(),
     );
   }
@@ -62,15 +65,16 @@ class ContactDTO with _$ContactDTO {
       labelObjects: {
         Email: (emailsDTO == null || emailsDTO!.isEmpty)
             ? [const Email()]
-            : emailsDTO
-                !.map((dto) => Email.fromLabelObject(dto!.toDomain()))
+            : emailsDTO!
+                .map((dto) => Email.fromLabelObject(dto!.toDomain()))
                 .toList(),
         Phone: (phonesDTO == null || phonesDTO!.isEmpty)
             ? [const Phone()]
-            : phonesDTO
-                !.map((dto) => Phone.fromLabelObject(dto!.toDomain()))
+            : phonesDTO!
+                .map((dto) => Phone.fromLabelObject(dto!.toDomain()))
                 .toList(),
       },
+    contactImage: ContactImage(url: imageUrl),
     );
   }
 
@@ -121,7 +125,6 @@ class LabelObjectDTO with _$LabelObjectDTO {
       label: labelObject.label,
     );
   }
-
 
   ILabelObject toDomain() {
     return LabelObject(

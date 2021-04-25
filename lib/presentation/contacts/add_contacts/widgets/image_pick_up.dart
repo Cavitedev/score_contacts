@@ -1,16 +1,36 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:scorecontacts/core/app_localization.dart';
 import 'package:scorecontacts/presentation/core/widgets/circular_button_image.dart';
 
-class ImagePickUp extends StatelessWidget {
+class ImagePickUp extends StatefulWidget {
   final Function(PickedFile?) onImageReturned;
+  final String? backgroundUrl;
+
+  const ImagePickUp({
+    required this.onImageReturned,
+    this.backgroundUrl,
+    Key? key
+  }):super(key: key);
+
+  @override
+  _ImagePickUpState createState() => _ImagePickUpState();
+}
+
+class _ImagePickUpState extends State<ImagePickUp> {
   final imagePicker = ImagePicker();
 
-  ImagePickUp({
-    required this.onImageReturned,
-  });
+  PickedFile? pickedFile;
+  ImageProvider? imageProvider;
+
+
+  @override
+  void initState() {
+    _updateImageProvider();
+    super.initState();
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +38,7 @@ class ImagePickUp extends StatelessWidget {
       onPressed: () {
         getImageGalleryOrCamera(context);
       },
+      decorationImage: _buildDecorationImage(),
       icon: Icons.add_a_photo_outlined,
     );
   }
@@ -36,7 +57,7 @@ class ImagePickUp extends StatelessWidget {
                 onTap: () async {
                   final PickedFile? photo =
                       await imagePicker.getImage(source: ImageSource.camera);
-                  onImageReturned(photo);
+                  _onGetImage(photo);
                 },
               ),
               ListTile(
@@ -46,11 +67,50 @@ class ImagePickUp extends StatelessWidget {
                 onTap: () async {
                   final PickedFile? photo =
                       await imagePicker.getImage(source: ImageSource.gallery);
-                  onImageReturned(photo);
+                  _onGetImage(photo);
                 },
               ),
             ],
           );
         });
+  }
+
+  void _onGetImage(PickedFile? photo) {
+    pickedFile = photo;
+    _updateImageProvider();
+    Navigator.of(context).pop();
+    widget.onImageReturned(photo);
+
+  }
+
+  DecorationImage? _buildDecorationImage() {
+    if (imageProvider == null) {
+      return null;
+    }
+
+    return DecorationImage(
+      fit: BoxFit.fill,
+      image: imageProvider!,
+      colorFilter:
+          ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.darken),
+    );
+  }
+
+  void _updateImageProvider() {
+    if (pickedFile == null && widget.backgroundUrl == null) {
+      return;
+    }
+
+    if (pickedFile != null) {
+      pickedFile!.readAsBytes().then((bytes) {
+        setState(() {
+          imageProvider = MemoryImage(bytes);
+        });
+      });
+    } else {
+      setState(() {
+        imageProvider = NetworkImage(widget.backgroundUrl!);
+      });
+    }
   }
 }

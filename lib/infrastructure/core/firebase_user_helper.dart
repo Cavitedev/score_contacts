@@ -13,9 +13,15 @@ extension FirebaseUserToDomain on _fbAuth.User {
 
 extension FirestoreX on FirebaseFirestore {
   DocumentReference userDocument() {
-    final Option<User> userOption = getIt<IAuthFacade>().getSignedUser();
-    final User user = userOption.getOrElse(() => throw NotAuthenticatedError());
+    final User user = getIt<IAuthFacade>().getUserOrCrash();
     return FirebaseFirestore.instance.collection('users').doc(user.uid.value);
+  }
+}
+
+extension IAuthFacadeX on IAuthFacade{
+  User getUserOrCrash(){
+    final Option<User> userOption = getIt<IAuthFacade>().getSignedUser();
+    return userOption.getOrElse(() => throw NotAuthenticatedError());
   }
 }
 

@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,80 +23,97 @@ class AddContactForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AddContactBloc, AddContactState>(
-      builder: (context, state) => Form(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
-          child: ListView(
-            physics: const BouncingScrollPhysics(),
-            children: <Widget>[
-              ImagePickUp(
-                onImageReturned: (file) {
-
-                  print(file?.path.characters.string);
-                },
-              ),
-              OutlinedInputFieldsGroup(
-                inputFields: [
-                  OutlinedInputField(
-                    hintText: AppLocalization.of(context).translate("name"),
-                    writtenText: state.contact.nameData.firstName,
-                    autoFocus: true,
-                    textCapitalization: TextCapitalization.words,
-                    prefixIcon: const Icon(Icons.person_outline),
-                    onChangedValidator: (value) {
-                      context.read<AddContactBloc>().add(
-                          AddContactEvent.updateNameData(state.contact.nameData
-                              .copyWith(firstName: value)));
-                      return "";
-                    },
-                  ),
-                  OutlinedInputField(
-                    hintText: AppLocalization.of(context).translate("surname"),
-                    writtenText: state.contact.nameData.surnames,
-                    textCapitalization: TextCapitalization.words,
-                    onChangedValidator: (value) {
-                      context.read<AddContactBloc>().add(
-                          AddContactEvent.updateNameData(state.contact.nameData
-                              .copyWith(surnames: value)));
-                      return "";
-                    },
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              LabelObjectBuilder(
-                context: context,
-                state: state,
-                defaultLabelObject: const Phone(),
-                hintText: AppLocalization.of(context).translate("phone"),
-                icon: const Icon(Icons.phone),
-                keyboardType: TextInputType.phone,
-                inputFormatters: <TextInputFormatter>[
-                  PhoneTextFormatter(
-                      countryCode: context.read<AppManagerCubit>().state.region)
-                ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              LabelObjectBuilder(
-                context: context,
-                state: state,
-                defaultLabelObject: const Email(),
-                hintText: AppLocalization.of(context).translate("email"),
-                icon: const Icon(Icons.mail),
-                keyboardType: TextInputType.emailAddress,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              CompaniesFields(state: state, context: context),
-            ],
+      builder: (context, state) {
+        final String? contactImageUrl = state.contact.contactImage?.url;
+        return Form(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: ListView(
+              physics: const BouncingScrollPhysics(),
+              children: <Widget>[
+                ImagePickUp(
+                  key: ValueKey(contactImageUrl),
+                  backgroundUrl: contactImageUrl,
+                  onImageReturned: (imageFile) {
+                    if (imageFile != null) {
+                      final File file = File(imageFile.path);
+                      context
+                          .read<AddContactBloc>()
+                          .add(AddContactEvent.updateImage(file));
+                    } else {
+                      FlushbarHelper.createError(
+                        message: "Image could not be loaded",
+                      ).show(context);
+                    }
+                  },
+                ),
+                OutlinedInputFieldsGroup(
+                  inputFields: [
+                    OutlinedInputField(
+                      hintText: AppLocalization.of(context).translate("name"),
+                      writtenText: state.contact.nameData.firstName,
+                      autoFocus: true,
+                      textCapitalization: TextCapitalization.words,
+                      prefixIcon: const Icon(Icons.person_outline),
+                      onChangedValidator: (value) {
+                        context.read<AddContactBloc>().add(
+                            AddContactEvent.updateNameData(state
+                                .contact.nameData
+                                .copyWith(firstName: value)));
+                        return "";
+                      },
+                    ),
+                    OutlinedInputField(
+                      hintText:
+                          AppLocalization.of(context).translate("surname"),
+                      writtenText: state.contact.nameData.surnames,
+                      textCapitalization: TextCapitalization.words,
+                      onChangedValidator: (value) {
+                        context.read<AddContactBloc>().add(
+                            AddContactEvent.updateNameData(state
+                                .contact.nameData
+                                .copyWith(surnames: value)));
+                        return "";
+                      },
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                LabelObjectBuilder(
+                  context: context,
+                  state: state,
+                  defaultLabelObject: const Phone(),
+                  hintText: AppLocalization.of(context).translate("phone"),
+                  icon: const Icon(Icons.phone),
+                  keyboardType: TextInputType.phone,
+                  inputFormatters: <TextInputFormatter>[
+                    PhoneTextFormatter(
+                        countryCode:
+                            context.read<AppManagerCubit>().state.region)
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                LabelObjectBuilder(
+                  context: context,
+                  state: state,
+                  defaultLabelObject: const Email(),
+                  hintText: AppLocalization.of(context).translate("email"),
+                  icon: const Icon(Icons.mail),
+                  keyboardType: TextInputType.emailAddress,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                CompaniesFields(state: state, context: context),
+              ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

@@ -6,11 +6,10 @@ class UniqueID {
   const UniqueID._(this.value);
 
   factory UniqueID() {
-    return UniqueID._(Uuid().v1());
+    return UniqueID._(const Uuid().v1());
   }
 
   factory UniqueID.fromUniqueString(String uniqueID) {
-    assert(uniqueID != null);
     return UniqueID._(uniqueID);
   }
 

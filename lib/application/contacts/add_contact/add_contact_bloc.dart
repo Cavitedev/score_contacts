@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
@@ -10,6 +11,7 @@ import 'package:scorecontacts/domain/user/contacts_data/contact.dart';
 import 'package:scorecontacts/domain/user/contacts_data/contacts_failure.dart';
 import 'package:scorecontacts/domain/user/contacts_data/i_contact_repository.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/company.dart';
+import 'package:scorecontacts/domain/user/contacts_data/properties/contact_image.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/i_label_object.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/names/name_data.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/phone.dart';
@@ -28,107 +30,107 @@ class AddContactBloc extends Bloc<AddContactEvent, AddContactState> {
   Stream<AddContactState> mapEventToState(
     AddContactEvent event,
   ) async* {
-    yield* event.map(
-      initialize: (e) async* {
-        yield e.contactOption.fold(
-          () => state,
-          (contact) {
-            final List<Phone> phonesList =
-                List<Phone>.from(contact.labelObjects![Phone]!);
-            for (int i = 0; i < phonesList.length; i++) {
-              phonesList[i] = phonesList[i].fromDatabase(e.countryCode);
-            }
-            final Map<Type, List<ILabelObject>> labelObjects =
-                Map.from(contact.labelObjects!);
-            labelObjects[Phone] = phonesList;
-            final Contact sendedContact =
-                contact.copyWith(labelObjects: labelObjects);
+    yield* event.map(initialize: (e) async* {
+      yield e.contactOption.fold(
+        () => state,
+        (contact) {
+          final List<Phone> phonesList =
+              List<Phone>.from(contact.labelObjects![Phone]!);
+          for (int i = 0; i < phonesList.length; i++) {
+            phonesList[i] = phonesList[i].fromDatabase(e.countryCode);
+          }
+          final Map<Type, List<ILabelObject>> labelObjects =
+              Map.from(contact.labelObjects!);
+          labelObjects[Phone] = phonesList;
+          final Contact sendedContact =
+              contact.copyWith(labelObjects: labelObjects);
 
-            return state.copyWith(contact: sendedContact, isEditting: e.isEditting);
-          },
-        );
-      },
-      saved: (e) async* {
-        yield state.copyWith(isSaving: true, savingOrFailureOption: none());
+          return state.copyWith(
+              contact: sendedContact, isEditting: e.isEditting);
+        },
+      );
+    }, saved: (e) async* {
+      yield state.copyWith(isSaving: true, savingOrFailureOption: none());
 
-        final List<Phone> phonesList = List<Phone>.from(
-            state.contact.labelObjects![Phone]!);
-        for (int i = 0; i < phonesList.length; i++) {
-          phonesList[i] = phonesList[i].toDatabaseString(e.countryCode);
-        }
-        final Map<Type, List<ILabelObject>> labelObjects =
-        Map.from(state.contact.labelObjects!);
-        labelObjects[Phone] = phonesList;
-        final Contact sendedContact = state.contact.copyWith(
-            labelObjects: labelObjects
-        );
+      final List<Phone> phonesList =
+          List<Phone>.from(state.contact.labelObjects![Phone]!);
+      for (int i = 0; i < phonesList.length; i++) {
+        phonesList[i] = phonesList[i].toDatabaseString(e.countryCode);
+      }
+      final Map<Type, List<ILabelObject>> labelObjects =
+          Map.from(state.contact.labelObjects!);
+      labelObjects[Phone] = phonesList;
+      final Contact sendedContact =
+          state.contact.copyWith(labelObjects: labelObjects);
 
-        final savingOrFailureOption = await (state.isEditting
-            ? repository.updateContact(sendedContact)
-            : repository.createContact(sendedContact));
-        yield state.copyWith(
-            isSaving: false,
-            savingOrFailureOption: optionOf(savingOrFailureOption));
-      },
-      labelObjectChanged: (e) async* {
-        final List<ILabelObject> labelObjectList = List<ILabelObject>.from(
-            state.contact.labelObjects![e.labelObject.runtimeType]!);
-        labelObjectList[e.pos] = e.labelObject;
+      final savingOrFailureOption = await (state.isEditting
+          ? repository.updateContact(sendedContact)
+          : repository.createContact(sendedContact));
+      yield state.copyWith(
+          isSaving: false,
+          savingOrFailureOption: optionOf(savingOrFailureOption));
+    }, labelObjectChanged: (e) async* {
+      final List<ILabelObject> labelObjectList = List<ILabelObject>.from(
+          state.contact.labelObjects![e.labelObject.runtimeType]!);
+      labelObjectList[e.pos] = e.labelObject;
 
-        final Map<Type, List<ILabelObject>> labelObjects =
-            Map.from(state.contact.labelObjects!);
+      final Map<Type, List<ILabelObject>> labelObjects =
+          Map.from(state.contact.labelObjects!);
 
-        labelObjects[e.labelObject.runtimeType] = labelObjectList;
-        yield state.copyWith(
-            contact: state.contact.copyWith(labelObjects: labelObjects));
-      },
-      addLabelObject: (e) async* {
-        final List<ILabelObject> labelObjectList = List<ILabelObject>.from(
-            state.contact.labelObjects![e.labelObject.runtimeType]!);
-        labelObjectList.add(e.labelObject);
+      labelObjects[e.labelObject.runtimeType] = labelObjectList;
+      yield state.copyWith(
+          contact: state.contact.copyWith(labelObjects: labelObjects));
+    }, addLabelObject: (e) async* {
+      final List<ILabelObject> labelObjectList = List<ILabelObject>.from(
+          state.contact.labelObjects![e.labelObject.runtimeType]!);
+      labelObjectList.add(e.labelObject);
 
-        final Map<Type, List<ILabelObject>> labelObjects =
-        Map.from(state.contact.labelObjects!);
+      final Map<Type, List<ILabelObject>> labelObjects =
+          Map.from(state.contact.labelObjects!);
 
-        labelObjects[e.labelObject.runtimeType] = labelObjectList;
-        yield state.copyWith(
-            contact: state.contact.copyWith(labelObjects: labelObjects));
-      },
-      removeLabelObject: (e) async* {
-        final List<ILabelObject> labelObjectList = List<ILabelObject>.from(
-            state.contact.labelObjects![e.labelObjectType]!);
-        labelObjectList.removeAt(e.pos);
+      labelObjects[e.labelObject.runtimeType] = labelObjectList;
+      yield state.copyWith(
+          contact: state.contact.copyWith(labelObjects: labelObjects));
+    }, removeLabelObject: (e) async* {
+      final List<ILabelObject> labelObjectList = List<ILabelObject>.from(
+          state.contact.labelObjects![e.labelObjectType]!);
+      labelObjectList.removeAt(e.pos);
 
-        final Map<Type, List<ILabelObject>> labelObjects =
-        Map.from(state.contact.labelObjects!);
+      final Map<Type, List<ILabelObject>> labelObjects =
+          Map.from(state.contact.labelObjects!);
 
-        labelObjects[e.labelObjectType] = labelObjectList;
-        yield state.copyWith(
-            contact: state.contact.copyWith(labelObjects: labelObjects));
-      },
-      updateNameData: (e) async* {
-        yield state.copyWith(
-            contact: state.contact.copyWith(nameData: e.nameData));
-      },
-      updateCompany: (e) async* {
-        final List<Company> companies = List.of(state.contact.companies!);
-        companies[e.index] = e.company;
+      labelObjects[e.labelObjectType] = labelObjectList;
+      yield state.copyWith(
+          contact: state.contact.copyWith(labelObjects: labelObjects));
+    }, updateNameData: (e) async* {
+      yield state.copyWith(
+          contact: state.contact.copyWith(nameData: e.nameData));
+    }, updateCompany: (e) async* {
+      final List<Company> companies = List.of(state.contact.companies!);
+      companies[e.index] = e.company;
 
-        yield state.copyWith(
-            contact: state.contact.copyWith(companies: companies));
-      },
-      addCompany: (e) async* {
-        final List<Company> companies = List.of(state.contact.companies!);
-        companies.add(Company.empty());
-        yield state.copyWith(
-            contact: state.contact.copyWith(companies: companies));
-      },
-      deleteCompany: (e) async* {
-        final List<Company> companies = List.of(state.contact.companies!);
-        companies.removeAt(e.index);
-        yield state.copyWith(
-            contact: state.contact.copyWith(companies: companies));
-      },
-    );
+      yield state.copyWith(
+          contact: state.contact.copyWith(companies: companies));
+    }, addCompany: (e) async* {
+      final List<Company> companies = List.of(state.contact.companies!);
+      companies.add(Company.empty());
+      yield state.copyWith(
+          contact: state.contact.copyWith(companies: companies));
+    }, deleteCompany: (e) async* {
+      final List<Company> companies = List.of(state.contact.companies!);
+      companies.removeAt(e.index);
+      yield state.copyWith(
+          contact: state.contact.copyWith(companies: companies));
+    }, updateImage: (e) async* {
+      ContactImage? contactImage = state.contact.contactImage;
+      if (contactImage == null) {
+        contactImage = ContactImage(file: e.file);
+      } else {
+        contactImage.copyWith(file: e.file);
+      }
+      yield state.copyWith(
+        contact: state.contact.copyWith(contactImage: contactImage),
+      );
+    });
   }
 }

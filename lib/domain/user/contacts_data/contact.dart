@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:scorecontacts/domain/core/unique_id.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/company.dart';
+import 'package:scorecontacts/domain/user/contacts_data/properties/contact_image.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/email.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/i_label_object.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/names/name_data.dart';
@@ -22,6 +23,7 @@ class Contact with _$Contact {
     required NameData nameData,
     Map<Type, List<ILabelObject>?>? labelObjects,
     List<Company>? companies,
+    ContactImage? contactImage
   }) = _Contact;
 
   factory Contact.empty() => Contact(

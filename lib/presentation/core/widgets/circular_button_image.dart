@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 class CircularButtonImage extends StatelessWidget {
   final Function onPressed;
   final IconData icon;
+  final DecorationImage? decorationImage;
 
   const CircularButtonImage({
     required this.onPressed,
     required this.icon,
+    this.decorationImage,
   });
 
   @override
@@ -18,11 +20,12 @@ class CircularButtonImage extends StatelessWidget {
         width: 56,
         height: 56,
         decoration: ShapeDecoration(
+          image: decorationImage,
           color: Theme.of(context).primaryColor,
           shape: const CircleBorder(),
         ),
         child: IconButton(
-          icon:  Icon(
+          icon: Icon(
             icon,
             color: Colors.white,
           ),
@@ -34,4 +37,6 @@ class CircularButtonImage extends StatelessWidget {
       ),
     );
   }
+
+
 }
