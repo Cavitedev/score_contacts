@@ -126,7 +126,7 @@ class AddContactBloc extends Bloc<AddContactEvent, AddContactState> {
       if (contactImage == null) {
         contactImage = ContactImage(file: e.file);
       } else {
-        contactImage.copyWith(file: e.file);
+        contactImage = contactImage.copyWith(file: e.file);
       }
       yield state.copyWith(
         contact: state.contact.copyWith(contactImage: contactImage),

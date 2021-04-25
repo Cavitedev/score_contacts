@@ -7,11 +7,9 @@ class ImagePickUp extends StatefulWidget {
   final Function(PickedFile?) onImageReturned;
   final String? backgroundUrl;
 
-  const ImagePickUp({
-    required this.onImageReturned,
-    this.backgroundUrl,
-    Key? key
-  }):super(key: key);
+  const ImagePickUp(
+      {required this.onImageReturned, this.backgroundUrl, Key? key})
+      : super(key: key);
 
   @override
   _ImagePickUpState createState() => _ImagePickUpState();
@@ -23,24 +21,21 @@ class _ImagePickUpState extends State<ImagePickUp> {
   PickedFile? pickedFile;
   ImageProvider? imageProvider;
 
-
   @override
   void initState() {
     _updateImageProvider();
     super.initState();
   }
 
-
-
   @override
   Widget build(BuildContext context) {
-    return CircularButtonImage(
-      onPressed: () {
-        getImageGalleryOrCamera(context);
-      },
-      decorationImage: _buildDecorationImage(),
-      icon: Icons.add_a_photo_outlined,
-    );
+      return CircularButtonImage(
+        onPressed: () {
+          getImageGalleryOrCamera(context);
+        },
+        decorationImage: _buildDecorationImage(),
+        icon: Icons.add_a_photo_outlined,
+      );
   }
 
   void getImageGalleryOrCamera(BuildContext context) {
@@ -80,7 +75,6 @@ class _ImagePickUpState extends State<ImagePickUp> {
     _updateImageProvider();
     Navigator.of(context).pop();
     widget.onImageReturned(photo);
-
   }
 
   DecorationImage? _buildDecorationImage() {

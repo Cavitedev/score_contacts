@@ -13,7 +13,6 @@ import 'package:scorecontacts/domain/user/contacts_data/i_contact_repository.dar
 import 'package:scorecontacts/infrastructure/contacts/contact_dtos.dart';
 import 'package:scorecontacts/infrastructure/core/firebase_user_helper.dart';
 import 'package:scorecontacts/infrastructure/firebase_core/codes.dart';
-import 'package:uuid/uuid.dart';
 
 @LazySingleton(as: IContactsRepository)
 class ContactsRepository implements IContactsRepository {
@@ -30,9 +29,8 @@ class ContactsRepository implements IContactsRepository {
     }
 
     String userId = authFacade.getUserOrCrash().uid.value;
-    String imageId = const Uuid().v1();
     final Reference storageRef = firestorage
-        .ref("Users/$userId/contacts/${contact.id.value}/image/$imageId");
+        .ref("Users/$userId/contacts/${contact.id.value}/image");
     UploadTask uploadTask = storageRef.putFile(imageFile);
     return uploadTask.then(
       (snaphot) => snaphot.ref.getDownloadURL(),
