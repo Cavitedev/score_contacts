@@ -22,21 +22,6 @@ class ContactsRepository implements IContactsRepository {
 
   ContactsRepository(this.firestore, this.firestorage, this.authFacade);
 
-  Future<String?> _convertImage(Contact contact) async {
-    final File? imageFile = contact.contactImage?.file;
-    if (imageFile == null) {
-      return null;
-    }
-
-    String userId = authFacade.getUserOrCrash().uid.value;
-    final Reference storageRef = firestorage
-        .ref("Users/$userId/contacts/${contact.id.value}/image");
-    UploadTask uploadTask = storageRef.putFile(imageFile);
-    return uploadTask.then(
-      (snaphot) => snaphot.ref.getDownloadURL(),
-    );
-  }
-
   //CRUD
   @override
   Future<Either<ContactsFailure, Unit>> createContact(Contact contact) async {
@@ -63,12 +48,11 @@ class ContactsRepository implements IContactsRepository {
     final CollectionReference contacts =
         firestore.userDocument().contactsCollection;
     ContactDTO contactDTO = ContactDTO.fromDomain(contact);
-    final String? imageUrl = await _convertImage(contact);
-    if (imageUrl != null) {
-      contactDTO = contactDTO.copyWith(imageUrl: imageUrl);
-    }
+    contactDTO = await _updateImageOnDTO(contact, contactDTO);
     await contacts.doc(contactDTO.id).set(contactDTO.toJson());
   }
+
+
 
   Future<Either<ContactsFailure, Unit>> _createContactsBatch(
       List<Contact> contactList) async {
@@ -76,7 +60,8 @@ class ContactsRepository implements IContactsRepository {
     final CollectionReference contacts =
         firestore.userDocument().contactsCollection;
     for (final Contact contact in contactList) {
-      final ContactDTO contactDTO = ContactDTO.fromDomain(contact);
+      ContactDTO contactDTO = ContactDTO.fromDomain(contact);
+      contactDTO = await _updateImageOnDTO(contact, contactDTO);
       batch.set(contacts.doc(contactDTO.id), contactDTO.toJson());
     }
     Either<ContactsFailure, Unit>? returnValue;
@@ -114,10 +99,7 @@ class ContactsRepository implements IContactsRepository {
       final CollectionReference contacts =
           firestore.userDocument().contactsCollection;
       ContactDTO contactDTO = ContactDTO.fromDomain(contact);
-      final String? imageUrl = await _convertImage(contact);
-      if (imageUrl != null) {
-        contactDTO = contactDTO.copyWith(imageUrl: imageUrl);
-      }
+      contactDTO = await _updateImageOnDTO(contact, contactDTO);
 
       await contacts.doc(contactDTO.id).update(contactDTO.toJson());
       return right(unit);
@@ -135,6 +117,7 @@ class ContactsRepository implements IContactsRepository {
   @override
   Future<Either<ContactsFailure, Unit>> deleteContact(Contact contact) async {
     try {
+      await _deleteImage(contact);
       final CollectionReference contacts =
           firestore.userDocument().contactsCollection;
       await contacts.doc(contact.id.value).delete();
@@ -162,6 +145,7 @@ class ContactsRepository implements IContactsRepository {
     final CollectionReference contacts =
         firestore.userDocument().contactsCollection;
     for (final Contact contact in contactList) {
+      await _deleteImage(contact);
       batch.delete(contacts.doc(contact.id.value));
     }
     Either<ContactsFailure, Unit>? returnValue;
@@ -191,5 +175,37 @@ class ContactsRepository implements IContactsRepository {
     }
 
     return batchOperation(batchList);
+  }
+
+  Reference _getFirestorageRef(Contact contact) {
+    final String userId = authFacade.getUserOrCrash().uid.value;
+    final Reference storageRef =
+        firestorage.ref("Users/$userId/contacts/${contact.id.value}/image");
+    return storageRef;
+  }
+
+  Future<String?> _adaptImage(Contact contact) async {
+    final File? imageFile = contact.contactImage?.file;
+    if (imageFile == null) {
+      return null;
+    }
+    final Reference storageRef = _getFirestorageRef(contact);
+    final UploadTask uploadTask = storageRef.putFile(imageFile);
+    return uploadTask.then(
+      (snaphot) => snaphot.ref.getDownloadURL(),
+    );
+  }
+
+    Future<ContactDTO> _updateImageOnDTO(Contact contact, ContactDTO contactDTO) async {
+    final String? imageUrl = await _adaptImage(contact);
+    if (imageUrl != null) {
+      return contactDTO.copyWith(imageUrl: imageUrl);
+    }
+    return contactDTO;
+  }
+
+  Future<void> _deleteImage(Contact contact) {
+    final Reference storageRef = _getFirestorageRef(contact);
+    return storageRef.delete();
   }
 }
