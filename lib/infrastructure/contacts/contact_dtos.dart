@@ -74,7 +74,7 @@ class ContactDTO with _$ContactDTO {
                 .map((dto) => Phone.fromLabelObject(dto!.toDomain()))
                 .toList(),
       },
-    contactImage: ContactImage(url: imageUrl),
+    contactImage: imageUrl != null ? ContactImage(url: imageUrl) : null,
     );
   }
 

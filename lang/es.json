@@ -21,6 +21,8 @@
   "edit_contact": "Editar contacto",
   "english": "Inglés",
   "email": "Correo electrónico",
+  "error_load_contact_image": "No se pudo cargar la imagen del contacto: %s",
+  "error_load_image": "No se pudo cargar la imagen",
   "error_database": "Error en la base de datos",
   "google_cancelled": "El inicio de sesión con Google ha sido cancelado",
   "home": "Casa",

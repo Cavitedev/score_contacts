@@ -39,7 +39,9 @@ class AddContactForm extends StatelessWidget {
                           .add(AddContactEvent.updateImage(imageFile));
                     } else {
                       FlushbarHelper.createError(
-                        message: "Image could not be loaded",
+                        message: AppLocalization.of(context)
+                            .translate("error_load_image"),
+                        duration: const Duration(seconds: 5)
                       ).show(context);
                     }
                   },
