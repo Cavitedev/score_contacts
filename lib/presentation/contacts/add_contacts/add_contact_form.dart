@@ -26,9 +26,12 @@ class AddContactForm extends StatelessWidget {
           child: ListView(
             physics: const BouncingScrollPhysics(),
             children: <Widget>[
+              ImagePickUp(
+                onImageReturned: (file) {
 
-              ImagePickUp(onImageReturned: (file){},),
-
+                  print(file?.path.characters.string);
+                },
+              ),
               OutlinedInputFieldsGroup(
                 inputFields: [
                   OutlinedInputField(
@@ -38,9 +41,9 @@ class AddContactForm extends StatelessWidget {
                     textCapitalization: TextCapitalization.words,
                     prefixIcon: const Icon(Icons.person_outline),
                     onChangedValidator: (value) {
-                      context
-                          .read<AddContactBloc>()
-                          .add(AddContactEvent.updateNameData(state.contact.nameData.copyWith(firstName: value)));
+                      context.read<AddContactBloc>().add(
+                          AddContactEvent.updateNameData(state.contact.nameData
+                              .copyWith(firstName: value)));
                       return "";
                     },
                   ),
@@ -49,9 +52,9 @@ class AddContactForm extends StatelessWidget {
                     writtenText: state.contact.nameData.surnames,
                     textCapitalization: TextCapitalization.words,
                     onChangedValidator: (value) {
-                      context
-                          .read<AddContactBloc>()
-                          .add(AddContactEvent.updateNameData(state.contact.nameData.copyWith(surnames: value)));
+                      context.read<AddContactBloc>().add(
+                          AddContactEvent.updateNameData(state.contact.nameData
+                              .copyWith(surnames: value)));
                       return "";
                     },
                   ),
@@ -68,7 +71,8 @@ class AddContactForm extends StatelessWidget {
                 icon: const Icon(Icons.phone),
                 keyboardType: TextInputType.phone,
                 inputFormatters: <TextInputFormatter>[
-                  PhoneTextFormatter(countryCode: context.read<AppManagerCubit>().state.region)
+                  PhoneTextFormatter(
+                      countryCode: context.read<AppManagerCubit>().state.region)
                 ],
               ),
               const SizedBox(
@@ -119,18 +123,18 @@ class CompaniesFields extends StatelessWidget {
           textCapitalization: TextCapitalization.words,
         ),
       ],
-      writtenTexts: state.contact.companies!.map((comp) => [comp.name, comp.title]).toList(),
+      writtenTexts: state.contact.companies!
+          .map((comp) => [comp.name, comp.title])
+          .toList(),
       onChangesValidators: [
         (value, index) {
-          context
-              .read<AddContactBloc>()
-              .add(AddContactEvent.updateCompany(state.contact.companies![index].copyWith(name: value), index));
+          context.read<AddContactBloc>().add(AddContactEvent.updateCompany(
+              state.contact.companies![index].copyWith(name: value), index));
           return "";
         },
         (value, index) {
-          context
-              .read<AddContactBloc>()
-              .add(AddContactEvent.updateCompany(state.contact.companies![index].copyWith(title: value), index));
+          context.read<AddContactBloc>().add(AddContactEvent.updateCompany(
+              state.contact.companies![index].copyWith(title: value), index));
           return "";
         },
       ],

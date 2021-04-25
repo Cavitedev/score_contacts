@@ -1,6 +1,7 @@
 {
   "cancel": "Cancel",
   "choose_language": "Choose language",
+  "choose_photo_from_gallery": "Choose photo from Gallery",
   "choose_theme": "Choose theme",
   "company": "Company",
   "confirm_delection": "Do you want to delete contact: %s",
@@ -50,6 +51,7 @@
   "surname": "Surname",
   "system": "System",
   "system_default": "System default",
+  "take_photo": "Take photo",
   "theme": "Theme",
   "this_language": "English",
   "title": "Title",

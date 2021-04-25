@@ -1,6 +1,7 @@
 {
   "cancel": "Cancelar",
   "choose_language": "Elegir lenguaje",
+  "choose_photo_from_gallery": "Seleccionar foto de la Galería",
   "choose_theme": "Elegir tema",
   "company": "Empresa",
   "confirm_delection": "Quieres eliminar el contacto: %s",
@@ -50,6 +51,7 @@
   "surname": "Apellidos",
   "system": "Sistema",
   "system_default": "Predeterminado del sistema",
+  "take_photo": "Tomar foto",
   "theme": "Tema",
   "this_language": "Español",
   "title": "Cargo",
