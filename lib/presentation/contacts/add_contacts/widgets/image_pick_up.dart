@@ -83,7 +83,7 @@ class _ImagePickUpState extends State<ImagePickUp> {
     }
 
     return DecorationImage(
-      fit: BoxFit.fill,
+      fit: BoxFit.contain,
       image: imageProvider!,
       colorFilter:
           ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.darken),
