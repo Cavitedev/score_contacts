@@ -6,7 +6,6 @@ import 'package:scorecontacts/presentation/contacts/list_view/contact_list.dart'
 import 'package:scorecontacts/presentation/settings/settings_page.dart';
 
 @MaterialAutoRouter(
-  generateNavigationHelperExtension: true,
   routes: <MaterialRoute>[
     MaterialRoute(page: SplashPage, initial: true),
     MaterialRoute(page: ContactList),
