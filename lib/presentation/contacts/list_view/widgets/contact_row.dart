@@ -67,7 +67,6 @@ class ContactRow extends StatelessWidget {
                       selectionContact.contact.nameData.toFullName(),
                     ]),
                     duration: const Duration(seconds: 8)
-
                 ).show(context);
               }
                   : null,

@@ -73,6 +73,12 @@ class _$AddContactEventTearOff {
       index,
     );
   }
+
+  _UpdateImage updateImage(PickedFile file) {
+    return _UpdateImage(
+      file,
+    );
+  }
 }
 
 /// @nodoc
@@ -94,6 +100,7 @@ mixin _$AddContactEvent {
     required TResult Function(Company company, int index) updateCompany,
     required TResult Function() addCompany,
     required TResult Function(int index) deleteCompany,
+    required TResult Function(PickedFile file) updateImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -109,6 +116,7 @@ mixin _$AddContactEvent {
     TResult Function(Company company, int index)? updateCompany,
     TResult Function()? addCompany,
     TResult Function(int index)? deleteCompany,
+    TResult Function(PickedFile file)? updateImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -123,6 +131,7 @@ mixin _$AddContactEvent {
     required TResult Function(_UpdateCompany value) updateCompany,
     required TResult Function(_AddCompany value) addCompany,
     required TResult Function(_DeleteCompany value) deleteCompany,
+    required TResult Function(_UpdateImage value) updateImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -136,6 +145,7 @@ mixin _$AddContactEvent {
     TResult Function(_UpdateCompany value)? updateCompany,
     TResult Function(_AddCompany value)? addCompany,
     TResult Function(_DeleteCompany value)? deleteCompany,
+    TResult Function(_UpdateImage value)? updateImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -202,6 +212,7 @@ class __$InitializeCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
   const _$_Initialize(this.contactOption, this.countryCode, this.isEditting);
 
@@ -269,6 +280,7 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
     required TResult Function(Company company, int index) updateCompany,
     required TResult Function() addCompany,
     required TResult Function(int index) deleteCompany,
+    required TResult Function(PickedFile file) updateImage,
   }) {
     return initialize(contactOption, countryCode, isEditting);
   }
@@ -287,6 +299,7 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
     TResult Function(Company company, int index)? updateCompany,
     TResult Function()? addCompany,
     TResult Function(int index)? deleteCompany,
+    TResult Function(PickedFile file)? updateImage,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -307,6 +320,7 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
     required TResult Function(_UpdateCompany value) updateCompany,
     required TResult Function(_AddCompany value) addCompany,
     required TResult Function(_DeleteCompany value) deleteCompany,
+    required TResult Function(_UpdateImage value) updateImage,
   }) {
     return initialize(this);
   }
@@ -323,6 +337,7 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
     TResult Function(_UpdateCompany value)? updateCompany,
     TResult Function(_AddCompany value)? addCompany,
     TResult Function(_DeleteCompany value)? deleteCompany,
+    TResult Function(_UpdateImage value)? updateImage,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -375,6 +390,7 @@ class __$SavedCopyWithImpl<$Res> extends _$AddContactEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Saved with DiagnosticableTreeMixin implements _Saved {
   const _$_Saved(this.countryCode);
 
@@ -427,6 +443,7 @@ class _$_Saved with DiagnosticableTreeMixin implements _Saved {
     required TResult Function(Company company, int index) updateCompany,
     required TResult Function() addCompany,
     required TResult Function(int index) deleteCompany,
+    required TResult Function(PickedFile file) updateImage,
   }) {
     return saved(countryCode);
   }
@@ -445,6 +462,7 @@ class _$_Saved with DiagnosticableTreeMixin implements _Saved {
     TResult Function(Company company, int index)? updateCompany,
     TResult Function()? addCompany,
     TResult Function(int index)? deleteCompany,
+    TResult Function(PickedFile file)? updateImage,
     required TResult orElse(),
   }) {
     if (saved != null) {
@@ -465,6 +483,7 @@ class _$_Saved with DiagnosticableTreeMixin implements _Saved {
     required TResult Function(_UpdateCompany value) updateCompany,
     required TResult Function(_AddCompany value) addCompany,
     required TResult Function(_DeleteCompany value) deleteCompany,
+    required TResult Function(_UpdateImage value) updateImage,
   }) {
     return saved(this);
   }
@@ -481,6 +500,7 @@ class _$_Saved with DiagnosticableTreeMixin implements _Saved {
     TResult Function(_UpdateCompany value)? updateCompany,
     TResult Function(_AddCompany value)? addCompany,
     TResult Function(_DeleteCompany value)? deleteCompany,
+    TResult Function(_UpdateImage value)? updateImage,
     required TResult orElse(),
   }) {
     if (saved != null) {
@@ -536,6 +556,7 @@ class __$LabelObjectChangedCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_LabelObjectChanged
     with DiagnosticableTreeMixin
     implements _LabelObjectChanged {
@@ -597,6 +618,7 @@ class _$_LabelObjectChanged
     required TResult Function(Company company, int index) updateCompany,
     required TResult Function() addCompany,
     required TResult Function(int index) deleteCompany,
+    required TResult Function(PickedFile file) updateImage,
   }) {
     return labelObjectChanged(labelObject, pos);
   }
@@ -615,6 +637,7 @@ class _$_LabelObjectChanged
     TResult Function(Company company, int index)? updateCompany,
     TResult Function()? addCompany,
     TResult Function(int index)? deleteCompany,
+    TResult Function(PickedFile file)? updateImage,
     required TResult orElse(),
   }) {
     if (labelObjectChanged != null) {
@@ -635,6 +658,7 @@ class _$_LabelObjectChanged
     required TResult Function(_UpdateCompany value) updateCompany,
     required TResult Function(_AddCompany value) addCompany,
     required TResult Function(_DeleteCompany value) deleteCompany,
+    required TResult Function(_UpdateImage value) updateImage,
   }) {
     return labelObjectChanged(this);
   }
@@ -651,6 +675,7 @@ class _$_LabelObjectChanged
     TResult Function(_UpdateCompany value)? updateCompany,
     TResult Function(_AddCompany value)? addCompany,
     TResult Function(_DeleteCompany value)? deleteCompany,
+    TResult Function(_UpdateImage value)? updateImage,
     required TResult orElse(),
   }) {
     if (labelObjectChanged != null) {
@@ -704,6 +729,7 @@ class __$AddLabelObjectCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_AddLabelObject
     with DiagnosticableTreeMixin
     implements _AddLabelObject {
@@ -758,6 +784,7 @@ class _$_AddLabelObject
     required TResult Function(Company company, int index) updateCompany,
     required TResult Function() addCompany,
     required TResult Function(int index) deleteCompany,
+    required TResult Function(PickedFile file) updateImage,
   }) {
     return addLabelObject(labelObject);
   }
@@ -776,6 +803,7 @@ class _$_AddLabelObject
     TResult Function(Company company, int index)? updateCompany,
     TResult Function()? addCompany,
     TResult Function(int index)? deleteCompany,
+    TResult Function(PickedFile file)? updateImage,
     required TResult orElse(),
   }) {
     if (addLabelObject != null) {
@@ -796,6 +824,7 @@ class _$_AddLabelObject
     required TResult Function(_UpdateCompany value) updateCompany,
     required TResult Function(_AddCompany value) addCompany,
     required TResult Function(_DeleteCompany value) deleteCompany,
+    required TResult Function(_UpdateImage value) updateImage,
   }) {
     return addLabelObject(this);
   }
@@ -812,6 +841,7 @@ class _$_AddLabelObject
     TResult Function(_UpdateCompany value)? updateCompany,
     TResult Function(_AddCompany value)? addCompany,
     TResult Function(_DeleteCompany value)? deleteCompany,
+    TResult Function(_UpdateImage value)? updateImage,
     required TResult orElse(),
   }) {
     if (addLabelObject != null) {
@@ -868,6 +898,7 @@ class __$RemoveLabelObjectCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_RemoveLabelObject
     with DiagnosticableTreeMixin
     implements _RemoveLabelObject {
@@ -929,6 +960,7 @@ class _$_RemoveLabelObject
     required TResult Function(Company company, int index) updateCompany,
     required TResult Function() addCompany,
     required TResult Function(int index) deleteCompany,
+    required TResult Function(PickedFile file) updateImage,
   }) {
     return removeLabelObject(labelObjectType, pos);
   }
@@ -947,6 +979,7 @@ class _$_RemoveLabelObject
     TResult Function(Company company, int index)? updateCompany,
     TResult Function()? addCompany,
     TResult Function(int index)? deleteCompany,
+    TResult Function(PickedFile file)? updateImage,
     required TResult orElse(),
   }) {
     if (removeLabelObject != null) {
@@ -967,6 +1000,7 @@ class _$_RemoveLabelObject
     required TResult Function(_UpdateCompany value) updateCompany,
     required TResult Function(_AddCompany value) addCompany,
     required TResult Function(_DeleteCompany value) deleteCompany,
+    required TResult Function(_UpdateImage value) updateImage,
   }) {
     return removeLabelObject(this);
   }
@@ -983,6 +1017,7 @@ class _$_RemoveLabelObject
     TResult Function(_UpdateCompany value)? updateCompany,
     TResult Function(_AddCompany value)? addCompany,
     TResult Function(_DeleteCompany value)? deleteCompany,
+    TResult Function(_UpdateImage value)? updateImage,
     required TResult orElse(),
   }) {
     if (removeLabelObject != null) {
@@ -1045,6 +1080,7 @@ class __$UpdateNameDataCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_UpdateNameData
     with DiagnosticableTreeMixin
     implements _UpdateNameData {
@@ -1099,6 +1135,7 @@ class _$_UpdateNameData
     required TResult Function(Company company, int index) updateCompany,
     required TResult Function() addCompany,
     required TResult Function(int index) deleteCompany,
+    required TResult Function(PickedFile file) updateImage,
   }) {
     return updateNameData(nameData);
   }
@@ -1117,6 +1154,7 @@ class _$_UpdateNameData
     TResult Function(Company company, int index)? updateCompany,
     TResult Function()? addCompany,
     TResult Function(int index)? deleteCompany,
+    TResult Function(PickedFile file)? updateImage,
     required TResult orElse(),
   }) {
     if (updateNameData != null) {
@@ -1137,6 +1175,7 @@ class _$_UpdateNameData
     required TResult Function(_UpdateCompany value) updateCompany,
     required TResult Function(_AddCompany value) addCompany,
     required TResult Function(_DeleteCompany value) deleteCompany,
+    required TResult Function(_UpdateImage value) updateImage,
   }) {
     return updateNameData(this);
   }
@@ -1153,6 +1192,7 @@ class _$_UpdateNameData
     TResult Function(_UpdateCompany value)? updateCompany,
     TResult Function(_AddCompany value)? addCompany,
     TResult Function(_DeleteCompany value)? deleteCompany,
+    TResult Function(_UpdateImage value)? updateImage,
     required TResult orElse(),
   }) {
     if (updateNameData != null) {
@@ -1218,6 +1258,7 @@ class __$UpdateCompanyCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_UpdateCompany with DiagnosticableTreeMixin implements _UpdateCompany {
   const _$_UpdateCompany(this.company, this.index);
 
@@ -1277,6 +1318,7 @@ class _$_UpdateCompany with DiagnosticableTreeMixin implements _UpdateCompany {
     required TResult Function(Company company, int index) updateCompany,
     required TResult Function() addCompany,
     required TResult Function(int index) deleteCompany,
+    required TResult Function(PickedFile file) updateImage,
   }) {
     return updateCompany(company, index);
   }
@@ -1295,6 +1337,7 @@ class _$_UpdateCompany with DiagnosticableTreeMixin implements _UpdateCompany {
     TResult Function(Company company, int index)? updateCompany,
     TResult Function()? addCompany,
     TResult Function(int index)? deleteCompany,
+    TResult Function(PickedFile file)? updateImage,
     required TResult orElse(),
   }) {
     if (updateCompany != null) {
@@ -1315,6 +1358,7 @@ class _$_UpdateCompany with DiagnosticableTreeMixin implements _UpdateCompany {
     required TResult Function(_UpdateCompany value) updateCompany,
     required TResult Function(_AddCompany value) addCompany,
     required TResult Function(_DeleteCompany value) deleteCompany,
+    required TResult Function(_UpdateImage value) updateImage,
   }) {
     return updateCompany(this);
   }
@@ -1331,6 +1375,7 @@ class _$_UpdateCompany with DiagnosticableTreeMixin implements _UpdateCompany {
     TResult Function(_UpdateCompany value)? updateCompany,
     TResult Function(_AddCompany value)? addCompany,
     TResult Function(_DeleteCompany value)? deleteCompany,
+    TResult Function(_UpdateImage value)? updateImage,
     required TResult orElse(),
   }) {
     if (updateCompany != null) {
@@ -1370,6 +1415,7 @@ class __$AddCompanyCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_AddCompany with DiagnosticableTreeMixin implements _AddCompany {
   const _$_AddCompany();
 
@@ -1407,6 +1453,7 @@ class _$_AddCompany with DiagnosticableTreeMixin implements _AddCompany {
     required TResult Function(Company company, int index) updateCompany,
     required TResult Function() addCompany,
     required TResult Function(int index) deleteCompany,
+    required TResult Function(PickedFile file) updateImage,
   }) {
     return addCompany();
   }
@@ -1425,6 +1472,7 @@ class _$_AddCompany with DiagnosticableTreeMixin implements _AddCompany {
     TResult Function(Company company, int index)? updateCompany,
     TResult Function()? addCompany,
     TResult Function(int index)? deleteCompany,
+    TResult Function(PickedFile file)? updateImage,
     required TResult orElse(),
   }) {
     if (addCompany != null) {
@@ -1445,6 +1493,7 @@ class _$_AddCompany with DiagnosticableTreeMixin implements _AddCompany {
     required TResult Function(_UpdateCompany value) updateCompany,
     required TResult Function(_AddCompany value) addCompany,
     required TResult Function(_DeleteCompany value) deleteCompany,
+    required TResult Function(_UpdateImage value) updateImage,
   }) {
     return addCompany(this);
   }
@@ -1461,6 +1510,7 @@ class _$_AddCompany with DiagnosticableTreeMixin implements _AddCompany {
     TResult Function(_UpdateCompany value)? updateCompany,
     TResult Function(_AddCompany value)? addCompany,
     TResult Function(_DeleteCompany value)? deleteCompany,
+    TResult Function(_UpdateImage value)? updateImage,
     required TResult orElse(),
   }) {
     if (addCompany != null) {
@@ -1507,6 +1557,7 @@ class __$DeleteCompanyCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_DeleteCompany with DiagnosticableTreeMixin implements _DeleteCompany {
   const _$_DeleteCompany(this.index);
 
@@ -1558,6 +1609,7 @@ class _$_DeleteCompany with DiagnosticableTreeMixin implements _DeleteCompany {
     required TResult Function(Company company, int index) updateCompany,
     required TResult Function() addCompany,
     required TResult Function(int index) deleteCompany,
+    required TResult Function(PickedFile file) updateImage,
   }) {
     return deleteCompany(index);
   }
@@ -1576,6 +1628,7 @@ class _$_DeleteCompany with DiagnosticableTreeMixin implements _DeleteCompany {
     TResult Function(Company company, int index)? updateCompany,
     TResult Function()? addCompany,
     TResult Function(int index)? deleteCompany,
+    TResult Function(PickedFile file)? updateImage,
     required TResult orElse(),
   }) {
     if (deleteCompany != null) {
@@ -1596,6 +1649,7 @@ class _$_DeleteCompany with DiagnosticableTreeMixin implements _DeleteCompany {
     required TResult Function(_UpdateCompany value) updateCompany,
     required TResult Function(_AddCompany value) addCompany,
     required TResult Function(_DeleteCompany value) deleteCompany,
+    required TResult Function(_UpdateImage value) updateImage,
   }) {
     return deleteCompany(this);
   }
@@ -1612,6 +1666,7 @@ class _$_DeleteCompany with DiagnosticableTreeMixin implements _DeleteCompany {
     TResult Function(_UpdateCompany value)? updateCompany,
     TResult Function(_AddCompany value)? addCompany,
     TResult Function(_DeleteCompany value)? deleteCompany,
+    TResult Function(_UpdateImage value)? updateImage,
     required TResult orElse(),
   }) {
     if (deleteCompany != null) {
@@ -1627,6 +1682,167 @@ abstract class _DeleteCompany implements AddContactEvent {
   int get index => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$DeleteCompanyCopyWith<_DeleteCompany> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$UpdateImageCopyWith<$Res> {
+  factory _$UpdateImageCopyWith(
+          _UpdateImage value, $Res Function(_UpdateImage) then) =
+      __$UpdateImageCopyWithImpl<$Res>;
+  $Res call({PickedFile file});
+}
+
+/// @nodoc
+class __$UpdateImageCopyWithImpl<$Res>
+    extends _$AddContactEventCopyWithImpl<$Res>
+    implements _$UpdateImageCopyWith<$Res> {
+  __$UpdateImageCopyWithImpl(
+      _UpdateImage _value, $Res Function(_UpdateImage) _then)
+      : super(_value, (v) => _then(v as _UpdateImage));
+
+  @override
+  _UpdateImage get _value => super._value as _UpdateImage;
+
+  @override
+  $Res call({
+    Object? file = freezed,
+  }) {
+    return _then(_UpdateImage(
+      file == freezed
+          ? _value.file
+          : file // ignore: cast_nullable_to_non_nullable
+              as PickedFile,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_UpdateImage with DiagnosticableTreeMixin implements _UpdateImage {
+  const _$_UpdateImage(this.file);
+
+  @override
+  final PickedFile file;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AddContactEvent.updateImage(file: $file)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AddContactEvent.updateImage'))
+      ..add(DiagnosticsProperty('file', file));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _UpdateImage &&
+            (identical(other.file, file) ||
+                const DeepCollectionEquality().equals(other.file, file)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(file);
+
+  @JsonKey(ignore: true)
+  @override
+  _$UpdateImageCopyWith<_UpdateImage> get copyWith =>
+      __$UpdateImageCopyWithImpl<_UpdateImage>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            Option<Contact> contactOption, String countryCode, bool isEditting)
+        initialize,
+    required TResult Function(String countryCode) saved,
+    required TResult Function(ILabelObject labelObject, int pos)
+        labelObjectChanged,
+    required TResult Function(ILabelObject labelObject) addLabelObject,
+    required TResult Function(Type labelObjectType, int pos) removeLabelObject,
+    required TResult Function(NameData nameData) updateNameData,
+    required TResult Function(Company company, int index) updateCompany,
+    required TResult Function() addCompany,
+    required TResult Function(int index) deleteCompany,
+    required TResult Function(PickedFile file) updateImage,
+  }) {
+    return updateImage(file);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            Option<Contact> contactOption, String countryCode, bool isEditting)?
+        initialize,
+    TResult Function(String countryCode)? saved,
+    TResult Function(ILabelObject labelObject, int pos)? labelObjectChanged,
+    TResult Function(ILabelObject labelObject)? addLabelObject,
+    TResult Function(Type labelObjectType, int pos)? removeLabelObject,
+    TResult Function(NameData nameData)? updateNameData,
+    TResult Function(Company company, int index)? updateCompany,
+    TResult Function()? addCompany,
+    TResult Function(int index)? deleteCompany,
+    TResult Function(PickedFile file)? updateImage,
+    required TResult orElse(),
+  }) {
+    if (updateImage != null) {
+      return updateImage(file);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_Saved value) saved,
+    required TResult Function(_LabelObjectChanged value) labelObjectChanged,
+    required TResult Function(_AddLabelObject value) addLabelObject,
+    required TResult Function(_RemoveLabelObject value) removeLabelObject,
+    required TResult Function(_UpdateNameData value) updateNameData,
+    required TResult Function(_UpdateCompany value) updateCompany,
+    required TResult Function(_AddCompany value) addCompany,
+    required TResult Function(_DeleteCompany value) deleteCompany,
+    required TResult Function(_UpdateImage value) updateImage,
+  }) {
+    return updateImage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_Saved value)? saved,
+    TResult Function(_LabelObjectChanged value)? labelObjectChanged,
+    TResult Function(_AddLabelObject value)? addLabelObject,
+    TResult Function(_RemoveLabelObject value)? removeLabelObject,
+    TResult Function(_UpdateNameData value)? updateNameData,
+    TResult Function(_UpdateCompany value)? updateCompany,
+    TResult Function(_AddCompany value)? addCompany,
+    TResult Function(_DeleteCompany value)? deleteCompany,
+    TResult Function(_UpdateImage value)? updateImage,
+    required TResult orElse(),
+  }) {
+    if (updateImage != null) {
+      return updateImage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateImage implements AddContactEvent {
+  const factory _UpdateImage(PickedFile file) = _$_UpdateImage;
+
+  PickedFile get file => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$UpdateImageCopyWith<_UpdateImage> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1779,6 +1995,7 @@ class __$AddContactStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_AddContactState extends _AddContactState with DiagnosticableTreeMixin {
   const _$_AddContactState(
       {required this.contact,

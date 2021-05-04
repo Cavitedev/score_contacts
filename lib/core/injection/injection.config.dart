@@ -44,8 +44,10 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
   gh.factory<_i8.IAuthFacade>(() => _i9.FirebaseAuthFacade(
       googleSignIn: get<_i7.GoogleSignIn>(),
       firebaseAuth: get<_i4.FirebaseAuth>()));
-  gh.lazySingleton<_i10.IContactsRepository>(
-      () => _i11.ContactsRepository(get<_i5.FirebaseFirestore>()));
+  gh.lazySingleton<_i10.IContactsRepository>(() => _i11.ContactsRepository(
+      get<_i5.FirebaseFirestore>(),
+      get<_i6.FirebaseStorage>(),
+      get<_i8.IAuthFacade>()));
   gh.factory<_i12.SignInBloc>(
       () => _i12.SignInBloc(authDao: get<_i8.IAuthFacade>()));
   gh.factory<_i13.AddContactBloc>(

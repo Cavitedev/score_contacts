@@ -20,12 +20,14 @@ class _$ContactTearOff {
       {required UniqueID id,
       required NameData nameData,
       Map<Type, List<ILabelObject>?>? labelObjects,
-      List<Company>? companies}) {
+      List<Company>? companies,
+      ContactImage? contactImage}) {
     return _Contact(
       id: id,
       nameData: nameData,
       labelObjects: labelObjects,
       companies: companies,
+      contactImage: contactImage,
     );
   }
 }
@@ -40,6 +42,7 @@ mixin _$Contact {
   Map<Type, List<ILabelObject>?>? get labelObjects =>
       throw _privateConstructorUsedError;
   List<Company>? get companies => throw _privateConstructorUsedError;
+  ContactImage? get contactImage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ContactCopyWith<Contact> get copyWith => throw _privateConstructorUsedError;
@@ -53,9 +56,11 @@ abstract class $ContactCopyWith<$Res> {
       {UniqueID id,
       NameData nameData,
       Map<Type, List<ILabelObject>?>? labelObjects,
-      List<Company>? companies});
+      List<Company>? companies,
+      ContactImage? contactImage});
 
   $NameDataCopyWith<$Res> get nameData;
+  $ContactImageCopyWith<$Res>? get contactImage;
 }
 
 /// @nodoc
@@ -72,6 +77,7 @@ class _$ContactCopyWithImpl<$Res> implements $ContactCopyWith<$Res> {
     Object? nameData = freezed,
     Object? labelObjects = freezed,
     Object? companies = freezed,
+    Object? contactImage = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -90,6 +96,10 @@ class _$ContactCopyWithImpl<$Res> implements $ContactCopyWith<$Res> {
           ? _value.companies
           : companies // ignore: cast_nullable_to_non_nullable
               as List<Company>?,
+      contactImage: contactImage == freezed
+          ? _value.contactImage
+          : contactImage // ignore: cast_nullable_to_non_nullable
+              as ContactImage?,
     ));
   }
 
@@ -97,6 +107,17 @@ class _$ContactCopyWithImpl<$Res> implements $ContactCopyWith<$Res> {
   $NameDataCopyWith<$Res> get nameData {
     return $NameDataCopyWith<$Res>(_value.nameData, (value) {
       return _then(_value.copyWith(nameData: value));
+    });
+  }
+
+  @override
+  $ContactImageCopyWith<$Res>? get contactImage {
+    if (_value.contactImage == null) {
+      return null;
+    }
+
+    return $ContactImageCopyWith<$Res>(_value.contactImage!, (value) {
+      return _then(_value.copyWith(contactImage: value));
     });
   }
 }
@@ -110,10 +131,13 @@ abstract class _$ContactCopyWith<$Res> implements $ContactCopyWith<$Res> {
       {UniqueID id,
       NameData nameData,
       Map<Type, List<ILabelObject>?>? labelObjects,
-      List<Company>? companies});
+      List<Company>? companies,
+      ContactImage? contactImage});
 
   @override
   $NameDataCopyWith<$Res> get nameData;
+  @override
+  $ContactImageCopyWith<$Res>? get contactImage;
 }
 
 /// @nodoc
@@ -131,6 +155,7 @@ class __$ContactCopyWithImpl<$Res> extends _$ContactCopyWithImpl<$Res>
     Object? nameData = freezed,
     Object? labelObjects = freezed,
     Object? companies = freezed,
+    Object? contactImage = freezed,
   }) {
     return _then(_Contact(
       id: id == freezed
@@ -149,17 +174,23 @@ class __$ContactCopyWithImpl<$Res> extends _$ContactCopyWithImpl<$Res>
           ? _value.companies
           : companies // ignore: cast_nullable_to_non_nullable
               as List<Company>?,
+      contactImage: contactImage == freezed
+          ? _value.contactImage
+          : contactImage // ignore: cast_nullable_to_non_nullable
+              as ContactImage?,
     ));
   }
 }
 
 /// @nodoc
+
 class _$_Contact extends _Contact {
   const _$_Contact(
       {required this.id,
       required this.nameData,
       this.labelObjects,
-      this.companies})
+      this.companies,
+      this.contactImage})
       : super._();
 
   @override
@@ -170,10 +201,12 @@ class _$_Contact extends _Contact {
   final Map<Type, List<ILabelObject>?>? labelObjects;
   @override
   final List<Company>? companies;
+  @override
+  final ContactImage? contactImage;
 
   @override
   String toString() {
-    return 'Contact(id: $id, nameData: $nameData, labelObjects: $labelObjects, companies: $companies)';
+    return 'Contact(id: $id, nameData: $nameData, labelObjects: $labelObjects, companies: $companies, contactImage: $contactImage)';
   }
 
   @override
@@ -190,7 +223,10 @@ class _$_Contact extends _Contact {
                     .equals(other.labelObjects, labelObjects)) &&
             (identical(other.companies, companies) ||
                 const DeepCollectionEquality()
-                    .equals(other.companies, companies)));
+                    .equals(other.companies, companies)) &&
+            (identical(other.contactImage, contactImage) ||
+                const DeepCollectionEquality()
+                    .equals(other.contactImage, contactImage)));
   }
 
   @override
@@ -199,7 +235,8 @@ class _$_Contact extends _Contact {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(nameData) ^
       const DeepCollectionEquality().hash(labelObjects) ^
-      const DeepCollectionEquality().hash(companies);
+      const DeepCollectionEquality().hash(companies) ^
+      const DeepCollectionEquality().hash(contactImage);
 
   @JsonKey(ignore: true)
   @override
@@ -212,7 +249,8 @@ abstract class _Contact extends Contact {
       {required UniqueID id,
       required NameData nameData,
       Map<Type, List<ILabelObject>?>? labelObjects,
-      List<Company>? companies}) = _$_Contact;
+      List<Company>? companies,
+      ContactImage? contactImage}) = _$_Contact;
   const _Contact._() : super._();
 
   @override
@@ -224,6 +262,8 @@ abstract class _Contact extends Contact {
       throw _privateConstructorUsedError;
   @override
   List<Company>? get companies => throw _privateConstructorUsedError;
+  @override
+  ContactImage? get contactImage => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ContactCopyWith<_Contact> get copyWith =>

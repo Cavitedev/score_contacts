@@ -25,6 +25,7 @@ _$_ContactDTO _$_$_ContactDTOFromJson(Map json) {
             ? null
             : LabelObjectDTO.fromJson(Map<String, dynamic>.from(e as Map)))
         .toList(),
+    imageUrl: json['imageUrl'] as String?,
     serverTimeStamp:
         const ServerTimeStampConverter().fromJson(json['serverTimeStamp']),
   );
@@ -45,6 +46,7 @@ Map<String, dynamic> _$_$_ContactDTOToJson(_$_ContactDTO instance) {
       'companies', instance.companiesDTO?.map((e) => e?.toJson()).toList());
   writeNotNull('emails', instance.emailsDTO?.map((e) => e?.toJson()).toList());
   writeNotNull('phones', instance.phonesDTO?.map((e) => e?.toJson()).toList());
+  writeNotNull('imageUrl', instance.imageUrl);
   writeNotNull('serverTimeStamp',
       const ServerTimeStampConverter().toJson(instance.serverTimeStamp));
   return val;
