@@ -58,37 +58,34 @@ class ContactRow extends StatelessWidget {
                   ? Colors.teal[200]
                   : Colors.purple[200],
               foregroundImage:
-              urlContact != null ? NetworkImage(urlContact) : null,
+                  urlContact != null ? NetworkImage(urlContact) : null,
               onForegroundImageError: urlContact != null
                   ? (_, ex) {
-                FlushbarHelper.createError(
-                    message: AppLocalization.of(context)
-                        .translate("error_load_contact_image", args: [
-                      selectionContact.contact.nameData.toFullName(),
-                    ]),
-                    duration: const Duration(seconds: 8)
-                ).show(context);
-              }
+                      FlushbarHelper.createError(
+                              message: AppLocalization.of(context)
+                                  .translate("error_load_contact_image", args: [
+                                selectionContact.contact.nameData.toFullName(),
+                              ]),
+                              duration: const Duration(seconds: 8))
+                          .show(context);
+                    }
                   : null,
               child: selectionContact.isSelected
                   ? const Icon(
-                Icons.check,
-                color: Colors.black,
-                size: 30,
-              )
+                      Icons.check,
+                      color: Colors.black,
+                      size: 30,
+                    )
                   : selectionContact.contact.getDisplayedChar() == ""
-                  ? const Icon(
-                Icons.person,
-                color: Colors.black,
-                size: 30,
-              )
-                  : Text(
-                selectionContact.contact.getDisplayedChar(),
-                style: Theme
-                    .of(context)
-                    .textTheme
-                    .headline2,
-              ),
+                      ? const Icon(
+                          Icons.person,
+                          color: Colors.black,
+                          size: 30,
+                        )
+                      : Text(
+                          selectionContact.contact.getDisplayedChar(),
+                          style: Theme.of(context).textTheme.headline2,
+                        ),
             ),
             const SizedBox(
               width: 20,
@@ -107,7 +104,7 @@ class ContactRow extends StatelessWidget {
         selectionContact.contact.getFullName()) {
       return Flexible(
           child:
-          _buildFullNameHighlighted(context, selectionContact.filterText!));
+              _buildFullNameHighlighted(context, selectionContact.filterText!));
     } else {
       return Flexible(
         child: Column(
@@ -116,15 +113,10 @@ class ContactRow extends StatelessWidget {
             _buildFullName(context),
             RichText(
               overflow: TextOverflow.ellipsis,
-              textScaleFactor: MediaQuery
-                  .of(context)
-                  .textScaleFactor,
+              textScaleFactor: MediaQuery.of(context).textScaleFactor,
               text: TextSpan(
                   text: selectionContact.filterText,
-                  style: Theme
-                      .of(context)
-                      .textTheme
-                      .caption),
+                  style: Theme.of(context).textTheme.caption),
             )
           ],
         ),
@@ -140,29 +132,20 @@ class ContactRow extends StatelessWidget {
     if (match != null) {
       return RichText(
         overflow: TextOverflow.ellipsis,
-        textScaleFactor: MediaQuery
-            .of(context)
-            .textScaleFactor,
+        textScaleFactor: MediaQuery.of(context).textScaleFactor,
         text: TextSpan(children: [
           TextSpan(
               text: highlight.substring(0, match.start),
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .headline5),
+              style: Theme.of(context).textTheme.headline5),
           TextSpan(
               text: highlight.substring(match.start, match.end),
-              style: Theme
-                  .of(context)
+              style: Theme.of(context)
                   .textTheme
                   .headline5!
                   .copyWith(fontWeight: FontWeight.bold)),
           TextSpan(
               text: highlight.substring(match.end),
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .headline5),
+              style: Theme.of(context).textTheme.headline5),
         ]),
       );
     }
@@ -172,23 +155,18 @@ class ContactRow extends StatelessWidget {
 
   RichText _buildFullName(BuildContext context) {
     return RichText(
-      textScaleFactor: MediaQuery
-          .of(context)
-          .textScaleFactor,
+      textScaleFactor: MediaQuery.of(context).textScaleFactor,
       overflow: TextOverflow.ellipsis,
       text: TextSpan(
           text: selectionContact.contact.getFullName(),
-          style: Theme
-              .of(context)
-              .textTheme
-              .headline5),
+          style: Theme.of(context).textTheme.headline5),
     );
   }
 
   void _popUpItems(BuildContext context, ContactActorBloc contactActorBloc,
       ContactWatcherBloc contactWatcherBloc) {
     final Offset offset =
-    (context.findRenderObject() as RenderBox).localToGlobal(Offset.zero);
+        (context.findRenderObject() as RenderBox).localToGlobal(Offset.zero);
     const rowHeight = 60;
     showMenu(
         context: context,
@@ -199,10 +177,10 @@ class ContactRow extends StatelessWidget {
           0,
         ),
         items: ContactPopUp(
-            context: context,
-            selectionContact: selectionContact,
-            actorBloc: contactActorBloc,
-            watcherBloc: contactWatcherBloc)
+                context: context,
+                selectionContact: selectionContact,
+                actorBloc: contactActorBloc,
+                watcherBloc: contactWatcherBloc)
             .popUpItems());
   }
 }

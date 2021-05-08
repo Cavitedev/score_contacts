@@ -55,8 +55,8 @@ class ContactsRepository implements IContactsRepository {
     ContactDTO contactDTO = ContactDTO.fromDomain(contact);
     return (await _updateImageOnDTO(contact, contactDTO)).fold(
       (f) => left(f),
-      (contactDto) =>
-          right(contacts.doc(contactDTO.id).set(contactDTO.toJson())),
+      (contactDtoRet) =>
+          right(contacts.doc(contactDtoRet.id).set(contactDtoRet.toJson())),
     );
   }
 
@@ -120,10 +120,10 @@ class ContactsRepository implements IContactsRepository {
         await _updateImageOnDTO(contact, contactDTO);
 
     return eitherUpdatedDto.fold(
-      (l) => left(l),
-      (contactDTO) async {
+      (f) => left(f),
+      (contactDTORet) async {
         try {
-          await contacts.doc(contactDTO.id).update(contactDTO.toJson());
+          await contacts.doc(contactDTORet.id).update(contactDTORet.toJson());
           return right(unit);
         } catch (e) {
           if (e is PlatformException &&

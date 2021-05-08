@@ -33,7 +33,8 @@ class OutlinedDropdownButton extends StatefulWidget {
   _OutlinedDropdownButtonState createState() => _OutlinedDropdownButtonState();
 }
 
-class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton> with TickerProviderStateMixin {
+class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
+    with TickerProviderStateMixin {
   String? selected;
   String? lastSelected;
   String? customSelected;
@@ -46,7 +47,8 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton> with Ti
 
   @override
   void initState() {
-    opacityAnimationController = AnimationController(duration: const Duration(milliseconds: 200), vsync: this);
+    opacityAnimationController = AnimationController(
+        duration: const Duration(milliseconds: 200), vsync: this);
     final Tween<double> opacityTween = Tween<double>(begin: 0, end: 1);
     opacityAnimation = opacityTween.animate(opacityAnimationController);
 
@@ -56,7 +58,9 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton> with Ti
 
   void outlineFocusListener() {
     setState(() {
-      widget.focusNode.hasFocus ? opacityAnimationController.forward() : opacityAnimationController.reverse();
+      widget.focusNode.hasFocus
+          ? opacityAnimationController.forward()
+          : opacityAnimationController.reverse();
     });
   }
 
@@ -99,7 +103,8 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton> with Ti
       ...widget.items
           .map((String item) => DropdownMenuItem(
                 value: item,
-                child: Text(AppLocalization.of(context).translate(item.toLowerCase())),
+                child: Text(
+                    AppLocalization.of(context).translate(item.toLowerCase())),
               ))
           .toList(),
       DropdownMenuItem(
@@ -113,19 +118,16 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton> with Ti
     } else {
       selected = widget.items[0];
     }
-    final List<DropdownMenuItem<String>> itemsRendered = (customSelected == null
-        ? _items
-        : [
-            DropdownMenuItem(
-              value: customSelected,
-              child: Text(customSelected!),
-            ),
-            ..._items!
-          ])!;
+
+    final List<DropdownMenuItem<String>> itemsRendered = _addRenderCustomIfExists();
+
+
     return AnimatedBuilder(
       animation: opacityAnimationController,
       builder: (context, child) => Container(
-        margin: EdgeInsets.only(top: widget.topMargin, bottom: widget.expandBottomMargin == true ? helperTextSep : 0),
+        margin: EdgeInsets.only(
+            top: widget.topMargin,
+            bottom: widget.expandBottomMargin == true ? helperTextSep : 0),
         padding: const EdgeInsets.only(left: 6),
         height: 48,
         decoration: BoxDecoration(
@@ -133,7 +135,9 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton> with Ti
           color: Theme.of(context).textSelectionTheme.selectionColor,
           borderRadius: widget.borderRadius,
           border: Border.all(
-            color: Theme.of(context).highlightColor.withOpacity(opacityAnimation.value),
+            color: Theme.of(context)
+                .highlightColor
+                .withOpacity(opacityAnimation.value),
             width: 2,
           ),
         ),
@@ -159,7 +163,8 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton> with Ti
                         AppLocalization.of(context).translate(item.value!),
                         style: widget.focusNode.hasFocus || widget.isActive
                             ? Theme.of(context).textTheme.subtitle1
-                            : Theme.of(context).textTheme.subtitle1!.copyWith(color: Theme.of(context).disabledColor),
+                            : Theme.of(context).textTheme.subtitle1!.copyWith(
+                                color: Theme.of(context).disabledColor),
                         overflow: TextOverflow.ellipsis,
                       ),
                     ))
@@ -177,5 +182,22 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton> with Ti
             items: itemsRendered),
       ),
     );
+  }
+
+  List<DropdownMenuItem<String>> _addRenderCustomIfExists() {
+    if (!widget.items.contains(selected) && selected != "Custom") {
+      customSelected = selected;
+    }
+
+    final List<DropdownMenuItem<String>> itemsRendered = (customSelected == null
+        ? _items
+        : [
+            DropdownMenuItem(
+              value: customSelected,
+              child: Text(customSelected!),
+            ),
+            ..._items!
+          ])!;
+    return itemsRendered;
   }
 }
