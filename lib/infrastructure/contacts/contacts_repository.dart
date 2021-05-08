@@ -27,10 +27,14 @@ class ContactsRepository implements IContactsRepository {
   @override
   Future<Either<ContactsFailure, Unit>> createContact(Contact contact) async {
     try {
-      _createContact(contact);
-      return right(unit);
+      return (await _createContact(contact)).fold(
+        (f) => left(f),
+        (r) => right(unit),
+      );
     } catch (e) {
-      if (e is PlatformException && e.message!.contains(PERMISSIONDENIEDCODE)) {
+      if (e is PlatformException &&
+          (e.message!.contains(PERMISSIONDENIEDCODE) ||
+              e.code == UNATHORIZED)) {
         return left(const ContactsFailure.insufficientPermissions());
       } else {
         return left(const ContactsFailure.unexpected());
@@ -45,27 +49,38 @@ class ContactsRepository implements IContactsRepository {
         contactList, _createContactsBatch);
   }
 
-  Future<void> _createContact(Contact contact) async {
+  Future<Either<ContactsFailure, void>> _createContact(Contact contact) async {
     final CollectionReference contacts =
         firestore.userDocument().contactsCollection;
     ContactDTO contactDTO = ContactDTO.fromDomain(contact);
-    contactDTO = await _updateImageOnDTO(contact, contactDTO);
-    await contacts.doc(contactDTO.id).set(contactDTO.toJson());
+    return (await _updateImageOnDTO(contact, contactDTO)).fold(
+      (f) => left(f),
+      (contactDto) =>
+          right(contacts.doc(contactDTO.id).set(contactDTO.toJson())),
+    );
   }
-
-
 
   Future<Either<ContactsFailure, Unit>> _createContactsBatch(
       List<Contact> contactList) async {
     final batch = firestore.batch();
     final CollectionReference contacts =
         firestore.userDocument().contactsCollection;
+    ContactsFailure? failure;
     for (final Contact contact in contactList) {
       ContactDTO contactDTO = ContactDTO.fromDomain(contact);
-      contactDTO = await _updateImageOnDTO(contact, contactDTO);
+      (await _updateImageOnDTO(contact, contactDTO)).fold(
+        (l) => failure = l,
+        (contactDtoRet) => contactDTO = contactDtoRet,
+      );
+      if (failure != null) {
+        return left(failure!);
+      }
+
       batch.set(contacts.doc(contactDTO.id), contactDTO.toJson());
     }
+
     Either<ContactsFailure, Unit>? returnValue;
+
     await batch.commit().catchError((e) {
       if (e is PlatformException && e.message!.contains(PERMISSIONDENIEDCODE)) {
         returnValue = left(const ContactsFailure.insufficientPermissions());
@@ -73,6 +88,7 @@ class ContactsRepository implements IContactsRepository {
         returnValue = left(const ContactsFailure.unexpected());
       }
     });
+
     return returnValue ?? right(unit);
   }
 
@@ -96,29 +112,42 @@ class ContactsRepository implements IContactsRepository {
 
   @override
   Future<Either<ContactsFailure, Unit>> updateContact(Contact contact) async {
-    try {
-      final CollectionReference contacts =
-          firestore.userDocument().contactsCollection;
-      ContactDTO contactDTO = ContactDTO.fromDomain(contact);
-      contactDTO = await _updateImageOnDTO(contact, contactDTO);
+    final CollectionReference contacts =
+        firestore.userDocument().contactsCollection;
+    final ContactDTO contactDTO = ContactDTO.fromDomain(contact);
 
-      await contacts.doc(contactDTO.id).update(contactDTO.toJson());
-      return right(unit);
-    } catch (e) {
-      if (e is PlatformException && e.message!.contains(PERMISSIONDENIEDCODE)) {
-        return left(const ContactsFailure.insufficientPermissions());
-      } else if (e is PlatformException && e.message!.contains(NOTFOUNDCODE)) {
-        return left(const ContactsFailure.notFound());
-      } else {
-        return left(const ContactsFailure.unexpected());
-      }
-    }
+    Either<ContactsFailure, ContactDTO> eitherUpdatedDto =
+        await _updateImageOnDTO(contact, contactDTO);
+
+    return eitherUpdatedDto.fold(
+      (l) => left(l),
+      (contactDTO) async {
+        try {
+          await contacts.doc(contactDTO.id).update(contactDTO.toJson());
+          return right(unit);
+        } catch (e) {
+          if (e is PlatformException &&
+              e.message!.contains(PERMISSIONDENIEDCODE)) {
+            return left(const ContactsFailure.insufficientPermissions());
+          } else if (e is PlatformException &&
+              e.message!.contains(NOTFOUNDCODE)) {
+            return left(const ContactsFailure.notFound());
+          } else {
+            return left(const ContactsFailure.unexpected());
+          }
+        }
+      },
+    );
   }
 
   @override
   Future<Either<ContactsFailure, Unit>> deleteContact(Contact contact) async {
     try {
-      await _deleteImage(contact);
+      try {
+        await _deleteImage(contact);
+      } catch (e) {
+        return left(const ContactsFailure.unexpected());
+      }
       final CollectionReference contacts =
           firestore.userDocument().contactsCollection;
       await contacts.doc(contact.id.value).delete();
@@ -146,7 +175,11 @@ class ContactsRepository implements IContactsRepository {
     final CollectionReference contacts =
         firestore.userDocument().contactsCollection;
     for (final Contact contact in contactList) {
-      await _deleteImage(contact);
+      try {
+        await _deleteImage(contact);
+      } catch (e) {
+        return left(const ContactsFailure.unexpected());
+      }
       batch.delete(contacts.doc(contact.id.value));
     }
     Either<ContactsFailure, Unit>? returnValue;
@@ -180,34 +213,53 @@ class ContactsRepository implements IContactsRepository {
 
   Reference _getFirestorageRef(Contact contact) {
     final String userId = authFacade.getUserOrCrash().uid.value;
-    final Reference storageRef =
-        firestorage.ref("Users/$userId/contacts/${contact.id.value}/avatar.jpg");
+    final Reference storageRef = firestorage
+        .ref("Users/$userId/contacts/${contact.id.value}/avatar.jpg");
     return storageRef;
   }
 
-  Future<String?> _adaptImage(Contact contact) async {
+  Future<Either<ContactsFailure, String?>> _uploadImage(Contact contact) async {
     final PickedFile? imageFile = contact.contactImage?.file;
     if (imageFile == null) {
-      return null;
+      return right(null);
     }
     final Reference storageRef = _getFirestorageRef(contact);
     final Uint8List imageBytes = await imageFile.readAsBytes();
     final UploadTask uploadTask = storageRef.putData(imageBytes);
-    return uploadTask.then(
-      (snaphot) => snaphot.ref.getDownloadURL(),
+    try {
+      await uploadTask.whenComplete(() {});
+      final url = await uploadTask.snapshot.ref.getDownloadURL();
+      return right(url);
+    } catch (e) {
+      if (e is FirebaseException && e.code == UNATHORIZED) {
+        return left(const ContactsFailure.insufficientPermissions());
+      }
+      rethrow;
+    }
+  }
+
+  Future<Either<ContactsFailure, ContactDTO>> _updateImageOnDTO(
+      Contact contact, ContactDTO contactDTO) async {
+    Either<ContactsFailure, String?> eitherImageUrl =
+        await _uploadImage(contact);
+    return eitherImageUrl.fold(
+      (f) => left(f),
+      (imageUrl) {
+        if (imageUrl != null) {
+          return right(contactDTO.copyWith(imageUrl: imageUrl));
+        }
+
+        return right(contactDTO);
+      },
     );
   }
 
-    Future<ContactDTO> _updateImageOnDTO(Contact contact, ContactDTO contactDTO) async {
-    final String? imageUrl = await _adaptImage(contact);
-    if (imageUrl != null) {
-      return contactDTO.copyWith(imageUrl: imageUrl);
-    }
-    return contactDTO;
-  }
-
   Future<void> _deleteImage(Contact contact) {
+    if (contact.contactImage == null) {
+      return Future.value(null);
+    }
     final Reference storageRef = _getFirestorageRef(contact);
+
     return storageRef.delete();
   }
 }
