@@ -28,6 +28,14 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('E:\\OneDrive\\OneDrive - Universidad de Castilla-La Mancha\\Personal\\Android\\keys\\Score_contacts_debug\\flutter_contacts.jks')
+            storePassword 'contacts_dam'
+            keyAlias 'diarycontacts'
+            keyPassword 'diarycontacts'
+        }
+    }
     compileSdkVersion 30
 
     sourceSets {
@@ -47,6 +55,16 @@ android {
         versionName flutterVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    signingConfigs {
+        debug {
+            storeFile file("../flutter_contacts.jks")
+            storePassword "contacts_dam"
+            keyAlias "diarycontacts"
+            keyPassword "diarycontacts"
+        }
+    }
+
 
     buildTypes {
         release {

@@ -132,6 +132,7 @@ class __$InsufficientPermissionsCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_InsufficientPermissions implements _InsufficientPermissions {
   const _$_InsufficientPermissions();
 
@@ -234,6 +235,7 @@ class __$NotFoundCopyWithImpl<$Res> extends _$ContactsFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_NotFound implements _NotFound {
   const _$_NotFound();
 
@@ -339,6 +341,7 @@ class __$UnexpectedCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Unexpected implements _Unexpected {
   const _$_Unexpected();
 
@@ -444,6 +447,7 @@ class __$PlatformErrorCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_PlatformError implements _PlatformError {
   const _$_PlatformError();
 
@@ -549,6 +553,7 @@ class __$NotContactPermissionsCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_NotContactPermissions implements _NotContactPermissions {
   const _$_NotContactPermissions();
 
@@ -657,6 +662,7 @@ class __$DeniedPermanentlyContactPermissionsCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_DeniedPermanentlyContactPermissions
     implements _DeniedPermanentlyContactPermissions {
   const _$_DeniedPermanentlyContactPermissions();

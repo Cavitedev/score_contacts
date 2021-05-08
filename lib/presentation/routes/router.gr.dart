@@ -5,41 +5,46 @@
 // **************************************************************************
 
 import 'package:auto_route/auto_route.dart' as _i1;
-import 'package:flutter/material.dart' as _i7;
+import 'package:flutter/material.dart' as _i2;
 
 import '../../domain/user/contacts_data/contact.dart' as _i8;
-import '../auth/sign_in/sign_in_page.dart' as _i5;
-import '../auth/splash_page.dart' as _i2;
-import '../contacts/add_contacts/add_contact_page.dart' as _i4;
-import '../contacts/list_view/contact_list.dart' as _i3;
-import '../settings/settings_page.dart' as _i6;
+import '../auth/sign_in/sign_in_page.dart' as _i6;
+import '../auth/splash_page.dart' as _i3;
+import '../contacts/add_contacts/add_contact_page.dart' as _i5;
+import '../contacts/list_view/contact_list.dart' as _i4;
+import '../settings/settings_page.dart' as _i7;
 
 class Router extends _i1.RootStackRouter {
-  Router();
+  Router([_i2.GlobalKey<_i2.NavigatorState>? navigatorKey])
+      : super(navigatorKey);
 
   @override
   final Map<String, _i1.PageFactory> pagesMap = {
-    SplashPageRoute.name: (entry) {
-      return _i1.MaterialPageX(entry: entry, child: _i2.SplashPage());
+    SplashPageRoute.name: (routeData) {
+      return _i1.MaterialPageX<dynamic>(
+          routeData: routeData, child: _i3.SplashPage());
     },
-    ContactListRoute.name: (entry) {
-      return _i1.MaterialPageX(entry: entry, child: _i3.ContactList());
+    ContactListRoute.name: (routeData) {
+      return _i1.MaterialPageX<dynamic>(
+          routeData: routeData, child: _i4.ContactList());
     },
-    AddContactPageRoute.name: (entry) {
-      var args = entry.routeData.argsAs<AddContactPageRouteArgs>(
-          orElse: () => AddContactPageRouteArgs());
-      return _i1.MaterialPageX(
-          entry: entry,
-          child: _i4.AddContactPage(
+    AddContactPageRoute.name: (routeData) {
+      final args = routeData.argsAs<AddContactPageRouteArgs>(
+          orElse: () => const AddContactPageRouteArgs());
+      return _i1.MaterialPageX<dynamic>(
+          routeData: routeData,
+          child: _i5.AddContactPage(
               key: args.key,
               contact: args.contact,
               isEdditing: args.isEdditing));
     },
-    SignInPageRoute.name: (entry) {
-      return _i1.MaterialPageX(entry: entry, child: _i5.SignInPage());
+    SignInPageRoute.name: (routeData) {
+      return _i1.MaterialPageX<dynamic>(
+          routeData: routeData, child: _i6.SignInPage());
     },
-    SettingsPageRoute.name: (entry) {
-      return _i1.MaterialPageX(entry: entry, child: _i6.SettingsPage());
+    SettingsPageRoute.name: (routeData) {
+      return _i1.MaterialPageX<dynamic>(
+          routeData: routeData, child: _i7.SettingsPage());
     }
   };
 
@@ -67,7 +72,7 @@ class ContactListRoute extends _i1.PageRouteInfo {
 
 class AddContactPageRoute extends _i1.PageRouteInfo<AddContactPageRouteArgs> {
   AddContactPageRoute(
-      {_i7.Key? key, _i8.Contact? contact, bool isEdditing = false})
+      {_i2.Key? key, _i8.Contact? contact, bool isEdditing = false})
       : super(name,
             path: '/add-contact-page',
             args: AddContactPageRouteArgs(
@@ -80,7 +85,7 @@ class AddContactPageRouteArgs {
   const AddContactPageRouteArgs(
       {this.key, this.contact, this.isEdditing = false});
 
-  final _i7.Key? key;
+  final _i2.Key? key;
 
   final _i8.Contact? contact;
 

@@ -105,6 +105,7 @@ class __$CompanyCopyWithImpl<$Res> extends _$CompanyCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Company extends _Company {
   const _$_Company({this.name, this.title}) : super._();
 

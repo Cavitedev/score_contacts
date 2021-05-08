@@ -108,6 +108,7 @@ class __$DeleteCopyWithImpl<$Res> extends _$ContactActorEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Delete implements _Delete {
   const _$_Delete({required this.contactList});
 
@@ -211,6 +212,7 @@ class __$LoadContactsFromSystemCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_LoadContactsFromSystem implements _LoadContactsFromSystem {
   const _$_LoadContactsFromSystem();
 
@@ -389,6 +391,7 @@ class __$InitialCopyWithImpl<$Res> extends _$ContactActorStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -508,6 +511,7 @@ class __$ActionInProgressCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_ActionInProgress implements _ActionInProgress {
   const _$_ActionInProgress(this.loadingMsg);
 
@@ -637,6 +641,7 @@ class __$DeleteSuccessfulCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_DeleteSuccessful implements _DeleteSuccessful {
   const _$_DeleteSuccessful(this.numberContacts);
 
@@ -766,6 +771,7 @@ class __$LoadSuccessfulCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_LoadSuccessful implements _LoadSuccessful {
   const _$_LoadSuccessful(this.numberContacts);
 
@@ -904,6 +910,7 @@ class __$DeleteFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_DeleteFailure implements _DeleteFailure {
   const _$_DeleteFailure(this.failure);
 

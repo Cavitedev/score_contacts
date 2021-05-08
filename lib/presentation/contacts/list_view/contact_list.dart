@@ -32,7 +32,7 @@ class ContactList extends StatelessWidget {
               listener: (context, state) {
                 state.maybeMap(
                     unathenticated: (_) {
-                      context.router.pushAndRemoveUntil(
+                      context.router.pushAndPopUntil(
                         const r.SignInPageRoute(),
                         predicate: (route) => false,
                       );

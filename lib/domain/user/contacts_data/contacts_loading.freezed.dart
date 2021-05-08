@@ -112,6 +112,7 @@ class __$LoadingContactsCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_LoadingContacts implements _LoadingContacts {
   const _$_LoadingContacts({this.amount});
 
@@ -227,6 +228,7 @@ class __$DeletingContactsCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_DeletingContacts implements _DeletingContacts {
   const _$_DeletingContacts({required this.amount});
 

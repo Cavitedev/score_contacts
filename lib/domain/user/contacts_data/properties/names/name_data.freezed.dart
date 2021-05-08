@@ -187,6 +187,7 @@ class __$NameDataCopyWithImpl<$Res> extends _$NameDataCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_NameData extends _NameData {
   const _$_NameData(
       {this.phoneticNames,

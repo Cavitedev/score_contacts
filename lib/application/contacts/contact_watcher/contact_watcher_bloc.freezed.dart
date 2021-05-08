@@ -153,6 +153,7 @@ class __$ContactsReceivedCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_ContactsReceived implements _ContactsReceived {
   const _$_ContactsReceived(this.contactsEither);
 
@@ -279,6 +280,7 @@ class __$WatchAllCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_WatchAll implements _WatchAll {
   const _$_WatchAll();
 
@@ -398,6 +400,7 @@ class __$SearchContactCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_SearchContact implements _SearchContact {
   const _$_SearchContact(this.searchString);
 
@@ -535,6 +538,7 @@ class __$ToggleSelectionContactCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_ToggleSelectionContact implements _ToggleSelectionContact {
   const _$_ToggleSelectionContact(this.selectionContact);
 
@@ -662,6 +666,7 @@ class __$DeselectAllContactsCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_DeselectAllContacts implements _DeselectAllContacts {
   const _$_DeselectAllContacts();
 
@@ -768,6 +773,7 @@ class __$SelectAllContactsCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_SelectAllContacts implements _SelectAllContacts {
   const _$_SelectAllContacts();
 
@@ -955,6 +961,7 @@ class __$InitialCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -1048,6 +1055,7 @@ class __$LoadInProgressCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_LoadInProgress implements _LoadInProgress {
   const _$_LoadInProgress();
 
@@ -1163,6 +1171,7 @@ class __$LoadSuccessCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_LoadSuccess implements _LoadSuccess {
   const _$_LoadSuccess(this.stateValues);
 
@@ -1296,6 +1305,7 @@ class __$LoadFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_LoadFailure implements _LoadFailure {
   const _$_LoadFailure(this.failure);
 
@@ -1524,6 +1534,7 @@ class __$LoadSuccessValuesCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_LoadSuccessValues extends _LoadSuccessValues {
   const _$_LoadSuccessValues(
       {required this.selectionContactList,

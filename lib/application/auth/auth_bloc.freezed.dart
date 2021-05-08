@@ -90,6 +90,7 @@ class __$GetUserCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_GetUser implements _GetUser {
   const _$_GetUser();
 
@@ -172,6 +173,7 @@ class __$SignOutCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_SignOut implements _SignOut {
   const _$_SignOut();
 
@@ -323,6 +325,7 @@ class __$InitialCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -411,6 +414,7 @@ class __$AuthenticatedCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Authenticated implements _Authenticated {
   const _$_Authenticated();
 
@@ -499,6 +503,7 @@ class __$UnathenticatedCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Unathenticated implements _Unathenticated {
   const _$_Unathenticated();
 

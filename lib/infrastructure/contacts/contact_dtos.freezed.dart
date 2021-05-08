@@ -217,9 +217,8 @@ class __$ContactDTOCopyWithImpl<$Res> extends _$ContactDTOCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_ContactDTO extends _ContactDTO {
   const _$_ContactDTO(
       {@JsonKey(ignore: true) this.id,
@@ -457,9 +456,8 @@ class __$NameDataDTOCopyWithImpl<$Res> extends _$NameDataDTOCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_NameDataDTO extends _NameDataDTO {
   const _$_NameDataDTO({this.name, this.surname}) : super._();
 
@@ -628,9 +626,8 @@ class __$LabelObjectDTOCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_LabelObjectDTO extends _LabelObjectDTO {
   const _$_LabelObjectDTO({this.name, this.label}) : super._();
 
@@ -797,9 +794,8 @@ class __$CompanyDTOCopyWithImpl<$Res> extends _$CompanyDTOCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_CompanyDTO extends _CompanyDTO {
   const _$_CompanyDTO({this.name, this.title}) : super._();
 

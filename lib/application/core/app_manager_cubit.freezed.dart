@@ -127,6 +127,7 @@ class __$AppManagerStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_AppManagerState extends _AppManagerState with DiagnosticableTreeMixin {
   const _$_AppManagerState(
       {required this.themeMode, required this.region, this.languageCode})

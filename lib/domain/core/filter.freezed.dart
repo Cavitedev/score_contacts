@@ -93,6 +93,7 @@ class __$FilterCopyWithImpl<$Res> extends _$FilterCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Filter extends _Filter {
   const _$_Filter({this.filterSearch}) : super._();
 
