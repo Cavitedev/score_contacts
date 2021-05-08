@@ -18,8 +18,9 @@ class AppLocalization {
   late Map<String, String>? _localizedStrings;
 
   String translate(String key, {List<String>? args}){
-    String? textStr = _localizedStrings![key];
-    textStr ??= "null value";
+
+    String? textStr = _localizedStrings![key.toLowerCase()];
+    textStr ??= key;
     if(args == null) return textStr;
     while(args.isNotEmpty){
       textStr = textStr!.replaceFirst("%s", args[0]);
