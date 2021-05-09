@@ -83,7 +83,7 @@ class ContactsRepository implements IContactsRepository {
 
   @override
   Stream<Either<ContactsFailure, List<Contact>>> watchAllContacts() async* {
-    final CollectionReference contacts =
+    final CollectionReference<Map<String, dynamic>> contacts =
         firestore.userDocument().contactsCollection;
     yield* contacts
         .snapshots()

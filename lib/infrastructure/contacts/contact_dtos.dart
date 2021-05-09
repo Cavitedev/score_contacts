@@ -81,7 +81,7 @@ class ContactDTO with _$ContactDTO {
   factory ContactDTO.fromJson(Map<String, dynamic> json) =>
       _$ContactDTOFromJson(json);
 
-  factory ContactDTO.fromFirestore(DocumentSnapshot doc) {
+  factory ContactDTO.fromFirestore(DocumentSnapshot<Map<String, dynamic>> doc) {
     return ContactDTO.fromJson(doc.data()!).copyWith(id: doc.id);
   }
 }
