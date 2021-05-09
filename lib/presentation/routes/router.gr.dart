@@ -20,32 +20,36 @@ class Router extends _i1.RootStackRouter {
 
   @override
   final Map<String, _i1.PageFactory> pagesMap = {
-    SplashPageRoute.name: (routeData) {
-      return _i1.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i3.SplashPage());
-    },
-    ContactListRoute.name: (routeData) {
-      return _i1.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i4.ContactList());
-    },
-    AddContactPageRoute.name: (routeData) {
-      final args = routeData.argsAs<AddContactPageRouteArgs>(
-          orElse: () => const AddContactPageRouteArgs());
-      return _i1.MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: _i5.AddContactPage(
+    SplashPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return _i3.SplashPage();
+        }),
+    ContactListRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return _i4.ContactList();
+        }),
+    AddContactPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (data) {
+          final args = data.argsAs<AddContactPageRouteArgs>(
+              orElse: () => const AddContactPageRouteArgs());
+          return _i5.AddContactPage(
               key: args.key,
               contact: args.contact,
-              isEdditing: args.isEdditing));
-    },
-    SignInPageRoute.name: (routeData) {
-      return _i1.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i6.SignInPage());
-    },
-    SettingsPageRoute.name: (routeData) {
-      return _i1.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i7.SettingsPage());
-    }
+              isEdditing: args.isEdditing);
+        }),
+    SignInPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return _i6.SignInPage();
+        }),
+    SettingsPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return _i7.SettingsPage();
+        })
   };
 
   @override

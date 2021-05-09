@@ -90,7 +90,7 @@ class ContactsRepository implements IContactsRepository {
         .map((snapshot) => right<ContactsFailure, List<Contact>>(snapshot.docs
             .map((doc) => ContactDTO.fromFirestore(doc).toDomain())
             .toList()))
-        .onErrorReturnWith((e) {
+        .onErrorReturnWith((e, _) {
       return left(_handleException(e));
     });
   }
