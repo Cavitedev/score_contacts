@@ -22,9 +22,11 @@ class ContactList extends StatelessWidget {
     return MultiBlocProvider(
         providers: [
           BlocProvider<ContactWatcherBloc>(
-            create: (context) => getIt<ContactWatcherBloc>()..add(const ContactWatcherEvent.watchAll()),
+            create: (context) => getIt<ContactWatcherBloc>()
+              ..add(const ContactWatcherEvent.watchAll()),
           ),
-          BlocProvider<ContactActorBloc>(create: (context) => getIt<ContactActorBloc>()),
+          BlocProvider<ContactActorBloc>(
+              create: (context) => getIt<ContactActorBloc>()),
         ],
         child: MultiBlocListener(
           listeners: [
@@ -46,16 +48,18 @@ class ContactList extends StatelessWidget {
                     contactsFailure: (state) {
                       FlushbarHelper.createError(
                               duration: const Duration(seconds: 12),
-                              message: getContactsFailureMessage(context, state.failure))
+                              message: getContactsFailureMessage(
+                                  context, state.failure))
                           .show(context);
                     },
                     deleteSuccessful: (state) => FlushbarHelper.createSuccess(
-                        duration: const Duration(seconds: 4),
-                        message: AppLocalization.of(context).translate(
-                            state.numberContacts != 1
-                                ? "success_delete_contacts_plural"
-                                : "success_delete_contacts_single",
-                            args: [state.numberContacts.toString()])).show(context),
+                            duration: const Duration(seconds: 4),
+                            message: AppLocalization.of(context).translate(
+                                state.numberContacts != 1
+                                    ? "success_delete_contacts_plural"
+                                    : "success_delete_contacts_single",
+                                args: [state.numberContacts.toString()]))
+                        .show(context),
                     loadSuccessful: (state) => FlushbarHelper.createSuccess(
                           duration: const Duration(seconds: 4),
                           message: AppLocalization.of(context).translate(
@@ -64,6 +68,25 @@ class ContactList extends StatelessWidget {
                                   : "success_load_contacts_single",
                               args: [state.numberContacts.toString()]),
                         ).show(context),
+                    callSuccesful: (state) => FlushbarHelper.createSuccess(
+                          duration: const Duration(seconds: 4),
+                          message: AppLocalization.of(context).translate(
+                            "success_call",
+                            args: [state.number],
+                          ),
+                        ).show(context),
+                    callFailure: (state) => state.failure.map(
+                          notCallNumberFound: (f) => FlushbarHelper.createError(
+                            duration: const Duration(seconds: 12),
+                            message: AppLocalization.of(context)
+                                .translate("number_not_found"),
+                          ).show(context),
+                          errorOnCall: (f) => FlushbarHelper.createError(
+                            duration: const Duration(seconds: 12),
+                            message: AppLocalization.of(context)
+                                .translate("error_call", args: [f.number.toString()]),
+                          ).show(context),
+                        ),
                     orElse: () {});
               },
             ),
@@ -71,7 +94,8 @@ class ContactList extends StatelessWidget {
           child: BlocBuilder<ContactWatcherBloc, ContactWatcherState>(
               builder: (context, state) => state.map(
                     initial: (_) => Container(),
-                    loadInProgress: (_) => const CircularProgressIndicatorScaffold(),
+                    loadInProgress: (_) =>
+                        const CircularProgressIndicatorScaffold(),
                     loadSuccess: (state) {
                       return Stack(
                         children: [
@@ -82,7 +106,8 @@ class ContactList extends StatelessWidget {
                         ],
                       );
                     },
-                    loadFailure: (state) => CriticalFailureDisplay(failure: state.failure),
+                    loadFailure: (state) =>
+                        CriticalFailureDisplay(failure: state.failure),
                   )),
         ));
   }

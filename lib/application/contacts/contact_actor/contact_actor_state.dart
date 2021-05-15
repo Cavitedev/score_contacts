@@ -12,4 +12,8 @@ class ContactActorState with _$ContactActorState{
 
   const factory ContactActorState.contactsFailure(ContactsFailure failure) =
       _DeleteFailure;
+
+  const factory ContactActorState.callSuccesful(String number) = _CallSuccesful;
+
+  const factory ContactActorState.callFailure(CallFailure failure) = _CallFailure;
 }

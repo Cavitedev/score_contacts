@@ -36,6 +36,9 @@ class Contact with _$Contact {
         },
       );
 
+  String? getFirstPhoneNumber() => labelObjects?[Phone]?[0].value;
+
+
   factory Contact.fromStringJson(String jsonStr) {
     final Map<String, dynamic> jsonMap =
         json.decode(jsonStr) as Map<String, dynamic>;

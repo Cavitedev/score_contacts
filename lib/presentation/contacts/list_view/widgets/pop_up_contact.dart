@@ -20,57 +20,84 @@ class ContactPopUp {
       required this.watcherBloc});
 
   List<PopupMenuEntry> popUpItems() => [
-        PopUpDivider(),
-        PopUpWidget(
-            addedWidget: InkPopUpButton(
-          onTap: () {
-            watcherBloc.add(
-                ContactWatcherEvent.toggleSelectionContact(selectionContact));
-            context.router.pop();
-          },
-          text: AppLocalization.of(context).translate("select"),
-        )),
-        PopUpDivider(),
-        PopUpWidget(
-            addedWidget: InkPopUpButton(
-          onTap: () {},
-          text: AppLocalization.of(context).translate("view"),
-        )),
-        PopUpDivider(),
-        PopUpWidget(
-            addedWidget: InkPopUpButton(
-          onTap: () {
-            context.router
-                .push(r.AddContactPageRoute(contact: selectionContact.contact));
-          },
-          text: AppLocalization.of(context).translate("edit"),
-        )),
-        PopUpDivider(),
-        PopUpWidget(
-            addedWidget: InkPopUpButton(
-          onTap: () {
-            showDialog(
-                context: context,
-                builder: (context) => AlertDialogueCancelOK(
-                      title: AppLocalization.of(context).translate(
-                          "confirm_delection",
-                          args: [selectionContact.contact.getFullName()]),
-                      onSubmit: () {
-                        actorBloc.add(ContactActorEvent.delete(
-                            contactList: [selectionContact.contact]));
-                        context.router.popUntil((route) =>
-                            route.settings.name == r.ContactListRoute.name);
-                      },
-                      onCancel: () {
-                        context.router.popUntil((route) =>
-                            route.settings.name == r.ContactListRoute.name);
-                      },
-                    ));
-          },
-          text: AppLocalization.of(context).translate("delete"),
-        )),
-        PopUpDivider(),
+        const PopUpDivider(),
+        _selectWidget(),
+        const PopUpDivider(),
+        _viewWidget(),
+        const PopUpDivider(),
+        _editWidget(),
+        const PopUpDivider(),
+        _deleteWidget(),
+        const PopUpDivider(),
+        _callWidget(),
       ];
+
+  PopUpWidget _selectWidget() {
+    return PopUpWidget(
+        addedWidget: InkPopUpButton(
+      onTap: () {
+        watcherBloc
+            .add(ContactWatcherEvent.toggleSelectionContact(selectionContact));
+        context.router.pop();
+      },
+      text: AppLocalization.of(context).translate("select"),
+    ));
+  }
+
+  PopUpWidget _viewWidget() {
+    return PopUpWidget(
+        addedWidget: InkPopUpButton(
+      onTap: () {},
+      text: AppLocalization.of(context).translate("view"),
+    ));
+  }
+
+  PopUpWidget _editWidget() {
+    return PopUpWidget(
+        addedWidget: InkPopUpButton(
+      onTap: () {
+        context.router
+            .push(r.AddContactPageRoute(contact: selectionContact.contact));
+      },
+      text: AppLocalization.of(context).translate("edit"),
+    ));
+  }
+
+  PopUpWidget _deleteWidget() {
+    return PopUpWidget(
+        addedWidget: InkPopUpButton(
+      onTap: () {
+        showDialog(
+            context: context,
+            builder: (context) => AlertDialogueCancelOK(
+                  title: AppLocalization.of(context).translate(
+                      "confirm_delection",
+                      args: [selectionContact.contact.getFullName()]),
+                  onSubmit: () {
+                    actorBloc.add(ContactActorEvent.delete(
+                        contactList: [selectionContact.contact]));
+                    context.router.popUntil((route) =>
+                        route.settings.name == r.ContactListRoute.name);
+                  },
+                  onCancel: () {
+                    context.router.popUntil((route) =>
+                        route.settings.name == r.ContactListRoute.name);
+                  },
+                ));
+      },
+      text: AppLocalization.of(context).translate("delete"),
+    ));
+  }
+
+  PopUpWidget _callWidget() {
+    return PopUpWidget(
+        addedWidget: InkPopUpButton(
+      onTap: () {
+        actorBloc.add(ContactActorEvent.callContact(selectionContact.contact));
+      },
+      text: AppLocalization.of(context).translate("call"),
+    ));
+  }
 }
 
 class InkPopUpButton extends StatelessWidget {
@@ -101,6 +128,8 @@ class InkPopUpButton extends StatelessWidget {
 }
 
 class PopUpDivider<T> extends PopupMenuEntry<T> {
+  const PopUpDivider();
+
   @override
   State<StatefulWidget> createState() {
     return PopUpDividerState();

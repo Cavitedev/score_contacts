@@ -7,4 +7,7 @@ class ContactsLoading with _$ContactsLoading{
   const factory ContactsLoading.loadingContacts({int? amount}) = _LoadingContacts;
 
   const factory ContactsLoading.deletingContacts({required int amount}) = _DeletingContacts;
+
+  const factory ContactsLoading.callingNumber({required String number}) = _CallingNumber;
+
 }
