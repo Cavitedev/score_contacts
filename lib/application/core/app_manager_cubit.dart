@@ -53,7 +53,7 @@ class AppManagerCubit extends Cubit<AppManagerState>
       await channel.invokeMethod("getSystemRegion") as String;
       emit(state.copyWith(region: region));
     } else {
-      final String? region = window.locale?.countryCode;
+      final String? region = window.locale.countryCode;
       emit(state.copyWith(region: region!));
       WidgetsBinding.instance?.addObserver(this);
     }
@@ -65,7 +65,7 @@ class AppManagerCubit extends Cubit<AppManagerState>
     super.didChangeLocales(locales);
 
     //Removing last ?. breaks the code
-    final String? region = WidgetsBinding.instance?.window.locale?.countryCode;
+    final String? region = WidgetsBinding.instance?.window.locale.countryCode;
     if (region != null) {
       emit(state.copyWith(region: region));
     }
