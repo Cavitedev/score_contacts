@@ -33,9 +33,8 @@ class ContactRow extends StatelessWidget {
           contactWatcherBloc.add(
               ContactWatcherEvent.toggleSelectionContact(selectionContact));
         } else {
-          context.router.push(r.ViewContactPageRoute(
-              contact: selectionContact.contact));
-
+          context.router
+              .push(r.ViewContactPageRoute(contact: selectionContact.contact));
         }
       },
       onLongPress: () {
@@ -54,12 +53,14 @@ class ContactRow extends StatelessWidget {
         child: Row(
           children: <Widget>[
             CircleAvatar(
+              key: UniqueKey(),
               backgroundColor: selectionContact.isSelected
                   ? Colors.teal[200]
                   : Colors.purple[200],
-              foregroundImage:
-                  _requiresImage(urlContact) ? NetworkImage(urlContact!) : null,
-              onForegroundImageError: _requiresImage(urlContact)
+              foregroundImage: _doesRequiresImage(urlContact)
+                  ? NetworkImage(urlContact!)
+                  : null,
+              onForegroundImageError: _doesRequiresImage(urlContact)
                   ? (_, ex) {
                       FlushbarHelper.createError(
                               message: AppLocalization.of(context)
@@ -97,7 +98,8 @@ class ContactRow extends StatelessWidget {
     );
   }
 
-  bool _requiresImage(String? urlContact) => urlContact != null && !selectionContact.isSelected;
+  bool _doesRequiresImage(String? urlContact) =>
+      urlContact != null && !selectionContact.isSelected;
 
   Widget _buildNameWithHints(BuildContext context) {
     if (selectionContact.filterText == null) {
