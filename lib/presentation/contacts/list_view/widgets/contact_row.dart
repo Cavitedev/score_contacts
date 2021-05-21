@@ -24,7 +24,7 @@ class ContactRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String? urlContact = selectionContact.contact.contactImage?.url;
+    final String? urlContact = selectionContact.contact.contactImage?.url;
     return InkWell(
       onTap: () {
         final contactWatcherBloc = context.read<ContactWatcherBloc>();
@@ -33,9 +33,9 @@ class ContactRow extends StatelessWidget {
           contactWatcherBloc.add(
               ContactWatcherEvent.toggleSelectionContact(selectionContact));
         } else {
-          context.router.push(r.AddContactPageRoute(
-              contact: selectionContact.contact, isEdditing: true));
-          ;
+          context.router.push(r.ViewContactPageRoute(
+              contact: selectionContact.contact));
+
         }
       },
       onLongPress: () {
@@ -58,8 +58,8 @@ class ContactRow extends StatelessWidget {
                   ? Colors.teal[200]
                   : Colors.purple[200],
               foregroundImage:
-                  urlContact != null ? NetworkImage(urlContact) : null,
-              onForegroundImageError: urlContact != null
+                  _requiresImage(urlContact) ? NetworkImage(urlContact!) : null,
+              onForegroundImageError: _requiresImage(urlContact)
                   ? (_, ex) {
                       FlushbarHelper.createError(
                               message: AppLocalization.of(context)
@@ -96,6 +96,8 @@ class ContactRow extends StatelessWidget {
       ),
     );
   }
+
+  bool _requiresImage(String? urlContact) => urlContact != null && !selectionContact.isSelected;
 
   Widget _buildNameWithHints(BuildContext context) {
     if (selectionContact.filterText == null) {
@@ -166,7 +168,7 @@ class ContactRow extends StatelessWidget {
   void _popUpItems(BuildContext context, ContactActorBloc contactActorBloc,
       ContactWatcherBloc contactWatcherBloc) {
     final Offset offset =
-        (context.findRenderObject() as RenderBox).localToGlobal(Offset.zero);
+        (context.findRenderObject()! as RenderBox).localToGlobal(Offset.zero);
     const rowHeight = 60;
     showMenu(
         context: context,

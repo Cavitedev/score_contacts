@@ -8,4 +8,5 @@ class ContactActorEvent with _$ContactActorEvent{
 
   const factory ContactActorEvent.callContact(Contact contact) = _CallNumber;
 
+
 }

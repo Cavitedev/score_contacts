@@ -17,7 +17,7 @@ class SelectedContactsRowBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int contactsAmount = selectionContacts.selectedContactsAmount();
+    final int contactsAmount = selectionContacts.selectedContactsAmount();
     return Row(
       children: [
         IconButton(

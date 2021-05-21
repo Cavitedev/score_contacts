@@ -13,13 +13,13 @@ class ContactPopUp {
   final ContactActorBloc actorBloc;
   final ContactWatcherBloc watcherBloc;
 
-  const ContactPopUp(
-      {required this.context,
-      required this.selectionContact,
-      required this.actorBloc,
-      required this.watcherBloc});
+  const ContactPopUp({required this.context,
+    required this.selectionContact,
+    required this.actorBloc,
+    required this.watcherBloc});
 
-  List<PopupMenuEntry> popUpItems() => [
+  List<PopupMenuEntry> popUpItems() =>
+      [
         const PopUpDivider(),
         _selectWidget(),
         const PopUpDivider(),
@@ -35,68 +35,74 @@ class ContactPopUp {
   PopUpWidget _selectWidget() {
     return PopUpWidget(
         addedWidget: InkPopUpButton(
-      onTap: () {
-        watcherBloc
-            .add(ContactWatcherEvent.toggleSelectionContact(selectionContact));
-        context.router.pop();
-      },
-      text: AppLocalization.of(context).translate("select"),
-    ));
+          onTap: () {
+            watcherBloc
+                .add(
+                ContactWatcherEvent.toggleSelectionContact(selectionContact));
+            context.router.pop();
+          },
+          text: AppLocalization.of(context).translate("select"),
+        ));
   }
 
   PopUpWidget _viewWidget() {
     return PopUpWidget(
         addedWidget: InkPopUpButton(
-      onTap: () {},
-      text: AppLocalization.of(context).translate("view"),
-    ));
+          onTap: () {
+            context.router.push(
+                r.ViewContactPageRoute(contact: selectionContact.contact));
+          },
+          text: AppLocalization.of(context).translate("view"),
+        ));
   }
 
   PopUpWidget _editWidget() {
     return PopUpWidget(
         addedWidget: InkPopUpButton(
-      onTap: () {
-        context.router
-            .push(r.AddContactPageRoute(contact: selectionContact.contact));
-      },
-      text: AppLocalization.of(context).translate("edit"),
-    ));
+          onTap: () {
+            context.router
+                .push(r.AddContactPageRoute(contact: selectionContact.contact));
+          },
+          text: AppLocalization.of(context).translate("edit"),
+        ));
   }
 
   PopUpWidget _deleteWidget() {
     return PopUpWidget(
         addedWidget: InkPopUpButton(
-      onTap: () {
-        showDialog(
-            context: context,
-            builder: (context) => AlertDialogueCancelOK(
-                  title: AppLocalization.of(context).translate(
-                      "confirm_delection",
-                      args: [selectionContact.contact.getFullName()]),
-                  onSubmit: () {
-                    actorBloc.add(ContactActorEvent.delete(
-                        contactList: [selectionContact.contact]));
-                    context.router.popUntil((route) =>
+          onTap: () {
+            showDialog(
+                context: context,
+                builder: (context) =>
+                    AlertDialogueCancelOK(
+                      title: AppLocalization.of(context).translate(
+                          "confirm_delection",
+                          args: [selectionContact.contact.getFullName()]),
+                      onSubmit: () {
+                        actorBloc.add(ContactActorEvent.delete(
+                            contactList: [selectionContact.contact]));
+                        context.router.popUntil((route) =>
                         route.settings.name == r.ContactListRoute.name);
-                  },
-                  onCancel: () {
-                    context.router.popUntil((route) =>
+                      },
+                      onCancel: () {
+                        context.router.popUntil((route) =>
                         route.settings.name == r.ContactListRoute.name);
-                  },
-                ));
-      },
-      text: AppLocalization.of(context).translate("delete"),
-    ));
+                      },
+                    ));
+          },
+          text: AppLocalization.of(context).translate("delete"),
+        ));
   }
 
   PopUpWidget _callWidget() {
     return PopUpWidget(
         addedWidget: InkPopUpButton(
-      onTap: () {
-        actorBloc.add(ContactActorEvent.callContact(selectionContact.contact));
-      },
-      text: AppLocalization.of(context).translate("call"),
-    ));
+          onTap: () {
+            actorBloc.add(
+                ContactActorEvent.callContact(selectionContact.contact));
+          },
+          text: AppLocalization.of(context).translate("call"),
+        ));
   }
 }
 
@@ -121,7 +127,10 @@ class InkPopUpButton extends StatelessWidget {
           constraints: const BoxConstraints(minHeight: 40, minWidth: 400),
           child: Text(
             text,
-            style: Theme.of(context).textTheme.subtitle2,
+            style: Theme
+                .of(context)
+                .textTheme
+                .subtitle2,
           )),
     );
   }
