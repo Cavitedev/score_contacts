@@ -27,6 +27,12 @@ class _$ContactsLoadingTearOff {
       amount: amount,
     );
   }
+
+  _CallingNumber callingNumber({required String number}) {
+    return _CallingNumber(
+      number: number,
+    );
+  }
 }
 
 /// @nodoc
@@ -38,12 +44,14 @@ mixin _$ContactsLoading {
   TResult when<TResult extends Object?>({
     required TResult Function(int? amount) loadingContacts,
     required TResult Function(int amount) deletingContacts,
+    required TResult Function(String number) callingNumber,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int? amount)? loadingContacts,
     TResult Function(int amount)? deletingContacts,
+    TResult Function(String number)? callingNumber,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,12 +59,14 @@ mixin _$ContactsLoading {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadingContacts value) loadingContacts,
     required TResult Function(_DeletingContacts value) deletingContacts,
+    required TResult Function(_CallingNumber value) callingNumber,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadingContacts value)? loadingContacts,
     TResult Function(_DeletingContacts value)? deletingContacts,
+    TResult Function(_CallingNumber value)? callingNumber,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -146,6 +156,7 @@ class _$_LoadingContacts implements _LoadingContacts {
   TResult when<TResult extends Object?>({
     required TResult Function(int? amount) loadingContacts,
     required TResult Function(int amount) deletingContacts,
+    required TResult Function(String number) callingNumber,
   }) {
     return loadingContacts(amount);
   }
@@ -155,6 +166,7 @@ class _$_LoadingContacts implements _LoadingContacts {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int? amount)? loadingContacts,
     TResult Function(int amount)? deletingContacts,
+    TResult Function(String number)? callingNumber,
     required TResult orElse(),
   }) {
     if (loadingContacts != null) {
@@ -168,6 +180,7 @@ class _$_LoadingContacts implements _LoadingContacts {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadingContacts value) loadingContacts,
     required TResult Function(_DeletingContacts value) deletingContacts,
+    required TResult Function(_CallingNumber value) callingNumber,
   }) {
     return loadingContacts(this);
   }
@@ -177,6 +190,7 @@ class _$_LoadingContacts implements _LoadingContacts {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadingContacts value)? loadingContacts,
     TResult Function(_DeletingContacts value)? deletingContacts,
+    TResult Function(_CallingNumber value)? callingNumber,
     required TResult orElse(),
   }) {
     if (loadingContacts != null) {
@@ -262,6 +276,7 @@ class _$_DeletingContacts implements _DeletingContacts {
   TResult when<TResult extends Object?>({
     required TResult Function(int? amount) loadingContacts,
     required TResult Function(int amount) deletingContacts,
+    required TResult Function(String number) callingNumber,
   }) {
     return deletingContacts(amount);
   }
@@ -271,6 +286,7 @@ class _$_DeletingContacts implements _DeletingContacts {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int? amount)? loadingContacts,
     TResult Function(int amount)? deletingContacts,
+    TResult Function(String number)? callingNumber,
     required TResult orElse(),
   }) {
     if (deletingContacts != null) {
@@ -284,6 +300,7 @@ class _$_DeletingContacts implements _DeletingContacts {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadingContacts value) loadingContacts,
     required TResult Function(_DeletingContacts value) deletingContacts,
+    required TResult Function(_CallingNumber value) callingNumber,
   }) {
     return deletingContacts(this);
   }
@@ -293,6 +310,7 @@ class _$_DeletingContacts implements _DeletingContacts {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadingContacts value)? loadingContacts,
     TResult Function(_DeletingContacts value)? deletingContacts,
+    TResult Function(_CallingNumber value)? callingNumber,
     required TResult orElse(),
   }) {
     if (deletingContacts != null) {
@@ -308,5 +326,125 @@ abstract class _DeletingContacts implements ContactsLoading {
   int get amount => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$DeletingContactsCopyWith<_DeletingContacts> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$CallingNumberCopyWith<$Res> {
+  factory _$CallingNumberCopyWith(
+          _CallingNumber value, $Res Function(_CallingNumber) then) =
+      __$CallingNumberCopyWithImpl<$Res>;
+  $Res call({String number});
+}
+
+/// @nodoc
+class __$CallingNumberCopyWithImpl<$Res>
+    extends _$ContactsLoadingCopyWithImpl<$Res>
+    implements _$CallingNumberCopyWith<$Res> {
+  __$CallingNumberCopyWithImpl(
+      _CallingNumber _value, $Res Function(_CallingNumber) _then)
+      : super(_value, (v) => _then(v as _CallingNumber));
+
+  @override
+  _CallingNumber get _value => super._value as _CallingNumber;
+
+  @override
+  $Res call({
+    Object? number = freezed,
+  }) {
+    return _then(_CallingNumber(
+      number: number == freezed
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_CallingNumber implements _CallingNumber {
+  const _$_CallingNumber({required this.number});
+
+  @override
+  final String number;
+
+  @override
+  String toString() {
+    return 'ContactsLoading.callingNumber(number: $number)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _CallingNumber &&
+            (identical(other.number, number) ||
+                const DeepCollectionEquality().equals(other.number, number)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(number);
+
+  @JsonKey(ignore: true)
+  @override
+  _$CallingNumberCopyWith<_CallingNumber> get copyWith =>
+      __$CallingNumberCopyWithImpl<_CallingNumber>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int? amount) loadingContacts,
+    required TResult Function(int amount) deletingContacts,
+    required TResult Function(String number) callingNumber,
+  }) {
+    return callingNumber(number);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int? amount)? loadingContacts,
+    TResult Function(int amount)? deletingContacts,
+    TResult Function(String number)? callingNumber,
+    required TResult orElse(),
+  }) {
+    if (callingNumber != null) {
+      return callingNumber(number);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadingContacts value) loadingContacts,
+    required TResult Function(_DeletingContacts value) deletingContacts,
+    required TResult Function(_CallingNumber value) callingNumber,
+  }) {
+    return callingNumber(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadingContacts value)? loadingContacts,
+    TResult Function(_DeletingContacts value)? deletingContacts,
+    TResult Function(_CallingNumber value)? callingNumber,
+    required TResult orElse(),
+  }) {
+    if (callingNumber != null) {
+      return callingNumber(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CallingNumber implements ContactsLoading {
+  const factory _CallingNumber({required String number}) = _$_CallingNumber;
+
+  String get number => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$CallingNumberCopyWith<_CallingNumber> get copyWith =>
       throw _privateConstructorUsedError;
 }
