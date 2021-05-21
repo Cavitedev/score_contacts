@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/contacts/contact_actor/contact_actor_bloc.dart';
 import 'package:scorecontacts/application/contacts/contact_watcher/contact_watcher_bloc.dart';
 import 'package:scorecontacts/application/contacts/selection_contact.dart';
+import 'package:scorecontacts/core/app_localization.dart';
 import 'package:scorecontacts/presentation/core/widgets/alert_dialogue_cancel_ok.dart';
 
 class SelectedContactsRowBar extends StatelessWidget {
@@ -86,11 +87,7 @@ class SelectedContactsRowBar extends StatelessWidget {
               PopupMenuItem(
                 value: "Select_all",
                 child: Text(
-                  "Select all",
-                  style: Theme
-                      .of(context)
-                      .textTheme
-                      .subtitle1,
+                  AppLocalization.of(context).translate("select_all"),
                 ),
               )
             ];

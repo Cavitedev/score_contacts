@@ -11,13 +11,20 @@ class ViewContactPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          IconButton(
-            icon: Icon(Icons.menu),
-            onPressed: (){},
+          PopupMenuButton(
+            itemBuilder: (BuildContext context) {
+              return [
+                PopupMenuItem(
+                  value: "Delete",
+                  child: Text(
+                    "Delete",
+                  ),
+                )
+              ];
+            },
           )
         ],
       ),
-
     );
   }
 }
