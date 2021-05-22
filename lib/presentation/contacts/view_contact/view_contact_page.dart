@@ -1,8 +1,13 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:scorecontacts/application/contacts/selection_contact.dart';
+import 'package:scorecontacts/core/app_constants.dart';
 import 'package:scorecontacts/core/app_localization.dart';
 import 'package:scorecontacts/domain/user/contacts_data/contact.dart';
+import 'package:scorecontacts/presentation/contacts/view_contact/widgets/phone_widgets.dart';
 import 'package:scorecontacts/presentation/contacts/widgets/contact_circle_avatar.dart';
+import 'package:scorecontacts/presentation/routes/router.gr.dart' as r;
 
 class ViewContactPage extends StatelessWidget {
   final Contact contact;
@@ -29,12 +34,33 @@ class ViewContactPage extends StatelessWidget {
         ],
       ),
       body: ListView(
-        children: [_buildImageOrAvatar()],
+        children: [
+          _buildImageOrAvatar(),
+          const SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding: horizontalNormalPadding,
+            child: Text(
+              contact.getFullName(),
+              style: Theme.of(context).textTheme.headline3,
+            ),
+          ),
+          ...listOfPhones(contact),
+        ],
       ),
-
-      floatingActionButton: FloatingActionButton.extended(onPressed: () {  },
-      label: Text(AppLocalization.of(context).translate("edit"), style: Theme.of(context).textTheme.headline4,),
-      icon: const Icon(Icons.edit, color: Colors.white,),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          context.router.push(r.AddContactPageRoute(contact: contact));
+        },
+        label: Text(
+          AppLocalization.of(context).translate("edit"),
+          style: Theme.of(context).textTheme.headline4,
+        ),
+        icon: const Icon(
+          Icons.edit,
+          color: Colors.white,
+        ),
       ),
     );
   }
@@ -61,3 +87,6 @@ class ViewContactPage extends StatelessWidget {
     );
   }
 }
+
+
+

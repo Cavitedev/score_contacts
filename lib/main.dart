@@ -51,7 +51,57 @@ class MyApp extends StatelessWidget {
           ],
           themeMode: state.themeMode,
           theme: lightTheme,
-          darkTheme: darkTheme,
+          darkTheme: ThemeData.dark().copyWith(
+            brightness: Brightness.dark,
+            scaffoldBackgroundColor: const Color.fromRGBO(30, 30, 30, 1),
+            dialogBackgroundColor: const Color.fromRGBO(35, 35, 35, 1),
+            primaryColor: Colors.blue[800],
+            accentColor: Colors.blueGrey[100],
+            buttonColor: Colors.blue[900],
+            floatingActionButtonTheme: FloatingActionButtonThemeData(
+              backgroundColor: Colors.blue[900],
+            ),
+            popupMenuTheme: const PopupMenuThemeData(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(8)),
+              ),
+              elevation: 4,
+            ),
+            dividerColor: const Color.fromRGBO(20, 20, 20, 1),
+            highlightColor: Colors.blueAccent[700],
+            focusColor: Colors.grey[600],
+            textSelectionTheme: TextSelectionThemeData(
+                cursorColor: Colors.blue[700],
+                selectionColor: const Color.fromRGBO(40, 40, 40, 1),
+                selectionHandleColor: Colors.blue[600]),
+            accentIconTheme: IconThemeData(
+              color: Colors.lightBlueAccent[700],
+              size: 32
+
+            ),
+            disabledColor: Colors.grey[500],
+            inputDecorationTheme: const InputDecorationTheme(
+              border: InputBorder.none,
+            ),
+            iconTheme: const IconThemeData(color: Colors.grey, size: 32),
+            textTheme: TextTheme(
+                headline2: const TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black),
+                headline3: const TextStyle(fontSize: 26, color: Colors.white),
+                headline4: const TextStyle(fontSize: 24, color: Colors.white),
+                headline5: const TextStyle(fontSize: 16, color: Colors.white),
+                headline6: const TextStyle(
+                    fontSize: 14, letterSpacing: .5, color: Colors.white),
+                subtitle1: const TextStyle(
+                    fontSize: 16, letterSpacing: .5, color: Colors.white),
+                subtitle2: const TextStyle(
+                    fontSize: 14, letterSpacing: .5, color: Colors.white),
+                caption: TextStyle(fontSize: 15, color: Colors.grey[500]),
+                button: TextStyle(fontSize: 20, color: Colors.blue[50])),
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+          ),
         ),
       ),
     );

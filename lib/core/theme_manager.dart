@@ -32,6 +32,7 @@ ThemeData lightTheme = ThemeData.light().copyWith(
     border: InputBorder.none,
   ),
   iconTheme: const IconThemeData(color: Colors.grey, size: 32),
+  accentIconTheme: IconThemeData(color: Colors.lightBlueAccent[700], size: 32),
   textTheme: TextTheme(
       headline2: const TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
       headline3: const TextStyle(fontSize: 26, color: Colors.white),
@@ -71,6 +72,7 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
       cursorColor: Colors.blue[700],
       selectionColor: const Color.fromRGBO(40, 40, 40, 1),
       selectionHandleColor: Colors.blue[600]),
+  accentIconTheme: IconThemeData(color: Colors.lightBlueAccent[700], size: 32),
   disabledColor: Colors.grey[500],
   inputDecorationTheme: const InputDecorationTheme(
     border: InputBorder.none,

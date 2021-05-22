@@ -62,6 +62,7 @@ class _ImagePickUpState extends State<ImagePickUp> {
                 onTap: () async {
                   final PickedFile? photo =
                       await imagePicker.getImage(source: ImageSource.gallery);
+
                   _onGetImage(photo);
                 },
               ),
