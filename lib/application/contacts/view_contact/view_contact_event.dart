@@ -6,4 +6,6 @@ class ViewContactEvent with _$ViewContactEvent {
       {required Contact contact, required String countryCode}) = _Initialize;
 
     const factory ViewContactEvent.callNumber(String number) = _CallNumber;
+
+    const factory ViewContactEvent.sendMessage(String number) = _SendMessage;
 }

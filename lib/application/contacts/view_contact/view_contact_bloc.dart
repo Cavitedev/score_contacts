@@ -34,9 +34,25 @@ class ViewContactBloc extends Bloc<ViewContactEvent, ViewContactState> {
             unionState: ViewContactUnionState.callSuccesful(num));
         await launch(callNumUrlLaunch);
       } else {
-        yield state
-            .copyWith(unionState: ViewContactUnionState.callFailure(CallFailure.errorOnCall(num)));
-    }
+        yield state.copyWith(
+            unionState: ViewContactUnionState.callFailure(
+                CallFailure.errorOnCall(num)));
+      }
+    }, sendMessage: (e) async* {
+      final String smsUrlLaunch = "sms:${e.number}";
+      yield state.copyWith(
+          unionState: ViewContactUnionState.actionInProgress(
+              ContactsLoading.sendingMessage(number: e.number)));
+      if (await canLaunch(smsUrlLaunch)) {
+          yield state.copyWith(
+          unionState: const ViewContactUnionState.initial()
+        );
+        await launch(smsUrlLaunch);
+
+      } else {
+        yield state.copyWith(
+            unionState: ViewContactUnionState.messageFailure(e.number));
+      }
     });
   }
 }

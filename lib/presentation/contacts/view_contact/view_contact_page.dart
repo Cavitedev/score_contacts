@@ -29,19 +29,25 @@ class ViewContactPage extends StatelessWidget {
           listenWhen: (p, n) => p.unionState != n.unionState,
           listener: (context, state) {
             state.unionState.map(
-                initial: (_) {},
-                actionInProgress: (_) {},
-                callSuccesful: (state) => FlushbarHelper.createSuccess(
-                      duration: const Duration(seconds: 4),
-                      message: AppLocalization.of(context).translate(
-                        "success_call",
-                        args: [state.number],
-                      ),
-                    ).show(context),
-                callFailure: (state) => FlushbarHelper.createError(
-                      duration: const Duration(seconds: 12),
-                      message: getCallFailureMessage(context, state.failure),
-                    ).show(context));
+              initial: (_) {},
+              actionInProgress: (_) {},
+              callSuccesful: (state) => FlushbarHelper.createSuccess(
+                duration: const Duration(seconds: 4),
+                message: AppLocalization.of(context).translate(
+                  "success_call",
+                  args: [state.number],
+                ),
+              ).show(context),
+              callFailure: (state) => FlushbarHelper.createError(
+                duration: const Duration(seconds: 12),
+                message: getCallFailureMessage(context, state.failure),
+              ).show(context),
+            messageFailure: (f) => FlushbarHelper.createError(
+               duration: const Duration(seconds: 12),
+                message: AppLocalization.of(context).translate("error_message", args: [f.number]),
+            ).show(context),
+            
+            );
           },
           builder: (BuildContext context, state) {
             return Stack(

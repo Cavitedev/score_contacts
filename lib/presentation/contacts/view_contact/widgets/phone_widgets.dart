@@ -46,7 +46,12 @@ class PhoneListTile extends StatelessWidget {
             iconSize: IconTheme.of(context).size ?? 32,
             color: Theme.of(context).accentIconTheme.color,
             icon: const Icon(Icons.message),
-            onPressed: () {},
+            onPressed: () {
+               context
+              .read<ViewContactBloc>()
+              .add(ViewContactEvent.sendMessage(phone.value!));
+
+            },
           ),
         ],
       ),
