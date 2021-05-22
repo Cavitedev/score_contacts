@@ -14,17 +14,14 @@ part 'contact.freezed.dart';
 
 @freezed
 class Contact with _$Contact {
-
-
   const Contact._();
 
-  const factory Contact({
-    required UniqueID id,
-    required NameData nameData,
-    Map<Type, List<ILabelObject>?>? labelObjects,
-    List<Company>? companies,
-    ContactImage? contactImage
-  }) = _Contact;
+  const factory Contact(
+      {required UniqueID id,
+      required NameData nameData,
+      Map<Type, List<ILabelObject>?>? labelObjects,
+      List<Company>? companies,
+      ContactImage? contactImage}) = _Contact;
 
   factory Contact.empty() => Contact(
         id: UniqueID(),
@@ -38,6 +35,22 @@ class Contact with _$Contact {
 
   String? getFirstPhoneNumber() => labelObjects?[Phone]?[0].value;
 
+  Contact fromDatabase(String countryCode) {
+    if (labelObjects == null ||
+        labelObjects![Phone] == null) {
+      return this;
+    }
+
+    final Map<Type, List<ILabelObject>?>? labObj = Map.from(labelObjects!);
+
+    final List<Phone> phones = List.from(labelObjects![Phone]!);
+    labObj![Phone] = phones.map((phone) => phone.fromDatabase(countryCode)).toList();
+
+
+    return this.copyWith(
+      labelObjects: labObj
+    );
+  }
 
   factory Contact.fromStringJson(String jsonStr) {
     final Map<String, dynamic> jsonMap =
@@ -46,7 +59,6 @@ class Contact with _$Contact {
   }
 
   factory Contact.fromMap(Map<String, dynamic> map) {
-
     final List<dynamic>? phones = (map["numbers"] is String)
         ? [map["numbers"]]
         : (map["numbers"] as List<dynamic>?);
@@ -55,7 +67,7 @@ class Contact with _$Contact {
         ? [map["emails"]]
         : map["emails"] as List<dynamic>?;
 
-    final List<dynamic>? companies = (map["companies"] is Map<String,dynamic>)
+    final List<dynamic>? companies = (map["companies"] is Map<String, dynamic>)
         ? [map["companies"]]
         : map["companies"] as List<dynamic>?;
 
@@ -64,7 +76,10 @@ class Contact with _$Contact {
     return Contact(
         id: UniqueID.fromUniqueString(map["id"] as String),
         nameData: NameData.fromFullName(map["name"] as String),
-        companies: companies?.map((compMap) => Company.fromJson(compMap as Map<String, dynamic>)).toList(),
+        companies: companies
+            ?.map(
+                (compMap) => Company.fromJson(compMap as Map<String, dynamic>))
+            .toList(),
         labelObjects: areThereLabelObjects
             ? {
                 if (phones != null)
@@ -97,12 +112,11 @@ class Contact with _$Contact {
     return nameData.toFullName();
   }
 
-  Iterable<T>  getLabelObjectList<T extends ILabelObject>() {
+  Iterable<T> getLabelObjectList<T extends ILabelObject>() {
     return labelObjects![T]!.map((iLabelObject) => iLabelObject as T);
   }
 
-
-  String getDisplayedChar(){
+  String getDisplayedChar() {
     return nameData.firstName?.substring(0, 1).toUpperCase() ?? "";
   }
 
@@ -114,8 +128,7 @@ class Contact with _$Contact {
       return getFullName();
     }
 
-
-    if(isPhoneString(lowerCasePattern)){
+    if (isPhoneString(lowerCasePattern)) {
       for (final Phone phone in getLabelObjectList<Phone>()) {
         if (phone.matches(lowerCasePattern)) {
           return phone.value;
@@ -128,7 +141,6 @@ class Contact with _$Contact {
         return email.value;
       }
     }
-
 
     return null;
   }

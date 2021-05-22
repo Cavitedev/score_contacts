@@ -34,19 +34,8 @@ class AddContactBloc extends Bloc<AddContactEvent, AddContactState> {
       yield e.contactOption.fold(
         () => state,
         (contact) {
-          final List<Phone> phonesList =
-              List<Phone>.from(contact.labelObjects![Phone]!);
-          for (int i = 0; i < phonesList.length; i++) {
-            phonesList[i] = phonesList[i].fromDatabase(e.countryCode);
-          }
-          final Map<Type, List<ILabelObject>> labelObjects =
-              Map.from(contact.labelObjects!);
-          labelObjects[Phone] = phonesList;
-          final Contact sendedContact =
-              contact.copyWith(labelObjects: labelObjects);
-
           return state.copyWith(
-              contact: sendedContact, isEditting: e.isEditting);
+              contact: contact.fromDatabase(e.countryCode), isEditting: e.isEditting);
         },
       );
     }, saved: (e) async* {

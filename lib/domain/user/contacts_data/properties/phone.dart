@@ -30,7 +30,7 @@ class Phone implements ILabelObject {
 
   Phone fromDatabase(String countryCode) {
     return Phone(
-      value: removePrefixOnNumberWhenSameCountry(value!, countryCode),
+      value: removePrefixOnNumberWhenSameCountry(value, countryCode),
       label: label,
       otherLabels: otherLabels,
     );
