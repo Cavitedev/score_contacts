@@ -51,6 +51,7 @@ class ContactDTO with _$ContactDTO {
           .map((phoneLabelObject) {
         return LabelObjectDTO.fromDomain(phoneLabelObject);
       }).toList(),
+      imageUrl: contact.contactImage?.url,
       serverTimeStamp: FieldValue.serverTimestamp(),
     );
   }
