@@ -12,8 +12,9 @@ import 'package:scorecontacts/presentation/contacts/view_contact/widgets/view_ov
 
 class ViewContactPage extends StatelessWidget {
   final Contact contact;
+  final Function onDelete;
 
-  const ViewContactPage({required this.contact});
+  const ViewContactPage({required this.contact, required this.onDelete});
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +32,7 @@ class ViewContactPage extends StatelessWidget {
             state.unionState.map(
               initial: (_) {},
               actionInProgress: (_) {},
+
               callSuccesful: (state) => FlushbarHelper.createSuccess(
                 duration: const Duration(seconds: 4),
                 message: AppLocalization.of(context).translate(
@@ -42,17 +44,17 @@ class ViewContactPage extends StatelessWidget {
                 duration: const Duration(seconds: 12),
                 message: getCallFailureMessage(context, state.failure),
               ).show(context),
-            messageFailure: (f) => FlushbarHelper.createError(
-               duration: const Duration(seconds: 12),
-                message: AppLocalization.of(context).translate("error_message", args: [f.number]),
-            ).show(context),
-            
+              messageFailure: (f) => FlushbarHelper.createError(
+                duration: const Duration(seconds: 12),
+                message: AppLocalization.of(context)
+                    .translate("error_message", args: [f.number]),
+              ).show(context),
             );
           },
           builder: (BuildContext context, state) {
             return Stack(
               children: [
-                ViewContactScaffold(contact: state.contact),
+                ViewContactScaffold(contact: state.contact, onDelete: onDelete,),
                 ViewOverlayProgressIndicator(),
               ],
             );

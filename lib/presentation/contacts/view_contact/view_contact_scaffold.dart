@@ -11,9 +11,11 @@ import 'package:scorecontacts/presentation/routes/router.gr.dart' as r;
 
 class ViewContactScaffold extends StatelessWidget {
   final Contact contact;
+  final Function onDelete;
 
   const ViewContactScaffold({
     required this.contact,
+    required this.onDelete,
     Key? key,
   }) : super(key: key);
 
@@ -23,10 +25,18 @@ class ViewContactScaffold extends StatelessWidget {
       appBar: AppBar(
         actions: [
           PopupMenuButton(
+            onSelected: (selected) {
+              if (selected == "delete") {
+                context.router.popUntil((route) =>
+                    route.settings.name == r.ViewContactPageRoute.name);
+                onDelete.call();
+                context.router.pop();
+              }
+            },
             itemBuilder: (BuildContext context) {
               return [
-                PopupMenuItem(
-                  value: "Delete",
+                const PopupMenuItem(
+                  value: "delete",
                   child: Text(
                     "Delete",
                   ),

@@ -7,6 +7,7 @@ import 'package:meta/meta.dart';
 import 'package:scorecontacts/domain/call/call_failure.dart';
 import 'package:scorecontacts/domain/user/contacts_data/contact.dart';
 import 'package:scorecontacts/domain/user/contacts_data/contacts_loading.dart';
+import 'package:scorecontacts/domain/user/contacts_data/i_contact_repository.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 part 'view_contact_bloc.freezed.dart';
@@ -15,7 +16,9 @@ part 'view_contact_state.dart';
 
 @injectable
 class ViewContactBloc extends Bloc<ViewContactEvent, ViewContactState> {
-  ViewContactBloc() : super(ViewContactState.initial());
+  final IContactsRepository repository;
+
+  ViewContactBloc(this.repository) : super(ViewContactState.initial());
 
   @override
   Stream<ViewContactState> mapEventToState(ViewContactEvent event) async* {
@@ -44,11 +47,8 @@ class ViewContactBloc extends Bloc<ViewContactEvent, ViewContactState> {
           unionState: ViewContactUnionState.actionInProgress(
               ContactsLoading.sendingMessage(number: e.number)));
       if (await canLaunch(smsUrlLaunch)) {
-          yield state.copyWith(
-          unionState: const ViewContactUnionState.initial()
-        );
+        yield state.copyWith(unionState: const ViewContactUnionState.initial());
         await launch(smsUrlLaunch);
-
       } else {
         yield state.copyWith(
             unionState: ViewContactUnionState.messageFailure(e.number));

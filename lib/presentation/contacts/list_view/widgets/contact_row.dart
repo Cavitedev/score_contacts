@@ -24,15 +24,21 @@ class ContactRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
+      onTap: ()  {
         final contactWatcherBloc = context.read<ContactWatcherBloc>();
 
         if (selectionEnabled) {
           contactWatcherBloc.add(
               ContactWatcherEvent.toggleSelectionContact(selectionContact));
         } else {
-          context.router
-              .push(r.ViewContactPageRoute(contact: selectionContact.contact));
+           context.router.push(r.ViewContactPageRoute(
+            contact: selectionContact.contact,
+            onDelete: () {
+              context.read<ContactActorBloc>().add(ContactActorEvent.delete(
+                  contactList: [selectionContact.contact]));
+            },
+          ));
+
         }
       },
       onLongPress: () {
@@ -60,7 +66,6 @@ class ContactRow extends StatelessWidget {
       ),
     );
   }
-
 
   Widget _buildNameWithHints(BuildContext context) {
     if (selectionContact.filterText == null) {

@@ -19,6 +19,7 @@ class ViewContactState with _$ViewContactState {
 class ViewContactUnionState with _$ViewContactUnionState {
   const factory ViewContactUnionState.initial() = _Initial;
 
+
   const factory ViewContactUnionState.actionInProgress(ContactsLoading loadingMsg) =
       _ActionInProgress;
 
@@ -27,7 +28,6 @@ class ViewContactUnionState with _$ViewContactUnionState {
 
   const factory ViewContactUnionState.callFailure(CallFailure failure) =
       _CallFailure;
-
 
   const factory ViewContactUnionState.messageFailure(String number) = _MessageFailure;
 }
