@@ -4,4 +4,6 @@ part of 'view_contact_bloc.dart';
 class ViewContactEvent with _$ViewContactEvent {
   const factory ViewContactEvent.initialize(
       {required Contact contact, required String countryCode}) = _Initialize;
+
+    const factory ViewContactEvent.callNumber(String number) = _CallNumber;
 }

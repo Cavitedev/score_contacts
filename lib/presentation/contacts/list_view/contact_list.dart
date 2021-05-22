@@ -7,6 +7,7 @@ import 'package:scorecontacts/application/contacts/contact_actor/contact_actor_b
 import 'package:scorecontacts/application/contacts/contact_watcher/contact_watcher_bloc.dart';
 import 'package:scorecontacts/core/app_localization.dart';
 import 'package:scorecontacts/core/injection/injection.dart';
+import 'package:scorecontacts/domain/call/call_failure.dart';
 import 'package:scorecontacts/domain/user/contacts_data/contacts_failure.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/actor_overlay_progress_indicator.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/contact_list_scaffold.dart';
@@ -15,7 +16,6 @@ import 'package:scorecontacts/presentation/core/widgets/circular_progress_indica
 import 'package:scorecontacts/presentation/routes/router.gr.dart' as r;
 
 class ContactList extends StatelessWidget {
-  get predicate => null;
 
   @override
   Widget build(BuildContext context) {
@@ -75,18 +75,11 @@ class ContactList extends StatelessWidget {
                             args: [state.number],
                           ),
                         ).show(context),
-                    callFailure: (state) => state.failure.map(
-                          notCallNumberFound: (f) => FlushbarHelper.createError(
+                    callFailure: (state) =>  FlushbarHelper.createError(
                             duration: const Duration(seconds: 12),
-                            message: AppLocalization.of(context)
-                                .translate("number_not_found"),
+                            message: getCallFailureMessage(context, state.failure),
                           ).show(context),
-                          errorOnCall: (f) => FlushbarHelper.createError(
-                            duration: const Duration(seconds: 12),
-                            message: AppLocalization.of(context)
-                                .translate("error_call", args: [f.number.toString()]),
-                          ).show(context),
-                        ),
+
                     orElse: () {});
               },
             ),
