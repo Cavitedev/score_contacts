@@ -25,7 +25,8 @@ class AddContactScaffold extends StatelessWidget {
         ),
         leading: IconButton(
           onPressed: () {
-            context.router.popUntil((route) => route.settings.name == r.ContactListRoute.name);
+            context.router.popUntil((route) => route.settings.name == r.AddContactPageRoute.name);
+            context.router.pop();
           },
           icon: const Icon(Icons.close),
         ),
