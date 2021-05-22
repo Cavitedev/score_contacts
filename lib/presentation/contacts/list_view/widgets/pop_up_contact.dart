@@ -49,7 +49,7 @@ class ContactPopUp {
     return PopUpWidget(
         addedWidget: InkPopUpButton(
           onTap: () {
-            context.router.push(
+            context.router.popAndPush(
                 r.ViewContactPageRoute(contact: selectionContact.contact));
           },
           text: AppLocalization.of(context).translate("view"),
@@ -61,7 +61,7 @@ class ContactPopUp {
         addedWidget: InkPopUpButton(
           onTap: () {
             context.router
-                .push(r.AddContactPageRoute(contact: selectionContact.contact));
+                .popAndPush(r.AddContactPageRoute(contact: selectionContact.contact));
           },
           text: AppLocalization.of(context).translate("edit"),
         ));
