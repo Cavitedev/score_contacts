@@ -35,6 +35,13 @@ class _$ViewContactEventTearOff {
       number,
     );
   }
+
+  _SendMessageThroughApp sendMessageThroughApp(String number, String app) {
+    return _SendMessageThroughApp(
+      number,
+      app,
+    );
+  }
 }
 
 /// @nodoc
@@ -47,6 +54,7 @@ mixin _$ViewContactEvent {
     required TResult Function(Contact contact, String countryCode) initialize,
     required TResult Function(String number) callNumber,
     required TResult Function(String number) sendMessage,
+    required TResult Function(String number, String app) sendMessageThroughApp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,6 +62,7 @@ mixin _$ViewContactEvent {
     TResult Function(Contact contact, String countryCode)? initialize,
     TResult Function(String number)? callNumber,
     TResult Function(String number)? sendMessage,
+    TResult Function(String number, String app)? sendMessageThroughApp,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -62,6 +71,8 @@ mixin _$ViewContactEvent {
     required TResult Function(_Initialize value) initialize,
     required TResult Function(_CallNumber value) callNumber,
     required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_SendMessageThroughApp value)
+        sendMessageThroughApp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +80,7 @@ mixin _$ViewContactEvent {
     TResult Function(_Initialize value)? initialize,
     TResult Function(_CallNumber value)? callNumber,
     TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_SendMessageThroughApp value)? sendMessageThroughApp,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -181,6 +193,7 @@ class _$_Initialize implements _Initialize {
     required TResult Function(Contact contact, String countryCode) initialize,
     required TResult Function(String number) callNumber,
     required TResult Function(String number) sendMessage,
+    required TResult Function(String number, String app) sendMessageThroughApp,
   }) {
     return initialize(contact, countryCode);
   }
@@ -191,6 +204,7 @@ class _$_Initialize implements _Initialize {
     TResult Function(Contact contact, String countryCode)? initialize,
     TResult Function(String number)? callNumber,
     TResult Function(String number)? sendMessage,
+    TResult Function(String number, String app)? sendMessageThroughApp,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -205,6 +219,8 @@ class _$_Initialize implements _Initialize {
     required TResult Function(_Initialize value) initialize,
     required TResult Function(_CallNumber value) callNumber,
     required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_SendMessageThroughApp value)
+        sendMessageThroughApp,
   }) {
     return initialize(this);
   }
@@ -215,6 +231,7 @@ class _$_Initialize implements _Initialize {
     TResult Function(_Initialize value)? initialize,
     TResult Function(_CallNumber value)? callNumber,
     TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_SendMessageThroughApp value)? sendMessageThroughApp,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -303,6 +320,7 @@ class _$_CallNumber implements _CallNumber {
     required TResult Function(Contact contact, String countryCode) initialize,
     required TResult Function(String number) callNumber,
     required TResult Function(String number) sendMessage,
+    required TResult Function(String number, String app) sendMessageThroughApp,
   }) {
     return callNumber(number);
   }
@@ -313,6 +331,7 @@ class _$_CallNumber implements _CallNumber {
     TResult Function(Contact contact, String countryCode)? initialize,
     TResult Function(String number)? callNumber,
     TResult Function(String number)? sendMessage,
+    TResult Function(String number, String app)? sendMessageThroughApp,
     required TResult orElse(),
   }) {
     if (callNumber != null) {
@@ -327,6 +346,8 @@ class _$_CallNumber implements _CallNumber {
     required TResult Function(_Initialize value) initialize,
     required TResult Function(_CallNumber value) callNumber,
     required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_SendMessageThroughApp value)
+        sendMessageThroughApp,
   }) {
     return callNumber(this);
   }
@@ -337,6 +358,7 @@ class _$_CallNumber implements _CallNumber {
     TResult Function(_Initialize value)? initialize,
     TResult Function(_CallNumber value)? callNumber,
     TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_SendMessageThroughApp value)? sendMessageThroughApp,
     required TResult orElse(),
   }) {
     if (callNumber != null) {
@@ -423,6 +445,7 @@ class _$_SendMessage implements _SendMessage {
     required TResult Function(Contact contact, String countryCode) initialize,
     required TResult Function(String number) callNumber,
     required TResult Function(String number) sendMessage,
+    required TResult Function(String number, String app) sendMessageThroughApp,
   }) {
     return sendMessage(number);
   }
@@ -433,6 +456,7 @@ class _$_SendMessage implements _SendMessage {
     TResult Function(Contact contact, String countryCode)? initialize,
     TResult Function(String number)? callNumber,
     TResult Function(String number)? sendMessage,
+    TResult Function(String number, String app)? sendMessageThroughApp,
     required TResult orElse(),
   }) {
     if (sendMessage != null) {
@@ -447,6 +471,8 @@ class _$_SendMessage implements _SendMessage {
     required TResult Function(_Initialize value) initialize,
     required TResult Function(_CallNumber value) callNumber,
     required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_SendMessageThroughApp value)
+        sendMessageThroughApp,
   }) {
     return sendMessage(this);
   }
@@ -457,6 +483,7 @@ class _$_SendMessage implements _SendMessage {
     TResult Function(_Initialize value)? initialize,
     TResult Function(_CallNumber value)? callNumber,
     TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_SendMessageThroughApp value)? sendMessageThroughApp,
     required TResult orElse(),
   }) {
     if (sendMessage != null) {
@@ -472,6 +499,145 @@ abstract class _SendMessage implements ViewContactEvent {
   String get number => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$SendMessageCopyWith<_SendMessage> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$SendMessageThroughAppCopyWith<$Res> {
+  factory _$SendMessageThroughAppCopyWith(_SendMessageThroughApp value,
+          $Res Function(_SendMessageThroughApp) then) =
+      __$SendMessageThroughAppCopyWithImpl<$Res>;
+  $Res call({String number, String app});
+}
+
+/// @nodoc
+class __$SendMessageThroughAppCopyWithImpl<$Res>
+    extends _$ViewContactEventCopyWithImpl<$Res>
+    implements _$SendMessageThroughAppCopyWith<$Res> {
+  __$SendMessageThroughAppCopyWithImpl(_SendMessageThroughApp _value,
+      $Res Function(_SendMessageThroughApp) _then)
+      : super(_value, (v) => _then(v as _SendMessageThroughApp));
+
+  @override
+  _SendMessageThroughApp get _value => super._value as _SendMessageThroughApp;
+
+  @override
+  $Res call({
+    Object? number = freezed,
+    Object? app = freezed,
+  }) {
+    return _then(_SendMessageThroughApp(
+      number == freezed
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as String,
+      app == freezed
+          ? _value.app
+          : app // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SendMessageThroughApp implements _SendMessageThroughApp {
+  const _$_SendMessageThroughApp(this.number, this.app);
+
+  @override
+  final String number;
+  @override
+  final String app;
+
+  @override
+  String toString() {
+    return 'ViewContactEvent.sendMessageThroughApp(number: $number, app: $app)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _SendMessageThroughApp &&
+            (identical(other.number, number) ||
+                const DeepCollectionEquality().equals(other.number, number)) &&
+            (identical(other.app, app) ||
+                const DeepCollectionEquality().equals(other.app, app)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(number) ^
+      const DeepCollectionEquality().hash(app);
+
+  @JsonKey(ignore: true)
+  @override
+  _$SendMessageThroughAppCopyWith<_SendMessageThroughApp> get copyWith =>
+      __$SendMessageThroughAppCopyWithImpl<_SendMessageThroughApp>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Contact contact, String countryCode) initialize,
+    required TResult Function(String number) callNumber,
+    required TResult Function(String number) sendMessage,
+    required TResult Function(String number, String app) sendMessageThroughApp,
+  }) {
+    return sendMessageThroughApp(number, app);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Contact contact, String countryCode)? initialize,
+    TResult Function(String number)? callNumber,
+    TResult Function(String number)? sendMessage,
+    TResult Function(String number, String app)? sendMessageThroughApp,
+    required TResult orElse(),
+  }) {
+    if (sendMessageThroughApp != null) {
+      return sendMessageThroughApp(number, app);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_CallNumber value) callNumber,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_SendMessageThroughApp value)
+        sendMessageThroughApp,
+  }) {
+    return sendMessageThroughApp(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_CallNumber value)? callNumber,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_SendMessageThroughApp value)? sendMessageThroughApp,
+    required TResult orElse(),
+  }) {
+    if (sendMessageThroughApp != null) {
+      return sendMessageThroughApp(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SendMessageThroughApp implements ViewContactEvent {
+  const factory _SendMessageThroughApp(String number, String app) =
+      _$_SendMessageThroughApp;
+
+  String get number => throw _privateConstructorUsedError;
+  String get app => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$SendMessageThroughAppCopyWith<_SendMessageThroughApp> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
