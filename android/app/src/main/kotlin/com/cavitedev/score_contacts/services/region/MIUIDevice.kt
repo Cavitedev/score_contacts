@@ -4,7 +4,9 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import java.lang.reflect.Method
+import java.io.BufferedReader
+import java.io.IOException
+import java.io.InputStreamReader
 
 object MIUIDevice {
     private fun isIntentResolved(ctx: Context, intent: Intent?): Boolean {
@@ -19,8 +21,15 @@ object MIUIDevice {
     }
 
     fun getRegion(): String {
-        val c = Class.forName("android.os.SystemProperties")
-        val get: Method = c.getMethod("get", String::class.java)
-        return get.invoke(c, "ro.miui.region") as String
+        var ifc: Process? = null
+        return try {
+            ifc = Runtime.getRuntime().exec(arrayOf("/system/bin/getprop", "ro.miui.region"))
+            val bis = BufferedReader(InputStreamReader(ifc.inputStream))
+            bis.readLine()
+        } catch (e: IOException) {
+            "US"
+        } finally {
+            ifc?.destroy()
+        }
     }
 }
