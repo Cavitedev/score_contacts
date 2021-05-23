@@ -1,4 +1,4 @@
-package com.cavitedev.score_contacts.core
+package com.cavitedev.score_contacts.services.region
 
 import android.content.ComponentName
 import android.content.Context
@@ -18,10 +18,9 @@ object MIUIDevice {
                 || isIntentResolved(ctx, Intent().setComponent(ComponentName("com.miui.securitycenter", "com.miui.powercenter.PowerSettings"))))
     }
 
-    fun getRegion() : String{
+    fun getRegion(): String {
         val c = Class.forName("android.os.SystemProperties")
         val get: Method = c.getMethod("get", String::class.java)
-        val miui = get.invoke(c, "ro.miui.region") as String
-        return miui
+        return get.invoke(c, "ro.miui.region") as String
     }
 }

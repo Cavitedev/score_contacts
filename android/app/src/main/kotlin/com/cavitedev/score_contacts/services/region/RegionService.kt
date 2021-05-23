@@ -1,4 +1,4 @@
-package com.cavitedev.score_contacts.core
+package com.cavitedev.score_contacts.services.region
 
 import android.content.Context
 import io.flutter.embedding.engine.FlutterEngine
