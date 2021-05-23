@@ -33,6 +33,12 @@ class _$ContactsLoadingTearOff {
       number: number,
     );
   }
+
+  _SendingMessage sendingMessage({required String number}) {
+    return _SendingMessage(
+      number: number,
+    );
+  }
 }
 
 /// @nodoc
@@ -45,6 +51,7 @@ mixin _$ContactsLoading {
     required TResult Function(int? amount) loadingContacts,
     required TResult Function(int amount) deletingContacts,
     required TResult Function(String number) callingNumber,
+    required TResult Function(String number) sendingMessage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -52,6 +59,7 @@ mixin _$ContactsLoading {
     TResult Function(int? amount)? loadingContacts,
     TResult Function(int amount)? deletingContacts,
     TResult Function(String number)? callingNumber,
+    TResult Function(String number)? sendingMessage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -60,6 +68,7 @@ mixin _$ContactsLoading {
     required TResult Function(_LoadingContacts value) loadingContacts,
     required TResult Function(_DeletingContacts value) deletingContacts,
     required TResult Function(_CallingNumber value) callingNumber,
+    required TResult Function(_SendingMessage value) sendingMessage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -67,6 +76,7 @@ mixin _$ContactsLoading {
     TResult Function(_LoadingContacts value)? loadingContacts,
     TResult Function(_DeletingContacts value)? deletingContacts,
     TResult Function(_CallingNumber value)? callingNumber,
+    TResult Function(_SendingMessage value)? sendingMessage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -157,6 +167,7 @@ class _$_LoadingContacts implements _LoadingContacts {
     required TResult Function(int? amount) loadingContacts,
     required TResult Function(int amount) deletingContacts,
     required TResult Function(String number) callingNumber,
+    required TResult Function(String number) sendingMessage,
   }) {
     return loadingContacts(amount);
   }
@@ -167,6 +178,7 @@ class _$_LoadingContacts implements _LoadingContacts {
     TResult Function(int? amount)? loadingContacts,
     TResult Function(int amount)? deletingContacts,
     TResult Function(String number)? callingNumber,
+    TResult Function(String number)? sendingMessage,
     required TResult orElse(),
   }) {
     if (loadingContacts != null) {
@@ -181,6 +193,7 @@ class _$_LoadingContacts implements _LoadingContacts {
     required TResult Function(_LoadingContacts value) loadingContacts,
     required TResult Function(_DeletingContacts value) deletingContacts,
     required TResult Function(_CallingNumber value) callingNumber,
+    required TResult Function(_SendingMessage value) sendingMessage,
   }) {
     return loadingContacts(this);
   }
@@ -191,6 +204,7 @@ class _$_LoadingContacts implements _LoadingContacts {
     TResult Function(_LoadingContacts value)? loadingContacts,
     TResult Function(_DeletingContacts value)? deletingContacts,
     TResult Function(_CallingNumber value)? callingNumber,
+    TResult Function(_SendingMessage value)? sendingMessage,
     required TResult orElse(),
   }) {
     if (loadingContacts != null) {
@@ -277,6 +291,7 @@ class _$_DeletingContacts implements _DeletingContacts {
     required TResult Function(int? amount) loadingContacts,
     required TResult Function(int amount) deletingContacts,
     required TResult Function(String number) callingNumber,
+    required TResult Function(String number) sendingMessage,
   }) {
     return deletingContacts(amount);
   }
@@ -287,6 +302,7 @@ class _$_DeletingContacts implements _DeletingContacts {
     TResult Function(int? amount)? loadingContacts,
     TResult Function(int amount)? deletingContacts,
     TResult Function(String number)? callingNumber,
+    TResult Function(String number)? sendingMessage,
     required TResult orElse(),
   }) {
     if (deletingContacts != null) {
@@ -301,6 +317,7 @@ class _$_DeletingContacts implements _DeletingContacts {
     required TResult Function(_LoadingContacts value) loadingContacts,
     required TResult Function(_DeletingContacts value) deletingContacts,
     required TResult Function(_CallingNumber value) callingNumber,
+    required TResult Function(_SendingMessage value) sendingMessage,
   }) {
     return deletingContacts(this);
   }
@@ -311,6 +328,7 @@ class _$_DeletingContacts implements _DeletingContacts {
     TResult Function(_LoadingContacts value)? loadingContacts,
     TResult Function(_DeletingContacts value)? deletingContacts,
     TResult Function(_CallingNumber value)? callingNumber,
+    TResult Function(_SendingMessage value)? sendingMessage,
     required TResult orElse(),
   }) {
     if (deletingContacts != null) {
@@ -397,6 +415,7 @@ class _$_CallingNumber implements _CallingNumber {
     required TResult Function(int? amount) loadingContacts,
     required TResult Function(int amount) deletingContacts,
     required TResult Function(String number) callingNumber,
+    required TResult Function(String number) sendingMessage,
   }) {
     return callingNumber(number);
   }
@@ -407,6 +426,7 @@ class _$_CallingNumber implements _CallingNumber {
     TResult Function(int? amount)? loadingContacts,
     TResult Function(int amount)? deletingContacts,
     TResult Function(String number)? callingNumber,
+    TResult Function(String number)? sendingMessage,
     required TResult orElse(),
   }) {
     if (callingNumber != null) {
@@ -421,6 +441,7 @@ class _$_CallingNumber implements _CallingNumber {
     required TResult Function(_LoadingContacts value) loadingContacts,
     required TResult Function(_DeletingContacts value) deletingContacts,
     required TResult Function(_CallingNumber value) callingNumber,
+    required TResult Function(_SendingMessage value) sendingMessage,
   }) {
     return callingNumber(this);
   }
@@ -431,6 +452,7 @@ class _$_CallingNumber implements _CallingNumber {
     TResult Function(_LoadingContacts value)? loadingContacts,
     TResult Function(_DeletingContacts value)? deletingContacts,
     TResult Function(_CallingNumber value)? callingNumber,
+    TResult Function(_SendingMessage value)? sendingMessage,
     required TResult orElse(),
   }) {
     if (callingNumber != null) {
@@ -446,5 +468,129 @@ abstract class _CallingNumber implements ContactsLoading {
   String get number => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$CallingNumberCopyWith<_CallingNumber> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$SendingMessageCopyWith<$Res> {
+  factory _$SendingMessageCopyWith(
+          _SendingMessage value, $Res Function(_SendingMessage) then) =
+      __$SendingMessageCopyWithImpl<$Res>;
+  $Res call({String number});
+}
+
+/// @nodoc
+class __$SendingMessageCopyWithImpl<$Res>
+    extends _$ContactsLoadingCopyWithImpl<$Res>
+    implements _$SendingMessageCopyWith<$Res> {
+  __$SendingMessageCopyWithImpl(
+      _SendingMessage _value, $Res Function(_SendingMessage) _then)
+      : super(_value, (v) => _then(v as _SendingMessage));
+
+  @override
+  _SendingMessage get _value => super._value as _SendingMessage;
+
+  @override
+  $Res call({
+    Object? number = freezed,
+  }) {
+    return _then(_SendingMessage(
+      number: number == freezed
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SendingMessage implements _SendingMessage {
+  const _$_SendingMessage({required this.number});
+
+  @override
+  final String number;
+
+  @override
+  String toString() {
+    return 'ContactsLoading.sendingMessage(number: $number)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _SendingMessage &&
+            (identical(other.number, number) ||
+                const DeepCollectionEquality().equals(other.number, number)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(number);
+
+  @JsonKey(ignore: true)
+  @override
+  _$SendingMessageCopyWith<_SendingMessage> get copyWith =>
+      __$SendingMessageCopyWithImpl<_SendingMessage>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int? amount) loadingContacts,
+    required TResult Function(int amount) deletingContacts,
+    required TResult Function(String number) callingNumber,
+    required TResult Function(String number) sendingMessage,
+  }) {
+    return sendingMessage(number);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int? amount)? loadingContacts,
+    TResult Function(int amount)? deletingContacts,
+    TResult Function(String number)? callingNumber,
+    TResult Function(String number)? sendingMessage,
+    required TResult orElse(),
+  }) {
+    if (sendingMessage != null) {
+      return sendingMessage(number);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadingContacts value) loadingContacts,
+    required TResult Function(_DeletingContacts value) deletingContacts,
+    required TResult Function(_CallingNumber value) callingNumber,
+    required TResult Function(_SendingMessage value) sendingMessage,
+  }) {
+    return sendingMessage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadingContacts value)? loadingContacts,
+    TResult Function(_DeletingContacts value)? deletingContacts,
+    TResult Function(_CallingNumber value)? callingNumber,
+    TResult Function(_SendingMessage value)? sendingMessage,
+    required TResult orElse(),
+  }) {
+    if (sendingMessage != null) {
+      return sendingMessage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SendingMessage implements ContactsLoading {
+  const factory _SendingMessage({required String number}) = _$_SendingMessage;
+
+  String get number => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$SendingMessageCopyWith<_SendingMessage> get copyWith =>
       throw _privateConstructorUsedError;
 }

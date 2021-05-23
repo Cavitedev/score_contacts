@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/contacts/selection_contact.dart';
+import 'package:scorecontacts/application/contacts/view_contact/view_contact_bloc.dart';
 import 'package:scorecontacts/core/app_constants.dart';
 import 'package:scorecontacts/core/app_localization.dart';
 import 'package:scorecontacts/domain/user/contacts_data/contact.dart';
@@ -59,7 +61,15 @@ class ViewContactScaffold extends StatelessWidget {
               style: Theme.of(context).textTheme.headline3,
             ),
           ),
-          ...listOfPhones(contact),
+          ...listOfPhones(
+            contact: contact,
+            onAppMessage: (num, app) {
+              context.read<ViewContactBloc>().add(
+                    ViewContactEvent.sendMessageThroughApp(
+                        num, app),
+                  );
+            },
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(

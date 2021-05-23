@@ -44,5 +44,6 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-  - lang/en.json
-  - lang/es.json
+    - lang/en.json
+    - lang/es.json
+    - assets/icons/brands/

@@ -9,7 +9,8 @@ class Phone implements ILabelObject {
   @override
   final List<String>? otherLabels;
 
-  const Phone({this.value,
+  const Phone(
+      {this.value,
       this.label = "Mobile",
       this.otherLabels = const ["Mobile", "Work", "Other"]});
 
@@ -36,12 +37,12 @@ class Phone implements ILabelObject {
     );
   }
 
-  String toNumString(){
+  String toNumString() {
     return toNumericString(value) ?? "";
   }
 
-  bool matches(String pattern){
-    return toNumString().contains(toNumericString(pattern)?? "");
+  bool matches(String pattern) {
+    return toNumString().contains(toNumericString(pattern) ?? "");
   }
 
   @override
@@ -54,8 +55,8 @@ class Phone implements ILabelObject {
       identical(this, other) ||
       other is Phone &&
           runtimeType == other.runtimeType &&
-              value == other.value &&
-              label == other.label;
+          value == other.value &&
+          label == other.label;
 
   @override
   int get hashCode => value.hashCode ^ label.hashCode;
@@ -78,4 +79,22 @@ class Phone implements ILabelObject {
       otherLabels: otherLabels ?? this.otherLabels,
     );
   }
+}
+
+class PhoneAppMessage {
+
+  static const List<PhoneAppMessage> appsToCheck = [
+    PhoneAppMessage(image: "whatsapp", appName: "com.whatsapp"),
+    PhoneAppMessage(image: "telegram", appName: "com.telegram"),
+  ];
+
+  final String image;
+  final String appName;
+
+  const PhoneAppMessage({
+    required this.image,
+    required this.appName,
+  });
+
+
 }

@@ -55,7 +55,8 @@ class Router extends _i1.RootStackRouter {
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<ViewContactPageRouteArgs>();
-          return _i8.ViewContactPage(contact: args.contact);
+          return _i8.ViewContactPage(
+              contact: args.contact, onDelete: args.onDelete);
         })
   };
 
@@ -117,16 +118,21 @@ class SettingsPageRoute extends _i1.PageRouteInfo {
 }
 
 class ViewContactPageRoute extends _i1.PageRouteInfo<ViewContactPageRouteArgs> {
-  ViewContactPageRoute({required _i9.Contact contact})
+  ViewContactPageRoute(
+      {required _i9.Contact contact, required Function onDelete})
       : super(name,
             path: '/view-contact-page',
-            args: ViewContactPageRouteArgs(contact: contact));
+            args:
+                ViewContactPageRouteArgs(contact: contact, onDelete: onDelete));
 
   static const String name = 'ViewContactPageRoute';
 }
 
 class ViewContactPageRouteArgs {
-  const ViewContactPageRouteArgs({required this.contact});
+  const ViewContactPageRouteArgs(
+      {required this.contact, required this.onDelete});
 
   final _i9.Contact contact;
+
+  final Function onDelete;
 }

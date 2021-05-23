@@ -8,4 +8,7 @@ class ViewContactEvent with _$ViewContactEvent {
     const factory ViewContactEvent.callNumber(String number) = _CallNumber;
 
     const factory ViewContactEvent.sendMessage(String number) = _SendMessage;
+    
+    const factory ViewContactEvent.sendMessageThroughApp(String number, String app) = _SendMessageThroughApp;
+    
 }

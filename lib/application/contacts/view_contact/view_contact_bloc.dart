@@ -22,37 +22,49 @@ class ViewContactBloc extends Bloc<ViewContactEvent, ViewContactState> {
 
   @override
   Stream<ViewContactState> mapEventToState(ViewContactEvent event) async* {
-    yield* event.map(initialize: (e) async* {
-      yield state.copyWith(contact: e.contact.fromDatabase(e.countryCode));
-    }, callNumber: (e) async* {
-      final String num = e.number;
-      yield state.copyWith(
-          unionState: ViewContactUnionState.actionInProgress(
-              ContactsLoading.callingNumber(number: num)));
+    yield* event.map(
+      initialize: (e) async* {
+        yield state.copyWith(contact: e.contact.fromDatabase(e.countryCode));
+      },
+      callNumber: (e) async* {
+        final String num = e.number;
+        yield state.copyWith(
+            unionState: ViewContactUnionState.actionInProgress(
+                ContactsLoading.callingNumber(number: num)));
 
-      final String callNumUrlLaunch = "tel:$num";
+        final String callNumUrlLaunch = "tel:$num";
 
-      if (await canLaunch(callNumUrlLaunch)) {
+        if (await canLaunch(callNumUrlLaunch)) {
+          yield state.copyWith(
+              unionState: ViewContactUnionState.callSuccesful(num));
+          await launch(callNumUrlLaunch);
+        } else {
+          yield state.copyWith(
+              unionState: ViewContactUnionState.callFailure(
+                  CallFailure.errorOnCall(num)));
+        }
+      },
+      sendMessage: (e) async* {
+        final String smsUrlLaunch = "sms:${e.number}";
         yield state.copyWith(
-            unionState: ViewContactUnionState.callSuccesful(num));
-        await launch(callNumUrlLaunch);
-      } else {
-        yield state.copyWith(
-            unionState: ViewContactUnionState.callFailure(
-                CallFailure.errorOnCall(num)));
-      }
-    }, sendMessage: (e) async* {
-      final String smsUrlLaunch = "sms:${e.number}";
-      yield state.copyWith(
-          unionState: ViewContactUnionState.actionInProgress(
-              ContactsLoading.sendingMessage(number: e.number)));
-      if (await canLaunch(smsUrlLaunch)) {
-        yield state.copyWith(unionState: const ViewContactUnionState.initial());
-        await launch(smsUrlLaunch);
-      } else {
-        yield state.copyWith(
-            unionState: ViewContactUnionState.messageFailure(e.number));
-      }
-    });
+            unionState: ViewContactUnionState.actionInProgress(
+                ContactsLoading.sendingMessage(number: e.number)));
+        if (await canLaunch(smsUrlLaunch)) {
+          yield state.copyWith(
+              unionState: const ViewContactUnionState.initial());
+          await launch(smsUrlLaunch);
+        } else {
+          yield state.copyWith(
+              unionState: ViewContactUnionState.messageFailure(e.number));
+        }
+      },
+      sendMessageThroughApp: (e) async* {
+
+          // const channel = MethodChannel("com.cavitedev.scorecontacts/message_app");
+
+          // await channel.invokeMethod("send_message", [e.number, e.app]);
+
+      },
+    );
   }
 }
