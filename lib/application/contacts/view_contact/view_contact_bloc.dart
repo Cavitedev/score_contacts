@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter/services.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
@@ -8,6 +9,7 @@ import 'package:scorecontacts/domain/call/call_failure.dart';
 import 'package:scorecontacts/domain/user/contacts_data/contact.dart';
 import 'package:scorecontacts/domain/user/contacts_data/contacts_loading.dart';
 import 'package:scorecontacts/domain/user/contacts_data/i_contact_repository.dart';
+import 'package:scorecontacts/domain/user/contacts_data/properties/phone.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 part 'view_contact_bloc.freezed.dart';
@@ -52,6 +54,7 @@ class ViewContactBloc extends Bloc<ViewContactEvent, ViewContactState> {
         if (await canLaunch(smsUrlLaunch)) {
           yield state.copyWith(
               unionState: const ViewContactUnionState.initial());
+
           await launch(smsUrlLaunch);
         } else {
           yield state.copyWith(
@@ -60,9 +63,9 @@ class ViewContactBloc extends Bloc<ViewContactEvent, ViewContactState> {
       },
       sendMessageThroughApp: (e) async* {
 
-          // const channel = MethodChannel("com.cavitedev.scorecontacts/message_app");
+          const channel = MethodChannel("com.cavitedev.scorecontacts/app_message");
 
-          // await channel.invokeMethod("send_message", [e.number, e.app]);
+          await channel.invokeMethod("send_message", [e.phone.toDatabaseString(e.region).value, e.app]);
 
       },
     );

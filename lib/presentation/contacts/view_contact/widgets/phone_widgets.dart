@@ -5,7 +5,7 @@ import 'package:scorecontacts/domain/user/contacts_data/contact.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/phone.dart';
 
 List<Widget> listOfPhones(
-    {required Contact contact, required Function(String num, String app) onAppMessage}) {
+    {required Contact contact, required Function(Phone phone, String app) onAppMessage}) {
   if (contact.labelObjects == null || contact.labelObjects![Phone] == null) {
     return [];
   }
@@ -19,13 +19,13 @@ List<Widget> listOfPhones(
 }
 
 List<Widget> _widgetsInPhone(final Phone phone,
-    {required Function(String num, String app) onAppMessage}) {
+    {required Function(Phone phone, String app) onAppMessage}) {
   return [
     PhoneListTile(phone: phone),
     AppMessageListTile(
       phone: phone,
       image: "whatsapp",
-      onTap: () {onAppMessage(phone.value!, "whatsapp.com");},
+      onTap: () {onAppMessage(phone, "com.whatsapp");},
     )
   ];
 }

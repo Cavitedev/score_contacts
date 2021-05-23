@@ -7,7 +7,7 @@ import java.util.*
 
 object RegionService {
 
-    private val REGION_CHANNEL = "com.cavitedev.scorecontacts/region"
+    private const val REGION_CHANNEL = "com.cavitedev.scorecontacts/region"
 
     fun setGetRegionChannel(flutterEngine: FlutterEngine, context: Context){
         val regionChannel = MethodChannel(flutterEngine.dartExecutor.binaryMessenger, REGION_CHANNEL)
@@ -25,7 +25,7 @@ object RegionService {
 
     }
 
-    fun getRegion(context: Context) : String{
+    private fun getRegion(context: Context) : String{
 
         return if(MIUIDevice.isMIUI(context)){
             MIUIDevice.getRegion()

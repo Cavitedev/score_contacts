@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/contacts/selection_contact.dart';
 import 'package:scorecontacts/application/contacts/view_contact/view_contact_bloc.dart';
+import 'package:scorecontacts/application/core/app_manager_cubit.dart';
 import 'package:scorecontacts/core/app_constants.dart';
 import 'package:scorecontacts/core/app_localization.dart';
 import 'package:scorecontacts/domain/user/contacts_data/contact.dart';
@@ -63,10 +64,12 @@ class ViewContactScaffold extends StatelessWidget {
           ),
           ...listOfPhones(
             contact: contact,
-            onAppMessage: (num, app) {
+            onAppMessage: (phone, app) {
               context.read<ViewContactBloc>().add(
                     ViewContactEvent.sendMessageThroughApp(
-                        num, app),
+                        phone: phone,
+                        region: context.read<AppManagerCubit>().state.region,
+                        app: app),
                   );
             },
           ),
