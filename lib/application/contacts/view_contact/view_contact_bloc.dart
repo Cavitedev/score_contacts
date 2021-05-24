@@ -69,15 +69,28 @@ class ViewContactBloc extends Bloc<ViewContactEvent, ViewContactState> {
         const channel =
             MethodChannel("com.cavitedev.scorecontacts/app_message");
         try {
-          yield _initialState();
           await channel.invokeMethod("send_message",
               [e.phone.toDatabaseString(e.region).value, e.app.appName]);
+          yield _initialState();
         } on PlatformException {
           yield state.copyWith(
               unionState: ViewContactUnionState.appMessageFailure(
             number: e.phone.value!,
             appMessage: e.app,
           ));
+        }
+      },
+      sendMail: (e) async* {
+         final String smsUrlLaunch = "mailto:${e.mail}";
+        yield state.copyWith(
+            unionState: ViewContactUnionState.actionInProgress(
+                ContactsLoading.sendingMessage(number: e.mail)));
+        if (await canLaunch(smsUrlLaunch)) {
+          yield _initialState();
+          await launch(smsUrlLaunch);
+        } else {
+          yield state.copyWith(
+              unionState: ViewContactUnionState.mailFailure(e.mail));
         }
       },
     );

@@ -18,9 +18,12 @@ class ContactsLoading with _$ContactsLoading {
   const factory ContactsLoading.sendingMessage({required String number}) =
       _SendingMessage;
 
+  const factory ContactsLoading.sendingMail({required String mail}) =
+      _SendingMail;
 }
 
-String getContactsLoadingMessage(BuildContext context, ContactsLoading loading) {
+String getContactsLoadingMessage(
+    BuildContext context, ContactsLoading loading) {
   return loading.map(
     loadingContacts: (l) => l.amount == null
         ? AppLocalization.of(context).translate("loading_contacts_all")
@@ -33,6 +36,10 @@ String getContactsLoadingMessage(BuildContext context, ContactsLoading loading) 
     sendingMessage: (l) => AppLocalization.of(context).translate(
       "sending_message",
       args: [l.number],
+    ),
+    sendingMail: (l) => AppLocalization.of(context).translate(
+      "sending_email",
+      args: [l.mail],
     ),
   );
 }

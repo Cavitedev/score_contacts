@@ -14,4 +14,7 @@ class ViewContactEvent with _$ViewContactEvent {
     required String region,
     required PhoneAppMessage app,
   }) = _SendMessageThroughApp;
+
+  const factory ViewContactEvent.sendMail(String mail) = _SendMail;
+
 }

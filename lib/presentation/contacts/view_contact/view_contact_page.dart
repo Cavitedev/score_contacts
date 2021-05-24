@@ -48,6 +48,11 @@ class ViewContactPage extends StatelessWidget {
                 message: AppLocalization.of(context)
                     .translate("error_message", args: [f.number]),
               ).show(context),
+              mailFailure: (f) => FlushbarHelper.createError(
+                duration: const Duration(seconds: 12),
+                message: AppLocalization.of(context)
+                    .translate("error_email", args: [f.mail]),
+              ).show(context),
               appMessageFailure: (f) => FlushbarHelper.createError(
                 duration: const Duration(seconds: 12),
                 message: AppLocalization.of(context).translate(

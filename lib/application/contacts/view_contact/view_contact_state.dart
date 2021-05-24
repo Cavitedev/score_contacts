@@ -30,6 +30,8 @@ class ViewContactUnionState with _$ViewContactUnionState {
 
   const factory ViewContactUnionState.messageFailure(String number) =
       _MessageFailure;
+  
+  const factory ViewContactUnionState.mailFailure(String mail) = _MailFailure;
 
 
     const factory ViewContactUnionState.appMessageFailure({
