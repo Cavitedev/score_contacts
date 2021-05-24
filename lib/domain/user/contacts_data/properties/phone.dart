@@ -84,7 +84,6 @@ class Phone implements ILabelObject {
 class PhoneAppMessage {
   static const List<PhoneAppMessage> appsToCheck = [
     PhoneAppMessage(image: "whatsapp", appName: "com.whatsapp"),
-    PhoneAppMessage(image: "telegram", appName: "com.telegram"),
   ];
 
   final String image;

@@ -39,11 +39,14 @@ object AppMessageService {
 
 
     private fun sendMessage(context: Context, phone: String, app: String) {
+        val num = PhoneNumberUtils.stripSeparators(phone.substring(1)).toString()
 
+        if(app != "com.whatsapp"){
+            throw Exception("Not implemented")
+        }
         val sendIntent = Intent(Intent.ACTION_MAIN)
         sendIntent.component = ComponentName(app, "$app.Conversation")
-        sendIntent.putExtra("jid", PhoneNumberUtils.stripSeparators
-        (phone.substring(1)).toString() + "@s.whatsapp.net")
+        sendIntent.putExtra("jid",  "$num@s.whatsapp.net")
         context.startActivity(sendIntent)
 
     }
