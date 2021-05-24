@@ -9,6 +9,7 @@ import 'package:scorecontacts/core/app_constants.dart';
 import 'package:scorecontacts/core/app_localization.dart';
 import 'package:scorecontacts/domain/user/contacts_data/contact.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/email.dart';
+import 'package:scorecontacts/presentation/contacts/view_contact/widgets/company_widgets.dart';
 import 'package:scorecontacts/presentation/contacts/view_contact/widgets/label_object_widgets.dart';
 import 'package:scorecontacts/presentation/contacts/view_contact/widgets/phone_widgets.dart';
 import 'package:scorecontacts/presentation/contacts/widgets/contact_circle_avatar.dart';
@@ -85,6 +86,7 @@ class ViewContactScaffold extends StatelessWidget {
                   .add(ViewContactEvent.sendMail(mail.value!));
             },
           ),
+          ...listCompanyWidget(companies: contact.companies),
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
