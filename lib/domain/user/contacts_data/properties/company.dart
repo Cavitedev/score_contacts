@@ -11,7 +11,7 @@ class Company with _$Company {
     String? title,
   }) = _Company;
 
-  bool isEmpty() => (name?.isEmpty ?? false) && (title?.isEmpty ?? false);
+  bool isEmpty() => (name?.isEmpty ?? true) && (title?.isEmpty ?? true);
 
   factory Company.empty() {
     return const Company();

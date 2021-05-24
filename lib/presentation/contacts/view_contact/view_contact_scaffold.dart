@@ -65,28 +65,7 @@ class ViewContactScaffold extends StatelessWidget {
               style: Theme.of(context).textTheme.headline3,
             ),
           ),
-          ...listOfPhones(
-            contact: contact,
-            onAppMessage: (phone, app) {
-              context.read<ViewContactBloc>().add(
-                    ViewContactEvent.sendMessageThroughApp(
-                        phone: phone,
-                        region: context.read<AppManagerCubit>().state.region,
-                        app: app),
-                  );
-            },
-          ),
-          ...listLabelObjectWidget(
-            contact: contact,
-            typeLabelObject: Email,
-            icon: Icons.mail,
-            onTap: (mail) {
-              context
-                  .read<ViewContactBloc>()
-                  .add(ViewContactEvent.sendMail(mail.value!));
-            },
-          ),
-          ...listCompanyWidget(companies: contact.companies),
+          ..._buildListOfFields(context)
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
@@ -125,5 +104,34 @@ class ViewContactScaffold extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  List<Widget> _buildListOfFields(BuildContext context) {
+    return ListTile.divideTiles(
+        context: context
+        ,tiles: [
+      ...listOfPhones(
+        contact: contact,
+        onAppMessage: (phone, app) {
+          context.read<ViewContactBloc>().add(
+                ViewContactEvent.sendMessageThroughApp(
+                    phone: phone,
+                    region: context.read<AppManagerCubit>().state.region,
+                    app: app),
+              );
+        },
+      ),
+      ...listLabelObjectWidget(
+        contact: contact,
+        typeLabelObject: Email,
+        icon: Icons.mail,
+        onTap: (mail) {
+          context
+              .read<ViewContactBloc>()
+              .add(ViewContactEvent.sendMail(mail.value!));
+        },
+      ),
+      ...listCompanyWidget(companies: contact.companies),
+    ]).toList();
   }
 }

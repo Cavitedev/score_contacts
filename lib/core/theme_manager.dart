@@ -20,7 +20,7 @@ ThemeData lightTheme = ThemeData.light().copyWith(
     ),
     elevation: 4,
   ),
-  dividerColor: const Color.fromRGBO(20, 20, 20, 1),
+  dividerColor: const Color.fromRGBO(50, 50, 50, 1),
   highlightColor: Colors.blueAccent[700],
   focusColor: Colors.blueAccent[400],
   textSelectionTheme: TextSelectionThemeData(
@@ -65,7 +65,7 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
     ),
     elevation: 4,
   ),
-  dividerColor: const Color.fromRGBO(20, 20, 20, 1),
+  dividerColor: const Color.fromRGBO(100, 100, 100, 1),
   highlightColor: Colors.blueAccent[700],
   focusColor: Colors.grey[600],
   textSelectionTheme: TextSelectionThemeData(
