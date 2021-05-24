@@ -17,6 +17,7 @@ class ContactsLoading with _$ContactsLoading {
 
   const factory ContactsLoading.sendingMessage({required String number}) =
       _SendingMessage;
+
 }
 
 String getContactsLoadingMessage(BuildContext context, ContactsLoading loading) {

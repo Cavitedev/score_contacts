@@ -53,8 +53,7 @@ class ViewContactBloc extends Bloc<ViewContactEvent, ViewContactState> {
             unionState: ViewContactUnionState.actionInProgress(
                 ContactsLoading.sendingMessage(number: e.number)));
         if (await canLaunch(smsUrlLaunch)) {
-          yield state.copyWith(
-              unionState: const ViewContactUnionState.initial());
+          yield _initialState();
 
           await launch(smsUrlLaunch);
         } else {
@@ -63,13 +62,16 @@ class ViewContactBloc extends Bloc<ViewContactEvent, ViewContactState> {
         }
       },
       sendMessageThroughApp: (e) async* {
+        yield state.copyWith(
+            unionState: ViewContactUnionState.actionInProgress(
+                ContactsLoading.sendingMessage(number: e.phone.value!)));
+
         const channel =
             MethodChannel("com.cavitedev.scorecontacts/app_message");
         try {
+          yield _initialState();
           await channel.invokeMethod("send_message",
               [e.phone.toDatabaseString(e.region).value, e.app.appName]);
-          yield state.copyWith(
-              unionState: const ViewContactUnionState.initial());
         } on PlatformException {
           yield state.copyWith(
               unionState: ViewContactUnionState.appMessageFailure(
@@ -80,4 +82,7 @@ class ViewContactBloc extends Bloc<ViewContactEvent, ViewContactState> {
       },
     );
   }
+
+  ViewContactState _initialState() =>
+      state.copyWith(unionState: const ViewContactUnionState.initial());
 }
