@@ -46,6 +46,12 @@ class _$ViewContactEventTearOff {
       app: app,
     );
   }
+
+  _SendMail sendMail(String mail) {
+    return _SendMail(
+      mail,
+    );
+  }
 }
 
 /// @nodoc
@@ -60,6 +66,7 @@ mixin _$ViewContactEvent {
     required TResult Function(String number) sendMessage,
     required TResult Function(Phone phone, String region, PhoneAppMessage app)
         sendMessageThroughApp,
+    required TResult Function(String mail) sendMail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +76,7 @@ mixin _$ViewContactEvent {
     TResult Function(String number)? sendMessage,
     TResult Function(Phone phone, String region, PhoneAppMessage app)?
         sendMessageThroughApp,
+    TResult Function(String mail)? sendMail,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -79,6 +87,7 @@ mixin _$ViewContactEvent {
     required TResult Function(_SendMessage value) sendMessage,
     required TResult Function(_SendMessageThroughApp value)
         sendMessageThroughApp,
+    required TResult Function(_SendMail value) sendMail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -87,6 +96,7 @@ mixin _$ViewContactEvent {
     TResult Function(_CallNumber value)? callNumber,
     TResult Function(_SendMessage value)? sendMessage,
     TResult Function(_SendMessageThroughApp value)? sendMessageThroughApp,
+    TResult Function(_SendMail value)? sendMail,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -210,6 +220,7 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
     required TResult Function(String number) sendMessage,
     required TResult Function(Phone phone, String region, PhoneAppMessage app)
         sendMessageThroughApp,
+    required TResult Function(String mail) sendMail,
   }) {
     return initialize(contact, countryCode);
   }
@@ -222,6 +233,7 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
     TResult Function(String number)? sendMessage,
     TResult Function(Phone phone, String region, PhoneAppMessage app)?
         sendMessageThroughApp,
+    TResult Function(String mail)? sendMail,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -238,6 +250,7 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
     required TResult Function(_SendMessage value) sendMessage,
     required TResult Function(_SendMessageThroughApp value)
         sendMessageThroughApp,
+    required TResult Function(_SendMail value) sendMail,
   }) {
     return initialize(this);
   }
@@ -249,6 +262,7 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
     TResult Function(_CallNumber value)? callNumber,
     TResult Function(_SendMessage value)? sendMessage,
     TResult Function(_SendMessageThroughApp value)? sendMessageThroughApp,
+    TResult Function(_SendMail value)? sendMail,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -347,6 +361,7 @@ class _$_CallNumber with DiagnosticableTreeMixin implements _CallNumber {
     required TResult Function(String number) sendMessage,
     required TResult Function(Phone phone, String region, PhoneAppMessage app)
         sendMessageThroughApp,
+    required TResult Function(String mail) sendMail,
   }) {
     return callNumber(number);
   }
@@ -359,6 +374,7 @@ class _$_CallNumber with DiagnosticableTreeMixin implements _CallNumber {
     TResult Function(String number)? sendMessage,
     TResult Function(Phone phone, String region, PhoneAppMessage app)?
         sendMessageThroughApp,
+    TResult Function(String mail)? sendMail,
     required TResult orElse(),
   }) {
     if (callNumber != null) {
@@ -375,6 +391,7 @@ class _$_CallNumber with DiagnosticableTreeMixin implements _CallNumber {
     required TResult Function(_SendMessage value) sendMessage,
     required TResult Function(_SendMessageThroughApp value)
         sendMessageThroughApp,
+    required TResult Function(_SendMail value) sendMail,
   }) {
     return callNumber(this);
   }
@@ -386,6 +403,7 @@ class _$_CallNumber with DiagnosticableTreeMixin implements _CallNumber {
     TResult Function(_CallNumber value)? callNumber,
     TResult Function(_SendMessage value)? sendMessage,
     TResult Function(_SendMessageThroughApp value)? sendMessageThroughApp,
+    TResult Function(_SendMail value)? sendMail,
     required TResult orElse(),
   }) {
     if (callNumber != null) {
@@ -482,6 +500,7 @@ class _$_SendMessage with DiagnosticableTreeMixin implements _SendMessage {
     required TResult Function(String number) sendMessage,
     required TResult Function(Phone phone, String region, PhoneAppMessage app)
         sendMessageThroughApp,
+    required TResult Function(String mail) sendMail,
   }) {
     return sendMessage(number);
   }
@@ -494,6 +513,7 @@ class _$_SendMessage with DiagnosticableTreeMixin implements _SendMessage {
     TResult Function(String number)? sendMessage,
     TResult Function(Phone phone, String region, PhoneAppMessage app)?
         sendMessageThroughApp,
+    TResult Function(String mail)? sendMail,
     required TResult orElse(),
   }) {
     if (sendMessage != null) {
@@ -510,6 +530,7 @@ class _$_SendMessage with DiagnosticableTreeMixin implements _SendMessage {
     required TResult Function(_SendMessage value) sendMessage,
     required TResult Function(_SendMessageThroughApp value)
         sendMessageThroughApp,
+    required TResult Function(_SendMail value) sendMail,
   }) {
     return sendMessage(this);
   }
@@ -521,6 +542,7 @@ class _$_SendMessage with DiagnosticableTreeMixin implements _SendMessage {
     TResult Function(_CallNumber value)? callNumber,
     TResult Function(_SendMessage value)? sendMessage,
     TResult Function(_SendMessageThroughApp value)? sendMessageThroughApp,
+    TResult Function(_SendMail value)? sendMail,
     required TResult orElse(),
   }) {
     if (sendMessage != null) {
@@ -645,6 +667,7 @@ class _$_SendMessageThroughApp
     required TResult Function(String number) sendMessage,
     required TResult Function(Phone phone, String region, PhoneAppMessage app)
         sendMessageThroughApp,
+    required TResult Function(String mail) sendMail,
   }) {
     return sendMessageThroughApp(phone, region, app);
   }
@@ -657,6 +680,7 @@ class _$_SendMessageThroughApp
     TResult Function(String number)? sendMessage,
     TResult Function(Phone phone, String region, PhoneAppMessage app)?
         sendMessageThroughApp,
+    TResult Function(String mail)? sendMail,
     required TResult orElse(),
   }) {
     if (sendMessageThroughApp != null) {
@@ -673,6 +697,7 @@ class _$_SendMessageThroughApp
     required TResult Function(_SendMessage value) sendMessage,
     required TResult Function(_SendMessageThroughApp value)
         sendMessageThroughApp,
+    required TResult Function(_SendMail value) sendMail,
   }) {
     return sendMessageThroughApp(this);
   }
@@ -684,6 +709,7 @@ class _$_SendMessageThroughApp
     TResult Function(_CallNumber value)? callNumber,
     TResult Function(_SendMessage value)? sendMessage,
     TResult Function(_SendMessageThroughApp value)? sendMessageThroughApp,
+    TResult Function(_SendMail value)? sendMail,
     required TResult orElse(),
   }) {
     if (sendMessageThroughApp != null) {
@@ -704,6 +730,142 @@ abstract class _SendMessageThroughApp implements ViewContactEvent {
   PhoneAppMessage get app => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$SendMessageThroughAppCopyWith<_SendMessageThroughApp> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$SendMailCopyWith<$Res> {
+  factory _$SendMailCopyWith(_SendMail value, $Res Function(_SendMail) then) =
+      __$SendMailCopyWithImpl<$Res>;
+  $Res call({String mail});
+}
+
+/// @nodoc
+class __$SendMailCopyWithImpl<$Res> extends _$ViewContactEventCopyWithImpl<$Res>
+    implements _$SendMailCopyWith<$Res> {
+  __$SendMailCopyWithImpl(_SendMail _value, $Res Function(_SendMail) _then)
+      : super(_value, (v) => _then(v as _SendMail));
+
+  @override
+  _SendMail get _value => super._value as _SendMail;
+
+  @override
+  $Res call({
+    Object? mail = freezed,
+  }) {
+    return _then(_SendMail(
+      mail == freezed
+          ? _value.mail
+          : mail // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SendMail with DiagnosticableTreeMixin implements _SendMail {
+  const _$_SendMail(this.mail);
+
+  @override
+  final String mail;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ViewContactEvent.sendMail(mail: $mail)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ViewContactEvent.sendMail'))
+      ..add(DiagnosticsProperty('mail', mail));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _SendMail &&
+            (identical(other.mail, mail) ||
+                const DeepCollectionEquality().equals(other.mail, mail)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(mail);
+
+  @JsonKey(ignore: true)
+  @override
+  _$SendMailCopyWith<_SendMail> get copyWith =>
+      __$SendMailCopyWithImpl<_SendMail>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Contact contact, String countryCode) initialize,
+    required TResult Function(String number) callNumber,
+    required TResult Function(String number) sendMessage,
+    required TResult Function(Phone phone, String region, PhoneAppMessage app)
+        sendMessageThroughApp,
+    required TResult Function(String mail) sendMail,
+  }) {
+    return sendMail(mail);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Contact contact, String countryCode)? initialize,
+    TResult Function(String number)? callNumber,
+    TResult Function(String number)? sendMessage,
+    TResult Function(Phone phone, String region, PhoneAppMessage app)?
+        sendMessageThroughApp,
+    TResult Function(String mail)? sendMail,
+    required TResult orElse(),
+  }) {
+    if (sendMail != null) {
+      return sendMail(mail);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_CallNumber value) callNumber,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_SendMessageThroughApp value)
+        sendMessageThroughApp,
+    required TResult Function(_SendMail value) sendMail,
+  }) {
+    return sendMail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_CallNumber value)? callNumber,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_SendMessageThroughApp value)? sendMessageThroughApp,
+    TResult Function(_SendMail value)? sendMail,
+    required TResult orElse(),
+  }) {
+    if (sendMail != null) {
+      return sendMail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SendMail implements ViewContactEvent {
+  const factory _SendMail(String mail) = _$_SendMail;
+
+  String get mail => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$SendMailCopyWith<_SendMail> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -927,6 +1089,12 @@ class _$ViewContactUnionStateTearOff {
     );
   }
 
+  _MailFailure mailFailure(String mail) {
+    return _MailFailure(
+      mail,
+    );
+  }
+
   _AppMessageFailure appMessageFailure(
       {required String number, required PhoneAppMessage appMessage}) {
     return _AppMessageFailure(
@@ -948,6 +1116,7 @@ mixin _$ViewContactUnionState {
     required TResult Function(String number) callSuccessful,
     required TResult Function(CallFailure failure) callFailure,
     required TResult Function(String number) messageFailure,
+    required TResult Function(String mail) mailFailure,
     required TResult Function(String number, PhoneAppMessage appMessage)
         appMessageFailure,
   }) =>
@@ -959,6 +1128,7 @@ mixin _$ViewContactUnionState {
     TResult Function(String number)? callSuccessful,
     TResult Function(CallFailure failure)? callFailure,
     TResult Function(String number)? messageFailure,
+    TResult Function(String mail)? mailFailure,
     TResult Function(String number, PhoneAppMessage appMessage)?
         appMessageFailure,
     required TResult orElse(),
@@ -971,6 +1141,7 @@ mixin _$ViewContactUnionState {
     required TResult Function(_CallSuccessful value) callSuccessful,
     required TResult Function(_CallFailure value) callFailure,
     required TResult Function(_MessageFailure value) messageFailure,
+    required TResult Function(_MailFailure value) mailFailure,
     required TResult Function(_AppMessageFailure value) appMessageFailure,
   }) =>
       throw _privateConstructorUsedError;
@@ -981,6 +1152,7 @@ mixin _$ViewContactUnionState {
     TResult Function(_CallSuccessful value)? callSuccessful,
     TResult Function(_CallFailure value)? callFailure,
     TResult Function(_MessageFailure value)? messageFailure,
+    TResult Function(_MailFailure value)? mailFailure,
     TResult Function(_AppMessageFailure value)? appMessageFailure,
     required TResult orElse(),
   }) =>
@@ -1054,6 +1226,7 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
     required TResult Function(String number) callSuccessful,
     required TResult Function(CallFailure failure) callFailure,
     required TResult Function(String number) messageFailure,
+    required TResult Function(String mail) mailFailure,
     required TResult Function(String number, PhoneAppMessage appMessage)
         appMessageFailure,
   }) {
@@ -1068,6 +1241,7 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
     TResult Function(String number)? callSuccessful,
     TResult Function(CallFailure failure)? callFailure,
     TResult Function(String number)? messageFailure,
+    TResult Function(String mail)? mailFailure,
     TResult Function(String number, PhoneAppMessage appMessage)?
         appMessageFailure,
     required TResult orElse(),
@@ -1086,6 +1260,7 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
     required TResult Function(_CallSuccessful value) callSuccessful,
     required TResult Function(_CallFailure value) callFailure,
     required TResult Function(_MessageFailure value) messageFailure,
+    required TResult Function(_MailFailure value) mailFailure,
     required TResult Function(_AppMessageFailure value) appMessageFailure,
   }) {
     return initial(this);
@@ -1099,6 +1274,7 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
     TResult Function(_CallSuccessful value)? callSuccessful,
     TResult Function(_CallFailure value)? callFailure,
     TResult Function(_MessageFailure value)? messageFailure,
+    TResult Function(_MailFailure value)? mailFailure,
     TResult Function(_AppMessageFailure value)? appMessageFailure,
     required TResult orElse(),
   }) {
@@ -1204,6 +1380,7 @@ class _$_ActionInProgress
     required TResult Function(String number) callSuccessful,
     required TResult Function(CallFailure failure) callFailure,
     required TResult Function(String number) messageFailure,
+    required TResult Function(String mail) mailFailure,
     required TResult Function(String number, PhoneAppMessage appMessage)
         appMessageFailure,
   }) {
@@ -1218,6 +1395,7 @@ class _$_ActionInProgress
     TResult Function(String number)? callSuccessful,
     TResult Function(CallFailure failure)? callFailure,
     TResult Function(String number)? messageFailure,
+    TResult Function(String mail)? mailFailure,
     TResult Function(String number, PhoneAppMessage appMessage)?
         appMessageFailure,
     required TResult orElse(),
@@ -1236,6 +1414,7 @@ class _$_ActionInProgress
     required TResult Function(_CallSuccessful value) callSuccessful,
     required TResult Function(_CallFailure value) callFailure,
     required TResult Function(_MessageFailure value) messageFailure,
+    required TResult Function(_MailFailure value) mailFailure,
     required TResult Function(_AppMessageFailure value) appMessageFailure,
   }) {
     return actionInProgress(this);
@@ -1249,6 +1428,7 @@ class _$_ActionInProgress
     TResult Function(_CallSuccessful value)? callSuccessful,
     TResult Function(_CallFailure value)? callFailure,
     TResult Function(_MessageFailure value)? messageFailure,
+    TResult Function(_MailFailure value)? mailFailure,
     TResult Function(_AppMessageFailure value)? appMessageFailure,
     required TResult orElse(),
   }) {
@@ -1349,6 +1529,7 @@ class _$_CallSuccessful
     required TResult Function(String number) callSuccessful,
     required TResult Function(CallFailure failure) callFailure,
     required TResult Function(String number) messageFailure,
+    required TResult Function(String mail) mailFailure,
     required TResult Function(String number, PhoneAppMessage appMessage)
         appMessageFailure,
   }) {
@@ -1363,6 +1544,7 @@ class _$_CallSuccessful
     TResult Function(String number)? callSuccessful,
     TResult Function(CallFailure failure)? callFailure,
     TResult Function(String number)? messageFailure,
+    TResult Function(String mail)? mailFailure,
     TResult Function(String number, PhoneAppMessage appMessage)?
         appMessageFailure,
     required TResult orElse(),
@@ -1381,6 +1563,7 @@ class _$_CallSuccessful
     required TResult Function(_CallSuccessful value) callSuccessful,
     required TResult Function(_CallFailure value) callFailure,
     required TResult Function(_MessageFailure value) messageFailure,
+    required TResult Function(_MailFailure value) mailFailure,
     required TResult Function(_AppMessageFailure value) appMessageFailure,
   }) {
     return callSuccessful(this);
@@ -1394,6 +1577,7 @@ class _$_CallSuccessful
     TResult Function(_CallSuccessful value)? callSuccessful,
     TResult Function(_CallFailure value)? callFailure,
     TResult Function(_MessageFailure value)? messageFailure,
+    TResult Function(_MailFailure value)? mailFailure,
     TResult Function(_AppMessageFailure value)? appMessageFailure,
     required TResult orElse(),
   }) {
@@ -1500,6 +1684,7 @@ class _$_CallFailure with DiagnosticableTreeMixin implements _CallFailure {
     required TResult Function(String number) callSuccessful,
     required TResult Function(CallFailure failure) callFailure,
     required TResult Function(String number) messageFailure,
+    required TResult Function(String mail) mailFailure,
     required TResult Function(String number, PhoneAppMessage appMessage)
         appMessageFailure,
   }) {
@@ -1514,6 +1699,7 @@ class _$_CallFailure with DiagnosticableTreeMixin implements _CallFailure {
     TResult Function(String number)? callSuccessful,
     TResult Function(CallFailure failure)? callFailure,
     TResult Function(String number)? messageFailure,
+    TResult Function(String mail)? mailFailure,
     TResult Function(String number, PhoneAppMessage appMessage)?
         appMessageFailure,
     required TResult orElse(),
@@ -1532,6 +1718,7 @@ class _$_CallFailure with DiagnosticableTreeMixin implements _CallFailure {
     required TResult Function(_CallSuccessful value) callSuccessful,
     required TResult Function(_CallFailure value) callFailure,
     required TResult Function(_MessageFailure value) messageFailure,
+    required TResult Function(_MailFailure value) mailFailure,
     required TResult Function(_AppMessageFailure value) appMessageFailure,
   }) {
     return callFailure(this);
@@ -1545,6 +1732,7 @@ class _$_CallFailure with DiagnosticableTreeMixin implements _CallFailure {
     TResult Function(_CallSuccessful value)? callSuccessful,
     TResult Function(_CallFailure value)? callFailure,
     TResult Function(_MessageFailure value)? messageFailure,
+    TResult Function(_MailFailure value)? mailFailure,
     TResult Function(_AppMessageFailure value)? appMessageFailure,
     required TResult orElse(),
   }) {
@@ -1644,6 +1832,7 @@ class _$_MessageFailure
     required TResult Function(String number) callSuccessful,
     required TResult Function(CallFailure failure) callFailure,
     required TResult Function(String number) messageFailure,
+    required TResult Function(String mail) mailFailure,
     required TResult Function(String number, PhoneAppMessage appMessage)
         appMessageFailure,
   }) {
@@ -1658,6 +1847,7 @@ class _$_MessageFailure
     TResult Function(String number)? callSuccessful,
     TResult Function(CallFailure failure)? callFailure,
     TResult Function(String number)? messageFailure,
+    TResult Function(String mail)? mailFailure,
     TResult Function(String number, PhoneAppMessage appMessage)?
         appMessageFailure,
     required TResult orElse(),
@@ -1676,6 +1866,7 @@ class _$_MessageFailure
     required TResult Function(_CallSuccessful value) callSuccessful,
     required TResult Function(_CallFailure value) callFailure,
     required TResult Function(_MessageFailure value) messageFailure,
+    required TResult Function(_MailFailure value) mailFailure,
     required TResult Function(_AppMessageFailure value) appMessageFailure,
   }) {
     return messageFailure(this);
@@ -1689,6 +1880,7 @@ class _$_MessageFailure
     TResult Function(_CallSuccessful value)? callSuccessful,
     TResult Function(_CallFailure value)? callFailure,
     TResult Function(_MessageFailure value)? messageFailure,
+    TResult Function(_MailFailure value)? mailFailure,
     TResult Function(_AppMessageFailure value)? appMessageFailure,
     required TResult orElse(),
   }) {
@@ -1705,6 +1897,152 @@ abstract class _MessageFailure implements ViewContactUnionState {
   String get number => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$MessageFailureCopyWith<_MessageFailure> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$MailFailureCopyWith<$Res> {
+  factory _$MailFailureCopyWith(
+          _MailFailure value, $Res Function(_MailFailure) then) =
+      __$MailFailureCopyWithImpl<$Res>;
+  $Res call({String mail});
+}
+
+/// @nodoc
+class __$MailFailureCopyWithImpl<$Res>
+    extends _$ViewContactUnionStateCopyWithImpl<$Res>
+    implements _$MailFailureCopyWith<$Res> {
+  __$MailFailureCopyWithImpl(
+      _MailFailure _value, $Res Function(_MailFailure) _then)
+      : super(_value, (v) => _then(v as _MailFailure));
+
+  @override
+  _MailFailure get _value => super._value as _MailFailure;
+
+  @override
+  $Res call({
+    Object? mail = freezed,
+  }) {
+    return _then(_MailFailure(
+      mail == freezed
+          ? _value.mail
+          : mail // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_MailFailure with DiagnosticableTreeMixin implements _MailFailure {
+  const _$_MailFailure(this.mail);
+
+  @override
+  final String mail;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ViewContactUnionState.mailFailure(mail: $mail)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ViewContactUnionState.mailFailure'))
+      ..add(DiagnosticsProperty('mail', mail));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _MailFailure &&
+            (identical(other.mail, mail) ||
+                const DeepCollectionEquality().equals(other.mail, mail)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(mail);
+
+  @JsonKey(ignore: true)
+  @override
+  _$MailFailureCopyWith<_MailFailure> get copyWith =>
+      __$MailFailureCopyWithImpl<_MailFailure>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(ContactsLoading loadingMsg) actionInProgress,
+    required TResult Function(String number) callSuccessful,
+    required TResult Function(CallFailure failure) callFailure,
+    required TResult Function(String number) messageFailure,
+    required TResult Function(String mail) mailFailure,
+    required TResult Function(String number, PhoneAppMessage appMessage)
+        appMessageFailure,
+  }) {
+    return mailFailure(mail);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(ContactsLoading loadingMsg)? actionInProgress,
+    TResult Function(String number)? callSuccessful,
+    TResult Function(CallFailure failure)? callFailure,
+    TResult Function(String number)? messageFailure,
+    TResult Function(String mail)? mailFailure,
+    TResult Function(String number, PhoneAppMessage appMessage)?
+        appMessageFailure,
+    required TResult orElse(),
+  }) {
+    if (mailFailure != null) {
+      return mailFailure(mail);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_ActionInProgress value) actionInProgress,
+    required TResult Function(_CallSuccessful value) callSuccessful,
+    required TResult Function(_CallFailure value) callFailure,
+    required TResult Function(_MessageFailure value) messageFailure,
+    required TResult Function(_MailFailure value) mailFailure,
+    required TResult Function(_AppMessageFailure value) appMessageFailure,
+  }) {
+    return mailFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_ActionInProgress value)? actionInProgress,
+    TResult Function(_CallSuccessful value)? callSuccessful,
+    TResult Function(_CallFailure value)? callFailure,
+    TResult Function(_MessageFailure value)? messageFailure,
+    TResult Function(_MailFailure value)? mailFailure,
+    TResult Function(_AppMessageFailure value)? appMessageFailure,
+    required TResult orElse(),
+  }) {
+    if (mailFailure != null) {
+      return mailFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _MailFailure implements ViewContactUnionState {
+  const factory _MailFailure(String mail) = _$_MailFailure;
+
+  String get mail => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$MailFailureCopyWith<_MailFailure> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1802,6 +2140,7 @@ class _$_AppMessageFailure
     required TResult Function(String number) callSuccessful,
     required TResult Function(CallFailure failure) callFailure,
     required TResult Function(String number) messageFailure,
+    required TResult Function(String mail) mailFailure,
     required TResult Function(String number, PhoneAppMessage appMessage)
         appMessageFailure,
   }) {
@@ -1816,6 +2155,7 @@ class _$_AppMessageFailure
     TResult Function(String number)? callSuccessful,
     TResult Function(CallFailure failure)? callFailure,
     TResult Function(String number)? messageFailure,
+    TResult Function(String mail)? mailFailure,
     TResult Function(String number, PhoneAppMessage appMessage)?
         appMessageFailure,
     required TResult orElse(),
@@ -1834,6 +2174,7 @@ class _$_AppMessageFailure
     required TResult Function(_CallSuccessful value) callSuccessful,
     required TResult Function(_CallFailure value) callFailure,
     required TResult Function(_MessageFailure value) messageFailure,
+    required TResult Function(_MailFailure value) mailFailure,
     required TResult Function(_AppMessageFailure value) appMessageFailure,
   }) {
     return appMessageFailure(this);
@@ -1847,6 +2188,7 @@ class _$_AppMessageFailure
     TResult Function(_CallSuccessful value)? callSuccessful,
     TResult Function(_CallFailure value)? callFailure,
     TResult Function(_MessageFailure value)? messageFailure,
+    TResult Function(_MailFailure value)? mailFailure,
     TResult Function(_AppMessageFailure value)? appMessageFailure,
     required TResult orElse(),
   }) {
