@@ -1,5 +1,6 @@
 import 'package:scorecontacts/domain/user/contacts_data/properties/i_label_object.dart';
 import 'package:scorecontacts/presentation/core/formatters/formatter_tools.dart';
+import 'package:scorecontacts/presentation/core/formatters/phone_codes.dart';
 
 class Phone implements ILabelObject {
   @override
@@ -39,6 +40,13 @@ class Phone implements ILabelObject {
 
   String toNumString() {
     return toNumericString(value) ?? "";
+  }
+
+  String? getCountryByPhone(){
+    if (!PhoneCodes.isCountryDataExplicit(value!)) {
+      return null;
+    }
+    return PhoneCodes.getCountryDataByPhone(value!)?.country;
   }
 
   bool matches(String pattern) {

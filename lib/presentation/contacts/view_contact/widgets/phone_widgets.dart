@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/contacts/view_contact/view_contact_bloc.dart';
+import 'package:scorecontacts/application/core/app_manager_cubit.dart';
 import 'package:scorecontacts/domain/user/contacts_data/contact.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/phone.dart';
+import 'package:scorecontacts/presentation/core/formatters/phone_codes.dart';
 
 List<Widget> listOfPhones(
-    {required Contact contact, required Function(Phone phone, PhoneAppMessage app) onAppMessage}) {
+    {required Contact contact,
+    required Function(Phone phone, PhoneAppMessage app) onAppMessage}) {
   if (contact.labelObjects == null || contact.labelObjects![Phone] == null) {
     return [];
   }
@@ -23,11 +26,12 @@ List<Widget> _widgetsInPhone(final Phone phone,
   return [
     PhoneListTile(phone: phone),
     ...PhoneAppMessage.appsToCheck.map((app) => AppMessageListTile(
-      phone: phone,
-      image: app.image,
-      onTap: () {onAppMessage(phone, app);},
-    ))
-
+          phone: phone,
+          image: app.image,
+          onTap: () {
+            onAppMessage(phone, app);
+          },
+        ))
   ];
 }
 
@@ -41,6 +45,11 @@ class PhoneListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String phoneCountry = phone.getCountryByPhone() ??
+        PhoneCountryData.fromCountryCode(
+                countryCode: context.read<AppManagerCubit>().state.region)
+            .country;
+
     return ListTile(
       title: Text(phone.value!),
       leading: IconButton(
@@ -53,7 +62,7 @@ class PhoneListTile extends StatelessWidget {
               .add(ViewContactEvent.callNumber(phone.value!));
         },
       ),
-      subtitle: phone.label != null ? Text(phone.label!) : null,
+      subtitle: phone.label != null ? Text("${phone.label!}  |  $phoneCountry") : null,
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
