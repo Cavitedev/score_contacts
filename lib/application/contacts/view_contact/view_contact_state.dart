@@ -19,15 +19,21 @@ class ViewContactState with _$ViewContactState {
 class ViewContactUnionState with _$ViewContactUnionState {
   const factory ViewContactUnionState.initial() = _Initial;
 
+  const factory ViewContactUnionState.actionInProgress(
+      ContactsLoading loadingMsg) = _ActionInProgress;
 
-  const factory ViewContactUnionState.actionInProgress(ContactsLoading loadingMsg) =
-      _ActionInProgress;
-
-  const factory ViewContactUnionState.callSuccesful(String number) =
-      _CallSuccesful;
+  const factory ViewContactUnionState.callSuccessful(String number) =
+      _CallSuccessful;
 
   const factory ViewContactUnionState.callFailure(CallFailure failure) =
       _CallFailure;
 
-  const factory ViewContactUnionState.messageFailure(String number) = _MessageFailure;
+  const factory ViewContactUnionState.messageFailure(String number) =
+      _MessageFailure;
+
+
+    const factory ViewContactUnionState.appMessageFailure({
+    required String number,
+    required PhoneAppMessage appMessage,
+  }) = _AppMessageFailure;
 }

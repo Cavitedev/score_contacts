@@ -82,7 +82,6 @@ class Phone implements ILabelObject {
 }
 
 class PhoneAppMessage {
-
   static const List<PhoneAppMessage> appsToCheck = [
     PhoneAppMessage(image: "whatsapp", appName: "com.whatsapp"),
     PhoneAppMessage(image: "telegram", appName: "com.telegram"),
@@ -96,5 +95,7 @@ class PhoneAppMessage {
     required this.appName,
   });
 
+  String appNameWithoutDomain() =>
+    appName.split(".").last.capitalize();
 
 }

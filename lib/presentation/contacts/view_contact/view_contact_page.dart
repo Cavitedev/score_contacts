@@ -32,8 +32,7 @@ class ViewContactPage extends StatelessWidget {
             state.unionState.map(
               initial: (_) {},
               actionInProgress: (_) {},
-
-              callSuccesful: (state) => FlushbarHelper.createSuccess(
+              callSuccessful: (state) => FlushbarHelper.createSuccess(
                 duration: const Duration(seconds: 4),
                 message: AppLocalization.of(context).translate(
                   "success_call",
@@ -49,12 +48,22 @@ class ViewContactPage extends StatelessWidget {
                 message: AppLocalization.of(context)
                     .translate("error_message", args: [f.number]),
               ).show(context),
+              appMessageFailure: (f) => FlushbarHelper.createError(
+                duration: const Duration(seconds: 12),
+                message: AppLocalization.of(context).translate(
+                  "error_app_message",
+                  args: [f.appMessage.appNameWithoutDomain(), f.number],
+                ),
+              ).show(context),
             );
           },
           builder: (BuildContext context, state) {
             return Stack(
               children: [
-                ViewContactScaffold(contact: state.contact, onDelete: onDelete,),
+                ViewContactScaffold(
+                  contact: state.contact,
+                  onDelete: onDelete,
+                ),
                 ViewOverlayProgressIndicator(),
               ],
             );

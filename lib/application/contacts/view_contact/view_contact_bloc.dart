@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -38,7 +39,7 @@ class ViewContactBloc extends Bloc<ViewContactEvent, ViewContactState> {
 
         if (await canLaunch(callNumUrlLaunch)) {
           yield state.copyWith(
-              unionState: ViewContactUnionState.callSuccesful(num));
+              unionState: ViewContactUnionState.callSuccessful(num));
           await launch(callNumUrlLaunch);
         } else {
           yield state.copyWith(
@@ -62,11 +63,20 @@ class ViewContactBloc extends Bloc<ViewContactEvent, ViewContactState> {
         }
       },
       sendMessageThroughApp: (e) async* {
-
-          const channel = MethodChannel("com.cavitedev.scorecontacts/app_message");
-
-          await channel.invokeMethod("send_message", [e.phone.toDatabaseString(e.region).value, e.app]);
-
+        const channel =
+            MethodChannel("com.cavitedev.scorecontacts/app_message");
+        try {
+          await channel.invokeMethod("send_message",
+              [e.phone.toDatabaseString(e.region).value, e.app.appName]);
+          yield state.copyWith(
+              unionState: const ViewContactUnionState.initial());
+        } on PlatformException {
+          yield state.copyWith(
+              unionState: ViewContactUnionState.appMessageFailure(
+            number: e.phone.value!,
+            appMessage: e.app,
+          ));
+        }
       },
     );
   }

@@ -36,10 +36,14 @@ class _$ViewContactEventTearOff {
     );
   }
 
-  _SendMessageThroughApp sendMessageThroughApp(String number, String app) {
+  _SendMessageThroughApp sendMessageThroughApp(
+      {required Phone phone,
+      required String region,
+      required PhoneAppMessage app}) {
     return _SendMessageThroughApp(
-      number,
-      app,
+      phone: phone,
+      region: region,
+      app: app,
     );
   }
 }
@@ -54,7 +58,8 @@ mixin _$ViewContactEvent {
     required TResult Function(Contact contact, String countryCode) initialize,
     required TResult Function(String number) callNumber,
     required TResult Function(String number) sendMessage,
-    required TResult Function(String number, String app) sendMessageThroughApp,
+    required TResult Function(Phone phone, String region, PhoneAppMessage app)
+        sendMessageThroughApp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,7 +67,8 @@ mixin _$ViewContactEvent {
     TResult Function(Contact contact, String countryCode)? initialize,
     TResult Function(String number)? callNumber,
     TResult Function(String number)? sendMessage,
-    TResult Function(String number, String app)? sendMessageThroughApp,
+    TResult Function(Phone phone, String region, PhoneAppMessage app)?
+        sendMessageThroughApp,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -151,7 +157,7 @@ class __$InitializeCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Initialize implements _Initialize {
+class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
   const _$_Initialize({required this.contact, required this.countryCode});
 
   @override
@@ -160,8 +166,17 @@ class _$_Initialize implements _Initialize {
   final String countryCode;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ViewContactEvent.initialize(contact: $contact, countryCode: $countryCode)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ViewContactEvent.initialize'))
+      ..add(DiagnosticsProperty('contact', contact))
+      ..add(DiagnosticsProperty('countryCode', countryCode));
   }
 
   @override
@@ -193,7 +208,8 @@ class _$_Initialize implements _Initialize {
     required TResult Function(Contact contact, String countryCode) initialize,
     required TResult Function(String number) callNumber,
     required TResult Function(String number) sendMessage,
-    required TResult Function(String number, String app) sendMessageThroughApp,
+    required TResult Function(Phone phone, String region, PhoneAppMessage app)
+        sendMessageThroughApp,
   }) {
     return initialize(contact, countryCode);
   }
@@ -204,7 +220,8 @@ class _$_Initialize implements _Initialize {
     TResult Function(Contact contact, String countryCode)? initialize,
     TResult Function(String number)? callNumber,
     TResult Function(String number)? sendMessage,
-    TResult Function(String number, String app)? sendMessageThroughApp,
+    TResult Function(Phone phone, String region, PhoneAppMessage app)?
+        sendMessageThroughApp,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -286,15 +303,23 @@ class __$CallNumberCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CallNumber implements _CallNumber {
+class _$_CallNumber with DiagnosticableTreeMixin implements _CallNumber {
   const _$_CallNumber(this.number);
 
   @override
   final String number;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ViewContactEvent.callNumber(number: $number)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ViewContactEvent.callNumber'))
+      ..add(DiagnosticsProperty('number', number));
   }
 
   @override
@@ -320,7 +345,8 @@ class _$_CallNumber implements _CallNumber {
     required TResult Function(Contact contact, String countryCode) initialize,
     required TResult Function(String number) callNumber,
     required TResult Function(String number) sendMessage,
-    required TResult Function(String number, String app) sendMessageThroughApp,
+    required TResult Function(Phone phone, String region, PhoneAppMessage app)
+        sendMessageThroughApp,
   }) {
     return callNumber(number);
   }
@@ -331,7 +357,8 @@ class _$_CallNumber implements _CallNumber {
     TResult Function(Contact contact, String countryCode)? initialize,
     TResult Function(String number)? callNumber,
     TResult Function(String number)? sendMessage,
-    TResult Function(String number, String app)? sendMessageThroughApp,
+    TResult Function(Phone phone, String region, PhoneAppMessage app)?
+        sendMessageThroughApp,
     required TResult orElse(),
   }) {
     if (callNumber != null) {
@@ -411,15 +438,23 @@ class __$SendMessageCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SendMessage implements _SendMessage {
+class _$_SendMessage with DiagnosticableTreeMixin implements _SendMessage {
   const _$_SendMessage(this.number);
 
   @override
   final String number;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ViewContactEvent.sendMessage(number: $number)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ViewContactEvent.sendMessage'))
+      ..add(DiagnosticsProperty('number', number));
   }
 
   @override
@@ -445,7 +480,8 @@ class _$_SendMessage implements _SendMessage {
     required TResult Function(Contact contact, String countryCode) initialize,
     required TResult Function(String number) callNumber,
     required TResult Function(String number) sendMessage,
-    required TResult Function(String number, String app) sendMessageThroughApp,
+    required TResult Function(Phone phone, String region, PhoneAppMessage app)
+        sendMessageThroughApp,
   }) {
     return sendMessage(number);
   }
@@ -456,7 +492,8 @@ class _$_SendMessage implements _SendMessage {
     TResult Function(Contact contact, String countryCode)? initialize,
     TResult Function(String number)? callNumber,
     TResult Function(String number)? sendMessage,
-    TResult Function(String number, String app)? sendMessageThroughApp,
+    TResult Function(Phone phone, String region, PhoneAppMessage app)?
+        sendMessageThroughApp,
     required TResult orElse(),
   }) {
     if (sendMessage != null) {
@@ -507,7 +544,7 @@ abstract class _$SendMessageThroughAppCopyWith<$Res> {
   factory _$SendMessageThroughAppCopyWith(_SendMessageThroughApp value,
           $Res Function(_SendMessageThroughApp) then) =
       __$SendMessageThroughAppCopyWithImpl<$Res>;
-  $Res call({String number, String app});
+  $Res call({Phone phone, String region, PhoneAppMessage app});
 }
 
 /// @nodoc
@@ -523,43 +560,66 @@ class __$SendMessageThroughAppCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? number = freezed,
+    Object? phone = freezed,
+    Object? region = freezed,
     Object? app = freezed,
   }) {
     return _then(_SendMessageThroughApp(
-      number == freezed
-          ? _value.number
-          : number // ignore: cast_nullable_to_non_nullable
+      phone: phone == freezed
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as Phone,
+      region: region == freezed
+          ? _value.region
+          : region // ignore: cast_nullable_to_non_nullable
               as String,
-      app == freezed
+      app: app == freezed
           ? _value.app
           : app // ignore: cast_nullable_to_non_nullable
-              as String,
+              as PhoneAppMessage,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_SendMessageThroughApp implements _SendMessageThroughApp {
-  const _$_SendMessageThroughApp(this.number, this.app);
+class _$_SendMessageThroughApp
+    with DiagnosticableTreeMixin
+    implements _SendMessageThroughApp {
+  const _$_SendMessageThroughApp(
+      {required this.phone, required this.region, required this.app});
 
   @override
-  final String number;
+  final Phone phone;
   @override
-  final String app;
+  final String region;
+  @override
+  final PhoneAppMessage app;
 
   @override
-  String toString() {
-    return 'ViewContactEvent.sendMessageThroughApp(number: $number, app: $app)';
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ViewContactEvent.sendMessageThroughApp(phone: $phone, region: $region, app: $app)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(
+          DiagnosticsProperty('type', 'ViewContactEvent.sendMessageThroughApp'))
+      ..add(DiagnosticsProperty('phone', phone))
+      ..add(DiagnosticsProperty('region', region))
+      ..add(DiagnosticsProperty('app', app));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _SendMessageThroughApp &&
-            (identical(other.number, number) ||
-                const DeepCollectionEquality().equals(other.number, number)) &&
+            (identical(other.phone, phone) ||
+                const DeepCollectionEquality().equals(other.phone, phone)) &&
+            (identical(other.region, region) ||
+                const DeepCollectionEquality().equals(other.region, region)) &&
             (identical(other.app, app) ||
                 const DeepCollectionEquality().equals(other.app, app)));
   }
@@ -567,7 +627,8 @@ class _$_SendMessageThroughApp implements _SendMessageThroughApp {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(number) ^
+      const DeepCollectionEquality().hash(phone) ^
+      const DeepCollectionEquality().hash(region) ^
       const DeepCollectionEquality().hash(app);
 
   @JsonKey(ignore: true)
@@ -582,9 +643,10 @@ class _$_SendMessageThroughApp implements _SendMessageThroughApp {
     required TResult Function(Contact contact, String countryCode) initialize,
     required TResult Function(String number) callNumber,
     required TResult Function(String number) sendMessage,
-    required TResult Function(String number, String app) sendMessageThroughApp,
+    required TResult Function(Phone phone, String region, PhoneAppMessage app)
+        sendMessageThroughApp,
   }) {
-    return sendMessageThroughApp(number, app);
+    return sendMessageThroughApp(phone, region, app);
   }
 
   @override
@@ -593,11 +655,12 @@ class _$_SendMessageThroughApp implements _SendMessageThroughApp {
     TResult Function(Contact contact, String countryCode)? initialize,
     TResult Function(String number)? callNumber,
     TResult Function(String number)? sendMessage,
-    TResult Function(String number, String app)? sendMessageThroughApp,
+    TResult Function(Phone phone, String region, PhoneAppMessage app)?
+        sendMessageThroughApp,
     required TResult orElse(),
   }) {
     if (sendMessageThroughApp != null) {
-      return sendMessageThroughApp(number, app);
+      return sendMessageThroughApp(phone, region, app);
     }
     return orElse();
   }
@@ -631,11 +694,14 @@ class _$_SendMessageThroughApp implements _SendMessageThroughApp {
 }
 
 abstract class _SendMessageThroughApp implements ViewContactEvent {
-  const factory _SendMessageThroughApp(String number, String app) =
-      _$_SendMessageThroughApp;
+  const factory _SendMessageThroughApp(
+      {required Phone phone,
+      required String region,
+      required PhoneAppMessage app}) = _$_SendMessageThroughApp;
 
-  String get number => throw _privateConstructorUsedError;
-  String get app => throw _privateConstructorUsedError;
+  Phone get phone => throw _privateConstructorUsedError;
+  String get region => throw _privateConstructorUsedError;
+  PhoneAppMessage get app => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$SendMessageThroughAppCopyWith<_SendMessageThroughApp> get copyWith =>
       throw _privateConstructorUsedError;
@@ -765,7 +831,8 @@ class __$ViewContactStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ViewContactState extends _ViewContactState {
+class _$_ViewContactState extends _ViewContactState
+    with DiagnosticableTreeMixin {
   const _$_ViewContactState({required this.contact, required this.unionState})
       : super._();
 
@@ -775,8 +842,17 @@ class _$_ViewContactState extends _ViewContactState {
   final ViewContactUnionState unionState;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ViewContactState(contact: $contact, unionState: $unionState)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ViewContactState'))
+      ..add(DiagnosticsProperty('contact', contact))
+      ..add(DiagnosticsProperty('unionState', unionState));
   }
 
   @override
@@ -833,8 +909,8 @@ class _$ViewContactUnionStateTearOff {
     );
   }
 
-  _CallSuccesful callSuccesful(String number) {
-    return _CallSuccesful(
+  _CallSuccessful callSuccessful(String number) {
+    return _CallSuccessful(
       number,
     );
   }
@@ -850,6 +926,14 @@ class _$ViewContactUnionStateTearOff {
       number,
     );
   }
+
+  _AppMessageFailure appMessageFailure(
+      {required String number, required PhoneAppMessage appMessage}) {
+    return _AppMessageFailure(
+      number: number,
+      appMessage: appMessage,
+    );
+  }
 }
 
 /// @nodoc
@@ -861,18 +945,22 @@ mixin _$ViewContactUnionState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(ContactsLoading loadingMsg) actionInProgress,
-    required TResult Function(String number) callSuccesful,
+    required TResult Function(String number) callSuccessful,
     required TResult Function(CallFailure failure) callFailure,
     required TResult Function(String number) messageFailure,
+    required TResult Function(String number, PhoneAppMessage appMessage)
+        appMessageFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(ContactsLoading loadingMsg)? actionInProgress,
-    TResult Function(String number)? callSuccesful,
+    TResult Function(String number)? callSuccessful,
     TResult Function(CallFailure failure)? callFailure,
     TResult Function(String number)? messageFailure,
+    TResult Function(String number, PhoneAppMessage appMessage)?
+        appMessageFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -880,18 +968,20 @@ mixin _$ViewContactUnionState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_ActionInProgress value) actionInProgress,
-    required TResult Function(_CallSuccesful value) callSuccesful,
+    required TResult Function(_CallSuccessful value) callSuccessful,
     required TResult Function(_CallFailure value) callFailure,
     required TResult Function(_MessageFailure value) messageFailure,
+    required TResult Function(_AppMessageFailure value) appMessageFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_ActionInProgress value)? actionInProgress,
-    TResult Function(_CallSuccesful value)? callSuccesful,
+    TResult Function(_CallSuccessful value)? callSuccessful,
     TResult Function(_CallFailure value)? callFailure,
     TResult Function(_MessageFailure value)? messageFailure,
+    TResult Function(_AppMessageFailure value)? appMessageFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -933,12 +1023,19 @@ class __$InitialCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
+class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   const _$_Initial();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ViewContactUnionState.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ViewContactUnionState.initial'));
   }
 
   @override
@@ -954,9 +1051,11 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(ContactsLoading loadingMsg) actionInProgress,
-    required TResult Function(String number) callSuccesful,
+    required TResult Function(String number) callSuccessful,
     required TResult Function(CallFailure failure) callFailure,
     required TResult Function(String number) messageFailure,
+    required TResult Function(String number, PhoneAppMessage appMessage)
+        appMessageFailure,
   }) {
     return initial();
   }
@@ -966,9 +1065,11 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(ContactsLoading loadingMsg)? actionInProgress,
-    TResult Function(String number)? callSuccesful,
+    TResult Function(String number)? callSuccessful,
     TResult Function(CallFailure failure)? callFailure,
     TResult Function(String number)? messageFailure,
+    TResult Function(String number, PhoneAppMessage appMessage)?
+        appMessageFailure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -982,9 +1083,10 @@ class _$_Initial implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_ActionInProgress value) actionInProgress,
-    required TResult Function(_CallSuccesful value) callSuccesful,
+    required TResult Function(_CallSuccessful value) callSuccessful,
     required TResult Function(_CallFailure value) callFailure,
     required TResult Function(_MessageFailure value) messageFailure,
+    required TResult Function(_AppMessageFailure value) appMessageFailure,
   }) {
     return initial(this);
   }
@@ -994,9 +1096,10 @@ class _$_Initial implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_ActionInProgress value)? actionInProgress,
-    TResult Function(_CallSuccesful value)? callSuccesful,
+    TResult Function(_CallSuccessful value)? callSuccessful,
     TResult Function(_CallFailure value)? callFailure,
     TResult Function(_MessageFailure value)? messageFailure,
+    TResult Function(_AppMessageFailure value)? appMessageFailure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1053,15 +1156,26 @@ class __$ActionInProgressCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ActionInProgress implements _ActionInProgress {
+class _$_ActionInProgress
+    with DiagnosticableTreeMixin
+    implements _ActionInProgress {
   const _$_ActionInProgress(this.loadingMsg);
 
   @override
   final ContactsLoading loadingMsg;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ViewContactUnionState.actionInProgress(loadingMsg: $loadingMsg)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(
+          DiagnosticsProperty('type', 'ViewContactUnionState.actionInProgress'))
+      ..add(DiagnosticsProperty('loadingMsg', loadingMsg));
   }
 
   @override
@@ -1087,9 +1201,11 @@ class _$_ActionInProgress implements _ActionInProgress {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(ContactsLoading loadingMsg) actionInProgress,
-    required TResult Function(String number) callSuccesful,
+    required TResult Function(String number) callSuccessful,
     required TResult Function(CallFailure failure) callFailure,
     required TResult Function(String number) messageFailure,
+    required TResult Function(String number, PhoneAppMessage appMessage)
+        appMessageFailure,
   }) {
     return actionInProgress(loadingMsg);
   }
@@ -1099,9 +1215,11 @@ class _$_ActionInProgress implements _ActionInProgress {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(ContactsLoading loadingMsg)? actionInProgress,
-    TResult Function(String number)? callSuccesful,
+    TResult Function(String number)? callSuccessful,
     TResult Function(CallFailure failure)? callFailure,
     TResult Function(String number)? messageFailure,
+    TResult Function(String number, PhoneAppMessage appMessage)?
+        appMessageFailure,
     required TResult orElse(),
   }) {
     if (actionInProgress != null) {
@@ -1115,9 +1233,10 @@ class _$_ActionInProgress implements _ActionInProgress {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_ActionInProgress value) actionInProgress,
-    required TResult Function(_CallSuccesful value) callSuccesful,
+    required TResult Function(_CallSuccessful value) callSuccessful,
     required TResult Function(_CallFailure value) callFailure,
     required TResult Function(_MessageFailure value) messageFailure,
+    required TResult Function(_AppMessageFailure value) appMessageFailure,
   }) {
     return actionInProgress(this);
   }
@@ -1127,9 +1246,10 @@ class _$_ActionInProgress implements _ActionInProgress {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_ActionInProgress value)? actionInProgress,
-    TResult Function(_CallSuccesful value)? callSuccesful,
+    TResult Function(_CallSuccessful value)? callSuccessful,
     TResult Function(_CallFailure value)? callFailure,
     TResult Function(_MessageFailure value)? messageFailure,
+    TResult Function(_AppMessageFailure value)? appMessageFailure,
     required TResult orElse(),
   }) {
     if (actionInProgress != null) {
@@ -1150,29 +1270,29 @@ abstract class _ActionInProgress implements ViewContactUnionState {
 }
 
 /// @nodoc
-abstract class _$CallSuccesfulCopyWith<$Res> {
-  factory _$CallSuccesfulCopyWith(
-          _CallSuccesful value, $Res Function(_CallSuccesful) then) =
-      __$CallSuccesfulCopyWithImpl<$Res>;
+abstract class _$CallSuccessfulCopyWith<$Res> {
+  factory _$CallSuccessfulCopyWith(
+          _CallSuccessful value, $Res Function(_CallSuccessful) then) =
+      __$CallSuccessfulCopyWithImpl<$Res>;
   $Res call({String number});
 }
 
 /// @nodoc
-class __$CallSuccesfulCopyWithImpl<$Res>
+class __$CallSuccessfulCopyWithImpl<$Res>
     extends _$ViewContactUnionStateCopyWithImpl<$Res>
-    implements _$CallSuccesfulCopyWith<$Res> {
-  __$CallSuccesfulCopyWithImpl(
-      _CallSuccesful _value, $Res Function(_CallSuccesful) _then)
-      : super(_value, (v) => _then(v as _CallSuccesful));
+    implements _$CallSuccessfulCopyWith<$Res> {
+  __$CallSuccessfulCopyWithImpl(
+      _CallSuccessful _value, $Res Function(_CallSuccessful) _then)
+      : super(_value, (v) => _then(v as _CallSuccessful));
 
   @override
-  _CallSuccesful get _value => super._value as _CallSuccesful;
+  _CallSuccessful get _value => super._value as _CallSuccessful;
 
   @override
   $Res call({
     Object? number = freezed,
   }) {
-    return _then(_CallSuccesful(
+    return _then(_CallSuccessful(
       number == freezed
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
@@ -1183,21 +1303,31 @@ class __$CallSuccesfulCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CallSuccesful implements _CallSuccesful {
-  const _$_CallSuccesful(this.number);
+class _$_CallSuccessful
+    with DiagnosticableTreeMixin
+    implements _CallSuccessful {
+  const _$_CallSuccessful(this.number);
 
   @override
   final String number;
 
   @override
-  String toString() {
-    return 'ViewContactUnionState.callSuccesful(number: $number)';
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ViewContactUnionState.callSuccessful(number: $number)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ViewContactUnionState.callSuccessful'))
+      ..add(DiagnosticsProperty('number', number));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _CallSuccesful &&
+        (other is _CallSuccessful &&
             (identical(other.number, number) ||
                 const DeepCollectionEquality().equals(other.number, number)));
   }
@@ -1208,19 +1338,21 @@ class _$_CallSuccesful implements _CallSuccesful {
 
   @JsonKey(ignore: true)
   @override
-  _$CallSuccesfulCopyWith<_CallSuccesful> get copyWith =>
-      __$CallSuccesfulCopyWithImpl<_CallSuccesful>(this, _$identity);
+  _$CallSuccessfulCopyWith<_CallSuccessful> get copyWith =>
+      __$CallSuccessfulCopyWithImpl<_CallSuccessful>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(ContactsLoading loadingMsg) actionInProgress,
-    required TResult Function(String number) callSuccesful,
+    required TResult Function(String number) callSuccessful,
     required TResult Function(CallFailure failure) callFailure,
     required TResult Function(String number) messageFailure,
+    required TResult Function(String number, PhoneAppMessage appMessage)
+        appMessageFailure,
   }) {
-    return callSuccesful(number);
+    return callSuccessful(number);
   }
 
   @override
@@ -1228,13 +1360,15 @@ class _$_CallSuccesful implements _CallSuccesful {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(ContactsLoading loadingMsg)? actionInProgress,
-    TResult Function(String number)? callSuccesful,
+    TResult Function(String number)? callSuccessful,
     TResult Function(CallFailure failure)? callFailure,
     TResult Function(String number)? messageFailure,
+    TResult Function(String number, PhoneAppMessage appMessage)?
+        appMessageFailure,
     required TResult orElse(),
   }) {
-    if (callSuccesful != null) {
-      return callSuccesful(number);
+    if (callSuccessful != null) {
+      return callSuccessful(number);
     }
     return orElse();
   }
@@ -1244,11 +1378,12 @@ class _$_CallSuccesful implements _CallSuccesful {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_ActionInProgress value) actionInProgress,
-    required TResult Function(_CallSuccesful value) callSuccesful,
+    required TResult Function(_CallSuccessful value) callSuccessful,
     required TResult Function(_CallFailure value) callFailure,
     required TResult Function(_MessageFailure value) messageFailure,
+    required TResult Function(_AppMessageFailure value) appMessageFailure,
   }) {
-    return callSuccesful(this);
+    return callSuccessful(this);
   }
 
   @override
@@ -1256,24 +1391,25 @@ class _$_CallSuccesful implements _CallSuccesful {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_ActionInProgress value)? actionInProgress,
-    TResult Function(_CallSuccesful value)? callSuccesful,
+    TResult Function(_CallSuccessful value)? callSuccessful,
     TResult Function(_CallFailure value)? callFailure,
     TResult Function(_MessageFailure value)? messageFailure,
+    TResult Function(_AppMessageFailure value)? appMessageFailure,
     required TResult orElse(),
   }) {
-    if (callSuccesful != null) {
-      return callSuccesful(this);
+    if (callSuccessful != null) {
+      return callSuccessful(this);
     }
     return orElse();
   }
 }
 
-abstract class _CallSuccesful implements ViewContactUnionState {
-  const factory _CallSuccesful(String number) = _$_CallSuccesful;
+abstract class _CallSuccessful implements ViewContactUnionState {
+  const factory _CallSuccessful(String number) = _$_CallSuccessful;
 
   String get number => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$CallSuccesfulCopyWith<_CallSuccesful> get copyWith =>
+  _$CallSuccessfulCopyWith<_CallSuccessful> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1320,15 +1456,23 @@ class __$CallFailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CallFailure implements _CallFailure {
+class _$_CallFailure with DiagnosticableTreeMixin implements _CallFailure {
   const _$_CallFailure(this.failure);
 
   @override
   final CallFailure failure;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ViewContactUnionState.callFailure(failure: $failure)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ViewContactUnionState.callFailure'))
+      ..add(DiagnosticsProperty('failure', failure));
   }
 
   @override
@@ -1353,9 +1497,11 @@ class _$_CallFailure implements _CallFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(ContactsLoading loadingMsg) actionInProgress,
-    required TResult Function(String number) callSuccesful,
+    required TResult Function(String number) callSuccessful,
     required TResult Function(CallFailure failure) callFailure,
     required TResult Function(String number) messageFailure,
+    required TResult Function(String number, PhoneAppMessage appMessage)
+        appMessageFailure,
   }) {
     return callFailure(failure);
   }
@@ -1365,9 +1511,11 @@ class _$_CallFailure implements _CallFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(ContactsLoading loadingMsg)? actionInProgress,
-    TResult Function(String number)? callSuccesful,
+    TResult Function(String number)? callSuccessful,
     TResult Function(CallFailure failure)? callFailure,
     TResult Function(String number)? messageFailure,
+    TResult Function(String number, PhoneAppMessage appMessage)?
+        appMessageFailure,
     required TResult orElse(),
   }) {
     if (callFailure != null) {
@@ -1381,9 +1529,10 @@ class _$_CallFailure implements _CallFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_ActionInProgress value) actionInProgress,
-    required TResult Function(_CallSuccesful value) callSuccesful,
+    required TResult Function(_CallSuccessful value) callSuccessful,
     required TResult Function(_CallFailure value) callFailure,
     required TResult Function(_MessageFailure value) messageFailure,
+    required TResult Function(_AppMessageFailure value) appMessageFailure,
   }) {
     return callFailure(this);
   }
@@ -1393,9 +1542,10 @@ class _$_CallFailure implements _CallFailure {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_ActionInProgress value)? actionInProgress,
-    TResult Function(_CallSuccesful value)? callSuccesful,
+    TResult Function(_CallSuccessful value)? callSuccessful,
     TResult Function(_CallFailure value)? callFailure,
     TResult Function(_MessageFailure value)? messageFailure,
+    TResult Function(_AppMessageFailure value)? appMessageFailure,
     required TResult orElse(),
   }) {
     if (callFailure != null) {
@@ -1448,15 +1598,25 @@ class __$MessageFailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_MessageFailure implements _MessageFailure {
+class _$_MessageFailure
+    with DiagnosticableTreeMixin
+    implements _MessageFailure {
   const _$_MessageFailure(this.number);
 
   @override
   final String number;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ViewContactUnionState.messageFailure(number: $number)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ViewContactUnionState.messageFailure'))
+      ..add(DiagnosticsProperty('number', number));
   }
 
   @override
@@ -1481,9 +1641,11 @@ class _$_MessageFailure implements _MessageFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(ContactsLoading loadingMsg) actionInProgress,
-    required TResult Function(String number) callSuccesful,
+    required TResult Function(String number) callSuccessful,
     required TResult Function(CallFailure failure) callFailure,
     required TResult Function(String number) messageFailure,
+    required TResult Function(String number, PhoneAppMessage appMessage)
+        appMessageFailure,
   }) {
     return messageFailure(number);
   }
@@ -1493,9 +1655,11 @@ class _$_MessageFailure implements _MessageFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(ContactsLoading loadingMsg)? actionInProgress,
-    TResult Function(String number)? callSuccesful,
+    TResult Function(String number)? callSuccessful,
     TResult Function(CallFailure failure)? callFailure,
     TResult Function(String number)? messageFailure,
+    TResult Function(String number, PhoneAppMessage appMessage)?
+        appMessageFailure,
     required TResult orElse(),
   }) {
     if (messageFailure != null) {
@@ -1509,9 +1673,10 @@ class _$_MessageFailure implements _MessageFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_ActionInProgress value) actionInProgress,
-    required TResult Function(_CallSuccesful value) callSuccesful,
+    required TResult Function(_CallSuccessful value) callSuccessful,
     required TResult Function(_CallFailure value) callFailure,
     required TResult Function(_MessageFailure value) messageFailure,
+    required TResult Function(_AppMessageFailure value) appMessageFailure,
   }) {
     return messageFailure(this);
   }
@@ -1521,9 +1686,10 @@ class _$_MessageFailure implements _MessageFailure {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_ActionInProgress value)? actionInProgress,
-    TResult Function(_CallSuccesful value)? callSuccesful,
+    TResult Function(_CallSuccessful value)? callSuccessful,
     TResult Function(_CallFailure value)? callFailure,
     TResult Function(_MessageFailure value)? messageFailure,
+    TResult Function(_AppMessageFailure value)? appMessageFailure,
     required TResult orElse(),
   }) {
     if (messageFailure != null) {
@@ -1539,5 +1705,166 @@ abstract class _MessageFailure implements ViewContactUnionState {
   String get number => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$MessageFailureCopyWith<_MessageFailure> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$AppMessageFailureCopyWith<$Res> {
+  factory _$AppMessageFailureCopyWith(
+          _AppMessageFailure value, $Res Function(_AppMessageFailure) then) =
+      __$AppMessageFailureCopyWithImpl<$Res>;
+  $Res call({String number, PhoneAppMessage appMessage});
+}
+
+/// @nodoc
+class __$AppMessageFailureCopyWithImpl<$Res>
+    extends _$ViewContactUnionStateCopyWithImpl<$Res>
+    implements _$AppMessageFailureCopyWith<$Res> {
+  __$AppMessageFailureCopyWithImpl(
+      _AppMessageFailure _value, $Res Function(_AppMessageFailure) _then)
+      : super(_value, (v) => _then(v as _AppMessageFailure));
+
+  @override
+  _AppMessageFailure get _value => super._value as _AppMessageFailure;
+
+  @override
+  $Res call({
+    Object? number = freezed,
+    Object? appMessage = freezed,
+  }) {
+    return _then(_AppMessageFailure(
+      number: number == freezed
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as String,
+      appMessage: appMessage == freezed
+          ? _value.appMessage
+          : appMessage // ignore: cast_nullable_to_non_nullable
+              as PhoneAppMessage,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_AppMessageFailure
+    with DiagnosticableTreeMixin
+    implements _AppMessageFailure {
+  const _$_AppMessageFailure({required this.number, required this.appMessage});
+
+  @override
+  final String number;
+  @override
+  final PhoneAppMessage appMessage;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ViewContactUnionState.appMessageFailure(number: $number, appMessage: $appMessage)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'ViewContactUnionState.appMessageFailure'))
+      ..add(DiagnosticsProperty('number', number))
+      ..add(DiagnosticsProperty('appMessage', appMessage));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _AppMessageFailure &&
+            (identical(other.number, number) ||
+                const DeepCollectionEquality().equals(other.number, number)) &&
+            (identical(other.appMessage, appMessage) ||
+                const DeepCollectionEquality()
+                    .equals(other.appMessage, appMessage)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(number) ^
+      const DeepCollectionEquality().hash(appMessage);
+
+  @JsonKey(ignore: true)
+  @override
+  _$AppMessageFailureCopyWith<_AppMessageFailure> get copyWith =>
+      __$AppMessageFailureCopyWithImpl<_AppMessageFailure>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(ContactsLoading loadingMsg) actionInProgress,
+    required TResult Function(String number) callSuccessful,
+    required TResult Function(CallFailure failure) callFailure,
+    required TResult Function(String number) messageFailure,
+    required TResult Function(String number, PhoneAppMessage appMessage)
+        appMessageFailure,
+  }) {
+    return appMessageFailure(number, appMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(ContactsLoading loadingMsg)? actionInProgress,
+    TResult Function(String number)? callSuccessful,
+    TResult Function(CallFailure failure)? callFailure,
+    TResult Function(String number)? messageFailure,
+    TResult Function(String number, PhoneAppMessage appMessage)?
+        appMessageFailure,
+    required TResult orElse(),
+  }) {
+    if (appMessageFailure != null) {
+      return appMessageFailure(number, appMessage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_ActionInProgress value) actionInProgress,
+    required TResult Function(_CallSuccessful value) callSuccessful,
+    required TResult Function(_CallFailure value) callFailure,
+    required TResult Function(_MessageFailure value) messageFailure,
+    required TResult Function(_AppMessageFailure value) appMessageFailure,
+  }) {
+    return appMessageFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_ActionInProgress value)? actionInProgress,
+    TResult Function(_CallSuccessful value)? callSuccessful,
+    TResult Function(_CallFailure value)? callFailure,
+    TResult Function(_MessageFailure value)? messageFailure,
+    TResult Function(_AppMessageFailure value)? appMessageFailure,
+    required TResult orElse(),
+  }) {
+    if (appMessageFailure != null) {
+      return appMessageFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AppMessageFailure implements ViewContactUnionState {
+  const factory _AppMessageFailure(
+      {required String number,
+      required PhoneAppMessage appMessage}) = _$_AppMessageFailure;
+
+  String get number => throw _privateConstructorUsedError;
+  PhoneAppMessage get appMessage => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$AppMessageFailureCopyWith<_AppMessageFailure> get copyWith =>
       throw _privateConstructorUsedError;
 }

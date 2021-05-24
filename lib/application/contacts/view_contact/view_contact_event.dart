@@ -12,6 +12,6 @@ class ViewContactEvent with _$ViewContactEvent {
   const factory ViewContactEvent.sendMessageThroughApp({
     required Phone phone,
     required String region,
-    required String app,
+    required PhoneAppMessage app,
   }) = _SendMessageThroughApp;
 }

@@ -6,6 +6,14 @@ final _digitRegex = RegExp(r'[0-9]+');
 // ignore: unnecessary_raw_strings
 final _isNotPhoneRegex = RegExp(r'[^0-9()#+\-\. ]');
 
+
+extension StringExtension on String {
+    String capitalize() {
+      return "${this[0].toUpperCase()}${substring(1)}";
+    }
+}
+
+
 /// Check is String of length 1 containst a digit [0-9]
 bool isDigit(String? char) {
   if (char == null || char.length > 1) return false;
