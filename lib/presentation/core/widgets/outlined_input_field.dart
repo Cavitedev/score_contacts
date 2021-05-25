@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:scorecontacts/presentation/contacts/add_contacts/widgets/outlined_input_field_add_contact_listener.dart';
 
 class OutlinedInputFieldsGrowableList extends StatefulWidget {
   final List<OutlinedInputField> fieldPrefabs;
@@ -129,30 +130,19 @@ class _OutlinedInputFieldsGrowableListState
     return Column(
         children: Iterable<int>.generate(widget.fieldPrefabs.length)
             .map((parameterIndex) {
-      return OutlinedInputField(
-        writtenText: writtenTexts != null
-            ? writtenTexts[parameterIndex]
-            : widget.writtenTexts[listIndex][parameterIndex],
-        onChangedValidator: (String str) {
-          return widget.onChangesValidators[parameterIndex](str, listIndex);
-        },
-        focusNode: focusNodes[listIndex][parameterIndex],
-        hintText: widget.fieldPrefabs[parameterIndex].hintText,
-        helperText: widget.fieldPrefabs[parameterIndex].helperText,
-        autoCorrect: widget.fieldPrefabs[parameterIndex].autoCorrect,
-        textCapitalization:
-            widget.fieldPrefabs[parameterIndex].textCapitalization,
-        topPadding: widget.fieldPrefabs[parameterIndex].topPadding,
-        prefixIcon: widget.fieldPrefabs[parameterIndex].prefixIcon,
-        keyboardType: widget.fieldPrefabs[parameterIndex].keyboardType,
-        borderRadius: widget.fieldPrefabs[parameterIndex].borderRadius,
-        autoFocus: widget.fieldPrefabs[parameterIndex].autoFocus,
-        inputFormatters: widget.fieldPrefabs[parameterIndex].inputFormatters,
-      );
-      // widget.fieldPrefabs[parameterIndex].copyWith(
-      //   writtenText: widget.writtenTexts[listIndex][parameterIndex],
-      //   onChangedValidator: (String str) {
-      //     return widget.onChangesValidators[parameterIndex](str, listIndex);
+      return OutlinedInputFieldAddContactListener(
+          onEditChanged: () =>
+              (writtenTexts != null
+                  ? writtenTexts[parameterIndex]
+                  : widget.writtenTexts[listIndex][parameterIndex]) ??
+              "",
+          outlinedInputField: widget.fieldPrefabs[parameterIndex].copyWith(
+            focusNode: focusNodes[listIndex][parameterIndex],
+            onChangedValidator: (String str) {
+              return widget.onChangesValidators[parameterIndex](str, listIndex);
+            },
+          )
+          );
     }).toList());
   }
 
@@ -188,7 +178,6 @@ class OutlinedInputField extends StatefulWidget {
   final Icon? prefixIcon;
   final FocusNode? focusNode;
   final List<TextInputFormatter>? inputFormatters;
-  final String? writtenText;
   final String helperText;
 
   final TextEditingController? textEditingController;
@@ -208,7 +197,6 @@ class OutlinedInputField extends StatefulWidget {
     this.focusNode,
     this.borderRadius = const BorderRadius.all(Radius.circular(12)),
     this.inputFormatters,
-    this.writtenText,
     this.topPadding = 0,
     this.helperText = "",
     this.outlineInputBorder,
@@ -217,6 +205,41 @@ class OutlinedInputField extends StatefulWidget {
 
   @override
   _OutlinedInputFieldState createState() => _OutlinedInputFieldState();
+
+  OutlinedInputField copyWith({
+    final String? hintText,
+    final bool? autoFocus,
+    final bool? autoCorrect,
+    final double? topPadding,
+    final BorderRadius? borderRadius,
+    final OutlineInputBorder? outlineInputBorder,
+    final TextInputType? keyboardType,
+    final TextCapitalization? textCapitalization,
+    final Icon? prefixIcon,
+    final FocusNode? focusNode,
+    final List<TextInputFormatter>? inputFormatters,
+    final String? helperText,
+    final TextEditingController? textEditingController,
+    final String Function(String)? onChangedValidator,
+  }) {
+    return OutlinedInputField(
+      hintText: hintText ?? this.hintText,
+      autoFocus: autoFocus ?? this.autoFocus,
+      autoCorrect: autoCorrect ?? this.autoCorrect,
+      topPadding: topPadding ?? this.topPadding,
+      borderRadius: borderRadius ?? this.borderRadius,
+      outlineInputBorder: outlineInputBorder ?? this.outlineInputBorder,
+      keyboardType: keyboardType ?? this.keyboardType,
+      textCapitalization: textCapitalization ?? this.textCapitalization,
+      prefixIcon: prefixIcon ?? this.prefixIcon,
+      focusNode: focusNode ?? this.focusNode,
+      inputFormatters: inputFormatters ?? this.inputFormatters,
+      helperText: helperText ?? this.helperText,
+      textEditingController:
+          textEditingController ?? this.textEditingController,
+      onChangedValidator: onChangedValidator ?? this.onChangedValidator,
+    );
+  }
 }
 
 class _OutlinedInputFieldState extends State<OutlinedInputField> {
@@ -242,14 +265,6 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.writtenText != null) {
-      textEditingController.value = TextEditingValue(
-          text: widget.writtenText!,
-          selection:
-              TextSelection.collapsed(offset: widget.writtenText!.length));
-
-      hasText = widget.writtenText!.isNotEmpty;
-    }
     return Container(
       padding: EdgeInsets.only(top: widget.topPadding),
       child: TextField(
