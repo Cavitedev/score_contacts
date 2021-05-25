@@ -26,12 +26,13 @@ class AddContactPage extends StatelessWidget {
     return BlocProvider(
         create: (context) {
           final AddContactBloc bloc = getIt<AddContactBloc>()
-            ..add(AddContactEvent.initialize(
-                optionOf(contact), context.read<AppManagerCubit>().state.region));
+            ..add(AddContactEvent.initialize(optionOf(contact),
+                context.read<AppManagerCubit>().state.region));
           return bloc;
         },
         child: BlocListener<AddContactBloc, AddContactState>(
-            listenWhen: (previous, current) => previous.savingOrFailureOption != current.savingOrFailureOption,
+            listenWhen: (previous, current) =>
+                previous.savingOrFailureOption != current.savingOrFailureOption,
             listener: (context, state) {
               state.savingOrFailureOption.fold(
                   () {},
@@ -41,11 +42,17 @@ class AddContactPage extends StatelessWidget {
                           message: getContactsFailureMessage(context, failure),
                         ).show(context),
                         (_) {
-                          context.router.popUntil((route) => route.settings.name == r.ContactListRoute.name);
+                          context.router.popUntil((route) =>
+                              route.settings.name ==
+                              r.AddContactPageRoute.name);
+                          context.router.pop();
                         },
                       ));
             },
-            child: Stack(children: [AddContactScaffold(), const SavingProgressOverlay()])));
+            child: Stack(children: [
+              AddContactScaffold(),
+              const SavingProgressOverlay()
+            ])));
   }
 }
 
