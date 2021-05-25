@@ -16,12 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$AddContactEventTearOff {
   const _$AddContactEventTearOff();
 
-  _Initialize initialize(
-      Option<Contact> contactOption, String countryCode, bool isEditting) {
+  _Initialize initialize(Option<Contact> contactOption, String countryCode) {
     return _Initialize(
       contactOption,
       countryCode,
-      isEditting,
     );
   }
 
@@ -88,8 +86,7 @@ const $AddContactEvent = _$AddContactEventTearOff();
 mixin _$AddContactEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Option<Contact> contactOption, String countryCode, bool isEditting)
+    required TResult Function(Option<Contact> contactOption, String countryCode)
         initialize,
     required TResult Function(String countryCode) saved,
     required TResult Function(ILabelObject labelObject, int pos)
@@ -105,8 +102,7 @@ mixin _$AddContactEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            Option<Contact> contactOption, String countryCode, bool isEditting)?
+    TResult Function(Option<Contact> contactOption, String countryCode)?
         initialize,
     TResult Function(String countryCode)? saved,
     TResult Function(ILabelObject labelObject, int pos)? labelObjectChanged,
@@ -173,8 +169,7 @@ abstract class _$InitializeCopyWith<$Res> {
   factory _$InitializeCopyWith(
           _Initialize value, $Res Function(_Initialize) then) =
       __$InitializeCopyWithImpl<$Res>;
-  $Res call(
-      {Option<Contact> contactOption, String countryCode, bool isEditting});
+  $Res call({Option<Contact> contactOption, String countryCode});
 }
 
 /// @nodoc
@@ -192,7 +187,6 @@ class __$InitializeCopyWithImpl<$Res>
   $Res call({
     Object? contactOption = freezed,
     Object? countryCode = freezed,
-    Object? isEditting = freezed,
   }) {
     return _then(_Initialize(
       contactOption == freezed
@@ -203,10 +197,6 @@ class __$InitializeCopyWithImpl<$Res>
           ? _value.countryCode
           : countryCode // ignore: cast_nullable_to_non_nullable
               as String,
-      isEditting == freezed
-          ? _value.isEditting
-          : isEditting // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
@@ -214,18 +204,16 @@ class __$InitializeCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
-  const _$_Initialize(this.contactOption, this.countryCode, this.isEditting);
+  const _$_Initialize(this.contactOption, this.countryCode);
 
   @override
   final Option<Contact> contactOption;
   @override
   final String countryCode;
-  @override
-  final bool isEditting;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AddContactEvent.initialize(contactOption: $contactOption, countryCode: $countryCode, isEditting: $isEditting)';
+    return 'AddContactEvent.initialize(contactOption: $contactOption, countryCode: $countryCode)';
   }
 
   @override
@@ -234,8 +222,7 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
     properties
       ..add(DiagnosticsProperty('type', 'AddContactEvent.initialize'))
       ..add(DiagnosticsProperty('contactOption', contactOption))
-      ..add(DiagnosticsProperty('countryCode', countryCode))
-      ..add(DiagnosticsProperty('isEditting', isEditting));
+      ..add(DiagnosticsProperty('countryCode', countryCode));
   }
 
   @override
@@ -247,18 +234,14 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
                     .equals(other.contactOption, contactOption)) &&
             (identical(other.countryCode, countryCode) ||
                 const DeepCollectionEquality()
-                    .equals(other.countryCode, countryCode)) &&
-            (identical(other.isEditting, isEditting) ||
-                const DeepCollectionEquality()
-                    .equals(other.isEditting, isEditting)));
+                    .equals(other.countryCode, countryCode)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(contactOption) ^
-      const DeepCollectionEquality().hash(countryCode) ^
-      const DeepCollectionEquality().hash(isEditting);
+      const DeepCollectionEquality().hash(countryCode);
 
   @JsonKey(ignore: true)
   @override
@@ -268,8 +251,7 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Option<Contact> contactOption, String countryCode, bool isEditting)
+    required TResult Function(Option<Contact> contactOption, String countryCode)
         initialize,
     required TResult Function(String countryCode) saved,
     required TResult Function(ILabelObject labelObject, int pos)
@@ -282,14 +264,13 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
     required TResult Function(int index) deleteCompany,
     required TResult Function(PickedFile file) updateImage,
   }) {
-    return initialize(contactOption, countryCode, isEditting);
+    return initialize(contactOption, countryCode);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            Option<Contact> contactOption, String countryCode, bool isEditting)?
+    TResult Function(Option<Contact> contactOption, String countryCode)?
         initialize,
     TResult Function(String countryCode)? saved,
     TResult Function(ILabelObject labelObject, int pos)? labelObjectChanged,
@@ -303,7 +284,7 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
     required TResult orElse(),
   }) {
     if (initialize != null) {
-      return initialize(contactOption, countryCode, isEditting);
+      return initialize(contactOption, countryCode);
     }
     return orElse();
   }
@@ -348,13 +329,11 @@ class _$_Initialize with DiagnosticableTreeMixin implements _Initialize {
 }
 
 abstract class _Initialize implements AddContactEvent {
-  const factory _Initialize(
-          Option<Contact> contactOption, String countryCode, bool isEditting) =
+  const factory _Initialize(Option<Contact> contactOption, String countryCode) =
       _$_Initialize;
 
   Option<Contact> get contactOption => throw _privateConstructorUsedError;
   String get countryCode => throw _privateConstructorUsedError;
-  bool get isEditting => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$InitializeCopyWith<_Initialize> get copyWith =>
       throw _privateConstructorUsedError;
@@ -431,8 +410,7 @@ class _$_Saved with DiagnosticableTreeMixin implements _Saved {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Option<Contact> contactOption, String countryCode, bool isEditting)
+    required TResult Function(Option<Contact> contactOption, String countryCode)
         initialize,
     required TResult Function(String countryCode) saved,
     required TResult Function(ILabelObject labelObject, int pos)
@@ -451,8 +429,7 @@ class _$_Saved with DiagnosticableTreeMixin implements _Saved {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            Option<Contact> contactOption, String countryCode, bool isEditting)?
+    TResult Function(Option<Contact> contactOption, String countryCode)?
         initialize,
     TResult Function(String countryCode)? saved,
     TResult Function(ILabelObject labelObject, int pos)? labelObjectChanged,
@@ -606,8 +583,7 @@ class _$_LabelObjectChanged
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Option<Contact> contactOption, String countryCode, bool isEditting)
+    required TResult Function(Option<Contact> contactOption, String countryCode)
         initialize,
     required TResult Function(String countryCode) saved,
     required TResult Function(ILabelObject labelObject, int pos)
@@ -626,8 +602,7 @@ class _$_LabelObjectChanged
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            Option<Contact> contactOption, String countryCode, bool isEditting)?
+    TResult Function(Option<Contact> contactOption, String countryCode)?
         initialize,
     TResult Function(String countryCode)? saved,
     TResult Function(ILabelObject labelObject, int pos)? labelObjectChanged,
@@ -772,8 +747,7 @@ class _$_AddLabelObject
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Option<Contact> contactOption, String countryCode, bool isEditting)
+    required TResult Function(Option<Contact> contactOption, String countryCode)
         initialize,
     required TResult Function(String countryCode) saved,
     required TResult Function(ILabelObject labelObject, int pos)
@@ -792,8 +766,7 @@ class _$_AddLabelObject
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            Option<Contact> contactOption, String countryCode, bool isEditting)?
+    TResult Function(Option<Contact> contactOption, String countryCode)?
         initialize,
     TResult Function(String countryCode)? saved,
     TResult Function(ILabelObject labelObject, int pos)? labelObjectChanged,
@@ -948,8 +921,7 @@ class _$_RemoveLabelObject
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Option<Contact> contactOption, String countryCode, bool isEditting)
+    required TResult Function(Option<Contact> contactOption, String countryCode)
         initialize,
     required TResult Function(String countryCode) saved,
     required TResult Function(ILabelObject labelObject, int pos)
@@ -968,8 +940,7 @@ class _$_RemoveLabelObject
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            Option<Contact> contactOption, String countryCode, bool isEditting)?
+    TResult Function(Option<Contact> contactOption, String countryCode)?
         initialize,
     TResult Function(String countryCode)? saved,
     TResult Function(ILabelObject labelObject, int pos)? labelObjectChanged,
@@ -1123,8 +1094,7 @@ class _$_UpdateNameData
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Option<Contact> contactOption, String countryCode, bool isEditting)
+    required TResult Function(Option<Contact> contactOption, String countryCode)
         initialize,
     required TResult Function(String countryCode) saved,
     required TResult Function(ILabelObject labelObject, int pos)
@@ -1143,8 +1113,7 @@ class _$_UpdateNameData
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            Option<Contact> contactOption, String countryCode, bool isEditting)?
+    TResult Function(Option<Contact> contactOption, String countryCode)?
         initialize,
     TResult Function(String countryCode)? saved,
     TResult Function(ILabelObject labelObject, int pos)? labelObjectChanged,
@@ -1306,8 +1275,7 @@ class _$_UpdateCompany with DiagnosticableTreeMixin implements _UpdateCompany {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Option<Contact> contactOption, String countryCode, bool isEditting)
+    required TResult Function(Option<Contact> contactOption, String countryCode)
         initialize,
     required TResult Function(String countryCode) saved,
     required TResult Function(ILabelObject labelObject, int pos)
@@ -1326,8 +1294,7 @@ class _$_UpdateCompany with DiagnosticableTreeMixin implements _UpdateCompany {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            Option<Contact> contactOption, String countryCode, bool isEditting)?
+    TResult Function(Option<Contact> contactOption, String countryCode)?
         initialize,
     TResult Function(String countryCode)? saved,
     TResult Function(ILabelObject labelObject, int pos)? labelObjectChanged,
@@ -1441,8 +1408,7 @@ class _$_AddCompany with DiagnosticableTreeMixin implements _AddCompany {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Option<Contact> contactOption, String countryCode, bool isEditting)
+    required TResult Function(Option<Contact> contactOption, String countryCode)
         initialize,
     required TResult Function(String countryCode) saved,
     required TResult Function(ILabelObject labelObject, int pos)
@@ -1461,8 +1427,7 @@ class _$_AddCompany with DiagnosticableTreeMixin implements _AddCompany {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            Option<Contact> contactOption, String countryCode, bool isEditting)?
+    TResult Function(Option<Contact> contactOption, String countryCode)?
         initialize,
     TResult Function(String countryCode)? saved,
     TResult Function(ILabelObject labelObject, int pos)? labelObjectChanged,
@@ -1597,8 +1562,7 @@ class _$_DeleteCompany with DiagnosticableTreeMixin implements _DeleteCompany {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Option<Contact> contactOption, String countryCode, bool isEditting)
+    required TResult Function(Option<Contact> contactOption, String countryCode)
         initialize,
     required TResult Function(String countryCode) saved,
     required TResult Function(ILabelObject labelObject, int pos)
@@ -1617,8 +1581,7 @@ class _$_DeleteCompany with DiagnosticableTreeMixin implements _DeleteCompany {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            Option<Contact> contactOption, String countryCode, bool isEditting)?
+    TResult Function(Option<Contact> contactOption, String countryCode)?
         initialize,
     TResult Function(String countryCode)? saved,
     TResult Function(ILabelObject labelObject, int pos)? labelObjectChanged,
@@ -1758,8 +1721,7 @@ class _$_UpdateImage with DiagnosticableTreeMixin implements _UpdateImage {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Option<Contact> contactOption, String countryCode, bool isEditting)
+    required TResult Function(Option<Contact> contactOption, String countryCode)
         initialize,
     required TResult Function(String countryCode) saved,
     required TResult Function(ILabelObject labelObject, int pos)
@@ -1778,8 +1740,7 @@ class _$_UpdateImage with DiagnosticableTreeMixin implements _UpdateImage {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            Option<Contact> contactOption, String countryCode, bool isEditting)?
+    TResult Function(Option<Contact> contactOption, String countryCode)?
         initialize,
     TResult Function(String countryCode)? saved,
     TResult Function(ILabelObject labelObject, int pos)? labelObjectChanged,

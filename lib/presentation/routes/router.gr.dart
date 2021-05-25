@@ -36,10 +36,7 @@ class Router extends _i1.RootStackRouter {
         builder: (data) {
           final args = data.argsAs<AddContactPageRouteArgs>(
               orElse: () => const AddContactPageRouteArgs());
-          return _i5.AddContactPage(
-              key: args.key,
-              contact: args.contact,
-              isEdditing: args.isEdditing);
+          return _i5.AddContactPage(key: args.key, contact: args.contact);
         }),
     SignInPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
@@ -84,25 +81,20 @@ class ContactListRoute extends _i1.PageRouteInfo {
 }
 
 class AddContactPageRoute extends _i1.PageRouteInfo<AddContactPageRouteArgs> {
-  AddContactPageRoute(
-      {_i2.Key? key, _i9.Contact? contact, bool isEdditing = false})
+  AddContactPageRoute({_i2.Key? key, _i9.Contact? contact})
       : super(name,
             path: '/add-contact-page',
-            args: AddContactPageRouteArgs(
-                key: key, contact: contact, isEdditing: isEdditing));
+            args: AddContactPageRouteArgs(key: key, contact: contact));
 
   static const String name = 'AddContactPageRoute';
 }
 
 class AddContactPageRouteArgs {
-  const AddContactPageRouteArgs(
-      {this.key, this.contact, this.isEdditing = false});
+  const AddContactPageRouteArgs({this.key, this.contact});
 
   final _i2.Key? key;
 
   final _i9.Contact? contact;
-
-  final bool isEdditing;
 }
 
 class SignInPageRoute extends _i1.PageRouteInfo {

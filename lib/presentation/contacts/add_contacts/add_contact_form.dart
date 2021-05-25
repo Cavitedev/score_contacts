@@ -9,9 +9,9 @@ import 'package:scorecontacts/domain/user/contacts_data/properties/email.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/phone.dart';
 import 'package:scorecontacts/presentation/contacts/add_contacts/widgets/image_pick_up.dart';
 import 'package:scorecontacts/presentation/contacts/add_contacts/widgets/label_object_builder.dart';
+import 'package:scorecontacts/presentation/contacts/add_contacts/widgets/name_form_field.dart';
 import 'package:scorecontacts/presentation/core/formatters/number_text_input_formatter.dart';
 import 'package:scorecontacts/presentation/core/widgets/outlined_input_field.dart';
-import 'package:scorecontacts/presentation/core/widgets/outlined_input_fields.dart';
 
 class AddContactForm extends StatelessWidget {
   const AddContactForm({
@@ -39,43 +39,26 @@ class AddContactForm extends StatelessWidget {
                           .add(AddContactEvent.updateImage(imageFile));
                     } else {
                       FlushbarHelper.createError(
-                        message: AppLocalization.of(context)
-                            .translate("error_load_image"),
-                        duration: const Duration(seconds: 5)
-                      ).show(context);
+                              message: AppLocalization.of(context)
+                                  .translate("error_load_image"),
+                              duration: const Duration(seconds: 5))
+                          .show(context);
                     }
                   },
                 ),
-                OutlinedInputFieldsGroup(
-                  inputFields: [
-                    OutlinedInputField(
-                      hintText: AppLocalization.of(context).translate("name"),
-                      writtenText: state.contact.nameData.firstName,
-                      autoFocus: true,
-                      textCapitalization: TextCapitalization.words,
-                      prefixIcon: const Icon(Icons.person_outline),
-                      onChangedValidator: (value) {
-                        context.read<AddContactBloc>().add(
-                            AddContactEvent.updateNameData(state
-                                .contact.nameData
-                                .copyWith(firstName: value)));
-                        return "";
-                      },
-                    ),
-                    OutlinedInputField(
-                      hintText:
-                          AppLocalization.of(context).translate("surname"),
-                      writtenText: state.contact.nameData.surnames,
-                      textCapitalization: TextCapitalization.words,
-                      onChangedValidator: (value) {
-                        context.read<AddContactBloc>().add(
-                            AddContactEvent.updateNameData(state
-                                .contact.nameData
-                                .copyWith(surnames: value)));
-                        return "";
-                      },
-                    ),
-                  ],
+                NameFormField(
+                  state: state,
+                ),
+                OutlinedInputField(
+                  hintText: AppLocalization.of(context).translate("surname"),
+                  writtenText: state.contact.nameData.surnames,
+                  textCapitalization: TextCapitalization.words,
+                  onChangedValidator: (value) {
+                    context.read<AddContactBloc>().add(
+                        AddContactEvent.updateNameData(
+                            state.contact.nameData.copyWith(surnames: value)));
+                    return "";
+                  },
                 ),
                 const SizedBox(
                   height: 20,
@@ -111,12 +94,12 @@ class AddContactForm extends StatelessWidget {
               ],
             ),
           ),
-
         );
       },
     );
   }
 }
+
 
 class CompaniesFields extends StatelessWidget {
   const CompaniesFields({

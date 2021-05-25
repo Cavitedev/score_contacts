@@ -89,18 +89,17 @@ class _OutlinedInputFieldsGrowableListState
   }
 
   void _addWidget() {
-      widget.onAddWidget?.call();
+    widget.onAddWidget?.call();
   }
 
   void _removeWidget({required int pos}) {
     // objectToRemove = widget.writtenTexts[pos];
 
-      widget.onRemoveWidget?.call(pos);
+    widget.onRemoveWidget?.call(pos);
   }
 
   void _updateAnimatedList() {
-    while(widget.writtenTexts.length != listCount){
-
+    while (widget.writtenTexts.length != listCount) {
       if (widget.writtenTexts.length > listCount) {
         focusNodes
             .add(Iterable<FocusNode>.generate(widget.fieldPrefabs.length, (i) {
@@ -110,61 +109,59 @@ class _OutlinedInputFieldsGrowableListState
         listCount++;
       } else if (widget.writtenTexts.isNotEmpty &&
           widget.writtenTexts.length < listCount) {
-        final List<String?> messagesLeft = widget.writtenTexts[posInactiveWidget!];
+        final List<String?> messagesLeft =
+            widget.writtenTexts[posInactiveWidget!];
         animatedList.currentState!.removeItem(posInactiveWidget!,
-                (context, animation) {
-              return _listTransitionBuild(
-                  animation,
-                  _buildField(
-                      listIndex: posInactiveWidget!, writtenTexts: messagesLeft));
-            }, duration: const Duration(milliseconds: 300));
+            (context, animation) {
+          return _listTransitionBuild(
+              animation,
+              _buildField(
+                  listIndex: posInactiveWidget!, writtenTexts: messagesLeft));
+        }, duration: const Duration(milliseconds: 300));
         listCount--;
 
         focusNodes.removeAt(posInactiveWidget!);
       }
-
     }
-
   }
 
   Widget _buildField({required int listIndex, List<String?>? writtenTexts}) {
     return Column(
         children: Iterable<int>.generate(widget.fieldPrefabs.length)
             .map((parameterIndex) {
-          return OutlinedInputField(
-            writtenText: writtenTexts != null
-                ? writtenTexts[parameterIndex]
-                : widget.writtenTexts[listIndex][parameterIndex],
-            onChangedValidator: (String str) {
-              return widget.onChangesValidators[parameterIndex](str, listIndex);
-            },
-            focusNode: focusNodes[listIndex][parameterIndex],
-            hintText: widget.fieldPrefabs[parameterIndex].hintText,
-            helperText: widget.fieldPrefabs[parameterIndex].helperText,
-            autoCorrect: widget.fieldPrefabs[parameterIndex].autoCorrect,
-            textCapitalization:
+      return OutlinedInputField(
+        writtenText: writtenTexts != null
+            ? writtenTexts[parameterIndex]
+            : widget.writtenTexts[listIndex][parameterIndex],
+        onChangedValidator: (String str) {
+          return widget.onChangesValidators[parameterIndex](str, listIndex);
+        },
+        focusNode: focusNodes[listIndex][parameterIndex],
+        hintText: widget.fieldPrefabs[parameterIndex].hintText,
+        helperText: widget.fieldPrefabs[parameterIndex].helperText,
+        autoCorrect: widget.fieldPrefabs[parameterIndex].autoCorrect,
+        textCapitalization:
             widget.fieldPrefabs[parameterIndex].textCapitalization,
-            topPadding: widget.fieldPrefabs[parameterIndex].topPadding,
-            prefixIcon: widget.fieldPrefabs[parameterIndex].prefixIcon,
-            keyboardType: widget.fieldPrefabs[parameterIndex].keyboardType,
-            borderRadius: widget.fieldPrefabs[parameterIndex].borderRadius,
-            autoFocus: widget.fieldPrefabs[parameterIndex].autoFocus,
-            inputFormatters: widget.fieldPrefabs[parameterIndex]
-                .inputFormatters,
-          );
-          // widget.fieldPrefabs[parameterIndex].copyWith(
-          //   writtenText: widget.writtenTexts[listIndex][parameterIndex],
-          //   onChangedValidator: (String str) {
-          //     return widget.onChangesValidators[parameterIndex](str, listIndex);
-        }).toList());
+        topPadding: widget.fieldPrefabs[parameterIndex].topPadding,
+        prefixIcon: widget.fieldPrefabs[parameterIndex].prefixIcon,
+        keyboardType: widget.fieldPrefabs[parameterIndex].keyboardType,
+        borderRadius: widget.fieldPrefabs[parameterIndex].borderRadius,
+        autoFocus: widget.fieldPrefabs[parameterIndex].autoFocus,
+        inputFormatters: widget.fieldPrefabs[parameterIndex].inputFormatters,
+      );
+      // widget.fieldPrefabs[parameterIndex].copyWith(
+      //   writtenText: widget.writtenTexts[listIndex][parameterIndex],
+      //   onChangedValidator: (String str) {
+      //     return widget.onChangesValidators[parameterIndex](str, listIndex);
+    }).toList());
   }
 
   bool _isEmptyList(List<String?> list) {
     return list.any((str) => str != null && str.isNotEmpty);
   }
 
-  SizeTransition _listTransitionBuild(Animation<double> animation,
-      Widget child) {
+  SizeTransition _listTransitionBuild(
+      Animation<double> animation, Widget child) {
     return SizeTransition(
       sizeFactor: CurvedAnimation(
           curve: const Interval(0, 1, curve: Curves.decelerate),
@@ -194,6 +191,8 @@ class OutlinedInputField extends StatefulWidget {
   final String? writtenText;
   final String helperText;
 
+  final TextEditingController? textEditingController;
+
   /// return null to not show any helper
   final String Function(String)? onChangedValidator;
 
@@ -213,23 +212,25 @@ class OutlinedInputField extends StatefulWidget {
     this.topPadding = 0,
     this.helperText = "",
     this.outlineInputBorder,
+    this.textEditingController,
   }) : super(key: key);
 
   @override
   _OutlinedInputFieldState createState() => _OutlinedInputFieldState();
-
-
 }
 
 class _OutlinedInputFieldState extends State<OutlinedInputField> {
   bool hasText = false;
   late TextEditingController textEditingController;
-  bool showHelperText = false;
   String? helpText;
 
   @override
   void initState() {
-    textEditingController = TextEditingController();
+    if (widget.textEditingController != null) {
+      textEditingController = widget.textEditingController!;
+    } else {
+      textEditingController = TextEditingController();
+    }
     super.initState();
   }
 
@@ -245,7 +246,7 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
       textEditingController.value = TextEditingValue(
           text: widget.writtenText!,
           selection:
-          TextSelection.collapsed(offset: widget.writtenText!.length));
+              TextSelection.collapsed(offset: widget.writtenText!.length));
 
       hasText = widget.writtenText!.isNotEmpty;
     }
@@ -256,9 +257,7 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
         onChanged: (str) {
           setState(() {
             hasText = str.isNotEmpty;
-            helpText = widget.onChangedValidator == null
-                ? null
-                : widget.onChangedValidator!(str);
+            helpText = widget.onChangedValidator?.call(str);
           });
         },
         focusNode: widget.focusNode,
@@ -272,29 +271,27 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
         decoration: InputDecoration(
             labelText: widget.hintText,
             filled: true,
-            fillColor: Theme
-                .of(context)
-                .textSelectionTheme.selectionColor,
+            fillColor: Theme.of(context).textSelectionTheme.selectionColor,
             helperText: (widget.helperText.isNotEmpty)
                 ? widget.helperText
-                : (helpText != null && helpText!.isNotEmpty) ? helpText : null,
+                : (helpText != null && helpText!.isNotEmpty)
+                    ? helpText
+                    : null,
             prefixIcon: widget.prefixIcon,
             suffixIcon: hasText
                 ? InkWell(
-              onTap: () {
-                _clearText();
-              },
-              child: const Icon(Icons.delete),
-            )
+                    onTap: () {
+                      _clearText();
+                    },
+                    child: const Icon(Icons.delete),
+                  )
                 : null,
             contentPadding: const EdgeInsets.only(top: 8, bottom: 8, left: 9),
             focusedBorder: widget.outlineInputBorder ??
                 OutlineInputBorder(
                     borderRadius: widget.borderRadius,
                     borderSide: BorderSide(
-                        color: Theme
-                            .of(context)
-                            .highlightColor, width: 2)),
+                        color: Theme.of(context).highlightColor, width: 2)),
             border: OutlineInputBorder(
               borderRadius: widget.borderRadius,
               borderSide: BorderSide.none,
@@ -310,9 +307,7 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
     }
     setState(() {
       hasText = false;
-      if (widget.onChangedValidator != null) {
-        helpText = widget.onChangedValidator!("");
-      }
+      helpText = widget.onChangedValidator?.call("");
     });
   }
 }
