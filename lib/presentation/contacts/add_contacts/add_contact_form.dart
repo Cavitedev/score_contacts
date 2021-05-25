@@ -10,6 +10,7 @@ import 'package:scorecontacts/domain/user/contacts_data/properties/phone.dart';
 import 'package:scorecontacts/presentation/contacts/add_contacts/widgets/image_pick_up.dart';
 import 'package:scorecontacts/presentation/contacts/add_contacts/widgets/label_object_builder.dart';
 import 'package:scorecontacts/presentation/contacts/add_contacts/widgets/name_form_field.dart';
+import 'package:scorecontacts/presentation/contacts/add_contacts/widgets/surname_form_field.dart';
 import 'package:scorecontacts/presentation/core/formatters/number_text_input_formatter.dart';
 import 'package:scorecontacts/presentation/core/widgets/outlined_input_field.dart';
 
@@ -49,17 +50,7 @@ class AddContactForm extends StatelessWidget {
                 NameFormField(
                   state: state,
                 ),
-                OutlinedInputField(
-                  hintText: AppLocalization.of(context).translate("surname"),
-                  writtenText: state.contact.nameData.surnames,
-                  textCapitalization: TextCapitalization.words,
-                  onChangedValidator: (value) {
-                    context.read<AddContactBloc>().add(
-                        AddContactEvent.updateNameData(
-                            state.contact.nameData.copyWith(surnames: value)));
-                    return "";
-                  },
-                ),
+                SurnameFormField(state: state),
                 const SizedBox(
                   height: 20,
                 ),
@@ -99,7 +90,6 @@ class AddContactForm extends StatelessWidget {
     );
   }
 }
-
 
 class CompaniesFields extends StatelessWidget {
   const CompaniesFields({
