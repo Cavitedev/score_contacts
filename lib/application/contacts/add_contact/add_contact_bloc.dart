@@ -30,96 +30,124 @@ class AddContactBloc extends Bloc<AddContactEvent, AddContactState> {
   Stream<AddContactState> mapEventToState(
     AddContactEvent event,
   ) async* {
-    yield* event.map(initialize: (e) async* {
-      yield e.contactOption.fold(
-        () => state,
-        (contact) {
-          return state.copyWith(
-              contact: contact.fromDatabase(e.countryCode), isEditting: e.isEditting);
-        },
-      );
-    }, saved: (e) async* {
-      yield state.copyWith(isSaving: true, savingOrFailureOption: none());
+    yield* event.map(
+      initialize: _initialize,
+      saved: _saved,
+      labelObjectChanged: _labelObjectChanged,
+      addLabelObject: _addLabelObject,
+      removeLabelObject: _removeLabelObject,
+      updateNameData: _updateNameData,
+      updateCompany: _updateCompany,
+      addCompany: _addCompany,
+      deleteCompany: _deleteCompany,
+      updateImage: _updateImage,
+    );
+  }
 
-      final List<Phone> phonesList =
-          List<Phone>.from(state.contact.labelObjects![Phone]!);
-      for (int i = 0; i < phonesList.length; i++) {
-        phonesList[i] = phonesList[i].toDatabaseString(e.countryCode);
-      }
-      final Map<Type, List<ILabelObject>> labelObjects =
-          Map.from(state.contact.labelObjects!);
-      labelObjects[Phone] = phonesList;
-      final Contact sendedContact =
-          state.contact.copyWith(labelObjects: labelObjects);
+  Stream<AddContactState> _initialize(_Initialize e) async* {
+    yield e.contactOption.fold(
+      () => state,
+      (contact) {
+        return state.copyWith(
+            contact: contact.fromDatabase(e.countryCode),
+            isEditting: e.isEditting);
+      },
+    );
+  }
 
-      final savingOrFailureOption = await (state.isEditting
-          ? repository.updateContact(sendedContact)
-          : repository.createContact(sendedContact));
-      yield state.copyWith(
-          isSaving: false,
-          savingOrFailureOption: optionOf(savingOrFailureOption));
-    }, labelObjectChanged: (e) async* {
-      final List<ILabelObject> labelObjectList = List<ILabelObject>.from(
-          state.contact.labelObjects![e.labelObject.runtimeType]!);
-      labelObjectList[e.pos] = e.labelObject;
+  Stream<AddContactState> _saved(_Saved e) async* {
+    yield state.copyWith(isSaving: true, savingOrFailureOption: none());
 
-      final Map<Type, List<ILabelObject>> labelObjects =
-          Map.from(state.contact.labelObjects!);
+    final List<Phone> phonesList =
+        List<Phone>.from(state.contact.labelObjects![Phone]!);
+    for (int i = 0; i < phonesList.length; i++) {
+      phonesList[i] = phonesList[i].toDatabaseString(e.countryCode);
+    }
+    final Map<Type, List<ILabelObject>> labelObjects =
+        Map.from(state.contact.labelObjects!);
+    labelObjects[Phone] = phonesList;
+    final Contact sendedContact =
+        state.contact.copyWith(labelObjects: labelObjects);
 
-      labelObjects[e.labelObject.runtimeType] = labelObjectList;
-      yield state.copyWith(
-          contact: state.contact.copyWith(labelObjects: labelObjects));
-    }, addLabelObject: (e) async* {
-      final List<ILabelObject> labelObjectList = List<ILabelObject>.from(
-          state.contact.labelObjects![e.labelObject.runtimeType]!);
-      labelObjectList.add(e.labelObject);
+    final savingOrFailureOption = await (state.isEditting
+        ? repository.updateContact(sendedContact)
+        : repository.createContact(sendedContact));
+    yield state.copyWith(
+        isSaving: false,
+        savingOrFailureOption: optionOf(savingOrFailureOption));
+  }
 
-      final Map<Type, List<ILabelObject>> labelObjects =
-          Map.from(state.contact.labelObjects!);
+  Stream<AddContactState> _labelObjectChanged(_LabelObjectChanged e) async* {
+    final List<ILabelObject> labelObjectList = List<ILabelObject>.from(
+        state.contact.labelObjects![e.labelObject.runtimeType]!);
+    labelObjectList[e.pos] = e.labelObject;
 
-      labelObjects[e.labelObject.runtimeType] = labelObjectList;
-      yield state.copyWith(
-          contact: state.contact.copyWith(labelObjects: labelObjects));
-    }, removeLabelObject: (e) async* {
-      final List<ILabelObject> labelObjectList = List<ILabelObject>.from(
-          state.contact.labelObjects![e.labelObjectType]!);
-      labelObjectList.removeAt(e.pos);
+    final Map<Type, List<ILabelObject>> labelObjects =
+        Map.from(state.contact.labelObjects!);
 
-      final Map<Type, List<ILabelObject>> labelObjects =
-          Map.from(state.contact.labelObjects!);
+    labelObjects[e.labelObject.runtimeType] = labelObjectList;
+    yield state.copyWith(
+        contact: state.contact.copyWith(labelObjects: labelObjects));
+  }
 
-      labelObjects[e.labelObjectType] = labelObjectList;
-      yield state.copyWith(
-          contact: state.contact.copyWith(labelObjects: labelObjects));
-    }, updateNameData: (e) async* {
-      yield state.copyWith(
-          contact: state.contact.copyWith(nameData: e.nameData));
-    }, updateCompany: (e) async* {
-      final List<Company> companies = List.of(state.contact.companies!);
-      companies[e.index] = e.company;
+  Stream<AddContactState> _addLabelObject(_AddLabelObject e) async* {
+    final List<ILabelObject> labelObjectList = List<ILabelObject>.from(
+        state.contact.labelObjects![e.labelObject.runtimeType]!);
+    labelObjectList.add(e.labelObject);
 
-      yield state.copyWith(
-          contact: state.contact.copyWith(companies: companies));
-    }, addCompany: (e) async* {
-      final List<Company> companies = List.of(state.contact.companies!);
-      companies.add(Company.empty());
-      yield state.copyWith(
-          contact: state.contact.copyWith(companies: companies));
-    }, deleteCompany: (e) async* {
-      final List<Company> companies = List.of(state.contact.companies!);
-      companies.removeAt(e.index);
-      yield state.copyWith(
-          contact: state.contact.copyWith(companies: companies));
-    }, updateImage: (e) async* {
-      ContactImage? contactImage = state.contact.contactImage;
-      if (contactImage == null) {
-        contactImage = ContactImage(file: e.file);
-      } else {
-        contactImage = contactImage.copyWith(file: e.file);
-      }
-      yield state.copyWith(
-        contact: state.contact.copyWith(contactImage: contactImage),
-      );
-    });
+    final Map<Type, List<ILabelObject>> labelObjects =
+        Map.from(state.contact.labelObjects!);
+
+    labelObjects[e.labelObject.runtimeType] = labelObjectList;
+    yield state.copyWith(
+        contact: state.contact.copyWith(labelObjects: labelObjects));
+  }
+
+  Stream<AddContactState> _removeLabelObject(_RemoveLabelObject e) async* {
+    final List<ILabelObject> labelObjectList = List<ILabelObject>.from(
+        state.contact.labelObjects![e.labelObjectType]!);
+    labelObjectList.removeAt(e.pos);
+
+    final Map<Type, List<ILabelObject>> labelObjects =
+        Map.from(state.contact.labelObjects!);
+
+    labelObjects[e.labelObjectType] = labelObjectList;
+    yield state.copyWith(
+        contact: state.contact.copyWith(labelObjects: labelObjects));
+  }
+
+  Stream<AddContactState> _updateNameData(_UpdateNameData e) async* {
+    yield state.copyWith(contact: state.contact.copyWith(nameData: e.nameData));
+  }
+
+  Stream<AddContactState> _updateCompany(_UpdateCompany e) async* {
+    final List<Company> companies = List.of(state.contact.companies!);
+    companies[e.index] = e.company;
+
+    yield state.copyWith(contact: state.contact.copyWith(companies: companies));
+  }
+
+  Stream<AddContactState> _addCompany(_AddCompany e) async* {
+    final List<Company> companies = List.of(state.contact.companies!);
+    companies.add(Company.empty());
+    yield state.copyWith(contact: state.contact.copyWith(companies: companies));
+  }
+
+  Stream<AddContactState> _deleteCompany(_DeleteCompany e) async* {
+    final List<Company> companies = List.of(state.contact.companies!);
+    companies.removeAt(e.index);
+    yield state.copyWith(contact: state.contact.copyWith(companies: companies));
+  }
+
+  Stream<AddContactState> _updateImage(_UpdateImage e) async* {
+    ContactImage? contactImage = state.contact.contactImage;
+    if (contactImage == null) {
+      contactImage = ContactImage(file: e.file);
+    } else {
+      contactImage = contactImage.copyWith(file: e.file);
+    }
+    yield state.copyWith(
+      contact: state.contact.copyWith(contactImage: contactImage),
+    );
   }
 }
