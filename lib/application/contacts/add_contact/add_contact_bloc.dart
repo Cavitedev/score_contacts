@@ -50,7 +50,7 @@ class AddContactBloc extends Bloc<AddContactEvent, AddContactState> {
       (contact) {
         return state.copyWith(
             contact: contact.fromDatabase(e.countryCode),
-            isEditting: e.isEditting);
+            isEditting: true);
       },
     );
   }

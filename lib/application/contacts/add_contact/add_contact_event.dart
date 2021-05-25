@@ -3,7 +3,7 @@ part of 'add_contact_bloc.dart';
 @freezed
 class AddContactEvent with _$AddContactEvent{
   const factory AddContactEvent.initialize(
-      Option<Contact> contactOption, String countryCode, bool isEditting) = _Initialize;
+      Option<Contact> contactOption, String countryCode) = _Initialize;
 
   const factory AddContactEvent.saved(String countryCode) = _Saved;
 

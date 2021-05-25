@@ -15,12 +15,10 @@ import 'package:scorecontacts/presentation/routes/router.gr.dart' as r;
 
 class AddContactPage extends StatelessWidget {
   final Contact? contact;
-  final bool isEdditing;
 
   const AddContactPage({
     Key? key,
     this.contact,
-    this.isEdditing = false,
   }) : super(key: key);
 
   @override
@@ -29,7 +27,7 @@ class AddContactPage extends StatelessWidget {
         create: (context) {
           final AddContactBloc bloc = getIt<AddContactBloc>()
             ..add(AddContactEvent.initialize(
-                optionOf(contact), context.read<AppManagerCubit>().state.region, isEdditing));
+                optionOf(contact), context.read<AppManagerCubit>().state.region));
           return bloc;
         },
         child: BlocListener<AddContactBloc, AddContactState>(
