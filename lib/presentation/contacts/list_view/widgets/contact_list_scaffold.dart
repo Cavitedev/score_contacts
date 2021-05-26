@@ -1,12 +1,11 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/contacts/contact_watcher/contact_watcher_bloc.dart';
 import 'package:scorecontacts/core/app_localization.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/selected_contacts_row_bar.dart';
 import 'package:scorecontacts/presentation/core/widgets/text_field_container.dart';
-import 'package:scorecontacts/presentation/routes/router.gr.dart' as r;
 
+import 'contact_floating_action_button.dart';
 import 'contact_list_drawer.dart';
 import 'contact_row.dart';
 
@@ -91,19 +90,7 @@ class _ContactsListScaffoldState extends State<ContactsListScaffold> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          context
-              .read<ContactWatcherBloc>()
-              .add(const ContactWatcherEvent.deselectAllContacts());
-          context.router.push(r.AddContactPageRoute());
-        },
-        child: const Icon(
-          Icons.add,
-          color: Colors.white,
-          size: 28,
-        ),
-      ),
+      floatingActionButton: ContactFloatingActionButton(),
     );
   }
 }

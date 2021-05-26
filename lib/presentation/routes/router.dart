@@ -4,6 +4,7 @@ import 'package:scorecontacts/presentation/auth/splash_page.dart';
 import 'package:scorecontacts/presentation/contacts/add_contacts/add_contact_page.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/contact_list.dart';
 import 'package:scorecontacts/presentation/contacts/view_contact/view_contact_page.dart';
+import 'package:scorecontacts/presentation/diary/add_diary_note/add_diary_page.dart';
 import 'package:scorecontacts/presentation/settings/settings_page.dart';
 
 @MaterialAutoRouter(
@@ -14,6 +15,7 @@ import 'package:scorecontacts/presentation/settings/settings_page.dart';
     MaterialRoute(page: SignInPage),
     MaterialRoute(page: SettingsPage),
     MaterialRoute(page: ViewContactPage),
+    MaterialRoute(page: AddDiaryPage)
   ],
 )
 class $Router {}
