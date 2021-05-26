@@ -7,12 +7,13 @@
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
-import '../../domain/user/contacts_data/contact.dart' as _i9;
+import '../../domain/user/contacts_data/contact.dart' as _i10;
 import '../auth/sign_in/sign_in_page.dart' as _i6;
 import '../auth/splash_page.dart' as _i3;
 import '../contacts/add_contacts/add_contact_page.dart' as _i5;
 import '../contacts/list_view/contact_list.dart' as _i4;
 import '../contacts/view_contact/view_contact_page.dart' as _i8;
+import '../diary/add_diary_entry/add_diary_page.dart' as _i9;
 import '../settings/settings_page.dart' as _i7;
 
 class Router extends _i1.RootStackRouter {
@@ -54,6 +55,11 @@ class Router extends _i1.RootStackRouter {
           final args = data.argsAs<ViewContactPageRouteArgs>();
           return _i8.ViewContactPage(
               contact: args.contact, onDelete: args.onDelete);
+        }),
+    AddDiaryPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return const _i9.AddDiaryPage();
         })
   };
 
@@ -64,7 +70,8 @@ class Router extends _i1.RootStackRouter {
         _i1.RouteConfig(AddContactPageRoute.name, path: '/add-contact-page'),
         _i1.RouteConfig(SignInPageRoute.name, path: '/sign-in-page'),
         _i1.RouteConfig(SettingsPageRoute.name, path: '/settings-page'),
-        _i1.RouteConfig(ViewContactPageRoute.name, path: '/view-contact-page')
+        _i1.RouteConfig(ViewContactPageRoute.name, path: '/view-contact-page'),
+        _i1.RouteConfig(AddDiaryPageRoute.name, path: '/add-diary-page')
       ];
 }
 
@@ -81,7 +88,7 @@ class ContactListRoute extends _i1.PageRouteInfo {
 }
 
 class AddContactPageRoute extends _i1.PageRouteInfo<AddContactPageRouteArgs> {
-  AddContactPageRoute({_i2.Key? key, _i9.Contact? contact})
+  AddContactPageRoute({_i2.Key? key, _i10.Contact? contact})
       : super(name,
             path: '/add-contact-page',
             args: AddContactPageRouteArgs(key: key, contact: contact));
@@ -94,7 +101,7 @@ class AddContactPageRouteArgs {
 
   final _i2.Key? key;
 
-  final _i9.Contact? contact;
+  final _i10.Contact? contact;
 }
 
 class SignInPageRoute extends _i1.PageRouteInfo {
@@ -111,7 +118,7 @@ class SettingsPageRoute extends _i1.PageRouteInfo {
 
 class ViewContactPageRoute extends _i1.PageRouteInfo<ViewContactPageRouteArgs> {
   ViewContactPageRoute(
-      {required _i9.Contact contact, required Function onDelete})
+      {required _i10.Contact contact, required Function onDelete})
       : super(name,
             path: '/view-contact-page',
             args:
@@ -124,7 +131,13 @@ class ViewContactPageRouteArgs {
   const ViewContactPageRouteArgs(
       {required this.contact, required this.onDelete});
 
-  final _i9.Contact contact;
+  final _i10.Contact contact;
 
   final Function onDelete;
+}
+
+class AddDiaryPageRoute extends _i1.PageRouteInfo {
+  const AddDiaryPageRoute() : super(name, path: '/add-diary-page');
+
+  static const String name = 'AddDiaryPageRoute';
 }

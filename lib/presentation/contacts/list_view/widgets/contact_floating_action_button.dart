@@ -43,6 +43,7 @@ class _ContactFloatingActionButtonState
       verticalDirection: VerticalDirection.up,
       children: [
         FloatingActionButton(
+          heroTag: "fab",
           onPressed: () {
             if (_controller.isDismissed) {
               _controller.forward();
@@ -62,6 +63,7 @@ class _ContactFloatingActionButtonState
           ),
         ),
         _floatingAnimatedButton(
+          heroTag: "contact_page",
           context: context,
           iconData: Icons.contact_page,
           onPressed: () {
@@ -72,13 +74,14 @@ class _ContactFloatingActionButtonState
           },
         ),
         _floatingAnimatedButton(
+          heroTag: "note_add",
           context: context,
           iconData: Icons.note_add,
           onPressed: () {
             context
                 .read<ContactWatcherBloc>()
                 .add(const ContactWatcherEvent.deselectAllContacts());
-            context.router.push(r.AddContactPageRoute());
+            context.router.push(const r.AddDiaryPageRoute());
           },
         ),
       ],
@@ -89,6 +92,7 @@ class _ContactFloatingActionButtonState
     required BuildContext context,
     required IconData iconData,
     required Function onPressed,
+    Object? heroTag,
   }) {
     return SizedBox(
       height: _pos,
@@ -97,12 +101,9 @@ class _ContactFloatingActionButtonState
             parent: _controller,
             curve: const Interval(0, 1, curve: Curves.easeOut)),
         child: FloatingActionButton(
+          heroTag: heroTag,
           onPressed: () {
             onPressed();
-            context
-                .read<ContactWatcherBloc>()
-                .add(const ContactWatcherEvent.deselectAllContacts());
-            context.router.push(r.AddContactPageRoute());
           },
           child: Icon(
             iconData,

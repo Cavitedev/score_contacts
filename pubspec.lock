@@ -14,7 +14,7 @@ packages:
       name: analyzer
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.6.0"
+    version: "1.7.1"
   another_flushbar:
     dependency: "direct main"
     description:
@@ -725,7 +725,7 @@ packages:
       name: source_gen
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.0"
+    version: "1.0.1"
   source_span:
     dependency: transitive
     description:

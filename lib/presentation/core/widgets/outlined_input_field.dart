@@ -141,8 +141,7 @@ class _OutlinedInputFieldsGrowableListState
             onChangedValidator: (String str) {
               return widget.onChangesValidators[parameterIndex](str, listIndex);
             },
-          )
-          );
+          ));
     }).toList());
   }
 
@@ -166,6 +165,7 @@ class OutlinedInputField extends StatefulWidget {
   final bool autoFocus;
   final bool autoCorrect;
   final double topPadding;
+  final int? maxLines;
 
   /// With Radius.circular(12) by default
   final BorderRadius borderRadius;
@@ -201,6 +201,7 @@ class OutlinedInputField extends StatefulWidget {
     this.helperText = "",
     this.outlineInputBorder,
     this.textEditingController,
+    this.maxLines,
   }) : super(key: key);
 
   @override
@@ -275,6 +276,7 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
             helpText = widget.onChangedValidator?.call(str);
           });
         },
+        maxLines: widget.maxLines,
         focusNode: widget.focusNode,
         autocorrect: widget.autoCorrect,
         enableSuggestions: widget.autoCorrect,
