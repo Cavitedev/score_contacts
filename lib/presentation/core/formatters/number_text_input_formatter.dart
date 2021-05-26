@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:scorecontacts/presentation/core/formatters/formatter_tools.dart';
 import 'package:scorecontacts/presentation/core/formatters/phone_codes.dart';
 
+/// Format numbers given prefix or country context
 class PhoneTextFormatter extends TextInputFormatter {
   final String countryCode;
   PhoneCountryData? _countryData;
@@ -28,8 +29,7 @@ class PhoneTextFormatter extends TextInputFormatter {
       }
     }
     if (_countryData == null) return newValue;
-    PhoneCountryData countryData = _countryData!;
-
+    final PhoneCountryData countryData = _countryData!;
 
     final String mask = _localRegion
         ? _getLocalPhoneMask(newValue.text)
@@ -47,7 +47,8 @@ class PhoneTextFormatter extends TextInputFormatter {
 
     String newText;
     if (overflowPhoneMask) {
-      newText = (_localRegion ? '' : '+') + (toNumericString(newValue.text) ?? "");
+      newText =
+          (_localRegion ? '' : '+') + (toNumericString(newValue.text) ?? "");
     } else {
       newText = formatByMask(newValue.text, mask);
     }
@@ -56,13 +57,14 @@ class PhoneTextFormatter extends TextInputFormatter {
     }
     return TextEditingValue(
       text: newText,
-      selection: TextSelection.collapsed(offset: newText.length),
+      selection: TextSelection.collapsed(
+          offset: newValue.selection.baseOffset +
+              newText.length -
+              newValue.text.length),
     );
   }
 
   String _getLocalPhoneMask(String newText) {
-
-
     for (final String mask in _countryData!.localMasks!) {
       if (toNumericString(mask)!.length > toNumericString(newText)!.length) {
         return mask;
@@ -74,7 +76,7 @@ class PhoneTextFormatter extends TextInputFormatter {
 
   void _trySetCountryDataFromPhoneValue(TextEditingValue newValue) {
     final PhoneCountryData? phoneCountryData =
-    PhoneCodes.getCountryDataByPhone(newValue.text);
+        PhoneCodes.getCountryDataByPhone(newValue.text);
     if (phoneCountryData != null) {
       _countryData = phoneCountryData;
       _localRegion = false;
@@ -82,7 +84,6 @@ class PhoneTextFormatter extends TextInputFormatter {
   }
 
   void _setCountryDataToLocaleRegion() {
-
     _countryData = PhoneCountryData.fromCountryCode(countryCode: countryCode);
     _localRegion = true;
   }
