@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:scorecontacts/core/app_constants.dart';
 import 'package:scorecontacts/presentation/contacts/add_contacts/widgets/outlined_input_field_add_contact_listener.dart';
 
 class OutlinedInputFieldsGrowableList extends StatefulWidget {
@@ -195,7 +196,7 @@ class OutlinedInputField extends StatefulWidget {
     this.onChangedValidator,
     this.prefixIcon,
     this.focusNode,
-    this.borderRadius = const BorderRadius.all(Radius.circular(12)),
+    this.borderRadius = Constants.textFieldBorderRadious,
     this.inputFormatters,
     this.topPadding = 0,
     this.helperText = "",
@@ -291,7 +292,6 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
         decoration: InputDecoration(
             labelText: widget.hintText,
             filled: true,
-            fillColor: Theme.of(context).textSelectionTheme.selectionColor,
             helperText: (widget.helperText.isNotEmpty)
                 ? widget.helperText
                 : (helpText != null && helpText!.isNotEmpty)

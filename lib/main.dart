@@ -72,7 +72,7 @@ class MyApp extends StatelessWidget {
             focusColor: Colors.grey[600],
             textSelectionTheme: TextSelectionThemeData(
                 cursorColor: Colors.blue[700],
-                selectionColor: const Color.fromRGBO(40, 40, 40, 1),
+                selectionColor: const Color.fromRGBO(80, 80, 120, 1),
                 selectionHandleColor: Colors.blue[600]),
             accentIconTheme: IconThemeData(
               color: Colors.lightBlueAccent[700],
@@ -82,7 +82,9 @@ class MyApp extends StatelessWidget {
             disabledColor: Colors.grey[500],
             inputDecorationTheme: const InputDecorationTheme(
               border: InputBorder.none,
+              fillColor: Color.fromRGBO(50, 50, 50, 1)
             ),
+
             iconTheme: const IconThemeData(color: Colors.grey, size: 32),
             textTheme: TextTheme(
                 headline2: const TextStyle(

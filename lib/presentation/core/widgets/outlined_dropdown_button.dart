@@ -132,7 +132,7 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
         height: 48,
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
-          color: Theme.of(context).textSelectionTheme.selectionColor,
+          color: Theme.of(context).inputDecorationTheme.fillColor,
           borderRadius: widget.borderRadius,
           border: Border.all(
             color: Theme.of(context)
