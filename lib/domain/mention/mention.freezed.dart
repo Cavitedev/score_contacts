@@ -16,10 +16,14 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$MentionTearOff {
   const _$MentionTearOff();
 
-  _Mention call({required String id, required String name}) {
+  _Mention call(
+      {required IMentionable IMentionable,
+      required int startPos,
+      required int endPos}) {
     return _Mention(
-      id: id,
-      name: name,
+      IMentionable: IMentionable,
+      startPos: startPos,
+      endPos: endPos,
     );
   }
 }
@@ -29,8 +33,9 @@ const $Mention = _$MentionTearOff();
 
 /// @nodoc
 mixin _$Mention {
-  String get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
+  IMentionable get IMentionable => throw _privateConstructorUsedError;
+  int get startPos => throw _privateConstructorUsedError;
+  int get endPos => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MentionCopyWith<Mention> get copyWith => throw _privateConstructorUsedError;
@@ -40,7 +45,7 @@ mixin _$Mention {
 abstract class $MentionCopyWith<$Res> {
   factory $MentionCopyWith(Mention value, $Res Function(Mention) then) =
       _$MentionCopyWithImpl<$Res>;
-  $Res call({String id, String name});
+  $Res call({IMentionable IMentionable, int startPos, int endPos});
 }
 
 /// @nodoc
@@ -53,18 +58,23 @@ class _$MentionCopyWithImpl<$Res> implements $MentionCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
+    Object? IMentionable = freezed,
+    Object? startPos = freezed,
+    Object? endPos = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
+      IMentionable: IMentionable == freezed
+          ? _value.IMentionable
+          : IMentionable // ignore: cast_nullable_to_non_nullable
+              as IMentionable,
+      startPos: startPos == freezed
+          ? _value.startPos
+          : startPos // ignore: cast_nullable_to_non_nullable
+              as int,
+      endPos: endPos == freezed
+          ? _value.endPos
+          : endPos // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -74,7 +84,7 @@ abstract class _$MentionCopyWith<$Res> implements $MentionCopyWith<$Res> {
   factory _$MentionCopyWith(_Mention value, $Res Function(_Mention) then) =
       __$MentionCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String name});
+  $Res call({IMentionable IMentionable, int startPos, int endPos});
 }
 
 /// @nodoc
@@ -88,18 +98,23 @@ class __$MentionCopyWithImpl<$Res> extends _$MentionCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
+    Object? IMentionable = freezed,
+    Object? startPos = freezed,
+    Object? endPos = freezed,
   }) {
     return _then(_Mention(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
+      IMentionable: IMentionable == freezed
+          ? _value.IMentionable
+          : IMentionable // ignore: cast_nullable_to_non_nullable
+              as IMentionable,
+      startPos: startPos == freezed
+          ? _value.startPos
+          : startPos // ignore: cast_nullable_to_non_nullable
+              as int,
+      endPos: endPos == freezed
+          ? _value.endPos
+          : endPos // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -107,33 +122,44 @@ class __$MentionCopyWithImpl<$Res> extends _$MentionCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Mention extends _Mention {
-  const _$_Mention({required this.id, required this.name}) : super._();
+  const _$_Mention(
+      {required this.IMentionable,
+      required this.startPos,
+      required this.endPos})
+      : super._();
 
   @override
-  final String id;
+  final IMentionable IMentionable;
   @override
-  final String name;
+  final int startPos;
+  @override
+  final int endPos;
 
   @override
   String toString() {
-    return 'Mention(id: $id, name: $name)';
+    return 'Mention(IMentionable: $IMentionable, startPos: $startPos, endPos: $endPos)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Mention &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)));
+            (identical(other.IMentionable, IMentionable) ||
+                const DeepCollectionEquality()
+                    .equals(other.IMentionable, IMentionable)) &&
+            (identical(other.startPos, startPos) ||
+                const DeepCollectionEquality()
+                    .equals(other.startPos, startPos)) &&
+            (identical(other.endPos, endPos) ||
+                const DeepCollectionEquality().equals(other.endPos, endPos)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(name);
+      const DeepCollectionEquality().hash(IMentionable) ^
+      const DeepCollectionEquality().hash(startPos) ^
+      const DeepCollectionEquality().hash(endPos);
 
   @JsonKey(ignore: true)
   @override
@@ -142,14 +168,18 @@ class _$_Mention extends _Mention {
 }
 
 abstract class _Mention extends Mention {
-  const factory _Mention({required String id, required String name}) =
-      _$_Mention;
+  const factory _Mention(
+      {required IMentionable IMentionable,
+      required int startPos,
+      required int endPos}) = _$_Mention;
   const _Mention._() : super._();
 
   @override
-  String get id => throw _privateConstructorUsedError;
+  IMentionable get IMentionable => throw _privateConstructorUsedError;
   @override
-  String get name => throw _privateConstructorUsedError;
+  int get startPos => throw _privateConstructorUsedError;
+  @override
+  int get endPos => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$MentionCopyWith<_Mention> get copyWith =>

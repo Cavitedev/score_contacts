@@ -71,7 +71,7 @@ class ContactRow extends StatelessWidget {
     if (selectionContact.filterText == null) {
       return Flexible(child: _buildFullName(context));
     } else if (selectionContact.filterText ==
-        selectionContact.contact.getFullName()) {
+        selectionContact.contact.getName()) {
       return Flexible(
           child:
               _buildFullNameHighlighted(context, selectionContact.filterText!));
@@ -128,7 +128,7 @@ class ContactRow extends StatelessWidget {
       textScaleFactor: MediaQuery.of(context).textScaleFactor,
       overflow: TextOverflow.ellipsis,
       text: TextSpan(
-          text: selectionContact.contact.getFullName(),
+          text: selectionContact.contact.getName(),
           style: Theme.of(context).textTheme.headline5),
     );
   }

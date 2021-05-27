@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/diary/add_diary_entry/add_diary_entry_bloc.dart';
 import 'package:scorecontacts/core/app_constants.dart';
-import 'package:scorecontacts/domain/mention/mention.dart';
 import 'package:scorecontacts/presentation/diary/add_diary_entry/widgets/mentions/mention_input_formatter.dart';
 import 'package:scorecontacts/presentation/diary/add_diary_entry/widgets/mentions/mention_text_controller.dart';
 
@@ -36,20 +35,20 @@ class _MentionTextFieldState extends State<MentionTextField> {
   @override
   Widget build(BuildContext context) {
     return BlocListener<AddDiaryEntryBloc, AddDiaryEntryState>(
-      listenWhen: (p, n) => p.entry.mentions != n.entry.mentions,
+      listenWhen: (p, n) => p.entryField.entry.mentionList != n.entryField.entry.mentionList,
       listener: (context, state) {
         // controller.mapMention =
         controller.mapMention = {
-          for (var mention in state.entry.mentions)
-            "${widget.mentionTrigger}${mention.name}":
+          for (var mention in state.entryField.entry.mentionList)
+            "${widget.mentionTrigger}${mention.IMentionable.getName()}":
                 Constants.mentionSelectionStyle
         };
         controller.value = TextEditingValue(
-          text: state.entry.text,
+          text: state.entryField.entry.text,
           selection: TextSelection(
               baseOffset:
-                  state.entry.baseOffset ?? controller.selection.baseOffset,
-              extentOffset: state.entry.extentOffset ??
+                  state.entryField.baseOffset ?? controller.selection.baseOffset,
+              extentOffset: state.entryField.extentOffset ??
                   controller.selection.extentOffset),
         );
       },
@@ -57,7 +56,7 @@ class _MentionTextFieldState extends State<MentionTextField> {
         controller: controller,
         inputFormatters: [
           MentionInputFormatter(
-              mentions: {"@abc": const Mention(id: "123", name: "@a")})
+              mentions: {})
         ],
         onChanged: (str) {
           context

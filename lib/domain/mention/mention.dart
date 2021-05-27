@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:scorecontacts/domain/mention/i_mentionable.dart';
 
 part 'mention.freezed.dart';
 
@@ -9,7 +10,8 @@ class Mention with _$Mention {
   const Mention._();
 
   const factory Mention({
-    required String id,
-    required String name,
+    required IMentionable IMentionable,
+    required int startPos,
+    required int endPos,
   }) = _Mention;
 }

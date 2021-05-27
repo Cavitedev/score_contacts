@@ -2,11 +2,15 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/contacts/contact_watcher/contact_watcher_bloc.dart';
+import 'package:scorecontacts/domain/user/contacts_data/contact.dart';
 import 'package:scorecontacts/presentation/routes/router.gr.dart' as r;
 
 class ContactFloatingActionButton extends StatefulWidget {
+  final List<Contact> contactList;
+
   const ContactFloatingActionButton({
     Key? key,
+    required this.contactList,
   }) : super(key: key);
 
   @override
@@ -81,7 +85,9 @@ class _ContactFloatingActionButtonState
             context
                 .read<ContactWatcherBloc>()
                 .add(const ContactWatcherEvent.deselectAllContacts());
-            context.router.push(const r.AddDiaryPageRoute());
+            context.router.push(r.AddDiaryPageRoute(
+              mentionableList: widget.contactList
+            ));
           },
         ),
       ],

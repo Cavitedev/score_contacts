@@ -61,7 +61,7 @@ class ViewContactScaffold extends StatelessWidget {
           Padding(
             padding: Constants.horizontalNormalPadding,
             child: Text(
-              contact.getFullName(),
+              contact.getName(),
               style: Theme.of(context).textTheme.headline3,
             ),
           ),

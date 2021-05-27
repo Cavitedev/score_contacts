@@ -1,18 +1,19 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:scorecontacts/domain/mention/mention.dart';
+import 'package:scorecontacts/domain/user/diary/diary_entry.dart';
 
 part 'diary_entry_application.freezed.dart';
 
 @freezed
 class DiaryEntryApplication with _$DiaryEntryApplication {
   const factory DiaryEntryApplication({
-    required String text,
-    required List<Mention> mentions,
+    required DiaryEntry entry,
+    required bool selectingMention,
     int? baseOffset,
     int? extentOffset,
   }) = _DiaryEntryApplication;
 
-  factory DiaryEntryApplication.empty() =>
-      const DiaryEntryApplication(text: "", mentions: []);
-
+  factory DiaryEntryApplication.empty() => DiaryEntryApplication(
+        entry: DiaryEntry.empty(),
+        selectingMention: false,
+      );
 }

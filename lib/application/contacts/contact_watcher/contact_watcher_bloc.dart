@@ -89,7 +89,7 @@ class ContactWatcherBloc extends Bloc<ContactWatcherEvent, ContactWatcherState> 
 
   void _sortByNameAndSurname(List<Contact> contacts) {
     contacts.sort((a, b) {
-      return a.getFullName().toLowerCase().compareTo(b.getFullName().toLowerCase());
+      return a.getName().toLowerCase().compareTo(b.getName().toLowerCase());
     });
   }
 

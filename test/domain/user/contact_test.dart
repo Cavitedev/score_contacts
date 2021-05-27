@@ -15,25 +15,25 @@ void main() {
   });
 
   test("Full name returns empty string on empty contact", (){
-    final String fullName = ContactFixtures.emptyContact.getFullName();
+    final String fullName = ContactFixtures.emptyContact.getName();
     expect(fullName, "");
   });
   test("Full name returns empty string on complete contact", (){
-    final String fullName = _completeContact().getFullName();
+    final String fullName = _completeContact().getName();
     expect(fullName, "name surnames");
   });
 
   test("Should not match when input is null", () {
 
     final String? match = _completeContact().matchPattern(null);
-    expect(match,_completeContact().getFullName());
+    expect(match,_completeContact().getName());
 
   });
 
   test("Should match on any case the name", () {
 
     final String? match = _completeContact().matchPattern("NaMe SurNaME");
-    expect(match,_completeContact().getFullName());
+    expect(match,_completeContact().getName());
 
   });
 

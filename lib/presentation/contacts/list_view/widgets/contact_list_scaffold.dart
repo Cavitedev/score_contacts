@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/contacts/contact_watcher/contact_watcher_bloc.dart';
+import 'package:scorecontacts/application/contacts/selection_contact.dart';
 import 'package:scorecontacts/core/app_localization.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/selected_contacts_row_bar.dart';
 import 'package:scorecontacts/presentation/core/widgets/text_field_container.dart';
@@ -92,7 +93,9 @@ class _ContactsListScaffoldState extends State<ContactsListScaffold> {
           ],
         ),
       ),
-      floatingActionButton: ContactFloatingActionButton(),
+      floatingActionButton: ContactFloatingActionButton(
+        contactList: displayedContactList.toContacts(),
+      ),
     );
   }
 }

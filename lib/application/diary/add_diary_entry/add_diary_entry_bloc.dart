@@ -4,8 +4,9 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:scorecontacts/application/diary/diary_entry_application.dart';
-import 'package:scorecontacts/domain/mention/mention.dart';
+import 'package:scorecontacts/domain/mention/i_mentionable.dart';
 import 'package:scorecontacts/domain/mention/mention_list_manager.dart';
+import 'package:scorecontacts/domain/user/diary/diary_entry.dart';
 
 part 'add_diary_entry_bloc.freezed.dart';
 part 'add_diary_entry_event.dart';
@@ -20,13 +21,12 @@ class AddDiaryEntryBloc extends Bloc<AddDiaryEntryEvent, AddDiaryEntryState> {
     yield* event.map(
       initialize: (e) async* {
         yield state.copyWith(
-            mentionListManager: const MentionListManager(
-                mentionList: [Mention(id: "123", name: "abc")]));
+            mentionListManager: MentionListManager(mentionList: e.mentionableList));
       },
       onEntryTextChanged: (e) async* {
         yield state.copyWith(
-            entry: state.entry.copyWith(
-          text: e.text,
+            entryField: state.entryField.copyWith(
+          entry: state.diaryEntry.copyWith(text: e.text) ,
           baseOffset: e.baseOffset,
           extentOffset: e.extentOffset,
         ));

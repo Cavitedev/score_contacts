@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:scorecontacts/domain/core/unique_id.dart';
+import 'package:scorecontacts/domain/mention/i_mentionable.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/company.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/contact_image.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/email.dart';
@@ -13,7 +14,7 @@ import 'package:scorecontacts/presentation/core/formatters/formatter_tools.dart'
 part 'contact.freezed.dart';
 
 @freezed
-class Contact with _$Contact {
+class Contact with _$Contact implements IMentionable  {
   const Contact._();
 
   const factory Contact(
@@ -108,8 +109,9 @@ class Contact with _$Contact {
         .toList();
   }
 
-  String getFullName() {
-    return nameData.toFullName();
+  @override
+  String getName() {
+    return nameData.toFullName().isNotEmpty ? nameData.toFullName() : "(No Name)";
   }
 
   Iterable<T> getLabelObjectList<T extends ILabelObject>() {
@@ -121,11 +123,11 @@ class Contact with _$Contact {
   }
 
   String? matchPattern(String? pattern) {
-    if (pattern == null) return getFullName();
+    if (pattern == null) return getName();
 
     final String lowerCasePattern = pattern.toLowerCase();
     if (_matchesName(lowerCasePattern)) {
-      return getFullName();
+      return getName();
     }
 
     if (isPhoneString(lowerCasePattern)) {
@@ -146,5 +148,7 @@ class Contact with _$Contact {
   }
 
   bool _matchesName(String lowerCasePattern) =>
-      getFullName().toLowerCase().contains(lowerCasePattern);
+      getName().toLowerCase().contains(lowerCasePattern);
+
+
 }
