@@ -53,7 +53,7 @@ class _ContactFloatingActionButtonState
           },
           child: RotationTransition(
             turns: _controller
-                .drive(Tween(begin: 0.0, end: 0.125))
+                .drive(Tween(begin: 0.0, end: 0.1))
                 .drive(CurveTween(curve: Curves.easeOut)),
             child: const Icon(
               Icons.add,

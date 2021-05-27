@@ -60,9 +60,10 @@ class _ContactsListScaffoldState extends State<ContactsListScaffold> {
                     flex: 8,
                     child: TextField(
                       decoration: InputDecoration(
-                          hintText:
-                              "🔎 ${AppLocalization.of(context).translate("search_contacts",
-                              args: [displayedContactList.length.toString()],)}",
+                          hintText: "🔎 ${AppLocalization.of(context).translate(
+                            "search_contacts",
+                            args: [displayedContactList.length.toString()],
+                          )}",
                           border: InputBorder.none),
                       onChanged: (str) {
                         context
@@ -77,7 +78,8 @@ class _ContactsListScaffoldState extends State<ContactsListScaffold> {
             Expanded(
               child: ListView(
                 physics: const BouncingScrollPhysics(),
-                children: widget.stateValues.displayedContacts()
+                children: widget.stateValues
+                    .displayedContacts()
                     .map((contact) => ContactRow(
                           selectionContact: contact,
                           filter: widget.stateValues.filter,
