@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 ThemeData lightTheme = ThemeData.light().copyWith(
   brightness: Brightness.light,
-  scaffoldBackgroundColor: const Color.fromRGBO(250, 250, 250, 1),
-  dialogBackgroundColor: const Color.fromRGBO(245, 245, 245, 1),
+  scaffoldBackgroundColor: const Color.fromRGBO(240, 240, 240, 1),
+  dialogBackgroundColor: const Color.fromRGBO(235, 235, 235, 1),
   primaryColor: Colors.blue[800],
   primaryColorDark: Colors.grey[900],
   primaryColorLight: Colors.white,

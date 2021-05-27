@@ -187,7 +187,7 @@ class OutlinedInputField extends StatefulWidget {
 
   const OutlinedInputField({
     Key? key,
-    required this.hintText,
+    this.hintText = "",
     this.autoCorrect = false,
     this.autoFocus = false,
     this.keyboardType = TextInputType.text,
@@ -201,7 +201,7 @@ class OutlinedInputField extends StatefulWidget {
     this.helperText = "",
     this.outlineInputBorder,
     this.textEditingController,
-    this.maxLines,
+    this.maxLines = 1,
   }) : super(key: key);
 
   @override
@@ -255,6 +255,7 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
     } else {
       textEditingController = TextEditingController();
     }
+
     super.initState();
   }
 
@@ -285,6 +286,8 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
         inputFormatters: widget.inputFormatters,
         textCapitalization: widget.textCapitalization,
         showCursor: true,
+
+        scrollPhysics: const BouncingScrollPhysics(),
         decoration: InputDecoration(
             labelText: widget.hintText,
             filled: true,
