@@ -7,18 +7,23 @@ import 'package:scorecontacts/presentation/diary/add_diary_entry/widgets/mention
 import 'package:scorecontacts/presentation/diary/add_diary_entry/widgets/mentions/mention_text_controller.dart';
 
 class MentionTextField extends StatefulWidget {
-  const MentionTextField({Key? key}) : super(key: key);
+  final String mentionTrigger;
+
+  const MentionTextField({
+    Key? key,
+    this.mentionTrigger = "@",
+  }) : super(key: key);
 
   @override
   _MentionTextFieldState createState() => _MentionTextFieldState();
 }
 
 class _MentionTextFieldState extends State<MentionTextField> {
-  late TextEditingController controller;
+  late MentionTextController controller;
 
   @override
   void initState() {
-    controller = MentionTextController({"@a": const TextStyle(color: Colors.pink)});
+    controller = MentionTextController({});
     super.initState();
   }
 
@@ -31,8 +36,14 @@ class _MentionTextFieldState extends State<MentionTextField> {
   @override
   Widget build(BuildContext context) {
     return BlocListener<AddDiaryEntryBloc, AddDiaryEntryState>(
+      listenWhen: (p, n) => p.entry.mentions != n.entry.mentions,
       listener: (context, state) {
-
+        // controller.mapMention =
+        controller.mapMention = {
+          for (var mention in state.entry.mentions)
+            "${widget.mentionTrigger}${mention.name}":
+                Constants.mentionSelectionStyle
+        };
         controller.value = TextEditingValue(
           text: state.entry.text,
           selection: TextSelection(
@@ -44,15 +55,16 @@ class _MentionTextFieldState extends State<MentionTextField> {
       },
       child: TextField(
         controller: controller,
-        inputFormatters: [MentionInputFormatter(mentions: {"@abc" : Mention(
-          id: "123",
-          name: "@a"
-        )})],
+        inputFormatters: [
+          MentionInputFormatter(
+              mentions: {"@abc": const Mention(id: "123", name: "@a")})
+        ],
         onChanged: (str) {
           context
               .read<AddDiaryEntryBloc>()
               .add(AddDiaryEntryEvent.onEntryTextChanged(
                 text: str,
+                trigger: widget.mentionTrigger,
                 baseOffset: controller.selection.baseOffset,
                 extentOffset: controller.selection.extentOffset,
               ));
@@ -62,7 +74,6 @@ class _MentionTextFieldState extends State<MentionTextField> {
         scrollPhysics: const BouncingScrollPhysics(),
         decoration: InputDecoration(
           filled: true,
-          fillColor: Theme.of(context).textSelectionTheme.selectionColor,
           contentPadding: const EdgeInsets.only(top: 8, bottom: 8, left: 9),
           focusedBorder: OutlineInputBorder(
               borderRadius: Constants.textFieldBorderRadious,

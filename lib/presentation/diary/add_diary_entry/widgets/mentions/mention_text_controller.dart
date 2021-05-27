@@ -28,7 +28,7 @@ class MentionTextController extends TextEditingController {
 
       children.add(
         TextSpan(
-          text: "Hola mundo",
+          text: match[0]!,
           style: style!.merge(mention),
         ),
       );
@@ -40,7 +40,6 @@ class MentionTextController extends TextEditingController {
     });
 
     return TextSpan(
-        text: "hola",
         children: children, style: style);
   }
 

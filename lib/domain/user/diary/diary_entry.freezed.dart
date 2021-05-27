@@ -16,9 +16,9 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$DiaryEntryTearOff {
   const _$DiaryEntryTearOff();
 
-  _DiaryEntry call({required String entry}) {
+  _DiaryEntry call({required String text}) {
     return _DiaryEntry(
-      entry: entry,
+      text: text,
     );
   }
 }
@@ -28,7 +28,7 @@ const $DiaryEntry = _$DiaryEntryTearOff();
 
 /// @nodoc
 mixin _$DiaryEntry {
-  String get entry => throw _privateConstructorUsedError;
+  String get text => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DiaryEntryCopyWith<DiaryEntry> get copyWith =>
@@ -40,7 +40,7 @@ abstract class $DiaryEntryCopyWith<$Res> {
   factory $DiaryEntryCopyWith(
           DiaryEntry value, $Res Function(DiaryEntry) then) =
       _$DiaryEntryCopyWithImpl<$Res>;
-  $Res call({String entry});
+  $Res call({String text});
 }
 
 /// @nodoc
@@ -53,12 +53,12 @@ class _$DiaryEntryCopyWithImpl<$Res> implements $DiaryEntryCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? entry = freezed,
+    Object? text = freezed,
   }) {
     return _then(_value.copyWith(
-      entry: entry == freezed
-          ? _value.entry
-          : entry // ignore: cast_nullable_to_non_nullable
+      text: text == freezed
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -70,7 +70,7 @@ abstract class _$DiaryEntryCopyWith<$Res> implements $DiaryEntryCopyWith<$Res> {
           _DiaryEntry value, $Res Function(_DiaryEntry) then) =
       __$DiaryEntryCopyWithImpl<$Res>;
   @override
-  $Res call({String entry});
+  $Res call({String text});
 }
 
 /// @nodoc
@@ -85,12 +85,12 @@ class __$DiaryEntryCopyWithImpl<$Res> extends _$DiaryEntryCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? entry = freezed,
+    Object? text = freezed,
   }) {
     return _then(_DiaryEntry(
-      entry: entry == freezed
-          ? _value.entry
-          : entry // ignore: cast_nullable_to_non_nullable
+      text: text == freezed
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -99,27 +99,27 @@ class __$DiaryEntryCopyWithImpl<$Res> extends _$DiaryEntryCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_DiaryEntry implements _DiaryEntry {
-  const _$_DiaryEntry({required this.entry});
+  const _$_DiaryEntry({required this.text});
 
   @override
-  final String entry;
+  final String text;
 
   @override
   String toString() {
-    return 'DiaryEntry(entry: $entry)';
+    return 'DiaryEntry(text: $text)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _DiaryEntry &&
-            (identical(other.entry, entry) ||
-                const DeepCollectionEquality().equals(other.entry, entry)));
+            (identical(other.text, text) ||
+                const DeepCollectionEquality().equals(other.text, text)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(entry);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(text);
 
   @JsonKey(ignore: true)
   @override
@@ -128,10 +128,10 @@ class _$_DiaryEntry implements _DiaryEntry {
 }
 
 abstract class _DiaryEntry implements DiaryEntry {
-  const factory _DiaryEntry({required String entry}) = _$_DiaryEntry;
+  const factory _DiaryEntry({required String text}) = _$_DiaryEntry;
 
   @override
-  String get entry => throw _privateConstructorUsedError;
+  String get text => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$DiaryEntryCopyWith<_DiaryEntry> get copyWith =>

@@ -8,4 +8,7 @@ class Constants {
 
   static const BorderRadius textFieldBorderRadious =
       BorderRadius.all(Radius.circular(12));
+
+  static const TextStyle mentionSelectionStyle =
+      TextStyle(color: Color.fromRGBO(204, 39, 219, 1.0));
 }

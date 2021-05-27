@@ -1,13 +1,15 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'mention.freezed.dart';
 
 
-class Mention {
-  final String id;
-  final String? name;
-  // final TextStyle? textStyle;
 
-  Mention({
-    required this.id,
-    this.name,
-    // this.textStyle
-  });
+@freezed
+class Mention with _$Mention {
+  const Mention._();
+
+  const factory Mention({
+    required String id,
+    required String name,
+  }) = _Mention;
 }
