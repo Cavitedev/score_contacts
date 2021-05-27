@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:scorecontacts/domain/user/diary/diary_entry.dart';
+import 'package:scorecontacts/application/diary/diary_entry_application.dart';
 
 part 'add_diary_entry_bloc.freezed.dart';
 part 'add_diary_entry_event.dart';
@@ -15,8 +15,16 @@ class AddDiaryEntryBloc extends Bloc<AddDiaryEntryEvent, AddDiaryEntryState> {
 
   @override
   Stream<AddDiaryEntryState> mapEventToState(AddDiaryEntryEvent event) async* {
-    yield* event.map(initialize: (e) async*{
-
-    });
+    yield* event.map(
+      initialize: (e) async* {},
+      onEntryTextChanged: (e) async* {
+        yield state.copyWith(
+            entry: state.entry.copyWith(
+          text: e.text,
+          baseOffset: e.baseOffset,
+          extentOffset: e.extentOffset,
+        ));
+      },
+    );
   }
 }

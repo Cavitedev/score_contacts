@@ -4,8 +4,9 @@ part 'diary_entry.freezed.dart';
 
 @freezed
 class DiaryEntry with _$DiaryEntry {
-  const factory DiaryEntry({required String entry}) = _DiaryEntry;
+  const factory DiaryEntry({required String text}) = _DiaryEntry;
 
-  factory DiaryEntry.empty() => const DiaryEntry(entry: "");
+  factory DiaryEntry.empty() => const DiaryEntry(text: "");
 
 }
+
