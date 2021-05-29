@@ -16,9 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$DiaryEntryTearOff {
   const _$DiaryEntryTearOff();
 
-  _DiaryEntry call({required String text}) {
+  _DiaryEntry call({required String text, required List<Mention> mentionList}) {
     return _DiaryEntry(
       text: text,
+      mentionList: mentionList,
     );
   }
 }
@@ -29,6 +30,7 @@ const $DiaryEntry = _$DiaryEntryTearOff();
 /// @nodoc
 mixin _$DiaryEntry {
   String get text => throw _privateConstructorUsedError;
+  List<Mention> get mentionList => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DiaryEntryCopyWith<DiaryEntry> get copyWith =>
@@ -40,7 +42,7 @@ abstract class $DiaryEntryCopyWith<$Res> {
   factory $DiaryEntryCopyWith(
           DiaryEntry value, $Res Function(DiaryEntry) then) =
       _$DiaryEntryCopyWithImpl<$Res>;
-  $Res call({String text});
+  $Res call({String text, List<Mention> mentionList});
 }
 
 /// @nodoc
@@ -54,12 +56,17 @@ class _$DiaryEntryCopyWithImpl<$Res> implements $DiaryEntryCopyWith<$Res> {
   @override
   $Res call({
     Object? text = freezed,
+    Object? mentionList = freezed,
   }) {
     return _then(_value.copyWith(
       text: text == freezed
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String,
+      mentionList: mentionList == freezed
+          ? _value.mentionList
+          : mentionList // ignore: cast_nullable_to_non_nullable
+              as List<Mention>,
     ));
   }
 }
@@ -70,7 +77,7 @@ abstract class _$DiaryEntryCopyWith<$Res> implements $DiaryEntryCopyWith<$Res> {
           _DiaryEntry value, $Res Function(_DiaryEntry) then) =
       __$DiaryEntryCopyWithImpl<$Res>;
   @override
-  $Res call({String text});
+  $Res call({String text, List<Mention> mentionList});
 }
 
 /// @nodoc
@@ -86,12 +93,17 @@ class __$DiaryEntryCopyWithImpl<$Res> extends _$DiaryEntryCopyWithImpl<$Res>
   @override
   $Res call({
     Object? text = freezed,
+    Object? mentionList = freezed,
   }) {
     return _then(_DiaryEntry(
       text: text == freezed
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String,
+      mentionList: mentionList == freezed
+          ? _value.mentionList
+          : mentionList // ignore: cast_nullable_to_non_nullable
+              as List<Mention>,
     ));
   }
 }
@@ -99,14 +111,16 @@ class __$DiaryEntryCopyWithImpl<$Res> extends _$DiaryEntryCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_DiaryEntry implements _DiaryEntry {
-  const _$_DiaryEntry({required this.text});
+  const _$_DiaryEntry({required this.text, required this.mentionList});
 
   @override
   final String text;
+  @override
+  final List<Mention> mentionList;
 
   @override
   String toString() {
-    return 'DiaryEntry(text: $text)';
+    return 'DiaryEntry(text: $text, mentionList: $mentionList)';
   }
 
   @override
@@ -114,12 +128,17 @@ class _$_DiaryEntry implements _DiaryEntry {
     return identical(this, other) ||
         (other is _DiaryEntry &&
             (identical(other.text, text) ||
-                const DeepCollectionEquality().equals(other.text, text)));
+                const DeepCollectionEquality().equals(other.text, text)) &&
+            (identical(other.mentionList, mentionList) ||
+                const DeepCollectionEquality()
+                    .equals(other.mentionList, mentionList)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(text);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(text) ^
+      const DeepCollectionEquality().hash(mentionList);
 
   @JsonKey(ignore: true)
   @override
@@ -128,10 +147,14 @@ class _$_DiaryEntry implements _DiaryEntry {
 }
 
 abstract class _DiaryEntry implements DiaryEntry {
-  const factory _DiaryEntry({required String text}) = _$_DiaryEntry;
+  const factory _DiaryEntry(
+      {required String text,
+      required List<Mention> mentionList}) = _$_DiaryEntry;
 
   @override
   String get text => throw _privateConstructorUsedError;
+  @override
+  List<Mention> get mentionList => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$DiaryEntryCopyWith<_DiaryEntry> get copyWith =>

@@ -12,4 +12,8 @@ class AddDiaryEntryEvent with _$AddDiaryEntryEvent {
     required int extentOffset,
     required String trigger,
   }) = _OnEntryTextChanged;
+
+  const factory AddDiaryEntryEvent.onSelectMention({required IMentionable iMentionable})
+  = _OnSelectMention;
+
 }

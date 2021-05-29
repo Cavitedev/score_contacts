@@ -40,7 +40,7 @@ class _MentionTextFieldState extends State<MentionTextField> {
         // controller.mapMention =
         controller.mapMention = {
           for (var mention in state.entryField.entry.mentionList)
-            "${widget.mentionTrigger}${mention.IMentionable.getName()}":
+            "${widget.mentionTrigger}${mention.iMentionable.getName()}":
                 Constants.mentionSelectionStyle
         };
         controller.value = TextEditingValue(

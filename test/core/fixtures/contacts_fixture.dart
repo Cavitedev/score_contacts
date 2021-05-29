@@ -7,6 +7,8 @@ import 'package:scorecontacts/domain/user/contacts_data/properties/phone.dart';
 
 // ignore: avoid_classes_with_only_static_members
 class ContactFixtures {
+
+
   static Contact completeContact = Contact(
       nameData: const NameData(firstName: "name", surnames: "surnames"),
       id: UniqueID.fromUniqueString("test"),
@@ -20,7 +22,7 @@ class ContactFixtures {
 
   static Contact emptyContact = Contact.empty();
 
-  static Contact contactWillNulls = Contact(
+  static Contact contactWithNulls = Contact(
       nameData: const NameData(
         firstName: "name",
       ),

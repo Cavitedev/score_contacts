@@ -10,7 +10,7 @@ class Mention with _$Mention {
   const Mention._();
 
   const factory Mention({
-    required IMentionable IMentionable,
+    required IMentionable iMentionable,
     required int startPos,
     required int endPos,
   }) = _Mention;

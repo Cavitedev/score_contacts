@@ -7,6 +7,7 @@
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
+import '../../domain/mention/i_mentionable.dart' as _i11;
 import '../../domain/user/contacts_data/contact.dart' as _i10;
 import '../auth/sign_in/sign_in_page.dart' as _i6;
 import '../auth/splash_page.dart' as _i3;
@@ -58,8 +59,10 @@ class Router extends _i1.RootStackRouter {
         }),
     AddDiaryPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
-        builder: (_) {
-          return const _i9.AddDiaryPage();
+        builder: (data) {
+          final args = data.argsAs<AddDiaryPageRouteArgs>();
+          return _i9.AddDiaryPage(
+              key: args.key, mentionableList: args.mentionableList);
         })
   };
 
@@ -136,8 +139,21 @@ class ViewContactPageRouteArgs {
   final Function onDelete;
 }
 
-class AddDiaryPageRoute extends _i1.PageRouteInfo {
-  const AddDiaryPageRoute() : super(name, path: '/add-diary-page');
+class AddDiaryPageRoute extends _i1.PageRouteInfo<AddDiaryPageRouteArgs> {
+  AddDiaryPageRoute(
+      {_i2.Key? key, required List<_i11.IMentionable> mentionableList})
+      : super(name,
+            path: '/add-diary-page',
+            args: AddDiaryPageRouteArgs(
+                key: key, mentionableList: mentionableList));
 
   static const String name = 'AddDiaryPageRoute';
+}
+
+class AddDiaryPageRouteArgs {
+  const AddDiaryPageRouteArgs({this.key, required this.mentionableList});
+
+  final _i2.Key? key;
+
+  final List<_i11.IMentionable> mentionableList;
 }

@@ -14,9 +14,12 @@ class MentionListManager with _$MentionListManager {
       const MentionListManager(mentionList: []);
 
   /// Receive [text] to check which mentions starts with the same text
-  List<IMentionable> getMentionCandidatesFromText({required String text}) {
+  List<IMentionable> getMentionCandidatesFromText(
+      {required String text}) {
     return mentionList
-        .where((mention) => text.startsWith(mention.getName()))
+        .where(
+          (mention) => mention.getName().startsWith(text),
+        )
         .toList();
   }
 }

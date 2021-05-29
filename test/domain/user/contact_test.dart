@@ -14,9 +14,9 @@ void main() {
     expect(_completeContact().getLabelObjectList<Phone>(), phones);
   });
 
-  test("Full name returns empty string on empty contact", (){
+  test("Full name returns (No Name) string on empty contact", (){
     final String fullName = ContactFixtures.emptyContact.getName();
-    expect(fullName, "");
+    expect(fullName, "(No Name)");
   });
   test("Full name returns empty string on complete contact", (){
     final String fullName = _completeContact().getName();
@@ -62,7 +62,7 @@ void main() {
   });
 
   test("phones search works on contact with nulls", (){
-    final String? match = ContactFixtures.contactWillNulls.matchPattern("1234");
+    final String? match = ContactFixtures.contactWithNulls.matchPattern("1234");
     expect(match,"1234");
   });
 

@@ -13,7 +13,7 @@ import 'package:scorecontacts/infrastructure/contacts/contact_dtos.dart';
 import '../../core/fixtures/contacts_fixture.dart';
 
 void main() {
-  Map<String, dynamic> contactsWithNullsJson() => ContactDTO.fromDomain(ContactFixtures.contactWillNulls).toJson();
+  Map<String, dynamic> contactsWithNullsJson() => ContactDTO.fromDomain(ContactFixtures.contactWithNulls).toJson();
 
   test('Simple contact can be converted from domain without errors', () {
     const NameData nameDataDomain = NameData(firstName: "Ej1", surnames: "EjSurname");

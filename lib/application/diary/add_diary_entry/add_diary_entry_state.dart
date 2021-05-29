@@ -15,6 +15,5 @@ class AddDiaryEntryState with _$AddDiaryEntryState {
       mentionListManager: MentionListManager.empty()
       );
 
-  DiaryEntry get diaryEntry => entryField.entry;
 
 }
