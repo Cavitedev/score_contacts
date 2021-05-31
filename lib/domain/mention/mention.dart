@@ -3,8 +3,6 @@ import 'package:scorecontacts/domain/mention/i_mentionable.dart';
 
 part 'mention.freezed.dart';
 
-
-
 @freezed
 class Mention with _$Mention {
   const Mention._();
@@ -14,4 +12,10 @@ class Mention with _$Mention {
     required int startPos,
     required int endPos,
   }) = _Mention;
+
+  bool isIndexInStartEndPos(int pos) {
+    return pos >= startPos && pos < endPos;
+  }
+
+  int get length => endPos - startPos;
 }

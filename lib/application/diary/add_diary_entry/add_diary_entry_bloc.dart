@@ -28,23 +28,22 @@ class AddDiaryEntryBloc extends Bloc<AddDiaryEntryEvent, AddDiaryEntryState> {
       onEntryTextChanged: (e) async* {
         final int triggerPos = _findLatestUnusedTrigger(e, e.baseOffset);
 
-        bool hasTriggerCandidates = false;
+        List<IMentionable> mentionCandidates = [];
         if (triggerPos != -1) {
           final String textToCheckMention =
               e.text.substring(triggerPos + 1, e.baseOffset);
-          hasTriggerCandidates = state.mentionListManager
-              .getMentionCandidatesFromText(text: textToCheckMention)
-              .isNotEmpty;
+          mentionCandidates = state.mentionListManager
+              .getMentionCandidatesFromText(text: textToCheckMention);
         }
 
         yield state.copyWith(
             entryField: state.entryField.copyWith(
           entry: state.entryField.entry.copyWith(text: e.text),
-          selectingMention: hasTriggerCandidates == true
+          selectingMention: mentionCandidates.isNotEmpty
               ? MentionCandidate(
                   startPos: triggerPos,
                   endPos: e.baseOffset,
-                )
+                  candidates: mentionCandidates)
               : null,
           baseOffset: null,
           extentOffset: null,
@@ -59,9 +58,8 @@ class AddDiaryEntryBloc extends Bloc<AddDiaryEntryEvent, AddDiaryEntryState> {
 
         // I assume it is 1 as it will always be a @
         const triggerLength = 1;
-        final String appendedName = e.iMentionable
-            .getName()
-            .substring(mentionCandidate.length - triggerLength);
+        final String appendedName =
+            "${e.iMentionable.getName().substring(mentionCandidate.length - triggerLength)} ";
 
         final String newText =
             state.entryField.entry.text.substring(0, mentionCandidate.endPos) +
@@ -79,7 +77,7 @@ class AddDiaryEntryBloc extends Bloc<AddDiaryEntryEvent, AddDiaryEntryState> {
               Mention(
                 iMentionable: e.iMentionable,
                 startPos: mentionCandidate.startPos,
-                endPos: newOffset,
+                endPos: newOffset - 1,
               )
             ],
           ),
@@ -88,10 +86,36 @@ class AddDiaryEntryBloc extends Bloc<AddDiaryEntryEvent, AddDiaryEntryState> {
           extentOffset: newOffset,
         ));
       },
+      removeMention: (e) async* {
+        final List<Mention> newMentionList =
+            List.of(state.entryField.entry.mentionList);
+        final bool couldRemove = newMentionList.remove(e.mention);
+        if (!couldRemove) {
+          return;
+        }
+        final String text = state.entryField.entry.text;
+        final String newText = text.substring(0, e.mention.startPos) +
+            text.substring(e.mention.endPos);
+
+        yield state.copyWith(
+            entryField: state.entryField.copyWith(
+          entry: state.entryField.entry.copyWith(
+            text: newText,
+            mentionList: newMentionList,
+          ),
+          selectingMention: null,
+          baseOffset: e.baseOffset - e.mention.length,
+          extentOffset: e.extentOffset - e.mention.length,
+        ));
+      },
     );
   }
 
   int _findLatestUnusedTrigger(_OnEntryTextChanged e, int offsetCheck) {
+    if (offsetCheck == -1) {
+      // ignore: parameter_assignments
+      offsetCheck = e.text.length;
+    }
     int triggerPos = -2;
     while (triggerPos == -2 ||
         state.entryField.entry.mentionList

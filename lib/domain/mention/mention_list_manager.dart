@@ -15,11 +15,11 @@ class MentionListManager with _$MentionListManager {
 
   /// Receive [text] to check which mentions starts with the same text
   List<IMentionable> getMentionCandidatesFromText(
-      {required String text}) {
+      {required String text, int size = 5}) {
     return mentionList
         .where(
           (mention) => mention.getName().startsWith(text),
-        )
+        ).take(size)
         .toList();
   }
 }

@@ -13,7 +13,12 @@ class AddDiaryEntryEvent with _$AddDiaryEntryEvent {
     required String trigger,
   }) = _OnEntryTextChanged;
 
-  const factory AddDiaryEntryEvent.onSelectMention({required IMentionable iMentionable})
-  = _OnSelectMention;
+  const factory AddDiaryEntryEvent.onSelectMention(
+      {required IMentionable iMentionable}) = _OnSelectMention;
 
+  const factory AddDiaryEntryEvent.removeMention({
+    required Mention mention,
+    required int baseOffset,
+    required int extentOffset,
+  }) = _RemoveMention;
 }

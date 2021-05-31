@@ -65,7 +65,8 @@ main() {
         const AddDiaryEntryState(
             entryField: DiaryEntryApplication(
                 entry: DiaryEntry(text: "@", mentionList: []),
-                selectingMention: MentionCandidate(startPos: 0, endPos: 1)),
+                selectingMention: MentionCandidate(
+                    startPos: 0, endPos: 1, candidates: [Mentionable("name")])),
             mentionListManager: mentionListManager)
       ],
     );
@@ -101,7 +102,8 @@ main() {
         const AddDiaryEntryState(
             entryField: DiaryEntryApplication(
                 entry: DiaryEntry(text: "@n", mentionList: []),
-                selectingMention: MentionCandidate(startPos: 0, endPos: 2)),
+                selectingMention: MentionCandidate(
+                    startPos: 0, endPos: 2, candidates: [Mentionable("name")])),
             mentionListManager: mentionListManager)
       ],
     );
@@ -119,7 +121,8 @@ main() {
         const AddDiaryEntryState(
             entryField: DiaryEntryApplication(
                 entry: DiaryEntry(text: "f @n", mentionList: []),
-                selectingMention: MentionCandidate(startPos: 2, endPos: 4)),
+                selectingMention: MentionCandidate(
+                    startPos: 2, endPos: 4, candidates: [Mentionable("name")])),
             mentionListManager: mentionListManager)
       ],
     );
@@ -194,6 +197,21 @@ main() {
                 mentionList: [Mentionable("name"), Mentionable("name2")]))
       ],
     );
+
+    test('On empty text with collapsed selection works fine without exceptions',
+        () async {
+      final bloc = AddDiaryEntryBloc();
+      bloc.add(const AddDiaryEntryEvent.onEntryTextChanged(
+          text: "", baseOffset: -1, extentOffset: -1, trigger: "@"));
+
+      await expectLater(
+          bloc.stream,
+          emits(const AddDiaryEntryState(
+              entryField: DiaryEntryApplication(
+                entry: DiaryEntry(text: "", mentionList: []),
+              ),
+              mentionListManager: MentionListManager(mentionList: []))));
+    });
   });
 
   group("On select mention event", () {
@@ -212,7 +230,8 @@ main() {
       bloc.emit(const AddDiaryEntryState(
           entryField: DiaryEntryApplication(
               entry: DiaryEntry(text: "@name", mentionList: []),
-              selectingMention: MentionCandidate(startPos: 0, endPos: 5)),
+              selectingMention: MentionCandidate(
+                  startPos: 0, endPos: 5, candidates: [Mentionable("name")])),
           mentionListManager: MentionListManager(mentionList: [mentionable])));
 
       bloc.add(
@@ -224,11 +243,11 @@ main() {
           predicate<AddDiaryEntryState>((state) =>
               state.entryField ==
               const DiaryEntryApplication(
-                  entry: DiaryEntry(text: "@name", mentionList: [
+                  entry: DiaryEntry(text: "@name ", mentionList: [
                     Mention(iMentionable: mentionable, startPos: 0, endPos: 5)
                   ]),
-                  baseOffset: 5,
-                  extentOffset: 5))
+                  baseOffset: 6,
+                  extentOffset: 6))
         ]),
       );
     });
@@ -240,7 +259,8 @@ main() {
       bloc.emit(const AddDiaryEntryState(
           entryField: DiaryEntryApplication(
               entry: DiaryEntry(text: "@", mentionList: []),
-              selectingMention: MentionCandidate(startPos: 0, endPos: 1)),
+              selectingMention: MentionCandidate(
+                  startPos: 0, endPos: 1, candidates: [Mentionable("name")])),
           mentionListManager: MentionListManager(mentionList: [mentionable])));
 
       bloc.add(
@@ -252,11 +272,11 @@ main() {
           predicate<AddDiaryEntryState>((state) =>
               state.entryField ==
               const DiaryEntryApplication(
-                  entry: DiaryEntry(text: "@name", mentionList: [
+                  entry: DiaryEntry(text: "@name ", mentionList: [
                     Mention(iMentionable: mentionable, startPos: 0, endPos: 5)
                   ]),
-                  baseOffset: 5,
-                  extentOffset: 5))
+                  baseOffset: 6,
+                  extentOffset: 6))
         ]),
       );
     });
@@ -269,7 +289,8 @@ main() {
       bloc.emit(const AddDiaryEntryState(
           entryField: DiaryEntryApplication(
               entry: DiaryEntry(text: "<=@=>", mentionList: []),
-              selectingMention: MentionCandidate(startPos: 2, endPos: 3)),
+              selectingMention: MentionCandidate(
+                  startPos: 2, endPos: 3, candidates: [Mentionable("name")])),
           mentionListManager: MentionListManager(mentionList: [mentionable])));
 
       bloc.add(
@@ -281,12 +302,61 @@ main() {
           predicate<AddDiaryEntryState>((state) =>
               state.entryField ==
               const DiaryEntryApplication(
-                  entry: DiaryEntry(text: "<=@name=>", mentionList: [
+                  entry: DiaryEntry(text: "<=@name =>", mentionList: [
                     Mention(iMentionable: mentionable, startPos: 2, endPos: 7)
                   ]),
-                  baseOffset: 7,
-                  extentOffset: 7))
+                  baseOffset: 8,
+                  extentOffset: 8))
         ]),
+      );
+    });
+  });
+
+  group('Remove mention event test', () {
+    blocTest('Remove non existant mention does nothing',
+        build: () => AddDiaryEntryBloc(),
+        act: (AddDiaryEntryBloc bloc) {
+          bloc.emit(const AddDiaryEntryState(
+              entryField: DiaryEntryApplication(
+                  entry: DiaryEntry(text: "@name", mentionList: [])),
+              mentionListManager: MentionListManager(mentionList: [])));
+
+          bloc.add(
+            const AddDiaryEntryEvent.removeMention(
+              mention: Mention(
+                  startPos: 0, endPos: 5, iMentionable: Mentionable("name")),
+              baseOffset: 0,
+              extentOffset: 0,
+            ),
+          );
+        },
+        skip: 1,
+        expect: () => []);
+
+    test('Remove mention if exists', () async {
+      const mentionable = Mentionable("name");
+      const mention = Mention(
+        iMentionable: mentionable,
+        startPos: 2,
+        endPos: 7,
+      );
+      final bloc = AddDiaryEntryBloc();
+      bloc.emit(const AddDiaryEntryState(
+          entryField: DiaryEntryApplication(
+              entry: DiaryEntry(text: "<=@name=>", mentionList: [mention])),
+          mentionListManager: MentionListManager(mentionList: [mentionable])));
+
+      bloc.add(const AddDiaryEntryEvent.removeMention(
+          mention: mention, baseOffset: 7, extentOffset: 7));
+
+      await expectLater(
+        bloc.stream,
+        emits(predicate<AddDiaryEntryState>((state) =>
+            state.entryField ==
+            const DiaryEntryApplication(
+                entry: DiaryEntry(text: "<==>", mentionList: []),
+                baseOffset: 2,
+                extentOffset: 2))),
       );
     });
   });

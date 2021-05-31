@@ -9,8 +9,7 @@ void main() {
     test("On no data return empty list", () {
       const manager = MentionListManager(mentionList: []);
 
-      final mentionList =
-          manager.getMentionCandidatesFromText(text: "");
+      final mentionList = manager.getMentionCandidatesFromText(text: "");
 
       expect(mentionList.length, 0);
     });
@@ -18,30 +17,42 @@ void main() {
     test("On text with no matches returns empty list", () {
       const manager = MentionListManager(mentionList: [Mentionable("name")]);
 
-      final mentionList =
-          manager.getMentionCandidatesFromText(text: "macth");
+      final mentionList = manager.getMentionCandidatesFromText(text: "macth");
 
       expect(mentionList.length, 0);
     });
 
     test("Return match when text is same as match with 1 match", () {
-      const IMentionable mention =  Mentionable("match");
+      const IMentionable mention = Mentionable("match");
       const manager = MentionListManager(mentionList: [mention]);
 
-      final mentionList =
-          manager.getMentionCandidatesFromText(text: "match");
+      final mentionList = manager.getMentionCandidatesFromText(text: "match");
 
       expect(mentionList[0], mention);
     });
 
     test("Return match when text starts with that match", () {
-      const IMentionable mention =  Mentionable("match");
+      const IMentionable mention = Mentionable("match");
       const manager = MentionListManager(mentionList: [mention]);
 
-      final mentionList =
-          manager.getMentionCandidatesFromText(text: "m");
+      final mentionList = manager.getMentionCandidatesFromText(text: "m");
 
       expect(mentionList[0], mention);
+    });
+
+    test("Return only selected matches", () {
+      const IMentionable mention1 = Mentionable("match");
+      const IMentionable mention2 = Mentionable("match2");
+      const IMentionable mention3 = Mentionable("match3");
+      const manager = MentionListManager(mentionList: [
+        mention1,
+        mention2,
+        mention3,
+      ]);
+
+      final mentionList = manager.getMentionCandidatesFromText(text: "m" , size: 2);
+
+      expect(mentionList, [mention1, mention2]);
     });
   });
 }

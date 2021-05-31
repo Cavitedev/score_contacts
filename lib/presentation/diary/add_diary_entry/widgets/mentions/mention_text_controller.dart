@@ -2,12 +2,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MentionTextController extends TextEditingController {
-  Map<String, TextStyle> mapMention;
+  Map<String, TextStyle> _mapMention;
+
+  set mapMention(Map<String, TextStyle> mapMention) {
+    _mapMention = mapMention;
+    _pattern = _mapMention.keys.isNotEmpty
+        ? "(${_mapMention.keys.map((key) => RegExp.escape(key)).join('|')})"
+        : null;
+  }
+
   String? _pattern;
 
-  MentionTextController(this.mapMention)
-      : _pattern = mapMention.keys.isNotEmpty
-            ? "(${mapMention.keys.map((key) => RegExp.escape(key)).join('|')})"
+  MentionTextController(this._mapMention)
+      : _pattern = _mapMention.keys.isNotEmpty
+            ? "(${_mapMention.keys.map((key) => RegExp.escape(key)).join('|')})"
             : null;
 
   @override
@@ -20,7 +28,7 @@ class MentionTextController extends TextEditingController {
     }
     List<InlineSpan> children = [];
     text.splitMapJoin(RegExp(_pattern!), onMatch: (Match match) {
-      final mention = mapMention[match[0]!]!;
+      final mention = _mapMention[match[0]!]!;
 
       // selection = selection.copyWith(
       //   baseOffset: selection.baseOffset + overflow,
@@ -39,13 +47,6 @@ class MentionTextController extends TextEditingController {
       return '';
     });
 
-    return TextSpan(
-        children: children, style: style);
+    return TextSpan(children: children, style: style);
   }
-
-
-
-
-
-
 }

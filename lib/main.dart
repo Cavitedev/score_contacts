@@ -74,6 +74,7 @@ class MyApp extends StatelessWidget {
                 cursorColor: Colors.blue[700],
                 selectionColor: const Color.fromRGBO(80, 80, 120, 1),
                 selectionHandleColor: Colors.blue[600]),
+
             accentIconTheme: IconThemeData(
               color: Colors.lightBlueAccent[700],
               size: 32

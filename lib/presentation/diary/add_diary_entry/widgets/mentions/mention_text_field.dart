@@ -19,10 +19,15 @@ class MentionTextField extends StatefulWidget {
 
 class _MentionTextFieldState extends State<MentionTextField> {
   late MentionTextController controller;
+  late MentionInputFormatter mentionInputFormatter;
 
   @override
   void initState() {
     controller = MentionTextController({});
+    mentionInputFormatter = MentionInputFormatter(
+      mentionList: [],
+      addDiaryEntryBloc: context.read<AddDiaryEntryBloc>(),
+    );
     super.initState();
   }
 
@@ -35,29 +40,28 @@ class _MentionTextFieldState extends State<MentionTextField> {
   @override
   Widget build(BuildContext context) {
     return BlocListener<AddDiaryEntryBloc, AddDiaryEntryState>(
-      listenWhen: (p, n) => p.entryField.entry.mentionList != n.entryField.entry.mentionList,
+      listenWhen: (p, n) =>
+          p.entryField.entry.mentionList != n.entryField.entry.mentionList,
       listener: (context, state) {
-        // controller.mapMention =
+        mentionInputFormatter.mentionList = state.entryField.entry.mentionList;
         controller.mapMention = {
           for (var mention in state.entryField.entry.mentionList)
             "${widget.mentionTrigger}${mention.iMentionable.getName()}":
                 Constants.mentionSelectionStyle
         };
-        controller.value = TextEditingValue(
-          text: state.entryField.entry.text,
-          selection: TextSelection(
-              baseOffset:
-                  state.entryField.baseOffset ?? controller.selection.baseOffset,
-              extentOffset: state.entryField.extentOffset ??
-                  controller.selection.extentOffset),
-        );
+
+         controller.value = TextEditingValue(
+            text: state.entryField.entry.text,
+            selection: TextSelection(
+                baseOffset: state.entryField.baseOffset ??
+                    controller.selection.baseOffset,
+                extentOffset: state.entryField.extentOffset ??
+                    controller.selection.extentOffset),
+          );
       },
       child: TextField(
         controller: controller,
-        inputFormatters: [
-          MentionInputFormatter(
-              mentions: {})
-        ],
+        inputFormatters: [mentionInputFormatter],
         onChanged: (str) {
           context
               .read<AddDiaryEntryBloc>()
