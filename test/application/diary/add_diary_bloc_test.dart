@@ -9,7 +9,7 @@ import 'package:scorecontacts/domain/user/diary/diary_entry.dart';
 
 import 'mentionable.dart';
 
-main() {
+void main() {
   const MentionListManager mentionListManager =
       MentionListManager(mentionList: [Mentionable("name")]);
 
@@ -25,8 +25,8 @@ main() {
         ),
       skip: 1,
       expect: () => [
-        const AddDiaryEntryState(
-            entryField: DiaryEntryApplication(
+        AddDiaryEntryState.initial().copyWith(
+            entryField: const DiaryEntryApplication(
               entry: DiaryEntry(text: "t", mentionList: []),
             ),
             mentionListManager: mentionListManager)
@@ -43,11 +43,11 @@ main() {
         ),
       skip: 1,
       expect: () => [
-        const AddDiaryEntryState(
-            entryField: DiaryEntryApplication(
+        AddDiaryEntryState.initial().copyWith(
+            entryField: const DiaryEntryApplication(
               entry: DiaryEntry(text: "@", mentionList: []),
             ),
-            mentionListManager: MentionListManager(mentionList: []))
+            mentionListManager: const MentionListManager(mentionList: []))
       ],
     );
 
@@ -62,8 +62,8 @@ main() {
         ),
       skip: 1,
       expect: () => [
-        const AddDiaryEntryState(
-            entryField: DiaryEntryApplication(
+        AddDiaryEntryState.initial().copyWith(
+            entryField: const DiaryEntryApplication(
                 entry: DiaryEntry(text: "@", mentionList: []),
                 selectingMention: MentionCandidate(
                     startPos: 0, endPos: 1, candidates: [Mentionable("name")])),
@@ -81,8 +81,8 @@ main() {
       },
       skip: 2,
       expect: () => [
-        const AddDiaryEntryState(
-            entryField: DiaryEntryApplication(
+        AddDiaryEntryState.initial().copyWith(
+            entryField: const DiaryEntryApplication(
               entry: DiaryEntry(text: "@a", mentionList: []),
             ),
             mentionListManager: mentionListManager)
@@ -99,8 +99,8 @@ main() {
       },
       skip: 2,
       expect: () => [
-        const AddDiaryEntryState(
-            entryField: DiaryEntryApplication(
+        AddDiaryEntryState.initial().copyWith(
+            entryField: const DiaryEntryApplication(
                 entry: DiaryEntry(text: "@n", mentionList: []),
                 selectingMention: MentionCandidate(
                     startPos: 0, endPos: 2, candidates: [Mentionable("name")])),
@@ -118,8 +118,8 @@ main() {
       },
       skip: 4,
       expect: () => [
-        const AddDiaryEntryState(
-            entryField: DiaryEntryApplication(
+        AddDiaryEntryState.initial().copyWith(
+            entryField: const DiaryEntryApplication(
                 entry: DiaryEntry(text: "f @n", mentionList: []),
                 selectingMention: MentionCandidate(
                     startPos: 2, endPos: 4, candidates: [Mentionable("name")])),
@@ -138,8 +138,8 @@ main() {
       },
       skip: 1,
       expect: () => [
-        const AddDiaryEntryState(
-            entryField: DiaryEntryApplication(
+        AddDiaryEntryState.initial().copyWith(
+            entryField: const DiaryEntryApplication(
               entry: DiaryEntry(text: "n", mentionList: []),
             ),
             mentionListManager: mentionListManager)
@@ -152,8 +152,8 @@ main() {
       act: (AddDiaryEntryBloc bloc) {
         bloc.add(const AddDiaryEntryEvent.initialize(
             mentionableList: [Mentionable("name")]));
-        bloc.emit(const AddDiaryEntryState(
-            entryField: DiaryEntryApplication(
+        bloc.emit(AddDiaryEntryState.initial().copyWith(
+            entryField: const DiaryEntryApplication(
               entry: DiaryEntry(text: "@name", mentionList: []),
             ),
             mentionListManager: mentionListManager));
@@ -161,8 +161,8 @@ main() {
       },
       skip: 1,
       expect: () => [
-        const AddDiaryEntryState(
-            entryField: DiaryEntryApplication(
+        AddDiaryEntryState.initial().copyWith(
+            entryField: const DiaryEntryApplication(
               entry: DiaryEntry(text: " @name", mentionList: []),
             ),
             mentionListManager: mentionListManager)
@@ -178,22 +178,22 @@ main() {
       act: (AddDiaryEntryBloc bloc) {
         bloc.add(const AddDiaryEntryEvent.initialize(
             mentionableList: [Mentionable("name"), Mentionable("name2")]));
-        bloc.emit(const AddDiaryEntryState(
-            entryField: DiaryEntryApplication(
+        bloc.emit(AddDiaryEntryState.initial().copyWith(
+            entryField: const DiaryEntryApplication(
               entry: DiaryEntry(text: "@name", mentionList: [firstNameMention]),
             ),
-            mentionListManager: MentionListManager(
+            mentionListManager: const MentionListManager(
                 mentionList: [Mentionable("name"), Mentionable("name2")])));
         bloc.add(txtChngEvent("@name2"));
       },
       skip: 1,
       expect: () => [
-        const AddDiaryEntryState(
-            entryField: DiaryEntryApplication(
+        AddDiaryEntryState.initial().copyWith(
+            entryField: const DiaryEntryApplication(
               entry:
                   DiaryEntry(text: "@name2", mentionList: [firstNameMention]),
             ),
-            mentionListManager: MentionListManager(
+            mentionListManager: const MentionListManager(
                 mentionList: [Mentionable("name"), Mentionable("name2")]))
       ],
     );
@@ -206,11 +206,11 @@ main() {
 
       await expectLater(
           bloc.stream,
-          emits(const AddDiaryEntryState(
-              entryField: DiaryEntryApplication(
+          emits(AddDiaryEntryState.initial().copyWith(
+              entryField: const DiaryEntryApplication(
                 entry: DiaryEntry(text: "", mentionList: []),
               ),
-              mentionListManager: MentionListManager(mentionList: []))));
+              mentionListManager: const MentionListManager(mentionList: []))));
     });
   });
 
@@ -227,12 +227,12 @@ main() {
       const mentionable = Mentionable("name");
 
       final bloc = AddDiaryEntryBloc();
-      bloc.emit(const AddDiaryEntryState(
-          entryField: DiaryEntryApplication(
+      bloc.emit(AddDiaryEntryState.initial().copyWith(
+          entryField: const DiaryEntryApplication(
               entry: DiaryEntry(text: "@name", mentionList: []),
               selectingMention: MentionCandidate(
                   startPos: 0, endPos: 5, candidates: [Mentionable("name")])),
-          mentionListManager: MentionListManager(mentionList: [mentionable])));
+          mentionListManager: const MentionListManager(mentionList: [mentionable])));
 
       bloc.add(
           const AddDiaryEntryEvent.onSelectMention(iMentionable: mentionable));
@@ -256,12 +256,12 @@ main() {
       const mentionable = Mentionable("name");
 
       final bloc = AddDiaryEntryBloc();
-      bloc.emit(const AddDiaryEntryState(
-          entryField: DiaryEntryApplication(
+      bloc.emit(AddDiaryEntryState.initial().copyWith(
+          entryField: const DiaryEntryApplication(
               entry: DiaryEntry(text: "@", mentionList: []),
               selectingMention: MentionCandidate(
                   startPos: 0, endPos: 1, candidates: [Mentionable("name")])),
-          mentionListManager: MentionListManager(mentionList: [mentionable])));
+          mentionListManager: const MentionListManager(mentionList: [mentionable])));
 
       bloc.add(
           const AddDiaryEntryEvent.onSelectMention(iMentionable: mentionable));
@@ -286,12 +286,12 @@ main() {
       const mentionable = Mentionable("name");
 
       final bloc = AddDiaryEntryBloc();
-      bloc.emit(const AddDiaryEntryState(
-          entryField: DiaryEntryApplication(
+      bloc.emit(AddDiaryEntryState.initial().copyWith(
+          entryField: const DiaryEntryApplication(
               entry: DiaryEntry(text: "<=@=>", mentionList: []),
               selectingMention: MentionCandidate(
                   startPos: 2, endPos: 3, candidates: [Mentionable("name")])),
-          mentionListManager: MentionListManager(mentionList: [mentionable])));
+          mentionListManager: const MentionListManager(mentionList: [mentionable])));
 
       bloc.add(
           const AddDiaryEntryEvent.onSelectMention(iMentionable: mentionable));
@@ -316,10 +316,10 @@ main() {
     blocTest('Remove non existant mention does nothing',
         build: () => AddDiaryEntryBloc(),
         act: (AddDiaryEntryBloc bloc) {
-          bloc.emit(const AddDiaryEntryState(
-              entryField: DiaryEntryApplication(
+          bloc.emit(AddDiaryEntryState.initial().copyWith(
+              entryField: const DiaryEntryApplication(
                   entry: DiaryEntry(text: "@name", mentionList: [])),
-              mentionListManager: MentionListManager(mentionList: [])));
+              mentionListManager: const MentionListManager(mentionList: [])));
 
           bloc.add(
             const AddDiaryEntryEvent.removeMention(
@@ -341,10 +341,10 @@ main() {
         endPos: 7,
       );
       final bloc = AddDiaryEntryBloc();
-      bloc.emit(const AddDiaryEntryState(
-          entryField: DiaryEntryApplication(
+      bloc.emit(AddDiaryEntryState.initial().copyWith(
+          entryField: const DiaryEntryApplication(
               entry: DiaryEntry(text: "<=@name=>", mentionList: [mention])),
-          mentionListManager: MentionListManager(mentionList: [mentionable])));
+          mentionListManager: const MentionListManager(mentionList: [mentionable])));
 
       bloc.add(const AddDiaryEntryEvent.removeMention(
           mention: mention, baseOffset: 7, extentOffset: 7));

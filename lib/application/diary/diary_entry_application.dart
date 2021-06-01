@@ -13,7 +13,7 @@ class DiaryEntryApplication with _$DiaryEntryApplication {
     int? extentOffset,
   }) = _DiaryEntryApplication;
 
-  factory DiaryEntryApplication.empty() => DiaryEntryApplication(
+  factory DiaryEntryApplication.empty() =>  DiaryEntryApplication(
         entry: DiaryEntry.empty(),
       );
 }

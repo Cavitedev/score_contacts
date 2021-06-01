@@ -1,12 +1,14 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:scorecontacts/application/diary/diary_entry_application.dart';
 import 'package:scorecontacts/application/diary/mention_candidate.dart';
 import 'package:scorecontacts/domain/mention/i_mentionable.dart';
 import 'package:scorecontacts/domain/mention/mention.dart';
+import 'package:scorecontacts/domain/mention/mention_failure.dart';
 import 'package:scorecontacts/domain/mention/mention_list_manager.dart';
 
 part 'add_diary_entry_bloc.freezed.dart';
@@ -21,9 +23,12 @@ class AddDiaryEntryBloc extends Bloc<AddDiaryEntryEvent, AddDiaryEntryState> {
   Stream<AddDiaryEntryState> mapEventToState(AddDiaryEntryEvent event) async* {
     yield* event.map(
       initialize: (e) async* {
+        final bool isEditting = e.diaryEntry != null;
+
         yield state.copyWith(
             mentionListManager:
-                MentionListManager(mentionList: e.mentionableList));
+                MentionListManager(mentionList: e.mentionableList),
+            isEditting: isEditting);
       },
       onEntryTextChanged: (e) async* {
         final int triggerPos = _findLatestUnusedTrigger(e, e.baseOffset);

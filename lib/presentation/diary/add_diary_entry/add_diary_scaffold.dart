@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:scorecontacts/application/diary/add_diary_entry/add_diary_entry_bloc.dart';
+import 'package:scorecontacts/core/app_localization.dart';
 import 'package:scorecontacts/presentation/diary/add_diary_entry/add_diary_form.dart';
 
 class AddDiaryScaffold extends StatelessWidget {
@@ -8,10 +11,18 @@ class AddDiaryScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Add Entry"),
+        title: Center(
+            child: BlocBuilder<AddDiaryEntryBloc, AddDiaryEntryState>(
+          buildWhen: (previous, current) =>
+              previous.isEditting != current.isEditting,
+          builder: (context, state) => Text(
+            AppLocalization.of(context).translate(
+                state.isEditting ? "edit_diary_entry" : "create_diary_entry"),
+            style: Theme.of(context).textTheme.headline3,
+          ),
+        )),
       ),
       body: const AddDiaryForm(),
-
     );
   }
 }
