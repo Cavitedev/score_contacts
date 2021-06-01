@@ -1,7 +1,6 @@
-import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:scorecontacts/application/contacts/selection_contact.dart';
-import 'package:scorecontacts/core/app_localization.dart';
+import 'package:scorecontacts/presentation/core/widgets/avatar/custom_circle_avatar.dart';
 
 class ContactCircleAvatar extends StatelessWidget {
   final SelectionContact selectionContact;
@@ -15,27 +14,15 @@ class ContactCircleAvatar extends StatelessWidget {
     return _buildCircleAvatar(context);
   }
 
-  CircleAvatar _buildCircleAvatar(BuildContext context) {
+  Widget _buildCircleAvatar(BuildContext context) {
     final String? urlContact = selectionContact.contact.contactImage?.url;
 
-    return CircleAvatar(
+    return CustomCircleAvatar(
       key: UniqueKey(),
-      radius: radius,
       backgroundColor:
           selectionContact.isSelected ? Colors.teal[200] : Colors.purple[200],
-      foregroundImage:
-          _doesRequiresImage(urlContact) ? NetworkImage(urlContact!) : null,
-      onForegroundImageError: _doesRequiresImage(urlContact)
-          ? (_, ex) {
-              FlushbarHelper.createError(
-                      message: AppLocalization.of(context)
-                          .translate("error_load_contact_image", args: [
-                        selectionContact.contact.nameData.toFullName(),
-                      ]),
-                      duration: const Duration(seconds: 8))
-                  .show(context);
-            }
-          : null,
+      image: _doesRequiresImage(urlContact) ? urlContact! : null,
+      name: selectionContact.contact.nameData.toFullName(),
       child: selectionContact.isSelected
           ? const Icon(
               Icons.check,

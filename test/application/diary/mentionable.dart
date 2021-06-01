@@ -1,3 +1,4 @@
+import 'package:scorecontacts/domain/core/unique_id.dart';
 import 'package:scorecontacts/domain/mention/i_mentionable.dart';
 
 class Mentionable implements IMentionable {
@@ -6,6 +7,12 @@ class Mentionable implements IMentionable {
 
 
   const Mentionable(this.name);
+
+    @override
+  UniqueID get id => UniqueID.fromUniqueString("ex");
+
+  @override
+  get imageLink => null;
 
   @override
   String getName() {
@@ -21,4 +28,6 @@ class Mentionable implements IMentionable {
 
   @override
   int get hashCode => name.hashCode;
+
+
 }

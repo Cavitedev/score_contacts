@@ -48,10 +48,13 @@ class Contact with _$Contact implements IMentionable  {
     labObj![Phone] = phones.map((phone) => phone.fromDatabase(countryCode)).toList();
 
 
-    return this.copyWith(
+    return copyWith(
       labelObjects: labObj
     );
   }
+
+  @override
+  String? get imageLink => contactImage?.url;
 
   factory Contact.fromStringJson(String jsonStr) {
     final Map<String, dynamic> jsonMap =
