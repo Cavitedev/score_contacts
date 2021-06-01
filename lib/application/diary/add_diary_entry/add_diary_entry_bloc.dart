@@ -8,8 +8,9 @@ import 'package:scorecontacts/application/diary/diary_entry_application.dart';
 import 'package:scorecontacts/application/diary/mention_candidate.dart';
 import 'package:scorecontacts/domain/mention/i_mentionable.dart';
 import 'package:scorecontacts/domain/mention/mention.dart';
-import 'package:scorecontacts/domain/mention/mention_failure.dart';
 import 'package:scorecontacts/domain/mention/mention_list_manager.dart';
+import 'package:scorecontacts/domain/user/diary/diary_failure.dart';
+import 'package:scorecontacts/domain/user/diary/i_diary_entry_repository.dart';
 
 part 'add_diary_entry_bloc.freezed.dart';
 part 'add_diary_entry_event.dart';
@@ -17,7 +18,10 @@ part 'add_diary_entry_state.dart';
 
 @injectable
 class AddDiaryEntryBloc extends Bloc<AddDiaryEntryEvent, AddDiaryEntryState> {
-  AddDiaryEntryBloc() : super(AddDiaryEntryState.initial());
+
+  final IDiaryEntryRepository repository;
+
+  AddDiaryEntryBloc(this.repository) : super(AddDiaryEntryState.initial());
 
   @override
   Stream<AddDiaryEntryState> mapEventToState(AddDiaryEntryEvent event) async* {
@@ -30,6 +34,10 @@ class AddDiaryEntryBloc extends Bloc<AddDiaryEntryEvent, AddDiaryEntryState> {
                 MentionListManager(mentionList: e.mentionableList),
             isEditting: isEditting);
       },
+      save: (e) async*{
+
+      },
+
       onEntryTextChanged: (e) async* {
         final int triggerPos = _findLatestUnusedTrigger(e, e.baseOffset);
 

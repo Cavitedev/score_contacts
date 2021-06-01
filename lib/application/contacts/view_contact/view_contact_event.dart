@@ -2,8 +2,10 @@ part of 'view_contact_bloc.dart';
 
 @freezed
 class ViewContactEvent with _$ViewContactEvent {
+
   const factory ViewContactEvent.initialize(
       {required Contact contact, required String countryCode}) = _Initialize;
+
 
   const factory ViewContactEvent.callNumber(String number) = _CallNumber;
 
@@ -16,5 +18,4 @@ class ViewContactEvent with _$ViewContactEvent {
   }) = _SendMessageThroughApp;
 
   const factory ViewContactEvent.sendMail(String mail) = _SendMail;
-
 }

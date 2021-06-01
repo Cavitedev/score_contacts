@@ -7,6 +7,8 @@ class AddDiaryEntryEvent with _$AddDiaryEntryEvent {
     required List<IMentionable> mentionableList,
   }) = _Initialize;
 
+  const factory AddDiaryEntryEvent.save() = _Save;
+  
   const factory AddDiaryEntryEvent.onEntryTextChanged({
     required String text,
     required int baseOffset,

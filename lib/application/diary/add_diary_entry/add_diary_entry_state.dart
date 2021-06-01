@@ -9,7 +9,7 @@ class AddDiaryEntryState with _$AddDiaryEntryState {
     required MentionListManager mentionListManager,
     required bool isEditting,
     required bool isSaving,
-    required Either<MentionFailure, Unit>? savingOrFailureOption,
+    required Either<DiaryFailure, Unit>? savingOrFailureOption,
   }) = _AddDiaryEntryState;
 
   factory AddDiaryEntryState.initial() =>  AddDiaryEntryState(

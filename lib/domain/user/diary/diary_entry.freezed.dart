@@ -16,8 +16,12 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$DiaryEntryTearOff {
   const _$DiaryEntryTearOff();
 
-  _DiaryEntry call({required String text, required List<Mention> mentionList}) {
+  _DiaryEntry call(
+      {required UniqueID id,
+      required String text,
+      required List<Mention> mentionList}) {
     return _DiaryEntry(
+      id: id,
       text: text,
       mentionList: mentionList,
     );
@@ -29,6 +33,7 @@ const $DiaryEntry = _$DiaryEntryTearOff();
 
 /// @nodoc
 mixin _$DiaryEntry {
+  UniqueID get id => throw _privateConstructorUsedError;
   String get text => throw _privateConstructorUsedError;
   List<Mention> get mentionList => throw _privateConstructorUsedError;
 
@@ -42,7 +47,7 @@ abstract class $DiaryEntryCopyWith<$Res> {
   factory $DiaryEntryCopyWith(
           DiaryEntry value, $Res Function(DiaryEntry) then) =
       _$DiaryEntryCopyWithImpl<$Res>;
-  $Res call({String text, List<Mention> mentionList});
+  $Res call({UniqueID id, String text, List<Mention> mentionList});
 }
 
 /// @nodoc
@@ -55,10 +60,15 @@ class _$DiaryEntryCopyWithImpl<$Res> implements $DiaryEntryCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? text = freezed,
     Object? mentionList = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as UniqueID,
       text: text == freezed
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
@@ -77,7 +87,7 @@ abstract class _$DiaryEntryCopyWith<$Res> implements $DiaryEntryCopyWith<$Res> {
           _DiaryEntry value, $Res Function(_DiaryEntry) then) =
       __$DiaryEntryCopyWithImpl<$Res>;
   @override
-  $Res call({String text, List<Mention> mentionList});
+  $Res call({UniqueID id, String text, List<Mention> mentionList});
 }
 
 /// @nodoc
@@ -92,10 +102,15 @@ class __$DiaryEntryCopyWithImpl<$Res> extends _$DiaryEntryCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? text = freezed,
     Object? mentionList = freezed,
   }) {
     return _then(_DiaryEntry(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as UniqueID,
       text: text == freezed
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
@@ -111,8 +126,11 @@ class __$DiaryEntryCopyWithImpl<$Res> extends _$DiaryEntryCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_DiaryEntry implements _DiaryEntry {
-  const _$_DiaryEntry({required this.text, required this.mentionList});
+  const _$_DiaryEntry(
+      {required this.id, required this.text, required this.mentionList});
 
+  @override
+  final UniqueID id;
   @override
   final String text;
   @override
@@ -120,13 +138,15 @@ class _$_DiaryEntry implements _DiaryEntry {
 
   @override
   String toString() {
-    return 'DiaryEntry(text: $text, mentionList: $mentionList)';
+    return 'DiaryEntry(id: $id, text: $text, mentionList: $mentionList)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _DiaryEntry &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.text, text) ||
                 const DeepCollectionEquality().equals(other.text, text)) &&
             (identical(other.mentionList, mentionList) ||
@@ -137,6 +157,7 @@ class _$_DiaryEntry implements _DiaryEntry {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(text) ^
       const DeepCollectionEquality().hash(mentionList);
 
@@ -148,9 +169,12 @@ class _$_DiaryEntry implements _DiaryEntry {
 
 abstract class _DiaryEntry implements DiaryEntry {
   const factory _DiaryEntry(
-      {required String text,
+      {required UniqueID id,
+      required String text,
       required List<Mention> mentionList}) = _$_DiaryEntry;
 
+  @override
+  UniqueID get id => throw _privateConstructorUsedError;
   @override
   String get text => throw _privateConstructorUsedError;
   @override

@@ -1,7 +1,6 @@
 import 'package:scorecontacts/domain/core/unique_id.dart';
 import 'package:scorecontacts/domain/mention/i_mentionable.dart';
 
-///Mentionable implementation for tests and dtos
 class Mentionable implements IMentionable {
   final String name;
   final UniqueID? uniqueID;
@@ -9,7 +8,6 @@ class Mentionable implements IMentionable {
 
   const Mentionable(this.name, {this.uniqueID, this.image});
 
-  // For testing
   @override
   UniqueID get id => uniqueID ?? UniqueID.fromUniqueString("test");
 
@@ -26,15 +24,8 @@ class Mentionable implements IMentionable {
       identical(this, other) ||
       other is Mentionable &&
           runtimeType == other.runtimeType &&
-          name == other.name &&
-          uniqueID == other.uniqueID &&
-          image == other.image;
+          name == other.name;
 
   @override
-  int get hashCode => name.hashCode ^ uniqueID.hashCode ^ image.hashCode;
-
-  @override
-  String toString() {
-    return 'Mentionable{name: $name, uniqueID: $uniqueID, image: $image}';
-  }
+  int get hashCode => name.hashCode;
 }
