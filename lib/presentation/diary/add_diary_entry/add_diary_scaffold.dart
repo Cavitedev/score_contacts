@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/diary/add_diary_entry/add_diary_entry_bloc.dart';
 import 'package:scorecontacts/core/app_localization.dart';
 import 'package:scorecontacts/presentation/diary/add_diary_entry/add_diary_form.dart';
-import 'package:scorecontacts/presentation/routes/router.gr.dart' as r;
 
 class AddDiaryScaffold extends StatelessWidget {
   const AddDiaryScaffold({Key? key}) : super(key: key);
@@ -25,7 +24,6 @@ class AddDiaryScaffold extends StatelessWidget {
         )),
          leading: IconButton(
           onPressed: () {
-            context.router.popUntil((route) => route.settings.name == r.AddContactPageRoute.name);
             context.router.pop();
           },
           icon: const Icon(Icons.close),

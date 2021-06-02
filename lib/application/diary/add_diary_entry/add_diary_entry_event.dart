@@ -24,4 +24,9 @@ class AddDiaryEntryEvent with _$AddDiaryEntryEvent {
     required int baseOffset,
     required int extentOffset,
   }) = _RemoveMention;
+  
+  const factory AddDiaryEntryEvent.changeDate(DateTime dateTime, {required DatePos datePos}) = _ChangeDate;
+  const factory AddDiaryEntryEvent.changeTime(DateTime dateTime, {required DatePos datePos}) = _ChangeTime;
 }
+
+

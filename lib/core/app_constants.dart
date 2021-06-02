@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 
 class Constants {
-  static const int normalPadding = 12;
+    static const double smallPadding = 8;
+  static const double normalPadding = 12;
+  static const double extendedPadding = 20;
 
   static const EdgeInsets horizontalNormalPadding =
-      EdgeInsets.symmetric(horizontal: 12);
+      EdgeInsets.symmetric(horizontal: normalPadding);
 
   static const BorderRadius textFieldBorderRadious =
       BorderRadius.all(Radius.circular(12));

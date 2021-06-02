@@ -58,6 +58,20 @@ class _$AddDiaryEntryEventTearOff {
       extentOffset: extentOffset,
     );
   }
+
+  _ChangeDate changeDate(DateTime dateTime, {required DatePos datePos}) {
+    return _ChangeDate(
+      dateTime,
+      datePos: datePos,
+    );
+  }
+
+  _ChangeTime changeTime(DateTime dateTime, {required DatePos datePos}) {
+    return _ChangeTime(
+      dateTime,
+      datePos: datePos,
+    );
+  }
 }
 
 /// @nodoc
@@ -77,6 +91,8 @@ mixin _$AddDiaryEntryEvent {
     required TResult Function(IMentionable iMentionable) onSelectMention,
     required TResult Function(Mention mention, int baseOffset, int extentOffset)
         removeMention,
+    required TResult Function(DateTime dateTime, DatePos datePos) changeDate,
+    required TResult Function(DateTime dateTime, DatePos datePos) changeTime,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -91,6 +107,8 @@ mixin _$AddDiaryEntryEvent {
     TResult Function(IMentionable iMentionable)? onSelectMention,
     TResult Function(Mention mention, int baseOffset, int extentOffset)?
         removeMention,
+    TResult Function(DateTime dateTime, DatePos datePos)? changeDate,
+    TResult Function(DateTime dateTime, DatePos datePos)? changeTime,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -101,6 +119,8 @@ mixin _$AddDiaryEntryEvent {
     required TResult Function(_OnEntryTextChanged value) onEntryTextChanged,
     required TResult Function(_OnSelectMention value) onSelectMention,
     required TResult Function(_RemoveMention value) removeMention,
+    required TResult Function(_ChangeDate value) changeDate,
+    required TResult Function(_ChangeTime value) changeTime,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -110,6 +130,8 @@ mixin _$AddDiaryEntryEvent {
     TResult Function(_OnEntryTextChanged value)? onEntryTextChanged,
     TResult Function(_OnSelectMention value)? onSelectMention,
     TResult Function(_RemoveMention value)? removeMention,
+    TResult Function(_ChangeDate value)? changeDate,
+    TResult Function(_ChangeTime value)? changeTime,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -234,6 +256,8 @@ class _$_Initialize implements _Initialize {
     required TResult Function(IMentionable iMentionable) onSelectMention,
     required TResult Function(Mention mention, int baseOffset, int extentOffset)
         removeMention,
+    required TResult Function(DateTime dateTime, DatePos datePos) changeDate,
+    required TResult Function(DateTime dateTime, DatePos datePos) changeTime,
   }) {
     return initialize(diaryEntry, mentionableList);
   }
@@ -251,6 +275,8 @@ class _$_Initialize implements _Initialize {
     TResult Function(IMentionable iMentionable)? onSelectMention,
     TResult Function(Mention mention, int baseOffset, int extentOffset)?
         removeMention,
+    TResult Function(DateTime dateTime, DatePos datePos)? changeDate,
+    TResult Function(DateTime dateTime, DatePos datePos)? changeTime,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -267,6 +293,8 @@ class _$_Initialize implements _Initialize {
     required TResult Function(_OnEntryTextChanged value) onEntryTextChanged,
     required TResult Function(_OnSelectMention value) onSelectMention,
     required TResult Function(_RemoveMention value) removeMention,
+    required TResult Function(_ChangeDate value) changeDate,
+    required TResult Function(_ChangeTime value) changeTime,
   }) {
     return initialize(this);
   }
@@ -279,6 +307,8 @@ class _$_Initialize implements _Initialize {
     TResult Function(_OnEntryTextChanged value)? onEntryTextChanged,
     TResult Function(_OnSelectMention value)? onSelectMention,
     TResult Function(_RemoveMention value)? removeMention,
+    TResult Function(_ChangeDate value)? changeDate,
+    TResult Function(_ChangeTime value)? changeTime,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -347,6 +377,8 @@ class _$_Save implements _Save {
     required TResult Function(IMentionable iMentionable) onSelectMention,
     required TResult Function(Mention mention, int baseOffset, int extentOffset)
         removeMention,
+    required TResult Function(DateTime dateTime, DatePos datePos) changeDate,
+    required TResult Function(DateTime dateTime, DatePos datePos) changeTime,
   }) {
     return save();
   }
@@ -364,6 +396,8 @@ class _$_Save implements _Save {
     TResult Function(IMentionable iMentionable)? onSelectMention,
     TResult Function(Mention mention, int baseOffset, int extentOffset)?
         removeMention,
+    TResult Function(DateTime dateTime, DatePos datePos)? changeDate,
+    TResult Function(DateTime dateTime, DatePos datePos)? changeTime,
     required TResult orElse(),
   }) {
     if (save != null) {
@@ -380,6 +414,8 @@ class _$_Save implements _Save {
     required TResult Function(_OnEntryTextChanged value) onEntryTextChanged,
     required TResult Function(_OnSelectMention value) onSelectMention,
     required TResult Function(_RemoveMention value) removeMention,
+    required TResult Function(_ChangeDate value) changeDate,
+    required TResult Function(_ChangeTime value) changeTime,
   }) {
     return save(this);
   }
@@ -392,6 +428,8 @@ class _$_Save implements _Save {
     TResult Function(_OnEntryTextChanged value)? onEntryTextChanged,
     TResult Function(_OnSelectMention value)? onSelectMention,
     TResult Function(_RemoveMention value)? removeMention,
+    TResult Function(_ChangeDate value)? changeDate,
+    TResult Function(_ChangeTime value)? changeTime,
     required TResult orElse(),
   }) {
     if (save != null) {
@@ -517,6 +555,8 @@ class _$_OnEntryTextChanged implements _OnEntryTextChanged {
     required TResult Function(IMentionable iMentionable) onSelectMention,
     required TResult Function(Mention mention, int baseOffset, int extentOffset)
         removeMention,
+    required TResult Function(DateTime dateTime, DatePos datePos) changeDate,
+    required TResult Function(DateTime dateTime, DatePos datePos) changeTime,
   }) {
     return onEntryTextChanged(text, baseOffset, extentOffset, trigger);
   }
@@ -534,6 +574,8 @@ class _$_OnEntryTextChanged implements _OnEntryTextChanged {
     TResult Function(IMentionable iMentionable)? onSelectMention,
     TResult Function(Mention mention, int baseOffset, int extentOffset)?
         removeMention,
+    TResult Function(DateTime dateTime, DatePos datePos)? changeDate,
+    TResult Function(DateTime dateTime, DatePos datePos)? changeTime,
     required TResult orElse(),
   }) {
     if (onEntryTextChanged != null) {
@@ -550,6 +592,8 @@ class _$_OnEntryTextChanged implements _OnEntryTextChanged {
     required TResult Function(_OnEntryTextChanged value) onEntryTextChanged,
     required TResult Function(_OnSelectMention value) onSelectMention,
     required TResult Function(_RemoveMention value) removeMention,
+    required TResult Function(_ChangeDate value) changeDate,
+    required TResult Function(_ChangeTime value) changeTime,
   }) {
     return onEntryTextChanged(this);
   }
@@ -562,6 +606,8 @@ class _$_OnEntryTextChanged implements _OnEntryTextChanged {
     TResult Function(_OnEntryTextChanged value)? onEntryTextChanged,
     TResult Function(_OnSelectMention value)? onSelectMention,
     TResult Function(_RemoveMention value)? removeMention,
+    TResult Function(_ChangeDate value)? changeDate,
+    TResult Function(_ChangeTime value)? changeTime,
     required TResult orElse(),
   }) {
     if (onEntryTextChanged != null) {
@@ -663,6 +709,8 @@ class _$_OnSelectMention implements _OnSelectMention {
     required TResult Function(IMentionable iMentionable) onSelectMention,
     required TResult Function(Mention mention, int baseOffset, int extentOffset)
         removeMention,
+    required TResult Function(DateTime dateTime, DatePos datePos) changeDate,
+    required TResult Function(DateTime dateTime, DatePos datePos) changeTime,
   }) {
     return onSelectMention(iMentionable);
   }
@@ -680,6 +728,8 @@ class _$_OnSelectMention implements _OnSelectMention {
     TResult Function(IMentionable iMentionable)? onSelectMention,
     TResult Function(Mention mention, int baseOffset, int extentOffset)?
         removeMention,
+    TResult Function(DateTime dateTime, DatePos datePos)? changeDate,
+    TResult Function(DateTime dateTime, DatePos datePos)? changeTime,
     required TResult orElse(),
   }) {
     if (onSelectMention != null) {
@@ -696,6 +746,8 @@ class _$_OnSelectMention implements _OnSelectMention {
     required TResult Function(_OnEntryTextChanged value) onEntryTextChanged,
     required TResult Function(_OnSelectMention value) onSelectMention,
     required TResult Function(_RemoveMention value) removeMention,
+    required TResult Function(_ChangeDate value) changeDate,
+    required TResult Function(_ChangeTime value) changeTime,
   }) {
     return onSelectMention(this);
   }
@@ -708,6 +760,8 @@ class _$_OnSelectMention implements _OnSelectMention {
     TResult Function(_OnEntryTextChanged value)? onEntryTextChanged,
     TResult Function(_OnSelectMention value)? onSelectMention,
     TResult Function(_RemoveMention value)? removeMention,
+    TResult Function(_ChangeDate value)? changeDate,
+    TResult Function(_ChangeTime value)? changeTime,
     required TResult orElse(),
   }) {
     if (onSelectMention != null) {
@@ -838,6 +892,8 @@ class _$_RemoveMention implements _RemoveMention {
     required TResult Function(IMentionable iMentionable) onSelectMention,
     required TResult Function(Mention mention, int baseOffset, int extentOffset)
         removeMention,
+    required TResult Function(DateTime dateTime, DatePos datePos) changeDate,
+    required TResult Function(DateTime dateTime, DatePos datePos) changeTime,
   }) {
     return removeMention(mention, baseOffset, extentOffset);
   }
@@ -855,6 +911,8 @@ class _$_RemoveMention implements _RemoveMention {
     TResult Function(IMentionable iMentionable)? onSelectMention,
     TResult Function(Mention mention, int baseOffset, int extentOffset)?
         removeMention,
+    TResult Function(DateTime dateTime, DatePos datePos)? changeDate,
+    TResult Function(DateTime dateTime, DatePos datePos)? changeTime,
     required TResult orElse(),
   }) {
     if (removeMention != null) {
@@ -871,6 +929,8 @@ class _$_RemoveMention implements _RemoveMention {
     required TResult Function(_OnEntryTextChanged value) onEntryTextChanged,
     required TResult Function(_OnSelectMention value) onSelectMention,
     required TResult Function(_RemoveMention value) removeMention,
+    required TResult Function(_ChangeDate value) changeDate,
+    required TResult Function(_ChangeTime value) changeTime,
   }) {
     return removeMention(this);
   }
@@ -883,6 +943,8 @@ class _$_RemoveMention implements _RemoveMention {
     TResult Function(_OnEntryTextChanged value)? onEntryTextChanged,
     TResult Function(_OnSelectMention value)? onSelectMention,
     TResult Function(_RemoveMention value)? removeMention,
+    TResult Function(_ChangeDate value)? changeDate,
+    TResult Function(_ChangeTime value)? changeTime,
     required TResult orElse(),
   }) {
     if (removeMention != null) {
@@ -903,6 +965,326 @@ abstract class _RemoveMention implements AddDiaryEntryEvent {
   int get extentOffset => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$RemoveMentionCopyWith<_RemoveMention> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$ChangeDateCopyWith<$Res> {
+  factory _$ChangeDateCopyWith(
+          _ChangeDate value, $Res Function(_ChangeDate) then) =
+      __$ChangeDateCopyWithImpl<$Res>;
+  $Res call({DateTime dateTime, DatePos datePos});
+}
+
+/// @nodoc
+class __$ChangeDateCopyWithImpl<$Res>
+    extends _$AddDiaryEntryEventCopyWithImpl<$Res>
+    implements _$ChangeDateCopyWith<$Res> {
+  __$ChangeDateCopyWithImpl(
+      _ChangeDate _value, $Res Function(_ChangeDate) _then)
+      : super(_value, (v) => _then(v as _ChangeDate));
+
+  @override
+  _ChangeDate get _value => super._value as _ChangeDate;
+
+  @override
+  $Res call({
+    Object? dateTime = freezed,
+    Object? datePos = freezed,
+  }) {
+    return _then(_ChangeDate(
+      dateTime == freezed
+          ? _value.dateTime
+          : dateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      datePos: datePos == freezed
+          ? _value.datePos
+          : datePos // ignore: cast_nullable_to_non_nullable
+              as DatePos,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ChangeDate implements _ChangeDate {
+  const _$_ChangeDate(this.dateTime, {required this.datePos});
+
+  @override
+  final DateTime dateTime;
+  @override
+  final DatePos datePos;
+
+  @override
+  String toString() {
+    return 'AddDiaryEntryEvent.changeDate(dateTime: $dateTime, datePos: $datePos)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _ChangeDate &&
+            (identical(other.dateTime, dateTime) ||
+                const DeepCollectionEquality()
+                    .equals(other.dateTime, dateTime)) &&
+            (identical(other.datePos, datePos) ||
+                const DeepCollectionEquality().equals(other.datePos, datePos)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(dateTime) ^
+      const DeepCollectionEquality().hash(datePos);
+
+  @JsonKey(ignore: true)
+  @override
+  _$ChangeDateCopyWith<_ChangeDate> get copyWith =>
+      __$ChangeDateCopyWithImpl<_ChangeDate>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(DiaryEntryApplication? diaryEntry,
+            List<IMentionable> mentionableList)
+        initialize,
+    required TResult Function() save,
+    required TResult Function(
+            String text, int baseOffset, int extentOffset, String trigger)
+        onEntryTextChanged,
+    required TResult Function(IMentionable iMentionable) onSelectMention,
+    required TResult Function(Mention mention, int baseOffset, int extentOffset)
+        removeMention,
+    required TResult Function(DateTime dateTime, DatePos datePos) changeDate,
+    required TResult Function(DateTime dateTime, DatePos datePos) changeTime,
+  }) {
+    return changeDate(dateTime, datePos);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(DiaryEntryApplication? diaryEntry,
+            List<IMentionable> mentionableList)?
+        initialize,
+    TResult Function()? save,
+    TResult Function(
+            String text, int baseOffset, int extentOffset, String trigger)?
+        onEntryTextChanged,
+    TResult Function(IMentionable iMentionable)? onSelectMention,
+    TResult Function(Mention mention, int baseOffset, int extentOffset)?
+        removeMention,
+    TResult Function(DateTime dateTime, DatePos datePos)? changeDate,
+    TResult Function(DateTime dateTime, DatePos datePos)? changeTime,
+    required TResult orElse(),
+  }) {
+    if (changeDate != null) {
+      return changeDate(dateTime, datePos);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_Save value) save,
+    required TResult Function(_OnEntryTextChanged value) onEntryTextChanged,
+    required TResult Function(_OnSelectMention value) onSelectMention,
+    required TResult Function(_RemoveMention value) removeMention,
+    required TResult Function(_ChangeDate value) changeDate,
+    required TResult Function(_ChangeTime value) changeTime,
+  }) {
+    return changeDate(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_Save value)? save,
+    TResult Function(_OnEntryTextChanged value)? onEntryTextChanged,
+    TResult Function(_OnSelectMention value)? onSelectMention,
+    TResult Function(_RemoveMention value)? removeMention,
+    TResult Function(_ChangeDate value)? changeDate,
+    TResult Function(_ChangeTime value)? changeTime,
+    required TResult orElse(),
+  }) {
+    if (changeDate != null) {
+      return changeDate(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangeDate implements AddDiaryEntryEvent {
+  const factory _ChangeDate(DateTime dateTime, {required DatePos datePos}) =
+      _$_ChangeDate;
+
+  DateTime get dateTime => throw _privateConstructorUsedError;
+  DatePos get datePos => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$ChangeDateCopyWith<_ChangeDate> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$ChangeTimeCopyWith<$Res> {
+  factory _$ChangeTimeCopyWith(
+          _ChangeTime value, $Res Function(_ChangeTime) then) =
+      __$ChangeTimeCopyWithImpl<$Res>;
+  $Res call({DateTime dateTime, DatePos datePos});
+}
+
+/// @nodoc
+class __$ChangeTimeCopyWithImpl<$Res>
+    extends _$AddDiaryEntryEventCopyWithImpl<$Res>
+    implements _$ChangeTimeCopyWith<$Res> {
+  __$ChangeTimeCopyWithImpl(
+      _ChangeTime _value, $Res Function(_ChangeTime) _then)
+      : super(_value, (v) => _then(v as _ChangeTime));
+
+  @override
+  _ChangeTime get _value => super._value as _ChangeTime;
+
+  @override
+  $Res call({
+    Object? dateTime = freezed,
+    Object? datePos = freezed,
+  }) {
+    return _then(_ChangeTime(
+      dateTime == freezed
+          ? _value.dateTime
+          : dateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      datePos: datePos == freezed
+          ? _value.datePos
+          : datePos // ignore: cast_nullable_to_non_nullable
+              as DatePos,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ChangeTime implements _ChangeTime {
+  const _$_ChangeTime(this.dateTime, {required this.datePos});
+
+  @override
+  final DateTime dateTime;
+  @override
+  final DatePos datePos;
+
+  @override
+  String toString() {
+    return 'AddDiaryEntryEvent.changeTime(dateTime: $dateTime, datePos: $datePos)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _ChangeTime &&
+            (identical(other.dateTime, dateTime) ||
+                const DeepCollectionEquality()
+                    .equals(other.dateTime, dateTime)) &&
+            (identical(other.datePos, datePos) ||
+                const DeepCollectionEquality().equals(other.datePos, datePos)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(dateTime) ^
+      const DeepCollectionEquality().hash(datePos);
+
+  @JsonKey(ignore: true)
+  @override
+  _$ChangeTimeCopyWith<_ChangeTime> get copyWith =>
+      __$ChangeTimeCopyWithImpl<_ChangeTime>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(DiaryEntryApplication? diaryEntry,
+            List<IMentionable> mentionableList)
+        initialize,
+    required TResult Function() save,
+    required TResult Function(
+            String text, int baseOffset, int extentOffset, String trigger)
+        onEntryTextChanged,
+    required TResult Function(IMentionable iMentionable) onSelectMention,
+    required TResult Function(Mention mention, int baseOffset, int extentOffset)
+        removeMention,
+    required TResult Function(DateTime dateTime, DatePos datePos) changeDate,
+    required TResult Function(DateTime dateTime, DatePos datePos) changeTime,
+  }) {
+    return changeTime(dateTime, datePos);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(DiaryEntryApplication? diaryEntry,
+            List<IMentionable> mentionableList)?
+        initialize,
+    TResult Function()? save,
+    TResult Function(
+            String text, int baseOffset, int extentOffset, String trigger)?
+        onEntryTextChanged,
+    TResult Function(IMentionable iMentionable)? onSelectMention,
+    TResult Function(Mention mention, int baseOffset, int extentOffset)?
+        removeMention,
+    TResult Function(DateTime dateTime, DatePos datePos)? changeDate,
+    TResult Function(DateTime dateTime, DatePos datePos)? changeTime,
+    required TResult orElse(),
+  }) {
+    if (changeTime != null) {
+      return changeTime(dateTime, datePos);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_Save value) save,
+    required TResult Function(_OnEntryTextChanged value) onEntryTextChanged,
+    required TResult Function(_OnSelectMention value) onSelectMention,
+    required TResult Function(_RemoveMention value) removeMention,
+    required TResult Function(_ChangeDate value) changeDate,
+    required TResult Function(_ChangeTime value) changeTime,
+  }) {
+    return changeTime(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_Save value)? save,
+    TResult Function(_OnEntryTextChanged value)? onEntryTextChanged,
+    TResult Function(_OnSelectMention value)? onSelectMention,
+    TResult Function(_RemoveMention value)? removeMention,
+    TResult Function(_ChangeDate value)? changeDate,
+    TResult Function(_ChangeTime value)? changeTime,
+    required TResult orElse(),
+  }) {
+    if (changeTime != null) {
+      return changeTime(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangeTime implements AddDiaryEntryEvent {
+  const factory _ChangeTime(DateTime dateTime, {required DatePos datePos}) =
+      _$_ChangeTime;
+
+  DateTime get dateTime => throw _privateConstructorUsedError;
+  DatePos get datePos => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$ChangeTimeCopyWith<_ChangeTime> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

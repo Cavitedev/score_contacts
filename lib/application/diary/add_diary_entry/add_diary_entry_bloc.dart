@@ -9,6 +9,7 @@ import 'package:scorecontacts/application/diary/mention_candidate.dart';
 import 'package:scorecontacts/domain/mention/i_mentionable.dart';
 import 'package:scorecontacts/domain/mention/mention.dart';
 import 'package:scorecontacts/domain/mention/mention_list_manager.dart';
+import 'package:scorecontacts/domain/user/diary/diary_entry.dart';
 import 'package:scorecontacts/domain/user/diary/diary_failure.dart';
 import 'package:scorecontacts/domain/user/diary/i_diary_entry_repository.dart';
 
@@ -125,6 +126,43 @@ class AddDiaryEntryBloc extends Bloc<AddDiaryEntryEvent, AddDiaryEntryState> {
           baseOffset: e.baseOffset - e.mention.length,
           extentOffset: e.extentOffset - e.mention.length,
         ));
+      },
+      changeDate: (e) async* {
+        final DateTime old =
+            state.entryField.entry.dateTime(datePos: e.datePos);
+        final DateTime newDateTime = DateTime(
+            e.dateTime.year,
+            e.dateTime.month,
+            e.dateTime.day,
+            old.hour,
+            old.minute,
+            old.second,
+            old.millisecond,
+            old.microsecond);
+
+        yield state.copyWith(
+            entryField: state.entryField.copyWith(
+                entry: state.entryField.entry.copyWithNewDateTime(
+                    dateTime: newDateTime, datePos: e.datePos)));
+      },
+      changeTime: (e) async* {
+        final DateTime old =
+            state.entryField.entry.dateTime(datePos: e.datePos);
+
+        final DateTime newDateTime = DateTime(
+            old.year,
+            old.month,
+            old.day,
+            e.dateTime.hour,
+            e.dateTime.minute,
+            e.dateTime.second,
+            e.dateTime.millisecond,
+            e.dateTime.microsecond);
+
+        yield state.copyWith(
+            entryField: state.entryField.copyWith(
+                entry: state.entryField.entry.copyWithNewDateTime(
+                    dateTime: newDateTime, datePos: e.datePos)));
       },
     );
   }

@@ -17,7 +17,8 @@ class DiaryEntryDto with _$DiaryEntryDto {
   const factory DiaryEntryDto({
     @JsonKey(ignore: true) String? id,
     @JsonKey(name: "text") required String text,
-    @DateTimeTimeStampConverter() required DateTime date,
+    @DateTimeTimeStampConverter() required DateTime startDate,
+    @DateTimeTimeStampConverter() required DateTime endDate,
     @JsonKey(name: "mentions") required List<MentionDto> mentionList,
   }) = _DiaryEntryDto;
 
@@ -25,7 +26,8 @@ class DiaryEntryDto with _$DiaryEntryDto {
     return DiaryEntryDto(
       id: domain.id.value,
       text: domain.text,
-      date: domain.date,
+      startDate: domain.dateTime(datePos: DatePos.Start),
+      endDate: domain.dateTime(datePos: DatePos.End),
       mentionList: domain.mentionList
           .map((mention) => MentionDto.fromDomain(mention))
           .toList(),
@@ -36,7 +38,8 @@ class DiaryEntryDto with _$DiaryEntryDto {
     return DiaryEntry(
       id: UniqueID.fromUniqueString(id!),
       text: text,
-      date: date,
+      startDateTime: startDate,
+      endDateTime: endDate,
       mentionList: mentionList.map((mention) => mention.toDomain()).toList(),
     );
   }

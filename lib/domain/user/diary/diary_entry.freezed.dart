@@ -19,10 +19,14 @@ class _$DiaryEntryTearOff {
   _DiaryEntry call(
       {required UniqueID id,
       required String text,
+      required DateTime startDateTime,
+      required DateTime endDateTime,
       required List<Mention> mentionList}) {
     return _DiaryEntry(
       id: id,
       text: text,
+      startDateTime: startDateTime,
+      endDateTime: endDateTime,
       mentionList: mentionList,
     );
   }
@@ -35,6 +39,8 @@ const $DiaryEntry = _$DiaryEntryTearOff();
 mixin _$DiaryEntry {
   UniqueID get id => throw _privateConstructorUsedError;
   String get text => throw _privateConstructorUsedError;
+  DateTime get startDateTime => throw _privateConstructorUsedError;
+  DateTime get endDateTime => throw _privateConstructorUsedError;
   List<Mention> get mentionList => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -47,7 +53,12 @@ abstract class $DiaryEntryCopyWith<$Res> {
   factory $DiaryEntryCopyWith(
           DiaryEntry value, $Res Function(DiaryEntry) then) =
       _$DiaryEntryCopyWithImpl<$Res>;
-  $Res call({UniqueID id, String text, List<Mention> mentionList});
+  $Res call(
+      {UniqueID id,
+      String text,
+      DateTime startDateTime,
+      DateTime endDateTime,
+      List<Mention> mentionList});
 }
 
 /// @nodoc
@@ -62,6 +73,8 @@ class _$DiaryEntryCopyWithImpl<$Res> implements $DiaryEntryCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? text = freezed,
+    Object? startDateTime = freezed,
+    Object? endDateTime = freezed,
     Object? mentionList = freezed,
   }) {
     return _then(_value.copyWith(
@@ -73,6 +86,14 @@ class _$DiaryEntryCopyWithImpl<$Res> implements $DiaryEntryCopyWith<$Res> {
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String,
+      startDateTime: startDateTime == freezed
+          ? _value.startDateTime
+          : startDateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      endDateTime: endDateTime == freezed
+          ? _value.endDateTime
+          : endDateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       mentionList: mentionList == freezed
           ? _value.mentionList
           : mentionList // ignore: cast_nullable_to_non_nullable
@@ -87,7 +108,12 @@ abstract class _$DiaryEntryCopyWith<$Res> implements $DiaryEntryCopyWith<$Res> {
           _DiaryEntry value, $Res Function(_DiaryEntry) then) =
       __$DiaryEntryCopyWithImpl<$Res>;
   @override
-  $Res call({UniqueID id, String text, List<Mention> mentionList});
+  $Res call(
+      {UniqueID id,
+      String text,
+      DateTime startDateTime,
+      DateTime endDateTime,
+      List<Mention> mentionList});
 }
 
 /// @nodoc
@@ -104,6 +130,8 @@ class __$DiaryEntryCopyWithImpl<$Res> extends _$DiaryEntryCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? text = freezed,
+    Object? startDateTime = freezed,
+    Object? endDateTime = freezed,
     Object? mentionList = freezed,
   }) {
     return _then(_DiaryEntry(
@@ -115,6 +143,14 @@ class __$DiaryEntryCopyWithImpl<$Res> extends _$DiaryEntryCopyWithImpl<$Res>
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String,
+      startDateTime: startDateTime == freezed
+          ? _value.startDateTime
+          : startDateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      endDateTime: endDateTime == freezed
+          ? _value.endDateTime
+          : endDateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       mentionList: mentionList == freezed
           ? _value.mentionList
           : mentionList // ignore: cast_nullable_to_non_nullable
@@ -125,20 +161,29 @@ class __$DiaryEntryCopyWithImpl<$Res> extends _$DiaryEntryCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DiaryEntry implements _DiaryEntry {
+class _$_DiaryEntry extends _DiaryEntry {
   const _$_DiaryEntry(
-      {required this.id, required this.text, required this.mentionList});
+      {required this.id,
+      required this.text,
+      required this.startDateTime,
+      required this.endDateTime,
+      required this.mentionList})
+      : super._();
 
   @override
   final UniqueID id;
   @override
   final String text;
   @override
+  final DateTime startDateTime;
+  @override
+  final DateTime endDateTime;
+  @override
   final List<Mention> mentionList;
 
   @override
   String toString() {
-    return 'DiaryEntry(id: $id, text: $text, mentionList: $mentionList)';
+    return 'DiaryEntry(id: $id, text: $text, startDateTime: $startDateTime, endDateTime: $endDateTime, mentionList: $mentionList)';
   }
 
   @override
@@ -149,6 +194,12 @@ class _$_DiaryEntry implements _DiaryEntry {
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.text, text) ||
                 const DeepCollectionEquality().equals(other.text, text)) &&
+            (identical(other.startDateTime, startDateTime) ||
+                const DeepCollectionEquality()
+                    .equals(other.startDateTime, startDateTime)) &&
+            (identical(other.endDateTime, endDateTime) ||
+                const DeepCollectionEquality()
+                    .equals(other.endDateTime, endDateTime)) &&
             (identical(other.mentionList, mentionList) ||
                 const DeepCollectionEquality()
                     .equals(other.mentionList, mentionList)));
@@ -159,6 +210,8 @@ class _$_DiaryEntry implements _DiaryEntry {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(text) ^
+      const DeepCollectionEquality().hash(startDateTime) ^
+      const DeepCollectionEquality().hash(endDateTime) ^
       const DeepCollectionEquality().hash(mentionList);
 
   @JsonKey(ignore: true)
@@ -167,16 +220,23 @@ class _$_DiaryEntry implements _DiaryEntry {
       __$DiaryEntryCopyWithImpl<_DiaryEntry>(this, _$identity);
 }
 
-abstract class _DiaryEntry implements DiaryEntry {
+abstract class _DiaryEntry extends DiaryEntry {
   const factory _DiaryEntry(
       {required UniqueID id,
       required String text,
+      required DateTime startDateTime,
+      required DateTime endDateTime,
       required List<Mention> mentionList}) = _$_DiaryEntry;
+  const _DiaryEntry._() : super._();
 
   @override
   UniqueID get id => throw _privateConstructorUsedError;
   @override
   String get text => throw _privateConstructorUsedError;
+  @override
+  DateTime get startDateTime => throw _privateConstructorUsedError;
+  @override
+  DateTime get endDateTime => throw _privateConstructorUsedError;
   @override
   List<Mention> get mentionList => throw _privateConstructorUsedError;
   @override

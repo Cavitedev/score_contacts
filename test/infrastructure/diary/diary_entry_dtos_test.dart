@@ -71,13 +71,15 @@ void main() {
       id: UniqueID.fromUniqueString("testDiary"),
       text: "< @te >",
       mentionList: [mentionDomain, mentionDomain],
-      date: DateTime.fromMillisecondsSinceEpoch(1000000),
+      startDateTime: DateTime.fromMillisecondsSinceEpoch(1000000),
+      endDateTime: DateTime.fromMillisecondsSinceEpoch(1000000),
     );
 
     final dto = DiaryEntryDto(
         id: "testDiary",
         text: "< @te >",
-        date: DateTime.fromMillisecondsSinceEpoch(1000000),
+        startDate: DateTime.fromMillisecondsSinceEpoch(1000000),
+        endDate: DateTime.fromMillisecondsSinceEpoch(1000000),
         mentionList: [mentionDto, mentionDto]);
 
     test('from domain', () {
@@ -100,7 +102,10 @@ void main() {
 
     final Map<String, dynamic> json = {
       "text": "< @te >",
-      "date": Timestamp.fromDate(DateTime.fromMillisecondsSinceEpoch(1000000)),
+      "startDate":
+          Timestamp.fromDate(DateTime.fromMillisecondsSinceEpoch(1000000)),
+      "endDate":
+          Timestamp.fromDate(DateTime.fromMillisecondsSinceEpoch(1000000)),
       "mentions": [mentionJson, mentionJson]
     };
 
