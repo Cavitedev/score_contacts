@@ -9,17 +9,30 @@ part of 'diary_entry_dtos.dart';
 _$_DiaryEntryDto _$_$_DiaryEntryDtoFromJson(Map json) {
   return _$_DiaryEntryDto(
     text: json['text'] as String,
-    mentionList: (json['mention'] as List<dynamic>)
+    date:
+        const DateTimeTimeStampConverter().fromJson(json['date'] as Timestamp),
+    mentionList: (json['mentions'] as List<dynamic>)
         .map((e) => MentionDto.fromJson(Map<String, dynamic>.from(e as Map)))
         .toList(),
   );
 }
 
-Map<String, dynamic> _$_$_DiaryEntryDtoToJson(_$_DiaryEntryDto instance) =>
-    <String, dynamic>{
-      'text': instance.text,
-      'mention': instance.mentionList.map((e) => e.toJson()).toList(),
-    };
+Map<String, dynamic> _$_$_DiaryEntryDtoToJson(_$_DiaryEntryDto instance) {
+  final val = <String, dynamic>{
+    'text': instance.text,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull(
+      'date', const DateTimeTimeStampConverter().toJson(instance.date));
+  val['mentions'] = instance.mentionList.map((e) => e.toJson()).toList();
+  return val;
+}
 
 _$_MentionDto _$_$_MentionDtoFromJson(Map json) {
   return _$_MentionDto(

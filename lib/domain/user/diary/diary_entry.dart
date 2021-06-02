@@ -8,6 +8,7 @@ part 'diary_entry.freezed.dart';
 class DiaryEntry with _$DiaryEntry {
   const factory DiaryEntry({
     required UniqueID id,
+    required DateTime date,
     required String text,
     required List<Mention> mentionList,
   }) = _DiaryEntry;
@@ -16,5 +17,6 @@ class DiaryEntry with _$DiaryEntry {
         id: UniqueID(),
         text: "",
         mentionList: [],
+        date: DateTime.now()
       );
 }

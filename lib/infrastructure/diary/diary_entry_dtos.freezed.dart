@@ -23,10 +23,12 @@ class _$DiaryEntryDtoTearOff {
   _DiaryEntryDto call(
       {@JsonKey(ignore: true) String? id,
       @JsonKey(name: "text") required String text,
-      @JsonKey(name: "mention") required List<MentionDto> mentionList}) {
+      @DateTimeTimeStampConverter() required DateTime date,
+      @JsonKey(name: "mentions") required List<MentionDto> mentionList}) {
     return _DiaryEntryDto(
       id: id,
       text: text,
+      date: date,
       mentionList: mentionList,
     );
   }
@@ -45,7 +47,9 @@ mixin _$DiaryEntryDto {
   String? get id => throw _privateConstructorUsedError;
   @JsonKey(name: "text")
   String get text => throw _privateConstructorUsedError;
-  @JsonKey(name: "mention")
+  @DateTimeTimeStampConverter()
+  DateTime get date => throw _privateConstructorUsedError;
+  @JsonKey(name: "mentions")
   List<MentionDto> get mentionList => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -62,7 +66,8 @@ abstract class $DiaryEntryDtoCopyWith<$Res> {
   $Res call(
       {@JsonKey(ignore: true) String? id,
       @JsonKey(name: "text") String text,
-      @JsonKey(name: "mention") List<MentionDto> mentionList});
+      @DateTimeTimeStampConverter() DateTime date,
+      @JsonKey(name: "mentions") List<MentionDto> mentionList});
 }
 
 /// @nodoc
@@ -78,6 +83,7 @@ class _$DiaryEntryDtoCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? text = freezed,
+    Object? date = freezed,
     Object? mentionList = freezed,
   }) {
     return _then(_value.copyWith(
@@ -89,6 +95,10 @@ class _$DiaryEntryDtoCopyWithImpl<$Res>
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String,
+      date: date == freezed
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       mentionList: mentionList == freezed
           ? _value.mentionList
           : mentionList // ignore: cast_nullable_to_non_nullable
@@ -107,7 +117,8 @@ abstract class _$DiaryEntryDtoCopyWith<$Res>
   $Res call(
       {@JsonKey(ignore: true) String? id,
       @JsonKey(name: "text") String text,
-      @JsonKey(name: "mention") List<MentionDto> mentionList});
+      @DateTimeTimeStampConverter() DateTime date,
+      @JsonKey(name: "mentions") List<MentionDto> mentionList});
 }
 
 /// @nodoc
@@ -125,6 +136,7 @@ class __$DiaryEntryDtoCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? text = freezed,
+    Object? date = freezed,
     Object? mentionList = freezed,
   }) {
     return _then(_DiaryEntryDto(
@@ -136,6 +148,10 @@ class __$DiaryEntryDtoCopyWithImpl<$Res>
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String,
+      date: date == freezed
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       mentionList: mentionList == freezed
           ? _value.mentionList
           : mentionList // ignore: cast_nullable_to_non_nullable
@@ -150,7 +166,8 @@ class _$_DiaryEntryDto extends _DiaryEntryDto {
   const _$_DiaryEntryDto(
       {@JsonKey(ignore: true) this.id,
       @JsonKey(name: "text") required this.text,
-      @JsonKey(name: "mention") required this.mentionList})
+      @DateTimeTimeStampConverter() required this.date,
+      @JsonKey(name: "mentions") required this.mentionList})
       : super._();
 
   factory _$_DiaryEntryDto.fromJson(Map<String, dynamic> json) =>
@@ -163,12 +180,15 @@ class _$_DiaryEntryDto extends _DiaryEntryDto {
   @JsonKey(name: "text")
   final String text;
   @override
-  @JsonKey(name: "mention")
+  @DateTimeTimeStampConverter()
+  final DateTime date;
+  @override
+  @JsonKey(name: "mentions")
   final List<MentionDto> mentionList;
 
   @override
   String toString() {
-    return 'DiaryEntryDto(id: $id, text: $text, mentionList: $mentionList)';
+    return 'DiaryEntryDto(id: $id, text: $text, date: $date, mentionList: $mentionList)';
   }
 
   @override
@@ -179,6 +199,8 @@ class _$_DiaryEntryDto extends _DiaryEntryDto {
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.text, text) ||
                 const DeepCollectionEquality().equals(other.text, text)) &&
+            (identical(other.date, date) ||
+                const DeepCollectionEquality().equals(other.date, date)) &&
             (identical(other.mentionList, mentionList) ||
                 const DeepCollectionEquality()
                     .equals(other.mentionList, mentionList)));
@@ -189,6 +211,7 @@ class _$_DiaryEntryDto extends _DiaryEntryDto {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(text) ^
+      const DeepCollectionEquality().hash(date) ^
       const DeepCollectionEquality().hash(mentionList);
 
   @JsonKey(ignore: true)
@@ -206,7 +229,8 @@ abstract class _DiaryEntryDto extends DiaryEntryDto {
   const factory _DiaryEntryDto(
           {@JsonKey(ignore: true) String? id,
           @JsonKey(name: "text") required String text,
-          @JsonKey(name: "mention") required List<MentionDto> mentionList}) =
+          @DateTimeTimeStampConverter() required DateTime date,
+          @JsonKey(name: "mentions") required List<MentionDto> mentionList}) =
       _$_DiaryEntryDto;
   const _DiaryEntryDto._() : super._();
 
@@ -220,7 +244,10 @@ abstract class _DiaryEntryDto extends DiaryEntryDto {
   @JsonKey(name: "text")
   String get text => throw _privateConstructorUsedError;
   @override
-  @JsonKey(name: "mention")
+  @DateTimeTimeStampConverter()
+  DateTime get date => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: "mentions")
   List<MentionDto> get mentionList => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

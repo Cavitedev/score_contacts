@@ -1,9 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:scorecontacts/domain/core/unique_id.dart';
 import 'package:scorecontacts/domain/mention/i_mentionable.dart';
 import 'package:scorecontacts/domain/mention/mention.dart';
 import 'package:scorecontacts/domain/mention/mentionable.dart';
 import 'package:scorecontacts/domain/user/diary/diary_entry.dart';
+import 'package:scorecontacts/infrastructure/firebase_core/date_time_time_stamp_converter.dart';
 
 part 'diary_entry_dtos.freezed.dart';
 part 'diary_entry_dtos.g.dart';
@@ -15,6 +17,7 @@ class DiaryEntryDto with _$DiaryEntryDto {
   const factory DiaryEntryDto({
     @JsonKey(ignore: true) String? id,
     @JsonKey(name: "text") required String text,
+    @DateTimeTimeStampConverter() required DateTime date,
     @JsonKey(name: "mentions") required List<MentionDto> mentionList,
   }) = _DiaryEntryDto;
 
@@ -22,6 +25,7 @@ class DiaryEntryDto with _$DiaryEntryDto {
     return DiaryEntryDto(
       id: domain.id.value,
       text: domain.text,
+      date: domain.date,
       mentionList: domain.mentionList
           .map((mention) => MentionDto.fromDomain(mention))
           .toList(),
@@ -32,6 +36,7 @@ class DiaryEntryDto with _$DiaryEntryDto {
     return DiaryEntry(
       id: UniqueID.fromUniqueString(id!),
       text: text,
+      date: date,
       mentionList: mentionList.map((mention) => mention.toDomain()).toList(),
     );
   }

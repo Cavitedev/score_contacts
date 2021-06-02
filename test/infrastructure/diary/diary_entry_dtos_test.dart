@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:scorecontacts/domain/core/unique_id.dart';
 import 'package:scorecontacts/domain/mention/mention.dart';
@@ -16,7 +17,6 @@ void main() {
     name: "Test",
     imageLink: "http://www.com/image.jpg",
   );
-
 
   group('Mentionable DTO', () {
     final domain = mentionableDomain;
@@ -66,21 +66,19 @@ void main() {
     });
   });
 
-
-
   group('Mention DTO', () {
-
     final domain = DiaryEntry(
       id: UniqueID.fromUniqueString("testDiary"),
       text: "< @te >",
       mentionList: [mentionDomain, mentionDomain],
+      date: DateTime.fromMillisecondsSinceEpoch(1000000),
     );
 
-    const dto = DiaryEntryDto(
-      id: "testDiary",
-      text: "< @te >",
-      mentionList: [mentionDto, mentionDto]
-    );
+    final dto = DiaryEntryDto(
+        id: "testDiary",
+        text: "< @te >",
+        date: DateTime.fromMillisecondsSinceEpoch(1000000),
+        mentionList: [mentionDto, mentionDto]);
 
     test('from domain', () {
       final actualDto = DiaryEntryDto.fromDomain(domain);
@@ -92,6 +90,23 @@ void main() {
       final actualDomain = dto.toDomain();
 
       expect(actualDomain, domain);
+    });
+
+    final Map<String, dynamic> mentionJson = {
+      "id": "test",
+      "startPos": 3,
+      "endPos": 6,
+    };
+
+    final Map<String, dynamic> json = {
+      "text": "< @te >",
+      "date": Timestamp.fromDate(DateTime.fromMillisecondsSinceEpoch(1000000)),
+      "mentions": [mentionJson, mentionJson]
+    };
+
+    test('to json', () {
+      final actual = dto.toJson();
+      expect(actual, json);
     });
   });
 }
