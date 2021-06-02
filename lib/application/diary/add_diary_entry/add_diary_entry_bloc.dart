@@ -18,7 +18,6 @@ part 'add_diary_entry_state.dart';
 
 @injectable
 class AddDiaryEntryBloc extends Bloc<AddDiaryEntryEvent, AddDiaryEntryState> {
-
   final IDiaryEntryRepository repository;
 
   AddDiaryEntryBloc(this.repository) : super(AddDiaryEntryState.initial());
@@ -34,10 +33,16 @@ class AddDiaryEntryBloc extends Bloc<AddDiaryEntryEvent, AddDiaryEntryState> {
                 MentionListManager(mentionList: e.mentionableList),
             isEditting: isEditting);
       },
-      save: (e) async*{
+      save: (e) async* {
+        yield state.copyWith(isSaving: true, savingOrFailureOption: null);
 
+        final Either<DiaryFailure, Unit> savingOrFailure =
+            await (state.isEditting
+                ? repository.updateDiaryEntry(state.entryField.entry)
+                : repository.createDiaryEntry(state.entryField.entry));
+        yield state.copyWith(
+            isSaving: false, savingOrFailureOption: savingOrFailure);
       },
-
       onEntryTextChanged: (e) async* {
         final int triggerPos = _findLatestUnusedTrigger(e, e.baseOffset);
 

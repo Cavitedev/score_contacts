@@ -27,4 +27,5 @@ extension IAuthFacadeX on IAuthFacade{
 
 extension ContactsRefenceX on DocumentReference {
   CollectionReference<Map<String, dynamic>> get contactsCollection => collection('contacts');
+  CollectionReference<Map<String, dynamic>> get diaryEntryCollection => collection('diary/entries');
 }

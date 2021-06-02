@@ -10,4 +10,6 @@ class DiaryFailure with _$DiaryFailure{
   const factory DiaryFailure.platformError() = _PlatformError;
   
     const factory DiaryFailure.unexpected() = _Unexpected;
+    
+    const factory DiaryFailure.notFound() = _NotFound;
       }
