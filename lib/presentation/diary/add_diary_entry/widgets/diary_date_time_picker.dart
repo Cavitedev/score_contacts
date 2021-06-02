@@ -10,28 +10,27 @@ class DiaryDateTimePicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(
-          horizontal: Constants.extendedPadding.toDouble()),
-      child: BlocBuilder<AddDiaryEntryBloc, AddDiaryEntryState>(
-          builder: (context, state) {
+      padding: EdgeInsets.symmetric(horizontal: Constants.extendedPadding.toDouble()),
+      child:
+          BlocBuilder<AddDiaryEntryBloc, AddDiaryEntryState>(builder: (context, state) {
         return Column(
           children: [
-            // Row(
-            //   children: [
-            //     Icon(Icons.access_time),
-            //     SizedBox(
-            //       width: Constants.normalPadding.toDouble(),
-            //     ),
-            //     Text("All day"),
-            //     Spacer(),
-            //     Switch(value: false, onChanged: (value) {}),
-            //   ],
-            // ),
+            Row(
+              children: [
+                Icon(Icons.access_time),
+                SizedBox(
+                  width: Constants.normalPadding.toDouble(),
+                ),
+                Text("All day"),
+                Spacer(),
+                Switch(value: false, onChanged: (value) {}),
+              ],
+            ),
             Row(
               children: [
                 SizedBox(
-                  width: (Theme.of(context).iconTheme.size ?? 32) +
-                      Constants.normalPadding,
+                  width:
+                      (Theme.of(context).iconTheme.size ?? 32) + Constants.normalPadding,
                 ),
                 InkWell(
                   child: Padding(
@@ -46,15 +45,31 @@ class DiaryDateTimePicker extends StatelessWidget {
                       lastDate: DateTime.now(),
                     );
                     if (dateTime != null) {
-                      context
-                          .read<AddDiaryEntryBloc>()
-                          .add(AddDiaryEntryEvent.changeDate(dateTime, datePos: DatePos.Start));
+                      context.read<AddDiaryEntryBloc>().add(AddDiaryEntryEvent.changeDate(
+                          dateTime,
+                          datePos: DatePos.Start));
                     }
                   },
                 ),
-                // Spacer(),
-                // Text(state.entryField.entry.hour),
-                // SizedBox(width: 12)
+                Spacer(),
+                InkWell(
+                  child: Padding(
+                    padding: EdgeInsets.all(Constants.smallPadding),
+                    child: Text(state.entryField.entry.hour(datePos: DatePos.Start)),
+                  ),
+                  onTap: () async {
+                    final TimeOfDay? time = await showTimePicker(
+                      context: context,
+                      initialTime: TimeOfDay.now(),
+                    );
+                    if (time != null) {
+                      context.read<AddDiaryEntryBloc>().add(AddDiaryEntryEvent.changeTime(
+                          time,
+                          datePos: DatePos.Start));
+                    }
+                  },
+                ),
+                SizedBox(width: 12)
               ],
             )
           ],

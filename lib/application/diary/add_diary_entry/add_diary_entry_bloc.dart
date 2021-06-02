@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:scorecontacts/application/diary/diary_entry_application.dart';
@@ -135,10 +136,7 @@ class AddDiaryEntryBloc extends Bloc<AddDiaryEntryEvent, AddDiaryEntryState> {
             e.dateTime.month,
             e.dateTime.day,
             old.hour,
-            old.minute,
-            old.second,
-            old.millisecond,
-            old.microsecond);
+            old.minute);
 
         yield state.copyWith(
             entryField: state.entryField.copyWith(
@@ -153,11 +151,8 @@ class AddDiaryEntryBloc extends Bloc<AddDiaryEntryEvent, AddDiaryEntryState> {
             old.year,
             old.month,
             old.day,
-            e.dateTime.hour,
-            e.dateTime.minute,
-            e.dateTime.second,
-            e.dateTime.millisecond,
-            e.dateTime.microsecond);
+            e.time.hour,
+            e.time.minute);
 
         yield state.copyWith(
             entryField: state.entryField.copyWith(
