@@ -15,7 +15,7 @@ class DiaryEntryDto with _$DiaryEntryDto {
   const factory DiaryEntryDto({
     @JsonKey(ignore: true) String? id,
     @JsonKey(name: "text") required String text,
-    @JsonKey(name: "mention") required List<MentionDto> mentionList,
+    @JsonKey(name: "mentions") required List<MentionDto> mentionList,
   }) = _DiaryEntryDto;
 
   factory DiaryEntryDto.fromDomain(DiaryEntry domain) {

@@ -29,13 +29,28 @@ class DiaryEntryRepository implements IDiaryEntryRepository {
   }
 
   @override
-  Future<Either<DiaryFailure, Unit>> deleteDiaryEntry(DiaryEntry entry) {
-    throw UnimplementedError();
+  Future<Either<DiaryFailure, Unit>> updateDiaryEntry(DiaryEntry entry) async {
+    final CollectionReference collection =
+        firestore.userDocument().diaryEntryCollection;
+    final DiaryEntryDto dto = DiaryEntryDto.fromDomain(entry);
+    try {
+      collection.doc(dto.id).update(dto.toJson());
+      return right(unit);
+    } catch (e) {
+      return left(_handleException(e));
+    }
   }
 
   @override
-  Future<Either<DiaryFailure, Unit>> updateDiaryEntry(DiaryEntry entry) {
-    throw UnimplementedError();
+  Future<Either<DiaryFailure, Unit>> deleteDiaryEntry(DiaryEntry entry) async {
+    final CollectionReference collection =
+        firestore.userDocument().diaryEntryCollection;
+    try {
+      collection.doc(entry.id.value).delete();
+      return right(unit);
+    } catch (e) {
+      return left(_handleException(e));
+    }
   }
 
   DiaryFailure _handleException(Object e) {
