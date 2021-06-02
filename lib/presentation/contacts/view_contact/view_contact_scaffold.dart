@@ -30,24 +30,25 @@ class ViewContactScaffold extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          PopupMenuButton(
-            onSelected: (selected) {
-              if (selected == "delete") {
-                context.router.popUntil((route) =>
-                    route.settings.name == r.ViewContactPageRoute.name);
-                onDelete.call();
-                context.router.pop();
-              }
+          IconButton(
+            icon: const Icon(
+              Icons.note_alt,
+              size: 26,
+            ),
+            onPressed: () {
+              context.router.push(r.ListDiaryEntryPageRoute(mentionable: contact));
             },
-            itemBuilder: (BuildContext context) {
-              return [
-                const PopupMenuItem(
-                  value: "delete",
-                  child: Text(
-                    "Delete",
-                  ),
-                )
-              ];
+          )
+          ,IconButton(
+            icon: const Icon(
+              Icons.delete,
+              size: 26,
+            ),
+            onPressed: () {
+              context.router.popUntil(
+                  (route) => route.settings.name == r.ViewContactPageRoute.name);
+              onDelete.call();
+              context.router.pop();
             },
           ),
         ],
@@ -107,9 +108,7 @@ class ViewContactScaffold extends StatelessWidget {
   }
 
   List<Widget> _buildListOfFields(BuildContext context) {
-    return ListTile.divideTiles(
-        context: context
-        ,tiles: [
+    return ListTile.divideTiles(context: context, tiles: [
       ...listOfPhones(
         contact: contact,
         onAppMessage: (phone, app) {
@@ -126,9 +125,7 @@ class ViewContactScaffold extends StatelessWidget {
         typeLabelObject: Email,
         icon: Icons.mail,
         onTap: (mail) {
-          context
-              .read<ViewContactBloc>()
-              .add(ViewContactEvent.sendMail(mail.value!));
+          context.read<ViewContactBloc>().add(ViewContactEvent.sendMail(mail.value!));
         },
       ),
       ...listCompanyWidget(companies: contact.companies),
