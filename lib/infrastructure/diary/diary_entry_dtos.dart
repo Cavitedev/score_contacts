@@ -46,6 +46,9 @@ class DiaryEntryDto with _$DiaryEntryDto {
 
   factory DiaryEntryDto.fromJson(Map<String, dynamic> json) =>
       _$DiaryEntryDtoFromJson(json);
+
+  factory DiaryEntryDto.fromfirestore(DocumentSnapshot<Map<String, dynamic>> doc) =>
+      DiaryEntryDto.fromJson(doc.data()!).copyWith(id: doc.id);
 }
 
 @freezed

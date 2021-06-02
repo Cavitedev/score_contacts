@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:scorecontacts/application/diary/add_diary_entry/add_diary_entry_bloc.dart';
 import 'package:scorecontacts/application/diary/diary_entry_application.dart';
+import 'package:scorecontacts/domain/core/unique_id.dart';
 import 'package:scorecontacts/domain/mention/mention.dart';
 import 'package:scorecontacts/domain/mention/mention_list_manager.dart';
 import 'package:scorecontacts/domain/user/diary/diary_entry.dart';
@@ -403,6 +404,16 @@ class FakeDiaryRepository implements IDiaryEntryRepository {
 
   @override
   Future<Either<DiaryFailure, Unit>> updateDiaryEntry(DiaryEntry entry) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Stream<Either<DiaryFailure, List<DiaryEntry>>> watchAll() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Stream<Either<DiaryFailure, List<DiaryEntry>>> watchByMentionableId(UniqueID id) {
     throw UnimplementedError();
   }
 }
