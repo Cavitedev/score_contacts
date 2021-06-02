@@ -17,8 +17,7 @@ class _$AddDiaryEntryEventTearOff {
   const _$AddDiaryEntryEventTearOff();
 
   _Initialize initialize(
-      {DiaryEntryApplication? diaryEntry,
-      required List<IMentionable> mentionableList}) {
+      {DiaryEntry? diaryEntry, required List<IMentionable> mentionableList}) {
     return _Initialize(
       diaryEntry: diaryEntry,
       mentionableList: mentionableList,
@@ -66,9 +65,9 @@ class _$AddDiaryEntryEventTearOff {
     );
   }
 
-  _ChangeTime changeTime(DateTime dateTime, {required DatePos datePos}) {
+  _ChangeTime changeTime(TimeOfDay time, {required DatePos datePos}) {
     return _ChangeTime(
-      dateTime,
+      time,
       datePos: datePos,
     );
   }
@@ -81,8 +80,8 @@ const $AddDiaryEntryEvent = _$AddDiaryEntryEventTearOff();
 mixin _$AddDiaryEntryEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DiaryEntryApplication? diaryEntry,
-            List<IMentionable> mentionableList)
+    required TResult Function(
+            DiaryEntry? diaryEntry, List<IMentionable> mentionableList)
         initialize,
     required TResult Function() save,
     required TResult Function(
@@ -92,13 +91,13 @@ mixin _$AddDiaryEntryEvent {
     required TResult Function(Mention mention, int baseOffset, int extentOffset)
         removeMention,
     required TResult Function(DateTime dateTime, DatePos datePos) changeDate,
-    required TResult Function(DateTime dateTime, DatePos datePos) changeTime,
+    required TResult Function(TimeOfDay time, DatePos datePos) changeTime,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DiaryEntryApplication? diaryEntry,
-            List<IMentionable> mentionableList)?
+    TResult Function(
+            DiaryEntry? diaryEntry, List<IMentionable> mentionableList)?
         initialize,
     TResult Function()? save,
     TResult Function(
@@ -108,7 +107,7 @@ mixin _$AddDiaryEntryEvent {
     TResult Function(Mention mention, int baseOffset, int extentOffset)?
         removeMention,
     TResult Function(DateTime dateTime, DatePos datePos)? changeDate,
-    TResult Function(DateTime dateTime, DatePos datePos)? changeTime,
+    TResult Function(TimeOfDay time, DatePos datePos)? changeTime,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -159,10 +158,9 @@ abstract class _$InitializeCopyWith<$Res> {
   factory _$InitializeCopyWith(
           _Initialize value, $Res Function(_Initialize) then) =
       __$InitializeCopyWithImpl<$Res>;
-  $Res call(
-      {DiaryEntryApplication? diaryEntry, List<IMentionable> mentionableList});
+  $Res call({DiaryEntry? diaryEntry, List<IMentionable> mentionableList});
 
-  $DiaryEntryApplicationCopyWith<$Res>? get diaryEntry;
+  $DiaryEntryCopyWith<$Res>? get diaryEntry;
 }
 
 /// @nodoc
@@ -185,7 +183,7 @@ class __$InitializeCopyWithImpl<$Res>
       diaryEntry: diaryEntry == freezed
           ? _value.diaryEntry
           : diaryEntry // ignore: cast_nullable_to_non_nullable
-              as DiaryEntryApplication?,
+              as DiaryEntry?,
       mentionableList: mentionableList == freezed
           ? _value.mentionableList
           : mentionableList // ignore: cast_nullable_to_non_nullable
@@ -194,12 +192,12 @@ class __$InitializeCopyWithImpl<$Res>
   }
 
   @override
-  $DiaryEntryApplicationCopyWith<$Res>? get diaryEntry {
+  $DiaryEntryCopyWith<$Res>? get diaryEntry {
     if (_value.diaryEntry == null) {
       return null;
     }
 
-    return $DiaryEntryApplicationCopyWith<$Res>(_value.diaryEntry!, (value) {
+    return $DiaryEntryCopyWith<$Res>(_value.diaryEntry!, (value) {
       return _then(_value.copyWith(diaryEntry: value));
     });
   }
@@ -211,7 +209,7 @@ class _$_Initialize implements _Initialize {
   const _$_Initialize({this.diaryEntry, required this.mentionableList});
 
   @override
-  final DiaryEntryApplication? diaryEntry;
+  final DiaryEntry? diaryEntry;
   @override
   final List<IMentionable> mentionableList;
 
@@ -246,8 +244,8 @@ class _$_Initialize implements _Initialize {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DiaryEntryApplication? diaryEntry,
-            List<IMentionable> mentionableList)
+    required TResult Function(
+            DiaryEntry? diaryEntry, List<IMentionable> mentionableList)
         initialize,
     required TResult Function() save,
     required TResult Function(
@@ -257,7 +255,7 @@ class _$_Initialize implements _Initialize {
     required TResult Function(Mention mention, int baseOffset, int extentOffset)
         removeMention,
     required TResult Function(DateTime dateTime, DatePos datePos) changeDate,
-    required TResult Function(DateTime dateTime, DatePos datePos) changeTime,
+    required TResult Function(TimeOfDay time, DatePos datePos) changeTime,
   }) {
     return initialize(diaryEntry, mentionableList);
   }
@@ -265,8 +263,8 @@ class _$_Initialize implements _Initialize {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DiaryEntryApplication? diaryEntry,
-            List<IMentionable> mentionableList)?
+    TResult Function(
+            DiaryEntry? diaryEntry, List<IMentionable> mentionableList)?
         initialize,
     TResult Function()? save,
     TResult Function(
@@ -276,7 +274,7 @@ class _$_Initialize implements _Initialize {
     TResult Function(Mention mention, int baseOffset, int extentOffset)?
         removeMention,
     TResult Function(DateTime dateTime, DatePos datePos)? changeDate,
-    TResult Function(DateTime dateTime, DatePos datePos)? changeTime,
+    TResult Function(TimeOfDay time, DatePos datePos)? changeTime,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -320,10 +318,10 @@ class _$_Initialize implements _Initialize {
 
 abstract class _Initialize implements AddDiaryEntryEvent {
   const factory _Initialize(
-      {DiaryEntryApplication? diaryEntry,
+      {DiaryEntry? diaryEntry,
       required List<IMentionable> mentionableList}) = _$_Initialize;
 
-  DiaryEntryApplication? get diaryEntry => throw _privateConstructorUsedError;
+  DiaryEntry? get diaryEntry => throw _privateConstructorUsedError;
   List<IMentionable> get mentionableList => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$InitializeCopyWith<_Initialize> get copyWith =>
@@ -367,8 +365,8 @@ class _$_Save implements _Save {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DiaryEntryApplication? diaryEntry,
-            List<IMentionable> mentionableList)
+    required TResult Function(
+            DiaryEntry? diaryEntry, List<IMentionable> mentionableList)
         initialize,
     required TResult Function() save,
     required TResult Function(
@@ -378,7 +376,7 @@ class _$_Save implements _Save {
     required TResult Function(Mention mention, int baseOffset, int extentOffset)
         removeMention,
     required TResult Function(DateTime dateTime, DatePos datePos) changeDate,
-    required TResult Function(DateTime dateTime, DatePos datePos) changeTime,
+    required TResult Function(TimeOfDay time, DatePos datePos) changeTime,
   }) {
     return save();
   }
@@ -386,8 +384,8 @@ class _$_Save implements _Save {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DiaryEntryApplication? diaryEntry,
-            List<IMentionable> mentionableList)?
+    TResult Function(
+            DiaryEntry? diaryEntry, List<IMentionable> mentionableList)?
         initialize,
     TResult Function()? save,
     TResult Function(
@@ -397,7 +395,7 @@ class _$_Save implements _Save {
     TResult Function(Mention mention, int baseOffset, int extentOffset)?
         removeMention,
     TResult Function(DateTime dateTime, DatePos datePos)? changeDate,
-    TResult Function(DateTime dateTime, DatePos datePos)? changeTime,
+    TResult Function(TimeOfDay time, DatePos datePos)? changeTime,
     required TResult orElse(),
   }) {
     if (save != null) {
@@ -545,8 +543,8 @@ class _$_OnEntryTextChanged implements _OnEntryTextChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DiaryEntryApplication? diaryEntry,
-            List<IMentionable> mentionableList)
+    required TResult Function(
+            DiaryEntry? diaryEntry, List<IMentionable> mentionableList)
         initialize,
     required TResult Function() save,
     required TResult Function(
@@ -556,7 +554,7 @@ class _$_OnEntryTextChanged implements _OnEntryTextChanged {
     required TResult Function(Mention mention, int baseOffset, int extentOffset)
         removeMention,
     required TResult Function(DateTime dateTime, DatePos datePos) changeDate,
-    required TResult Function(DateTime dateTime, DatePos datePos) changeTime,
+    required TResult Function(TimeOfDay time, DatePos datePos) changeTime,
   }) {
     return onEntryTextChanged(text, baseOffset, extentOffset, trigger);
   }
@@ -564,8 +562,8 @@ class _$_OnEntryTextChanged implements _OnEntryTextChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DiaryEntryApplication? diaryEntry,
-            List<IMentionable> mentionableList)?
+    TResult Function(
+            DiaryEntry? diaryEntry, List<IMentionable> mentionableList)?
         initialize,
     TResult Function()? save,
     TResult Function(
@@ -575,7 +573,7 @@ class _$_OnEntryTextChanged implements _OnEntryTextChanged {
     TResult Function(Mention mention, int baseOffset, int extentOffset)?
         removeMention,
     TResult Function(DateTime dateTime, DatePos datePos)? changeDate,
-    TResult Function(DateTime dateTime, DatePos datePos)? changeTime,
+    TResult Function(TimeOfDay time, DatePos datePos)? changeTime,
     required TResult orElse(),
   }) {
     if (onEntryTextChanged != null) {
@@ -699,8 +697,8 @@ class _$_OnSelectMention implements _OnSelectMention {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DiaryEntryApplication? diaryEntry,
-            List<IMentionable> mentionableList)
+    required TResult Function(
+            DiaryEntry? diaryEntry, List<IMentionable> mentionableList)
         initialize,
     required TResult Function() save,
     required TResult Function(
@@ -710,7 +708,7 @@ class _$_OnSelectMention implements _OnSelectMention {
     required TResult Function(Mention mention, int baseOffset, int extentOffset)
         removeMention,
     required TResult Function(DateTime dateTime, DatePos datePos) changeDate,
-    required TResult Function(DateTime dateTime, DatePos datePos) changeTime,
+    required TResult Function(TimeOfDay time, DatePos datePos) changeTime,
   }) {
     return onSelectMention(iMentionable);
   }
@@ -718,8 +716,8 @@ class _$_OnSelectMention implements _OnSelectMention {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DiaryEntryApplication? diaryEntry,
-            List<IMentionable> mentionableList)?
+    TResult Function(
+            DiaryEntry? diaryEntry, List<IMentionable> mentionableList)?
         initialize,
     TResult Function()? save,
     TResult Function(
@@ -729,7 +727,7 @@ class _$_OnSelectMention implements _OnSelectMention {
     TResult Function(Mention mention, int baseOffset, int extentOffset)?
         removeMention,
     TResult Function(DateTime dateTime, DatePos datePos)? changeDate,
-    TResult Function(DateTime dateTime, DatePos datePos)? changeTime,
+    TResult Function(TimeOfDay time, DatePos datePos)? changeTime,
     required TResult orElse(),
   }) {
     if (onSelectMention != null) {
@@ -882,8 +880,8 @@ class _$_RemoveMention implements _RemoveMention {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DiaryEntryApplication? diaryEntry,
-            List<IMentionable> mentionableList)
+    required TResult Function(
+            DiaryEntry? diaryEntry, List<IMentionable> mentionableList)
         initialize,
     required TResult Function() save,
     required TResult Function(
@@ -893,7 +891,7 @@ class _$_RemoveMention implements _RemoveMention {
     required TResult Function(Mention mention, int baseOffset, int extentOffset)
         removeMention,
     required TResult Function(DateTime dateTime, DatePos datePos) changeDate,
-    required TResult Function(DateTime dateTime, DatePos datePos) changeTime,
+    required TResult Function(TimeOfDay time, DatePos datePos) changeTime,
   }) {
     return removeMention(mention, baseOffset, extentOffset);
   }
@@ -901,8 +899,8 @@ class _$_RemoveMention implements _RemoveMention {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DiaryEntryApplication? diaryEntry,
-            List<IMentionable> mentionableList)?
+    TResult Function(
+            DiaryEntry? diaryEntry, List<IMentionable> mentionableList)?
         initialize,
     TResult Function()? save,
     TResult Function(
@@ -912,7 +910,7 @@ class _$_RemoveMention implements _RemoveMention {
     TResult Function(Mention mention, int baseOffset, int extentOffset)?
         removeMention,
     TResult Function(DateTime dateTime, DatePos datePos)? changeDate,
-    TResult Function(DateTime dateTime, DatePos datePos)? changeTime,
+    TResult Function(TimeOfDay time, DatePos datePos)? changeTime,
     required TResult orElse(),
   }) {
     if (removeMention != null) {
@@ -1045,8 +1043,8 @@ class _$_ChangeDate implements _ChangeDate {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DiaryEntryApplication? diaryEntry,
-            List<IMentionable> mentionableList)
+    required TResult Function(
+            DiaryEntry? diaryEntry, List<IMentionable> mentionableList)
         initialize,
     required TResult Function() save,
     required TResult Function(
@@ -1056,7 +1054,7 @@ class _$_ChangeDate implements _ChangeDate {
     required TResult Function(Mention mention, int baseOffset, int extentOffset)
         removeMention,
     required TResult Function(DateTime dateTime, DatePos datePos) changeDate,
-    required TResult Function(DateTime dateTime, DatePos datePos) changeTime,
+    required TResult Function(TimeOfDay time, DatePos datePos) changeTime,
   }) {
     return changeDate(dateTime, datePos);
   }
@@ -1064,8 +1062,8 @@ class _$_ChangeDate implements _ChangeDate {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DiaryEntryApplication? diaryEntry,
-            List<IMentionable> mentionableList)?
+    TResult Function(
+            DiaryEntry? diaryEntry, List<IMentionable> mentionableList)?
         initialize,
     TResult Function()? save,
     TResult Function(
@@ -1075,7 +1073,7 @@ class _$_ChangeDate implements _ChangeDate {
     TResult Function(Mention mention, int baseOffset, int extentOffset)?
         removeMention,
     TResult Function(DateTime dateTime, DatePos datePos)? changeDate,
-    TResult Function(DateTime dateTime, DatePos datePos)? changeTime,
+    TResult Function(TimeOfDay time, DatePos datePos)? changeTime,
     required TResult orElse(),
   }) {
     if (changeDate != null) {
@@ -1133,7 +1131,7 @@ abstract class _$ChangeTimeCopyWith<$Res> {
   factory _$ChangeTimeCopyWith(
           _ChangeTime value, $Res Function(_ChangeTime) then) =
       __$ChangeTimeCopyWithImpl<$Res>;
-  $Res call({DateTime dateTime, DatePos datePos});
+  $Res call({TimeOfDay time, DatePos datePos});
 }
 
 /// @nodoc
@@ -1149,14 +1147,14 @@ class __$ChangeTimeCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? dateTime = freezed,
+    Object? time = freezed,
     Object? datePos = freezed,
   }) {
     return _then(_ChangeTime(
-      dateTime == freezed
-          ? _value.dateTime
-          : dateTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      time == freezed
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
+              as TimeOfDay,
       datePos: datePos == freezed
           ? _value.datePos
           : datePos // ignore: cast_nullable_to_non_nullable
@@ -1168,25 +1166,24 @@ class __$ChangeTimeCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ChangeTime implements _ChangeTime {
-  const _$_ChangeTime(this.dateTime, {required this.datePos});
+  const _$_ChangeTime(this.time, {required this.datePos});
 
   @override
-  final DateTime dateTime;
+  final TimeOfDay time;
   @override
   final DatePos datePos;
 
   @override
   String toString() {
-    return 'AddDiaryEntryEvent.changeTime(dateTime: $dateTime, datePos: $datePos)';
+    return 'AddDiaryEntryEvent.changeTime(time: $time, datePos: $datePos)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _ChangeTime &&
-            (identical(other.dateTime, dateTime) ||
-                const DeepCollectionEquality()
-                    .equals(other.dateTime, dateTime)) &&
+            (identical(other.time, time) ||
+                const DeepCollectionEquality().equals(other.time, time)) &&
             (identical(other.datePos, datePos) ||
                 const DeepCollectionEquality().equals(other.datePos, datePos)));
   }
@@ -1194,7 +1191,7 @@ class _$_ChangeTime implements _ChangeTime {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(dateTime) ^
+      const DeepCollectionEquality().hash(time) ^
       const DeepCollectionEquality().hash(datePos);
 
   @JsonKey(ignore: true)
@@ -1205,8 +1202,8 @@ class _$_ChangeTime implements _ChangeTime {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DiaryEntryApplication? diaryEntry,
-            List<IMentionable> mentionableList)
+    required TResult Function(
+            DiaryEntry? diaryEntry, List<IMentionable> mentionableList)
         initialize,
     required TResult Function() save,
     required TResult Function(
@@ -1216,16 +1213,16 @@ class _$_ChangeTime implements _ChangeTime {
     required TResult Function(Mention mention, int baseOffset, int extentOffset)
         removeMention,
     required TResult Function(DateTime dateTime, DatePos datePos) changeDate,
-    required TResult Function(DateTime dateTime, DatePos datePos) changeTime,
+    required TResult Function(TimeOfDay time, DatePos datePos) changeTime,
   }) {
-    return changeTime(dateTime, datePos);
+    return changeTime(time, datePos);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DiaryEntryApplication? diaryEntry,
-            List<IMentionable> mentionableList)?
+    TResult Function(
+            DiaryEntry? diaryEntry, List<IMentionable> mentionableList)?
         initialize,
     TResult Function()? save,
     TResult Function(
@@ -1235,11 +1232,11 @@ class _$_ChangeTime implements _ChangeTime {
     TResult Function(Mention mention, int baseOffset, int extentOffset)?
         removeMention,
     TResult Function(DateTime dateTime, DatePos datePos)? changeDate,
-    TResult Function(DateTime dateTime, DatePos datePos)? changeTime,
+    TResult Function(TimeOfDay time, DatePos datePos)? changeTime,
     required TResult orElse(),
   }) {
     if (changeTime != null) {
-      return changeTime(dateTime, datePos);
+      return changeTime(time, datePos);
     }
     return orElse();
   }
@@ -1278,10 +1275,10 @@ class _$_ChangeTime implements _ChangeTime {
 }
 
 abstract class _ChangeTime implements AddDiaryEntryEvent {
-  const factory _ChangeTime(DateTime dateTime, {required DatePos datePos}) =
+  const factory _ChangeTime(TimeOfDay time, {required DatePos datePos}) =
       _$_ChangeTime;
 
-  DateTime get dateTime => throw _privateConstructorUsedError;
+  TimeOfDay get time => throw _privateConstructorUsedError;
   DatePos get datePos => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$ChangeTimeCopyWith<_ChangeTime> get copyWith =>

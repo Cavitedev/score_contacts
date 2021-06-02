@@ -28,9 +28,8 @@ class DiaryEntryDto with _$DiaryEntryDto {
       text: domain.text,
       startDate: domain.dateTime(datePos: DatePos.Start),
       endDate: domain.dateTime(datePos: DatePos.End),
-      mentionList: domain.mentionList
-          .map((mention) => MentionDto.fromDomain(mention))
-          .toList(),
+      mentionList:
+          domain.mentionList.map((mention) => MentionDto.fromDomain(mention)).toList(),
     );
   }
 
@@ -40,7 +39,7 @@ class DiaryEntryDto with _$DiaryEntryDto {
       text: text,
       startDateTime: startDate,
       endDateTime: endDate,
-      mentionList: mentionList.map((mention) => mention.toDomain()).toList(),
+      mentionList: mentionList.map((mention) => mention.toDomain(text)).toList(),
     );
   }
 
@@ -71,16 +70,19 @@ class MentionDto with _$MentionDto {
     );
   }
 
-  Mention toDomain() {
+  Mention toDomain(String text) {
     return Mention(
       startPos: startPos,
       endPos: endPos,
-      iMentionable: mentionable!.toDomain(id: id),
+      iMentionable: mentionable?.toDomain(id: id) ??
+          Mentionable(
+            text.substring(startPos + 1 ,endPos),
+            uniqueID: UniqueID.fromUniqueString(id),
+          ),
     );
   }
 
-  factory MentionDto.fromJson(Map<String, dynamic> json) =>
-      _$MentionDtoFromJson(json);
+  factory MentionDto.fromJson(Map<String, dynamic> json) => _$MentionDtoFromJson(json);
 }
 
 @freezed
@@ -93,8 +95,7 @@ class MentionableDto with _$MentionableDto {
   }) = _MentionableDto;
 
   factory MentionableDto.fromDomain(IMentionable mentionable) {
-    return MentionableDto(
-        name: mentionable.getName(), imageLink: mentionable.imageLink);
+    return MentionableDto(name: mentionable.getName(), imageLink: mentionable.imageLink);
   }
 
   Mentionable toDomain({required String id}) {

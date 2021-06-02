@@ -25,7 +25,7 @@ class ListDiaryBloc extends Bloc<ListDiaryEvent, ListDiaryState> {
   @override
   Stream<ListDiaryState> mapEventToState(ListDiaryEvent event) async* {
     yield* event.map(watchAll: (e) async* {
-      yield const ListDiaryState.loadInProcess();
+      yield const ListDiaryState.loadInProgress();
 
       _entriesSubscription?.cancel();
       _entriesSubscription = repository.watchAll().listen((entryEither) {

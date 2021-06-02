@@ -31,19 +31,19 @@ class AddDiaryEntryBloc extends Bloc<AddDiaryEntryEvent, AddDiaryEntryState> {
         final bool isEditting = e.diaryEntry != null;
 
         yield state.copyWith(
-            mentionListManager:
-                MentionListManager(mentionList: e.mentionableList),
+            mentionListManager: MentionListManager(mentionList: e.mentionableList),
+            entryField: e.diaryEntry != null
+                ? state.entryField.copyWith(entry: e.diaryEntry!)
+                : state.entryField,
             isEditting: isEditting);
       },
       save: (e) async* {
         yield state.copyWith(isSaving: true, savingOrFailureOption: null);
 
-        final Either<DiaryFailure, Unit> savingOrFailure =
-            await (state.isEditting
-                ? repository.updateDiaryEntry(state.entryField.entry)
-                : repository.createDiaryEntry(state.entryField.entry));
-        yield state.copyWith(
-            isSaving: false, savingOrFailureOption: savingOrFailure);
+        final Either<DiaryFailure, Unit> savingOrFailure = await (state.isEditting
+            ? repository.updateDiaryEntry(state.entryField.entry)
+            : repository.createDiaryEntry(state.entryField.entry));
+        yield state.copyWith(isSaving: false, savingOrFailureOption: savingOrFailure);
       },
       onEntryTextChanged: (e) async* {
         final int triggerPos = _findLatestUnusedTrigger(e, e.baseOffset);
@@ -73,8 +73,7 @@ class AddDiaryEntryBloc extends Bloc<AddDiaryEntryEvent, AddDiaryEntryState> {
         if (state.entryField.selectingMention == null) {
           return;
         }
-        final MentionCandidate mentionCandidate =
-            state.entryField.selectingMention!;
+        final MentionCandidate mentionCandidate = state.entryField.selectingMention!;
 
         // I assume it is 1 as it will always be a @
         const triggerLength = 1;
@@ -107,15 +106,14 @@ class AddDiaryEntryBloc extends Bloc<AddDiaryEntryEvent, AddDiaryEntryState> {
         ));
       },
       removeMention: (e) async* {
-        final List<Mention> newMentionList =
-            List.of(state.entryField.entry.mentionList);
+        final List<Mention> newMentionList = List.of(state.entryField.entry.mentionList);
         final bool couldRemove = newMentionList.remove(e.mention);
         if (!couldRemove) {
           return;
         }
         final String text = state.entryField.entry.text;
-        final String newText = text.substring(0, e.mention.startPos) +
-            text.substring(e.mention.endPos);
+        final String newText =
+            text.substring(0, e.mention.startPos) + text.substring(e.mention.endPos);
 
         yield state.copyWith(
             entryField: state.entryField.copyWith(
@@ -129,35 +127,25 @@ class AddDiaryEntryBloc extends Bloc<AddDiaryEntryEvent, AddDiaryEntryState> {
         ));
       },
       changeDate: (e) async* {
-        final DateTime old =
-            state.entryField.entry.dateTime(datePos: e.datePos);
+        final DateTime old = state.entryField.entry.dateTime(datePos: e.datePos);
         final DateTime newDateTime = DateTime(
-            e.dateTime.year,
-            e.dateTime.month,
-            e.dateTime.day,
-            old.hour,
-            old.minute);
+            e.dateTime.year, e.dateTime.month, e.dateTime.day, old.hour, old.minute);
 
         yield state.copyWith(
             entryField: state.entryField.copyWith(
-                entry: state.entryField.entry.copyWithNewDateTime(
-                    dateTime: newDateTime, datePos: e.datePos)));
+                entry: state.entryField.entry
+                    .copyWithNewDateTime(dateTime: newDateTime, datePos: e.datePos)));
       },
       changeTime: (e) async* {
-        final DateTime old =
-            state.entryField.entry.dateTime(datePos: e.datePos);
+        final DateTime old = state.entryField.entry.dateTime(datePos: e.datePos);
 
-        final DateTime newDateTime = DateTime(
-            old.year,
-            old.month,
-            old.day,
-            e.time.hour,
-            e.time.minute);
+        final DateTime newDateTime =
+            DateTime(old.year, old.month, old.day, e.time.hour, e.time.minute);
 
         yield state.copyWith(
             entryField: state.entryField.copyWith(
-                entry: state.entryField.entry.copyWithNewDateTime(
-                    dateTime: newDateTime, datePos: e.datePos)));
+                entry: state.entryField.entry
+                    .copyWithNewDateTime(dateTime: newDateTime, datePos: e.datePos)));
       },
     );
   }

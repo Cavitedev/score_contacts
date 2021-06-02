@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/contacts/contact_actor/contact_actor_bloc.dart';
 import 'package:scorecontacts/application/contacts/contact_watcher/contact_watcher_bloc.dart';
 import 'package:scorecontacts/application/contacts/selection_contact.dart';
+import 'package:scorecontacts/core/app_constants.dart';
 import 'package:scorecontacts/domain/core/filter.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/pop_up_contact.dart';
 import 'package:scorecontacts/presentation/contacts/widgets/contact_circle_avatar.dart';
@@ -53,7 +54,7 @@ class ContactRow extends StatelessWidget {
         }
       },
       child: Container(
-        padding: const EdgeInsets.fromLTRB(20, 8, 4, 8),
+        padding: Constants.bigPaddingList,
         child: Row(
           children: <Widget>[
             ContactCircleAvatar(selectionContact: selectionContact),

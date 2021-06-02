@@ -35,7 +35,9 @@ class DiaryEntryRepository implements IDiaryEntryRepository {
     yield* collection
         .snapshots()
         .map((snapshot) => right<DiaryFailure, List<DiaryEntry>>(snapshot.docs
-            .map((doc) => DiaryEntryDto.fromfirestore(doc).toDomain())
+            .map(
+              (doc) => DiaryEntryDto.fromfirestore(doc).toDomain(),
+            )
             .toList()))
         .onErrorReturnWith((e, _) => left(_handleException(e)));
   }
@@ -44,7 +46,8 @@ class DiaryEntryRepository implements IDiaryEntryRepository {
   Stream<Either<DiaryFailure, List<DiaryEntry>>> watchByMentionableId(
       UniqueID id) async* {
     final collection = firestore.userDocument().diaryEntryCollection;
-    yield* collection.where("mentions.id", isEqualTo: id.value)
+    yield* collection
+        .where("mentions.id", isEqualTo: id.value)
         .snapshots()
         .map((snapshot) => right<DiaryFailure, List<DiaryEntry>>(snapshot.docs
             .map((doc) => DiaryEntryDto.fromfirestore(doc).toDomain())

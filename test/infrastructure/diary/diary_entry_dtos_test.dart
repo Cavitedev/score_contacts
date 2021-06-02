@@ -60,7 +60,7 @@ void main() {
     });
 
     test('to domain', () {
-      final actualDomain = dto.toDomain();
+      final actualDomain = dto.toDomain("e");
 
       expect(actualDomain, domain);
     });

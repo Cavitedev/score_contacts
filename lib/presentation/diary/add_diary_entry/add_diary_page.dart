@@ -6,16 +6,19 @@ import 'package:scorecontacts/application/diary/add_diary_entry/add_diary_entry_
 import 'package:scorecontacts/core/app_localization.dart';
 import 'package:scorecontacts/core/injection/injection.dart';
 import 'package:scorecontacts/domain/mention/i_mentionable.dart';
+import 'package:scorecontacts/domain/user/diary/diary_entry.dart';
 import 'package:scorecontacts/domain/user/diary/diary_failure.dart';
 import 'package:scorecontacts/presentation/core/widgets/overlayed_circular_progess_indicator.dart';
 import 'package:scorecontacts/presentation/diary/add_diary_entry/add_diary_scaffold.dart';
 
 class AddDiaryPage extends StatelessWidget {
   final List<IMentionable> mentionableList;
+  final DiaryEntry? diaryEntry;
 
   const AddDiaryPage({
     Key? key,
     required this.mentionableList,
+    this.diaryEntry,
   }) : super(key: key);
 
   @override
@@ -24,7 +27,9 @@ class AddDiaryPage extends StatelessWidget {
         create: (_) {
           return getIt<AddDiaryEntryBloc>()
             ..add(AddDiaryEntryEvent.initialize(
-                mentionableList: mentionableList));
+              mentionableList: mentionableList,
+              diaryEntry: diaryEntry,
+            ));
         },
         child: BlocListener<AddDiaryEntryBloc, AddDiaryEntryState>(
             listenWhen: (previous, current) =>
@@ -40,10 +45,7 @@ class AddDiaryPage extends StatelessWidget {
                 },
               );
             },
-            child: Stack(children: const [
-              AddDiaryScaffold(),
-              SavingProgressOverlay()
-            ])));
+            child: Stack(children: const [AddDiaryScaffold(), SavingProgressOverlay()])));
   }
 }
 

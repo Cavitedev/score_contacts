@@ -9,7 +9,7 @@ import 'package:scorecontacts/presentation/diary/list_entry/list_diary_entry_pag
 import 'package:scorecontacts/presentation/settings/settings_page.dart';
 
 @MaterialAutoRouter(
-  routes: <MaterialRoute>[
+  routes: <AutoRoute>[
     MaterialRoute(page: SplashPage, initial: true),
     MaterialRoute(page: ContactList),
     MaterialRoute(page: AddContactPage),
