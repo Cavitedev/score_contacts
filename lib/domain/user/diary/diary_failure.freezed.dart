@@ -31,6 +31,10 @@ class _$DiaryFailureTearOff {
   _NotFound notFound() {
     return const _NotFound();
   }
+
+  _StartEndDateNotValid startEndDateNotValid() {
+    return const _StartEndDateNotValid();
+  }
 }
 
 /// @nodoc
@@ -44,6 +48,7 @@ mixin _$DiaryFailure {
     required TResult Function() platformError,
     required TResult Function() unexpected,
     required TResult Function() notFound,
+    required TResult Function() startEndDateNotValid,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -52,6 +57,7 @@ mixin _$DiaryFailure {
     TResult Function()? platformError,
     TResult Function()? unexpected,
     TResult Function()? notFound,
+    TResult Function()? startEndDateNotValid,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -62,6 +68,7 @@ mixin _$DiaryFailure {
     required TResult Function(_PlatformError value) platformError,
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_NotFound value) notFound,
+    required TResult Function(_StartEndDateNotValid value) startEndDateNotValid,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +77,7 @@ mixin _$DiaryFailure {
     TResult Function(_PlatformError value)? platformError,
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_NotFound value)? notFound,
+    TResult Function(_StartEndDateNotValid value)? startEndDateNotValid,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -136,6 +144,7 @@ class _$_InsufficientPermissions implements _InsufficientPermissions {
     required TResult Function() platformError,
     required TResult Function() unexpected,
     required TResult Function() notFound,
+    required TResult Function() startEndDateNotValid,
   }) {
     return insufficientPermissions();
   }
@@ -147,6 +156,7 @@ class _$_InsufficientPermissions implements _InsufficientPermissions {
     TResult Function()? platformError,
     TResult Function()? unexpected,
     TResult Function()? notFound,
+    TResult Function()? startEndDateNotValid,
     required TResult orElse(),
   }) {
     if (insufficientPermissions != null) {
@@ -163,6 +173,7 @@ class _$_InsufficientPermissions implements _InsufficientPermissions {
     required TResult Function(_PlatformError value) platformError,
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_NotFound value) notFound,
+    required TResult Function(_StartEndDateNotValid value) startEndDateNotValid,
   }) {
     return insufficientPermissions(this);
   }
@@ -174,6 +185,7 @@ class _$_InsufficientPermissions implements _InsufficientPermissions {
     TResult Function(_PlatformError value)? platformError,
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_NotFound value)? notFound,
+    TResult Function(_StartEndDateNotValid value)? startEndDateNotValid,
     required TResult orElse(),
   }) {
     if (insufficientPermissions != null) {
@@ -231,6 +243,7 @@ class _$_PlatformError implements _PlatformError {
     required TResult Function() platformError,
     required TResult Function() unexpected,
     required TResult Function() notFound,
+    required TResult Function() startEndDateNotValid,
   }) {
     return platformError();
   }
@@ -242,6 +255,7 @@ class _$_PlatformError implements _PlatformError {
     TResult Function()? platformError,
     TResult Function()? unexpected,
     TResult Function()? notFound,
+    TResult Function()? startEndDateNotValid,
     required TResult orElse(),
   }) {
     if (platformError != null) {
@@ -258,6 +272,7 @@ class _$_PlatformError implements _PlatformError {
     required TResult Function(_PlatformError value) platformError,
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_NotFound value) notFound,
+    required TResult Function(_StartEndDateNotValid value) startEndDateNotValid,
   }) {
     return platformError(this);
   }
@@ -269,6 +284,7 @@ class _$_PlatformError implements _PlatformError {
     TResult Function(_PlatformError value)? platformError,
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_NotFound value)? notFound,
+    TResult Function(_StartEndDateNotValid value)? startEndDateNotValid,
     required TResult orElse(),
   }) {
     if (platformError != null) {
@@ -325,6 +341,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function() platformError,
     required TResult Function() unexpected,
     required TResult Function() notFound,
+    required TResult Function() startEndDateNotValid,
   }) {
     return unexpected();
   }
@@ -336,6 +353,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function()? platformError,
     TResult Function()? unexpected,
     TResult Function()? notFound,
+    TResult Function()? startEndDateNotValid,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -352,6 +370,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function(_PlatformError value) platformError,
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_NotFound value) notFound,
+    required TResult Function(_StartEndDateNotValid value) startEndDateNotValid,
   }) {
     return unexpected(this);
   }
@@ -363,6 +382,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function(_PlatformError value)? platformError,
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_NotFound value)? notFound,
+    TResult Function(_StartEndDateNotValid value)? startEndDateNotValid,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -417,6 +437,7 @@ class _$_NotFound implements _NotFound {
     required TResult Function() platformError,
     required TResult Function() unexpected,
     required TResult Function() notFound,
+    required TResult Function() startEndDateNotValid,
   }) {
     return notFound();
   }
@@ -428,6 +449,7 @@ class _$_NotFound implements _NotFound {
     TResult Function()? platformError,
     TResult Function()? unexpected,
     TResult Function()? notFound,
+    TResult Function()? startEndDateNotValid,
     required TResult orElse(),
   }) {
     if (notFound != null) {
@@ -444,6 +466,7 @@ class _$_NotFound implements _NotFound {
     required TResult Function(_PlatformError value) platformError,
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_NotFound value) notFound,
+    required TResult Function(_StartEndDateNotValid value) startEndDateNotValid,
   }) {
     return notFound(this);
   }
@@ -455,6 +478,7 @@ class _$_NotFound implements _NotFound {
     TResult Function(_PlatformError value)? platformError,
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_NotFound value)? notFound,
+    TResult Function(_StartEndDateNotValid value)? startEndDateNotValid,
     required TResult orElse(),
   }) {
     if (notFound != null) {
@@ -466,4 +490,103 @@ class _$_NotFound implements _NotFound {
 
 abstract class _NotFound implements DiaryFailure {
   const factory _NotFound() = _$_NotFound;
+}
+
+/// @nodoc
+abstract class _$StartEndDateNotValidCopyWith<$Res> {
+  factory _$StartEndDateNotValidCopyWith(_StartEndDateNotValid value,
+          $Res Function(_StartEndDateNotValid) then) =
+      __$StartEndDateNotValidCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$StartEndDateNotValidCopyWithImpl<$Res>
+    extends _$DiaryFailureCopyWithImpl<$Res>
+    implements _$StartEndDateNotValidCopyWith<$Res> {
+  __$StartEndDateNotValidCopyWithImpl(
+      _StartEndDateNotValid _value, $Res Function(_StartEndDateNotValid) _then)
+      : super(_value, (v) => _then(v as _StartEndDateNotValid));
+
+  @override
+  _StartEndDateNotValid get _value => super._value as _StartEndDateNotValid;
+}
+
+/// @nodoc
+
+class _$_StartEndDateNotValid implements _StartEndDateNotValid {
+  const _$_StartEndDateNotValid();
+
+  @override
+  String toString() {
+    return 'DiaryFailure.startEndDateNotValid()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _StartEndDateNotValid);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() insufficientPermissions,
+    required TResult Function() platformError,
+    required TResult Function() unexpected,
+    required TResult Function() notFound,
+    required TResult Function() startEndDateNotValid,
+  }) {
+    return startEndDateNotValid();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? insufficientPermissions,
+    TResult Function()? platformError,
+    TResult Function()? unexpected,
+    TResult Function()? notFound,
+    TResult Function()? startEndDateNotValid,
+    required TResult orElse(),
+  }) {
+    if (startEndDateNotValid != null) {
+      return startEndDateNotValid();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InsufficientPermissions value)
+        insufficientPermissions,
+    required TResult Function(_PlatformError value) platformError,
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_NotFound value) notFound,
+    required TResult Function(_StartEndDateNotValid value) startEndDateNotValid,
+  }) {
+    return startEndDateNotValid(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InsufficientPermissions value)? insufficientPermissions,
+    TResult Function(_PlatformError value)? platformError,
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_NotFound value)? notFound,
+    TResult Function(_StartEndDateNotValid value)? startEndDateNotValid,
+    required TResult orElse(),
+  }) {
+    if (startEndDateNotValid != null) {
+      return startEndDateNotValid(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _StartEndDateNotValid implements DiaryFailure {
+  const factory _StartEndDateNotValid() = _$_StartEndDateNotValid;
 }

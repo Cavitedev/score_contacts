@@ -14,6 +14,8 @@ class DiaryFailure with _$DiaryFailure {
   const factory DiaryFailure.unexpected() = _Unexpected;
 
   const factory DiaryFailure.notFound() = _NotFound;
+
+  const factory DiaryFailure.startEndDateNotValid() = _StartEndDateNotValid;
 }
 
 String getDiaryFailureMessage(BuildContext context, DiaryFailure failure) {
@@ -22,5 +24,6 @@ String getDiaryFailureMessage(BuildContext context, DiaryFailure failure) {
     notFound: (_) => "contact_not_found",
     unexpected: (_) => "unexpected_error",
     platformError: (_) => "platform_error",
+    startEndDateNotValid: (_) => "start_end_date_not_valid"
   ));
 }

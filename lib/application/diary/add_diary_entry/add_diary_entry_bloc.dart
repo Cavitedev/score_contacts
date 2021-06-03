@@ -40,6 +40,13 @@ class AddDiaryEntryBloc extends Bloc<AddDiaryEntryEvent, AddDiaryEntryState> {
       save: (e) async* {
         yield state.copyWith(isSaving: true, savingOrFailureOption: null);
 
+        if (!state.entryField.entry.areDatesValid()) {
+          yield state.copyWith(
+              isSaving: false,
+              savingOrFailureOption: left(const DiaryFailure.startEndDateNotValid()));
+          return;
+        }
+
         final Either<DiaryFailure, Unit> savingOrFailure = await (state.isEditting
             ? repository.updateDiaryEntry(state.entryField.entry)
             : repository.createDiaryEntry(state.entryField.entry));
@@ -146,6 +153,22 @@ class AddDiaryEntryBloc extends Bloc<AddDiaryEntryEvent, AddDiaryEntryState> {
             entryField: state.entryField.copyWith(
                 entry: state.entryField.entry
                     .copyWithNewDateTime(dateTime: newDateTime, datePos: e.datePos)));
+      },
+      changeAllDay: (e) async* {
+        if (e.isAllDay) {
+          yield state.copyWith(
+              entryField: state.entryField.copyWith(
+                  entry: state.entryField.entry.copyWith(
+                      startDateTime:
+                          state.entryField.entry.startDateTime.toAllDayStartDate(),
+                      endDateTime:
+                          state.entryField.entry.endDateTime.toAllDayEndDate())));
+        } else {
+          yield state.copyWith(
+              entryField: state.entryField.copyWith(
+                  entry: state.entryField.entry.copyWith(
+                      endDateTime: state.entryField.entry.endDateTime.toNotAllDay())));
+        }
       },
     );
   }

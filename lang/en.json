@@ -1,4 +1,5 @@
 {
+  "all_day": "All day",
   "call": "Call",
   "calling": "Calling: %s",
   "cancel": "Cancel",
@@ -58,6 +59,7 @@
   "sign_in_google": "Sign in with Google",
   "sign_out": "Sign out",
   "spanish": "Spanish",
+  "start_end_date_not_valid": "Start date should be previous to the end date",
   "success_call": "Succesed called %s",
   "success_delete_contacts_single": "Successfully deleted %s contact",
   "success_delete_contacts_plural": "Successfully deleted %s contacts",

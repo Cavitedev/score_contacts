@@ -27,6 +27,9 @@ class AddDiaryEntryEvent with _$AddDiaryEntryEvent {
   
   const factory AddDiaryEntryEvent.changeDate(DateTime dateTime, {required DatePos datePos}) = _ChangeDate;
   const factory AddDiaryEntryEvent.changeTime(TimeOfDay time, {required DatePos datePos}) = _ChangeTime;
+
+  const factory AddDiaryEntryEvent.changeAllDay(bool isAllDay) = _ChangeAllDay;
+
 }
 
 

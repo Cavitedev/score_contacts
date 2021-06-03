@@ -71,6 +71,12 @@ class _$AddDiaryEntryEventTearOff {
       datePos: datePos,
     );
   }
+
+  _ChangeAllDay changeAllDay(bool isAllDay) {
+    return _ChangeAllDay(
+      isAllDay,
+    );
+  }
 }
 
 /// @nodoc
@@ -92,6 +98,7 @@ mixin _$AddDiaryEntryEvent {
         removeMention,
     required TResult Function(DateTime dateTime, DatePos datePos) changeDate,
     required TResult Function(TimeOfDay time, DatePos datePos) changeTime,
+    required TResult Function(bool isAllDay) changeAllDay,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -108,6 +115,7 @@ mixin _$AddDiaryEntryEvent {
         removeMention,
     TResult Function(DateTime dateTime, DatePos datePos)? changeDate,
     TResult Function(TimeOfDay time, DatePos datePos)? changeTime,
+    TResult Function(bool isAllDay)? changeAllDay,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -120,6 +128,7 @@ mixin _$AddDiaryEntryEvent {
     required TResult Function(_RemoveMention value) removeMention,
     required TResult Function(_ChangeDate value) changeDate,
     required TResult Function(_ChangeTime value) changeTime,
+    required TResult Function(_ChangeAllDay value) changeAllDay,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -131,6 +140,7 @@ mixin _$AddDiaryEntryEvent {
     TResult Function(_RemoveMention value)? removeMention,
     TResult Function(_ChangeDate value)? changeDate,
     TResult Function(_ChangeTime value)? changeTime,
+    TResult Function(_ChangeAllDay value)? changeAllDay,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -256,6 +266,7 @@ class _$_Initialize implements _Initialize {
         removeMention,
     required TResult Function(DateTime dateTime, DatePos datePos) changeDate,
     required TResult Function(TimeOfDay time, DatePos datePos) changeTime,
+    required TResult Function(bool isAllDay) changeAllDay,
   }) {
     return initialize(diaryEntry, mentionableList);
   }
@@ -275,6 +286,7 @@ class _$_Initialize implements _Initialize {
         removeMention,
     TResult Function(DateTime dateTime, DatePos datePos)? changeDate,
     TResult Function(TimeOfDay time, DatePos datePos)? changeTime,
+    TResult Function(bool isAllDay)? changeAllDay,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -293,6 +305,7 @@ class _$_Initialize implements _Initialize {
     required TResult Function(_RemoveMention value) removeMention,
     required TResult Function(_ChangeDate value) changeDate,
     required TResult Function(_ChangeTime value) changeTime,
+    required TResult Function(_ChangeAllDay value) changeAllDay,
   }) {
     return initialize(this);
   }
@@ -307,6 +320,7 @@ class _$_Initialize implements _Initialize {
     TResult Function(_RemoveMention value)? removeMention,
     TResult Function(_ChangeDate value)? changeDate,
     TResult Function(_ChangeTime value)? changeTime,
+    TResult Function(_ChangeAllDay value)? changeAllDay,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -377,6 +391,7 @@ class _$_Save implements _Save {
         removeMention,
     required TResult Function(DateTime dateTime, DatePos datePos) changeDate,
     required TResult Function(TimeOfDay time, DatePos datePos) changeTime,
+    required TResult Function(bool isAllDay) changeAllDay,
   }) {
     return save();
   }
@@ -396,6 +411,7 @@ class _$_Save implements _Save {
         removeMention,
     TResult Function(DateTime dateTime, DatePos datePos)? changeDate,
     TResult Function(TimeOfDay time, DatePos datePos)? changeTime,
+    TResult Function(bool isAllDay)? changeAllDay,
     required TResult orElse(),
   }) {
     if (save != null) {
@@ -414,6 +430,7 @@ class _$_Save implements _Save {
     required TResult Function(_RemoveMention value) removeMention,
     required TResult Function(_ChangeDate value) changeDate,
     required TResult Function(_ChangeTime value) changeTime,
+    required TResult Function(_ChangeAllDay value) changeAllDay,
   }) {
     return save(this);
   }
@@ -428,6 +445,7 @@ class _$_Save implements _Save {
     TResult Function(_RemoveMention value)? removeMention,
     TResult Function(_ChangeDate value)? changeDate,
     TResult Function(_ChangeTime value)? changeTime,
+    TResult Function(_ChangeAllDay value)? changeAllDay,
     required TResult orElse(),
   }) {
     if (save != null) {
@@ -555,6 +573,7 @@ class _$_OnEntryTextChanged implements _OnEntryTextChanged {
         removeMention,
     required TResult Function(DateTime dateTime, DatePos datePos) changeDate,
     required TResult Function(TimeOfDay time, DatePos datePos) changeTime,
+    required TResult Function(bool isAllDay) changeAllDay,
   }) {
     return onEntryTextChanged(text, baseOffset, extentOffset, trigger);
   }
@@ -574,6 +593,7 @@ class _$_OnEntryTextChanged implements _OnEntryTextChanged {
         removeMention,
     TResult Function(DateTime dateTime, DatePos datePos)? changeDate,
     TResult Function(TimeOfDay time, DatePos datePos)? changeTime,
+    TResult Function(bool isAllDay)? changeAllDay,
     required TResult orElse(),
   }) {
     if (onEntryTextChanged != null) {
@@ -592,6 +612,7 @@ class _$_OnEntryTextChanged implements _OnEntryTextChanged {
     required TResult Function(_RemoveMention value) removeMention,
     required TResult Function(_ChangeDate value) changeDate,
     required TResult Function(_ChangeTime value) changeTime,
+    required TResult Function(_ChangeAllDay value) changeAllDay,
   }) {
     return onEntryTextChanged(this);
   }
@@ -606,6 +627,7 @@ class _$_OnEntryTextChanged implements _OnEntryTextChanged {
     TResult Function(_RemoveMention value)? removeMention,
     TResult Function(_ChangeDate value)? changeDate,
     TResult Function(_ChangeTime value)? changeTime,
+    TResult Function(_ChangeAllDay value)? changeAllDay,
     required TResult orElse(),
   }) {
     if (onEntryTextChanged != null) {
@@ -709,6 +731,7 @@ class _$_OnSelectMention implements _OnSelectMention {
         removeMention,
     required TResult Function(DateTime dateTime, DatePos datePos) changeDate,
     required TResult Function(TimeOfDay time, DatePos datePos) changeTime,
+    required TResult Function(bool isAllDay) changeAllDay,
   }) {
     return onSelectMention(iMentionable);
   }
@@ -728,6 +751,7 @@ class _$_OnSelectMention implements _OnSelectMention {
         removeMention,
     TResult Function(DateTime dateTime, DatePos datePos)? changeDate,
     TResult Function(TimeOfDay time, DatePos datePos)? changeTime,
+    TResult Function(bool isAllDay)? changeAllDay,
     required TResult orElse(),
   }) {
     if (onSelectMention != null) {
@@ -746,6 +770,7 @@ class _$_OnSelectMention implements _OnSelectMention {
     required TResult Function(_RemoveMention value) removeMention,
     required TResult Function(_ChangeDate value) changeDate,
     required TResult Function(_ChangeTime value) changeTime,
+    required TResult Function(_ChangeAllDay value) changeAllDay,
   }) {
     return onSelectMention(this);
   }
@@ -760,6 +785,7 @@ class _$_OnSelectMention implements _OnSelectMention {
     TResult Function(_RemoveMention value)? removeMention,
     TResult Function(_ChangeDate value)? changeDate,
     TResult Function(_ChangeTime value)? changeTime,
+    TResult Function(_ChangeAllDay value)? changeAllDay,
     required TResult orElse(),
   }) {
     if (onSelectMention != null) {
@@ -892,6 +918,7 @@ class _$_RemoveMention implements _RemoveMention {
         removeMention,
     required TResult Function(DateTime dateTime, DatePos datePos) changeDate,
     required TResult Function(TimeOfDay time, DatePos datePos) changeTime,
+    required TResult Function(bool isAllDay) changeAllDay,
   }) {
     return removeMention(mention, baseOffset, extentOffset);
   }
@@ -911,6 +938,7 @@ class _$_RemoveMention implements _RemoveMention {
         removeMention,
     TResult Function(DateTime dateTime, DatePos datePos)? changeDate,
     TResult Function(TimeOfDay time, DatePos datePos)? changeTime,
+    TResult Function(bool isAllDay)? changeAllDay,
     required TResult orElse(),
   }) {
     if (removeMention != null) {
@@ -929,6 +957,7 @@ class _$_RemoveMention implements _RemoveMention {
     required TResult Function(_RemoveMention value) removeMention,
     required TResult Function(_ChangeDate value) changeDate,
     required TResult Function(_ChangeTime value) changeTime,
+    required TResult Function(_ChangeAllDay value) changeAllDay,
   }) {
     return removeMention(this);
   }
@@ -943,6 +972,7 @@ class _$_RemoveMention implements _RemoveMention {
     TResult Function(_RemoveMention value)? removeMention,
     TResult Function(_ChangeDate value)? changeDate,
     TResult Function(_ChangeTime value)? changeTime,
+    TResult Function(_ChangeAllDay value)? changeAllDay,
     required TResult orElse(),
   }) {
     if (removeMention != null) {
@@ -1055,6 +1085,7 @@ class _$_ChangeDate implements _ChangeDate {
         removeMention,
     required TResult Function(DateTime dateTime, DatePos datePos) changeDate,
     required TResult Function(TimeOfDay time, DatePos datePos) changeTime,
+    required TResult Function(bool isAllDay) changeAllDay,
   }) {
     return changeDate(dateTime, datePos);
   }
@@ -1074,6 +1105,7 @@ class _$_ChangeDate implements _ChangeDate {
         removeMention,
     TResult Function(DateTime dateTime, DatePos datePos)? changeDate,
     TResult Function(TimeOfDay time, DatePos datePos)? changeTime,
+    TResult Function(bool isAllDay)? changeAllDay,
     required TResult orElse(),
   }) {
     if (changeDate != null) {
@@ -1092,6 +1124,7 @@ class _$_ChangeDate implements _ChangeDate {
     required TResult Function(_RemoveMention value) removeMention,
     required TResult Function(_ChangeDate value) changeDate,
     required TResult Function(_ChangeTime value) changeTime,
+    required TResult Function(_ChangeAllDay value) changeAllDay,
   }) {
     return changeDate(this);
   }
@@ -1106,6 +1139,7 @@ class _$_ChangeDate implements _ChangeDate {
     TResult Function(_RemoveMention value)? removeMention,
     TResult Function(_ChangeDate value)? changeDate,
     TResult Function(_ChangeTime value)? changeTime,
+    TResult Function(_ChangeAllDay value)? changeAllDay,
     required TResult orElse(),
   }) {
     if (changeDate != null) {
@@ -1214,6 +1248,7 @@ class _$_ChangeTime implements _ChangeTime {
         removeMention,
     required TResult Function(DateTime dateTime, DatePos datePos) changeDate,
     required TResult Function(TimeOfDay time, DatePos datePos) changeTime,
+    required TResult Function(bool isAllDay) changeAllDay,
   }) {
     return changeTime(time, datePos);
   }
@@ -1233,6 +1268,7 @@ class _$_ChangeTime implements _ChangeTime {
         removeMention,
     TResult Function(DateTime dateTime, DatePos datePos)? changeDate,
     TResult Function(TimeOfDay time, DatePos datePos)? changeTime,
+    TResult Function(bool isAllDay)? changeAllDay,
     required TResult orElse(),
   }) {
     if (changeTime != null) {
@@ -1251,6 +1287,7 @@ class _$_ChangeTime implements _ChangeTime {
     required TResult Function(_RemoveMention value) removeMention,
     required TResult Function(_ChangeDate value) changeDate,
     required TResult Function(_ChangeTime value) changeTime,
+    required TResult Function(_ChangeAllDay value) changeAllDay,
   }) {
     return changeTime(this);
   }
@@ -1265,6 +1302,7 @@ class _$_ChangeTime implements _ChangeTime {
     TResult Function(_RemoveMention value)? removeMention,
     TResult Function(_ChangeDate value)? changeDate,
     TResult Function(_ChangeTime value)? changeTime,
+    TResult Function(_ChangeAllDay value)? changeAllDay,
     required TResult orElse(),
   }) {
     if (changeTime != null) {
@@ -1282,6 +1320,157 @@ abstract class _ChangeTime implements AddDiaryEntryEvent {
   DatePos get datePos => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$ChangeTimeCopyWith<_ChangeTime> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$ChangeAllDayCopyWith<$Res> {
+  factory _$ChangeAllDayCopyWith(
+          _ChangeAllDay value, $Res Function(_ChangeAllDay) then) =
+      __$ChangeAllDayCopyWithImpl<$Res>;
+  $Res call({bool isAllDay});
+}
+
+/// @nodoc
+class __$ChangeAllDayCopyWithImpl<$Res>
+    extends _$AddDiaryEntryEventCopyWithImpl<$Res>
+    implements _$ChangeAllDayCopyWith<$Res> {
+  __$ChangeAllDayCopyWithImpl(
+      _ChangeAllDay _value, $Res Function(_ChangeAllDay) _then)
+      : super(_value, (v) => _then(v as _ChangeAllDay));
+
+  @override
+  _ChangeAllDay get _value => super._value as _ChangeAllDay;
+
+  @override
+  $Res call({
+    Object? isAllDay = freezed,
+  }) {
+    return _then(_ChangeAllDay(
+      isAllDay == freezed
+          ? _value.isAllDay
+          : isAllDay // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ChangeAllDay implements _ChangeAllDay {
+  const _$_ChangeAllDay(this.isAllDay);
+
+  @override
+  final bool isAllDay;
+
+  @override
+  String toString() {
+    return 'AddDiaryEntryEvent.changeAllDay(isAllDay: $isAllDay)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _ChangeAllDay &&
+            (identical(other.isAllDay, isAllDay) ||
+                const DeepCollectionEquality()
+                    .equals(other.isAllDay, isAllDay)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(isAllDay);
+
+  @JsonKey(ignore: true)
+  @override
+  _$ChangeAllDayCopyWith<_ChangeAllDay> get copyWith =>
+      __$ChangeAllDayCopyWithImpl<_ChangeAllDay>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            DiaryEntry? diaryEntry, List<IMentionable> mentionableList)
+        initialize,
+    required TResult Function() save,
+    required TResult Function(
+            String text, int baseOffset, int extentOffset, String trigger)
+        onEntryTextChanged,
+    required TResult Function(IMentionable iMentionable) onSelectMention,
+    required TResult Function(Mention mention, int baseOffset, int extentOffset)
+        removeMention,
+    required TResult Function(DateTime dateTime, DatePos datePos) changeDate,
+    required TResult Function(TimeOfDay time, DatePos datePos) changeTime,
+    required TResult Function(bool isAllDay) changeAllDay,
+  }) {
+    return changeAllDay(isAllDay);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            DiaryEntry? diaryEntry, List<IMentionable> mentionableList)?
+        initialize,
+    TResult Function()? save,
+    TResult Function(
+            String text, int baseOffset, int extentOffset, String trigger)?
+        onEntryTextChanged,
+    TResult Function(IMentionable iMentionable)? onSelectMention,
+    TResult Function(Mention mention, int baseOffset, int extentOffset)?
+        removeMention,
+    TResult Function(DateTime dateTime, DatePos datePos)? changeDate,
+    TResult Function(TimeOfDay time, DatePos datePos)? changeTime,
+    TResult Function(bool isAllDay)? changeAllDay,
+    required TResult orElse(),
+  }) {
+    if (changeAllDay != null) {
+      return changeAllDay(isAllDay);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_Save value) save,
+    required TResult Function(_OnEntryTextChanged value) onEntryTextChanged,
+    required TResult Function(_OnSelectMention value) onSelectMention,
+    required TResult Function(_RemoveMention value) removeMention,
+    required TResult Function(_ChangeDate value) changeDate,
+    required TResult Function(_ChangeTime value) changeTime,
+    required TResult Function(_ChangeAllDay value) changeAllDay,
+  }) {
+    return changeAllDay(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_Save value)? save,
+    TResult Function(_OnEntryTextChanged value)? onEntryTextChanged,
+    TResult Function(_OnSelectMention value)? onSelectMention,
+    TResult Function(_RemoveMention value)? removeMention,
+    TResult Function(_ChangeDate value)? changeDate,
+    TResult Function(_ChangeTime value)? changeTime,
+    TResult Function(_ChangeAllDay value)? changeAllDay,
+    required TResult orElse(),
+  }) {
+    if (changeAllDay != null) {
+      return changeAllDay(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangeAllDay implements AddDiaryEntryEvent {
+  const factory _ChangeAllDay(bool isAllDay) = _$_ChangeAllDay;
+
+  bool get isAllDay => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$ChangeAllDayCopyWith<_ChangeAllDay> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

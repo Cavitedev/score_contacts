@@ -17,14 +17,13 @@ class EntryRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return InkWell(
       onTap: () {
         context.read<ContactWatcherBloc>().state.maybeMap(
               loadSuccess: (state) {
                 context.router.push(r.AddDiaryPageRoute(
-                    mentionableList:
-                        state.stateValues.selectionContactList.toContacts()));
+                    mentionableList: state.stateValues.selectionContactList.toContacts(),
+                    diaryEntry: entry));
               },
               orElse: () {},
             );

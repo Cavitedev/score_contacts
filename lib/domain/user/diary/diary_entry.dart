@@ -40,12 +40,34 @@ class DiaryEntry with _$DiaryEntry {
   String date({required DatePos datePos}) =>
       DateFormat.yMMMEd().format(dateTime(datePos: datePos)).toString();
 
-  DiaryEntry copyWithNewDateTime(
-      {required DateTime dateTime, required DatePos datePos}) {
+  DiaryEntry copyWithNewDateTime({required DateTime dateTime, required DatePos datePos}) {
     if (datePos == DatePos.Start) {
       return copyWith(startDateTime: dateTime);
     } else {
       return copyWith(endDateTime: dateTime);
     }
   }
+
+  bool isAllDay() {
+    if (startDateTime.hour == 0 &&
+        endDateTime.hour == 23 &&
+        startDateTime.minute == 0 &&
+        endDateTime.minute == 59) {
+      return true;
+    }
+    return false;
+  }
+
+  bool areDatesValid(){
+    return endDateTime.isAfter(startDateTime);
+  }
+
+}
+
+extension DateTimeX on DateTime {
+  DateTime toAllDayStartDate() => DateTime(year, month, day);
+
+  DateTime toAllDayEndDate() => DateTime(year, month, day, 23, 59);
+
+  DateTime toNotAllDay() => subtract(const Duration(minutes: 1));
 }
