@@ -88,4 +88,39 @@ class DiaryEntryRepository implements IDiaryEntryRepository {
       return const DiaryFailure.unexpected();
     }
   }
+
+  @override
+  Future<Either<DiaryFailure, Unit>> deleteDiaryEntryList(List<DiaryEntry> entryList) {
+    return _performBatch(entryList, _deleteEntriesBatch);
+  }
+
+  Future<Either<DiaryFailure, Unit>> _deleteEntriesBatch(
+      List<DiaryEntry> entryList) async {
+    final batch = firestore.batch();
+    final CollectionReference collection = firestore.userDocument().diaryEntryCollection;
+    for (final DiaryEntry entry in entryList) {
+      batch.delete(collection.doc(entry.id.value));
+    }
+    try {
+      await batch.commit();
+      return right(unit);
+    } catch (e) {
+      return left(_handleException(e));
+    }
+  }
+
+  Future<R> _performBatch<R extends Either, P extends List>(
+      P batchList, Future<R> Function(P) batchOperation) async {
+    const int range = 200;
+
+    while (batchList.length >= range) {
+      final P subList = batchList.sublist(0, range) as P;
+      final either = await batchOperation(subList);
+      batchList.removeRange(0, range);
+      if (either.isLeft()) {
+        return batchOperation(batchList);
+      }
+    }
+    return batchOperation(batchList);
+  }
 }

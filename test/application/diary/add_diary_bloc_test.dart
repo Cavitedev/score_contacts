@@ -416,4 +416,9 @@ class FakeDiaryRepository implements IDiaryEntryRepository {
   Stream<Either<DiaryFailure, List<DiaryEntry>>> watchByMentionableId(UniqueID id) {
     throw UnimplementedError();
   }
+
+  @override
+  Future<Either<DiaryFailure, Unit>> deleteDiaryEntryList(List<DiaryEntry> entry) {
+    throw UnimplementedError();
+  }
 }

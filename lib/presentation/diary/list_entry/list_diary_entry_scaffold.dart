@@ -1,15 +1,15 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:scorecontacts/application/diary/list_diary/list_diary_bloc.dart';
 import 'package:scorecontacts/core/app_localization.dart';
-import 'package:scorecontacts/domain/user/diary/diary_entry.dart';
 import 'package:scorecontacts/presentation/core/widgets/text_field_container.dart';
 import 'package:scorecontacts/presentation/diary/list_entry/widgets/entry_row.dart';
+import 'package:scorecontacts/presentation/diary/list_entry/widgets/selected_entries_row_bar.dart';
 
 class ListDiaryEntryScaffold extends StatelessWidget {
-  
-  final List<DiaryEntry> entryList;
+  final SuccessListDiary successValues;
 
-
-  const ListDiaryEntryScaffold(this.entryList);
+  const ListDiaryEntryScaffold(this.successValues);
 
   @override
   Widget build(BuildContext context) {
@@ -18,21 +18,49 @@ class ListDiaryEntryScaffold extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            if (successValues.hasSelectedEntries())
+              SelectedEntriesRowBar(
+                selectionEntries: successValues.selectionEntryList,
+                areAllSelected: successValues.areAllEntriesSelected(),
+              ),
             TextFieldContainer(
-              child: TextField(
-                decoration: InputDecoration(
-                    hintText: "🔎 ${AppLocalization.of(context).translate(
-                      "search_entries", //TODO add translation
-                    )}",
-                    border: InputBorder.none),
-                onChanged: (str) {
-                  //TODO buscar en diario
-                },
+              child: Row(
+                children: [
+                  Expanded(
+                    child: IconButton(
+                      icon: const Icon(Icons.close),
+                      onPressed: () {
+                        context.router.pop();
+                      },
+                    ),
+                  ),
+                  Expanded(
+                    flex: 8,
+                    child: TextField(
+                      decoration: InputDecoration(
+                          hintText: "🔎 ${AppLocalization.of(context).translate(
+                            "search_entries",
+                          )}",
+                          border: InputBorder.none),
+                      onChanged: (str) {
+                        //TODO buscar en diario
+                      },
+                    ),
+                  ),
+                ],
               ),
             ),
-            
-            ...entryList.map((entry) => EntryRow(entry: entry))
-            
+            Expanded(
+              child: ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: successValues.selectionEntryList.length,
+                  itemBuilder: (context, index) {
+                    return EntryRow(
+                      selectionEntry: successValues.selectionEntryList[index],
+                      selectionEnabled: successValues.hasSelectedEntries(),
+                    );
+                  }),
+            )
           ],
         ),
       ),

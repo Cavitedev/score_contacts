@@ -50,6 +50,7 @@
   "platform_error": "Platform error on device, could not fetch values from system",
   "saving": "Saving",
   "search_contacts": "Search, %s contacts",
+  "search_entries": "Search %s entries",
   "select": "Select",
   "select_all": "Select all",
   "sending_email" : "Sending email to %s",

@@ -30,7 +30,7 @@ class ListDiaryEntryPage extends StatelessWidget {
                 initial: (_) => Container(),
                 loadInProgress: (_) => const CircularProgressIndicatorScaffold(),
                 loadSuccess: (state) {
-                  return ListDiaryEntryScaffold(state.entryList);
+                  return ListDiaryEntryScaffold(state.successValues);
                 },
                 loadFailure: (state) => Scaffold(
                   body: ListyEntryFailure(

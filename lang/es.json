@@ -50,6 +50,7 @@
   "platform_error": "Error en el sistema nativo, no se pudo retornar los valores del sistema",
   "saving": "Guardando",
   "search_contacts": "Buscar, %s contactos",
+    "search_entries": "Buscar, %s entradas",
   "select": "Seleccionar",
   "select_all": "Seleccionar todos",
   "sending_email": "Envíando email a %s",

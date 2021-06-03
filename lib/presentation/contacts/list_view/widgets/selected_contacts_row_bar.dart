@@ -44,15 +44,6 @@ class SelectedContactsRowBar extends StatelessWidget {
         ),
         IconButton(
           icon: const Icon(
-            Icons.share,
-            size: 26,
-          ),
-          onPressed: () {
-            //TODO share
-          },
-        ),
-        IconButton(
-          icon: const Icon(
             Icons.delete,
             size: 26,
           ),

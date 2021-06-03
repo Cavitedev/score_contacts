@@ -16,4 +16,6 @@ abstract class IDiaryEntryRepository{
 
   Future<Either<DiaryFailure, Unit>> deleteDiaryEntry(DiaryEntry entry);
 
+  Future<Either<DiaryFailure, Unit>> deleteDiaryEntryList(List<DiaryEntry> entryList);
+
 }
