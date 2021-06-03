@@ -16,6 +16,7 @@ class ListDiaryEntryScaffold extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             TextFieldContainer(
               child: TextField(

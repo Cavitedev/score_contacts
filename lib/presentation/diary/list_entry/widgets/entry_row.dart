@@ -30,7 +30,8 @@ class EntryRow extends StatelessWidget {
       },
       child: Container(
         height: 100,
-        margin: const EdgeInsets.only(bottom: 8),
+        margin: const EdgeInsets.only(
+            bottom: 8, left: Constants.normalPadding, right: Constants.normalPadding),
         padding: Constants.bigPaddingList,
         decoration: BoxDecoration(
             color: Theme.of(context).backgroundColor,
