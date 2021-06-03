@@ -19,15 +19,13 @@ class ContactList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-        providers: [
-          BlocProvider<ContactWatcherBloc>(
-            create: (context) => getIt<ContactWatcherBloc>()
-              ..add(const ContactWatcherEvent.watchAll()),
-          ),
+    return
           BlocProvider<ContactActorBloc>(
-              create: (context) => getIt<ContactActorBloc>()),
-        ],
+              create: (context) {
+                context.read<ContactWatcherBloc>().add(const ContactWatcherEvent.watchAll());
+                return getIt<ContactActorBloc>();
+              }
+        ,
         child: MultiBlocListener(
           listeners: [
             BlocListener<AuthBloc, AuthState>(

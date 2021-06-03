@@ -20,7 +20,6 @@ class EntryRow extends StatelessWidget {
 
     return InkWell(
       onTap: () {
-        BlocProvider.of<ContactWatcherBloc>(context);
         context.read<ContactWatcherBloc>().state.maybeMap(
               loadSuccess: (state) {
                 context.router.push(r.AddDiaryPageRoute(
