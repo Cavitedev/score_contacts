@@ -94,8 +94,8 @@ class MyApp extends StatelessWidget {
                     fontSize: 30,
                     fontWeight: FontWeight.w500,
                     color: Colors.black),
-                headline3: const TextStyle(fontSize: 26, color: Colors.white),
-                headline4: const TextStyle(fontSize: 24, color: Colors.white),
+                headline3: const TextStyle(fontSize: 24, color: Colors.white),
+                headline4: const TextStyle(fontSize: 20, color: Colors.white),
                 headline5: const TextStyle(fontSize: 16, color: Colors.white),
                 headline6: const TextStyle(
                     fontSize: 14, letterSpacing: .5, color: Colors.white),
