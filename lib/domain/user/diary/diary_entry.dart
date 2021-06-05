@@ -31,6 +31,8 @@ class DiaryEntry with _$DiaryEntry {
         endDateTime: DateTime.now(),
       );
 
+
+
   DateTime dateTime({required DatePos datePos}) =>
       datePos == DatePos.Start ? startDateTime : endDateTime;
 
@@ -60,6 +62,10 @@ class DiaryEntry with _$DiaryEntry {
 
   bool areDatesValid(){
     return endDateTime.isAfter(startDateTime);
+  }
+
+  bool matchPattern(String filterSearch) {
+    return text.toLowerCase().contains(filterSearch.toLowerCase());
   }
 
 }

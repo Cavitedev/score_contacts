@@ -39,8 +39,23 @@ class ListDiaryBloc extends Bloc<ListDiaryEvent, ListDiaryState> {
         yield e.entriesEither.fold(
           (f) => ListDiaryState.loadFailure(f),
           (list) => ListDiaryState.loadSuccess(
-              SuccessListDiary(selectionEntryList: list.toSelectionEntries())),
+              SuccessListDiary(selectionEntryList: list.toSelectionEntries(),
+              filter: const Filter())),
         );
+      },
+      search: (e) async* {
+        yield* state.maybeMap(
+            loadSuccess: (state) async* {
+              final SuccessListDiary values = state.successValues;
+              Filter? filter = values.filter;
+              filter = filter?.copyWith(filterSearch: e.text);
+              final List<SelectionEntry> entryList = values.selectionEntryList;
+              _filterContacts(entryList, filter);
+              yield state.copyWith(
+                  successValues:
+                      values.copyWith(selectionEntryList: entryList, filter: filter));
+            },
+            orElse: () async* {});
       },
       toggleSelection: (e) async* {
         yield* state.maybeMap(
@@ -68,5 +83,19 @@ class ListDiaryBloc extends Bloc<ListDiaryEvent, ListDiaryState> {
             orElse: () async* {});
       },
     );
+  }
+
+  void _filterContacts(List<SelectionEntry> entryList, Filter? filter) {
+
+    if (filter == null || filter.filterSearch == null || filter.filterSearch == "") {
+      for (final SelectionEntry selectionEntry in entryList) {
+        selectionEntry.display = true;
+      }
+      return;
+    }
+    for (final SelectionEntry selectionEntry in entryList) {
+      selectionEntry.display = selectionEntry.entry.matchPattern(filter.filterSearch!);
+    }
+
   }
 }

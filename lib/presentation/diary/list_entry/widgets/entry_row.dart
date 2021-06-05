@@ -79,8 +79,7 @@ class EntryRow extends StatelessWidget {
     }
 
     if (mentionList.last.endPos != entry.text.length) {
-        yield TextSpan(text: entry.text.substring(mentionList.last.endPos));
-
+      yield TextSpan(text: entry.text.substring(mentionList.last.endPos));
     }
   }
 }

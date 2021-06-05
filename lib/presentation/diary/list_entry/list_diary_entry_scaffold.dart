@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/diary/list_diary/list_diary_bloc.dart';
 import 'package:scorecontacts/core/app_localization.dart';
 import 'package:scorecontacts/presentation/core/widgets/text_field_container.dart';
@@ -28,7 +29,7 @@ class ListDiaryEntryScaffold extends StatelessWidget {
                 children: [
                   Expanded(
                     child: IconButton(
-                      icon: const Icon(Icons.close),
+                      icon: const Icon(Icons.arrow_back),
                       onPressed: () {
                         context.router.pop();
                       },
@@ -40,11 +41,12 @@ class ListDiaryEntryScaffold extends StatelessWidget {
                       decoration: InputDecoration(
                           hintText: "🔎 ${AppLocalization.of(context).translate(
                             "search_entries",
+                            args: [successValues.displayedEntries().length.toString()]
                           )}",
                           border: InputBorder.none),
                       onChanged: (str) {
-                        //TODO buscar en diario
-                      },
+                          context.read<ListDiaryBloc>().add(ListDiaryEvent.search(str));
+                        },
                     ),
                   ),
                 ],
@@ -53,10 +55,10 @@ class ListDiaryEntryScaffold extends StatelessWidget {
             Expanded(
               child: ListView.builder(
                   physics: const BouncingScrollPhysics(),
-                  itemCount: successValues.selectionEntryList.length,
+                  itemCount: successValues.displayedEntries().length,
                   itemBuilder: (context, index) {
                     return EntryRow(
-                      selectionEntry: successValues.selectionEntryList[index],
+                      selectionEntry: successValues.displayedEntries()[index],
                       selectionEnabled: successValues.hasSelectedEntries(),
                     );
                   }),
