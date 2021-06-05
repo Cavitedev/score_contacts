@@ -47,8 +47,8 @@ class ListDiaryBloc extends Bloc<ListDiaryEvent, ListDiaryState> {
         yield* state.maybeMap(
             loadSuccess: (state) async* {
               final SuccessListDiary values = state.successValues;
-              Filter? filter = values.filter;
-              filter = filter?.copyWith(filterSearch: e.text);
+              Filter filter = values.filter;
+              filter = filter.copyWith(filterSearch: e.text);
               final List<SelectionEntry> entryList = values.selectionEntryList;
               _filterContacts(entryList, filter);
               yield state.copyWith(

@@ -60,6 +60,7 @@ class ListDiaryEntryScaffold extends StatelessWidget {
                     return EntryRow(
                       selectionEntry: successValues.displayedEntries()[index],
                       selectionEnabled: successValues.hasSelectedEntries(),
+                      filter: successValues.filter,
                     );
                   }),
             )

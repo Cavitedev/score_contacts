@@ -17,7 +17,7 @@ class SuccessListDiary with _$SuccessListDiary {
 
   const factory SuccessListDiary({
     required List<SelectionEntry> selectionEntryList,
-    Filter? filter,
+    required Filter filter,
     @Default(0) int selectedAmount,
 
   }) = _SuccessListDiary;
@@ -27,7 +27,7 @@ class SuccessListDiary with _$SuccessListDiary {
 
 
     List<SelectionEntry> displayedEntries() {
-    if(filter?.filterSearch?.isEmpty ?? false) return selectionEntryList;
+    if(filter.filterSearch?.isEmpty ?? false) return selectionEntryList;
     return selectionEntryList.displayedEntries();
   }
 
