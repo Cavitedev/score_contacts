@@ -4,7 +4,7 @@ import 'package:scorecontacts/application/contacts/contact_actor/contact_actor_b
 import 'package:scorecontacts/domain/user/contacts_data/contacts_loading.dart';
 import 'package:scorecontacts/presentation/core/widgets/overlayed_circular_progess_indicator.dart';
 
-class ActorOverlayProgressIndicator extends StatelessWidget {
+class ContactsActorOverlayProgressIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ContactActorBloc, ContactActorState>(

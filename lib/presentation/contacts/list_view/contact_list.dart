@@ -9,8 +9,8 @@ import 'package:scorecontacts/core/app_localization.dart';
 import 'package:scorecontacts/core/injection/injection.dart';
 import 'package:scorecontacts/domain/call/call_failure.dart';
 import 'package:scorecontacts/domain/user/contacts_data/contacts_failure.dart';
-import 'package:scorecontacts/presentation/contacts/list_view/widgets/actor_overlay_progress_indicator.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/contact_list_scaffold.dart';
+import 'package:scorecontacts/presentation/contacts/list_view/widgets/contacts_actor_overlay_progress_indicator.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/critical_failure_display.dart';
 import 'package:scorecontacts/presentation/core/widgets/circular_progress_indicator_scaffold.dart';
 import 'package:scorecontacts/presentation/routes/router.gr.dart' as r;
@@ -93,7 +93,7 @@ class ContactList extends StatelessWidget {
                           ContactsListScaffold(
                             stateValues: state.stateValues,
                           ),
-                          ActorOverlayProgressIndicator(),
+                          ContactsActorOverlayProgressIndicator(),
                         ],
                       );
                     },
