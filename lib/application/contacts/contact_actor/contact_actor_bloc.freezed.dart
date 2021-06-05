@@ -453,8 +453,8 @@ class _$ContactActorStateTearOff {
     );
   }
 
-  _DeleteFailure contactsFailure(ContactsFailure failure) {
-    return _DeleteFailure(
+  _ContactsFailure contactsFailure(ContactsFailure failure) {
+    return _ContactsFailure(
       failure,
     );
   }
@@ -506,7 +506,7 @@ mixin _$ContactActorState {
     required TResult Function(_ActionInProgress value) actionInProgress,
     required TResult Function(_DeleteSuccessful value) deleteSuccessful,
     required TResult Function(_LoadSuccessful value) loadSuccessful,
-    required TResult Function(_DeleteFailure value) contactsFailure,
+    required TResult Function(_ContactsFailure value) contactsFailure,
     required TResult Function(_CallSuccesful value) callSuccesful,
     required TResult Function(_CallFailure value) callFailure,
   }) =>
@@ -517,7 +517,7 @@ mixin _$ContactActorState {
     TResult Function(_ActionInProgress value)? actionInProgress,
     TResult Function(_DeleteSuccessful value)? deleteSuccessful,
     TResult Function(_LoadSuccessful value)? loadSuccessful,
-    TResult Function(_DeleteFailure value)? contactsFailure,
+    TResult Function(_ContactsFailure value)? contactsFailure,
     TResult Function(_CallSuccesful value)? callSuccesful,
     TResult Function(_CallFailure value)? callFailure,
     required TResult orElse(),
@@ -615,7 +615,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_ActionInProgress value) actionInProgress,
     required TResult Function(_DeleteSuccessful value) deleteSuccessful,
     required TResult Function(_LoadSuccessful value) loadSuccessful,
-    required TResult Function(_DeleteFailure value) contactsFailure,
+    required TResult Function(_ContactsFailure value) contactsFailure,
     required TResult Function(_CallSuccesful value) callSuccesful,
     required TResult Function(_CallFailure value) callFailure,
   }) {
@@ -629,7 +629,7 @@ class _$_Initial implements _Initial {
     TResult Function(_ActionInProgress value)? actionInProgress,
     TResult Function(_DeleteSuccessful value)? deleteSuccessful,
     TResult Function(_LoadSuccessful value)? loadSuccessful,
-    TResult Function(_DeleteFailure value)? contactsFailure,
+    TResult Function(_ContactsFailure value)? contactsFailure,
     TResult Function(_CallSuccesful value)? callSuccesful,
     TResult Function(_CallFailure value)? callFailure,
     required TResult orElse(),
@@ -756,7 +756,7 @@ class _$_ActionInProgress implements _ActionInProgress {
     required TResult Function(_ActionInProgress value) actionInProgress,
     required TResult Function(_DeleteSuccessful value) deleteSuccessful,
     required TResult Function(_LoadSuccessful value) loadSuccessful,
-    required TResult Function(_DeleteFailure value) contactsFailure,
+    required TResult Function(_ContactsFailure value) contactsFailure,
     required TResult Function(_CallSuccesful value) callSuccesful,
     required TResult Function(_CallFailure value) callFailure,
   }) {
@@ -770,7 +770,7 @@ class _$_ActionInProgress implements _ActionInProgress {
     TResult Function(_ActionInProgress value)? actionInProgress,
     TResult Function(_DeleteSuccessful value)? deleteSuccessful,
     TResult Function(_LoadSuccessful value)? loadSuccessful,
-    TResult Function(_DeleteFailure value)? contactsFailure,
+    TResult Function(_ContactsFailure value)? contactsFailure,
     TResult Function(_CallSuccesful value)? callSuccesful,
     TResult Function(_CallFailure value)? callFailure,
     required TResult orElse(),
@@ -895,7 +895,7 @@ class _$_DeleteSuccessful implements _DeleteSuccessful {
     required TResult Function(_ActionInProgress value) actionInProgress,
     required TResult Function(_DeleteSuccessful value) deleteSuccessful,
     required TResult Function(_LoadSuccessful value) loadSuccessful,
-    required TResult Function(_DeleteFailure value) contactsFailure,
+    required TResult Function(_ContactsFailure value) contactsFailure,
     required TResult Function(_CallSuccesful value) callSuccesful,
     required TResult Function(_CallFailure value) callFailure,
   }) {
@@ -909,7 +909,7 @@ class _$_DeleteSuccessful implements _DeleteSuccessful {
     TResult Function(_ActionInProgress value)? actionInProgress,
     TResult Function(_DeleteSuccessful value)? deleteSuccessful,
     TResult Function(_LoadSuccessful value)? loadSuccessful,
-    TResult Function(_DeleteFailure value)? contactsFailure,
+    TResult Function(_ContactsFailure value)? contactsFailure,
     TResult Function(_CallSuccesful value)? callSuccesful,
     TResult Function(_CallFailure value)? callFailure,
     required TResult orElse(),
@@ -1033,7 +1033,7 @@ class _$_LoadSuccessful implements _LoadSuccessful {
     required TResult Function(_ActionInProgress value) actionInProgress,
     required TResult Function(_DeleteSuccessful value) deleteSuccessful,
     required TResult Function(_LoadSuccessful value) loadSuccessful,
-    required TResult Function(_DeleteFailure value) contactsFailure,
+    required TResult Function(_ContactsFailure value) contactsFailure,
     required TResult Function(_CallSuccesful value) callSuccesful,
     required TResult Function(_CallFailure value) callFailure,
   }) {
@@ -1047,7 +1047,7 @@ class _$_LoadSuccessful implements _LoadSuccessful {
     TResult Function(_ActionInProgress value)? actionInProgress,
     TResult Function(_DeleteSuccessful value)? deleteSuccessful,
     TResult Function(_LoadSuccessful value)? loadSuccessful,
-    TResult Function(_DeleteFailure value)? contactsFailure,
+    TResult Function(_ContactsFailure value)? contactsFailure,
     TResult Function(_CallSuccesful value)? callSuccesful,
     TResult Function(_CallFailure value)? callFailure,
     required TResult orElse(),
@@ -1069,31 +1069,31 @@ abstract class _LoadSuccessful implements ContactActorState {
 }
 
 /// @nodoc
-abstract class _$DeleteFailureCopyWith<$Res> {
-  factory _$DeleteFailureCopyWith(
-          _DeleteFailure value, $Res Function(_DeleteFailure) then) =
-      __$DeleteFailureCopyWithImpl<$Res>;
+abstract class _$ContactsFailureCopyWith<$Res> {
+  factory _$ContactsFailureCopyWith(
+          _ContactsFailure value, $Res Function(_ContactsFailure) then) =
+      __$ContactsFailureCopyWithImpl<$Res>;
   $Res call({ContactsFailure failure});
 
   $ContactsFailureCopyWith<$Res> get failure;
 }
 
 /// @nodoc
-class __$DeleteFailureCopyWithImpl<$Res>
+class __$ContactsFailureCopyWithImpl<$Res>
     extends _$ContactActorStateCopyWithImpl<$Res>
-    implements _$DeleteFailureCopyWith<$Res> {
-  __$DeleteFailureCopyWithImpl(
-      _DeleteFailure _value, $Res Function(_DeleteFailure) _then)
-      : super(_value, (v) => _then(v as _DeleteFailure));
+    implements _$ContactsFailureCopyWith<$Res> {
+  __$ContactsFailureCopyWithImpl(
+      _ContactsFailure _value, $Res Function(_ContactsFailure) _then)
+      : super(_value, (v) => _then(v as _ContactsFailure));
 
   @override
-  _DeleteFailure get _value => super._value as _DeleteFailure;
+  _ContactsFailure get _value => super._value as _ContactsFailure;
 
   @override
   $Res call({
     Object? failure = freezed,
   }) {
-    return _then(_DeleteFailure(
+    return _then(_ContactsFailure(
       failure == freezed
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -1111,8 +1111,8 @@ class __$DeleteFailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DeleteFailure implements _DeleteFailure {
-  const _$_DeleteFailure(this.failure);
+class _$_ContactsFailure implements _ContactsFailure {
+  const _$_ContactsFailure(this.failure);
 
   @override
   final ContactsFailure failure;
@@ -1125,7 +1125,7 @@ class _$_DeleteFailure implements _DeleteFailure {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _DeleteFailure &&
+        (other is _ContactsFailure &&
             (identical(other.failure, failure) ||
                 const DeepCollectionEquality().equals(other.failure, failure)));
   }
@@ -1136,8 +1136,8 @@ class _$_DeleteFailure implements _DeleteFailure {
 
   @JsonKey(ignore: true)
   @override
-  _$DeleteFailureCopyWith<_DeleteFailure> get copyWith =>
-      __$DeleteFailureCopyWithImpl<_DeleteFailure>(this, _$identity);
+  _$ContactsFailureCopyWith<_ContactsFailure> get copyWith =>
+      __$ContactsFailureCopyWithImpl<_ContactsFailure>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1178,7 +1178,7 @@ class _$_DeleteFailure implements _DeleteFailure {
     required TResult Function(_ActionInProgress value) actionInProgress,
     required TResult Function(_DeleteSuccessful value) deleteSuccessful,
     required TResult Function(_LoadSuccessful value) loadSuccessful,
-    required TResult Function(_DeleteFailure value) contactsFailure,
+    required TResult Function(_ContactsFailure value) contactsFailure,
     required TResult Function(_CallSuccesful value) callSuccesful,
     required TResult Function(_CallFailure value) callFailure,
   }) {
@@ -1192,7 +1192,7 @@ class _$_DeleteFailure implements _DeleteFailure {
     TResult Function(_ActionInProgress value)? actionInProgress,
     TResult Function(_DeleteSuccessful value)? deleteSuccessful,
     TResult Function(_LoadSuccessful value)? loadSuccessful,
-    TResult Function(_DeleteFailure value)? contactsFailure,
+    TResult Function(_ContactsFailure value)? contactsFailure,
     TResult Function(_CallSuccesful value)? callSuccesful,
     TResult Function(_CallFailure value)? callFailure,
     required TResult orElse(),
@@ -1204,12 +1204,12 @@ class _$_DeleteFailure implements _DeleteFailure {
   }
 }
 
-abstract class _DeleteFailure implements ContactActorState {
-  const factory _DeleteFailure(ContactsFailure failure) = _$_DeleteFailure;
+abstract class _ContactsFailure implements ContactActorState {
+  const factory _ContactsFailure(ContactsFailure failure) = _$_ContactsFailure;
 
   ContactsFailure get failure => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$DeleteFailureCopyWith<_DeleteFailure> get copyWith =>
+  _$ContactsFailureCopyWith<_ContactsFailure> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1314,7 +1314,7 @@ class _$_CallSuccesful implements _CallSuccesful {
     required TResult Function(_ActionInProgress value) actionInProgress,
     required TResult Function(_DeleteSuccessful value) deleteSuccessful,
     required TResult Function(_LoadSuccessful value) loadSuccessful,
-    required TResult Function(_DeleteFailure value) contactsFailure,
+    required TResult Function(_ContactsFailure value) contactsFailure,
     required TResult Function(_CallSuccesful value) callSuccesful,
     required TResult Function(_CallFailure value) callFailure,
   }) {
@@ -1328,7 +1328,7 @@ class _$_CallSuccesful implements _CallSuccesful {
     TResult Function(_ActionInProgress value)? actionInProgress,
     TResult Function(_DeleteSuccessful value)? deleteSuccessful,
     TResult Function(_LoadSuccessful value)? loadSuccessful,
-    TResult Function(_DeleteFailure value)? contactsFailure,
+    TResult Function(_ContactsFailure value)? contactsFailure,
     TResult Function(_CallSuccesful value)? callSuccesful,
     TResult Function(_CallFailure value)? callFailure,
     required TResult orElse(),
@@ -1459,7 +1459,7 @@ class _$_CallFailure implements _CallFailure {
     required TResult Function(_ActionInProgress value) actionInProgress,
     required TResult Function(_DeleteSuccessful value) deleteSuccessful,
     required TResult Function(_LoadSuccessful value) loadSuccessful,
-    required TResult Function(_DeleteFailure value) contactsFailure,
+    required TResult Function(_ContactsFailure value) contactsFailure,
     required TResult Function(_CallSuccesful value) callSuccesful,
     required TResult Function(_CallFailure value) callFailure,
   }) {
@@ -1473,7 +1473,7 @@ class _$_CallFailure implements _CallFailure {
     TResult Function(_ActionInProgress value)? actionInProgress,
     TResult Function(_DeleteSuccessful value)? deleteSuccessful,
     TResult Function(_LoadSuccessful value)? loadSuccessful,
-    TResult Function(_DeleteFailure value)? contactsFailure,
+    TResult Function(_ContactsFailure value)? contactsFailure,
     TResult Function(_CallSuccesful value)? callSuccesful,
     TResult Function(_CallFailure value)? callFailure,
     required TResult orElse(),
