@@ -311,7 +311,7 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
                 OutlineInputBorder(
                     borderRadius: widget.borderRadius,
                     borderSide: BorderSide(
-                        color: Theme.of(context).highlightColor, width: 2)),
+                        color: Theme.of(context).textSelectionTheme.selectionHandleColor!, width: 2)),
             border: OutlineInputBorder(
               borderRadius: widget.borderRadius,
               borderSide: BorderSide.none,

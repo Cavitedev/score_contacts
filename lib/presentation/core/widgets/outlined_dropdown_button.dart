@@ -48,7 +48,7 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
   @override
   void initState() {
     opacityAnimationController = AnimationController(
-        duration: const Duration(milliseconds: 200), vsync: this);
+        duration: const Duration(milliseconds: 150), vsync: this);
     final Tween<double> opacityTween = Tween<double>(begin: 0, end: 1);
     opacityAnimation = opacityTween.animate(opacityAnimationController);
 
@@ -135,9 +135,8 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
           color: Theme.of(context).inputDecorationTheme.fillColor,
           borderRadius: widget.borderRadius,
           border: Border.all(
-            color: Theme.of(context)
-                .highlightColor
-                .withOpacity(opacityAnimation.value),
+            color: Theme.of(context).textSelectionTheme.selectionHandleColor!
+                .withOpacity(opacityAnimation.drive(CurveTween(curve: Curves.easeInCubic)).value),
             width: 2,
           ),
         ),

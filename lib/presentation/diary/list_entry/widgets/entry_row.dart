@@ -48,8 +48,8 @@ class EntryRow extends StatelessWidget {
       },
       child: Container(
         height: 100,
-        margin: const EdgeInsets.only(
-            bottom: 8, left: Constants.normalPadding, right: Constants.normalPadding),
+        margin:
+            const EdgeInsets.symmetric(vertical: 4, horizontal: Constants.normalPadding),
         padding: Constants.bigPaddingList,
         decoration: BoxDecoration(
             color: selectionEntry.isSelected

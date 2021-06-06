@@ -81,7 +81,7 @@ class _MentionTextFieldState extends State<MentionTextField> {
           focusedBorder: OutlineInputBorder(
               borderRadius: Constants.textFieldBorderRadious,
               borderSide: BorderSide(
-                  color: Theme.of(context).highlightColor, width: 2)),
+                  color: Theme.of(context).textSelectionTheme.selectionHandleColor!, width: 2)),
           border: const OutlineInputBorder(
             borderRadius: Constants.textFieldBorderRadious,
             borderSide: BorderSide.none,

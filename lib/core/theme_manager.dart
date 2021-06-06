@@ -38,12 +38,9 @@ ThemeData lightTheme = ThemeData.light().copyWith(
       headline3: const TextStyle(fontSize: 24, color: Colors.white),
       headline4: const TextStyle(fontSize: 20, color: Colors.black),
       headline5: const TextStyle(fontSize: 16, color: Colors.black),
-      headline6:
-          const TextStyle(fontSize: 14, letterSpacing: .5, color: Colors.black),
-      subtitle1:
-          const TextStyle(fontSize: 16, letterSpacing: .5, color: Colors.black),
-      subtitle2:
-          const TextStyle(fontSize: 14, letterSpacing: .5, color: Colors.black),
+      headline6: const TextStyle(fontSize: 14, letterSpacing: .5, color: Colors.black),
+      subtitle1: const TextStyle(fontSize: 16, letterSpacing: .5, color: Colors.black),
+      subtitle2: const TextStyle(fontSize: 14, letterSpacing: .5, color: Colors.black),
       caption: TextStyle(fontSize: 15, color: Colors.grey[700]),
       button: TextStyle(fontSize: 20, color: Colors.blueAccent[400])),
   visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -66,7 +63,7 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
     elevation: 4,
   ),
   dividerColor: const Color.fromRGBO(100, 100, 100, 1),
-  highlightColor: Colors.blueAccent[700],
+  highlightColor: Colors.blueGrey[700],
   focusColor: Colors.grey[600],
   textSelectionTheme: TextSelectionThemeData(
       cursorColor: Colors.blue[700],
@@ -79,17 +76,14 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
   ),
   iconTheme: const IconThemeData(color: Colors.grey, size: 32),
   textTheme: TextTheme(
-      headline2: const TextStyle(
-          fontSize: 30, fontWeight: FontWeight.w500, color: Colors.black),
+      headline2:
+          const TextStyle(fontSize: 30, fontWeight: FontWeight.w500, color: Colors.black),
       headline3: const TextStyle(fontSize: 24, color: Colors.white),
       headline4: const TextStyle(fontSize: 20, color: Colors.white),
       headline5: const TextStyle(fontSize: 16, color: Colors.white),
-      headline6:
-          const TextStyle(fontSize: 14, letterSpacing: .5, color: Colors.white),
-      subtitle1:
-          const TextStyle(fontSize: 16, letterSpacing: .5, color: Colors.white),
-      subtitle2:
-          const TextStyle(fontSize: 14, letterSpacing: .5, color: Colors.white),
+      headline6: const TextStyle(fontSize: 14, letterSpacing: .5, color: Colors.white),
+      subtitle1: const TextStyle(fontSize: 16, letterSpacing: .5, color: Colors.white),
+      subtitle2: const TextStyle(fontSize: 14, letterSpacing: .5, color: Colors.white),
       caption: TextStyle(fontSize: 15, color: Colors.grey[500]),
       button: TextStyle(fontSize: 20, color: Colors.blue[50])),
   visualDensity: VisualDensity.adaptivePlatformDensity,

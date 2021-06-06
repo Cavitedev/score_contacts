@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:injectable/injectable.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    timeDilation = 10;
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -70,7 +72,7 @@ class MyApp extends StatelessWidget {
               elevation: 4,
             ),
             dividerColor: const Color.fromRGBO(100, 100, 100, 1),
-            highlightColor: Colors.blueAccent[700],
+            highlightColor: Colors.blueGrey[700],
             focusColor: Colors.grey[600],
             textSelectionTheme: TextSelectionThemeData(
                 cursorColor: Colors.blue[700],
