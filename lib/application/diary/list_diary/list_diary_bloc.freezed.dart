@@ -29,6 +29,12 @@ class _$ListDiaryEventTearOff {
     );
   }
 
+  _Search search(String text) {
+    return _Search(
+      text,
+    );
+  }
+
   _ToggleSelection toggleSelection(SelectionEntry selectionEntry) {
     return _ToggleSelection(
       selectionEntry,
@@ -55,6 +61,7 @@ mixin _$ListDiaryEvent {
     required TResult Function(
             Either<DiaryFailure, List<DiaryEntry>> entriesEither)
         diaryEntriesReceived,
+    required TResult Function(String text) search,
     required TResult Function(SelectionEntry selectionEntry) toggleSelection,
     required TResult Function() selectAll,
     required TResult Function() deselectAll,
@@ -65,6 +72,7 @@ mixin _$ListDiaryEvent {
     TResult Function(IMentionable? mentionable)? watchAll,
     TResult Function(Either<DiaryFailure, List<DiaryEntry>> entriesEither)?
         diaryEntriesReceived,
+    TResult Function(String text)? search,
     TResult Function(SelectionEntry selectionEntry)? toggleSelection,
     TResult Function()? selectAll,
     TResult Function()? deselectAll,
@@ -75,6 +83,7 @@ mixin _$ListDiaryEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_WatchAll value) watchAll,
     required TResult Function(_DiaryEntriesReceived value) diaryEntriesReceived,
+    required TResult Function(_Search value) search,
     required TResult Function(_ToggleSelection value) toggleSelection,
     required TResult Function(_SelectAll value) selectAll,
     required TResult Function(_DeselectAll value) deselectAll,
@@ -84,6 +93,7 @@ mixin _$ListDiaryEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WatchAll value)? watchAll,
     TResult Function(_DiaryEntriesReceived value)? diaryEntriesReceived,
+    TResult Function(_Search value)? search,
     TResult Function(_ToggleSelection value)? toggleSelection,
     TResult Function(_SelectAll value)? selectAll,
     TResult Function(_DeselectAll value)? deselectAll,
@@ -176,6 +186,7 @@ class _$_WatchAll implements _WatchAll {
     required TResult Function(
             Either<DiaryFailure, List<DiaryEntry>> entriesEither)
         diaryEntriesReceived,
+    required TResult Function(String text) search,
     required TResult Function(SelectionEntry selectionEntry) toggleSelection,
     required TResult Function() selectAll,
     required TResult Function() deselectAll,
@@ -189,6 +200,7 @@ class _$_WatchAll implements _WatchAll {
     TResult Function(IMentionable? mentionable)? watchAll,
     TResult Function(Either<DiaryFailure, List<DiaryEntry>> entriesEither)?
         diaryEntriesReceived,
+    TResult Function(String text)? search,
     TResult Function(SelectionEntry selectionEntry)? toggleSelection,
     TResult Function()? selectAll,
     TResult Function()? deselectAll,
@@ -205,6 +217,7 @@ class _$_WatchAll implements _WatchAll {
   TResult map<TResult extends Object?>({
     required TResult Function(_WatchAll value) watchAll,
     required TResult Function(_DiaryEntriesReceived value) diaryEntriesReceived,
+    required TResult Function(_Search value) search,
     required TResult Function(_ToggleSelection value) toggleSelection,
     required TResult Function(_SelectAll value) selectAll,
     required TResult Function(_DeselectAll value) deselectAll,
@@ -217,6 +230,7 @@ class _$_WatchAll implements _WatchAll {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WatchAll value)? watchAll,
     TResult Function(_DiaryEntriesReceived value)? diaryEntriesReceived,
+    TResult Function(_Search value)? search,
     TResult Function(_ToggleSelection value)? toggleSelection,
     TResult Function(_SelectAll value)? selectAll,
     TResult Function(_DeselectAll value)? deselectAll,
@@ -309,6 +323,7 @@ class _$_DiaryEntriesReceived implements _DiaryEntriesReceived {
     required TResult Function(
             Either<DiaryFailure, List<DiaryEntry>> entriesEither)
         diaryEntriesReceived,
+    required TResult Function(String text) search,
     required TResult Function(SelectionEntry selectionEntry) toggleSelection,
     required TResult Function() selectAll,
     required TResult Function() deselectAll,
@@ -322,6 +337,7 @@ class _$_DiaryEntriesReceived implements _DiaryEntriesReceived {
     TResult Function(IMentionable? mentionable)? watchAll,
     TResult Function(Either<DiaryFailure, List<DiaryEntry>> entriesEither)?
         diaryEntriesReceived,
+    TResult Function(String text)? search,
     TResult Function(SelectionEntry selectionEntry)? toggleSelection,
     TResult Function()? selectAll,
     TResult Function()? deselectAll,
@@ -338,6 +354,7 @@ class _$_DiaryEntriesReceived implements _DiaryEntriesReceived {
   TResult map<TResult extends Object?>({
     required TResult Function(_WatchAll value) watchAll,
     required TResult Function(_DiaryEntriesReceived value) diaryEntriesReceived,
+    required TResult Function(_Search value) search,
     required TResult Function(_ToggleSelection value) toggleSelection,
     required TResult Function(_SelectAll value) selectAll,
     required TResult Function(_DeselectAll value) deselectAll,
@@ -350,6 +367,7 @@ class _$_DiaryEntriesReceived implements _DiaryEntriesReceived {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WatchAll value)? watchAll,
     TResult Function(_DiaryEntriesReceived value)? diaryEntriesReceived,
+    TResult Function(_Search value)? search,
     TResult Function(_ToggleSelection value)? toggleSelection,
     TResult Function(_SelectAll value)? selectAll,
     TResult Function(_DeselectAll value)? deselectAll,
@@ -372,6 +390,137 @@ abstract class _DiaryEntriesReceived implements ListDiaryEvent {
   @JsonKey(ignore: true)
   _$DiaryEntriesReceivedCopyWith<_DiaryEntriesReceived> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$SearchCopyWith<$Res> {
+  factory _$SearchCopyWith(_Search value, $Res Function(_Search) then) =
+      __$SearchCopyWithImpl<$Res>;
+  $Res call({String text});
+}
+
+/// @nodoc
+class __$SearchCopyWithImpl<$Res> extends _$ListDiaryEventCopyWithImpl<$Res>
+    implements _$SearchCopyWith<$Res> {
+  __$SearchCopyWithImpl(_Search _value, $Res Function(_Search) _then)
+      : super(_value, (v) => _then(v as _Search));
+
+  @override
+  _Search get _value => super._value as _Search;
+
+  @override
+  $Res call({
+    Object? text = freezed,
+  }) {
+    return _then(_Search(
+      text == freezed
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_Search implements _Search {
+  const _$_Search(this.text);
+
+  @override
+  final String text;
+
+  @override
+  String toString() {
+    return 'ListDiaryEvent.search(text: $text)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _Search &&
+            (identical(other.text, text) ||
+                const DeepCollectionEquality().equals(other.text, text)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(text);
+
+  @JsonKey(ignore: true)
+  @override
+  _$SearchCopyWith<_Search> get copyWith =>
+      __$SearchCopyWithImpl<_Search>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(IMentionable? mentionable) watchAll,
+    required TResult Function(
+            Either<DiaryFailure, List<DiaryEntry>> entriesEither)
+        diaryEntriesReceived,
+    required TResult Function(String text) search,
+    required TResult Function(SelectionEntry selectionEntry) toggleSelection,
+    required TResult Function() selectAll,
+    required TResult Function() deselectAll,
+  }) {
+    return search(text);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(IMentionable? mentionable)? watchAll,
+    TResult Function(Either<DiaryFailure, List<DiaryEntry>> entriesEither)?
+        diaryEntriesReceived,
+    TResult Function(String text)? search,
+    TResult Function(SelectionEntry selectionEntry)? toggleSelection,
+    TResult Function()? selectAll,
+    TResult Function()? deselectAll,
+    required TResult orElse(),
+  }) {
+    if (search != null) {
+      return search(text);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_WatchAll value) watchAll,
+    required TResult Function(_DiaryEntriesReceived value) diaryEntriesReceived,
+    required TResult Function(_Search value) search,
+    required TResult Function(_ToggleSelection value) toggleSelection,
+    required TResult Function(_SelectAll value) selectAll,
+    required TResult Function(_DeselectAll value) deselectAll,
+  }) {
+    return search(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_WatchAll value)? watchAll,
+    TResult Function(_DiaryEntriesReceived value)? diaryEntriesReceived,
+    TResult Function(_Search value)? search,
+    TResult Function(_ToggleSelection value)? toggleSelection,
+    TResult Function(_SelectAll value)? selectAll,
+    TResult Function(_DeselectAll value)? deselectAll,
+    required TResult orElse(),
+  }) {
+    if (search != null) {
+      return search(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Search implements ListDiaryEvent {
+  const factory _Search(String text) = _$_Search;
+
+  String get text => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$SearchCopyWith<_Search> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -445,6 +594,7 @@ class _$_ToggleSelection implements _ToggleSelection {
     required TResult Function(
             Either<DiaryFailure, List<DiaryEntry>> entriesEither)
         diaryEntriesReceived,
+    required TResult Function(String text) search,
     required TResult Function(SelectionEntry selectionEntry) toggleSelection,
     required TResult Function() selectAll,
     required TResult Function() deselectAll,
@@ -458,6 +608,7 @@ class _$_ToggleSelection implements _ToggleSelection {
     TResult Function(IMentionable? mentionable)? watchAll,
     TResult Function(Either<DiaryFailure, List<DiaryEntry>> entriesEither)?
         diaryEntriesReceived,
+    TResult Function(String text)? search,
     TResult Function(SelectionEntry selectionEntry)? toggleSelection,
     TResult Function()? selectAll,
     TResult Function()? deselectAll,
@@ -474,6 +625,7 @@ class _$_ToggleSelection implements _ToggleSelection {
   TResult map<TResult extends Object?>({
     required TResult Function(_WatchAll value) watchAll,
     required TResult Function(_DiaryEntriesReceived value) diaryEntriesReceived,
+    required TResult Function(_Search value) search,
     required TResult Function(_ToggleSelection value) toggleSelection,
     required TResult Function(_SelectAll value) selectAll,
     required TResult Function(_DeselectAll value) deselectAll,
@@ -486,6 +638,7 @@ class _$_ToggleSelection implements _ToggleSelection {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WatchAll value)? watchAll,
     TResult Function(_DiaryEntriesReceived value)? diaryEntriesReceived,
+    TResult Function(_Search value)? search,
     TResult Function(_ToggleSelection value)? toggleSelection,
     TResult Function(_SelectAll value)? selectAll,
     TResult Function(_DeselectAll value)? deselectAll,
@@ -550,6 +703,7 @@ class _$_SelectAll implements _SelectAll {
     required TResult Function(
             Either<DiaryFailure, List<DiaryEntry>> entriesEither)
         diaryEntriesReceived,
+    required TResult Function(String text) search,
     required TResult Function(SelectionEntry selectionEntry) toggleSelection,
     required TResult Function() selectAll,
     required TResult Function() deselectAll,
@@ -563,6 +717,7 @@ class _$_SelectAll implements _SelectAll {
     TResult Function(IMentionable? mentionable)? watchAll,
     TResult Function(Either<DiaryFailure, List<DiaryEntry>> entriesEither)?
         diaryEntriesReceived,
+    TResult Function(String text)? search,
     TResult Function(SelectionEntry selectionEntry)? toggleSelection,
     TResult Function()? selectAll,
     TResult Function()? deselectAll,
@@ -579,6 +734,7 @@ class _$_SelectAll implements _SelectAll {
   TResult map<TResult extends Object?>({
     required TResult Function(_WatchAll value) watchAll,
     required TResult Function(_DiaryEntriesReceived value) diaryEntriesReceived,
+    required TResult Function(_Search value) search,
     required TResult Function(_ToggleSelection value) toggleSelection,
     required TResult Function(_SelectAll value) selectAll,
     required TResult Function(_DeselectAll value) deselectAll,
@@ -591,6 +747,7 @@ class _$_SelectAll implements _SelectAll {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WatchAll value)? watchAll,
     TResult Function(_DiaryEntriesReceived value)? diaryEntriesReceived,
+    TResult Function(_Search value)? search,
     TResult Function(_ToggleSelection value)? toggleSelection,
     TResult Function(_SelectAll value)? selectAll,
     TResult Function(_DeselectAll value)? deselectAll,
@@ -651,6 +808,7 @@ class _$_DeselectAll implements _DeselectAll {
     required TResult Function(
             Either<DiaryFailure, List<DiaryEntry>> entriesEither)
         diaryEntriesReceived,
+    required TResult Function(String text) search,
     required TResult Function(SelectionEntry selectionEntry) toggleSelection,
     required TResult Function() selectAll,
     required TResult Function() deselectAll,
@@ -664,6 +822,7 @@ class _$_DeselectAll implements _DeselectAll {
     TResult Function(IMentionable? mentionable)? watchAll,
     TResult Function(Either<DiaryFailure, List<DiaryEntry>> entriesEither)?
         diaryEntriesReceived,
+    TResult Function(String text)? search,
     TResult Function(SelectionEntry selectionEntry)? toggleSelection,
     TResult Function()? selectAll,
     TResult Function()? deselectAll,
@@ -680,6 +839,7 @@ class _$_DeselectAll implements _DeselectAll {
   TResult map<TResult extends Object?>({
     required TResult Function(_WatchAll value) watchAll,
     required TResult Function(_DiaryEntriesReceived value) diaryEntriesReceived,
+    required TResult Function(_Search value) search,
     required TResult Function(_ToggleSelection value) toggleSelection,
     required TResult Function(_SelectAll value) selectAll,
     required TResult Function(_DeselectAll value) deselectAll,
@@ -692,6 +852,7 @@ class _$_DeselectAll implements _DeselectAll {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WatchAll value)? watchAll,
     TResult Function(_DiaryEntriesReceived value)? diaryEntriesReceived,
+    TResult Function(_Search value)? search,
     TResult Function(_ToggleSelection value)? toggleSelection,
     TResult Function(_SelectAll value)? selectAll,
     TResult Function(_DeselectAll value)? deselectAll,
@@ -1249,7 +1410,7 @@ class _$SuccessListDiaryTearOff {
 
   _SuccessListDiary call(
       {required List<SelectionEntry> selectionEntryList,
-      Filter? filter,
+      required Filter filter,
       int selectedAmount = 0}) {
     return _SuccessListDiary(
       selectionEntryList: selectionEntryList,
@@ -1266,7 +1427,7 @@ const $SuccessListDiary = _$SuccessListDiaryTearOff();
 mixin _$SuccessListDiary {
   List<SelectionEntry> get selectionEntryList =>
       throw _privateConstructorUsedError;
-  Filter? get filter => throw _privateConstructorUsedError;
+  Filter get filter => throw _privateConstructorUsedError;
   int get selectedAmount => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -1281,10 +1442,10 @@ abstract class $SuccessListDiaryCopyWith<$Res> {
       _$SuccessListDiaryCopyWithImpl<$Res>;
   $Res call(
       {List<SelectionEntry> selectionEntryList,
-      Filter? filter,
+      Filter filter,
       int selectedAmount});
 
-  $FilterCopyWith<$Res>? get filter;
+  $FilterCopyWith<$Res> get filter;
 }
 
 /// @nodoc
@@ -1310,7 +1471,7 @@ class _$SuccessListDiaryCopyWithImpl<$Res>
       filter: filter == freezed
           ? _value.filter
           : filter // ignore: cast_nullable_to_non_nullable
-              as Filter?,
+              as Filter,
       selectedAmount: selectedAmount == freezed
           ? _value.selectedAmount
           : selectedAmount // ignore: cast_nullable_to_non_nullable
@@ -1319,12 +1480,8 @@ class _$SuccessListDiaryCopyWithImpl<$Res>
   }
 
   @override
-  $FilterCopyWith<$Res>? get filter {
-    if (_value.filter == null) {
-      return null;
-    }
-
-    return $FilterCopyWith<$Res>(_value.filter!, (value) {
+  $FilterCopyWith<$Res> get filter {
+    return $FilterCopyWith<$Res>(_value.filter, (value) {
       return _then(_value.copyWith(filter: value));
     });
   }
@@ -1339,11 +1496,11 @@ abstract class _$SuccessListDiaryCopyWith<$Res>
   @override
   $Res call(
       {List<SelectionEntry> selectionEntryList,
-      Filter? filter,
+      Filter filter,
       int selectedAmount});
 
   @override
-  $FilterCopyWith<$Res>? get filter;
+  $FilterCopyWith<$Res> get filter;
 }
 
 /// @nodoc
@@ -1371,7 +1528,7 @@ class __$SuccessListDiaryCopyWithImpl<$Res>
       filter: filter == freezed
           ? _value.filter
           : filter // ignore: cast_nullable_to_non_nullable
-              as Filter?,
+              as Filter,
       selectedAmount: selectedAmount == freezed
           ? _value.selectedAmount
           : selectedAmount // ignore: cast_nullable_to_non_nullable
@@ -1384,13 +1541,15 @@ class __$SuccessListDiaryCopyWithImpl<$Res>
 
 class _$_SuccessListDiary extends _SuccessListDiary {
   const _$_SuccessListDiary(
-      {required this.selectionEntryList, this.filter, this.selectedAmount = 0})
+      {required this.selectionEntryList,
+      required this.filter,
+      this.selectedAmount = 0})
       : super._();
 
   @override
   final List<SelectionEntry> selectionEntryList;
   @override
-  final Filter? filter;
+  final Filter filter;
   @JsonKey(defaultValue: 0)
   @override
   final int selectedAmount;
@@ -1430,7 +1589,7 @@ class _$_SuccessListDiary extends _SuccessListDiary {
 abstract class _SuccessListDiary extends SuccessListDiary {
   const factory _SuccessListDiary(
       {required List<SelectionEntry> selectionEntryList,
-      Filter? filter,
+      required Filter filter,
       int selectedAmount}) = _$_SuccessListDiary;
   const _SuccessListDiary._() : super._();
 
@@ -1438,7 +1597,7 @@ abstract class _SuccessListDiary extends SuccessListDiary {
   List<SelectionEntry> get selectionEntryList =>
       throw _privateConstructorUsedError;
   @override
-  Filter? get filter => throw _privateConstructorUsedError;
+  Filter get filter => throw _privateConstructorUsedError;
   @override
   int get selectedAmount => throw _privateConstructorUsedError;
   @override

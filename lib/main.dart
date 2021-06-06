@@ -106,7 +106,6 @@ class MyApp extends StatelessWidget {
                     fontSize: 14, letterSpacing: .5, color: Colors.white),
                 caption: TextStyle(fontSize: 15, color: Colors.grey[500]),
                 button: TextStyle(fontSize: 20, color: Colors.blue[50]),
-              headline1: TextStyle(fontSize: 30)
 
             ),
             visualDensity: VisualDensity.adaptivePlatformDensity,
