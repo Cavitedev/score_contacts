@@ -32,7 +32,10 @@ class SelectedEntriesRowBar extends StatelessWidget {
         ),
         Expanded(
           child: Text(
-            "Selected $amount ${amount != 1 ? "entries" : "entry"}",
+            AppLocalization.of(context).translate(
+              "select_entries_${amount != 1 ? "plural" : "single"}",
+              args: [amount.toString()],
+            ),
             overflow: TextOverflow.ellipsis,
             style: Theme.of(context).textTheme.subtitle1,
           ),
@@ -47,8 +50,10 @@ class SelectedEntriesRowBar extends StatelessWidget {
             showDialog(
                 context: context,
                 builder: (context) => AlertDialogueCancelOK(
-                      title:
-                          'Do you want to delete $amount ${amount != 1 ? "entries" : "entry"}',
+                      title: AppLocalization.of(context).translate(
+                        "confirm_deletion_entries_${amount != 1 ? "plural" : "single"}",
+                        args: [amount.toString()],
+                      ),
                       onSubmit: () {
                         actorBloc.add(ListDiaryActorEvent.delete(
                             entryList:

@@ -78,7 +78,7 @@ class ContactPopUp {
             context: context,
             builder: (context) => AlertDialogueCancelOK(
                   title: AppLocalization.of(context).translate(
-                      "confirm_delection",
+                      "confirm_deletion",
                       args: [selectionContact.contact.getName()]),
                   onSubmit: () {
                     actorBloc.add(ContactActorEvent.delete(

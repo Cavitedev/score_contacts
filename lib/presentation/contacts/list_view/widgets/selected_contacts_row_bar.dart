@@ -34,12 +34,12 @@ class SelectedContactsRowBar extends StatelessWidget {
         ),
         Expanded(
           child: Text(
-            "Selected $contactsAmount ${contactsAmount != 1 ? "contacts" : "contact"}",
+            AppLocalization.of(context).translate(
+              "select_contacts_${contactsAmount != 1 ? "plural" : "single"}",
+              args: [contactsAmount.toString()],
+            ),
             overflow: TextOverflow.ellipsis,
-            style: Theme
-                .of(context)
-                .textTheme
-                .subtitle1,
+            style: Theme.of(context).textTheme.subtitle1,
           ),
         ),
         IconButton(
@@ -52,38 +52,38 @@ class SelectedContactsRowBar extends StatelessWidget {
             showDialog(
                 context: context,
                 builder: (context) => AlertDialogueCancelOK(
-                  title:
-                  'Do you want to delete $contactsAmount ${contactsAmount != 1 ? "contacts" : "contact"}',
-                  onSubmit: () {
-                    actorBloc.add(ContactActorEvent.delete(
-                        contactList:
-                        selectionContacts.selectedContacts().toContacts()));
-                  },
-                ));
-
-
-
+                      title: AppLocalization.of(context).translate(
+                        "confirm_deletion_contacts_${contactsAmount != 1 ? "plural" : "single"}",
+                        args: [contactsAmount.toString()],
+                      ),
+                      onSubmit: () {
+                        actorBloc.add(ContactActorEvent.delete(
+                            contactList:
+                                selectionContacts.selectedContacts().toContacts()));
+                      },
+                    ));
           },
         ),
-        if(!areAllContactsSelected)
-        PopupMenuButton(
-          onSelected: (selected) {
-            if (selected == "Select_all") {
-              context.read<ContactWatcherBloc>().add(
-                  const ContactWatcherEvent.selectAllContacts());
-            }
-          },
-          itemBuilder: (context) {
-            return [
-              PopupMenuItem(
-                value: "Select_all",
-                child: Text(
-                  AppLocalization.of(context).translate("select_all"),
-                ),
-              )
-            ];
-          },
-        ),
+        if (!areAllContactsSelected)
+          PopupMenuButton(
+            onSelected: (selected) {
+              if (selected == "Select_all") {
+                context
+                    .read<ContactWatcherBloc>()
+                    .add(const ContactWatcherEvent.selectAllContacts());
+              }
+            },
+            itemBuilder: (context) {
+              return [
+                PopupMenuItem(
+                  value: "Select_all",
+                  child: Text(
+                    AppLocalization.of(context).translate("select_all"),
+                  ),
+                )
+              ];
+            },
+          ),
       ],
     );
   }
