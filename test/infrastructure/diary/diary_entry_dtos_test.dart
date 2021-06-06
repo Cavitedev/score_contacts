@@ -76,11 +76,13 @@ void main() {
     );
 
     final dto = DiaryEntryDto(
-        id: "testDiary",
-        text: "< @te >",
-        startDate: DateTime.fromMillisecondsSinceEpoch(1000000),
-        endDate: DateTime.fromMillisecondsSinceEpoch(1000000),
-        mentionList: [mentionDto, mentionDto]);
+      id: "testDiary",
+      text: "< @te >",
+      startDate: DateTime.fromMillisecondsSinceEpoch(1000000),
+      endDate: DateTime.fromMillisecondsSinceEpoch(1000000),
+      mentionList: [mentionDto, mentionDto],
+      mentionIds: [mentionDto.id, mentionDto.id],
+    );
 
     test('from domain', () {
       final actualDto = DiaryEntryDto.fromDomain(domain);
@@ -102,11 +104,10 @@ void main() {
 
     final Map<String, dynamic> json = {
       "text": "< @te >",
-      "startDate":
-          Timestamp.fromDate(DateTime.fromMillisecondsSinceEpoch(1000000)),
-      "endDate":
-          Timestamp.fromDate(DateTime.fromMillisecondsSinceEpoch(1000000)),
-      "mentions": [mentionJson, mentionJson]
+      "startDate": Timestamp.fromDate(DateTime.fromMillisecondsSinceEpoch(1000000)),
+      "endDate": Timestamp.fromDate(DateTime.fromMillisecondsSinceEpoch(1000000)),
+      "mentions": [mentionJson, mentionJson],
+      "mentionIds": [mentionDto.id, mentionDto.id]
     };
 
     test('to json', () {

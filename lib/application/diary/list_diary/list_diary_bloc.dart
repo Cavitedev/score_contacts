@@ -29,18 +29,20 @@ class ListDiaryBloc extends Bloc<ListDiaryEvent, ListDiaryState> {
     yield* event.map(
       watchAll: (e) async* {
         yield const ListDiaryState.loadInProgress();
-
         _entriesSubscription?.cancel();
-        _entriesSubscription = repository.watchAll().listen((entryEither) {
+
+        _entriesSubscription = (e.mentionable == null
+                ? repository.watchAll()
+                : repository.watchByMentionableId(e.mentionable!.id))
+            .listen((entryEither) {
           add(ListDiaryEvent.diaryEntriesReceived(entryEither));
         });
       },
       diaryEntriesReceived: (e) async* {
         yield e.entriesEither.fold(
           (f) => ListDiaryState.loadFailure(f),
-          (list) => ListDiaryState.loadSuccess(
-              SuccessListDiary(selectionEntryList: list.toSelectionEntries(),
-              filter: const Filter())),
+          (list) => ListDiaryState.loadSuccess(SuccessListDiary(
+              selectionEntryList: list.toSelectionEntries(), filter: const Filter())),
         );
       },
       search: (e) async* {
@@ -86,7 +88,6 @@ class ListDiaryBloc extends Bloc<ListDiaryEvent, ListDiaryState> {
   }
 
   void _filterContacts(List<SelectionEntry> entryList, Filter? filter) {
-
     if (filter == null || filter.filterSearch == null || filter.filterSearch == "") {
       for (final SelectionEntry selectionEntry in entryList) {
         selectionEntry.display = true;
@@ -96,6 +97,5 @@ class ListDiaryBloc extends Bloc<ListDiaryEvent, ListDiaryState> {
     for (final SelectionEntry selectionEntry in entryList) {
       selectionEntry.display = selectionEntry.entry.matchPattern(filter.filterSearch!);
     }
-
   }
 }

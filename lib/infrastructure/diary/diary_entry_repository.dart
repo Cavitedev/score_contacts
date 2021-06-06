@@ -47,7 +47,7 @@ class DiaryEntryRepository implements IDiaryEntryRepository {
       UniqueID id) async* {
     final collection = firestore.userDocument().diaryEntryCollection;
     yield* collection
-        .where("mentions.id", isEqualTo: id.value)
+    .where(DiaryEntryDto.mentionIdsName, arrayContains: id.value)
         .snapshots()
         .map((snapshot) => right<DiaryFailure, List<DiaryEntry>>(snapshot.docs
             .map((doc) => DiaryEntryDto.fromfirestore(doc).toDomain())

@@ -14,12 +14,15 @@ part 'diary_entry_dtos.g.dart';
 class DiaryEntryDto with _$DiaryEntryDto {
   const DiaryEntryDto._();
 
+  static const String mentionIdsName = "mentionIds";
+
   const factory DiaryEntryDto({
     @JsonKey(ignore: true) String? id,
     @JsonKey(name: "text") required String text,
     @DateTimeTimeStampConverter() required DateTime startDate,
     @DateTimeTimeStampConverter() required DateTime endDate,
     @JsonKey(name: "mentions") required List<MentionDto> mentionList,
+    @JsonKey(name: DiaryEntryDto.mentionIdsName) required List<String> mentionIds,
   }) = _DiaryEntryDto;
 
   factory DiaryEntryDto.fromDomain(DiaryEntry domain) {
@@ -29,7 +32,8 @@ class DiaryEntryDto with _$DiaryEntryDto {
       startDate: domain.dateTime(datePos: DatePos.Start),
       endDate: domain.dateTime(datePos: DatePos.End),
       mentionList:
-          domain.mentionList.map((mention) => MentionDto.fromDomain(mention)).toList(),
+      domain.mentionList.map((mention) => MentionDto.fromDomain(mention)).toList(),
+      mentionIds:domain.mentionList.map((mention) => mention.iMentionable.id.value).toList(),
     );
   }
 
@@ -76,7 +80,7 @@ class MentionDto with _$MentionDto {
       endPos: endPos,
       iMentionable: mentionable?.toDomain(id: id) ??
           Mentionable(
-            text.substring(startPos + 1 ,endPos),
+            text.substring(startPos + 1, endPos),
             uniqueID: UniqueID.fromUniqueString(id),
           ),
     );
