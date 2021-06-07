@@ -16,6 +16,8 @@ _$_DiaryEntryDto _$_$_DiaryEntryDtoFromJson(Map json) {
     mentionList: (json['mentions'] as List<dynamic>)
         .map((e) => MentionDto.fromJson(Map<String, dynamic>.from(e as Map)))
         .toList(),
+    mentionIds:
+        (json['mentionIds'] as List<dynamic>).map((e) => e as String).toList(),
   );
 }
 
@@ -35,6 +37,7 @@ Map<String, dynamic> _$_$_DiaryEntryDtoToJson(_$_DiaryEntryDto instance) {
   writeNotNull(
       'endDate', const DateTimeTimeStampConverter().toJson(instance.endDate));
   val['mentions'] = instance.mentionList.map((e) => e.toJson()).toList();
+  val['mentionIds'] = instance.mentionIds;
   return val;
 }
 

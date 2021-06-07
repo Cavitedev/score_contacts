@@ -85,24 +85,26 @@
           }
         ],
         "diaryEntries": [
-        {
-        "2454f6a0-c439-11eb-bab5-6914cd2ecb": {
-        "startDate": "June 1, 2021 at 12:00:00 AM UTC+2",
-        "endDate": "June 3, 2021 at 11:58:00 PM UTC+2",
-        "text": "Estuve con @Nombre1 Apellido1 y @Nombre2 Apellido2",
-        "mentions": [{
-        "startPos": "10",
-        "endPos": "28",
-        "id": "9def5440-bf18-11eb-bada-c75ea5d0aa04"
-        },
-        {
-        "startPos": "31",
-        "endPos": "49",
-        "id": "19da6f10-bd6e-11eb-a6b4-6b670d301d3"
-        }
-        ]
+          {
+            "2454f6a0-c439-11eb-bab5-6914cd2ecb": {
+              "startDate": "June 1, 2021 at 12:00:00 AM UTC+2",
+              "endDate": "June 3, 2021 at 11:58:00 PM UTC+2",
+              "text": "Estuve con @Nombre1 Apellido1 y @Nombre2 Apellido2",
+              "mentions": [
+                {
+                  "startPos": "10",
+                  "endPos": "28",
+                  "id": "9def5440-bf18-11eb-bada-c75ea5d0aa04"
+                },
+                {
+                  "startPos": "31",
+                  "endPos": "49",
+                  "id": "19da6f10-bd6e-11eb-a6b4-6b670d301d3"
+                }
+              ],
+              "mentionIds": ["9def5440-bf18-11eb-bada-c75ea5d0aa04","19da6f10-bd6e-11eb-a6b4-6b670d301d3"]
             }
-            }
+          }
         ]
       },
       "3974b28c-a4ef-11eb-bcbc-0242ac130002": {
