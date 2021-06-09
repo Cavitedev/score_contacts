@@ -145,7 +145,7 @@ class EntryRow extends StatelessWidget {
 
     if (matchesInSpan.last.end != endPos) {
       yield TextSpan(
-          text: completeText.substring(matchesInSpan.last.end), style: textStyle);
+          text: completeText.substring(currentPos, endPos), style: textStyle);
     }
   }
 }
