@@ -9,28 +9,32 @@ class SelectMentionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AddDiaryEntryBloc, AddDiaryEntryState>(
-      buildWhen: (p,n) => p.entryField.selectingMention != n.entryField.selectingMention,
+      buildWhen: (p, n) => p.entryField.selectingMention != n.entryField.selectingMention,
       builder: (context, state) {
         if (state.entryField.selectingMention == null) {
           return const SizedBox();
         }
-        return Column(
-          children: state.entryField.selectingMention!.candidates
-              .map((candidate) => ListTile(
-                    title: Text(candidate.getName()),
-                    tileColor: Colors.grey[600],
-                    leading: CustomCircleAvatar(
-                      name: candidate.getName(),
-                      image: candidate.imageLink,
-                      child: const Icon(Icons.person),
-                    ),
-                    onTap: () {
-                      context.read<AddDiaryEntryBloc>().add(
-                          AddDiaryEntryEvent.onSelectMention(
-                              iMentionable: candidate));
-                    },
-                  ))
-              .toList(),
+        return SingleChildScrollView(
+          child: Column(
+            children: state.entryField.selectingMention!.candidates
+                .map((candidate) => Material(
+                      child: ListTile(
+                        title: Text(candidate.getName()),
+                        tileColor: Colors.grey[600],
+                        leading: CustomCircleAvatar(
+                          name: candidate.getName(),
+                          image: candidate.imageLink,
+                          child: const Icon(Icons.person),
+                        ),
+                        onTap: () {
+                          context.read<AddDiaryEntryBloc>().add(
+                              AddDiaryEntryEvent.onSelectMention(
+                                  iMentionable: candidate));
+                        },
+                      ),
+                    ))
+                .toList(),
+          ),
         );
       },
     );
