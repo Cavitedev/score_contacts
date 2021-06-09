@@ -27,7 +27,7 @@ class DiaryEntry with _$DiaryEntry {
         id: UniqueID(),
         text: "",
         mentionList: [],
-        startDateTime: DateTime.now(),
+        startDateTime: DateTime.now().subtract(const Duration(minutes: 1)),
         endDateTime: DateTime.now(),
       );
 
