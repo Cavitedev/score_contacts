@@ -29,6 +29,18 @@ class ContactListDrawer extends StatelessWidget {
           ListTile(
             title: Text(
               AppLocalization.of(context)
+                  .translate("entries"),
+              style: Theme.of(context).textTheme.subtitle2,
+            ),
+            leading: const Icon(Icons.note_alt),
+            onTap: () {
+              Navigator.pop(context);
+              context.router.push(r.ListDiaryEntryPageRoute());
+            },
+          ),
+          ListTile(
+            title: Text(
+              AppLocalization.of(context)
                   .translate("load_contacts_from_device"),
               style: Theme.of(context).textTheme.subtitle2,
             ),
