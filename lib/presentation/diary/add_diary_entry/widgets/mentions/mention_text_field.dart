@@ -70,7 +70,7 @@ class _MentionTextFieldState extends State<MentionTextField> {
                 baseOffset: controller.selection.baseOffset,
                 extentOffset: controller.selection.extentOffset,
               ));
-        },
+          },
         minLines: 5,
         maxLines: null,
         scrollPhysics: const BouncingScrollPhysics(),
