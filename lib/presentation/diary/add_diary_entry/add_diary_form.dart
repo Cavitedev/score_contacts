@@ -9,27 +9,16 @@ class AddDiaryForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-        child: Stack(
-      fit: StackFit.expand,
-      children: [
-        ListView(
-          children: const [
-            SizedBox(height: 12),
-            Padding(
-              padding: Constants.horizontalNormalPadding,
-              child: MentionTextField(),
-            ),
-            DiaryDateTimePicker()
-          ],
+    return ListView(
+      children: const [
+        SizedBox(height: 12),
+        Padding(
+          padding: Constants.horizontalNormalPadding,
+          child: MentionTextField(),
         ),
-        const Positioned(
-          bottom: 20,
-          left: 12,
-          right: 12,
-          child: SelectMentionWidget(),
-        )
+        SelectMentionWidget(),
+        DiaryDateTimePicker()
       ],
-    ));
+    );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/diary/add_diary_entry/add_diary_entry_bloc.dart';
 import 'package:scorecontacts/core/app_constants.dart';
@@ -50,22 +51,20 @@ class _MentionTextFieldState extends State<MentionTextField> {
                 Constants.mentionSelectionStyle
         };
 
-         controller.value = TextEditingValue(
-            text: state.entryField.entry.text,
-            selection: TextSelection(
-                baseOffset: state.entryField.baseOffset ??
-                    controller.selection.baseOffset,
-                extentOffset: state.entryField.extentOffset ??
-                    controller.selection.extentOffset),
-          );
+        controller.value = TextEditingValue(
+          text: state.entryField.entry.text,
+          selection: TextSelection(
+              baseOffset: state.entryField.baseOffset ?? controller.selection.baseOffset,
+              extentOffset:
+                  state.entryField.extentOffset ?? controller.selection.extentOffset),
+        );
       },
       child: TextField(
         controller: controller,
         inputFormatters: [mentionInputFormatter],
+        maxLengthEnforcement: MaxLengthEnforcement.none,
         onChanged: (str) {
-          context
-              .read<AddDiaryEntryBloc>()
-              .add(AddDiaryEntryEvent.onEntryTextChanged(
+          context.read<AddDiaryEntryBloc>().add(AddDiaryEntryEvent.onEntryTextChanged(
                 text: str,
                 trigger: widget.mentionTrigger,
                 baseOffset: controller.selection.baseOffset,
@@ -81,7 +80,8 @@ class _MentionTextFieldState extends State<MentionTextField> {
           focusedBorder: OutlineInputBorder(
               borderRadius: Constants.textFieldBorderRadious,
               borderSide: BorderSide(
-                  color: Theme.of(context).textSelectionTheme.selectionHandleColor!, width: 2)),
+                  color: Theme.of(context).textSelectionTheme.selectionHandleColor!,
+                  width: 2)),
           border: const OutlineInputBorder(
             borderRadius: Constants.textFieldBorderRadious,
             borderSide: BorderSide.none,
