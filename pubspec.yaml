@@ -18,7 +18,7 @@ dependencies:
   firebase_database: ^7.1.0
   cloud_firestore: ^2.2.1
   firebase_storage: ^8.1.1
-  image_picker: ^0.8.0+1
+  image_picker: ^0.8.0+3
   google_sign_in: ^5.0.4
   flutter_bloc: ^7.0.1
   shared_preferences: ^2.0.6
