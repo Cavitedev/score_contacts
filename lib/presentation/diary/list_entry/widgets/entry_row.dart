@@ -14,6 +14,8 @@ class EntryRow extends StatelessWidget {
   final bool selectionEnabled;
   final Filter filter;
 
+  static const double containerHeight = 100;
+
   const EntryRow({
     required this.selectionEntry,
     required this.selectionEnabled,
@@ -38,7 +40,7 @@ class EntryRow extends StatelessWidget {
         context.read<ListDiaryBloc>().add(ListDiaryEvent.toggleSelection(selectionEntry));
       },
       child: Container(
-        height: 100,
+        height: containerHeight,
         margin:
             const EdgeInsets.symmetric(vertical: 4, horizontal: Constants.normalPadding),
         padding: Constants.bigPaddingList,
@@ -48,8 +50,11 @@ class EntryRow extends StatelessWidget {
                 : Theme.of(context).backgroundColor,
             borderRadius: BorderRadius.circular(8)),
         child: RichText(
+
           textScaleFactor: MediaQuery.of(context).textScaleFactor,
           text: TextSpan(children: _textSpans(selectionEntry.entry).toList()),
+          maxLines: containerHeight / 20 ~/ MediaQuery.of(context).textScaleFactor,
+          overflow: TextOverflow.ellipsis,
         ),
       ),
     );
