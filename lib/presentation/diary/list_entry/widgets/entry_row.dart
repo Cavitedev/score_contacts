@@ -1,8 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:scorecontacts/application/contacts/contact_watcher/contact_watcher_bloc.dart';
-import 'package:scorecontacts/application/contacts/selection_contact.dart';
 import 'package:scorecontacts/application/diary/list_diary/list_diary_bloc.dart';
 import 'package:scorecontacts/application/diary/list_diary/selection_entry.dart';
 import 'package:scorecontacts/core/app_constants.dart';
@@ -34,14 +32,7 @@ class EntryRow extends StatelessWidget {
           return;
         }
 
-        context.read<ContactWatcherBloc>().state.maybeMap(
-              loadSuccess: (state) {
-                context.router.push(r.AddDiaryPageRoute(
-                    mentionableList: state.stateValues.selectionContactList.toContacts(),
-                    diaryEntry: selectionEntry.entry));
-              },
-              orElse: () {},
-            );
+        context.router.push(r.AddDiaryPageRoute(diaryEntry: selectionEntry.entry));
       },
       onLongPress: () {
         context.read<ListDiaryBloc>().add(ListDiaryEvent.toggleSelection(selectionEntry));
@@ -144,8 +135,7 @@ class EntryRow extends StatelessWidget {
     }
 
     if (matchesInSpan.last.end != endPos) {
-      yield TextSpan(
-          text: completeText.substring(currentPos, endPos), style: textStyle);
+      yield TextSpan(text: completeText.substring(currentPos, endPos), style: textStyle);
     }
   }
 }

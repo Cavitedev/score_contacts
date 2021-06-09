@@ -14,12 +14,11 @@ class ContactFloatingActionButton extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _ContactFloatingActionButtonState createState() =>
-      _ContactFloatingActionButtonState();
+  _ContactFloatingActionButtonState createState() => _ContactFloatingActionButtonState();
 }
 
-class _ContactFloatingActionButtonState
-    extends State<ContactFloatingActionButton> with TickerProviderStateMixin {
+class _ContactFloatingActionButtonState extends State<ContactFloatingActionButton>
+    with TickerProviderStateMixin {
   late AnimationController _controller;
   double _pos = 0;
   static const int fabSize = 70;
@@ -32,8 +31,7 @@ class _ContactFloatingActionButtonState
     );
     _controller.addListener(() {
       setState(() {
-        _pos = _controller.drive(CurveTween(curve: Curves.easeOut)).value *
-            fabSize;
+        _pos = _controller.drive(CurveTween(curve: Curves.easeOut)).value * fabSize;
       });
     });
     super.initState();
@@ -85,9 +83,7 @@ class _ContactFloatingActionButtonState
             context
                 .read<ContactWatcherBloc>()
                 .add(const ContactWatcherEvent.deselectAllContacts());
-            context.router.push(r.AddDiaryPageRoute(
-              mentionableList: widget.contactList
-            ));
+            context.router.push(r.AddDiaryPageRoute());
           },
         ),
       ],
@@ -104,8 +100,7 @@ class _ContactFloatingActionButtonState
       height: _pos,
       child: ScaleTransition(
         scale: CurvedAnimation(
-            parent: _controller,
-            curve: const Interval(0, 1, curve: Curves.easeOut)),
+            parent: _controller, curve: const Interval(0, 1, curve: Curves.easeOut)),
         child: FloatingActionButton(
           heroTag: heroTag,
           onPressed: () {

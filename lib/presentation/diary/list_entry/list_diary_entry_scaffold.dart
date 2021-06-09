@@ -6,6 +6,7 @@ import 'package:scorecontacts/core/app_localization.dart';
 import 'package:scorecontacts/presentation/core/widgets/text_field_container.dart';
 import 'package:scorecontacts/presentation/diary/list_entry/widgets/entry_row.dart';
 import 'package:scorecontacts/presentation/diary/list_entry/widgets/selected_entries_row_bar.dart';
+import 'package:scorecontacts/presentation/routes/router.gr.dart' as r;
 
 class ListDiaryEntryScaffold extends StatelessWidget {
   final SuccessListDiary successValues;
@@ -39,14 +40,14 @@ class ListDiaryEntryScaffold extends StatelessWidget {
                     flex: 8,
                     child: TextField(
                       decoration: InputDecoration(
-                          hintText: "🔎 ${AppLocalization.of(context).translate(
-                            "search_entries",
-                            args: [successValues.displayedEntries().length.toString()]
-                          )}",
+                          hintText:
+                              "🔎 ${AppLocalization.of(context).translate("search_entries", args: [
+                                successValues.displayedEntries().length.toString()
+                              ])}",
                           border: InputBorder.none),
                       onChanged: (str) {
-                          context.read<ListDiaryBloc>().add(ListDiaryEvent.search(str));
-                        },
+                        context.read<ListDiaryBloc>().add(ListDiaryEvent.search(str));
+                      },
                     ),
                   ),
                 ],
@@ -65,6 +66,16 @@ class ListDiaryEntryScaffold extends StatelessWidget {
                   }),
             )
           ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          context.router.push(r.AddDiaryPageRoute());
+        },
+        child: const Icon(
+          Icons.note_add,
+          color: Colors.white,
+          size: 28,
         ),
       ),
     );
