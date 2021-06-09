@@ -38,8 +38,8 @@ class ViewContactScaffold extends StatelessWidget {
             onPressed: () {
               context.router.push(r.ListDiaryEntryPageRoute(mentionable: contact));
             },
-          )
-          ,IconButton(
+          ),
+          IconButton(
             icon: const Icon(
               Icons.delete,
               size: 26,
@@ -70,6 +70,7 @@ class ViewContactScaffold extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
+        heroTag: "fab",
         onPressed: () {
           context.router.push(r.AddContactPageRoute(contact: contact));
         },

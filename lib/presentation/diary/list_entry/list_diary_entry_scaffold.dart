@@ -69,6 +69,7 @@ class ListDiaryEntryScaffold extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        heroTag: "fab",
         onPressed: () {
           context.router.push(r.AddDiaryPageRoute());
         },
