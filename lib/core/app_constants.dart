@@ -5,7 +5,7 @@ class Constants {
   static const double normalPadding = 12;
   static const double extendedPadding = 20;
 
-  static const EdgeInsets bigPaddingList = EdgeInsets.fromLTRB(20, 8, 4, 8);
+  static const EdgeInsets bigPaddingList = EdgeInsets.fromLTRB(20, 7, 4, 8);
 
   static const EdgeInsets horizontalNormalPadding =
       EdgeInsets.symmetric(horizontal: normalPadding);

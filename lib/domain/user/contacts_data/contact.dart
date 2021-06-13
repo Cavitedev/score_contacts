@@ -10,11 +10,12 @@ import 'package:scorecontacts/domain/user/contacts_data/properties/i_label_objec
 import 'package:scorecontacts/domain/user/contacts_data/properties/names/name_data.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/phone.dart';
 import 'package:scorecontacts/presentation/core/formatters/formatter_tools.dart';
+import 'package:scorecontacts/presentation/core/widgets/alphabet_scroll_view/alphabet_scroll_view_data.dart';
 
 part 'contact.freezed.dart';
 
 @freezed
-class Contact with _$Contact implements IMentionable  {
+class Contact with _$Contact implements IMentionable, IInitialLetter {
   const Contact._();
 
   const factory Contact(
@@ -37,8 +38,7 @@ class Contact with _$Contact implements IMentionable  {
   String? getFirstPhoneNumber() => labelObjects?[Phone]?[0].value;
 
   Contact fromDatabase(String countryCode) {
-    if (labelObjects == null ||
-        labelObjects![Phone] == null) {
+    if (labelObjects == null || labelObjects![Phone] == null) {
       return this;
     }
 
@@ -47,18 +47,14 @@ class Contact with _$Contact implements IMentionable  {
     final List<Phone> phones = List.from(labelObjects![Phone]!);
     labObj![Phone] = phones.map((phone) => phone.fromDatabase(countryCode)).toList();
 
-
-    return copyWith(
-      labelObjects: labObj
-    );
+    return copyWith(labelObjects: labObj);
   }
 
   @override
   String? get imageLink => contactImage?.url;
 
   factory Contact.fromStringJson(String jsonStr) {
-    final Map<String, dynamic> jsonMap =
-        json.decode(jsonStr) as Map<String, dynamic>;
+    final Map<String, dynamic> jsonMap = json.decode(jsonStr) as Map<String, dynamic>;
     return Contact.fromMap(jsonMap);
   }
 
@@ -67,9 +63,8 @@ class Contact with _$Contact implements IMentionable  {
         ? [map["numbers"]]
         : (map["numbers"] as List<dynamic>?);
 
-    final List<dynamic>? emails = (map["emails"] is String)
-        ? [map["emails"]]
-        : map["emails"] as List<dynamic>?;
+    final List<dynamic>? emails =
+        (map["emails"] is String) ? [map["emails"]] : map["emails"] as List<dynamic>?;
 
     final List<dynamic>? companies = (map["companies"] is Map<String, dynamic>)
         ? [map["companies"]]
@@ -81,8 +76,7 @@ class Contact with _$Contact implements IMentionable  {
         id: UniqueID.fromUniqueString(map["id"] as String),
         nameData: NameData.fromFullName(map["name"] as String),
         companies: companies
-            ?.map(
-                (compMap) => Company.fromJson(compMap as Map<String, dynamic>))
+            ?.map((compMap) => Company.fromJson(compMap as Map<String, dynamic>))
             .toList(),
         labelObjects: areThereLabelObjects
             ? {
@@ -101,20 +95,22 @@ class Contact with _$Contact implements IMentionable  {
   }
 
   static List<Contact> contactsFromStringJson(String jsonStr) {
-    final Map<String, dynamic> jsonMap =
-        json.decode(jsonStr) as Map<String, dynamic>;
+    final Map<String, dynamic> jsonMap = json.decode(jsonStr) as Map<String, dynamic>;
 
     final List<dynamic> contacts = (jsonMap["contacts"] is String)
         ? [jsonMap["contacts"]]
         : (jsonMap["contacts"] as List<dynamic>);
-    return contacts
-        .map((e) => Contact.fromMap(e as Map<String, dynamic>))
-        .toList();
+    return contacts.map((e) => Contact.fromMap(e as Map<String, dynamic>)).toList();
   }
 
   @override
   String getName() {
     return nameData.toFullName().isNotEmpty ? nameData.toFullName() : "(No Name)";
+  }
+
+  @override
+  String initialLetter() {
+    return getName()[0];
   }
 
   Iterable<T> getLabelObjectList<T extends ILabelObject>() {
@@ -152,6 +148,4 @@ class Contact with _$Contact implements IMentionable  {
 
   bool _matchesName(String lowerCasePattern) =>
       getName().toLowerCase().contains(lowerCasePattern);
-
-
 }

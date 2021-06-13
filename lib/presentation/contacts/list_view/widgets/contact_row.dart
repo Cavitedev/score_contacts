@@ -55,6 +55,7 @@ class ContactRow extends StatelessWidget {
       },
       child: Container(
         padding: Constants.bigPaddingList,
+        height: 60,
         child: Row(
           children: <Widget>[
             ContactCircleAvatar(selectionContact: selectionContact),

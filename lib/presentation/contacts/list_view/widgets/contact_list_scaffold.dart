@@ -3,6 +3,7 @@ import 'package:scorecontacts/application/contacts/contact_watcher/contact_watch
 import 'package:scorecontacts/application/contacts/selection_contact.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/contacts_search_bar.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/selected_contacts_row_bar.dart';
+import 'package:scorecontacts/presentation/core/widgets/alphabet_scroll_view/alphabet_scroll_view.dart';
 
 import 'contact_floating_action_button.dart';
 import 'contact_list_drawer.dart';
@@ -47,16 +48,22 @@ class _ContactsListScaffoldState extends State<ContactsListScaffold> {
               displayedContactList: displayedContactList,
             ),
             Expanded(
-              child: ListView(
-                physics: const BouncingScrollPhysics(),
-                children: widget.stateValues
-                    .displayedContacts()
-                    .map((contact) => ContactRow(
-                          selectionContact: contact,
-                          filter: widget.stateValues.filter,
-                          selectionEnabled: widget.stateValues.hasSelectedContacts(),
-                        ))
-                    .toList(),
+              child: AlphabetScrollView(
+                key: ObjectKey(widget.stateValues.displayedContacts().length),
+                itemHeight: 60,
+                list: widget.stateValues.displayedContacts().toContacts(),
+                unselectedTextStyle: TextStyle(color: Colors.pink),
+                selectedTextStyle: TextStyle(color: Colors.green),
+                itemBuilder: (context, i) {
+                  final SelectionContact contact =
+                      widget.stateValues.displayedContacts()[i];
+
+                  return ContactRow(
+                    selectionContact: contact,
+                    filter: widget.stateValues.filter,
+                    selectionEnabled: widget.stateValues.hasSelectedContacts(),
+                  );
+                },
               ),
             )
           ],
