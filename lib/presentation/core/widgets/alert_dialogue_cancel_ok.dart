@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scorecontacts/core/app_localization.dart';
+import 'package:scorecontacts/presentation/core/widgets/form/outlined_input_field.dart';
 
-import 'outlined_input_field.dart';
 
 class AlertDialogueWithFieldCancelOK extends StatefulWidget {
   final String title;

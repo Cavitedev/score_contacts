@@ -4,9 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/contacts/add_contact/add_contact_bloc.dart';
 import 'package:scorecontacts/domain/core/validators/i_hint_validator.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/i_label_object.dart';
+import 'package:scorecontacts/presentation/core/widgets/form/outlined_input_field.dart';
 
 import 'outlined_dropdown_button.dart';
-import 'outlined_input_field.dart';
 
 class TextFieldWithDropdown extends StatefulWidget {
   /// space for label text

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/diary/list_diary/list_diary_bloc.dart';
 import 'package:scorecontacts/core/app_localization.dart';
-import 'package:scorecontacts/presentation/core/widgets/text_field_container.dart';
+import 'package:scorecontacts/presentation/core/widgets/form/text_field_container.dart';
 import 'package:scorecontacts/presentation/diary/list_entry/widgets/entry_row.dart';
 import 'package:scorecontacts/presentation/diary/list_entry/widgets/selected_entries_row_bar.dart';
 import 'package:scorecontacts/presentation/routes/router.gr.dart' as r;

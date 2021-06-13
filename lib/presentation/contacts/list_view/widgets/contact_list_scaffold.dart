@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/contacts/contact_watcher/contact_watcher_bloc.dart';
 import 'package:scorecontacts/application/contacts/selection_contact.dart';
-import 'package:scorecontacts/core/app_localization.dart';
+import 'package:scorecontacts/presentation/contacts/list_view/widgets/contacts_search_bar.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/selected_contacts_row_bar.dart';
-import 'package:scorecontacts/presentation/core/widgets/text_field_container.dart';
 
 import 'contact_floating_action_button.dart';
 import 'contact_list_drawer.dart';
@@ -39,42 +37,14 @@ class _ContactsListScaffoldState extends State<ContactsListScaffold> {
                 color: Theme.of(context).dialogBackgroundColor,
                 child: SelectedContactsRowBar(
                   selectionContacts: displayedContactList,
-                  areAllContactsSelected:
-                      widget.stateValues.areAllContactsSelected(),
+                  areAllContactsSelected: widget.stateValues.areAllContactsSelected(),
                 ),
               )
             else
               const SizedBox(),
-            TextFieldContainer(
-              child: Row(
-                children: [
-                  Expanded(
-                    child: IconButton(
-                      icon: const Icon(Icons.menu),
-                      onPressed: () {
-                        _scaffoldKey.currentState!.openDrawer();
-                        FocusScope.of(context).unfocus();
-                      },
-                    ),
-                  ),
-                  Expanded(
-                    flex: 8,
-                    child: TextField(
-                      decoration: InputDecoration(
-                          hintText: "🔎 ${AppLocalization.of(context).translate(
-                            "search_contacts",
-                            args: [displayedContactList.length.toString()],
-                          )}",
-                          border: InputBorder.none),
-                      onChanged: (str) {
-                        context
-                            .read<ContactWatcherBloc>()
-                            .add(ContactWatcherEvent.searchContact(str));
-                      },
-                    ),
-                  ),
-                ],
-              ),
+            ContactsSearchBar(
+              scaffoldKey: _scaffoldKey,
+              displayedContactList: displayedContactList,
             ),
             Expanded(
               child: ListView(
@@ -84,8 +54,7 @@ class _ContactsListScaffoldState extends State<ContactsListScaffold> {
                     .map((contact) => ContactRow(
                           selectionContact: contact,
                           filter: widget.stateValues.filter,
-                          selectionEnabled:
-                              widget.stateValues.hasSelectedContacts(),
+                          selectionEnabled: widget.stateValues.hasSelectedContacts(),
                         ))
                     .toList(),
               ),

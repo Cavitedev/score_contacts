@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:scorecontacts/domain/user/contacts_data/properties/i_label_object.dart';
-import 'package:scorecontacts/presentation/core/widgets/text_field_with_dropdown.dart';
+import 'package:scorecontacts/presentation/core/widgets/form/text_field_with_dropdown.dart';
 
 class TextFieldsWithDropdowns extends StatefulWidget {
   final List<ILabelObject> labelObjects;
