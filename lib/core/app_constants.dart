@@ -14,5 +14,5 @@ class Constants {
       BorderRadius.all(Radius.circular(12));
 
   static const TextStyle mentionSelectionStyle =
-      TextStyle(color: Color.fromRGBO(104, 183, 255, 1.0));
+      TextStyle(color: Color.fromRGBO(136, 191, 255, 1.0));
 }

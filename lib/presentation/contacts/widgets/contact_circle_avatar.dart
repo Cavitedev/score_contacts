@@ -16,28 +16,31 @@ class ContactCircleAvatar extends StatelessWidget {
 
   Widget _buildCircleAvatar(BuildContext context) {
     final String? urlContact = selectionContact.contact.contactImage?.url;
-
+    final double increaseFactor = radius / 20;
     return CustomCircleAvatar(
       key: UniqueKey(),
       backgroundColor:
           selectionContact.isSelected ? Colors.teal[200] : Colors.purple[200],
       image: _doesRequiresImage(urlContact) ? urlContact! : null,
       name: selectionContact.contact.nameData.toFullName(),
+      radius: radius,
       child: selectionContact.isSelected
-          ? const Icon(
+          ? Icon(
               Icons.check,
               color: Colors.black,
-              size: 30,
+              size: 30 * increaseFactor,
             )
           : selectionContact.contact.getDisplayedChar() == ""
-              ? const Icon(
+              ? Icon(
                   Icons.person,
                   color: Colors.black,
-                  size: 30,
+                  size: 30 * increaseFactor,
                 )
               : Text(
                   selectionContact.contact.getDisplayedChar(),
-                  style: Theme.of(context).textTheme.headline2,
+                  style: Theme.of(context).textTheme.headline2?.copyWith(
+                        fontSize: 30 * increaseFactor,
+                      ),
                 ),
     );
   }

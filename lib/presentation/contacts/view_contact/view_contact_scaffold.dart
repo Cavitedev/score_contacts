@@ -63,7 +63,7 @@ class ViewContactScaffold extends StatelessWidget {
             padding: Constants.horizontalNormalPadding,
             child: Text(
               contact.getName(),
-              style: Theme.of(context).textTheme.headline3,
+              style: Theme.of(context).textTheme.headline4,
             ),
           ),
           ..._buildListOfFields(context)
@@ -76,7 +76,7 @@ class ViewContactScaffold extends StatelessWidget {
         },
         label: Text(
           AppLocalization.of(context).translate("edit"),
-          style: Theme.of(context).textTheme.headline4,
+          style: Theme.of(context).textTheme.headline4?.copyWith(color: Colors.white),
         ),
         icon: const Icon(
           Icons.edit,

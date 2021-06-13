@@ -10,6 +10,7 @@ ThemeData lightTheme = ThemeData.light().copyWith(
   primaryColorDark: Colors.grey[900],
   primaryColorLight: Colors.white,
   accentColor: Colors.blueGrey[100],
+  backgroundColor: Colors.blueGrey[500],
   buttonColor: const Color.fromRGBO(250, 250, 250, 1),
   floatingActionButtonTheme: FloatingActionButtonThemeData(
     backgroundColor: Colors.blue[900],
@@ -22,13 +23,14 @@ ThemeData lightTheme = ThemeData.light().copyWith(
   ),
   dividerColor: const Color.fromRGBO(50, 50, 50, 1),
   highlightColor: Colors.blueAccent[700],
-  focusColor: Colors.blueAccent[400],
+  focusColor: Colors.blueAccent[700],
   textSelectionTheme: TextSelectionThemeData(
       cursorColor: Colors.blue[700],
       selectionColor: Colors.white,
       selectionHandleColor: Colors.blue[600]),
   disabledColor: Colors.grey[500],
   inputDecorationTheme: const InputDecorationTheme(
+    fillColor: Colors.white,
     border: InputBorder.none,
   ),
   iconTheme: const IconThemeData(color: Colors.grey, size: 32),
@@ -67,24 +69,24 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
   focusColor: Colors.grey[600],
   textSelectionTheme: TextSelectionThemeData(
       cursorColor: Colors.blue[700],
-      selectionColor: const Color.fromRGBO(40, 40, 40, 1),
+      selectionColor: const Color.fromRGBO(80, 80, 120, 1),
       selectionHandleColor: Colors.blue[600]),
   accentIconTheme: IconThemeData(color: Colors.lightBlueAccent[700], size: 32),
   disabledColor: Colors.grey[500],
   inputDecorationTheme: const InputDecorationTheme(
-    border: InputBorder.none,
-  ),
+      border: InputBorder.none, fillColor: Color.fromRGBO(50, 50, 50, 1)),
   iconTheme: const IconThemeData(color: Colors.grey, size: 32),
   textTheme: TextTheme(
-      headline2:
-          const TextStyle(fontSize: 30, fontWeight: FontWeight.w500, color: Colors.black),
-      headline3: const TextStyle(fontSize: 24, color: Colors.white),
-      headline4: const TextStyle(fontSize: 20, color: Colors.white),
-      headline5: const TextStyle(fontSize: 16, color: Colors.white),
-      headline6: const TextStyle(fontSize: 14, letterSpacing: .5, color: Colors.white),
-      subtitle1: const TextStyle(fontSize: 16, letterSpacing: .5, color: Colors.white),
-      subtitle2: const TextStyle(fontSize: 14, letterSpacing: .5, color: Colors.white),
-      caption: TextStyle(fontSize: 15, color: Colors.grey[500]),
-      button: TextStyle(fontSize: 20, color: Colors.blue[50])),
+    headline2:
+        const TextStyle(fontSize: 30, fontWeight: FontWeight.w500, color: Colors.black),
+    headline3: const TextStyle(fontSize: 24, color: Colors.white),
+    headline4: const TextStyle(fontSize: 20, color: Colors.white),
+    headline5: const TextStyle(fontSize: 16, color: Colors.white),
+    headline6: const TextStyle(fontSize: 14, letterSpacing: .5, color: Colors.white),
+    subtitle1: const TextStyle(fontSize: 16, letterSpacing: .5, color: Colors.white),
+    subtitle2: const TextStyle(fontSize: 14, letterSpacing: .5, color: Colors.white),
+    caption: TextStyle(fontSize: 15, color: Colors.grey[500]),
+    button: TextStyle(fontSize: 20, color: Colors.blue[50]),
+  ),
   visualDensity: VisualDensity.adaptivePlatformDensity,
 );

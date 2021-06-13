@@ -22,7 +22,10 @@ class DiaryDateTimePicker extends StatelessWidget {
                 SizedBox(
                   width: Constants.normalPadding.toDouble(),
                 ),
-                Text(AppLocalization.of(context).translate("all_day")),
+                Text(
+                  AppLocalization.of(context).translate("all_day"),
+                  style: Theme.of(context).textTheme.subtitle2,
+                ),
                 const Spacer(),
                 Switch(
                     value: state.entryField.entry.isAllDay(),
@@ -88,6 +91,7 @@ class DateRowPicker extends StatelessWidget {
               padding: const EdgeInsets.all(Constants.smallPadding),
               child: Text(
                 diaryEntry.date(datePos: datePos),
+                style: Theme.of(context).textTheme.subtitle2,
               ),
             ),
           ),
@@ -110,7 +114,7 @@ class DateRowPicker extends StatelessWidget {
                 padding: const EdgeInsets.all(Constants.smallPadding),
                 child: Text(
                   diaryEntry.hour(datePos: datePos),
-                  style: _getTextStyle(),
+                  style: _getTextStyle(context),
                 ),
               ),
             ),
@@ -120,6 +124,10 @@ class DateRowPicker extends StatelessWidget {
     );
   }
 
-  TextStyle? _getTextStyle() =>
-      diaryEntry.areDatesValid() ? null : TextStyle(color: Colors.redAccent[100]);
+  TextStyle? _getTextStyle(BuildContext context) {
+    final TextStyle? defaultStyle = Theme.of(context).textTheme.subtitle2;
+    return diaryEntry.areDatesValid()
+        ? defaultStyle
+        : defaultStyle?.copyWith(color: Colors.redAccent[100]);
+  }
 }

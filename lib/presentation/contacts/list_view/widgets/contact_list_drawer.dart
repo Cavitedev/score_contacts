@@ -23,7 +23,7 @@ class ContactListDrawer extends StatelessWidget {
             ),
             child: Text(
               AppLocalization.of(context).translate("contacts"),
-              style: Theme.of(context).textTheme.headline3,
+              style: Theme.of(context).textTheme.headline2?.copyWith(color: Colors.white),
             ),
           ),
           ListTile(
