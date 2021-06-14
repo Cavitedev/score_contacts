@@ -3,6 +3,8 @@ abstract class IInitialLetter {
   String initialLetter();
 }
 
+const String alphabeticRegExp = "[A-Za-z]";
+
 const List<String> alphabet = [
   'a',
   'b',

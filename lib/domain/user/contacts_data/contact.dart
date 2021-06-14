@@ -15,7 +15,9 @@ import 'package:scorecontacts/presentation/core/widgets/alphabet_scroll_view/alp
 part 'contact.freezed.dart';
 
 @freezed
-class Contact with _$Contact implements IMentionable, IInitialLetter {
+class Contact
+    with _$Contact
+    implements IMentionable, IInitialLetter, Comparable<Contact> {
   const Contact._();
 
   const factory Contact(
@@ -148,4 +150,15 @@ class Contact with _$Contact implements IMentionable, IInitialLetter {
 
   bool _matchesName(String lowerCasePattern) =>
       getName().toLowerCase().contains(lowerCasePattern);
+
+  @override
+  int compareTo(Contact other) {
+    final bool isThisNameAlpha = RegExp(alphabeticRegExp).hasMatch(initialLetter());
+    final bool isOtherAlpha = RegExp(alphabeticRegExp).hasMatch(other.initialLetter());
+
+    if (isThisNameAlpha != isOtherAlpha) {
+      return isThisNameAlpha ? -1 : 1;
+    }
+    return getName().toLowerCase().compareTo(other.getName().toLowerCase());
+  }
 }
