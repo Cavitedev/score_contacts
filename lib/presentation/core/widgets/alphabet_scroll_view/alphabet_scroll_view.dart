@@ -1,7 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:scorecontacts/core/app_constants.dart';
 import 'package:scorecontacts/presentation/core/widgets/alphabet_scroll_view/alphabet_scroll_view_data.dart';
+import 'package:scorecontacts/presentation/core/widgets/form/text_field_container.dart';
 
 enum LetterAlignment { left, right }
 
@@ -96,8 +98,7 @@ class _AlphabetScrollViewState extends State<AlphabetScrollView> {
 
   void onListDrag(double vPosition) {
     final int itemIndex = max(vPosition ~/ widget.itemHeight, 0);
-    int index =
-        _filteredAlphabets.indexOf(_elementsString[itemIndex]);
+    int index = _filteredAlphabets.indexOf(_elementsString[itemIndex]);
     if (index == -1) {
       index = _filteredAlphabets.length - 1;
     }
@@ -130,28 +131,35 @@ class _AlphabetScrollViewState extends State<AlphabetScrollView> {
                 child: ValueListenableBuilder<int>(
                     valueListenable: _selectedIndexNotifier,
                     builder: (context, int selected, Widget? child) {
-                      return Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: List.generate(
-                            _filteredAlphabets.length,
-                            (i) => Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 12),
-                              child: GestureDetector(
-                                key: i == selected ? _letterKey : null,
-                                onTap: () {
-                                  _selectedIndexNotifier.value = i;
-                                  scrollToIndex(i);
-                                },
-                                child: Text(
-                                  _filteredAlphabets[i]
-                                      .toUpperCase(),
-                                  style: selected == i
-                                      ? widget.selectedTextStyle
-                                      : widget.unselectedTextStyle,
+                      return TextFieldContainer(
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: Constants.smallPadding),
+                        padding: const EdgeInsets.symmetric(
+                          vertical: Constants.smallPadding,
+                          horizontal: 2,
+                        ),
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: List.generate(
+                              _filteredAlphabets.length,
+                              (i) => Container(
+                                margin: const EdgeInsets.symmetric(horizontal: 12),
+                                child: GestureDetector(
+                                  key: i == selected ? _letterKey : null,
+                                  onTap: () {
+                                    _selectedIndexNotifier.value = i;
+                                    scrollToIndex(i);
+                                  },
+                                  child: Text(
+                                    _filteredAlphabets[i].toUpperCase(),
+                                    style: selected == i
+                                        ? widget.selectedTextStyle
+                                        : widget.unselectedTextStyle,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ));
+                            )),
+                      );
                     }),
               ),
             ),

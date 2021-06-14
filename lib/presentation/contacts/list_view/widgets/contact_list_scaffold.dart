@@ -52,8 +52,8 @@ class _ContactsListScaffoldState extends State<ContactsListScaffold> {
                 key: ObjectKey(widget.stateValues.displayedContacts().length),
                 itemHeight: ContactRow.height(context),
                 list: widget.stateValues.displayedContacts().toContacts(),
-                unselectedTextStyle: TextStyle(color: Colors.pink, fontSize: 16 / MediaQuery.textScaleFactorOf(context)),
-                selectedTextStyle: TextStyle(color: Colors.green, fontSize: 16 / MediaQuery.textScaleFactorOf(context)),
+                unselectedTextStyle: TextStyle(color: Theme.of(context).disabledColor, fontSize: 16 / MediaQuery.textScaleFactorOf(context)),
+                selectedTextStyle: TextStyle(color: Theme.of(context).accentIconTheme.color, fontSize: 16 / MediaQuery.textScaleFactorOf(context)),
                 itemBuilder: (context, i) {
                   final SelectionContact contact =
                       widget.stateValues.displayedContacts()[i];
