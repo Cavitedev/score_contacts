@@ -112,6 +112,7 @@ class _AlphabetScrollViewState extends State<AlphabetScrollView> {
         ListView.builder(
             controller: _scrollController,
             itemCount: widget.list.length,
+            cacheExtent: 5000,
             physics: const BouncingScrollPhysics(),
             itemBuilder: (context, x) {
               return ConstrainedBox(
