@@ -110,9 +110,10 @@ class Contact
     return nameData.toFullName().isNotEmpty ? nameData.toFullName() : "(No Name)";
   }
 
+  ///Return initial letter used for the list search
   @override
   String initialLetter() {
-    return getName()[0];
+    return getName()[0].withoutDiacriticalMarks;
   }
 
   Iterable<T> getLabelObjectList<T extends ILabelObject>() {
@@ -159,6 +160,9 @@ class Contact
     if (isThisNameAlpha != isOtherAlpha) {
       return isThisNameAlpha ? -1 : 1;
     }
-    return getName().toLowerCase().compareTo(other.getName().toLowerCase());
+    return getName()
+        .withoutDiacriticalMarks
+        .toLowerCase()
+        .compareTo(other.getName().withoutDiacriticalMarks.toLowerCase());
   }
 }

@@ -33,17 +33,37 @@ class _AlphabetScrollViewState extends State<AlphabetScrollView> {
   late final ScrollController _scrollController;
   final _selectedIndexNotifier = ValueNotifier<int>(0);
   late final List<String> _filteredAlphabets;
+  late final List<String> _elementsString;
+  final List<int> _positionGivenLetterIndex = [];
   final _letterKey = GlobalKey();
 
   @override
   void initState() {
     _scrollController = ScrollController();
 
-    _filteredAlphabets = widget.list
-        .map((e) => e.initialLetter().toLowerCase())
-        .toSet()
-        .intersection(alphabet.toSet())
-        .toList();
+    final Iterable<String> lettersIterable =
+        widget.list.map((e) => e.initialLetter().toLowerCase());
+
+    _elementsString = lettersIterable.toList();
+
+    _filteredAlphabets = lettersIterable.toSet().intersection(alphabet.toSet()).toList();
+
+    int counter = 0;
+
+    for (final String letter in alphabet) {
+      final int letterAmount = lettersIterable.where((l) => l == letter).length;
+      if (letterAmount > 0) {
+        _positionGivenLetterIndex.add(counter);
+        counter += letterAmount;
+      }
+    }
+    _filteredAlphabets.add("#");
+    _positionGivenLetterIndex.add(lettersIterable.length - 1);
+
+    _scrollController.addListener(() {
+      onListDrag(_scrollController.position.pixels);
+    });
+
     super.initState();
   }
 
@@ -55,10 +75,9 @@ class _AlphabetScrollViewState extends State<AlphabetScrollView> {
   }
 
   void scrollToIndex(int index) {
-    final scrollToPostion =
-        min(widget.itemHeight * index, _scrollController.position.maxScrollExtent);
-    _scrollController.animateTo(scrollToPostion,
-        duration: const Duration(milliseconds: 300), curve: Curves.easeOut);
+    final scrollToPostion = min(widget.itemHeight * _positionGivenLetterIndex[index],
+        _scrollController.position.maxScrollExtent);
+    _scrollController.jumpTo(scrollToPostion);
   }
 
   void onVerticalDrag(Offset offset) {
@@ -71,13 +90,14 @@ class _AlphabetScrollViewState extends State<AlphabetScrollView> {
 
   int getCurrentIndex(double vPosition) {
     final double kAlphabetHeight = _letterKey.currentContext!.size!.height;
-    return vPosition ~/ kAlphabetHeight;
+    final int index = vPosition ~/ kAlphabetHeight;
+    return index;
   }
 
   void onListDrag(double vPosition) {
-    final int itemIndex = max(vPosition ~/ widget.itemHeight,0);
+    final int itemIndex = max(vPosition ~/ widget.itemHeight, 0);
     int index =
-        _filteredAlphabets.indexOf(widget.list[itemIndex].initialLetter().toLowerCase());
+        _filteredAlphabets.indexOf(_elementsString[itemIndex]);
     if (index == -1) {
       index = _filteredAlphabets.length - 1;
     }
@@ -88,30 +108,25 @@ class _AlphabetScrollViewState extends State<AlphabetScrollView> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        NotificationListener<ScrollUpdateNotification>(
-          onNotification: (ScrollUpdateNotification scrollInfo) {
-            onListDrag(scrollInfo.metrics.pixels);
-
-            return true;
-          },
-          child: ListView.builder(
-              controller: _scrollController,
-              itemCount: widget.list.length,
-              physics: const BouncingScrollPhysics(),
-              itemBuilder: (context, x) {
-                return ConstrainedBox(
-                    constraints: BoxConstraints(maxHeight: widget.itemHeight),
-                    child: widget.itemBuilder(context, x));
-              }),
-        ),
+        ListView.builder(
+            controller: _scrollController,
+            itemCount: widget.list.length,
+            physics: const BouncingScrollPhysics(),
+            itemBuilder: (context, x) {
+              return ConstrainedBox(
+                  constraints: BoxConstraints(maxHeight: widget.itemHeight),
+                  child: widget.itemBuilder(context, x));
+            }),
         Align(
           alignment: Alignment.centerRight,
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 2),
+            margin: const EdgeInsets.only(bottom: 70), // Space for fab
             child: GestureDetector(
               onVerticalDragStart: (z) => onVerticalDrag(z.localPosition),
               onVerticalDragUpdate: (z) => onVerticalDrag(z.localPosition),
               child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
                 child: ValueListenableBuilder<int>(
                     valueListenable: _selectedIndexNotifier,
                     builder: (context, int selected, Widget? child) {
@@ -120,8 +135,7 @@ class _AlphabetScrollViewState extends State<AlphabetScrollView> {
                           children: List.generate(
                             _filteredAlphabets.length,
                             (i) => Container(
-                              margin:
-                                  const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                              margin: const EdgeInsets.symmetric(horizontal: 12),
                               child: GestureDetector(
                                 key: i == selected ? _letterKey : null,
                                 onTap: () {
@@ -129,7 +143,8 @@ class _AlphabetScrollViewState extends State<AlphabetScrollView> {
                                   scrollToIndex(i);
                                 },
                                 child: Text(
-                                  _filteredAlphabets[i].toUpperCase(),
+                                  _filteredAlphabets[i]
+                                      .toUpperCase(),
                                   style: selected == i
                                       ? widget.selectedTextStyle
                                       : widget.unselectedTextStyle,
