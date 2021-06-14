@@ -25,7 +25,6 @@ class CustomCircleAvatar extends StatelessWidget {
 
   CircleAvatar _buildCircleAvatar(BuildContext context) {
     return CircleAvatar(
-      key: UniqueKey(),
       radius: radius,
       backgroundColor: backgroundColor ?? Colors.purple[200],
       foregroundImage: image != null ? NetworkImage(image!) : null,

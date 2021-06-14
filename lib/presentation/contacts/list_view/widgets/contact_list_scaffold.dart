@@ -50,10 +50,10 @@ class _ContactsListScaffoldState extends State<ContactsListScaffold> {
             Expanded(
               child: AlphabetScrollView(
                 key: ObjectKey(widget.stateValues.displayedContacts().length),
-                itemHeight: 60,
+                itemHeight: ContactRow.height(context),
                 list: widget.stateValues.displayedContacts().toContacts(),
-                unselectedTextStyle: TextStyle(color: Colors.pink),
-                selectedTextStyle: TextStyle(color: Colors.green),
+                unselectedTextStyle: TextStyle(color: Colors.pink, fontSize: 16 / MediaQuery.textScaleFactorOf(context)),
+                selectedTextStyle: TextStyle(color: Colors.green, fontSize: 16 / MediaQuery.textScaleFactorOf(context)),
                 itemBuilder: (context, i) {
                   final SelectionContact contact =
                       widget.stateValues.displayedContacts()[i];

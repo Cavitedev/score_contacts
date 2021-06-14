@@ -11,6 +11,16 @@ import 'package:scorecontacts/presentation/contacts/widgets/contact_circle_avata
 import 'package:scorecontacts/presentation/routes/router.gr.dart' as r;
 
 class ContactRow extends StatelessWidget {
+  static const double _basicHeight = 60;
+
+  static double height(BuildContext context){
+    if (MediaQuery.textScaleFactorOf(context) < 1.4){
+      return _basicHeight;
+    }else{
+      return 66;
+    }
+  }
+
   final SelectionContact selectionContact;
   final Filter? filter;
   final bool selectionEnabled;
@@ -55,7 +65,7 @@ class ContactRow extends StatelessWidget {
       },
       child: Container(
         padding: Constants.bigPaddingList,
-        height: 60,
+        height: height(context),
         child: Row(
           children: <Widget>[
             ContactCircleAvatar(selectionContact: selectionContact),
