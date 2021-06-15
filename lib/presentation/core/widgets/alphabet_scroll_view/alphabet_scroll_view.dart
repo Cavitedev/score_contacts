@@ -9,13 +9,15 @@ enum LetterAlignment { left, right }
 
 class AlphabetScrollView extends StatefulWidget {
   const AlphabetScrollView(
-      {required Key key,
-      required this.list,
+      {required this.list,
       required this.selectedTextStyle,
       required this.unselectedTextStyle,
       this.itemHeight = 40,
       required this.itemBuilder})
-      : super(key: key);
+      : super(
+            key: const ObjectKey(
+                "alphabetView") //Let it become constant to update through didUpdateWidget
+            );
 
   final List<IInitialLetter> list;
 
@@ -34,14 +36,22 @@ class AlphabetScrollView extends StatefulWidget {
 class _AlphabetScrollViewState extends State<AlphabetScrollView> {
   late final ScrollController _scrollController;
   final _selectedIndexNotifier = ValueNotifier<int>(0);
-  late final List<String> _filteredAlphabets;
-  late final List<String> _elementsString;
+  List<String> _filteredAlphabets = [];
+  List<String> _elementsString = [];
   final List<int> _positionGivenLetterIndex = [];
   final _letterKey = GlobalKey();
 
   @override
   void initState() {
     _scrollController = ScrollController();
+
+    init();
+
+    super.initState();
+  }
+
+  void init() {
+    _positionGivenLetterIndex.clear();
 
     final Iterable<String> lettersIterable =
         widget.list.map((e) => e.initialLetter().toLowerCase());
@@ -65,8 +75,12 @@ class _AlphabetScrollViewState extends State<AlphabetScrollView> {
     _scrollController.addListener(() {
       onListDrag(_scrollController.position.pixels);
     });
+  }
 
-    super.initState();
+  @override
+  void didUpdateWidget(covariant AlphabetScrollView oldWidget) {
+    init();
+    super.didUpdateWidget(oldWidget);
   }
 
   @override
