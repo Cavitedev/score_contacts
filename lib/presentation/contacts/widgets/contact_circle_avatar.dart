@@ -19,7 +19,6 @@ class ContactCircleAvatar extends StatelessWidget {
     final String? urlContact = selectionContact.contact.contactImage?.url;
     final double increaseFactor = radius / 20;
     return CustomCircleAvatar(
-      key: UniqueKey(),
       backgroundColor: selectionContact.isSelected
           ? Colors.teal[200]
           : colorGivenName(selectionContact.contact.getName()),
