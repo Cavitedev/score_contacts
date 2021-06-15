@@ -38,6 +38,7 @@
   "error_load_image": "No se pudo cargar la imagen",
   "error_email": "Error al enviar un email a %s",
   "error_message": "Error al envíar un mensaje a %s",
+  "error_reload_contact": "No se pudo recargar el contacto",
   "google_cancelled": "El inicio de sesión con Google ha sido cancelado",
   "home": "Casa",
   "insufficient_permissions": "Permisos insuficientes",

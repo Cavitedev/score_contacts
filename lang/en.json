@@ -38,6 +38,7 @@
   "error_database": "Error on database",
   "error_email": "Error sending email to %s",
   "error_message": "Error when sending message to %s",
+  "error_reload_contact": "Could not reload contact",
   "google_cancelled": "Google sign in has been cancelled",
   "home": "Home",
   "insufficient_permissions": "Insufficient permissions",

@@ -40,7 +40,7 @@ class ViewContactPage extends StatelessWidget {
           if (cont == null) {
             FlushbarHelper.createError(
               duration: const Duration(seconds: 12),
-              message: "Error reloading contact",
+              message: AppLocalization.of(context).translate("error_reload_contact"),
             ).show(context);
           }
 
