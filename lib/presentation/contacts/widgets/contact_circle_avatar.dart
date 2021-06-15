@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scorecontacts/application/contacts/selection_contact.dart';
+import 'package:scorecontacts/presentation/core/extra/color_from_text.dart';
 import 'package:scorecontacts/presentation/core/widgets/avatar/custom_circle_avatar.dart';
 
 class ContactCircleAvatar extends StatelessWidget {
@@ -19,8 +20,9 @@ class ContactCircleAvatar extends StatelessWidget {
     final double increaseFactor = radius / 20;
     return CustomCircleAvatar(
       key: UniqueKey(),
-      backgroundColor:
-          selectionContact.isSelected ? Colors.teal[200] : Colors.purple[200],
+      backgroundColor: selectionContact.isSelected
+          ? Colors.teal[200]
+          : colorGivenName(selectionContact.contact.getName()),
       image: _doesRequiresImage(urlContact) ? urlContact! : null,
       name: selectionContact.contact.nameData.toFullName(),
       radius: radius,
@@ -47,4 +49,6 @@ class ContactCircleAvatar extends StatelessWidget {
 
   bool _doesRequiresImage(String? urlContact) =>
       urlContact != null && !selectionContact.isSelected;
+
+
 }
