@@ -13,10 +13,10 @@ import 'package:scorecontacts/presentation/routes/router.gr.dart' as r;
 class ContactRow extends StatelessWidget {
   static const double _basicHeight = 60;
 
-  static double height(BuildContext context){
-    if (MediaQuery.textScaleFactorOf(context) < 1.4){
+  static double height(BuildContext context) {
+    if (MediaQuery.textScaleFactorOf(context) < 1.4) {
       return _basicHeight;
-    }else{
+    } else {
       return 66;
     }
   }
@@ -35,21 +35,21 @@ class ContactRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: ()  {
+      onTap: () {
         final contactWatcherBloc = context.read<ContactWatcherBloc>();
 
         if (selectionEnabled) {
-          contactWatcherBloc.add(
-              ContactWatcherEvent.toggleSelectionContact(selectionContact));
+          contactWatcherBloc
+              .add(ContactWatcherEvent.toggleSelectionContact(selectionContact));
         } else {
-           context.router.push(r.ViewContactPageRoute(
+          context.router.push(r.ViewContactPageRoute(
             contact: selectionContact.contact,
             onDelete: () {
-              context.read<ContactActorBloc>().add(ContactActorEvent.delete(
-                  contactList: [selectionContact.contact]));
+              context
+                  .read<ContactActorBloc>()
+                  .add(ContactActorEvent.delete(contactList: [selectionContact.contact]));
             },
           ));
-
         }
       },
       onLongPress: () {
@@ -57,8 +57,8 @@ class ContactRow extends StatelessWidget {
         final contactWatcherBloc = context.read<ContactWatcherBloc>();
 
         if (selectionEnabled) {
-          contactWatcherBloc.add(
-              ContactWatcherEvent.toggleSelectionContact(selectionContact));
+          contactWatcherBloc
+              .add(ContactWatcherEvent.toggleSelectionContact(selectionContact));
         } else {
           _popUpItems(context, contactActorBloc, contactWatcherBloc);
         }
@@ -82,11 +82,9 @@ class ContactRow extends StatelessWidget {
   Widget _buildNameWithHints(BuildContext context) {
     if (selectionContact.filterText == null) {
       return Flexible(child: _buildFullName(context));
-    } else if (selectionContact.filterText ==
-        selectionContact.contact.getName()) {
+    } else if (selectionContact.filterText == selectionContact.contact.getName()) {
       return Flexible(
-          child:
-              _buildFullNameHighlighted(context, selectionContact.filterText!));
+          child: _buildFullNameHighlighted(context, selectionContact.filterText!));
     } else {
       return Flexible(
         child: Column(
@@ -107,10 +105,8 @@ class ContactRow extends StatelessWidget {
   }
 
   RichText _buildFullNameHighlighted(BuildContext context, String highlight) {
-    final Match? match = filter?.filterSearch
-        ?.toLowerCase()
-        .allMatches(highlight.toLowerCase())
-        .first;
+    final Match? match =
+        filter?.filterSearch?.toLowerCase().allMatches(highlight.toLowerCase()).first;
     if (match != null) {
       return RichText(
         overflow: TextOverflow.ellipsis,
