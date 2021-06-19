@@ -105,7 +105,6 @@ class EntryRow extends StatelessWidget {
       yield* _spanWithBoldIfInMatches(
         matches: matches,
         completeText: entry.text,
-        textStyle: Constants.mentionSelectionStyle,
         startPos: mentionList.last.endPos,
         endPos: entry.text.length,
       );
@@ -114,7 +113,7 @@ class EntryRow extends StatelessWidget {
 
   Iterable<InlineSpan> _spanWithBoldIfInMatches({
     required String completeText,
-    required TextStyle textStyle,
+    TextStyle? textStyle,
     required List<Match> matches,
     required int startPos,
     required int endPos,
@@ -135,7 +134,7 @@ class EntryRow extends StatelessWidget {
       }
       yield TextSpan(
           text: completeText.substring(match.start, match.end),
-          style: textStyle.copyWith(fontWeight: FontWeight.bold));
+          style: textStyle!.copyWith(fontWeight: FontWeight.bold));
       currentPos = match.end;
     }
 
