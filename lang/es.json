@@ -66,7 +66,7 @@
   "sending_email": "Envíando email a %s",
   "sending_message": "Envíando mensaje a %s",
   "settings": "Ajustes",
-  "sign_in": "Iniciar Sesión",
+  "sign_in": "Inicia sesión",
   "sign_in_google": "Iniciar sesión con Google",
   "sign_out": "Cerrar sesión",
   "spanish": "Español",
@@ -87,5 +87,6 @@
   "title": "Cargo",
   "unexpected_error": "ERROR INESPERADO",
   "view": "Ver",
+  "welcome": "Bienvenido",
   "work": "Trabajo"
 }

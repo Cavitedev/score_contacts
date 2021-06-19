@@ -66,7 +66,7 @@
   "sending_email": "Sending email to %s",
   "sending_message": "Sending message to %s",
   "settings": "Settings",
-  "sign_in": "Sign In",
+  "sign_in": "Sign in",
   "sign_in_google": "Continue with Google",
   "sign_out": "Sign out",
   "spanish": "Spanish",
@@ -87,5 +87,6 @@
   "title": "Title",
   "unexpected_error": "UNEXPECTED ERROR",
   "view": "View",
+  "welcome": "Welcome",
   "work": "Work"
 }

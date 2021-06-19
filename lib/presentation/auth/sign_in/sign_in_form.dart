@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
@@ -26,59 +28,82 @@ class SignInForm extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Center(
-                child: Text(
-              AppLocalization.of(context).translate("sign_in"),
-              style: Theme.of(context).textTheme.headline3,
-            )),
-            const Text(
-              "📝",
-              style: TextStyle(fontSize: 140),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            if (state is ErrorSignInState) ...[Text(state.authFailure.message)],
-            if (state is SubmittingSignInState) ...[const LinearProgressIndicator()],
-            const Spacer(),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: Constants.extendedPadding),
-              height: 50,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.all(4)
-                ),
-                onPressed: () {
-                  context.read<SignInBloc>().add(SignInWithGoogle());
-                },
-                child: Row(
-                  children: [
-                    Container(
-                      width: 46,
-                      color: Colors.white,
-                      child: Image.asset(
-                        "assets/icons/brands/google-icon.png",
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 12,
-                    ),
-                    Text(
-                      AppLocalization.of(context).translate("sign_in_google"),
-                      style: Theme.of(context).textTheme.button,
-                    )
-                  ],
+        return IntrinsicHeight(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              const SizedBox(
+                height: 20,
+              ),
+              Center(
+                  child: Text(
+                AppLocalization.of(context).translate("welcome"),
+                style: Theme.of(context).textTheme.headline1,
+              )),
+              const SizedBox(
+                height: 5,
+              ),
+              Text(
+                AppLocalization.of(context).translate("sign_in"),
+                style: Theme.of(context).textTheme.headline4,
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(vertical: 20),
+                width: min(MediaQuery.of(context).size.width,
+                        MediaQuery.of(context).size.height) /
+                    2,
+                child: Image.asset(
+                  "assets/icons/app_logo.png",
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 60,
-            ),
-          ],
+              const SizedBox(
+                height: 20,
+              ),
+              if (state is ErrorSignInState) Text(state.authFailure.message),
+              if (state is SubmittingSignInState) const LinearProgressIndicator(),
+              Expanded(
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: Constants.extendedPadding),
+                    height: 50,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(padding: const EdgeInsets.all(4)),
+                      onPressed: () {
+                        context.read<SignInBloc>().add(SignInWithGoogle());
+                      },
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 46,
+                            color: Colors.white,
+                            child: Image.asset(
+                              "assets/icons/brands/google-icon.png",
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 12,
+                          ),
+                          Text(
+                            AppLocalization.of(context).translate("sign_in_google"),
+                            style: Theme.of(context)
+                                .textTheme
+                                .button
+                                ?.copyWith(color: Colors.blue[50]),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 60,
+              ),
+            ],
+          ),
         );
       },
     );

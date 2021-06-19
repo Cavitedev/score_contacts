@@ -36,6 +36,7 @@ ThemeData lightTheme = ThemeData.light().copyWith(
   iconTheme: const IconThemeData(color: Colors.grey, size: 32),
   accentIconTheme: IconThemeData(color: Colors.lightBlueAccent[700], size: 32),
   textTheme: TextTheme(
+      headline1: const TextStyle(fontSize: 45, letterSpacing: 1, fontWeight: FontWeight.w400,  color: Colors.black),
       headline2: const TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
       headline3: const TextStyle(fontSize: 24, color: Colors.white),
       headline4: const TextStyle(fontSize: 20, color: Colors.black),
@@ -77,6 +78,7 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
       border: InputBorder.none, fillColor: Color.fromRGBO(50, 50, 50, 1)),
   iconTheme: const IconThemeData(color: Colors.grey, size: 32),
   textTheme: TextTheme(
+    headline1: const TextStyle(fontSize: 45, letterSpacing: 1, fontWeight: FontWeight.w400),
     headline2:
         const TextStyle(fontSize: 30, fontWeight: FontWeight.w500, color: Colors.black),
     headline3: const TextStyle(fontSize: 24, color: Colors.white),
