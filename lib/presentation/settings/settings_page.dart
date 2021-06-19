@@ -16,6 +16,7 @@ class SettingsPage extends StatelessWidget {
         ),
       ),
       body: ListView(
+        physics: const BouncingScrollPhysics(),
         children: [
           ChangeThemeListTile(
             themeMode: context.read<AppManagerCubit>().state.themeMode,
