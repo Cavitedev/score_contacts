@@ -26,7 +26,7 @@ ThemeData lightTheme = ThemeData.light().copyWith(
   focusColor: Colors.blueAccent[700],
   textSelectionTheme: TextSelectionThemeData(
       cursorColor: Colors.blue[700],
-      selectionColor: Colors.white,
+      selectionColor: const Color.fromRGBO(80, 80, 120, 1),
       selectionHandleColor: Colors.blue[600]),
   disabledColor: Colors.grey[500],
   inputDecorationTheme: const InputDecorationTheme(
@@ -54,7 +54,7 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
   scaffoldBackgroundColor: const Color.fromRGBO(30, 30, 30, 1),
   dialogBackgroundColor: const Color.fromRGBO(35, 35, 35, 1),
   primaryColor: Colors.blue[800],
-  accentColor: Colors.blueGrey[100],
+  accentColor: Colors.blueGrey[400],
   buttonColor: Colors.blue[900],
   floatingActionButtonTheme: FloatingActionButtonThemeData(
     backgroundColor: Colors.blue[900],

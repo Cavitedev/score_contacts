@@ -43,7 +43,7 @@ class SelectMentionWidget extends StatelessWidget {
                 .map((candidate) => Material(
                       child: ListTile(
                         title: Text(candidate.getName()),
-                        tileColor: Colors.grey[600],
+                        tileColor: Theme.of(context).accentColor,
                         leading: CustomCircleAvatar(
                           name: candidate.getName(),
                           image: candidate.imageLink,

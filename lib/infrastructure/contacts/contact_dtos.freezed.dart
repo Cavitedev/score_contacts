@@ -26,7 +26,7 @@ class _$ContactDTOTearOff {
       @JsonKey(name: companiesName) List<CompanyDTO?>? companiesDTO,
       @JsonKey(name: emailsName) List<LabelObjectDTO?>? emailsDTO,
       @JsonKey(name: phonesName) List<LabelObjectDTO?>? phonesDTO,
-      @JsonKey(name: imageUrlName) String? imageUrl,
+      @JsonKey(name: imageUrlName, includeIfNull: true) String? imageUrl,
       @ServerTimeStampConverter() required FieldValue serverTimeStamp}) {
     return _ContactDTO(
       id: id,
@@ -59,7 +59,7 @@ mixin _$ContactDTO {
   List<LabelObjectDTO?>? get emailsDTO => throw _privateConstructorUsedError;
   @JsonKey(name: phonesName)
   List<LabelObjectDTO?>? get phonesDTO => throw _privateConstructorUsedError;
-  @JsonKey(name: imageUrlName)
+  @JsonKey(name: imageUrlName, includeIfNull: true)
   String? get imageUrl => throw _privateConstructorUsedError;
   @ServerTimeStampConverter()
   FieldValue get serverTimeStamp => throw _privateConstructorUsedError;
@@ -81,7 +81,7 @@ abstract class $ContactDTOCopyWith<$Res> {
       @JsonKey(name: companiesName) List<CompanyDTO?>? companiesDTO,
       @JsonKey(name: emailsName) List<LabelObjectDTO?>? emailsDTO,
       @JsonKey(name: phonesName) List<LabelObjectDTO?>? phonesDTO,
-      @JsonKey(name: imageUrlName) String? imageUrl,
+      @JsonKey(name: imageUrlName, includeIfNull: true) String? imageUrl,
       @ServerTimeStampConverter() FieldValue serverTimeStamp});
 
   $NameDataDTOCopyWith<$Res> get nameDataDTO;
@@ -157,7 +157,7 @@ abstract class _$ContactDTOCopyWith<$Res> implements $ContactDTOCopyWith<$Res> {
       @JsonKey(name: companiesName) List<CompanyDTO?>? companiesDTO,
       @JsonKey(name: emailsName) List<LabelObjectDTO?>? emailsDTO,
       @JsonKey(name: phonesName) List<LabelObjectDTO?>? phonesDTO,
-      @JsonKey(name: imageUrlName) String? imageUrl,
+      @JsonKey(name: imageUrlName, includeIfNull: true) String? imageUrl,
       @ServerTimeStampConverter() FieldValue serverTimeStamp});
 
   @override
@@ -226,7 +226,7 @@ class _$_ContactDTO extends _ContactDTO {
       @JsonKey(name: companiesName) this.companiesDTO,
       @JsonKey(name: emailsName) this.emailsDTO,
       @JsonKey(name: phonesName) this.phonesDTO,
-      @JsonKey(name: imageUrlName) this.imageUrl,
+      @JsonKey(name: imageUrlName, includeIfNull: true) this.imageUrl,
       @ServerTimeStampConverter() required this.serverTimeStamp})
       : super._();
 
@@ -249,7 +249,7 @@ class _$_ContactDTO extends _ContactDTO {
   @JsonKey(name: phonesName)
   final List<LabelObjectDTO?>? phonesDTO;
   @override
-  @JsonKey(name: imageUrlName)
+  @JsonKey(name: imageUrlName, includeIfNull: true)
   final String? imageUrl;
   @override
   @ServerTimeStampConverter()
@@ -315,7 +315,7 @@ abstract class _ContactDTO extends ContactDTO {
           @JsonKey(name: companiesName) List<CompanyDTO?>? companiesDTO,
           @JsonKey(name: emailsName) List<LabelObjectDTO?>? emailsDTO,
           @JsonKey(name: phonesName) List<LabelObjectDTO?>? phonesDTO,
-          @JsonKey(name: imageUrlName) String? imageUrl,
+          @JsonKey(name: imageUrlName, includeIfNull: true) String? imageUrl,
           @ServerTimeStampConverter() required FieldValue serverTimeStamp}) =
       _$_ContactDTO;
   const _ContactDTO._() : super._();
@@ -339,7 +339,7 @@ abstract class _ContactDTO extends ContactDTO {
   @JsonKey(name: phonesName)
   List<LabelObjectDTO?>? get phonesDTO => throw _privateConstructorUsedError;
   @override
-  @JsonKey(name: imageUrlName)
+  @JsonKey(name: imageUrlName, includeIfNull: true)
   String? get imageUrl => throw _privateConstructorUsedError;
   @override
   @ServerTimeStampConverter()

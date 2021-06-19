@@ -46,7 +46,7 @@ Map<String, dynamic> _$_$_ContactDTOToJson(_$_ContactDTO instance) {
       'companies', instance.companiesDTO?.map((e) => e?.toJson()).toList());
   writeNotNull('emails', instance.emailsDTO?.map((e) => e?.toJson()).toList());
   writeNotNull('phones', instance.phonesDTO?.map((e) => e?.toJson()).toList());
-  writeNotNull('imageUrl', instance.imageUrl);
+  val['imageUrl'] = instance.imageUrl;
   writeNotNull('serverTimeStamp',
       const ServerTimeStampConverter().toJson(instance.serverTimeStamp));
   return val;

@@ -16,10 +16,11 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$ContactImageTearOff {
   const _$ContactImageTearOff();
 
-  _ContactImage call({String? url, PickedFile? file}) {
+  _ContactImage call({String? url, PickedFile? file, bool deleted = false}) {
     return _ContactImage(
       url: url,
       file: file,
+      deleted: deleted,
     );
   }
 }
@@ -31,6 +32,7 @@ const $ContactImage = _$ContactImageTearOff();
 mixin _$ContactImage {
   String? get url => throw _privateConstructorUsedError;
   PickedFile? get file => throw _privateConstructorUsedError;
+  bool get deleted => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ContactImageCopyWith<ContactImage> get copyWith =>
@@ -42,7 +44,7 @@ abstract class $ContactImageCopyWith<$Res> {
   factory $ContactImageCopyWith(
           ContactImage value, $Res Function(ContactImage) then) =
       _$ContactImageCopyWithImpl<$Res>;
-  $Res call({String? url, PickedFile? file});
+  $Res call({String? url, PickedFile? file, bool deleted});
 }
 
 /// @nodoc
@@ -57,6 +59,7 @@ class _$ContactImageCopyWithImpl<$Res> implements $ContactImageCopyWith<$Res> {
   $Res call({
     Object? url = freezed,
     Object? file = freezed,
+    Object? deleted = freezed,
   }) {
     return _then(_value.copyWith(
       url: url == freezed
@@ -67,6 +70,10 @@ class _$ContactImageCopyWithImpl<$Res> implements $ContactImageCopyWith<$Res> {
           ? _value.file
           : file // ignore: cast_nullable_to_non_nullable
               as PickedFile?,
+      deleted: deleted == freezed
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -78,7 +85,7 @@ abstract class _$ContactImageCopyWith<$Res>
           _ContactImage value, $Res Function(_ContactImage) then) =
       __$ContactImageCopyWithImpl<$Res>;
   @override
-  $Res call({String? url, PickedFile? file});
+  $Res call({String? url, PickedFile? file, bool deleted});
 }
 
 /// @nodoc
@@ -95,6 +102,7 @@ class __$ContactImageCopyWithImpl<$Res> extends _$ContactImageCopyWithImpl<$Res>
   $Res call({
     Object? url = freezed,
     Object? file = freezed,
+    Object? deleted = freezed,
   }) {
     return _then(_ContactImage(
       url: url == freezed
@@ -105,6 +113,10 @@ class __$ContactImageCopyWithImpl<$Res> extends _$ContactImageCopyWithImpl<$Res>
           ? _value.file
           : file // ignore: cast_nullable_to_non_nullable
               as PickedFile?,
+      deleted: deleted == freezed
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -112,18 +124,21 @@ class __$ContactImageCopyWithImpl<$Res> extends _$ContactImageCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ContactImage implements _ContactImage {
-  const _$_ContactImage({this.url, this.file})
-      : assert(url != null || file != null,
-            'This class requires either url or File');
+  const _$_ContactImage({this.url, this.file, this.deleted = false})
+      : assert(url != null || file != null || deleted == true,
+            'This class requires either url or File unless it is deleted');
 
   @override
   final String? url;
   @override
   final PickedFile? file;
+  @JsonKey(defaultValue: false)
+  @override
+  final bool deleted;
 
   @override
   String toString() {
-    return 'ContactImage(url: $url, file: $file)';
+    return 'ContactImage(url: $url, file: $file, deleted: $deleted)';
   }
 
   @override
@@ -133,14 +148,17 @@ class _$_ContactImage implements _ContactImage {
             (identical(other.url, url) ||
                 const DeepCollectionEquality().equals(other.url, url)) &&
             (identical(other.file, file) ||
-                const DeepCollectionEquality().equals(other.file, file)));
+                const DeepCollectionEquality().equals(other.file, file)) &&
+            (identical(other.deleted, deleted) ||
+                const DeepCollectionEquality().equals(other.deleted, deleted)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(url) ^
-      const DeepCollectionEquality().hash(file);
+      const DeepCollectionEquality().hash(file) ^
+      const DeepCollectionEquality().hash(deleted);
 
   @JsonKey(ignore: true)
   @override
@@ -149,13 +167,15 @@ class _$_ContactImage implements _ContactImage {
 }
 
 abstract class _ContactImage implements ContactImage {
-  const factory _ContactImage({String? url, PickedFile? file}) =
+  const factory _ContactImage({String? url, PickedFile? file, bool deleted}) =
       _$_ContactImage;
 
   @override
   String? get url => throw _privateConstructorUsedError;
   @override
   PickedFile? get file => throw _privateConstructorUsedError;
+  @override
+  bool get deleted => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ContactImageCopyWith<_ContactImage> get copyWith =>
