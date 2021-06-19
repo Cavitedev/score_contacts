@@ -9,24 +9,14 @@ class SignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: LayoutBuilder(
-          builder: (context, constrains) => SingleChildScrollView(
-            child: ConstrainedBox(
-              constraints: constrains.copyWith(
-                minHeight: constrains.maxHeight,
-                maxHeight: double.infinity
-              ),
-              child: BlocProvider(
-                create: (context) {
-                  final SignInBloc bloc = getIt<SignInBloc>();
-                  return bloc;
-                },
-                child: SignInForm(),
-              ),
-            ),
+          child: BlocProvider(
+            create: (context) {
+              final SignInBloc bloc = getIt<SignInBloc>();
+              return bloc;
+            },
+            child: SignInForm(),
           ),
         ),
-      ),
     );
   }
 }
