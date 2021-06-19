@@ -132,7 +132,7 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
         height: 48,
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
-          color: Theme.of(context).inputDecorationTheme.fillColor,
+          color: _fillColor(context),
           borderRadius: widget.borderRadius,
           border: Border.all(
             color: Theme.of(context).textSelectionTheme.selectionHandleColor!
@@ -142,7 +142,7 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
         ),
         child: DropdownButton<String>(
             focusNode: widget.focusNode,
-            focusColor: Theme.of(context).textSelectionTheme.selectionColor,
+            focusColor: _fillColor(context),
             onChanged: (value) {
               widget.focusNode.requestFocus();
               if (value == "Custom") {
@@ -182,6 +182,8 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
       ),
     );
   }
+
+  Color _fillColor(BuildContext context) => Theme.of(context).inputDecorationTheme.fillColor;
 
   List<DropdownMenuItem<String>> _addRenderCustomIfExists() {
     if (!widget.items.contains(selected) && selected != "Custom") {
