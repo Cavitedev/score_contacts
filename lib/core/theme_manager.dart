@@ -35,17 +35,22 @@ ThemeData lightTheme = ThemeData.light().copyWith(
   ),
   iconTheme: const IconThemeData(color: Colors.grey, size: 32),
   accentIconTheme: IconThemeData(color: Colors.lightBlueAccent[700], size: 32),
+  accentTextTheme:
+      const TextTheme(bodyText2: TextStyle(color: Color.fromRGBO(0, 0, 238, 1.0))),
   textTheme: TextTheme(
-      headline1: const TextStyle(fontSize: 45, letterSpacing: 1, fontWeight: FontWeight.w400,  color: Colors.black),
-      headline2: const TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
-      headline3: const TextStyle(fontSize: 24, color: Colors.white),
-      headline4: const TextStyle(fontSize: 20, color: Colors.black),
-      headline5: const TextStyle(fontSize: 16, color: Colors.black),
-      headline6: const TextStyle(fontSize: 14, letterSpacing: .5, color: Colors.black),
-      subtitle1: const TextStyle(fontSize: 16, letterSpacing: .5, color: Colors.black),
-      subtitle2: const TextStyle(fontSize: 14, letterSpacing: .5, color: Colors.black),
-      caption: TextStyle(fontSize: 15, color: Colors.grey[700]),
-      button: TextStyle(fontSize: 20, color: Colors.blueAccent[400])),
+    headline1: const TextStyle(
+        fontSize: 45, letterSpacing: 1, fontWeight: FontWeight.w400, color: Colors.black),
+    headline2: const TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
+    headline3: const TextStyle(fontSize: 24, color: Colors.white),
+    headline4: const TextStyle(fontSize: 20, color: Colors.black),
+    headline5: const TextStyle(fontSize: 16, color: Colors.black),
+    headline6: const TextStyle(fontSize: 14, letterSpacing: .5, color: Colors.black),
+    subtitle1: const TextStyle(fontSize: 16, letterSpacing: .5, color: Colors.black),
+    subtitle2: const TextStyle(fontSize: 14, letterSpacing: .5, color: Colors.black),
+    caption: TextStyle(fontSize: 15, color: Colors.grey[700]),
+    button: TextStyle(fontSize: 20, color: Colors.blueAccent[400]),
+    bodyText2: const TextStyle(color: Colors.black),
+  ),
   visualDensity: VisualDensity.adaptivePlatformDensity,
 );
 
@@ -77,8 +82,11 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
   inputDecorationTheme: const InputDecorationTheme(
       border: InputBorder.none, fillColor: Color.fromRGBO(50, 50, 50, 1)),
   iconTheme: const IconThemeData(color: Colors.grey, size: 32),
+  accentTextTheme:
+      const TextTheme(bodyText2: TextStyle(color: Color.fromRGBO(136, 191, 255, 1.0))),
   textTheme: TextTheme(
-    headline1: const TextStyle(fontSize: 45, letterSpacing: 1, fontWeight: FontWeight.w400),
+    headline1:
+        const TextStyle(fontSize: 45, letterSpacing: 1, fontWeight: FontWeight.w400),
     headline2:
         const TextStyle(fontSize: 30, fontWeight: FontWeight.w500, color: Colors.black),
     headline3: const TextStyle(fontSize: 24, color: Colors.white),

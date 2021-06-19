@@ -47,12 +47,17 @@ class EntryRow extends StatelessWidget {
         decoration: BoxDecoration(
             color: selectionEntry.isSelected
                 ? Theme.of(context).focusColor
-                : Theme.of(context).backgroundColor,
+                : Theme.of(context).cardColor,
             borderRadius: BorderRadius.circular(8)),
         child: RichText(
-
           textScaleFactor: MediaQuery.of(context).textScaleFactor,
-          text: TextSpan(children: _textSpans(selectionEntry.entry).toList()),
+          text: TextSpan(
+              children: _textSpans(
+                      selectionEntry.entry,
+                      Theme.of(context).textTheme.bodyText2,
+                      Theme.of(context).accentTextTheme.bodyText2 ??
+                          Constants.mentionSelectionStyle)
+                  .toList()),
           maxLines: containerHeight / 20 ~/ MediaQuery.of(context).textScaleFactor,
           overflow: TextOverflow.ellipsis,
         ),
@@ -60,7 +65,10 @@ class EntryRow extends StatelessWidget {
     );
   }
 
-  Iterable<InlineSpan> _textSpans(DiaryEntry entry) sync* {
+  Iterable<InlineSpan> _textSpans(
+      DiaryEntry entry, TextStyle? defaultTextStyle, TextStyle accentTextStyle) sync* {
+    final TextStyle actualDefaultTextStyle = defaultTextStyle ?? const TextStyle();
+
     final List<Match> matches = filter.filterSearch != ""
         ? filter.filterSearch
                 ?.toLowerCase()
@@ -74,7 +82,7 @@ class EntryRow extends StatelessWidget {
       yield* _spanWithBoldIfInMatches(
         matches: matches,
         completeText: entry.text,
-        textStyle: const TextStyle(),
+        textStyle: actualDefaultTextStyle,
         startPos: 0,
         endPos: entry.text.length,
       );
@@ -86,7 +94,7 @@ class EntryRow extends StatelessWidget {
         yield* _spanWithBoldIfInMatches(
           matches: matches,
           completeText: entry.text,
-          textStyle: const TextStyle(),
+          textStyle: actualDefaultTextStyle,
           startPos: currentPos,
           endPos: mention.startPos,
         );
@@ -94,7 +102,7 @@ class EntryRow extends StatelessWidget {
       yield* _spanWithBoldIfInMatches(
         matches: matches,
         completeText: entry.text,
-        textStyle: Constants.mentionSelectionStyle,
+        textStyle: accentTextStyle,
         startPos: mention.startPos,
         endPos: mention.endPos,
       );
@@ -105,6 +113,7 @@ class EntryRow extends StatelessWidget {
       yield* _spanWithBoldIfInMatches(
         matches: matches,
         completeText: entry.text,
+        textStyle: actualDefaultTextStyle,
         startPos: mentionList.last.endPos,
         endPos: entry.text.length,
       );
@@ -113,7 +122,7 @@ class EntryRow extends StatelessWidget {
 
   Iterable<InlineSpan> _spanWithBoldIfInMatches({
     required String completeText,
-    TextStyle? textStyle,
+    required TextStyle textStyle,
     required List<Match> matches,
     required int startPos,
     required int endPos,
@@ -134,7 +143,7 @@ class EntryRow extends StatelessWidget {
       }
       yield TextSpan(
           text: completeText.substring(match.start, match.end),
-          style: textStyle!.copyWith(fontWeight: FontWeight.bold));
+          style: textStyle.copyWith(fontWeight: FontWeight.bold));
       currentPos = match.end;
     }
 
