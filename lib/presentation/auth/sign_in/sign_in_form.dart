@@ -54,7 +54,7 @@ class SignInForm extends StatelessWidget {
                 "assets/icons/app_logo.png",
               ),
             ),
-            if (state is ErrorSignInState) Text(state.authFailure.message),
+            if (state is ErrorSignInState) Center(child: Text(state.authFailure.message)),
             if (state is SubmittingSignInState) const LinearProgressIndicator(),
             const SizedBox(
               height: 20,
