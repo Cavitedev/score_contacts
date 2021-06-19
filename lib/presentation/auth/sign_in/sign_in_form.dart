@@ -32,7 +32,7 @@ class SignInForm extends StatelessWidget {
             Center(
                 child: Text(
               AppLocalization.of(context).translate("sign_in"),
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headline3,
             )),
             const Text(
               "📝",
