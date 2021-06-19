@@ -131,7 +131,6 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
         padding: const EdgeInsets.only(left: 6),
         height: 48,
         decoration: BoxDecoration(
-          shape: BoxShape.rectangle,
           color: _fillColor(context),
           borderRadius: widget.borderRadius,
           border: Border.all(
@@ -176,14 +175,13 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton>
               height: 0,
             ),
             icon: const Icon(Icons.arrow_drop_down),
-            iconSize: 24,
             hint: const Text("label"),
             items: itemsRendered),
       ),
     );
   }
 
-  Color _fillColor(BuildContext context) => Theme.of(context).inputDecorationTheme.fillColor;
+  Color? _fillColor(BuildContext context) => Theme.of(context).inputDecorationTheme.fillColor;
 
   List<DropdownMenuItem<String>> _addRenderCustomIfExists() {
     if (!widget.items.contains(selected) && selected != "Custom") {
