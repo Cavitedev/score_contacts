@@ -137,7 +137,7 @@ class _AlphabetScrollViewState extends State<AlphabetScrollView> {
           alignment: Alignment.centerRight,
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 2),
-            margin: const EdgeInsets.only(bottom: 70), // Space for fab
+            margin: const EdgeInsets.only(bottom: 75), // Space for fab
             child: GestureDetector(
               onVerticalDragStart: (z) => onVerticalDrag(z.localPosition),
               onVerticalDragUpdate: (z) => onVerticalDrag(z.localPosition),
@@ -153,6 +153,7 @@ class _AlphabetScrollViewState extends State<AlphabetScrollView> {
                           vertical: Constants.smallPadding,
                           horizontal: 2,
                         ),
+                        blurRadius: 5,
                         child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: List.generate(
