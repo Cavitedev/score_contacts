@@ -62,40 +62,38 @@ class SignInForm extends StatelessWidget {
           ])),
           SliverFillRemaining(
             hasScrollBody: false,
-            child: Expanded(
-              child: Container(
-                margin: EdgeInsets.only(bottom: 20),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: Constants.extendedPadding),
-                height: 50,
-                alignment: Alignment.bottomCenter,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(padding: const EdgeInsets.all(4)),
-                  onPressed: () {
-                    context.read<SignInBloc>().add(SignInWithGoogle());
-                  },
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 46,
-                        color: Colors.white,
-                        child: Image.asset(
-                          "assets/icons/brands/google-icon.png",
-                          fit: BoxFit.contain,
-                        ),
+            child: Container(
+              margin: const EdgeInsets.only(bottom: 20),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: Constants.extendedPadding),
+              height: 50,
+              alignment: Alignment.bottomCenter,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(padding: const EdgeInsets.all(4)),
+                onPressed: () {
+                  context.read<SignInBloc>().add(SignInWithGoogle());
+                },
+                child: Row(
+                  children: [
+                    Container(
+                      width: 46,
+                      color: Colors.white,
+                      child: Image.asset(
+                        "assets/icons/brands/google-icon.png",
+                        fit: BoxFit.contain,
                       ),
-                      const SizedBox(
-                        width: 12,
-                      ),
-                      Text(
-                        AppLocalization.of(context).translate("sign_in_google"),
-                        style: Theme.of(context)
-                            .textTheme
-                            .button
-                            ?.copyWith(color: Colors.blue[50]),
-                      )
-                    ],
-                  ),
+                    ),
+                    const SizedBox(
+                      width: 12,
+                    ),
+                    Text(
+                      AppLocalization.of(context).translate("sign_in_google"),
+                      style: Theme.of(context)
+                          .textTheme
+                          .button
+                          ?.copyWith(color: Colors.blue[50]),
+                    )
+                  ],
                 ),
               ),
             ),
