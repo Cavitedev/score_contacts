@@ -16,7 +16,7 @@ class CustomCircleAvatar extends StatelessWidget {
     this.child,
     this.radius = 20,
     Key? key,
-  }):super(key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +25,11 @@ class CustomCircleAvatar extends StatelessWidget {
 
   CircleAvatar _buildCircleAvatar(BuildContext context) {
     return CircleAvatar(
+      // Cannot have background and foreground on reload
       radius: radius,
-      backgroundColor: backgroundColor ?? Colors.purple[200],
-      foregroundImage: image != null ? NetworkImage(image!) : null,
-      onForegroundImageError: image != null
+      backgroundColor: image == null ? (backgroundColor ?? Colors.purple[200]) : null,
+      backgroundImage: image != null ? NetworkImage(image!) : null,
+      onBackgroundImageError: image != null
           ? (_, ex) {
               FlushbarHelper.createError(
                       message: AppLocalization.of(context)
@@ -39,8 +40,7 @@ class CustomCircleAvatar extends StatelessWidget {
                   .show(context);
             }
           : null,
-      child: child,
+      child: image == null ? child : null,
     );
   }
-
 }

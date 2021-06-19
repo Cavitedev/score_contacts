@@ -8,14 +8,18 @@ class ContactCircleAvatar extends StatelessWidget {
 
   final double radius;
 
-  const ContactCircleAvatar({required this.selectionContact, this.radius = 20});
+  const ContactCircleAvatar({
+    required this.selectionContact,
+    this.radius = 20,
+    Key? key
+  }):super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return _buildCircleAvatar(context);
+    return _buildAvatar(context);
   }
 
-  Widget _buildCircleAvatar(BuildContext context) {
+  Widget _buildAvatar(BuildContext context) {
     final String? urlContact = selectionContact.contact.contactImage?.url;
     final double increaseFactor = radius / 20;
     return CustomCircleAvatar(
@@ -48,6 +52,4 @@ class ContactCircleAvatar extends StatelessWidget {
 
   bool _doesRequiresImage(String? urlContact) =>
       urlContact != null && !selectionContact.isSelected;
-
-
 }

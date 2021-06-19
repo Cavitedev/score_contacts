@@ -68,7 +68,9 @@ class ContactRow extends StatelessWidget {
         height: height(context),
         child: Row(
           children: <Widget>[
-            ContactCircleAvatar(selectionContact: selectionContact),
+            ContactCircleAvatar(
+              selectionContact: selectionContact,
+            ),
             const SizedBox(
               width: 20,
             ),
