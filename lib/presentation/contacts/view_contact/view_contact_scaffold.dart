@@ -54,6 +54,7 @@ class ViewContactScaffold extends StatelessWidget {
         ],
       ),
       body: ListView(
+        physics: const BouncingScrollPhysics(),
         children: [
           _buildImageOrAvatar(),
           const SizedBox(
