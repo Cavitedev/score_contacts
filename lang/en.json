@@ -54,6 +54,7 @@
   "other": "Other",
   "phone": "Phone",
   "platform_error": "Platform error on device, could not fetch values from system",
+  "remove_photo": "Remove photo",
   "saving": "Saving",
   "search_contacts": "Search, %s contacts",
   "search_entries": "Search %s entries",

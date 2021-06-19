@@ -29,7 +29,7 @@ class ContactDTO with _$ContactDTO {
     @JsonKey(name: companiesName) List<CompanyDTO?>? companiesDTO,
     @JsonKey(name: emailsName) List<LabelObjectDTO?>? emailsDTO,
     @JsonKey(name: phonesName) List<LabelObjectDTO?>? phonesDTO,
-    @JsonKey(name: imageUrlName) String? imageUrl,
+    @JsonKey(name: imageUrlName, includeIfNull: true) String? imageUrl,
     @ServerTimeStampConverter() required FieldValue serverTimeStamp,
   }) = _ContactDTO;
 

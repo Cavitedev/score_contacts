@@ -4,11 +4,10 @@ import 'package:scorecontacts/core/app_localization.dart';
 import 'package:scorecontacts/presentation/core/widgets/circular_button_image.dart';
 
 class ImagePickUp extends StatefulWidget {
-  final Function(PickedFile?) onImageReturned;
+  final Function(PickedFile?, bool errors) onImageReturned;
   final String? backgroundUrl;
 
-  const ImagePickUp(
-      {required this.onImageReturned, this.backgroundUrl, Key? key})
+  const ImagePickUp({required this.onImageReturned, this.backgroundUrl, Key? key})
       : super(key: key);
 
   @override
@@ -29,13 +28,13 @@ class _ImagePickUpState extends State<ImagePickUp> {
 
   @override
   Widget build(BuildContext context) {
-      return CircularButtonImage(
-        onPressed: () {
-          getImageGalleryOrCamera(context);
-        },
-        decorationImage: _buildDecorationImage(),
-        icon: Icons.add_a_photo_outlined,
-      );
+    return CircularButtonImage(
+      onPressed: () {
+        getImageGalleryOrCamera(context);
+      },
+      decorationImage: _buildDecorationImage(),
+      icon: Icons.add_a_photo_outlined,
+    );
   }
 
   void getImageGalleryOrCamera(BuildContext context) {
@@ -45,23 +44,32 @@ class _ImagePickUpState extends State<ImagePickUp> {
           return Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              if (widget.backgroundUrl != null)
+                ListTile(
+                  leading: const Icon(Icons.clear),
+                  title: Text(AppLocalization.of(context).translate("remove_photo")),
+                  onTap: () async {
+                    _onGetImage(null, errors: false);
+                  },
+                ),
               ListTile(
                 leading: const Icon(Icons.add_a_photo_outlined),
-                title:
-                    Text(AppLocalization.of(context).translate("take_photo")),
+                title: Text(AppLocalization.of(context).translate("take_photo")),
                 onTap: () async {
-                  final PickedFile? photo =
-                      await imagePicker.getImage(source: ImageSource.camera);
+                  final PickedFile? photo = await imagePicker.getImage(
+                    source: ImageSource.camera,
+                  );
                   _onGetImage(photo);
                 },
               ),
               ListTile(
                 leading: const Icon(Icons.add_photo_alternate_outlined),
-                title: Text(AppLocalization.of(context)
-                    .translate("choose_photo_from_gallery")),
+                title: Text(
+                    AppLocalization.of(context).translate("choose_photo_from_gallery")),
                 onTap: () async {
-                  final PickedFile? photo =
-                      await imagePicker.getImage(source: ImageSource.gallery);
+                  final PickedFile? photo = await imagePicker.getImage(
+                    source: ImageSource.gallery,
+                  );
 
                   _onGetImage(photo);
                 },
@@ -71,11 +79,11 @@ class _ImagePickUpState extends State<ImagePickUp> {
         });
   }
 
-  void _onGetImage(PickedFile? photo) {
+  void _onGetImage(PickedFile? photo, {bool errors = true}) {
     pickedFile = photo;
     _updateImageProvider();
     Navigator.of(context).pop();
-    widget.onImageReturned(photo);
+    widget.onImageReturned(photo, photo == null && errors);
   }
 
   DecorationImage? _buildDecorationImage() {
@@ -87,8 +95,7 @@ class _ImagePickUpState extends State<ImagePickUp> {
       fit: BoxFit.scaleDown,
       repeat: ImageRepeat.repeat,
       image: imageProvider!,
-      colorFilter:
-          ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.darken),
+      colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.darken),
     );
   }
 

@@ -21,8 +21,8 @@ class ContactsImageStorage {
 
   Reference getFirestorageRef(Contact contact) {
     final String userId = authFacade.getUserOrCrash().uid.value;
-    final Reference storageRef = firestorage
-        .ref("Users/$userId/contacts/${contact.id.value}/avatar.jpg");
+    final Reference storageRef =
+        firestorage.ref("Users/$userId/contacts/${contact.id.value}/avatar.jpg");
     return storageRef;
   }
 
@@ -48,8 +48,12 @@ class ContactsImageStorage {
 
   Future<Either<ContactsFailure, ContactDTO>> updateImageOnDTO(
       Contact contact, ContactDTO contactDTO) async {
-    final Either<ContactsFailure, String?> eitherImageUrl =
-        await uploadImage(contact);
+    if (contact.contactImage?.deleted ?? false) {
+      await deleteImage(contact);
+      return right(contactDTO.copyWith(imageUrl: null));
+    }
+
+    final Either<ContactsFailure, String?> eitherImageUrl = await uploadImage(contact);
     return eitherImageUrl.fold(
       (f) => left(f),
       (imageUrl) {

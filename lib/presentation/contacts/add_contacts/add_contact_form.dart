@@ -33,8 +33,8 @@ class AddContactForm extends StatelessWidget {
                 ImagePickUp(
                   key: ValueKey(contactImageUrl),
                   backgroundUrl: contactImageUrl,
-                  onImageReturned: (imageFile) {
-                    if (imageFile != null) {
+                  onImageReturned: (imageFile, errors) {
+                    if (!errors) {
                       context
                           .read<AddContactBloc>()
                           .add(AddContactEvent.updateImage(imageFile));

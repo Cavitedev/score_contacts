@@ -54,6 +54,7 @@
   "other": "Otro",
   "phone": "Teléfono",
   "platform_error": "Error en el sistema nativo, no se pudo retornar los valores del sistema",
+  "remove_photo": "Quitar foto",
   "saving": "Guardando",
   "search_contacts": "Buscar, %s contactos",
   "search_entries": "Buscar, %s entradas",
