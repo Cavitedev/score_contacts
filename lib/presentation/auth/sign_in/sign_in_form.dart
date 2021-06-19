@@ -16,7 +16,7 @@ class SignInForm extends StatelessWidget {
       listener: (context, state) {
         if (state is LoadedSignInState) {
           context.read<AuthBloc>().add(const AuthEvent.getUser());
-          context.router.popAndPush(const r.ContactListRoute());
+          context.router.replace(const r.ContactListRoute());
         } else if (state is ErrorSignInState) {
           FlushbarHelper.createError(
                   message:
