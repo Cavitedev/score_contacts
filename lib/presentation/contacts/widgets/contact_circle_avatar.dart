@@ -27,7 +27,7 @@ class ContactCircleAvatar extends StatelessWidget {
       child: CustomCircleAvatar(
         backgroundColor: selectionContact.isSelected
             ? Colors.teal[200]
-            : colorGivenName(selectionContact.contact.getName()),
+            : colorGivenName(selectionContact.contact.id.value),
         image: _doesRequiresImage(urlContact) ? urlContact! : null,
         name: selectionContact.contact.nameData.toFullName(),
         radius: radius,
