@@ -124,29 +124,32 @@ class Contact
     return nameData.firstName?.substring(0, 1).toUpperCase() ?? "";
   }
 
+  /// Devuelve el String del elemento que ha encontrado teniendo en cuenta
+  /// que busca en nombre teléfonos y correos
+  /// Devuelve null cuando no encuentra nada
   String? matchPattern(String? pattern) {
-    if (pattern == null) return getName();
+    if (pattern == null) return getName(); //Sin búsqueda devuelve nombre
 
     final String lowerCasePattern = pattern.toLowerCase();
     if (_matchesName(lowerCasePattern)) {
-      return getName();
+      return getName(); // Si encuentra nombe devolver todo el nombre
     }
 
     if (isPhoneString(lowerCasePattern)) {
       for (final Phone phone in getLabelObjectList<Phone>()) {
         if (phone.matches(lowerCasePattern)) {
-          return phone.value;
+          return phone.value; // Si encuentra algún teléfono devolver ese teléfono
         }
       }
     }
 
     for (final Email email in getLabelObjectList<Email>()) {
       if (email.value?.toLowerCase().contains(lowerCasePattern) ?? false) {
-        return email.value;
+        return email.value; // Si encuentra algún correo devolver ese correo
       }
     }
 
-    return null;
+    return null; // Si no encuentra nada es que no debe mostrar el contacto
   }
 
   bool _matchesName(String lowerCasePattern) =>
