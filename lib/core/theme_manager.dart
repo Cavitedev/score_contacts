@@ -86,7 +86,7 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
       const TextTheme(bodyText2: TextStyle(color: Color.fromRGBO(136, 191, 255, 1.0))),
   textTheme: TextTheme(
     headline1:
-        const TextStyle(fontSize: 45, letterSpacing: 1, fontWeight: FontWeight.w400),
+        const TextStyle(fontSize: 45, letterSpacing: 1, fontWeight: FontWeight.w400, color: Colors.white),
     headline2:
         const TextStyle(fontSize: 30, fontWeight: FontWeight.w500, color: Colors.black),
     headline3: const TextStyle(fontSize: 24, color: Colors.white),
