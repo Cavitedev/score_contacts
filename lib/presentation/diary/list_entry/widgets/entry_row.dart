@@ -7,6 +7,7 @@ import 'package:scorecontacts/core/app_constants.dart';
 import 'package:scorecontacts/domain/core/filter.dart';
 import 'package:scorecontacts/domain/mention/mention.dart';
 import 'package:scorecontacts/domain/user/diary/diary_entry.dart';
+import 'package:scorecontacts/presentation/core/bold_text.dart';
 import 'package:scorecontacts/presentation/routes/router.gr.dart' as r;
 
 class EntryRow extends StatelessWidget {
@@ -79,7 +80,7 @@ class EntryRow extends StatelessWidget {
 
     final List<Mention> mentionList = entry.mentionList;
     if (mentionList.isEmpty) {
-      yield* _spanWithBoldIfInMatches(
+      yield* spansWithBoldIfInMatches(
         matches: matches,
         completeText: entry.text,
         textStyle: actualDefaultTextStyle,
@@ -91,7 +92,7 @@ class EntryRow extends StatelessWidget {
     int currentPos = 0;
     for (final Mention mention in mentionList) {
       if (mention.startPos != currentPos) {
-        yield* _spanWithBoldIfInMatches(
+        yield* spansWithBoldIfInMatches(
           matches: matches,
           completeText: entry.text,
           textStyle: actualDefaultTextStyle,
@@ -99,7 +100,7 @@ class EntryRow extends StatelessWidget {
           endPos: mention.startPos,
         );
       }
-      yield* _spanWithBoldIfInMatches(
+      yield* spansWithBoldIfInMatches(
         matches: matches,
         completeText: entry.text,
         textStyle: accentTextStyle,
@@ -110,7 +111,7 @@ class EntryRow extends StatelessWidget {
     }
 
     if (mentionList.last.endPos != entry.text.length) {
-      yield* _spanWithBoldIfInMatches(
+      yield* spansWithBoldIfInMatches(
         matches: matches,
         completeText: entry.text,
         textStyle: actualDefaultTextStyle,
@@ -120,35 +121,4 @@ class EntryRow extends StatelessWidget {
     }
   }
 
-  Iterable<InlineSpan> _spanWithBoldIfInMatches({
-    required String completeText,
-    required TextStyle textStyle,
-    required List<Match> matches,
-    required int startPos,
-    required int endPos,
-  }) sync* {
-    final matchesInSpan =
-        matches.where((match) => match.start < endPos && match.end > startPos).toList();
-    if (matchesInSpan.isEmpty) {
-      yield TextSpan(text: completeText.substring(startPos, endPos), style: textStyle);
-      return;
-    }
-
-    int currentPos = startPos;
-
-    for (final Match match in matchesInSpan) {
-      if (match.start != currentPos) {
-        yield TextSpan(
-            text: completeText.substring(currentPos, match.start), style: textStyle);
-      }
-      yield TextSpan(
-          text: completeText.substring(match.start, match.end),
-          style: textStyle.copyWith(fontWeight: FontWeight.bold));
-      currentPos = match.end;
-    }
-
-    if (matchesInSpan.last.end != endPos) {
-      yield TextSpan(text: completeText.substring(currentPos, endPos), style: textStyle);
-    }
-  }
 }

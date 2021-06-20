@@ -8,6 +8,7 @@ import 'package:scorecontacts/core/app_constants.dart';
 import 'package:scorecontacts/domain/core/filter.dart';
 import 'package:scorecontacts/presentation/contacts/list_view/widgets/pop_up_contact.dart';
 import 'package:scorecontacts/presentation/contacts/widgets/contact_circle_avatar.dart';
+import 'package:scorecontacts/presentation/core/bold_text.dart';
 import 'package:scorecontacts/presentation/routes/router.gr.dart' as r;
 
 class ContactRow extends StatelessWidget {
@@ -92,45 +93,63 @@ class ContactRow extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildFullName(context),
-            RichText(
-              overflow: TextOverflow.ellipsis,
-              textScaleFactor: MediaQuery.of(context).textScaleFactor,
-              text: TextSpan(
-                  text: selectionContact.filterText,
-                  style: Theme.of(context).textTheme.caption),
-            )
+            _buildFullName(context) ,
+            ..._buildExtraSearchDataIfRequired(context)
           ],
         ),
       );
     }
   }
 
-  RichText _buildFullNameHighlighted(BuildContext context, String highlight) {
-    final Match? match =
-        filter?.filterSearch?.toLowerCase().allMatches(highlight.toLowerCase()).first;
-    if (match != null) {
-      return RichText(
-        overflow: TextOverflow.ellipsis,
-        textScaleFactor: MediaQuery.of(context).textScaleFactor,
-        text: TextSpan(children: [
-          TextSpan(
-              text: highlight.substring(0, match.start),
-              style: Theme.of(context).textTheme.headline5),
-          TextSpan(
-              text: highlight.substring(match.start, match.end),
-              style: Theme.of(context)
-                  .textTheme
-                  .headline5!
-                  .copyWith(fontWeight: FontWeight.bold)),
-          TextSpan(
-              text: highlight.substring(match.end),
-              style: Theme.of(context).textTheme.headline5),
-        ]),
-      );
+  //Note: Should return only at most 1 element
+  List<RichText> _buildExtraSearchDataIfRequired(BuildContext context) {
+    if (selectionContact.filterText?.isEmpty ?? false) {
+      return [];
+    }
+    final List<Match>? matchList = _matchesOnHighlight(selectionContact.filterText!);
+    if (matchList == null) {
+      return [];
     }
 
-    return _buildFullName(context);
+    return [RichText(
+            overflow: TextOverflow.ellipsis,
+            textScaleFactor: MediaQuery.of(context).textScaleFactor,
+            text: TextSpan(
+              children: spansWithBoldIfInMatches(
+                  completeText: selectionContact.filterText!,
+                  startPos: 0,
+                  endPos: selectionContact.filterText!.length,
+                  matches: matchList,
+                  textStyle: Theme.of(context).textTheme.caption ?? const TextStyle())
+              .toList(),),
+          )];
+  }
+
+  RichText _buildFullNameHighlighted(BuildContext context, String highlight) {
+    final List<Match>? matchList = _matchesOnHighlight(highlight);
+    if (matchList == null || matchList.isEmpty) {
+      return _buildFullName(context);
+    }
+
+    return RichText(
+      overflow: TextOverflow.ellipsis,
+      textScaleFactor: MediaQuery.of(context).textScaleFactor,
+      text: TextSpan(
+          children: spansWithBoldIfInMatches(
+                  completeText: highlight,
+                  startPos: 0,
+                  endPos: highlight.length,
+                  matches: matchList,
+                  textStyle: Theme.of(context).textTheme.headline5 ?? const TextStyle())
+              .toList()
+          ),
+    );
+  }
+
+  List<Match>? _matchesOnHighlight(String highlight) {
+    final List<Match>? matchList =
+        filter?.filterSearch?.toLowerCase().allMatches(highlight.toLowerCase()).toList();
+    return matchList;
   }
 
   RichText _buildFullName(BuildContext context) {
