@@ -1,3 +1,5 @@
+//Inspired in https://pub.dev/packages/flutter_multi_formatter
+
 import 'dart:math';
 
 import 'package:scorecontacts/core/exceptions/constructor_exceptions.dart';
