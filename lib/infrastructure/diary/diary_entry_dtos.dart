@@ -29,8 +29,8 @@ class DiaryEntryDto with _$DiaryEntryDto {
     return DiaryEntryDto(
       id: domain.id.value,
       text: domain.text,
-      startDate: domain.dateTime(datePos: DatePos.Start),
-      endDate: domain.dateTime(datePos: DatePos.End),
+      startDate: domain.dateTime(datePos: DatePos.start),
+      endDate: domain.dateTime(datePos: DatePos.end),
       mentionList:
       domain.mentionList.map((mention) => MentionDto.fromDomain(mention)).toList(),
       mentionIds:domain.mentionList.map((mention) => mention.iMentionable.id.value).toList(),

@@ -33,7 +33,8 @@ class AddDiaryEntryBloc extends Bloc<AddDiaryEntryEvent, AddDiaryEntryState> {
         yield state.copyWith(
             mentionListManager: MentionListManager(mentionList: e.mentionableList),
             entryField: e.diaryEntry != null
-                ? state.entryField.copyWith(entry: e.diaryEntry!)
+                ? state.entryField.copyWith(
+                    entry: e.diaryEntry!.updateStringMentions(e.mentionableList))
                 : state.entryField,
             isEditting: isEditting);
       },

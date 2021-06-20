@@ -38,11 +38,11 @@ class DiaryDateTimePicker extends StatelessWidget {
             ),
             DateRowPicker(
               diaryEntry: state.entryField.entry,
-              datePos: DatePos.Start,
+              datePos: DatePos.start,
             ),
             DateRowPicker(
               diaryEntry: state.entryField.entry,
-              datePos: DatePos.End,
+              datePos: DatePos.end,
             ),
           ],
         );
@@ -74,11 +74,11 @@ class DateRowPicker extends StatelessWidget {
               final DateTime? dateTime = await showDatePicker(
                 context: context,
                 initialDate: diaryEntry.dateTime(datePos: datePos),
-                firstDate: datePos == DatePos.Start
+                firstDate: datePos == DatePos.start
                     ? DateTime.utc(2000)
-                    : diaryEntry.dateTime(datePos: DatePos.Start),
-                lastDate: datePos == DatePos.Start
-                    ? diaryEntry.dateTime(datePos: DatePos.End)
+                    : diaryEntry.dateTime(datePos: DatePos.start),
+                lastDate: datePos == DatePos.start
+                    ? diaryEntry.dateTime(datePos: DatePos.end)
                     : DateTime.now(),
               );
               if (dateTime != null) {
