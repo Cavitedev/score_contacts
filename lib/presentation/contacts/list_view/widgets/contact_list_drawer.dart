@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/auth/auth_bloc.dart';
@@ -38,6 +39,7 @@ class ContactListDrawer extends StatelessWidget {
               context.router.push(r.ListDiaryEntryPageRoute());
             },
           ),
+          if (defaultTargetPlatform == TargetPlatform.android)
           ListTile(
             title: Text(
               AppLocalization.of(context)

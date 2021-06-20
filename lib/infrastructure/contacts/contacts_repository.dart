@@ -42,7 +42,8 @@ class ContactsRepository implements IContactsRepository {
   Future<Either<ContactsFailure, void>> _createContact(Contact contact) async {
     final CollectionReference collection =
         firestore.userDocument().contactsCollection; // colección de contactos
-    final ContactDTO contactDTO = ContactDTO.fromDomain(contact); // Objecto de transferencia
+    final ContactDTO contactDTO =
+        ContactDTO.fromDomain(contact); // Objecto de transferencia
     // Actualizar imagen, si da fallo devolver fallo, si no escribir json actualizado con su link
     return (await imageStorage.updateImageOnDTO(contact, contactDTO)).fold(
       (f) => left(f),
@@ -54,8 +55,7 @@ class ContactsRepository implements IContactsRepository {
   Future<Either<ContactsFailure, Unit>> _createContactsBatch(
       List<Contact> contactList) async {
     final batch = firestore.batch();
-    final CollectionReference contacts =
-        firestore.userDocument().contactsCollection;
+    final CollectionReference contacts = firestore.userDocument().contactsCollection;
     ContactsFailure? failure;
     for (final Contact contact in contactList) {
       ContactDTO contactDTO = ContactDTO.fromDomain(contact);
@@ -93,14 +93,14 @@ class ContactsRepository implements IContactsRepository {
             .map((doc) => ContactDTO.fromFirestore(doc).toDomain())
             .toList())) //Lista de convertidos a dominio
         .onErrorReturnWith((e, _) {
-      return left(_handleException(e)); //Forma genérica de manejar excepciones en esta clase
+      return left(
+          _handleException(e)); //Forma genérica de manejar excepciones en esta clase
     });
   }
 
   @override
   Future<Either<ContactsFailure, Unit>> updateContact(Contact contact) async {
-    final CollectionReference contacts =
-        firestore.userDocument().contactsCollection;
+    final CollectionReference contacts = firestore.userDocument().contactsCollection;
     final ContactDTO contactDTO = ContactDTO.fromDomain(contact);
 
     final Either<ContactsFailure, ContactDTO> eitherUpdatedDto =
@@ -127,8 +127,7 @@ class ContactsRepository implements IContactsRepository {
       } catch (e) {
         return left(const ContactsFailure.unexpected());
       }
-      final CollectionReference contacts =
-          firestore.userDocument().contactsCollection;
+      final CollectionReference contacts = firestore.userDocument().contactsCollection;
       await contacts.doc(contact.id.value).delete();
       return right(unit);
     } catch (e) {
@@ -137,16 +136,14 @@ class ContactsRepository implements IContactsRepository {
   }
 
   @override
-  Future<Either<ContactsFailure, Unit>> deleteContactList(
-      List<Contact> contactList) {
+  Future<Either<ContactsFailure, Unit>> deleteContactList(List<Contact> contactList) {
     return _performBatch(contactList, _deleteContactsBatch);
   }
 
   Future<Either<ContactsFailure, Unit>> _deleteContactsBatch(
       List<Contact> contactList) async {
     final batch = firestore.batch();
-    final CollectionReference contacts =
-        firestore.userDocument().contactsCollection;
+    final CollectionReference contacts = firestore.userDocument().contactsCollection;
     for (final Contact contact in contactList) {
       try {
         await imageStorage.deleteImage(contact);

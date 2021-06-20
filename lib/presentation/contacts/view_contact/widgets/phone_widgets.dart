@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorecontacts/application/contacts/view_contact/view_contact_bloc.dart';
@@ -25,13 +26,14 @@ List<Widget> _widgetsInPhone(final Phone phone,
     {required Function(Phone phone, PhoneAppMessage app) onAppMessage}) {
   return [
     PhoneListTile(phone: phone),
-    ...PhoneAppMessage.appsToCheck.map((app) => AppMessageListTile(
-          phone: phone,
-          image: app.image,
-          onTap: () {
-            onAppMessage(phone, app);
-          },
-        ))
+    if (defaultTargetPlatform == TargetPlatform.android)
+      ...PhoneAppMessage.appsToCheck.map((app) => AppMessageListTile(
+            phone: phone,
+            image: app.image,
+            onTap: () {
+              onAppMessage(phone, app);
+            },
+          ))
   ];
 }
 
@@ -57,9 +59,7 @@ class PhoneListTile extends StatelessWidget {
         color: Theme.of(context).accentIconTheme.color,
         icon: const Icon(Icons.phone),
         onPressed: () {
-          context
-              .read<ViewContactBloc>()
-              .add(ViewContactEvent.callNumber(phone.value!));
+          context.read<ViewContactBloc>().add(ViewContactEvent.callNumber(phone.value!));
         },
       ),
       subtitle: phone.label != null ? Text("${phone.label!}  |  $phoneCountry") : null,
