@@ -38,14 +38,16 @@ class ContactsRepository implements IContactsRepository {
         contactList, _createContactsBatch);
   }
 
+  /// Crear un contacto añadiendo su imagen a Firestorage si la tiene
   Future<Either<ContactsFailure, void>> _createContact(Contact contact) async {
-    final CollectionReference contacts =
-        firestore.userDocument().contactsCollection;
-    final ContactDTO contactDTO = ContactDTO.fromDomain(contact);
+    final CollectionReference collection =
+        firestore.userDocument().contactsCollection; // colección de contactos
+    final ContactDTO contactDTO = ContactDTO.fromDomain(contact); // Objecto de transferencia
+    // Actualizar imagen, si da fallo devolver fallo, si no escribir json actualizado con su link
     return (await imageStorage.updateImageOnDTO(contact, contactDTO)).fold(
       (f) => left(f),
       (contactDtoRet) =>
-          right(contacts.doc(contactDtoRet.id).set(contactDtoRet.toJson())),
+          right(collection.doc(contactDtoRet.id).set(contactDtoRet.toJson())),
     );
   }
 
@@ -83,15 +85,15 @@ class ContactsRepository implements IContactsRepository {
 
   @override
   Stream<Either<ContactsFailure, List<Contact>>> watchAllContacts() async* {
-    final CollectionReference<Map<String, dynamic>> contacts =
-        firestore.userDocument().contactsCollection;
-    yield* contacts
-        .snapshots()
+    final CollectionReference<Map<String, dynamic>> collection =
+        firestore.userDocument().contactsCollection; //Lugar dónde obtener datos
+    yield* collection
+        .snapshots() //Capturas
         .map((snapshot) => right<ContactsFailure, List<Contact>>(snapshot.docs
             .map((doc) => ContactDTO.fromFirestore(doc).toDomain())
-            .toList()))
+            .toList())) //Lista de convertidos a dominio
         .onErrorReturnWith((e, _) {
-      return left(_handleException(e));
+      return left(_handleException(e)); //Forma genérica de manejar excepciones en esta clase
     });
   }
 

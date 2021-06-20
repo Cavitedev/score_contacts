@@ -24,26 +24,28 @@ class FirebaseAuthFacade implements IAuthFacade {
   Option<User> getSignedUser() =>
       optionOf(firebaseAuth.currentUser?.toDomain());
 
+  /// Método asíncrono de inicio de sesión con Google que devuelve éxito o fallo
+  /// y actualiza el usuario actual de Firebase
   @override
   Future<Either<AuthFailure, Unit>> signInWithGoogle() async {
     try {
-      final GoogleSignInAccount? googleAccount = await googleSignIn.signIn();
+      final GoogleSignInAccount? googleAccount = await googleSignIn.signIn(); //Intenta entrar
       if (googleAccount == null) {
-        return left(const CancelledByUserAuthFailure("google_cancelled"));
+        return left(const CancelledByUserAuthFailure("google_cancelled")); //Devuelve que ha sido cancelado
       }
       final GoogleSignInAuthentication authentication =
-          await googleAccount.authentication;
+          await googleAccount.authentication; // Obtener datos de la autentificación recibida
       final _fbAuth.AuthCredential credential =
           _fbAuth.GoogleAuthProvider.credential(
               idToken: authentication.idToken,
-              accessToken: authentication.accessToken);
-      await firebaseAuth.signInWithCredential(credential);
-      return right(unit);
+              accessToken: authentication.accessToken); // Obtener credenciales necesarios
+      await firebaseAuth.signInWithCredential(credential); //Entrar a Firebase con las credenciales
+      return right(unit); // Éxito
     } on PlatformException catch (e) {
-      if (e.code == "popup_closed_by_user") {
+      if (e.code == "popup_closed_by_user") { //Excepción de cancelado
         return left(const CancelledByUserAuthFailure("google_cancelled"));
       }
-
+      // Error genérico
       return left(const DatabaseAuthFailure("error_database"));
     }
   }
