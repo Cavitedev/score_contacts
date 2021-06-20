@@ -40,14 +40,15 @@ object AppMessageService {
 
     private fun sendMessage(context: Context, phone: String, app: String) {
         val num = PhoneNumberUtils.stripSeparators(phone.substring(1)).toString()
+        //número sin espacios
 
         if(app != "com.whatsapp"){
-            throw Exception("Not implemented")
+            throw Exception("Not implemented") // Solo funciona en whatsapp
         }
         val sendIntent = Intent(Intent.ACTION_MAIN)
-        sendIntent.component = ComponentName(app, "$app.Conversation")
-        sendIntent.putExtra("jid",  "$num@s.whatsapp.net")
-        context.startActivity(sendIntent)
+        sendIntent.component = ComponentName(app, "$app.Conversation") // Abrir conversación
+        sendIntent.putExtra("jid",  "$num@s.whatsapp.net") // Con un número de whatsapp
+        context.startActivity(sendIntent) // Arrancar Intent
 
     }
 

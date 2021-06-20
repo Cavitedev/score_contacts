@@ -4,6 +4,8 @@ import 'package:scorecontacts/core/app_localization.dart';
 
 part 'contacts_loading.freezed.dart';
 
+// Clase que encapsula otras clases con distintos parámetros
+// También sobreescribe ==, toString y otros operadores básicos
 @freezed
 class ContactsLoading with _$ContactsLoading {
   const factory ContactsLoading.loadingContacts({int? amount}) =

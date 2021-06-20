@@ -24,13 +24,14 @@ class ContactDTO with _$ContactDTO {
   const ContactDTO._();
 
   const factory ContactDTO({
-    @JsonKey(ignore: true) String? id,
+    @JsonKey(ignore: true) String? id, // ignorar ya que será el nombre del documento
     @JsonKey(name: nameDataName) required NameDataDTO nameDataDTO,
     @JsonKey(name: companiesName) List<CompanyDTO?>? companiesDTO,
     @JsonKey(name: emailsName) List<LabelObjectDTO?>? emailsDTO,
     @JsonKey(name: phonesName) List<LabelObjectDTO?>? phonesDTO,
     @JsonKey(name: imageUrlName, includeIfNull: true) String? imageUrl,
-    @ServerTimeStampConverter() required FieldValue serverTimeStamp,
+    // include if null para eliminar imágen cuando sea necesario con un null
+    @ServerTimeStampConverter() required FieldValue serverTimeStamp, // añade el tiempo actual
   }) = _ContactDTO;
 
   factory ContactDTO.fromDomain(Contact contact) {
@@ -80,8 +81,9 @@ class ContactDTO with _$ContactDTO {
   }
 
   factory ContactDTO.fromJson(Map<String, dynamic> json) =>
-      _$ContactDTOFromJson(json);
+      _$ContactDTOFromJson(json); // Obligatorio sobreescribir esto
 
+  // para nombrar el documento correcto dado el id
   factory ContactDTO.fromFirestore(DocumentSnapshot<Map<String, dynamic>> doc) {
     return ContactDTO.fromJson(doc.data()!).copyWith(id: doc.id);
   }

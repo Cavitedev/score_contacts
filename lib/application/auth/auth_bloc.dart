@@ -14,9 +14,9 @@ part 'auth_state.dart';
 
 @injectable
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  final IAuthFacade authDao;
+  final IAuthFacade authDao; // inyecta la dependencia
 
-  AuthBloc(this.authDao) : super(const AuthState.initial());
+  AuthBloc(this.authDao) : super(const AuthState.initial()); // estado por defecto
 
   @override
   Stream<AuthState> mapEventToState(
@@ -24,14 +24,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   ) async* {
     yield* event.map(
       getUser: (e) async* {
-
+          // Primer evento que se puede llamar
           final Option<User> user = authDao.getSignedUser();
-          yield user.fold(
+          yield user.fold( // Distintos estados según como se encuentre el usuario
             () => const AuthState.unathenticated(),
             (_) => const AuthState.authenticated(),
           );
       },
-      signOut: (e) async* {
+      signOut: (e) async* { // segundo evento
           await authDao.signOut();
           yield const AuthState.unathenticated();
       },
