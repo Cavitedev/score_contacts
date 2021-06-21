@@ -2,12 +2,14 @@
 
 ![Contacts Logo](android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png)
 
-Contacts app by the moment
+Contacts app with diary entries that have mentions
 
 ## Getting Started
 
 Download the apk from github releases.
 
-## Copying Code
+This app is also hosted on https://contactsscored.web.app/
 
-This repository is not meant to be fully copied. So it is impossible to achieve the fully complete installation of the source code because it includes a database. However you can read and copy some parts from it  
+## Cloning project
+
+This repository doesn't allow access to the firebase project, but you can create your own Firebase project from this project respecting the license.

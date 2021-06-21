@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-        xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-        xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="500" height="500"
-        viewBox="0 0 132.29167 132.29167" version="1.1" id="svg232" inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"
-        sodipodi:docname="app_logo.svg" inkscape:export-filename="E:\Personal\Android\Projects\score_contacts\score_contacts\logo\app_logo2.png"
-        inkscape:export-xdpi="384" inkscape:export-ydpi="384">
+<svg width="500" height="500" viewBox="0 0 132.29167 132.29167" version="1.1" id="svg232"
+        inkscape:version="1.1 (c68e22c387, 2021-05-23)" sodipodi:docname="app_logo.svg"
+        inkscape:export-filename="E:\Proyectos\Flutter\Projects\score_contacts\score_contacts\web\icons\app_logo_white_16.png"
+        inkscape:export-xdpi="3.072" inkscape:export-ydpi="3.072" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+        xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg"
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:cc="http://creativecommons.org/ns#"
+        xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs226">
     <filter
        style="color-interpolation-filters:sRGB;"
        inkscape:label="Drop Shadow"
-       id="filter3908">
+       id="filter3908"
+       x="-0.060472441"
+       y="-0.060472441"
+       width="1.1209449"
+       height="1.1713386">
       <feFlood
          flood-opacity="0.666667"
          flood-color="rgb(0,0,68)"
@@ -42,7 +47,11 @@
     <filter
        style="color-interpolation-filters:sRGB;"
        inkscape:label="Drop Shadow"
-       id="filter4040">
+       id="filter4040"
+       x="-0.0096623979"
+       y="-0.019333333"
+       width="1.0193248"
+       height="1.072">
       <feFlood
          flood-opacity="0.666667"
          flood-color="rgb(0,0,68)"
@@ -74,14 +83,14 @@
   </defs>
   <sodipodi:namedview
      id="base"
-     pagecolor="#ffffff"
+     pagecolor="#2a7fff"
      bordercolor="#666666"
      borderopacity="1.0"
-     inkscape:pageopacity="0.0"
+     inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="259.85426"
-     inkscape:cy="264.33558"
+     inkscape:zoom="0.9899495"
+     inkscape:cx="-37.375644"
+     inkscape:cy="300.52038"
      inkscape:document-units="px"
      inkscape:current-layer="layer4"
      inkscape:document-rotation="0"
@@ -92,7 +101,8 @@
      inkscape:window-height="1017"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1"
+     inkscape:pagecheckerboard="0" />
   <metadata
      id="metadata229">
     <rdf:RDF>
@@ -101,7 +111,6 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
