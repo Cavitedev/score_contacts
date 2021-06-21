@@ -39,7 +39,7 @@ class ContactListDrawer extends StatelessWidget {
               context.router.push(r.ListDiaryEntryPageRoute());
             },
           ),
-          if (defaultTargetPlatform == TargetPlatform.android)
+          if (defaultTargetPlatform == TargetPlatform.android && !kIsWeb)
           ListTile(
             title: Text(
               AppLocalization.of(context)

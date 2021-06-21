@@ -26,7 +26,7 @@ List<Widget> _widgetsInPhone(final Phone phone,
     {required Function(Phone phone, PhoneAppMessage app) onAppMessage}) {
   return [
     PhoneListTile(phone: phone),
-    if (defaultTargetPlatform == TargetPlatform.android)
+    if (defaultTargetPlatform == TargetPlatform.android && !kIsWeb)
       ...PhoneAppMessage.appsToCheck.map((app) => AppMessageListTile(
             phone: phone,
             image: app.image,

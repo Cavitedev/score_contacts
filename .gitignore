@@ -46,6 +46,8 @@ firebase.json
 firestore.indexes.json
 storage.rules
 firestore.rules
+.firebaserc
+.firebase/hosting.YnVpbGRcd2Vi.cache
 
 # Exceptions to above rules.
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
