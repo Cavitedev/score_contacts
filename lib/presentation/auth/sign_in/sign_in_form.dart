@@ -63,7 +63,7 @@ class SignInForm extends StatelessWidget {
           SliverFillRemaining(
             hasScrollBody: false,
             child: Container(
-              margin: const EdgeInsets.only(bottom: 20),
+              margin: const EdgeInsets.only(bottom: 40),
               padding:
                   const EdgeInsets.symmetric(horizontal: Constants.extendedPadding),
               height: 50,
